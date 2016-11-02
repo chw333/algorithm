@@ -1,8 +1,0 @@
-Input files:
-
-1: sample input
-2: a bunch of images of size 1 (all possible tree shapes)
-3: a bunch of images of size 2 (all possible tree shapes)
-4: a bunch of images of size 4 (all possible tree shapes)
-5: a bundh of images of size 8 (converted from icons, quantized a bit)
-6: a bunch of images of size 16 (converted from icons, quantized a bit)

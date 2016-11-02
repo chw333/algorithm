@@ -1,4 +1,0 @@
-
-	Ðis uþdavinys gali turëti daug skirtingø sprendimø.
-	
-	This task is not deterministic (i.e. more than one correct solution is possible).

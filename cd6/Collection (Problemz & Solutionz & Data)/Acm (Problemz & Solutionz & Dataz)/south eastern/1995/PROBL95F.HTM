@@ -1,106 +1,0 @@
-<pre>
-<b>
-<font size=3>
-Problem F
-MAZE EXPLORATION
-
-     Inpuô Filå Nameº F.DAT
-     Prograí Sourcå Fileº F.PAÓ oò F.Ã oò F.CPP
-                    
-     Á  mazå  oæ  rectangulaò  roomó  ió  representeä  oî  á  twï 
-dimensionaì  griä aó illustrateä iî figurå 1a® Eacè poinô oæ  thå 
-griä ió representeä bù á character® Thå pointó oæ rooí walló  arå 
-markeä bù thå samå characteò whicè caî bå anù printablå characteò 
-differenô  thaî *¬ _‚  anä space® Iî figurå ± thió characteò ió  Û 
-(decimaì  codå 219)® Alì thå otheò pointó oæ thå griä arå  markeä 
-bù spaces® 
-
-     
-       ÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛ        ÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛ
-       Û   Û   Û   Û   Û   Û        Û°°°Û°°°Û°°°Û   Û   Û
-       Û           Û   Û   Û        Û°°°°°°°°°°°Û   Û   Û
-       Û   Û   Û   Û   Û   Û        Û°°°Û°°°Û°°°Û   Û   Û
-       ÛÛÛÛÛÛ ÛÛÛ ÛÛÛÛÛÛÛÛÛÛ        ÛÛÛÛÛÛ°ÛÛÛ°ÛÛÛÛÛÛÛÛÛÛ
-       Û   Û   Û   Û   Û   Û        Û   Û°°°Û°°°Û°°°Û°°°Û
-       Û   Û     *         Û        Û   Û°°°°°°°°°°°°°°°Û
-       Û   Û   Û   Û   Û   Û        Û   Û°°°Û°°°Û°°°Û°°°Û
-       ÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛ        ÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛÛ
-
-          a© Initial mazå              b© Painteä maze
-
-              Figurå 1. Mazås oæ rectangulaò rooms
-
-     Alì  roomó  oæ  thå mazå arå equaì sizeä witè  alì  walló  ³ 
-pointó  widå  anä ± poinô thicë aó illustrateä iî  figurå  2®  Iî 
-addition¬  á walì ió shareä oî itó fulì lengtè bù  thå  separateä 
-rooms®  Thå  roomó  caî  communicatå  througè  doors¬  whicè  arå 
-positioneä iî thå middlå oæ walls® Therå arå nï outdooò doors® 
-
-
-                     door
-                       |
-                     ÛÛ ÛÛ
-                     Û . Û   measureä froí withiî thå room
-               dooò - ...--­ walló arå ³ pointó wide
-                     Û . Û__
-                     ÛÛÛÛÛ  |
-                       |___ß walló arå onå poinô thick
-                    
-                  Figurå 2® Á rooí witè ³ doors
-
-     Youò  probleí ió tï painô alì roomó oæ á mazå whicè  caî  bå 
-visiteä  startinç froí á giveî room¬ calleä thå starô room‚  whicè Šió  markeä bù á staò (*© positioneä iî thå middlå oæ thå room®  Á 
-rooí  caî bå visiteä froí anotheò rooí iæ therå ió á dooò oî  thå 
-walì whicè separateó thå rooms® Bù convention¬ á rooí ió  painteä 
-iæ  itó  entirå surface¬ includinç thå doors¬ ió  markeä  bù  thå 
-characteò ›° (decimaì codå 176© aó showî iî figurå 1b.
-
-     Thå prograí inpuô ió á texô filå structureä aó follows:
-
-  1©  Thå firsô linå containó á positivå integeò whicè showó  thå 
-numbeò oæ mazeó tï bå painted.
-  2©  Thå resô oæ thå filå containó thå mazes®
-
-     Thå lineó oæ thå inpuô filå caî bå oæ differenô length®  Thå 
-texô  whicè representó á mazå ió terminateä bù á separatioî  linå 
-fulì  oæ underscoreó (_)® Therå arå aô mosô 3° lineó anä aô  mosô 
-80 characteró iî á linå foò eacè maze
-
-     Thå prograí readó thå mazeó froí thå inpuô file¬ paintó theí 
-ánä writeó thå painteä mazeó oî thå standarä output.
-
-Thå  outpuô  texô oæ á painteä mazå haó thå samå formaô  aó  thaô 
-whicè  haó  beeî  reaä foò thaô maze¬  includinç  thå  separatioî 
-lines®  Figurå  ³  illustrateó á simplå inpuô  whicè  containó  á 
-singlå mazå anä thå correspondinç output.
-
-    a© input      ±          -­ numbeò oæ mazes
-
-                  ÛÛÛÛÛÛÛÛÛ    
-                  Û   Û   Û   
-                  Û *     Û    
-                  Û   Û   Û         
-                  ÛÛÛÛÛÛÛÛÛ    
-                  Û   Û      
-                  Û   Û      
-                  Û   Û      
-                  ÛÛÛÛÛ      
-                  _____ß     __ separatioî line
-                               
-                  enä oæ file
-
-
-    b© output     ÛÛÛÛÛÛÛÛÛ     
-                  Û°°°Û°°°Û    
-                  Û°°°°°°°Û     
-                  Û°°°Û°°°Û     
-                  ÛÛÛÛÛÛÛÛÛ     
-                  Û   Û       
-                  Û   Û       
-                  Û   Û       
-                  ÛÛÛÛÛ       
-                  _____ß 
-                              
-                  end of file
-
-        Figurå 3® An examplå oæ prograí inpuô anä outpuô.

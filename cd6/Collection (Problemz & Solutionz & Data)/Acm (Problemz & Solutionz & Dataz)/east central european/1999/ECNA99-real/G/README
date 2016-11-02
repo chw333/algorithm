@@ -1,8 +1,0 @@
-1: sample input
-2-5: 30 random cases each
-6-10: 30 random cases with small t_i (<= 2)
-11-12: 30 random cases each with n = 25, h = 16
-13: a few cases to check tie-breaking
-14-15: 30 random cases each with medium t_i (<= 12)
-16-17: 30 random cases each with n = 25, h = 16, t_i <= 12
-18-19: 30 random cases each with n = 25, h = 16, t_i <= 2

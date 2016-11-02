@@ -1,6 +1,0 @@
-BEF
-BCD
-BDE
-ABC
-BCD
-BDE
