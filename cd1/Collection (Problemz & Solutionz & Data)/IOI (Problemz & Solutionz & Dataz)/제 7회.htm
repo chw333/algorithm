@@ -1,0 +1,345 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0041)http://user.chollian.net/~pjykym/ioi7.htm -->
+<HTML><HEAD><TITLE>제 7회</TITLE>
+<META content="MSHTML 5.00.2614.3500" name=GENERATOR>
+<META content="text/html; charset=euc-kr" http-equiv=Content-Type></HEAD>
+<BODY>
+<P align=center><B><FONT size=6>제 7회</FONT></B></P>
+<P>제 7회는 1995년 6월 27일부터 7월 1일까지 네덜란드 아이트호번에서 열렸다. 형식은 6회와 비슷하고 좀더 난이도가 높아진 좋은 
+문제들이 나왔는데, IOI 역사상 전무후무한 지필고사 문제(3번)가 나오고, "전선과 스위치"처럼 입력 자료가 인터랙티브하게 들어오는 문제가 
+처음으로 출제되어(6번) 놀랍다.</P>
+<P><A href="http://user.chollian.net/~pjykym/ioi7.htm#1">1. 직사각형 싸기</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi7.htm#2">2. 할인 판매</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi7.htm#3">3. 인쇄 작업</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi7.htm#4">4. 글자 게임</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi7.htm#5">5. 시내 자동차 경주</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi7.htm#6">6. 전선과 스위치</A></P>
+<HR>
+
+<H2><A name=1></A>1. 직사각형 싸기</H2>
+<P>직사각형 네 개가 있다. 이것들을 서로 겹치지 않게 적당히 배치한 뒤 네 개를 모두 포함하는 직사각형으로 둘러쌌을 때, 이 직사각형이 가질 
+수 있는 최소 넓이를 구하는 프로그램을 작성하라.</P>
+<P>네 직사각형과 이를 둘러싸는 직사각형은 변이 서로 나란히 있어야 한다.</P>
+<P><IMG border=0 height=124 src="제 7회.files/ioi7-1-1.gif" width=494></P>
+<P>위 그림은 네 직사각형을 싸는 여섯 가지 방법을 나타내고 있다. 이 방법은 최소한의 기본적인 방법이다. 이들을 회전시키거나 상하 좌우를 
+바꾸면 다른 방법이 만들어진다.</P>
+<P>넓이를 최소로 하면서 네 직사각형을 싸는 직사각형은 여러 개가 있을 수 있다. 답안 프로그램은 이 방법을 모두 계산하여 출력해야 
+한다.</P>
+<H3>입력 자료</H3>
+<P>INPUT.TXT는 네 줄로 구성되어 있다. 각 줄에는 해당하는 직사각형의 가로, 세로변 길이가 두 개의 자연수로 적혀 있다. 직사각형의 
+변 길이의 범위는 1에서 50까지이다.</P>
+<H3>출력 자료</H3>
+<P>OUTPUT.TXT의 줄 수는 답의 개수보다 한 줄 더 많아야 한다. 둘러쌀 수 있는 최소의 넓이가 첫 줄에 들어가고, 다음부터 그렇게 쌀 
+수 있는 직사각형의 가로, 세로 길이를 기록해 나간다. 답의 목록은 가로 길이를 기준으로 정렬돼 있어야 하며, 해는 모두 서로 달라야 
+한다.</P>
+<H3>입출력 파일의 예</H3>
+<P>한 입력 파일과 그에 대한 출력 결과를 아래에 나타내었다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>INPUT.TXT&nbsp;&nbsp;&nbsp;OUTPUT.TXT</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>1 
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;40</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>2 
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 10</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>3 
+4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 8</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>4 
+5</FONT></P>
+<HR>
+
+<H2><A name=2></A>2. 할인 판매</H2>
+<P>가게에 있는 각각의 물건에는 가격이 매겨져 있다.</P>
+<P>예를 들어 꽃 한 송이의 가격은 2 ICU(정보 과학 금액 단위)이며 꽃병은 5 ICU이다. 더 많은 고객을 이끌려면 가게는 특별한 마케팅 
+전략을 써야 한다. 특별한 마케팅이란 물품을 여러 개 살 때 물품 가격을 깎아주는 것이다. 이러한 예로는 꽃 세 송이를 사면 6이 아닌 5 
+ICU에 받는다거나 꽃병 두 개와 꽃 한 송이를 같이 샀을 때 12 대신 10 ICU만 받는 것을 말한다.</P>
+<P>한 고객이 어떤 물품을 아무 개 살 때, 이러한 할인가를 최대한 활용해서 최소 얼마를 지불하면 되겠는지 계산하는 프로그램을 작성하라. 단, 
+가격을 더 낮출 수 있다 하더라도 안 사려던 물품을 더 사면서까지 할인가를 활용해서는 안 된다.</P>
+<P>위에서 제시한 가격과 할인가를 이용하면 꽃 세 송이와 꽃병 두 개를 살 수 있는 가장 싼 가격은 14 ICU이다. 꽃병 두 개와 꽃 한 
+송이를 할인가인 10 ICU에 사고 남은 꽃 두 송이를 보통 가격으로 사면 된다.</P>
+<H3>입력 자료</H3>
+<P>입력 파일은 INPUT.TXT와 OFFER.TXT 이렇게 두 개다. 전자에는 사야 할 물건이 들어있다. 장바구니라고 생각하면 이해가 빠를 
+것 같다. 후자에는 할인 가격하는 경우가 기록돼 있다. 파일 두 개 모두에는 정수만 쓰여 있다.</P>
+<P>INPUT.TXT의 첫 줄에는 서로 다른 물품의 가짓수를 나타내는 수치 b가 적혀 있다. 1&lt;=b&lt;=5이다.</P>
+<P>다음 b줄에는 각 물품에 대한 정보를 나타내는 c, k, p의 값이 있다. c는 물품을 식별하는 번호이다. (1&lt;=c&lt;=999) 
+k는 이 물품을 몇 개 사려고 하는지를 나타낸다. (1&lt;=k&lt;=5) 마지막 p는 이 물품 1개의 보통 가격이다. 
+(1&lt;=p&lt;=999) 그러므로 최대 25개의 물품을 장바구니에 넣을 수 있다.</P>
+<P>OFFER.TXT의 첫 줄에는 할인 판매를 하는 묶음의 개수 s가 들어있다. (0&lt;=s&lt;=99) 그리고 다음 s줄에는 일정한 
+구조로 할인 판매하는 물품과 할인된 가격이 들어있다. 각 줄에 있는 첫 번째 숫자 n은 할인을 해 주는 이 묶음에 든 물품의 가짓수이다. 
+(1&lt;=n&lt;=5) 다음에 이어지는 n쌍의 수 (c, k)는 각각 물품의 번호(1&lt;=c&lt;=999)와, 할인이 적용되는 
+개수이다. (1&lt;=k&lt;=5) 그리고 마지막에 든 수 p는 이 묶음의 총 가격이다. (1&lt;=p&lt;=9999) 할인된 가격은 
+항상 이 묶음 전체를 보통 가격으로 샀을 때보다 싸다.</P>
+<H3>출력 자료</H3>
+<P>OUTPUT.TXT에 입력 파일에 있는 대로 물품을 살 경우 가장 싸게 살 수 있는 가격을 기록한다.</P>
+<H3>입/출력 파일의 예</H3>
+<P>다음은 위의 예제를 입력 파일로 쓰고, 이에 대한 출력을 보인 것이다. 꽃의 물품 번호는 7이며, 꽃병은 8이다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>INPUT.TXT&nbsp;&nbsp;&nbsp;&nbsp;OFFER.TXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OUTPUT.TXT</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>7 
+3 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 7 3 5</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>8 
+2 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 7 1 8 2 10</FONT></P>
+<HR>
+
+<H2><A name=3></A>3. 인쇄 작업</H2>
+<H3>클라이언트와 서버</H3>
+<P>두 사람이 있다. 두 명은 모두 컴퓨터를 가지고 있으며, CLIENT(1), CLIENT(2)란 이름으로 이를 구분한다. 이 두 컴퓨터는 
+SERVER(1), SERVER(2), ...이라는 이름을 가진 한 대 이상의 프린터를 공유한다. 컴퓨터가 보내는 인쇄 작업은 한 번에 하나씩만 
+수행된다. 그래서 프린터가 한 작업을 처리하기 시작하면 나중에 들어온 다른 작업 요청은 먼젓번 작업이 끝날 때까지 기다리고 있게 된다. 두 
+컴퓨터와 한 프린터 사이의 이러한 상호 통신 작용을 조절하기 위해 우리는 특수한 매개체를 사용할 것이다. 그것은 세마포어이다.</P>
+<H3>세마포어 (신호 장치)</H3>
+<P>각 프린터에는 자기와 관계를 맺는 세마포어가 하나 있다. 세마포어는 S1과 S2의 두 가지 중 한 가지 상태에 있다. S1은 이 프린터가 
+현재 한가하여 인쇄 작업을 받을 수 있음을 나타내며, S2는 인쇄하느라 여유가 없는 상태를 나타낸다.</P>
+<P>그러므로 세마포어는 때에 따라 S1에서 S2로 혹은 S2에서 S1로 상태가 변할 수 있다. 사용자가 컴퓨터에게 인쇄를 시키면 컴퓨터는 
+"Are_you_open?"이라는 메시지를 세마포어로 보낸다. 만약 세마포어의 상태가 S1이라면 인쇄 지시를 받으면서 상태가 S2로 바뀌고 이 
+세마포어는 그 컴퓨터에게 "Open"이라는 메시지를 되돌린다. 이미 상태가 S2인 세마포어는 이 메시지에 "Close"라고 응답한다. 그리고 
+인쇄 작업이 끝나면 프린터는 세마포어로 "Ready"라는 메시지를 보내고, 그러면 세마포어의 상태는 S1로 바뀐다.</P>
+<H3>세마포어 개체</H3>
+<P>문서 1을 보면 세마포어라는 개체의 형식과 정의에 대한 자세한 설명을 볼 수 있을 것이다. 이 개체의 인스턴스와 세마포어가 있을 수 있는 
+상태, 우선 순위 목록, 통신 모식도, 상태 전환 모식도, 그리고 "Ready", "Are_you_open?" 메시지에 대한 응답 절차 등 
+세마포어에 관한 매우 자세한 정보가 들어있다. 응답 절차에는 세마포어가 어떻게 자기에게 온 각종 메시지에 반응하는지 그 알고리즘이 파스칼 코드 
+형식으로 들어있다.</P>
+<P>일을 하나씩만 처리할 수 있는 세마포어로 여러 메시지가 동시에 들어올 수 있기 때문에 우선 순위 기준을 두는 게 필요하다. 문서 1을 보면 
+SERVER의 메시지가 CLIENT의 그것보다 먼저 처리되고 같은 서버 중에서는 SERVER(2)가 SERVER(3)보다 우선 순위가 더 높음을 
+알 수 있다.</P>
+<H3>클라이언트 개체</H3>
+<P>문서 2를 보면 클라이언트라는 개체의 형식과 정의에 대한 자세한 설명을 얻을 수 있다. 클라이언트의 상태는 SA, SB, SC 중 한 
+가지이다. SA는 이 클라이언트가 서버로 인쇄 명령을 보내지 않았고 서버도 이 클라이언트에게서 받은 인쇄 작업을 수행하고 있지 않다는 뜻이다. 
+SB 상태인 클라이언트는 서버로 통신을 하고 싶어한다는 뜻이며, 서버가 이 클라이언트의 인쇄 작업을 하고 있으면 클라이언트는 SC 상태가 
+된다.</P>
+<P>클라이언트는 SA→SB, SB→SC, SC→SA와 같이 상태가 변할 수 있다. 상태가 SB이면 세마포어에게서 "Closed"라는 메시지를 
+받을 수 있다. 이 메시지를 받은 클라이언트는 "Waiting_Period"라는 시간만큼 기다린 후 세마포어로 다시 "Are_you_open?" 
+메시지를 보낸다. 이 때 세마포어가 "Open"이라고 대답하면 클라이언트는 자기 상태를 SC로 바꾸고 "S_Job"이라는 메시지와 인쇄할 자료를 
+그 세마포어와 연결된 서버(프린터)로 보낸다. 그러면 이를 받은 서버는 인쇄를 시작한다. 인쇄 작업이 끝나면 서버는 자기 세마포어에게는 
+"Ready"를, 인쇄를 요청한 클라이언트에게는 "C_Ready" 메시지를 동시에 보낸다. 이를 받은 클라이언트는 상태를 SC에서 SA로 
+바꾼다. 단, 프린터는 이상적인 프린터여서 일을 받으면 예외 상황 없이 무조건 완수한다고 가정한다. 즉 "용지 부족"같이 에러가 나는 경우는 
+없다고 말이다.</P>
+<H3>메시지 소통</H3>
+<P>문서 3에는 각 개체마다 주고받는 모든 메시지를 일목요연하게 파악할 수 있는 통신 구조 모식도가 그려져 있다. 메시지 정보에는 각 메시지에 
+대한 자세한 정보를 얻을 수 있다. 각 메시지는 자기 고유의 주고받는 대상이 있고, 어떤 것은 부가 내용도 담고 있다.</P>
+<P>보내는 쪽이 A라는 메시지를 t 시각에 보내면 받는 쪽은 그 메시지를 t+1 시각에 받아 메시지를 처리한다. 메시지를 처리한다는 것은 
+자신이 가진 '응답 절차'에 있는 함수 A를 실행한다는 말이다.</P>
+<P>만약 여러 송신자가 t 시각에 한 수신자로 여러 메시지를 동시에 보내면 수신자는 자신이 가진 '우선 순위 목록'에 있는 순서대로 모든 
+메시지를 t+1 시각에 모두 처리해 낸다.</P>
+<H3>과제 A</H3>
+<P>한 지역 네트워크(LAN)에 제 0시각 현재 다음과 같은 개체가 있다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>CLIENT(1) (Client.State = SA, Waiting_Period = 2, Number_of_Servers= 
+1)</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>CLIENT(2) (Client.State = SA, Waiting_Period = 1, Number_of_Servers= 
+1)</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>SERVER(1)</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>SEMAPHORE(1) (Semaphore.State = S1)</FONT></P>
+<P>이 랜에서 다음 메시지가 송신됐다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>1 
+시각: CLIENT(1)이 Are_you_open? 메시지를 보냈다.</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>2 
+시각: CLIENT(2)가 Are_you_open? 메시지를 보냈다.</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>4 
+시각: SERVER(1)이 Ready 메시지를 보냈다.</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>5 
+시각: CLIENT(1)이 Are_you_open? 메시지를 보냈다.</FONT></P>
+<P>문서 4에는 제 6시각까지 SEMAPHORE(1), CLIENT(1), CLIENT(2)가 서로 주고받은 메시지와 매 시각마다 이들이 
+있었던 상태 및 상태 변화를 시간표로 나타내었다.</P>
+<H4>문제 A-1: CLIENT(1)이 4 시각에 "C_Job" 메시지를 받았다면 어떤 일이 일어났다는 뜻인가? 답을 문서 5에다 
+작성하라.</H4>
+<H4>문제 A-2: CLIENT(2)가 4 시각에 "C_Job" 메시지를 받았다면 어떤 일이 일어났다는 뜻인가? 답을 문서 5에다 
+작성하라.</H4>
+<H4>문제 A-3: 다음 일이 일어났다고 가정하고 문서 4에 있는 시간표를 완성하라.</H4>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>8 
+시각: SERVER(1)이 Ready 메시지를 보냈다.</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>l0 시각: CLIENT(1)이 C_Job 메시지를 보냈다.</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>12 시각: SERVER(1)이 Ready 메시지를 보냈다.</FONT></P>
+<H3>과제 B</H3>
+<P>랜이 확장되어 세마포어와 서버가 각각 두 개씩이 되었다. (SEMAPHORE(1), SEMAPHORE(2), SERVER (1), 
+SERVER(2)). 각 클라이언트마다 Number_of_Servers 속성의 값은 2가 된다.</P>
+<P>프린터 두 대를 모두 쓰려면 문서 2에 있는 클라이언트의 정의를 약간 고쳐야 할 것이다. 문서 6을 보면 '응답 절차' 부분에서 
+C_Job와 Wait를 처리하는 곳이 바뀌었음을 알 수 있다. 이런 상황에서 이 확장된 랜에 0 시각 현재 다음과 같은 개체가 있다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>CLIENT(1) (Client.State SA, Waiting_Period = 2, 
+Number_of_Servers=2)</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>CLIENT(2) (Client.State SA, Waiting_Period = 1, 
+Number_of_Servers=2)</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>SEMAPHORE(1) (Semaphore.State = S1)</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>SEMAPHORE(2) (Semaphore.State = S1)</FONT></P>
+<P>그리고 다음 메시지가 수신됐다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>0 
+시각: CLIENT(1)가 사용자에게서 C_Job 메시지를 받았다.</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>0 
+시각: CLIENT(2)가 사용자에게서 C_Job 메시지를 받았다.</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>4 
+시각: SEMAPHORE(1)이 Ready 메시지를 받았다.</FONT></P>
+<P>클라이언트의 메시지 처리 알고리즘이 문서 6에 있는 것처럼 달라졌다면 확장된 랜에 어떤 일이 일어나겠는가? 문서 6에 올바른 답을 
+표기하라.</P>
+<H3>과제 C</H3>
+<P>문제 B에서 언급했던 것과 같이 클라이언트의 정의가 바뀐 것은 세마포어와 서버의 쌍이 두 개 이상 있을 때는 그리 효율적이지 
+못하다.</P>
+<H4>문제 C-1: 문서 2에 있는 클라이언트의 정의를 고쳐서 세마포어와 서버의 쌍이 두 개 이상 있는 랜에서 이들이 다음과 같은 기능을 
+하도록 하라.</H4>
+<OL type=1>
+  <LI>CLIENT(1)은 랜에 있는 어떤 서버도 쓸 수 있으나 CLIENT(i)는 서버에 의해서 인쇄 작업을 한 단위 시간동안 한 번만 
+  수행할 수 있다. 즉, 이 클라이언트의 문서는 한 번씩만 인쇄된다. 
+  <LI>CLIENT(i)라는 개체는 "Are_you_open?" 메시지를 "Open"이란 응답을 받거나 지정한 한도를 넘도록 계속 
+  "Closed"란 응답을 받을 때까지 여러 세마포어로 계속해서 보낸다. 
+  <LI>어떤 CLIENT(i) 개체가 한계 횟수를 넘을 때까지 "Open"이란 응답을 어떤 세마포어에게서도 받지 못하면 
+  Waiting_Period만큼 기다린 뒤 다시 위와 같은 시도를 계속한다. </LI></OL>
+<P>답안을 문서 7에다 작성하라.</P>
+<H4>문제 C.2: 클라이언트 개체의 성질을 다시 고쳐서 아무 클라이언트도 여러 서버를 건드려 한 번에 여러 인쇄 작업을 한꺼번에 할 수 있게 
+하라. 그렇지만 각 CLIENT(i)가 한 번에 다룰 수 있는 인쇄 작업의 수는 CLIENT(i).Job_Maximum개로 제한되어야 한다. 
+답안을 문서 8에다 작성하라.</H4>
+<H3><A href="http://user.chollian.net/~pjykym/ioi7b.htm">이 문제에 첨부되어 있는 문서 1부터 문서 
+8까지의 내용을 봅니다.</A></H3>
+<HR>
+
+<H2><A name=4></A>4. 글자 게임</H2>
+<P><IMG border=0 height=159 src="제 7회.files/ioi7-4-1.gif" width=508></P>
+<P>글자 게임은 가정에서도, TV에서도 자주 볼 수 있는 인기 있는 게임이다. 이러한 형식을 한 어떤 게임에서는 모든 글자가 각기 다른 점수를 
+지니고 있기 때문에, 이를 하는 사람들은 가장 높은 점수(각 글자들 점수의 합)를 내는 단어를 만든다. 하지만 이 게임을 하는 요령을 잘 모르는 
+사람은 사전까지 찾아가며 자기가 아는 모든 단어를 대입해서 점수를 계산할 것이다. 이런 일은 컴퓨터에게 하게 한다면 두말할 나위 없이 더 
+정확하게 할 수 있을 것이다.</P>
+<P>영어 단어들의 전체 목록과 쓸 수 있는 글자들이 들어왔을 때, 위 그림에 있는 알파벳 점수를 기준으로 하여 가장 높은 점수를 낼 수 있는 
+단어, 또는 단어쌍(두 개의 단어로 이루어짐)을 구하는 프로그램을 작성하라.</P>
+<H3>입력 자료</H3>
+<P>입력 파일인 INPUT.TXT에는 단어를 만드는 데 쓸 수 있는 소문자 알파벳의 문자열(a부터 z)이 들어있다. 문자열은 3~7자이며 
+알파벳 사이 순서는 무작위이다.</P>
+<P>사전 파일인 WORDS.TXT는 최대 40,000줄이다. 파일은 마침표만 찍힌 빈줄로 끝난다. 각 줄에는 최소 세 글자, 최대 일곱 글자인 
+단어가 소문자 알파벳으로 들어있다. 단어는 알파벳 순으로 정렬되어 있고, 중복된 단어는 없다.</P>
+<H3>출력 자료</H3>
+<P>OUTPUT.TXT 첫 줄에는 우선 얻을 수 있는 최고 점수가 들어있어야 한다. 그리고 다음 줄에는 이러한 점수를 얻을 수 있는 단어 또는 
+단어쌍을 한 줄씩 출력한다. 한 글자는 입력 파일에 있던 빈도수보다 자주 나타나서는 안 된다. 예를 들어 아래 입력 파일에서 m은 한 번만 
+있었기 때문에 단어를 만들 때도 m을 두 번 이상 쓸 수 없다. 각 글자의 낱개 점수는 위 그림에서 제시한 점수표를 이용한다.</P>
+<P>단어쌍을 출력할 때는 한 줄에 두 단어를 공백 한 칸으로 구분하여 출력한다. 쌍을 중복해서 출력해서는 안 된다. 예를 들어 "prom 
+rag"과 "rag prom"은 같은 쌍이므로, 둘 중 하나만 출력해야 한다. 그리고 같은 단어가 두 번 들어가 쌍을 이룬 것도 
+인정한다.</P>
+<H3>입출력 파일의 예</H3>
+<P>다음은 한 입력 파일과 그에 해당하는 출력 결과의 예이다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>WORDS.TXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INPUT.TXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OUTPUT.TXT</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>profile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prmgroa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>program&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;program</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>prom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prom 
+rag</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>rag</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>ram</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>rom</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>.</FONT></P>
+<HR>
+
+<H2><A name=5></A>5. 시내 자동차 경주</H2>
+<P>아래 그림은 시내 자동차 경주의 행로를 나타낸 것이다. 그림을 보면 0부터 N까지 번호가 매겨진 점이 있다. (여기서는 N=9이다.) 
+그리고 화살표가 점과 점 사이를 연결하고 있다. 번호가 0인 점은 시작점이며, N인 점은 도착점이다. 또한 참가자들은 화살표가 가리키는 방향만 
+따라서 점과 점 사이를 이동할 수 있다. 그러나 길이 여러 개 있을 때는 아무 화살표 쪽이나 선택해도 좋다.</P>
+<P><IMG border=0 height=104 src="제 7회.files/ioi7-5-1.gif" width=250></P>
+<P>한편, 자동차 경주용으로 적합한 행로를 잘 만들어진 행로라 하여 다음과 같이 규정하겠다.</P>
+<OL type=1>
+  <LI>시작점에서 화살표 방향으로 길을 가서 어떤 점으로든 갈 수 있다. 
+  <LI>어떤 정점에서 출발해도 도착점으로 갈 수 있다. 
+  <LI>도착점에는 다른 방향으로 나가는 화살표가 없다. </LI></OL>
+<P>경주 참가자들은 도착점에 가는 과정에서 모든 정점을 거쳐 갈 필요는 없다. 하지만 어떤 점은 어떤 길을 선택하든 반드시 거쳐야 한다. 위의 
+예에서는 0, 3, 6, 9번 점은 반드시 거쳐야 도착점에 도달할 수 있다. 첫 번째 문제는 잘 만들어진 경주 행로가 있을 때, 도착점에 가기 
+위해 거쳐가지 않으면 안 되는 점들을 구하는 프로그램을 작성하는 것이다. 단 시작점과 도착점은 제외한다.</P>
+<P>한편, 자동차 경주가 이틀에 걸쳐 개최된다고 상상해 보자. 그러기 위해 전체 행로를 둘로 나누어 하루에 한 행로를 진행하게 해야 한다. 
+첫째 날에는 0번 점에서 중간 분할점 S까지 간 뒤, 다음날 S에서 출발하여 도착점에 간다. 잘 만들어진 경주 행로가 있을 때, 이러한 분할점이 
+되기 적절한 점을 찾는 프로그램을 작성하여라. 이것이 두 번째 문제이다. 단, 점 S가 분할점이 되려면 S는 시작점이나 도착점이 아니어야 하며, 
+0과 S, S와 N사이의 행로가 역시 잘 만들어진 행로가 되어야 한다. 또한 S점을 거치지 않으면 두 행로 사이를 드나들 수 없어야 한다. 다시 
+말해 갈라진 두 행로 사이에 있는 점을 연결하는 화살표가 없어야 한다. 위의 행로에서 분할점이 될 수 있는 정점은 3번 점뿐이다.</P>
+<H3>입력 자료</H3>
+<P>INPUT.TXT 파일에는 정점이 최대 50개, 화살표가 최대 100개 있는 잘 만들어진 행로를 구성하는 정보가 들어있다. 파일에는 최대 
+N+1개의 줄이 있다. 첫 N줄에는 각각 0부터 N-1번째 정점에서 출발하는 화살표가 가리키고 있는 종점의 번호가 들어있다. 각 줄은 -2라는 
+숫자로 끝나며, 파일 전체는 -1이라는 숫자로 끝난다.</P>
+<H3>출력 자료</H3>
+<P>답안 프로그램은 OUTPUT.TXT에 두 줄을 기록해야 한다. 첫 줄에는 시작점에서 도착점에 가기 위해 거쳐 지나가지 않으면 안 되는 
+점들을 점의 개수부터 적은 뒤, 그 점들의 번호를 기록한다. 다음 줄에는 분할점이 될 수 있는 점들을 역시 개수부터 적은 뒤 그것들의 번호를 
+기록한다. 두 줄 모두 점을 어떤 순서대로 기록해도 좋다.</P>
+<H3>입출력 파일의 예</H3>
+<P>다음은 위의 행로를 INPUT.TXT로 나타내고, 그에 해당하는 출력 결과를 얻은 모습이다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>INPUT.TXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OUTPUT.TXT</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>1 
+2 -2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 3 6</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>3 
+-2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 
+3</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>3 
+-2</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>5 
+4 -2</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>6 
+4 -2</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>6 
+-2</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>7 
+8 -2</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>9 
+-2</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>5 
+9 -2</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>-1</FONT></P>
+<HR>
+
+<H2><A name=6></A>6. 전선과 스위치</H2>
+<P><IMG border=0 height=170 src="제 7회.files/ioi7-6-1.gif" width=475></P>
+<P>위의 그림을 보면 세 개의 전선이 있는 회로가 A면과 B면 사이를 연결하고 있다. A면에서는 전선 세 개가 1부터 3까지 번호가 매겨져 
+있다. 그리고 B면에는 1, 3번 전선은 3번 스위치로, 2번 전선은 1번 스위치로 연결되어 있다.</P>
+<P>일반적으로 회로에는 m(1&lt;=m&lt;=90)개의 전선이 A면에 1부터 m까지 각기 번호가 매겨진 상태로 있다. 그리고 B면에는 
+m개의 스위치가 있으며 역시 1부터 m까지 각기 번호가 매겨져 있다. 모든 전선은 정확히 어떤 스위치 하나와 연결되어 있고, 스위치 하나에는 
+0개 이상의 전선이 연결되어 있다.</P>
+<H3>측정 과정</H3>
+<P>여러분의 프로그램은 전선이 어느 스위치에 어떻게 연결되어 있는지를 일련의 측정 과정을 통해 알아내야 한다. 위 그림에서 A와 B 사이, 
+다시 말해 어두운 부분의 구조가 어떠할지 알아내는 것이다. 각 스위치는 전기를 통할 수도 있고(닫혔거나) 통하지 않을 수도 있다(열렸다). 
+처음에는 모든 스위치는 열려 있다. 전선은 A면에서 위 그림에서 P를 각 번호에 연결해 보며 검사할 수 있다. 전구가 켜지면 해당하는 번호의 
+전선이 닫힌 스위치와 연결되어 있다는 뜻이다.</P>
+<P>답안 프로그램은 표준 입력 스트림(쉽게 말해서 키보드와 모니터. 단, 바이오스를 거친 입출력)에서 m의 값을 나타내는 한 줄부터 읽는다. 
+그런 뒤 명령문을 표준 출력 스트림으로 한 줄씩 쓰는 방법으로 세 가지 명령을 내려 상태를 테스트할 수 있다. 각 명령은 대문자 알파벳 한 글자 
+T(전선을 테스트하라), C(스위치의 상태를 바꿔라), D(완료)이다. T 다음에는 테스트할 전선 번호를, C 다음에는 상태를 바꿀 스위치 
+번호를 인자로 전달한다. 이 둘은 테스트할 때 쓰는 명령이다. 한편 D는 판단이 완전히 끝나서 프로그램을 끝내기 직전 결과를 출력하는 명령으로, 
+1부터 m개째의 전선이 각각 몇 번째 스위치와 연결되어 있는지를 나타내는 m개의 수치를 인자로 전달한다.</P>
+<P>T와 C 명령을 내린 뒤에는 답안 프로그램은 표준 입력 스트림에서 명령을 내린 결과를 한 줄 읽어와야 한다. T 명령은 회로를 그 번호의 
+전선과 연결했더니 전구에 불이 들어온 경우 Y를 되돌린다. 그렇지 않으면 N을 되돌린다. 그리고 C 명령은 상태를 바꾼 뒤의 이 스위치가 닫혀 
+있으면(전기를 통하면) Y를 되돌리며, 그렇지 않으면 N을 되돌린다. 다시 말하지만 C 명령은 회로의 상태를 되돌릴 뿐만 아니라 스위치의 상태를 
+바꾼다. 열려 있던 스위치는 C 명령 적용 후 닫히고, 닫혀 있던 스위치는 반대로 된다.</P>
+<P>답안 프로그램은 T와 C 명령을 아무 거나 마음대로 내려도 좋다. 그리고 회로 상태를 완전히 파악하고 나면 D 명령을 내리고 프로그램을 
+끝내도록 한다. 단, 모든 명령을 총 900번 이상 내려서는 안 된다.</P>
+<H3>입출력의 예</H3>
+<P>다음 리스트는 프로그램이 여덟 가지 테스트를 하고 위 그림에 맞는 결과를 얻은 후, 전선과 스위치 상태를 최종 판단하여 출력한 
+모습이다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>표준 출력&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;표준 입력</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>C 
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 
+3번 스위치를 닫았다.</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>T 
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 
+3번 스위치와 연결되어 있던 1, 3번 전선은 불이 들어옴.</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>T 
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>T 
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>C 
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 
+3번 스위치를 열고 2번 스위치를 닫는다.</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>C 
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>T 
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>D 
+3 1 3</FONT></P>
+<P>&nbsp;</P></BODY></HTML>

@@ -1,0 +1,44 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ks_c_5601-1987">
+<title>너비 우선탐색</title>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font size="4" color="#0066CC"><b>너비 우선탐색</b></font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">너비 우선탐색(Breath First Search : BFS)은 주어진 정점 v를 
+출발점으로 하여 이를 방문한 후 방문표시를 하고 v의 인접리스트에 있는 모든 정점들을 
+차례로 즉시 방문한다. 그리고 v의 인접리스트 상에 존재하는 첫 번째 정점에 인접한 
+방문하지 않은 정점들을 모두 차례로 방문한다. 이 때, 각 정점을 방문할 때마다 
+그 정점을 큐에 저장한다. 하나의 인접리스트에 대해 방문이 끝나면 큐에서 한 정점을 
+꺼내서 그 정점에 대한 인접 리스트의 정점들을 동일한 방법으로 계속 방문한다. 
+이미 방문한 정점들은 무시하고 큐가 비면 탐색을 종료한다. BFS에서 사용되는 큐의 
+정의하는 선언문과 알고리즘은 다음과 같다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">typedef struct queue *queue_pointer;typedef struct queue{</font></p>
+<p><font size="2">&nbsp;int vertex;</font></p>
+<p><font size="2">&nbsp;queue_pointer link;};</font></p>
+<p><font size="2">void add_queue(queue_pointer *, queue_point *,int);int delete_queue(queue_point 
+*);</font></p>
+<p><font size="2">알고리즘 BFS탐색void bfs(int v){</font></p>
+<p><font size="2">&nbsp;node_pointer w; queue_pointer front,rear; front=rear=NULL; 
+printf(&quot;%5d&quot;,v); vistited[v]=1; add_queue(&amp;front,&amp;rear,v); 
+while(front) {</font></p>
+<p><font size="2">&nbsp; v=delete_queue(&amp;front); &nbsp;visited[w-&gt;vertex]=1; 
+&nbsp;add_queue(&amp;front,&amp;rear,w-&gt;vertex); }</font></p>
+<p><font size="2">}</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">그래프 G=(V,E)에 대해 정점과 간선의 수가 각각 n과 e라 하자. 
+BFS에서 큐를 사용하는데 제거되는 정점의 인접한 정점들 가운데서 아직 방문하지 
+않은 정점이 큐에 들어간다. 그러므로 방문한 각 정점들은 단 한번 큐에 들어가므로 
+반복은 많아야 n번이다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">인접행렬로 그래프를 표현할결우 while문은 각 정점에 대해서 
+O(n)시간이 걸린다. 따라서 총시간O(n^2)이다. 한편, 연결 &nbsp;리스트로 그래프를 
+표현한다면, di=degree(vi)라고 정의할 때 내부 반복문에서 총 d1+...+dn=O(e)의 
+시간이 걸린다. 여기서 degree(vi)는 정점 vi의 (진출) 차수를 나타낸다.</font></p>
+</body>
+
+</html>

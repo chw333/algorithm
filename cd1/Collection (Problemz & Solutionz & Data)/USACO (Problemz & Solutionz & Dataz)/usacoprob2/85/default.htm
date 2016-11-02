@@ -1,0 +1,45 @@
+<html>
+<head> <title>Problem 85: Electric Fence</title> </head>
+<body background="../../usaco/bg3.jpg">
+<img src="../../usaco/cow1.jpg" width="742" height="118">
+<center>
+<b><font size="7">Electric Fence</font></b><br>
+<b>Don Piele</b>
+</center>
+
+<p>
+In this problem, `lattice points' in the plane are points with integer
+coordinates.
+
+<p> In order to contain his cows, Farmer John constructs a triangular
+electric fence by stringing a &quot;hot&quot; wire from  the origin (0,0)
+to a lattice point [n,m] (0&lt;n&lt;32000, 0&lt;m&lt;32000), then to a
+lattice point on the positive x axis [p,0] (p&gt;0), and then back to the
+origin (0,0).
+
+<p> A cow can be placed at each lattice point within the fence without
+touching the fence (very thin cows). Cows can not be placed on lattice
+points that the fence touches. How many cows can a given fence hold?
+
+<h3>PROGRAM NAME: fence9</h3>
+
+<h3>INPUT FORMAT</h3>
+
+<p> The single input line contains three space-separated integers that denote
+n, m, and p.
+
+<h3>SAMPLE INPUT (file fence9.in)</h3>
+<pre>
+7 5 10
+</pre>
+
+<h3>OUTPUT FORMAT</h3>
+
+<p>
+A single line with a single integer that represents the number of cows the
+specified fence can hold.
+
+<h3>SAMPLE OUTPUT (file fence9.out)</h3>
+<pre>
+20
+</pre>

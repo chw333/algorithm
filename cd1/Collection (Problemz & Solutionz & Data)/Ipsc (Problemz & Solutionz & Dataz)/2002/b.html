@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+  <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <META name="description" content="Internet Problem Solving Contest (IPSC) is an online programming contest for teams up three people.">
+  <META name="keywords" content="IPSC, programming, contest, online contest">
+  <TITLE>IPSC 2002 Problem B - Load Balancing</TITLE>
+  <link rel="stylesheet" type="text/css" href="main.css">
+  
+</HEAD>
+	
+<BODY BGCOLOR=white TEXT="#191970" LINK="#F4A460" VLINK="#CD853F" ALINK="#FFDEAD">
+
+
+	
+<!-- Title and Logo -->
+<TABLE class="title" WIDTH="100%"><TR VALIGN="top">
+<TD WIDTH="140"><A HREF="http://ipsc.ksp.sk/"><IMG BORDER=0 SRC="ipsc.gif" TITLE="Home" ALT="IPSC Logo"></a></TD>
+<TD ALIGN=CENTER>
+	<H5>Internet Problem Solving Contest</H5>
+	<H1>IPSC 2002<br> Problem B - Load Balancing</H1>
+</TD>
+</TR></TABLE>
+<!-- end of Title and Logo -->
+
+<TABLE CLASS=page ALIGN=center WIDTH="97%"><TR><TD>
+	
+
+<ul>
+<li><a href="b1.in">Easy input data set - B1</a></li>
+<li><a href="b2.in">Difficult input data set - B2</a></li>
+</ul>
+
+
+<p>
+SuperComputer Inc. have built a super-fast computer server consisting of 
+<b>N</b> hyper-scalar lightning-fast processors Beta 007.
+These processors are numbered from 1 to <b>N</b> and are used to process
+independent jobs.
+Every new incoming job is assigned to an arbitrary processor. Sometimes, a
+processor may be assigned too many jobs while other processors
+have a relatively light load (or even wait idly). In that case, the
+whole system undergoes <i>rebalancing</i>.
+</p>
+
+<p>
+Rebalancing proceeds in rounds. In each round, every processor
+can transfer at most one job to each of its neighbors on the bus.
+Neighbors of the processor <b>i</b> are the processors <b>i-1</b> and
+<b>i+1</b> (processors <b>1</b> and <b>N</b> have only one neighbor each,
+<b>2</b> and <b>N-1</b> respectively).
+
+The goal of rebalancing is to achieve that all processors have
+the same number of jobs.
+</p>
+
+<p>
+Given the number of jobs initially assigned to each processor, you are
+asked to determine the minimal number of rounds needed to achieve the state
+when every processor has the same number of jobs, or to determine that such
+rebalancing is not possible.
+</p>
+
+<h3>Input file specification</H3>
+
+The input file consists of several blocks. 
+Each block begins with a line containing a single number <b>N</b> -
+the number of processors.
+<b>N</b> numbers follow, separated by spaces and/or end of line characters.
+The <b>i</b>-th number denotes the number of jobs assigned to the <b>i</b>-th
+processor before rebalancing. There is a blank line after each block.
+The last block is followed by a single number <tt>-1</tt> on a separate line
+(which should not be processed).
+
+<h3>Output file specification</h3>
+For each block in the input file, output the minimal number of rounds
+needed to rebalance loads for all the processors. If it is not possible to
+rebalance jobs so that each processor has the same number of jobs,
+output <tt>-1</tt>. 
+
+<h3>Example</h3>
+<b>Input file</b>
+<pre>3
+0 99 3
+
+2
+49 50
+
+8
+16 17 15 0 20 1 1 2
+
+10
+0 0 100 0 0 0 0 0 0 0
+
+-1
+</pre>
+
+<b>Output file:</b>
+<pre>
+34
+-1
+23
+70
+</pre>
+
+
+
+	   
+<!-- END OF PAGE -->   
+</TD></TR></TABLE>
+</BODY>
+</HTML>

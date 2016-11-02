@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://sorivit.co.kr/main3.html
+
+[DOC#3#5#5#7]
+BASEURL=http://sorivit.co.kr/alphaq/alpha4/alpha2_4_1.htm
+ORIGURL=notice5.html
+
+[InternetShortcut]
+URL=http://sorivit.co.kr/main3.html
+Modified=A0738C13C1F0C00124

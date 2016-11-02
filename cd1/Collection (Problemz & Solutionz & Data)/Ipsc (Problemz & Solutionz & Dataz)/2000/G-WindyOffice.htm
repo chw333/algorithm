@@ -1,0 +1,378 @@
+<HTML>
+<META HTTP-EQUIV="content-type" CONTENT="text/html; charset=euc-kr">
+<!--------------------------------------------------------------------->
+<!-- EasyBoard 2000 1.27 Build 515                                   -->
+<!--                                                                 -->
+<!--        Official distribution site : http://ezne.net             -->
+<!--                 Technical contact : cherie@hello.to             -->
+<!--                 Programmer : ChonBuk Univ. Electronics          -->
+<!--                              Cherie 채경삼 (cherie@hello.to)    -->
+<!--                 (Update: 2001.05.16) Skin:                      -->
+<!--                                                                 -->
+<!--        Copyright(c) 2000-2002. Cherie. all rights reserved.     -->
+<!--------------------------------------------------------------------->
+<!--        * Apache/1.3.26 (Unix) PHP/4.2.1                         -->
+<!--        * 이 프로그램은 이지보드 배너를 가리거나 수정/삭제하지   -->
+<!--        * 않는 조건하에 co.kr등 상업사이트및 기업에서 자유로이   -->
+<!--        * 사용할 수 있습니다.                                    -->
+<!--------------------------------------------------------------------->
+<TITLE>이지보드 2000</TITLE>
+
+<!-- Define Link Shape None/Under/Over-->
+<STYLE TYPE='text/css'>
+  A:link    { color: blue; text-decoration:none;     }
+  A:visited { color: purple; text-decoration:none;     }
+  A:active  { text-decoration:none;     }
+  A:hover   { color: deeppink; text-decoration:none;		 }
+  .small    { font-family:돋움; font-size:8pt  }
+  .norm     { font-family:굴림; font-size:9pt  }
+  .big      { font-family:굴림; font-size:14pt  }
+  .button   { height:19px; border-width:1; border-style:ridge; border-color:#d0d0d0; background-color:#dfdfdf;}
+  .editbox  { border:1 solid black; background-color:white; }
+  .admin    { border:1 solid black; background-color:white; }
+  select    { background-color:white;}
+  p,br,body,table,td,select,input,form,textarea,option { font-family:굴림; font-size:9pt; }
+  .text1     { color:#000000; }
+  .text2     { color:#000000; }
+</STYLE>
+
+<!-- Java Script Start-->
+<SCRIPT LANGUAGE="JavaScript">
+function RemoteWindow( url )
+ {
+  window.open( url, 'PreviewWin','width=500,height=400,resizable=yes,scrollbars=yes,status=1');
+}
+function MailWindow( url )
+{
+  window.open( url, 'ChenieMail','width=305,height=312,resizable=no,scrollbars=no,status=0');
+}
+function OnEnter( field ) { if( field.value == field.defaultValue ) { field.value = ""; } }
+function OnExit( field )  { if( field.value == "" ) { field.value = field.defaultValue; } }
+</SCRIPT>
+
+<BODY BGCOLOR=white TEXT=black >
+
+<!-- User Html Head Start -->
+
+<!-- User Html Head End -->
+<CENTER>
+<TABLE BORDER=0 width=95%>
+  <TR>
+    <TD ALIGN=center>
+<IMG SRC='./system/image/title.gif'><BR>
+    </TD>
+  </TR>
+</TABLE>
+
+<!-- Page Start -->
+<STYLE TYPE='text/css'>
+  .lined  { border:1 solid #000000; background-color:#FAFAFF; color:#000000; }
+  .noline { border:1 solid #FAFAFF;  background-color:#FAFAFF; color:#000000; }
+  .text { LINE-HEIGHT: 140%; }
+</STYLE>
+<SCRIPT LANGUAGE="JavaScript">
+function ForwardWindow( url )
+ {
+  window.open( url, 'PreviewWin','width=300,height=100,resizable=no,scrollbars=no,status=0');
+}
+</SCRIPT>
+
+<SCRIPT LANGUAGE='javascript' SRC='./system/script/multi.js'></SCRIPT>
+
+
+<TABLE BGCOLOR=#87CAFFF WIDTH=95% BORDER=0 CELLSPACING=0 CELLPADDING=1>
+  <TR>
+    <TD>
+      <TABLE BGCOLOR=#87CAFFF WIDTH=100% BORDER=0 CELLSPACING=0 CELLPADDING=4>
+        <TR>
+          <TD>&nbsp;&nbsp;<FONT COLOR=#000000><B>2000 Problem G - Windy Office</B></FONT></TD>
+          <TD ALIGN=right><A HREF='JavaScript:ForwardWindow("ezboard.cgi?db=ipsc&action=forward&dbf=24&pass=")' onmouseover="window.status=('게시물 포워드'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/forward.gif' BORDER=0 ALT='게시물 포워드'></A></TD>
+        </TR>
+        <TR BGCOLOR=#DFEFFF>
+          <TD COLSPAN=2><FONT COLOR=#000000>
+            작성일: <FONT FACE=돋움>2001/06/17</FONT><BR>
+            작성자: <A HREF='mailto:한상진 <hsangjin@hitel.net>' onmouseover="window.status=('hsangjin@hitel.net'); return true;" onmouseout="window.status=(''); return true;">한상진</A> <BR>
+          </TD>
+        </TR>
+        <TR BGCOLOR=#FAFAFF>
+          <TD COLSPAN=2><FONT COLOR=#000000 class=text>
+Andy와 그의 팀은 큰 소프트웨어 프로젝트를 마쳤다. 그들은 전체 소스 코드를 인쇄하고 그것을 책상에 둔 채 점심을 먹으러 갔다. 불행하게도 그들은 사무실의 창문을 열어둔 채로 놔두었으며 그날은 바람이 많이 불었다. 그들이 점심을 먹고 돌아왔을 때, 그들은 바람이 종이들을 온 사무실에 날려 놓았다는 것을 알았다. 이제 그들은 그것을 원래 순서대로 재배열하고 싶다. <br><br>Andy는 행동파 남자였다. 그는 즉시 그가 찾은 모든 페이지에 숫자를 매겼다. 물론 이 숫자들은 원래 페이지들의 순서와는 아무 관련이 없다. 소스 코드들은 여러 프로시져로 구성되어 있고, 각각은 고유한 숫자로 표시되어 있다. 한 프로시져는 어떤 페이지에서 시작하고 연속된 페이지에 걸쳐 있을 수 있다. 처음과 마지막 페이지는 여러 다른 프로시져나 혹은 다른 프로시져의 일부분을 담고 있을 수 있다. 프로시져에 표시된 숫자는 프로그램에서의 프로시져의 순서와 아무런 관련이 없다. <br><br>이제 모든 팀원이 사무실에 앉아 찾은 모든 종이들을 정리하면서 한쌍의 숫자를 커다란 화이트보드에 적고 있다. 첫번째 숫자는 Andy가 쓴 페이지의 숫자를 나타내며 두번째 숫자는 프로시져의 고유한 숫자를 나타낸다. 각 쌍은 주어진 프로시져가 주어진 페이지 위에 있다는 것을 의미한다. 몇쌍은 빠져 있는 듯 하다. 대신, Andy는 이 정보가 페이지들의 원래 순서를 복구할 수 있도록 그들을 도울 수 있기 바란다. <br><br>입력 형식 <br><br>입력은 여러개의 블록으로 구성되어 있다. 각 블록은 화이트보드에 적인 숫자 쌍의 개수 N으로 시작한다. 그 다음 N줄에는 숫자쌍 ai, bi가 주어진다. ai는 페이지의 번호, bi는 함수에 표시된 번호를 뜻한다. 페이지의 번호와 함수에 표시된 번호는 양수로써 1,000,000,000보다 작다. 각 블록 끝에는 하나의 공백이 있다. <br><br>출력 형식 <br><br>입력의 각 블록에 대해 찾은 페이지들을 배열하는 방법을 출력한다. 출력은 입력에 최소한 한번 이상 나온 페이지 번호들의 숫자로 이루어진 수열이다. 만약 배열하는 방법이 없으면 (불쌍한 프로그래머들이 화이트보드에 적은 것에 실수가 있다면) 'NO'만 출력한다. <br><br>Note : 몇몇 메일 프로그램들은 70바이트 이상의 긴 라인이 포함된 파일을 보내지 못한다. 당신은 긴 라인을 몇개의 라인으로 자르는 것이 허용된다. <br><br>Example <br>Input file: <br>8 <br>20 50 <br>30 40 <br>10 20 <br>10 40 <br>20 30 <br>10 10 <br>40 30 <br>10 30 <br><br>6 <br>11 1 <br>11 2 <br>21 2 <br>21 3 <br>31 3 <br>31 1 <br><br>6 <br>1 1 <br>2 2 <br>3 3 <br>4 1 <br>4 2 <br>4 3 <br><br>2 <br>1 1 <br>2 2 <br><br><br>Output file: <br>20 40 10 30 <br>NO <br>NO <br>2 1 <br>
+<BR><DIV ALIGN=right>2001/06/17 &nbsp;<B>86</B>번 읽음&nbsp;&nbsp;<BR>
+</DIV></FONT>
+          </TD>
+        </TR>
+        <TR BGCOLOR=#DFEFFF>
+          <TD COLSPAN=2><FONT COLOR=#000000>
+                      </TD>
+        </TR>
+      </TABLE>
+    </TD>
+  </TR>
+  <TR>
+    <TD  NOWRAP>
+      <A HREF='ezboard.cgi?db=ipsc&action=read&dbf=25&page=2&depth=2' onmouseover="window.status=('Prev Article'); return true;" onmouseout="window.status=(''); return true;">▲ 2000 Problem H - Colorful Cubes</A><BR>      <A HREF='ezboard.cgi?db=ipsc&action=read&dbf=23&page=2&depth=2' onmouseover="window.status=('Next Article'); return true;" onmouseout="window.status=(''); return true;">▼ 2000 Problem F - Puzzle</A><BR>    </TD>
+  </TR>
+</TABLE>
+
+<BR>
+<TABLE BORDER=0 WIDTH=95% CELLSPACING=0 CELLPADDING=0>
+  <TR>
+    <TD NOWRAP>
+      <A HREF='ezboard.cgi?db=ipsc&action=user_login&cmd=modify&dbf=24&page=2&depth=2' onmouseover="window.status=('Modify'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/modify.gif' BORDER=0 ALT='Modify'></A>
+      <A HREF='ezboard.cgi?db=ipsc&action=user_login&cmd=delete&dbf=24&page=2&depth=2' onmouseover="window.status=('Delete'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/delete.gif' BORDER=0 ALT='Delete'></A>
+      <A HREF='ezboard.cgi?db=ipsc&action=user_login&cmd=input&page=2' onmouseover="window.status=('Write'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/write.gif' BORDER=0 ALT='Write'></A>
+      <A HREF='ezboard.cgi?db=ipsc&action=user_login&cmd=input&dbf=24&page=2' onmouseover="window.status=('Reply'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/reply.gif' BORDER=0 ALT='Reply'></A>
+    </TD>
+    <TD NOWRAP ALIGN=right>
+      <A HREF='ezboard.cgi?db=ipsc&action=read&dbf=25&page=2&depth=2' onmouseover="window.status=('Prev'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/prev.gif' BORDER=0 ALT='Prev'></A>      <A HREF='ezboard.cgi?db=ipsc&action=read&dbf=23&page=2&depth=2' onmouseover="window.status=('Next'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/next.gif' BORDER=0 ALT='Next'></A>      <A HREF='javascript:history.go(-1)' onmouseover="window.status=('List'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/list.gif' BORDER=0 ALT='List'></A>
+    </TD>
+  </TR>
+</TABLE>
+<BR>
+<TABLE WIDTH=95% BORDER=0 CELLSPACING=0 CELLPADDING=0>
+  <FORM NAME='dblist'>
+  <TR>
+    <TD ALIGN=left><A HREF='ezadmin.cgi?db=ipsc&action=admin_login&cmd=config&page=2' onmouseover="window.status=('Admin Menu'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/admin.gif' BORDER=0 ALT='Admin Menu'></A></TD>
+    <TD ALIGN=right>
+      <FONT FACE=돋움>게시물:<FONT COLOR=red><B>55</B></FONT>, 쪽번호:<FONT COLOR=red><B>3</B></FONT>/<FONT COLOR=blue><B>5</B></FONT> 오늘:<B>13</B></FONT>&nbsp;
+
+    </TD></FORM>
+</TR>
+  <TR>
+    <TD COLSPAN=3><IMG SRC='./system/skins/blank.gif' WIDTH=1 HEIGHT=4 BORDER=0></TD>
+  </TR>
+</TABLE>
+
+<TABLE BGCOLOR=#87CAFFF WIDTH=95% BORDER=0 CELLSPACING=0 CELLPADDING=1>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE BGCOLOR=#87CAFFF WIDTH=100% BORDER=0 CELLSPACING=0 CELLPADDING=1>
+        <TBODY>
+        <TR ALIGN=center>
+<FORM NAME=SelForm METHOD=post ACTION='ezboard.cgi'>
+<INPUT TYPE=hidden NAME=db     VALUE='ipsc'>
+<INPUT TYPE=hidden NAME=page   VALUE='2'>
+<INPUT TYPE=hidden NAME=action VALUE='multiread'>
+<INPUT TYPE=hidden NAME=skin   VALUE=''>
+          <TD><A HREF='javascript:MultiSubmit( "SelForm", "action", "multiread" )' onmouseover="window.status=('체크-선택보기'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/loop.gif' BORDER=0 ALT='체크-선택보기'></A></TD>
+          <TD NOWRAP><FONT COLOR=#000000><B>번호</B></FONT></TD>
+          <TD><FONT COLOR=#000000><B>ⓘ</B></FONT></TD>
+          <TD><FONT COLOR=#000000><B>제목</B></FONT></TD>
+          <TD NOWRAP><FONT COLOR=#000000><B>이름</B></FONT></TD>
+          <TD><FONT COLOR=#000000><B>&nbsp;</B></FONT></TD>
+          <TD NOWRAP><FONT COLOR=#000000><B>등록날짜</B></FONT></TD>
+          <TD NOWRAP><FONT COLOR=#000000><B>조회</B></FONT></TD>
+        </TR>
+
+        <TR ALIGN=center BGCOLOR=#DFEFFF>
+          <TD COLSPAN=4 ALIGN=left>
+            &nbsp;<IMG SRC='./system/image/icon/simple_small/closenew.gif' BORDER=0>            <A HREF='javascript:RemoteWindow("ezboard.cgi?db=ipsc&action=remote&dbf=0&page=2&depth=2&dbf=1")'>[공지]</A>
+            <FONT COLOR=#000000><A HREF='ezboard.cgi?db=ipsc&action=read&dbf=0&page=2&depth=2&dbf=1'>IPSC 문제 번역에 대하여.</A>
+          </TD>
+          <TD ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='mailto:한상진 <hsangjin@hitel.net>' onmouseover="window.status=('hsangjin@hitel.net'); return true;" onmouseout="window.status=(''); return true;">한상진</A></TD>
+          <TD>&nbsp;</TD>
+          <TD><FONT COLOR=#000000>2001/06/17</TD>
+          <TD><FONT COLOR=#000000>824</TD>
+        </TR>
+        <TR ALIGN=center BGCOLOR=#ffffff >
+          <TD><INPUT TYPE='checkbox' NAME=selnum VALUE='31'></TD>
+          <TD><FONT COLOR=#000000>31</FONT></TD>
+          <TD><A HREF='javascript:RemoteWindow("ezboard.cgi?db=ipsc&action=remote&dbf=31&page=2&depth=2")' onmouseover="window.status=('Text'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/type/default/text.gif' BORDER=0 ALT='Text'></A></TD>
+          <TD WIDTH=100% ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='ezboard.cgi?db=ipsc&action=read&dbf=31&page=2&depth=2' onmouseover="window.status=('31'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/close.gif' BORDER=0>&nbsp;2000 Solution F - Puzzle</A></FONT></TD>
+          <TD ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='mailto:한상진 <hsangjin@hitel.net>' onmouseover="window.status=('hsangjin@hitel.net'); return true;" onmouseout="window.status=(''); return true;">한상진</A></TD>
+          <TD>&nbsp;</TD>
+          <TD><FONT COLOR=#000000>2001/06/17</TD>
+          <TD><FONT COLOR=#000000>99</TD>
+        </TR>
+        <TR ALIGN=center BGCOLOR=#fdfeff >
+          <TD><INPUT TYPE='checkbox' NAME=selnum VALUE='30'></TD>
+          <TD><FONT COLOR=#000000>30</FONT></TD>
+          <TD><A HREF='javascript:RemoteWindow("ezboard.cgi?db=ipsc&action=remote&dbf=30&page=2&depth=2")' onmouseover="window.status=('Text'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/type/default/text.gif' BORDER=0 ALT='Text'></A></TD>
+          <TD WIDTH=100% ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='ezboard.cgi?db=ipsc&action=read&dbf=30&page=2&depth=2' onmouseover="window.status=('30'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/close.gif' BORDER=0>&nbsp;2000 Solution E - Andrew&#39;s Exams (not available yet)</A></FONT></TD>
+          <TD ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='mailto:한상진 <hsangjin@hitel.net>' onmouseover="window.status=('hsangjin@hitel.net'); return true;" onmouseout="window.status=(''); return true;">한상진</A></TD>
+          <TD>&nbsp;</TD>
+          <TD><FONT COLOR=#000000>2001/06/17</TD>
+          <TD><FONT COLOR=#000000>63</TD>
+        </TR>
+        <TR ALIGN=center BGCOLOR=#fafdff >
+          <TD><INPUT TYPE='checkbox' NAME=selnum VALUE='29'></TD>
+          <TD><FONT COLOR=#000000>29</FONT></TD>
+          <TD><A HREF='javascript:RemoteWindow("ezboard.cgi?db=ipsc&action=remote&dbf=29&page=2&depth=2")' onmouseover="window.status=('Text'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/type/default/text.gif' BORDER=0 ALT='Text'></A></TD>
+          <TD WIDTH=100% ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='ezboard.cgi?db=ipsc&action=read&dbf=29&page=2&depth=2' onmouseover="window.status=('29'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/close.gif' BORDER=0>&nbsp;2000 Solution D - Get Back! (not available yet)</A></FONT></TD>
+          <TD ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='mailto:한상진 <hsangjin@hitel.net>' onmouseover="window.status=('hsangjin@hitel.net'); return true;" onmouseout="window.status=(''); return true;">한상진</A></TD>
+          <TD>&nbsp;</TD>
+          <TD><FONT COLOR=#000000>2001/06/17</TD>
+          <TD><FONT COLOR=#000000>49</TD>
+        </TR>
+        <TR ALIGN=center BGCOLOR=#f7fbff >
+          <TD><INPUT TYPE='checkbox' NAME=selnum VALUE='28'></TD>
+          <TD><FONT COLOR=#000000>28</FONT></TD>
+          <TD><A HREF='javascript:RemoteWindow("ezboard.cgi?db=ipsc&action=remote&dbf=28&page=2&depth=2")' onmouseover="window.status=('Text'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/type/default/text.gif' BORDER=0 ALT='Text'></A></TD>
+          <TD WIDTH=100% ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='ezboard.cgi?db=ipsc&action=read&dbf=28&page=2&depth=2' onmouseover="window.status=('28'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/close.gif' BORDER=0>&nbsp;2000 Solution C - Trolls (not available yet)</A></FONT></TD>
+          <TD ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='mailto:한상진 <hsangjin@hitel.net>' onmouseover="window.status=('hsangjin@hitel.net'); return true;" onmouseout="window.status=(''); return true;">한상진</A></TD>
+          <TD>&nbsp;</TD>
+          <TD><FONT COLOR=#000000>2001/06/17</TD>
+          <TD><FONT COLOR=#000000>51</TD>
+        </TR>
+        <TR ALIGN=center BGCOLOR=#f5faff >
+          <TD><INPUT TYPE='checkbox' NAME=selnum VALUE='27'></TD>
+          <TD><FONT COLOR=#000000>27</FONT></TD>
+          <TD><A HREF='javascript:RemoteWindow("ezboard.cgi?db=ipsc&action=remote&dbf=27&page=2&depth=2")' onmouseover="window.status=('Text'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/type/default/text.gif' BORDER=0 ALT='Text'></A></TD>
+          <TD WIDTH=100% ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='ezboard.cgi?db=ipsc&action=read&dbf=27&page=2&depth=2' onmouseover="window.status=('27'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/close.gif' BORDER=0>&nbsp;2000 Solution B - Cake</A></FONT></TD>
+          <TD ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='mailto:한상진 <hsangjin@hitel.net>' onmouseover="window.status=('hsangjin@hitel.net'); return true;" onmouseout="window.status=(''); return true;">한상진</A></TD>
+          <TD>&nbsp;</TD>
+          <TD><FONT COLOR=#000000>2001/06/17</TD>
+          <TD><FONT COLOR=#000000>101</TD>
+        </TR>
+        <TR ALIGN=center BGCOLOR=#f2f9ff >
+          <TD><INPUT TYPE='checkbox' NAME=selnum VALUE='26'></TD>
+          <TD><FONT COLOR=#000000>26</FONT></TD>
+          <TD><A HREF='javascript:RemoteWindow("ezboard.cgi?db=ipsc&action=remote&dbf=26&page=2&depth=2")' onmouseover="window.status=('Text'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/type/default/text.gif' BORDER=0 ALT='Text'></A></TD>
+          <TD WIDTH=100% ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='ezboard.cgi?db=ipsc&action=read&dbf=26&page=2&depth=2' onmouseover="window.status=('26'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/close.gif' BORDER=0>&nbsp;2000 Solution A - K-In-A-Row</A></FONT></TD>
+          <TD ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='mailto:한상진 <hsangjin@hitel.net>' onmouseover="window.status=('hsangjin@hitel.net'); return true;" onmouseout="window.status=(''); return true;">한상진</A></TD>
+          <TD>&nbsp;</TD>
+          <TD><FONT COLOR=#000000>2001/06/17</TD>
+          <TD><FONT COLOR=#000000>96</TD>
+        </TR>
+        <TR ALIGN=center BGCOLOR=#eff7ff >
+          <TD><INPUT TYPE='checkbox' NAME=selnum VALUE='25'></TD>
+          <TD><FONT COLOR=#000000>25</FONT></TD>
+          <TD><A HREF='javascript:RemoteWindow("ezboard.cgi?db=ipsc&action=remote&dbf=25&page=2&depth=2")' onmouseover="window.status=('Text'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/type/default/text.gif' BORDER=0 ALT='Text'></A></TD>
+          <TD WIDTH=100% ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='ezboard.cgi?db=ipsc&action=read&dbf=25&page=2&depth=2' onmouseover="window.status=('25'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/close.gif' BORDER=0>&nbsp;2000 Problem H - Colorful Cubes</A></FONT></TD>
+          <TD ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='mailto:한상진 <hsangjin@hitel.net>' onmouseover="window.status=('hsangjin@hitel.net'); return true;" onmouseout="window.status=(''); return true;">한상진</A></TD>
+          <TD>&nbsp;</TD>
+          <TD><FONT COLOR=#000000>2001/06/17</TD>
+          <TD><FONT COLOR=#000000>79</TD>
+        </TR>
+        <TR ALIGN=center BGCOLOR=#edf6ff >
+          <TD><INPUT TYPE='checkbox' NAME=selnum VALUE='24'></TD>
+          <TD><FONT COLOR=#000000>24</FONT></TD>
+          <TD><A HREF='javascript:RemoteWindow("ezboard.cgi?db=ipsc&action=remote&dbf=24&page=2&depth=2")' onmouseover="window.status=('Text'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/type/default/text.gif' BORDER=0 ALT='Text'></A></TD>
+          <TD WIDTH=100% ALIGN=left NOWRAP><FONT COLOR=#000000><IMG SRC='./system/image/icon/simple_small/this.gif' BORDER=0>&nbsp;2000 Problem G - Windy Office</A></FONT></TD>
+          <TD ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='mailto:한상진 <hsangjin@hitel.net>' onmouseover="window.status=('hsangjin@hitel.net'); return true;" onmouseout="window.status=(''); return true;">한상진</A></TD>
+          <TD>&nbsp;</TD>
+          <TD><FONT COLOR=#000000>2001/06/17</TD>
+          <TD><FONT COLOR=#000000>86</TD>
+        </TR>
+        <TR ALIGN=center BGCOLOR=#eaf5ff >
+          <TD><INPUT TYPE='checkbox' NAME=selnum VALUE='23'></TD>
+          <TD><FONT COLOR=#000000>23</FONT></TD>
+          <TD><A HREF='javascript:RemoteWindow("ezboard.cgi?db=ipsc&action=remote&dbf=23&page=2&depth=2")' onmouseover="window.status=('Text'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/type/default/text.gif' BORDER=0 ALT='Text'></A></TD>
+          <TD WIDTH=100% ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='ezboard.cgi?db=ipsc&action=read&dbf=23&page=2&depth=2' onmouseover="window.status=('23'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/close.gif' BORDER=0>&nbsp;2000 Problem F - Puzzle</A></FONT></TD>
+          <TD ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='mailto:한상진 <hsangjin@hitel.net>' onmouseover="window.status=('hsangjin@hitel.net'); return true;" onmouseout="window.status=(''); return true;">한상진</A></TD>
+          <TD>&nbsp;</TD>
+          <TD><FONT COLOR=#000000>2001/06/17</TD>
+          <TD><FONT COLOR=#000000>100</TD>
+        </TR>
+        <TR ALIGN=center BGCOLOR=#e7f3ff >
+          <TD><INPUT TYPE='checkbox' NAME=selnum VALUE='22'></TD>
+          <TD><FONT COLOR=#000000>22</FONT></TD>
+          <TD><A HREF='javascript:RemoteWindow("ezboard.cgi?db=ipsc&action=remote&dbf=22&page=2&depth=2")' onmouseover="window.status=('Text'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/type/default/text.gif' BORDER=0 ALT='Text'></A></TD>
+          <TD WIDTH=100% ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='ezboard.cgi?db=ipsc&action=read&dbf=22&page=2&depth=2' onmouseover="window.status=('22'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/close.gif' BORDER=0>&nbsp;2000 Problem E - Andrew&#39;s Exams</A></FONT></TD>
+          <TD ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='mailto:한상진 <hsangjin@hitel.net>' onmouseover="window.status=('hsangjin@hitel.net'); return true;" onmouseout="window.status=(''); return true;">한상진</A></TD>
+          <TD>&nbsp;</TD>
+          <TD><FONT COLOR=#000000>2001/06/17</TD>
+          <TD><FONT COLOR=#000000>95</TD>
+        </TR>
+        <TR ALIGN=center BGCOLOR=#e5f2ff >
+          <TD><INPUT TYPE='checkbox' NAME=selnum VALUE='21'></TD>
+          <TD><FONT COLOR=#000000>21</FONT></TD>
+          <TD><A HREF='javascript:RemoteWindow("ezboard.cgi?db=ipsc&action=remote&dbf=21&page=2&depth=2")' onmouseover="window.status=('Text'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/type/default/text.gif' BORDER=0 ALT='Text'></A></TD>
+          <TD WIDTH=100% ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='ezboard.cgi?db=ipsc&action=read&dbf=21&page=2&depth=2' onmouseover="window.status=('21'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/close.gif' BORDER=0>&nbsp;2000 Problem D - Get Back!</A></FONT></TD>
+          <TD ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='mailto:한상진 <hsangjin@hitel.net>' onmouseover="window.status=('hsangjin@hitel.net'); return true;" onmouseout="window.status=(''); return true;">한상진</A></TD>
+          <TD>&nbsp;</TD>
+          <TD><FONT COLOR=#000000>2001/06/17</TD>
+          <TD><FONT COLOR=#000000>95</TD>
+        </TR>
+        <TR ALIGN=center BGCOLOR=#dfefff >
+          <TD><INPUT TYPE='checkbox' NAME=selnum VALUE='20'></TD>
+          <TD><FONT COLOR=#000000>20</FONT></TD>
+          <TD><A HREF='javascript:RemoteWindow("ezboard.cgi?db=ipsc&action=remote&dbf=20&page=2&depth=2")' onmouseover="window.status=('Text'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/type/default/text.gif' BORDER=0 ALT='Text'></A></TD>
+          <TD WIDTH=100% ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='ezboard.cgi?db=ipsc&action=read&dbf=20&page=2&depth=2' onmouseover="window.status=('20'); return true;" onmouseout="window.status=(''); return true;"><IMG SRC='./system/image/icon/simple_small/close.gif' BORDER=0>&nbsp;2000 Problem C - Trolls</A></FONT></TD>
+          <TD ALIGN=left NOWRAP><FONT COLOR=#000000><A HREF='mailto:한상진 <hsangjin@hitel.net>' onmouseover="window.status=('hsangjin@hitel.net'); return true;" onmouseout="window.status=(''); return true;">한상진</A></TD>
+          <TD>&nbsp;</TD>
+          <TD><FONT COLOR=#000000>2001/06/17</TD>
+          <TD><FONT COLOR=#000000>108</TD>
+        </TR>
+      </TBODY>
+      </TABLE>
+    </TD>
+  </TR>
+  </TBODY>
+</TABLE>
+
+<TABLE BORDER=0 WIDTH=95% CELLSPACING=0 CELLPADDING=0>
+  <TR>
+    <TD WIDTH=100% ALIGN=center NOWRAP>
+
+<!-- Page Select Menu -->
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR>
+<TD ALIGN=center NOWRAP><FONT FACE=돋움 COLOR=black>
+[<A HREF='ezboard.cgi?db=ipsc&action=list&page=0'>1</A>]
+[<A HREF='ezboard.cgi?db=ipsc&action=list&page=1'>2</A>]
+<B>[3]</B>
+[<A HREF='ezboard.cgi?db=ipsc&action=list&page=3'>4</A>]
+[<A HREF='ezboard.cgi?db=ipsc&action=list&page=4'>5</A>]
+</FONT></TD>
+</TR>
+</TABLE>
+
+    </TD>
+  </TR></FORM>
+</TABLE>
+
+<TABLE BORDER=0 WIDTH=95% CELLSPACING=0 CELLPADDING=0>
+  <TR>
+    <TD><HR SIZE=1 noshade></TD>
+  </TR>
+</TABLE>
+<TABLE BORDER=0 WIDTH=95% CELLSPACING=0 CELLPADDING=0>
+  <TR>
+    <TD><A HREF='http://www.koi4u.net/' TARGET='_blank'><IMG SRC='./system/image/icon/simple_small/home.gif' BORDER=0></A>&nbsp;</TD>
+    <TD NOWRAP ALIGN=center>
+<TABLE BORDER=0>
+<FORM NAME=FindForm METHOD=post ACTION='ezboard.cgi'>
+<INPUT TYPE=hidden NAME=db     VALUE='ipsc'>
+<INPUT TYPE=hidden NAME=oldword VALUE=''>
+<INPUT TYPE=hidden NAME=oldpass VALUE=''>
+<INPUT TYPE=hidden NAME=page   VALUE='2'>
+<INPUT TYPE=hidden NAME=skin   VALUE=''>
+
+<INPUT TYPE=hidden NAME=action VALUE='search'>
+<INPUT TYPE=hidden NAME=cmd    VALUE='next'>
+<INPUT TYPE=hidden NAME=findstart VALUE=''>
+  <TR>
+    <TD NOWRAP>
+      <SELECT NAME='ftype'>
+        <OPTION VALUE='subj'  >제목</OPTION>
+        <OPTION VALUE='subj+cont'  >제목+내용</OPTION>
+        <OPTION VALUE='name'  >이름</OPTION>
+        <OPTION VALUE='cont'  >내용</OPTION>
+        <OPTION VALUE='file'  >파일</OPTION>
+        <OPTION VALUE='mail'  >메일</OPTION>
+        <OPTION VALUE='home'  >홈페이지</OPTION>
+        <OPTION VALUE='ip' >IP</OPTION>
+      </SELECT>
+      <INPUT TYPE=text NAME=word VALUE='' SIZE=15 MAXLENGTH=40 CLASS=editbox><INPUT TYPE='submit' VALUE='검색' CLASS=button>
+    </TD>
+  </TR>
+</TABLE>
+    </TD></FORM>
+    <TD ALIGN=right NOWRAP>
+      <A HREF='ezboard.cgi?db=ipsc&action=list&page=1'><IMG SRC='./system/image/icon/simple_small/prev.gif' BORDER=0></A>      <A HREF='ezboard.cgi?db=ipsc&action=list&page=3'><IMG SRC='./system/image/icon/simple_small/next.gif' BORDER=0></A>      <A HREF='ezboard.cgi?db=ipsc&action=user_login&cmd=input&page=2'><IMG SRC='./system/image/icon/simple_small/write.gif' BORDER=0></A>
+      <A HREF='javascript:history.go(-1)'><IMG SRC='./system/image/icon/simple_small/list.gif' BORDER=0></A>
+      &nbsp;
+    </TD>
+  </TR>
+</TABLE>
+</XMP></DIV></SCRIPT><TABLE BORDER=0 width=95%><TR><TD ALIGN=center><A HREF='http://ezne.net' target=_blank><IMG SRC='http://www.megapass.co.kr/~cherie/cherie/ez2000/ez127.gif' BORDER=0></A></TD></TR></TABLE>
+<!-- Processing Time = 0.01 -->
+</CENTER>
+
+<!-- User Html Tail Start -->
+
+<!-- User Html Tail End -->
+</BODY>
+</HTML>

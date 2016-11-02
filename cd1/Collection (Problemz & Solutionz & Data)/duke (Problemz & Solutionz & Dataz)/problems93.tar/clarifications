@@ -1,0 +1,171 @@
+
+----------------------------------------------------------------------
+
+Team number 113, problem number 6
+What is the maximum length of any given word in a title?
+
+
+
+
+Response:
+
+In a title, assume no word is longer than 40 characters
+
+This clarification sent to all teams.
+DO NOT REPLY TO THIS MESSAGE.  If you still have any questions,
+run the "clarify" program again.
+
+----------------------------------------------------------------------
+
+Team number 148, problem number 7
+Enter your question below, then exit the editor:
+	The problem states that the output should have whitespace between
+the characters, but the samples don't show this to be true.  Which way is it 
+to be?
+
+
+
+
+Response:
+
+Put whitespace between the characters in the output.
+
+This clarification sent to all teams.
+DO NOT REPLY TO THIS MESSAGE.  If you still have any questions,
+run the "clarify" program again.
+
+----------------------------------------------------------------------
+
+Team number 121, problem number 3
+Enter your question below, then exit the editor:
+
+You twice mention that stacks should be sorted such that the largest
+pancake is on the bottom, and smallest on the top, but you do not
+specify that the intervening pancakes should be likewise sorted.
+
+Please clarify.
+
+Thank you,
+Adam
+
+
+
+Response:
+
+all the pancakes should be in sorted order.
+
+This clarification sent to all teams.
+DO NOT REPLY TO THIS MESSAGE.  If you still have any questions,
+run the "clarify" program again.
+
+----------------------------------------------------------------------
+
+Team number 306, problem number 3
+Enter your question below, then exit the editor:
+
+Must the output be the most efficient series of flips?
+
+
+
+
+Response:
+
+No, you don't need to use the minimum number of flips for the pancake
+problem
+
+This clarification sent to all teams.
+DO NOT REPLY TO THIS MESSAGE.  If you still have any questions,
+run the "clarify" program again.
+
+----------------------------------------------------------------------
+
+Team number 1, problem number 2
+Enter your question below, then exit the editor:
+
+what happens if a person has no friends but has money?
+
+
+
+Response:
+
+Note the line of the problem that says:
+
+Any money not given is kept and is part of a person's "net worth"
+printed in the output.  For example:
+
+     joe 20 0
+
+would mean joe has at LEAST 20 at the end, because he keeps the 20
+(since he doesn't give it away, it's left over and he keeps it)
+
+This clarification sent to all teams.
+DO NOT REPLY TO THIS MESSAGE.  If you still have any questions,
+run the "clarify" program again.
+
+----------------------------------------------------------------------
+
+Team number 450, problem number 5
+Enter your question below, then exit the editor:
+
+In problem five you say 256 nodes.
+Do you mean down to level 8 or level 256?
+
+
+
+
+Response:
+
+256 is the bound on the nodes, the tree can be up to 256 levels
+deep (e.g., all left-children).  Note that 'complete specification'
+doesn't mean 'complete (all levels full) tree'
+
+This clarification sent to all teams.
+DO NOT REPLY TO THIS MESSAGE.  If you still have any questions,
+run the "clarify" program again.
+
+----------------------------------------------------------------------
+
+Team number 252, problem number 8
+Enter your question below, then exit the editor:
+
+In the example city in "The Problem" section, the
+specification seems to suggest that there is a
+path from 0 to 3 (0->1->2->3), but the explanation
+excludes this from consideration ("..and no other
+routes.")  Why?
+
+
+
+Response:
+
+Our mistake, there are two routes from 0 to 3:
+
+  0->1->2->3
+
+and
+
+  0->2->3
+
+However, all submissions have been correctly judged, this was a typo
+in the explanation.
+
+This clarification sent to all teams.
+DO NOT REPLY TO THIS MESSAGE.  If you still have any questions,
+run the "clarify" program again.
+
+----------------------------------------------------------------------
+
+Team number 313, problem number 4
+Enter your question below, then exit the editor:
+
+what should it print if 0 fit?
+
+
+
+Response:
+
+if 0 pipes fit, then print 0 grid
+
+This clarification sent to all teams.
+DO NOT REPLY TO THIS MESSAGE.  If you still have any questions,
+run the "clarify" program again.

@@ -1,0 +1,79 @@
+네트워크플로 s
+ㅇ ㅏ ㅆ ㅏ -_-;;;
+최대유량문제
+이 문제가 무엇인지 아는것이 굉장히 중요하다.
+ditch, stall
+이분매칭으로 푸는 것이다.
+확대경로 - 출발점에서 종단점으로 가는것.
+확대경로찾는방법 (백트랙킹)(DFS)
+DFS()
+{
+	if (확대경로가 있는가 ?){
+		continue;
+	}else{
+		break;
+	}	
+	확대경로 출발점 -> 도착점가는경로
+	인접행렬 - 확대경로;
+		+역경로
+			
+
+
+}
+
+end = 4;
+code
+int path[],pathcnt
+int flow[][];
+int visit[];
+int flag, flag2;
+void DFS (int node, int level) // 복구를하면 속도가 줄기때문에 하지 않는다.
+{
+	if (flag == 1){
+		return;
+	}
+	visit[node] = 1;
+	path[level] = node;
+	flag = 0;
+	if (node == end){ // 이것이 end란 얘기는 끝났다는 얘기이다 (확대경로 하나 찾음);
+		flag = 1;
+		pathcnt = level;
+		flag2 = 1;
+		return;
+	}
+	for (i=1;i<end;i++){ // 0번이 출발점이라고 알고 있으니 이렇게 한다.
+		if (flow(node][i] != 0 && visit[i] ==0){ // 경로가 있다면
+			DFS(i,level+1);
+			if (flag == 1) return;
+		}			
+		
+	}
+	
+}
+while()
+{
+	flag2 = 0;
+	for (i=0;i<end;i++){
+		visit[i] = 0;
+	}
+	DFS(0,0);
+	if (flag2== 0) break;
+	// 보정을 어떻게하는가 .
+	//ㅇ ㅏ ㅆ ㅏ -_-;
+	Min = 무한
+	for (i=1;i<pathcnt;i++){
+		a = path[i-1]
+		b = path[i]
+		Flow[a][b];
+		if (Flow[a][b] < Min){
+			Min = flow[a][b]
+		}
+	}
+	for (i=1;i<pathcnt;i++){
+		a= path[i-1]
+		b = path[i];
+		Flow[a][b]-=Min;
+		Flow[b][a]+=Min;
+	}
+}
+main 함수돌리는거 어케하징 ? -_- 

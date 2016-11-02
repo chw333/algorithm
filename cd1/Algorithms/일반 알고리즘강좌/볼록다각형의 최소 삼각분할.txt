@@ -1,0 +1,9 @@
+                           볼록다각형의 최소 삼각분할
+
+   dist = sqrt(dx * dx + dy * dy)
+
+     => dx = x1 - x2
+
+     => dy = y1 - y2         
+                           __
+   (i,j) = (i,k) + (k,j) + ij

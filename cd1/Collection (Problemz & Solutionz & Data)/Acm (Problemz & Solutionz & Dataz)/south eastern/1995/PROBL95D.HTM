@@ -1,0 +1,126 @@
+<pre>
+<b>
+<font size=3>
+Problem D
+CONTOUR PAINTING
+
+     Inpuô Filå Nameº D.DAT
+     Prograí Sourcå Fileº D.PAÓ oò D.Ã oò D.CPP
+
+     Á contouò oæ pointó ió representeä oî á twï dimensionaì (2D© 
+griä  aó illustrateä iî figurå 1® Thå pointó oæ thå  contouò  arå 
+specifieä  bù  thå  samå characteò whicè  caî  bå  anù  printablå 
+character¬ differenô thaî *¬ ›°  (decimaì codå 176)¬ _‚ anä  space® 
+Iî figurå ± thió characteò ió Û (decimaì codå 219)® Alì thå otheò 
+pointó  oæ  thå griä arå representeä bù spaces®  Thå  contouò  ió 
+connected¬ i.e® anù twï pointó oî thå contouò caî bå reacheä froí 
+onå anotheò bù travelinç vertically¬ horizontallù anä diagonally® 
+Moreover¬ iô ió considereä thaô á contouò caî closå á singlå  noî 
+emptù zonå oæ griä points® 
+
+                  012345678901234567890123456789
+                  ------------------------------
+                0|                                         
+                1|       ÛÛÛÛÛÛÛÛÛÛ            
+                2|      ÛÛÛÛ       ÛÛ            
+                3|      Û            Û          
+                4|     Û      Û      ÛÛÛÛÛÛÛ      
+                5|     ÛÛÛÛÛÛÛÛ             ÛÛ  
+                6|     Û      Û      ÛÛÛÛÛÛÛ     
+                7ü      Û            Û           
+                8|      ÛÛÛÛ       ÛÛ           
+                9|       ÛÛÛÛÛÛÛÛÛÛ      
+                0|
+
+                Figurå 1  Á contour oî á 2Ä grid
+                                         
+     Thå  characteò  ›° (decimaì codå 176© representó  thå  colouò 
+useä  tï painô thå contouò aó illustrateä iî figurå 3® Thå  painô 
+ió  addeä  oî  onå sidå oæ thå contouò iî sucè á  waù  thaô  eacè 
+contouò  poinô  oæ thå painteä sidå  haó aô leasô  onå ° neighbouò 
+horizontallù oò verticallù aó showî iî figurå 2:
+
+                                                  °°°°
+         °°°                Û°°°                  ÛÛÛÛ°
+         ÛÛÛ                ÛÛÛÛ                     Û°
+                                                      
+      flaô zone        concavå corner          conveø corner        
+
+                Figurå ² Caseó oæ poinô painting
+
+     Á contouò caî bå painteä eitheò froí insidå oò froí outside® ŠThå paintinç sidå ió specifieä bù thå presencå oæ thå characteò *‚ 
+insidå  oò outsidå thå contouò aó showî iî figurå 3® Noticå  thaô 
+thå staò ió removeä froí thå griä oncå thå paintinç ió done.
+
+
+      ÛÛÛÛÛÛÛÛÛÛ                      ÛÛÛÛÛÛÛÛÛÛ        interior
+     ÛÛÛÛ       ÛÛ                   ÛÛÛÛ°°°°°°°ÛÛ      painting
+     Û   *        Û                  Û°°°  °    °°Û         
+    Û      Û      ÛÛÛÛÛÛÛ           Û°°°°°°Û°    °ÛÛÛÛÛÛÛ   
+    ÛÛÛÛÛÛÛÛ             ÛÛ         ÛÛÛÛÛÛÛÛ°     °°°°°°°ÛÛ 
+    Û      Û      ÛÛÛÛÛÛÛ           Û°°°°°°Û°    °ÛÛÛÛÛÛÛ   
+     Û            Û                  Û°°°  °    °°Û         
+     ÛÛÛÛ       ÛÛ                   ÛÛÛÛ°°°°°°°ÛÛ          
+      ÛÛÛÛÛÛÛÛÛÛ                      ÛÛÛÛÛÛÛÛÛÛ        
+
+      beforå paintinç                 afteò painting
+
+                                                     
+   *                                  °°°°°°°°°°        exterior
+      ÛÛÛÛÛÛÛÛÛÛ                     °ÛÛÛÛÛÛÛÛÛÛ°°      painting
+     ÛÛÛÛ       ÛÛ                  °ÛÛÛÛ       ÛÛ°          
+     Û            Û                 °Û            Û°°°°°°    
+    Û      Û      ÛÛÛÛÛÛÛ          °Û      Û      ÛÛÛÛÛÛÛ°°  
+    ÛÛÛÛÛÛÛÛ             ÛÛ        °ÛÛÛÛÛÛÛÛ             ÛÛ° 
+    Û      Û      ÛÛÛÛÛÛÛ          °Û      Û      ÛÛÛÛÛÛÛ°°  
+     Û            Û                 °Û            Û°°°°°°    
+     ÛÛÛÛ       ÛÛ                  °ÛÛÛÛ       ÛÛ°          
+      ÛÛÛÛÛÛÛÛÛÛ                     °ÛÛÛÛÛÛÛÛÛÛ°°           
+                                      °°°°°°°°°°             
+
+      beforå paintinç                 afteò painting
+
+             Figure 3  Painting a closed contour
+
+
+     Youò probleí ió tï writå á prograí whichº readó froí á  texô 
+filå  á  numbeò  n‚ anä n‚ grids¬ eacè  griä  containinç  á  singlå 
+contouò  anä  á singlå star¬ paintó eacè griä  accordinç  tï  thå 
+positioî  oæ  thå staò anä outputó thå painteä gridó  tï  á  texô 
+file® Eacè contouò ió placeä oî itó griä iî sucè á waù thaô iô ió 
+fullù surroundeä bù freå griä pointó (spaces).
+
+     Thå firsô linå oæ thå inpuô texô filå containó thå numbeò oæ 
+gridó  tï  bå  painted® Thå nexô lineó oæ thå  filå  contaiî  thå 
+grids®   Thå  lineó whicè represenô á griä arå  terminateä  bù  á 
+separatioî  linå  fulì oæ underscoreó (_)® Therå arå aô  mosô  3° 
+lineó  anä  aô mosô 8° characteró iî á linå foò  eacè  grid®  Thå 
+lineó caî bå oæ differenô length® 
+
+     Thå standarä outpuô filå containó thå gridó witè thå painteä 
+contouró  anä witè thå staró removed® Eacè griä ió outpuô iî  thå 
+samå  formaô iô haó beeî reaä froí thå inpuô file¬ includinç  thå 
+separatioî  line®  Figurå ´ ió aî examplå oæ thå  inpuô  anä  thå 
+outpuô oæ thå prograí foò á singlå simplå contour.
+                   Š.pa
+  a© inpuô      ±           -- numbeò oæ grids     
+                    
+                ÛÛÛÛÛÛÛ     
+                Û  *  Û    
+                ÛÛÛÛÛÛÛ   
+      
+                __________  _ß separatioî line
+
+                enä oæ file
+
+
+  b© output     ÛÛÛÛÛÛÛ  
+                Û°°°°°Û  
+                ÛÛÛÛÛÛÛ  
+
+                __________  _ß separatioî line
+
+                enä oæ file
+                         
+        Figurå 4® Án examplå oæ prograí inpuô anä output
+

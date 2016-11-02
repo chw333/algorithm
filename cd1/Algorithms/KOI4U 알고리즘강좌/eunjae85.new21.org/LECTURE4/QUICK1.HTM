@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>퀵 정렬 - 재귀판</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p style="line-height:130%;">퀵 정렬 - 재귀판</p>
+<p style="line-height:130%;">하이텔 베이직 동호회에서 김문수(새파람)님의 자료를 
+허락을 맡고 갈무리 해 온 소스입니다. 원작자의 동의 없이는 다른 곳으로 옮길 수 
+없습니다.</p>
+<p style="line-height:130%;"><font face="System">DEFINT A-Z<br>
+DECLARE SUB QuickSort (arr(), l, r)<br>
+DECLARE SUB show (arr(), n)<br>
+&nbsp;<br>
+n = 10<br>
+DIM a(n)<br>
+&nbsp;<br>
+RANDOMIZE TIMER<br>
+FOR i = 1 TO n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a(i) = INT(RND * 100) + 1<br>
+NEXT i<br>
+&nbsp;<br>
+CLS<br>
+PRINT : PRINT &quot;Before sorting:&quot;<br>
+show a(), n<br>
+&nbsp;<br>
+QuickSort a(), 1, n<br>
+&nbsp;<br>
+PRINT : PRINT &quot;After sorting:&quot;<br>
+show a(), n<br>
+&nbsp;<br>
+END<br>
+&nbsp;<br>
+&nbsp;<br>
+SUB QuickSort (arr(), first, last)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;v = arr((first + last) / 2)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;r = first<br>
+&nbsp;&nbsp;&nbsp;&nbsp;l = last<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DO<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHILE (arr(r) &lt; v)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r = 
+r + 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WEND<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHILE (arr(l) &gt; v)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l = 
+l - 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WEND<br></font></p>
+<p style="line-height:130%;"><font face="System">&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF (r &lt;= l) THEN<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SWAP 
+arr(r), arr(l)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r = 
+r + 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l = 
+l - 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END IF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;LOOP UNTIL (r &gt; l)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;IF (first &lt; l) THEN QuickSort arr(), first, l<br>
+&nbsp;&nbsp;&nbsp;&nbsp;IF (r &lt; last) THEN QuickSort arr(), r, last<br>
+&nbsp;<br>
+END SUB<br>
+&nbsp;<br>
+SUB show (arr(), n)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FOR i = 1 TO n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT arr(i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NEXT i<br>
+&nbsp;&nbsp;&nbsp;&nbsp;PRINT<br>
+END SUB</font></p>
+</body>
+
+</html></html>

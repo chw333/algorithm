@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0056)http://ace.delos.com/usacotext/s=1.1.4/a=4j8mBAMpVyj/rec -->
+<HTML><HEAD><TITLE>Search Techniques</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type>
+<META content="MSHTML 5.00.2614.3500" name=GENERATOR></HEAD>
+<BODY background="Search Techniques.files/bg3.jpeg"><IMG height=118 
+src="Search Techniques.files/cow1.jpeg" width=742>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD width=70>&nbsp;&nbsp;</TD>
+    <TD><BR>
+      <CENTER><B><FONT size=4>Search Techniques</FONT></B></CENTER>
+      <H4>Sample Problem: <I>n</I> Queens [Traditional]</H4>
+      <P>Place <I>n</I> queens on an <I>n x n</I> chess board so that no queen 
+      is attacked by another queen. 
+      <H4>Depth First Search (DFS) </H4>
+      <P>The most obvious solution to code is to add queens recursively to the 
+      board one by one, trying all possible queen placements. It is easy to 
+      exploit the fact that there must be exactly one queen in each column: at 
+      each step in the recursion, just choose where in the current column to put 
+      the queen. <BR><TT><FONT 
+      size=2><BR>&nbsp;1&nbsp;search(col)<BR>&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;filled&nbsp;all&nbsp;columns<BR>&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;solution&nbsp;and&nbsp;exit&nbsp;<BR><BR>&nbsp;4&nbsp;&nbsp;&nbsp;for&nbsp;each&nbsp;row<BR>&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;board(row,&nbsp;col)&nbsp;is&nbsp;not&nbsp;attacked<BR>&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;place&nbsp;queen&nbsp;at&nbsp;(row,&nbsp;col)<BR>&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search(col+1)<BR>&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;remove&nbsp;queen&nbsp;at&nbsp;(row,&nbsp;col)<BR></FONT></TT>
+      <P>Calling <BR><TT><FONT size=2>search(0)</FONT></TT> begins the search. 
+      This runs quickly, since there are relatively few choices at each step: 
+      once a few queens are on the board, the number of non-attacked squares 
+      goes down dramatically. 
+      <P>This is an example of <I>depth first search</I>, because the algorithm 
+      iterates down to the bottom of the search tree as quickly as possible: 
+      once <I>k</I> queens are placed on the board, boards with even more queens 
+      are examined before examining other possible boards with only <I>k</I> 
+      queens. This is okay but sometimes it is desirable to find the simplest 
+      solutions before trying more complex ones. 
+      <P>Depth first search checks each node in a search tree for some property. 
+      The search tree might look like this: <BR><IMG 
+      src="Search Techniques.files/rec.tree1.gif"><BR>The algorithm searches the 
+      tree by going down as far as possible and then backtracking when 
+      necessary, making a sort of outline of the tree as the nodes are visited. 
+      Pictorially, the tree is traversed in the following manner: <BR><IMG 
+      src="Search Techniques.files/rec2.gif"><BR>
+      <H5>Complexity</H5>
+      <P>Suppose there are <I>d</I> decisions that must be made. (In this case 
+      <I>d=n</I>, the number of columns we must fill.) Suppose further that 
+      there are C choices for each decision. (In this case <I>c=n</I> also, 
+      since any of the rows could potentially be chosen.) Then the entire search 
+      will take time proportional to <I>c<SUP>d</SUP></I>, i.e., an exponential 
+      amount of time. This scheme requires little space, though: since it only 
+      keeps track of as many decisions as there are to make, it requires only 
+      O(<I>d</I>) space. 
+      <H4>Sample Problem: Knight Cover [Traditional]</H4>
+      <P>Place as few knights as possible on an <I>n x n</I> chess board so that 
+      every square is attacked. A knight is not considered to attack the square 
+      on which it sits. 
+      <H5>Breadth First Search (BFS)</H5>
+      <P>In this case, it is desirable to try all the solutions with only 
+      <I>k</I> knights before moving on to those with <I>k+1</I> knights. This 
+      is called <B>breadth first search</B>. The usual way to implement breadth 
+      first search is to use a queue of states: <BR><TT><FONT 
+      size=2><BR>&nbsp;1&nbsp;process(state)<BR>&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;each&nbsp;possible&nbsp;next&nbsp;state&nbsp;from&nbsp;this&nbsp;one<BR>&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enqueue&nbsp;next&nbsp;state&nbsp;<BR><BR>&nbsp;4&nbsp;search()<BR>&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enqueue&nbsp;initial&nbsp;state<BR>&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;!empty(queue)<BR>&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state&nbsp;=&nbsp;get&nbsp;state&nbsp;from&nbsp;queue<BR>&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;process(state)<BR></FONT></TT>
+      <P>This is called breadth first search because it searches an entire row 
+      (the breadth) of the search tree before moving on to the next row. For the 
+      search tree used previously, breadth first search visits the nodes in this 
+      order: <BR><IMG src="Search Techniques.files/rec3.gif"><BR>It first visits 
+      the top node, then all the nodes at level 1, then all at level 2, and so 
+      on. 
+      <H5>Complexity</H5>
+      <P>Whereas depth first search required space proportional to the number of 
+      decisions (there were <I>n</I> columns to fill in the <I>n</I> queens 
+      problem, so it took O(<I>n</I>) space), breadth first search requires 
+      space exponential in the number of choices. If there are <I>c</I> choices 
+      at each decision and <I>k</I> decisions have been made, then there are 
+      <I>c <SUP>k</SUP></I> possible boards that will be in the queue for the 
+      next round. This difference is quite significant given the space 
+      restrictions of some programming environments. 
+      <H5>Depth First with Iterative Deepening (ID)</H5>
+      <P>An alternative to breadth first search is <I>iterative deepening</I>. 
+      Instead of a single breadth first search, run D depth first searches in 
+      succession, each search allowed to go one row deeper than the previous 
+      one. That is, the first search is allowed only to explore to row 1, the 
+      second to row 2, and so on. This ``simulates'' a breadth first search at a 
+      cost in time but a savings in space. <BR><TT><FONT 
+      size=2><BR>&nbsp;1&nbsp;truncated_dfsearch(hnextpos,&nbsp;depth)<BR>&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;board&nbsp;is&nbsp;covered<BR>&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;solution&nbsp;and&nbsp;exit&nbsp;<BR><BR>&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;depth&nbsp;==&nbsp;0<BR>&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;<BR><BR>&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;from&nbsp;nextpos&nbsp;to&nbsp;n*n<BR>&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;put&nbsp;knight&nbsp;at&nbsp;i<BR>&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search(i+1,&nbsp;depth-1)<BR>&nbsp;9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;remove&nbsp;knight&nbsp;at&nbsp;i&nbsp;<BR><BR>10&nbsp;dfid_search<BR>11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;depth&nbsp;=&nbsp;0&nbsp;to&nbsp;max_depth<BR>12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;truncated_dfsearch(0,&nbsp;depth)<BR></FONT></TT>
+      <H5>Complexity</H5>
+      <P>The space complexity of iterative deepening is just the space 
+      complexity of depth first search: O(<I>n</I>). The time complexity, on the 
+      other hand, is more complex. Each truncated depth first search stopped at 
+      depth <I>k</I> takes <I>c<SUP>k</SUP></I> time. Then if <I>d</I> is the 
+      maximum number of decisions, depth first iterative deepening takes 
+      <I>c<SUP>0</SUP> + c<SUP>1</SUP> + c<SUP>2</SUP> + ... + c<SUP>d</SUP></I> 
+      time. 
+      <P>If <I>c = 2</I>, then this sum is <I>c<SUP>d+1</SUP> - 1</I>, about 
+      twice the time that breadth first search would have taken. When <I>c</I> 
+      is more than two (i.e., when there are many choices for each decision), 
+      the sum is even less: iterative deepening cannot take more than twice the 
+      time that breadth first search would have taken, assuming there are always 
+      at least two choices for each decision. 
+      <H4>Which to Use?</H4>
+      <P>Once you've identified a problem as a search problem, it's important to 
+      choose the right type of search. Here are some things to think about. 
+      <H5>In a Nutshell </H5>
+      <CENTER>
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD>Search</TD>
+          <TD>Time</TD>
+          <TD>Space</TD>
+          <TD>When to use</TD></TR>
+        <TR>
+          <TD>DFS</TD>
+          <TD>O(<I>c <SUP>k</SUP></I>)</TD>
+          <TD>O(<I>k</I>)</TD>
+          <TD>Must search tree anyway, know the level the answers are on, or 
+            you aren't looking for the shallowest number.</TD></TR>
+        <TR>
+          <TD>BFS</TD>
+          <TD>O(<I>c <SUP>d </SUP></I>)</TD>
+          <TD>O(<I>c <SUP>d </SUP></I>)</TD>
+          <TD>Know answers are very near top of tree, or want shallowest 
+            answer.</TD></TR>
+        <TR>
+          <TD>DFS+ID</TD>
+          <TD>O(<I>c <SUP>d</SUP></I>)</TD>
+          <TD>O(<I>d</I>)</TD>
+          <TD>Want to do BFS, don't have enough space, and can spare the 
+          time.</TD></TR></TBODY></TABLE></CENTER><I>d</I> is the depth of the 
+      answer <BR><I>k</I> is the depth searched <BR><I>d &lt;= k</I> 
+      <P>Remember the ordering properties of each search. If the program needs 
+      to produce a list sorted shortest solution first (in terms of distance 
+      from the root node), use breadth first search or iterative deepening. For 
+      other orders, depth first search is the right strategy. 
+      <P>If there isn't enough time to search the entire tree, use the algorithm 
+      that is more likely to find the answer. If the answer is expected to be in 
+      one of the rows of nodes closest to the root, use breadth first search or 
+      iterative deepening. Conversely, if the answer is expected to be in the 
+      leaves, use the simpler depth first search. 
+      <P>Be sure to keep space constraints in mind. If memory is insufficient to 
+      maintain the queue for breadth first search but time is available, use 
+      iterative deepening. 
+      <H4>Sample Problems</H4>
+      <H5>Superprime Rib [USACO 1995 Qualifying Round(?), adapted]</H5>
+      <P>A number is called superprime if it is prime and every number obtained 
+      by chopping some number of digits from the right side of the decimal 
+      expansion is prime. For example, 233 is a superprime, because 233, 23, and 
+      2 are all prime. Print a list of all the superprime numbers of length 
+      <I>n</I>, for <I>n &lt;= 9</I>. The number 1 is not a prime. 
+      <P>For this problem, use depth first search, since all the answers are 
+      going to be at the <I>n</I>th level (the bottom level) of the search. 
+      <H5>Betsy's Tour [USACO 1995 Qualifying Round]</H5>
+      <P>A square township has been partitioned into <I>n <SUP>2</SUP></I> 
+      square plots. The Farm is located in the upper left plot and the Market is 
+      located in the lower left plot. Betsy takes a tour of the township going 
+      from Farm to Market by walking through every plot exactly once. Write a 
+      program that will count how many unique tours Betsy can take in going from 
+      Farm to Market for any value of <I>n &lt;= 6</I>. 
+      <P>Since the number of solutions is required, the entire tree must be 
+      searched, even if one solution is found quickly. So it doesn't matter from 
+      a time perspective whether DFS or BFS is used. Since DFS takes less space, 
+      it is the search of choice for this problem. 
+      <H5>Udder Travel [USACO 1995 Final Round; Piele]</H5>
+      <P>The Udder Travel cow transport company is based at farm A and owns one 
+      cow truck which it uses to pick up and deliver cows between seven farms A, 
+      B, C, D, E, F, and G. The (commutative) distances between farms are given 
+      by an array. Every morning, Udder Travel has to decide, given a set of cow 
+      moving orders, the order in which to pick up and deliver cows to minimize 
+      the total distance traveled. Here are the rules: 
+      <UL>
+        <LI>The truck always starts from the headquarters at farm A and must 
+        return there when the day's deliveries are done. 
+        <LI>The truck can only carry one cow at time. 
+        <LI>The orders are given as pairs of letters denoting where a cow is to 
+        be picked up followed by where the cow is to be delivered. </LI></UL>
+      <P>Your job is to write a program that, given any set of orders, 
+      determines the shortest route that takes care of all the deliveries, while 
+      starting and ending at farm A. 
+      <P>Since all possibilities must be tried in order to ensure the best one 
+      is found, the entire tree must be searched, which takes the same amount of 
+      time whether using DFS or BFS. Since DFS uses much less space and is 
+      conceptually easier to implement, use that. 
+      <H5>Desert Crossing [1992 IOI, adapted]</H5>
+      <P>A group of desert nomads is working together to try to get one of their 
+      group across the desert. Each nomad can carry a certain number of quarts 
+      of water, and each nomad drinks a certain amount of water per day, but the 
+      nomads can carry differing amounts of water, and require different amounts 
+      of water. Given the carrying capacity and drinking requirements of each 
+      nomad, find the minimum number of nomads required to get at least one 
+      nomad across the desert. 
+      <P>All the nomads must survive, so every nomad that starts out must either 
+      turn back at some point, carrying enough water to get back to the start or 
+      must reach the other side of the desert. However, if a nomad has surplus 
+      water when it is time to turn back, the water can be given to their 
+      friends, if their friends can carry it. 
+      <P>Analysis: This problem actually is two recursive problems: one 
+      recursing on the set of nomads to use, the other on when the nomads turn 
+      back. Depth-first search with iterative deepening works well here to 
+      determine the nomads required, trying first if any one can make it across 
+      by themselves, then seeing if two work together to get across, etc. 
+      <H5>Addition Chains</H5>
+      <P>An addition chain is a sequence of integers such that the first number 
+      is 1, and every subsequent number is the sum of some two (not necessarily 
+      unique) numbers that appear in the list before it. For example, 1 2 3 5 is 
+      such a chain, as 2 is 1+1, 3 is 2+1, and 5 is 2+3. Find the minimum length 
+      chain that ends with a given number. 
+      <P>Analysis: Depth-first search with iterative deepening works well here, 
+      as DFS has a tendency to first try 1 2 3 4 5 ... n, which is really bad 
+      and the queue grows too large very quickly for BFS. 
+</P></TD></TR></TBODY></TABLE>
+<CENTER><A href="http://ace.delos.com/usacogate?a=4j8mBAMpVyj">USACO Gateway</A> 
+| <A href="mailto:kolstad@ace.delos.com">Comment or Question</A> 
+</CENTER></BODY></HTML>

@@ -1,0 +1,56 @@
+<xml xmlns:v="urn:schemas-microsoft-com:vml"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:p="urn:schemas-microsoft-com:office:powerpoint"
+ xmlns:oa="urn:schemas-microsoft-com:office:activation">
+ <p:presentation sizeof="screen" gridspacingx="46448" gridspacingy="46448">
+  <p:master id="22" slidesn="1C0F3A9,8A7FD570" type="main" href="master22.htm"
+   xmlhref="master22.xml" template="스프링 노트" layout="title_body"
+   slots="title,body,dateTime,footer,slideNumber">
+   <p:schemes>
+    <p:colorscheme
+     colors="#F8F8F8,#292929,#DDDDDD,#000000,#83C9C9,#F0EB8E,#F6BF88,#B2B2B2"/>
+    <p:colorscheme
+     colors="#F0E9CC,#333333,#CEB68E,#8F5F2F,#D27A44,#E2DD72,#CBBC2D,#A7A58F"/>
+    <p:colorscheme
+     colors="#FFFFFF,#000000,#DDDDDD,#336699,#8FA6EF,#AFE7EF,#63CBD3,#B2B2B2"/>
+    <p:colorscheme
+     colors="#FFFFFF,#000000,#DDDDDD,#808000,#8CC274,#F7F39B,#EBCB55,#B2B2B2"/>
+    <p:colorscheme
+     colors="#FFFFFF,#1C1C2F,#DDDDDD,#993300,#E78B79,#FDE3CF,#F6C1A0,#A29680"/>
+    <p:colorscheme
+     colors="#FFFFFF,#000000,#C0C0C0,#808080,#B2B2B2,#CDCDCD,#979797,#B2B2B2"/>
+   </p:schemes>
+  </p:master>
+  <p:master id="23" slidesn="1C0F3A9,8A7FD570" type="title" href="master23.htm"
+   xmlhref="master23.xml" layout="title_subtitle"
+   slots="centerTitle,subTitle,dateTime,footer,slideNumber"/>
+  <p:master id="1" slidesn="1C0F12F,767F6030" type="notes" href="master01.htm"
+   layout="notes" slots="header,dateTime,slideImage,body,footer,slideNumber"/>
+  <p:slide id="1" slidesn="1C0F12D,2D7D1B90" href="slide0001.htm"
+   masterhref="master23.htm" layout="title_subtitle"
+   slots="centerTitle,subTitle"/>
+  <p:slide id="2" slidesn="1C0F131,15C99D80" href="slide0002.htm"
+   layout="title_body" slots="title,body"/>
+  <p:slide id="5" slidesn="1C0F389,4BA11190" href="slide0005.htm"
+   layout="title_body" slots="title,body"/>
+  <p:slide id="3" slidesn="1C0F132,39BA66B0" href="slide0003.htm"
+   layout="title_body" slots="title,body"/>
+  <p:slide id="4" slidesn="1C0F134,49A5F420" href="slide0004.htm"
+   layout="2_columns" slots="title,body,object"/>
+  <p:viewstate type="slideView" scale="66" restoredleft="156" restoredtop="946"
+   vertbarstate="0" horizbarstate="2" manualadjustleft="t" manualadjusttop="t"
+   hideoutlineicons="t"/>
+  <p:font name="굴림" charset="129" type="6" family="50"/>
+  <p:font name="Arial" charset="0" type="6" family="34"/>
+  <p:font name="Times New Roman" charset="0" type="6" family="18"/>
+  <p:font name="Webdings" charset="2" type="6" family="18"/>
+  <p:font name="Wingdings" charset="2" type="6" family="2"/>
+  <p:font name="휴먼가는샘체" charset="129" type="6" family="2"/>
+  <p:headersfooters noheader="t"/>
+  <p:pptdocumentsettings framecolors="WhiteTextOnBlack" hidenavigation="t"
+   hideslideanimation="t" browsersupport="v4"/>
+ </p:presentation>
+ <o:shapedefaults v:ext="edit" spidmax="37892">
+  <o:colormru v:ext="edit" colors="#6fc,#fc9,#bbe0e3,#33f"/>
+  <o:colormenu v:ext="edit" fillcolor="none" strokecolor="none"/>
+ </o:shapedefaults></xml>

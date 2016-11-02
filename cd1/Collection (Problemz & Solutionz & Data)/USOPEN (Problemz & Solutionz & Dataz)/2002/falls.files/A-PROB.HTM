@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0066)http://www.uwp.edu/academic/mathematics/usaco/2002/Fall/a-prob.htm -->
+<HTML><HEAD><TITLE>Problems</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=ks_c_5601-1987">
+<META content="MSHTML 5.50.4134.100" name=GENERATOR></HEAD>
+<BODY>
+<TABLE width="99%" border=0>
+  <TBODY>
+  <TR>
+    <TD width="7%"></TD>
+    <TD width="93%" colSpan=2><STRONG><FONT face=Arial><BIG>Problems - 2002 
+      Fall Open, Green</BIG></FONT></STRONG>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD width="7%"></TD>
+    <TD width="89%"><FONT face=Arial><PRE><B>PROBLEM 1: Cow Dominoes</B> [Korean training problem submitted by Joseph Lim]
+ 
+ The cows are playing dominoes with N (1 &lt;= N &lt;= 40) domino tiles.  Each
+ domino has two numbers in the range 0..9 arranged one on top of the other,
+ like this:
+ 
+                              +---+
+                              | 5 |
+                              +---+
+                              | 2 |
+                              +---+
+ 
+ The figure below depicts three dominoes arranged side-by-side along with
+ two base 10 integers that represent the arrangement:
+ 
+        +---+ +---+ +---+
+        | 5 | | 3 | | 4 |   5 * 100 + 3 * 10 + 4 * 1 = 534
+        +---+ +---+ +---+   
+        | 2 | | 4 | | 1 |   2 * 100 + 4 * 10 + 1 * 1 = 241
+        +---+ +---+ +---+
+ 
+ Of course, any domino can be rotated 180 degrees, swapping the top and
+ bottom numbers:
+
+                     +---+      +---+
+                     | 5 |      | 2 |
+                     +---+  -  +---+
+                     | 2 |      | 5 |
+                     +---+      +---+
+ 
+ The particular game the cows are playing requires laying down the N
+ dominoes (choosing the order and the rotation) so that the sum of the two
+ base 10 representations is maximized.  For the example above, the maximum
+ sum is 775. Your job is to calculate that maximum sum.
+ 
+ PROBLEM NAME: cowdom
+ 
+ INPUT FORMAT:
+ 
+ * Line 1: One line with a single integer: N
+ 
+ * Lines 2..N+1: Each line contains two integers describing a domino.
+ 
+ SAMPLE INPUT (file cowdom.in):
+ 
+ 3
+ 1 4
+ 2 5
+ 3 4
+ 
+ OUTPUT FORMAT:
+ 
+ One line with a single integer that is the maximum possible sum of the base
+ 10 representations of the dominoes laid out side-by-side.
+ 
+ SAMPLE OUTPUT (file cowdom.out):
+ 
+ 775
+ 
+ ---------------------------------------------------------------------------
+ 
+ <B>PROBLEM 2: Cow Plumbing</B> [Kolstad, 2001]
+ 
+ The cows want to move water from the pond to the barn, a distance of D (7
+ &lt;= D &lt;= 100,000).  They have a set of P (1 &lt;= P &lt;= 350) pipes, each with
+ positive integer length Li and positive integer capacity Ci (both numbers
+ fit in 24 bits).
+ 
+ The pipes can be connected in series into a run: the connected pipes have
+ the capacity that is the least of all pipes' individual capacities.  A run
+ must reach precisely D units (i.e., the sum of the Li's for the pipes in
+ a run must be D).
+ 
+ Find the maximum amount of water that can be moved from the pond to the
+ barn in one single run of pipe.
+ 
+ PROBLEM NAME: plumb
+ 
+ INPUT FORMAT:
+ 
+ * Line 1: One line with two integers: D and P
+ 
+ * Lines 2..P+1: Each line contains two integers describing a pipe: Li
+           and Ci
+ 
+ SAMPLE INPUT (file plumb.in):
+ 
+ 7 6
+ 4 5
+ 3 6
+ 2 7
+ 1 4
+ 6 7
+ 1 5
+ 
+ OUTPUT FORMAT:
+ 
+ One line with a single integer that is the maximum possible legal flow.
+ 
+ SAMPLE OUTPUT (file plumb.out):
+ 
+ 5
+ 
+ ---------------------------------------------------------------------------
+ 
+ <B>PROBLEM 3: Dinner Time</B> [Burch, 2001]
+ 
+ Farmer John has N (3 &lt;= N &lt;= 50000) cows, each branded with a unique serial
+ number in the range 1..N.  Each night, they line up for dinner by forming
+ a line (queue) with the cows in a relatively random order.  Any given
+ ordering can be expressed as an N digit number in base N.
+ 
+ Farmer John doesn't like random ordering.  He wants the cows to line up in
+ a way such that the number that represents the ordering is minimized.  The
+ cows, however, don't like do be told exactly what to do all the time.
+ 
+ FJ and the cows have reached a compromise:  the cows will line up and then
+ rearrange themselves into a certain new order that minimizes the ordering's
+ representation.  The trick is that each serial number in the new ordering
+ can differ by no more than 1 from the serial number that used to occupy
+ that slot.
+ 
+ If 8 cows lined up like this:   8 5 7 3 6 4 2 1
+ Then the new ordering would be: 7 4 8 2 6 5 3 1
+ because:
+         * No slot in the second list contains a digit that differs from
+           the digit above by more than 1 (sometimes the difference is 0)
+         * This is the smallest number that can be obtained using the rules.
+ 
+ Your job is to tell FJ the new ordering of cows so he can ensure they
+ are lined up properly.
+ 
+ PROBLEM NAME: dinner
+ 
+ INPUT FORMAT:
+ 
+ * Line 1: One line with a single integer: N
+ 
+ * Lines 2..N+1: Each line contains a single integer that is the serial
+           number of a cow in the respective slot.  The left-hand cow
+           is given first.
+ 
+ SAMPLE INPUT (file dinner.in):
+ 
+ 8
+ 8
+ 5
+ 7
+ 3
+ 6
+ 4
+ 2
+ 1
+ 
+ OUTPUT FORMAT:
+ 
+ N lines, each with a single integer that tells which cow belongs in the
+ respective slot.  The first output line should contain the serial
+ number of the cow in the left-hand slot (and so on).
+ 
+ SAMPLE OUTPUT (file dinner.out):
+ 
+ 7
+ 4
+ 8
+ 2
+ 6
+ 5
+ 3
+ 1
+ 
+ ---------------------------------------------------------------------------
+ 
+<B> PROBLEM 4: Cowese</B> [Dan Adkins, 2001]
+ 
+ It is a little known fact that the cows love word games.  They have their
+ own cow crossword puzzles, cow word-find grids, and all sorts of other cow
+ word games.
+ 
+ The cows need some computer assistance, though, in order to design certain
+ word games.  They have lists of N distinct words (2 &lt;= N &lt;= 20,000) no
+ longer than 100 characters, all of which are lower-case and contain only
+ the letters 'a'..'z'.
+ 
+ They need to find two words in the list that share the longest prefix
+ (i.e., the first C characters of the words match and C is the longest
+ length for all possible pairs of words).  The input datasets are guaranteed
+ to have at least one pair of words with a shared prefix.
+ 
+ If more than two word pairs share prefixes of the same maximal size, the
+ cows want to see the pair whose first word is closest to the beginning of
+ the supplied list and whose other maximal-prefix word is closest to the
+ beginning of the list.
+ 
+ PROBLEM NAME: prefix
+ 
+ INPUT FORMAT:
+ 
+ * Line 1: One line with a single integer: N
+ 
+ * Lines 2..N+1: Each line contains a single word.
+ 
+ SAMPLE INPUT (file prefix.in):
+ 
+ 9
+ noon
+ is
+ lunch
+ for
+ most
+ noone
+ waits
+ until
+ two
+ 
+ OUTPUT FORMAT:
+ 
+ Two lines, each with a single word.
+ 
+ SAMPLE OUTPUT (file prefix.out):
+ 
+ noon
+ noone
+      
+      </PRE></FONT></TD>
+    <TD width="4%"></TD></TR></TBODY></TABLE></BODY></HTML>

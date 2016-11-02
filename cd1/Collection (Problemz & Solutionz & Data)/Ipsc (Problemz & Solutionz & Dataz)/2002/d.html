@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+  <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <META name="description" content="Internet Problem Solving Contest (IPSC) is an online programming contest for teams up three people.">
+  <META name="keywords" content="IPSC, programming, contest, online contest">
+  <TITLE>IPSC 2002 Problem D - Space Suckers</TITLE>
+  <link rel="stylesheet" type="text/css" href="main.css">
+  
+</HEAD>
+	
+<BODY BGCOLOR=white TEXT="#191970" LINK="#F4A460" VLINK="#CD853F" ALINK="#FFDEAD">
+
+
+	
+<!-- Title and Logo -->
+<TABLE class="title" WIDTH="100%"><TR VALIGN="top">
+<TD WIDTH="140"><A HREF="http://ipsc.ksp.sk/"><IMG BORDER=0 SRC="ipsc.gif" TITLE="Home" ALT="IPSC Logo"></a></TD>
+<TD ALIGN=CENTER>
+	<H5>Internet Problem Solving Contest</H5>
+	<H1>IPSC 2002<br> Problem D - Space Suckers</H1>
+</TD>
+</TR></TABLE>
+<!-- end of Title and Logo -->
+
+<TABLE CLASS=page ALIGN=center WIDTH="97%"><TR><TD>
+	
+
+<ul>
+<li><a href="d1.in">Easy input data set - D1</a></li>
+<li><a href="d2.in">Difficult input data set - D2</a></li>
+</ul>
+
+<p>
+Today is May 10, 2332. All earth resources were depleted many years ago.
+The war which followed gave rise to the Space Suckers Alliance - the mightiest
+organization in the solar system controlling the trade with valuable raw materials.
+</p>
+
+<p>
+Your today's assignment as a Sucker Cadet is to fly your standard
+Elephant-class mining ship through the asteroid belt in the sector gamma. Your ship is
+equipped with a battery of <b>M</b> sucking-beam generators (SBGs) for collecting
+<b>M</b>
+different kinds of raw materials. Your prospectors have explored <b>N</b> asteroids
+and reported the materials present on them. You are assigned to collect all available
+materials from these asteroids.
+However, your SBGs are not very advanced. You have only one
+beam source mutually used by all SBGs. Individual SBGs can be independently open
+or closed. In order to suck materials from a given asteroid, you need to turn on the
+source. Once the source is turned on, all SBGs that are open
+will start sucking. You may not suck a material that is not present or your ship
+will explode. Moreover, each SBG can be opened and closed only once during your
+mission. Therefore, after you open a particular SBG, you can only visit the asteroids
+that contain the corresponding material until you close this SBG. Since SBGs can be
+opened and closed only once, asteroids containing any given material must form
+a contiguous block in your flight plan.
+</p>
+
+<H3>Input file specification</H3>
+The first line contains two integers <b>M</b> and <b>N</b>, describing the number of SBGs and
+the number of asteroids respectively. 
+<b>M</b> lines follow, each consisting of <b>N</b> characters, zeroes and ones.
+The <b>j</b>-th character on the <b>i</b>-th line is <tt>1</tt> if 
+the raw material <b>i</b> is present on the asteroid <b>j</b> and 
+<tt>0</tt> otherwise.
+
+<H3>Output file specification</H3>
+Output <b>N</b> numbers delimited by spaces describing the order in 
+which to visit the
+asteroids so that all asteroids containing any given material are visited 
+in a contiguous sequence.
+If there is more than one such ordering, output any of them. If no  such ordering exists, output the word <tt>impossible</tt>.
+
+<h3>Example</h3>
+
+<b>Input file:</b>
+<pre>
+3 5
+11010
+00110
+10111
+</pre>
+
+<b>Output file:</b>
+<pre>
+5 3 4 1 2
+</pre>
+
+
+	   
+<!-- END OF PAGE -->   
+</TD></TR></TABLE>
+</BODY>
+</HTML>

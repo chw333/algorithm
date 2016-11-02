@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>KOI 13회 중등부 1.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0" width="595">
+    <tr>
+        <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+            16회 중등부 <br> &nbsp;&nbsp;3. 같은 길이 막대기 만들기</b></font></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="pkoi99m3.htm"><img src="button1.gif"
+             width="72" height="22" border="0"></a></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi99m3.htm"><img src="button3.gif"
+             width="72" height="22" border="0"></a></td>
+    </tr>
+</table>
+<ul>
+    <p>&nbsp; 
+    <table border="0">
+            <tr>
+                <td width="550"><p style="line-height:150%;"><font size="2">&nbsp;&nbsp;일단 
+                문제를 보면 여러 가지 그럴듯한 방법이 떠오르지만, 그 어떤 방법도 
+                모든 경우에 대해 합당한 답을 내어주지는 못한다. 즉, 이 문제는 
+                &quot;이성&quot;이 아닌 &quot;폭력&quot;을 이용해 풀어야 하는 
+                문제이다. 그 폭력적인 방법 중에서도 백트래킹을 이용해야 한다. 
+                출전자들에 따르면 간단한 백트래킹 방법으로도 만점이 나왔다고 
+                하니 이 문제자의 출제 의도 역시 백트래킹이었을 것이다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;일단 
+                백트래킹을 모른다면 N-queen 문제 등을 통해 익히도록 하자. 백트래킹을 
+                알긴 하<br> 는데 이 문제에 구체적으로 어떻게 적용해야 할지 모르는 
+                경우도 있다. 예를 들어 설명하기<br> 로 하겠다.</font></p>
+                <p align="center" style="line-height:150%;"><font size="2"><img src="skoi99m3-1.gif"
+                 width="255" height="190" border="0"></font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;위의 
+                그림에서 보면 모든 막대 조각들의 길이 합은 24이다. 24의 약수로는 
+                1, 2, 3, 4, 6, <br> 8, 12, 24가 있다. 일단 1, 2, 3, 4인 막대기로 
+                조립하는 것은 불가능 하니(길이가 5인 조각이 <br> 있으니까) 6을 
+                생각해 보기로 한다. 막대기의 길이가 6이라면 개수는 4개일 것이다. 
+                4개의 <br> 길이 6짜리의 빈 공간을 만들고, 이를 A, B, C, D라 
+                하자. 우리는 이 4개의 공간에 조각들<br> 을 가지고 끼워 맞춰 
+                넣는 퍼즐을 해야 하는 셈이다. 아래의 설명을 들으면서 머리 속에 
+                그<br> 림을 잘 그리기 바란다.<br></font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;위의 
+                그림에서 주어진 순서대로 조각들을 생각해 보자. 먼저 길이가 5자리인 
+                조각을 넣을 <br> 수 있는 곳은 A, B, C, D이다. 하지만 이 경우에는 
+                어디에 넣든 상관없을 것이다. 편의상 A<br> 에 넣도록 하자. 그 
+                다음 조각은 길이가 2이다. 이 조각은 A에는 넣을 수 없다(방금 
+                5짜리 <br> 조각을 넣어서 길이 초과). 따라서 B, C, D에 넣을 수 
+                있는데 이 경우에도 어디에 넣든 상<br> 관 없으므로 B에 넣자. 
+                그 다음 조각은 길이가 1인데, 여기에서 갈림길이 생긴다. 1은 A에 
+                <br> 넣을 수도 있고 B에 넣을 수도 있고 C에 넣을 수도 있다(D는 
+                C와 같으니 생각할 필요는 <br> 없다). 컴퓨터가 신이 아닌 이상 
+                어디에 넣어야 할지 판단할 수는 없다. 따라서 모든 경우를 <br> 
+                전부 고려해 봐야 하는 셈이다. 이런 식으로 백트래킹을 구현하면 
+                된다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;이 과정에서 
+                모든 조각을 넣는데 성공하면 답을 찾은 것이다. 찾지 못했다면 
+                대신 길이가 <br> 8인 막대기를 3개 만들기 위해 다시 백트래킹을 
+                해야 할 것이다.</font></td>
+        </tr>
+    </table>
+    <p>&nbsp;</p>
+</ul>
+</body>
+
+</html>

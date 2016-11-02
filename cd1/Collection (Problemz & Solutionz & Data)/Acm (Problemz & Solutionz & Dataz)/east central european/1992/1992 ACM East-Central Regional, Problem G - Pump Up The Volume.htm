@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0046)http://www.karrels.org/Ed/ACM/ec92/prob_g.html -->
+<HTML><HEAD><TITLE>1992 ACM East-Central Regional, Problem G - Pump Up The Volume</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type><LINK 
+href="mailto:Ed@Tool.com" rev=made>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY><EM>Not an official ACM page</EM> <BR>[<A 
+href="http://www.karrels.org/Ed/ACM/ec92/prob_h.html"> Problem H </A>| <A 
+href="http://www.karrels.org/Ed/ACM/ec92/index.html">1992 ACM East-Central 
+Regional problem set</A> | <A href="http://www.karrels.org/Ed/ACM/index.html">My 
+ACM problem archive</A> | <A href="http://www.karrels.org/Ed/index.html">my home 
+page</A>] 
+<HR>
+
+<CENTER><IMG alt="1992 ACM East Central Regional Programming Contest" height=21 
+src="1992 ACM East-Central Regional, Problem G - Pump Up The Volume.files/header.gif" 
+width=561></CENTER>
+<P>
+<CENTER><IMG height=94 
+src="1992 ACM East-Central Regional, Problem G - Pump Up The Volume.files/probg.gif" 
+width=233><BR><IMG alt="Pump Up The Volume" height=88 
+src="1992 ACM East-Central Regional, Problem G - Pump Up The Volume.files/pumpvolume.gif" 
+width=311> </CENTER>
+<P>A particular part of the world has recently been experiencing a sudden and 
+marked proliferation of pirate radio stations. So much so, in fact, that a group 
+of concerned nations have asked for you assistance in pinpointing the source of 
+the illegal transmissions. The respective governments have agreed to provide you 
+with data form a set of mobile tracking units, each capable of determining its 
+distance from a radio signal's point of broadcast. Armed with the information 
+from three of these units and a two-dimensional map of the area, you are to 
+write a program which will determine the distance and the direction of the 
+particular pirate trasmitter from the nearest city in the area. 
+<P>
+<H3>Input</H3>The input will consist of a two-dimensional map (using Cartesian 
+coordinates) followed by the number of pirate signals that must be located and a 
+corresponding number of pirate station datasets. 
+<P>In themap, the data for each city will appear on a separate line. The data 
+for each city will consist of a 15-character name followed by the city's x- and 
+y-coordinates and a radius. The x- and y-coordinates give the city's 
+geographical center while the radius gives the distance from the center of the 
+city to the city limits (all cities map be considered to be circular for this 
+problem). There will be no more than 50 cities and the last city on the map will 
+be located at the origin (0.0, 0.0). 
+<P>Following the map is a single integer (on a line by itself) which gives the 
+number of pirate station datasets that follow. Each pirate station dataset will 
+consist of nine readings on a single line, separated by spaces. The first three 
+readings correspond to mobile tracking unit A, the next three to unit B, and the 
+last three to unit C. The first two readings in a set of three are the x- and y- 
+coordinates where the mobile tracking unit itself is located while the third 
+reading is the distance the unit determined itself to be from the source of the 
+pirate radio station signal. Note that all coordinate and distance values are 
+given in kilometers and should be stored as real numbers. The locations of the 
+three mobile tracking units reporting information on the pirate signal will not 
+be collinear and will always be at least 10 kilometers apart. No city will be 
+located more than 6000 kilometers away from the city at the origin. You may 
+assume that only valid data will be supplied. 
+<P>
+<H3>Output</H3>Your program should process each pirate station dataset using the 
+information supplied by the three mobile tracking units and produce a summary 
+line for each pirate signal which realates the source of the broadcast to the 
+nearest town on the map. Specifically, your output should supply the distance 
+from the illegal transmitter to the city limits (not the geographical center) of 
+the nearest city, the principle compass direction of the illegal transmitter 
+from the nearest city (<CODE>North</CODE>, <CODE>North East</CODE>, 
+<CODE>East</CODE>, <CODE>South East</CODE>, <CODE>South</CODE>, <CODE>South 
+West</CODE>, <CODE>West</CODE>, or <CODE>North West</CODE>), and the name of 
+that city. 
+<P>The distance should be correct to within ± 0.02 of a kilometer and output to 
+two digits of accuracy. To determine the compass direction of the pirate 
+transmitter from the nearest city, each of the eight principle directions should 
+be considered to be at the center of a 45° arc in that direction. Illegal 
+transmitters which fall anywhere within a particular arc are considered to be in 
+that direction. Thus if due North is at 0°, a transmitter that was at an angle 
+between 22° and 67° (inclusive) would be considered <CODE>North East</CODE> of 
+the city while a transmitter that was at an angle between 68° and 112° 
+(inclusive) would be considered <CODE>East</CODE> of the city. When determining 
+the direction of the pirate transmitter, an angle should be rounded off to the 
+nearest whole degree. 
+<P>Pirate transmitters that are located inside of a city's limits should be 
+reported as originating from that city (no distance or directional information 
+should be output in this case). All pirate transmitter reports should be 
+preceded by a transmitter I. D. number (starting with transmitter 1). Refer to 
+the following example for the acceptable phrasing of your output. 
+<P>
+<H3>Sample Input</H3><PRE>Pleasantville  937.8     1277.34     4.9
+Avion          494.17    -483.06     12.7
+Caniama        -803.24   1351.68     6.53
+Kingstons Falls-554.45   -300.0      1.82
+Otisburg       0.0       0.0         3.6
+5
+286.91 1538.6 676.989 1627.84 1450.3 1026.29 1140.4 451.47 705.152
+-1021.9 -1064.67 2164.66 1089.23 0.0 1796.91 993.94 -1516.17 2882.78
+200.0 -295.6 824.776 -683.94 -1118.64 998.19 474.16 1729.8 2145.37
+-173.21 -700.2 695.308 -202.87 191.04 971.421 1407.9 525.65 1369.38
+747.02 419.61 628.79 0.0 -582.19 645.469 -987.65 294.3 1300.12
+</PRE>According to the above dataset, the town of Caniama is located at 
+(-803.24, 1351.68) and has a radius of 6.53 kilometers, and there are 5 pirate 
+transmitters in the pirate station dataset. Furthermore, in the case of pirate 
+station #2 the mobile tracking units are reporting the following information: 
+Mobile Tracking Unit A, which is located at (-1021.9, -1064.67), has detected 
+the transmission from 2164.66 kilometers away; Unit B, located at (1089.23, 0.0) 
+isreceiving the broadcast from 1796.91 kilometers away; and Unit C, located at 
+(993.94, -1516.17), is picking it up from 2882.78 kilometers away. 
+<P>
+<H3>Output for the Sample Input</H3><PRE>Pirate Transmitter 1 is located 354.65 kilometers South West of Pleasantville
+Pirate Transmitter 2 is located 524.55 kilometers South East of Caniama
+Pirate Transmitter 3 is located 182.27 kilometers North of Kingstons Falls
+Pirate Transmitter 4 is located in Avion
+Pirate Transmitter 5 is located 275.12 kilometers East of Otisburg
+</PRE>
+<HR>
+This page maintained by <A href="mailto:Ed@Tool.com">Ed Karrels</A>.<BR>Last 
+updated December 12, 1999 </BODY></HTML>

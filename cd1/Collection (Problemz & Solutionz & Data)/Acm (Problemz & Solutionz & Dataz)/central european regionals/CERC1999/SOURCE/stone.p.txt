@@ -1,0 +1,103 @@
+program Teleso(input,output);
+
+(*
+  Lifting the Stone
+  CERC 1999, Jan Cada
+*)
+
+var n_uloh        : integer;
+    n_bodu, i     : integer;
+    X,Y           : real;
+    Xold,Yold     : real;
+    Xorg,Yorg     : real;
+    SumSp, SumSm  : real;
+    SumTXp, SumTYp : real;
+    SumTXm, SumTYm : real;
+    S,TX,TY       : real;
+    outx,outy     : integer;
+   
+begin
+ readln(n_uloh);
+ while(n_uloh>0) do
+ begin
+  SumSp:=0; SumSm:=0;
+  SumTXp:=0; SumTYp:=0;
+  SumTXm:=0; SumTYm:=0;
+  readln(n_bodu);
+  readln(Xorg,Yorg);
+  Xold:=Xorg; Yold:=Yorg;
+  for i:=2 to n_bodu do 
+  begin
+   readln(X,Y);
+   if (X<>Xold) and ((Y+Yold)<>0) then 
+   begin
+    S     := (Yold+Y) * (X-Xold) / 2; 
+    if(Yold>Y) then 
+    begin 
+     TX :=(Yold+2*Y)/(Yold+Y) * abs(X-Xold)/3;
+     TY := Yold/2 - (Yold-Y)/2/abs(X-Xold)*TX;
+     if(Xold<X) 
+      then TX := TX + Xold
+      else TX := Xold - TX 
+    end 
+    else
+    begin 
+     TX :=(Y+2*Yold)/(Y+Yold) * abs(X-Xold)/3;
+     TY := Y/2 - (Y-Yold)/2/abs(X-Xold)*TX;
+     if(Xold<X) 
+      then TX := X - TX
+      else TX := X + TX 
+    end;
+    if S>0 then 
+    begin
+     SumTXp := (TX*S + SumTXp*SumSp)/(S + SumSp);
+     SumTYp := (TY*S + SumTYp*SumSp)/(S + SumSp);
+     SumSp  := SumSp + S;
+    end else
+    begin
+     SumTXm := (TX*S + SumTXm*SumSm)/(S + SumSm);
+     SumTYm := (TY*S + SumTYm*SumSm)/(S + SumSm);
+     SumSm  := SumSm + S;
+    end;  
+   end;  
+   Yold:=Y; Xold:=X;
+  end; 
+  X:=Xorg; Y:=Yorg;
+  if(Xold<>X) and ((Y+Yold)<>0)then
+  begin
+    S     := (Yold+Y) * (X-Xold) / 2; 
+    if(Yold>Y) then 
+    begin 
+     TX :=(Yold+2*Y)/(Yold+Y) * abs(X-Xold)/3;
+     TY := Yold/2 - (Yold-Y)/2/abs(X-Xold)*TX;
+     if(Xold<X) 
+      then TX := TX + Xold
+      else TX := Xold - TX 
+    end 
+    else
+    begin 
+     TX :=(Y+2*Yold)/(Y+Yold) * abs(X-Xold)/3;
+     TY := Y/2 - (Y-Yold)/2/abs(X-Xold)*TX;
+     if(Xold<X) 
+      then TX := X - TX
+      else TX := X + TX 
+    end;
+    if S>0 then 
+    begin
+     SumTXp := (TX*S + SumTXp*SumSp)/(S + SumSp);
+     SumTYp := (TY*S + SumTYp*SumSp)/(S + SumSp);
+     SumSp  := SumSp + S;
+    end else
+    begin
+     SumTXm := (TX*S + SumTXm*SumSm)/(S + SumSm);
+     SumTYm := (TY*S + SumTYm*SumSm)/(S + SumSm);
+     SumSm  := SumSm + S;
+    end;  
+  end;
+  outx := round((SumTXp*SumSp+SumTXm*SumSm)/(SumSp+SumSm)*100);
+  outy := round((SumTYp*SumSp+SumTYm*SumSm)/(SumSp+SumSm)*100);
+  writeln((outx/100):1:2,' ',(outy/100):1:2);
+  
+  n_uloh := n_uloh - 1; 
+ end;
+end.

@@ -1,0 +1,65 @@
+/* PROBLEM 2 - C Solution */
+/* Hamming distance problem */
+#include <stdio.h>
+#define MAXBITS 10
+
+void display_string( int bit_string[], int n)
+{
+    int count;
+
+    for( count=0; count<n; count++ )
+	printf("%1d", bit_string[count]);
+
+    printf("\n");
+}
+
+void make_copy( int string1[], int n, int string2[] )
+{
+    int count;
+
+    for( count=0; count<n; count++ )
+	string2[count] = string1[count];
+}
+
+void template( int bit_string[], int n, int h, int nbits )
+{
+    int count;
+    int temp_string[MAXBITS];
+
+    if ( h == 0 )
+    {
+	for( count=0; count<n; count++ )
+	    bit_string[count] = 0;
+	display_string( bit_string, nbits );
+    }
+    else
+    {
+	if ( h == n )
+	{
+	    for( count=0; count<n; count++ )
+		bit_string[count] = 1;
+	    display_string(bit_string, nbits );
+	}
+	else
+	{
+	    make_copy( bit_string, n, temp_string );
+	    bit_string[ n-1 ] = 0;
+	    template( bit_string, n-1, h, nbits );
+	    make_copy( temp_string, n, bit_string );
+	    bit_string[ n-1 ] = 1;
+	    template( bit_string, n-1, h-1, nbits );
+	}
+    }
+}
+
+main()
+{
+    int bit_string[MAXBITS];
+    int n;
+    int h;
+
+    printf("%s \n", "NumberBits, HamDist?");
+    scanf("%d %d", &n, &h);
+    printf("\n");
+    template(bit_string, n, h, n );
+}

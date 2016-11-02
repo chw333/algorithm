@@ -1,0 +1,184 @@
+<html>
+<head> <title>Problem 7: Character Recognition</title> </head>
+<body background="../../usaco/bg3.jpg">
+<img src="../../usaco/cow1.jpg" width="742" height="118">
+<center>
+<b><font size="7">Character Recognition</font></b><br>
+</center>
+
+<P>This problem requires you to write a program that performs character
+recognition.
+
+<P>Each ideal character image has 20 lines of 20 digits. Each digit is
+a `0' or a `1'. See Figure 1a (way below) for the layout of character
+images in the file.</P>
+
+<P>The file <a href="/usaco/font.in">font.in</a> contains representations
+of 27 ideal character images in this order:</P>
+
+<P>_abcdefghijklmnopqrstuvwxyz</P>
+
+<P>where _ represents the space character.  Each ideal character is 20
+lines long.
+
+<P>The input file contains one or more potentially corrupted character
+images. A character image might be corrupted in these ways:</P>
+
+<UL>
+<LI>at most one line might be duplicated (and the duplicate immediately follows)
+<LI>at most one line might be missing
+<LI>some 0's might be changed to 1's</LI>
+<LI>some 1's might be changed to 0's.</LI></UL>
+
+<P>No character image will have both a duplicated line <B>and</B> a
+missing line. No more than 30% of the 0's and 1's will be changed in
+any character image in the evaluation datasets.</P>
+
+<P>In the case of a duplicated line, one or both of the resulting lines
+may have corruptions, and the corruptions may be different.</P>
+
+<P>Write a program to recognize the sequence of one or more characters
+in the image provided in the input file using the font provided in file
+font.in.
+
+<P>Recognize a character image by choosing the font character images
+that require the smallest number of overall changed 1's and 0's to be
+corrupted to the given font image, given the most favourable assumptions
+about duplicated or omitted lines. Count corruptions in only the least
+corrupted line in the case of a duplicated line.  You must determine
+the sequence of characters that most closely matches the input sequence
+(the one that requires the least number of corruptions).  There is a
+unique best solution for each evaluation dataset.</P>
+
+<P>A correct solution will use precisely all of the data supplied in
+the input file.</P>
+
+<h3>PROGRAM NAME: char</h3>
+
+<h3>INPUT FORMAT (both input files)</h3>
+
+<P>Both input files begin with an integer N (19 &lt; N &lt; 1200) that
+specifies the number of lines that follow:</P>
+
+N<BR>
+(digit1)(digit2)(digit3) ... (digit20)<BR>
+(digit1)(digit2)(digit3) ... (digit20)<BR>
+...<BR>
+
+<P>Each line of data is 20 digits wide. There are no spaces separating
+the zeros and ones.</P>
+
+<P>The file font.in describes the font. It will always contain 541
+lines. It may differ for each evaluation dataset.</P>
+<h3>SAMPLE INPUT (file char.in) </h3>
+
+<TABLE BORDER CELLSPACING=1 CELLPADDING=7>
+<TR><TD VALIGN="TOP">
+<P>Incomplete sample showing the<BR><I>beginning</I> of
+<CODE>font.in</CODE><BR>
+(space and <CODE><B>a</B></CODE>).</P>
+</TD>
+<TD VALIGN="TOP">
+<P>Sample <CODE>char.in</CODE>,
+showing<BR>
+an <CODE><B>a</B></CODE> corrupted</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<B><P>font.in</B></TD>
+<TD VALIGN="TOP">
+<B><P>char.in</B></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+540<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000011100000000000<BR>
+00000111111011000000<BR>
+00001111111001100000<BR>
+00001110001100100000<BR>
+00001100001100010000<BR>
+00001100000100010000<BR>
+00000100000100010000<BR>
+00000010000000110000<BR>
+00000001000001110000<BR>
+00001111111111110000<BR>
+00001111111111110000<BR>
+00001111111111000000<BR>
+00001000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000</TD>
+<TD VALIGN="TOP">
+19<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000000000000000000<BR>
+00000011100000000000<BR>
+00100111011011000000<BR>
+00001111111001100000<BR>
+00001110001100100000<BR>
+00001100001100010000<BR>
+00001100000100010000<BR>
+00000100000100010000<BR>
+00000010000000110000<BR>
+00001111011111110000<BR>
+00001111111111110000<BR>
+00001111111111000000<BR>
+00001000010000000000<BR>
+00000000000000000000<BR>
+00000000000001000000<BR>
+00000000000000000000<BR>
+00000000000000000000</FONT></TD>
+</TR>
+<TR ALIGN=CENTER>
+<TD><FONT SIZE=2>Figure 1a</FONT></TD>
+<TD><FONT SIZE=2>Figure 1b</FONT></TD>
+</TR>
+</TABLE>
+
+<h3>OUTPUT FORMAT</h3>
+
+<p>Your program must produce an output file that contains a single
+string of the characters recognized. Its format is a single line of
+ASCII text. The output should not contain any separator characters.  If
+your program does not recognize a particular character, it must output
+a <CODE>?</CODE> in the appropriate position. </P>
+
+<h3>SAMPLE OUTPUT (file char.out)</h3>
+
+<pre>
+a
+</pre>
+
+Note that the output is a line with two characters: a blank followed by
+an `a'.
+<br><br>
+<center>
+<a href="mailto:grader@ace.delos.com">Submit Solution via Email</a>
+&nbsp;|&nbsp; <a href="BACK"> USACO Gateway </a>  &nbsp;| &nbsp;
+<a href="mailto:kolstad@ace.delos.com">Comment or Question </a>
+</center>
+</body>
+</html>

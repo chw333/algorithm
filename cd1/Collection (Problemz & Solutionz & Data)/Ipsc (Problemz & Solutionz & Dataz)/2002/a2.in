@@ -1,0 +1,194 @@
+======================== C source ==============================
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int a[2048];
+int n, m = 0, o;
+
+int c[1024];
+int d[1024];
+
+int
+funa ()
+{
+  int i, j;
+
+  for (i = 0, j = 0; i < n; i++)
+    j += a[i];
+
+  return j;
+}
+
+void
+funb (int i)
+{
+  int j, k;
+
+  if (i > funa ())
+    return;
+
+  for (j = 0, k = 1; j < n; j++)
+    if (c[j] != d[j])
+      k = 0;
+
+  if (k)
+    {
+      if (i < o)
+	o = i;
+      return;
+    }
+
+  for (j = 0; j < n; j++)
+    {
+      c[j] = (a[j] + c[j] + 1) % a[j];
+      funb (i + 1);
+      c[j] = (a[j] + c[j] - 1) % a[j];
+      c[j] = (a[j] + c[j] - 1) % a[j];
+      funb (i + 1);
+      c[j] = (a[j] + c[j] + 1) % a[j];
+    }
+}
+
+void
+funx (int i)
+{
+  int j;
+
+  if (i == n)
+    {
+      o = 32767;
+      funb (0);
+      if (o > m)
+	m = o;
+    }
+  else
+    for (j = 0; j < a[i]; j++)
+      {
+	c[i] = j;
+	funx (i + 1);
+      }
+}
+
+void
+funny (int i)
+{
+  int j;
+
+  if (i == n)
+    funx (0);
+  else
+    for (j = 0; j < a[i]; j++)
+      {
+	d[i] = j;
+	funny (i + 1);
+      }
+}
+
+
+int
+main ()
+{
+  int i;
+
+  n = 47;
+  for (i = 0; i < n; i++)
+    a[i] = i + 1;
+
+  funny (0);
+  printf ("%d\n", m);
+
+  return 0;
+}
+
+
+======================== Pascal source ==============================
+
+
+Const m : Integer = 0;
+
+Var a : Array [0 .. 2047] Of Integer;
+    c : Array [0 .. 1023] Of Integer;
+    d : Array [0 .. 1023] Of Integer;
+    n, o : Integer;
+
+Function funa : Integer;
+Var i, j : Integer;
+Begin
+  j := 0;
+  For i := 0 To n - 1 Do
+    Inc (j, a[i]);
+  funa := j;
+End;
+
+Procedure funb (i : Integer);
+Var j : Integer;
+    k : Boolean;
+Begin
+  If i > funa Then
+    Exit;
+
+  k := True;
+  For j := 0 To n - 1 Do
+    If c[j] <> d[j] Then
+      k := False;
+
+  If k Then
+  Begin
+    If i < o Then
+      o := i;
+    Exit;
+  End;
+
+  For j := 0 To n - 1 Do
+  Begin
+    c[j] := (a[j] + c[j] + 1) Mod a[j];
+    funb (i + 1);
+    c[j] := (a[j] + c[j] - 1) Mod a[j];
+    c[j] := (a[j] + c[j] - 1) Mod a[j];
+    funb (i + 1);
+    c[j] := (a[j] + c[j] + 1) Mod a[j];
+  End;
+End;
+
+Procedure funx (i : Integer);
+Var j : Integer;
+Begin
+  If i = n Then
+  Begin
+    o := 32767;
+    funb (0);
+    If o > m Then
+      m := o;
+  End Else
+  For j := 0 To a[i] - 1 Do
+  Begin
+    c[i] := j;
+    funx (i + 1);
+  End;
+End;
+
+Procedure funny (i : Integer);
+Var j : Integer;
+Begin
+  If i = n Then
+    funx (0)
+  Else
+  For j := 0 To a[i] - 1 Do
+  Begin
+    d[i] := j;
+    funny (i + 1);
+  End;
+End;
+
+Var i : Integer;
+
+Begin
+  n := 47;
+  
+  For i := 0 To n - 1 Do
+    a[i] := i + 1;
+
+  funny (0);
+  WriteLn (m);
+End.

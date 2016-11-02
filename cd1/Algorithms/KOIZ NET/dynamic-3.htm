@@ -1,0 +1,145 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ks_c_5601-1987">
+<title>행렬 곱셈(Matrix Multiplication)</title>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><b><font color="#0066CC" size="5">행렬 곱셈(Matrix Multiplication)</font></b></p>
+<p><font size="2">&nbsp; 앞에서 살펴본 다이나믹 프로그래밍 기법을 이용하여 행렬 
+곱을 계산할 때, 계산량을 줄일 수 있는 방법을 생각해보자. p X q인 행렬 M p X 
+q와 q X r인 행렬 M q X r의 곱은 p * q * r 호의 곱셈이 필요하다. 다음과 같은 
+행렬 곱을 해야 할 경우 어떤 방법으로 곱셈을 수행해 좋은지 생각해 보고, 이를 
+다이나믹 프로그래밍으로 해결하는 프로그램을 작성해보자.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p align="center"><font size="2">M 4 x 2, M 2 x 3, M 3 x 1, M 1 x 2, M 2 x 2, 
+M 2 x 3</font></p>
+<p><font size="2">&nbsp; 각 행렬을 순서대로, A,B,C,D,E,F라고 할 때 다음과 같은 
+표를 만들어 해결한다.</font></p>
+<table align="center" border="1" cellspacing="0" bordercolordark="white" bordercolorlight="black">
+    <tr>
+        <td>
+            <p align="center">&nbsp;</p>
+        </td>
+        <td>
+            <p align="center">B</p>
+        </td>
+        <td>
+            <p align="center">C</p>
+        </td>
+        <td>
+            <p align="center">D</p>
+        </td>
+        <td>
+            <p align="center">E</p>
+        </td>
+        <td>
+            <p align="center">F</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p align="center">A</p>
+        </td>
+        <td>
+            <p align="center"><font size="2">24[A][B]</font></p>
+        </td>
+        <td>
+            <p align="center"><font size="2">&nbsp;14[A][BC]</font></p>
+        </td>
+        <td>
+            <p align="center"><font size="2">&nbsp;22[ABC][D]</font></p>
+        </td>
+        <td>
+            <p align="center"><font size="2">&nbsp;26[ABC][DE]</font></p>
+        </td>
+        <td>
+            <p align="center"><font size="2">&nbsp;36[ABC][DEF]</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p align="center">B</p>
+        </td>
+        <td>
+            <p align="center">&nbsp;</p>
+        </td>
+        <td>
+            <p align="center"><font size="2">6[B][C]</font></p>
+        </td>
+        <td>
+            <p align="center"><font size="2">10[BC][D]</font></p>
+        </td>
+        <td>
+            <p align="center"><font size="2">14[BC][DE]</font></p>
+        </td>
+        <td>
+            <p align="center"><font size="2">22[BC][DEF]</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p align="center">C</p>
+        </td>
+        <td>
+            <p align="center">&nbsp;</p>
+        </td>
+        <td>
+            <p align="center">&nbsp;</p>
+        </td>
+        <td>
+            <p align="center"><font size="2">6[C][D]</font></p>
+        </td>
+        <td>
+            <p align="center"><font size="2">10[C][DE]</font></p>
+        </td>
+        <td>
+            <p align="center"><font size="2">19[C][DEF]</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p align="center">D</p>
+        </td>
+        <td>
+            <p align="center">&nbsp;</p>
+        </td>
+        <td>
+            <p align="center">&nbsp;</p>
+        </td>
+        <td>
+            <p align="center">&nbsp;</p>
+        </td>
+        <td>
+            <p align="center"><font size="2">4[D][E]</font></p>
+        </td>
+        <td>
+            <p align="center"><font size="2">10[DE][F]</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p align="center">E</p>
+        </td>
+        <td>
+            <p align="center">&nbsp;</p>
+        </td>
+        <td>
+            <p align="center">&nbsp;</p>
+        </td>
+        <td>
+            <p align="center">&nbsp;</p>
+        </td>
+        <td>
+            <p align="center">&nbsp;</p>
+        </td>
+        <td>
+            <p align="center"><font size="2">12[E][F]</font></p>
+        </td>
+    </tr>
+</table>
+<p><font size="2">&nbsp;</font></p>
+</body>
+
+</html>

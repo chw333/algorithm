@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="description" CONTENT="The Hiker">
+   <META NAME="keywords" CONTENT="Problemset">
+   <META NAME="resource-type" CONTENT="document">
+   <META NAME="distribution" CONTENT="global">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (WinNT; I) [Netscape]">
+   <TITLE>The Hiker</TITLE>
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<LINK REL=STYLESHEET HREF="Problemset.css">
+</HEAD>
+<BODY LANG="EN">
+
+<H1>
+The Hiker</H1>
+
+<H2>
+Background</H2>
+Bill is a passionate hiker. Every summer he wants to hike through a forest
+which he hasn't seen before. Therefore he gathers information about different
+forests. Bill has developed his own ideas when to appreciate a forest:
+In the forest Bill wants to camp out on a clearing. When the sun rises,
+he starts his hiking-tour through the forest until he reaches the next
+clearing in the evening. There he eats some beans and sets up his camp
+again. Every day he continues his tour until he has camped on every clearing
+at least once.
+
+<P>At the end of his hiking tour he wants to arrive at the clearing he
+started from and wants to have traveled on every path of the forest exactly
+once. Between two clearings there are no two different direct paths.
+<H2>
+The Problem</H2>
+For a given set of forests your program has to check which forests fit
+to Bill's preferences. If a forest fits, show one tour through the forest.
+If there are several different possible tours use the following rules for
+deciding which tour your program should choose: Start at the clearing with
+the smallest identifier (every clearing is assigned an integer identifier).
+For every clearing with alternatives (within correct tours) Bill chooses
+the one with the smallest identifier.
+<H2>
+The Input</H2>
+The first line contains the number of forests to check. For each forest
+the input contains the number of paths (less than 1000) followed by one
+line for each path. A path is given by two positive integer values separated
+by a space, which are identifiers for the clearings. The maximum number
+of clearings is 1000.
+<H2>
+The Output</H2>
+Your program shall output one line for each forest. If there is no possible
+hiking tour for Bill write <TT>no</TT> in the output. Otherwise print one
+course as it is specified above: Print the identifiers of the clearings
+in the tour in one line separated by a space. The last clearing must be
+identical to the first clearing.
+<H2>
+Sample Input</H2>
+
+<PRE>2
+4
+1 4
+3 2
+2 4
+1 3
+1
+1 2</PRE>
+
+<H2>
+Sample Output</H2>
+1 3 2 4 1<BR>
+no
+</BODY>
+</HTML>

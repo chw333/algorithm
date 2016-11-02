@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0068)http://www.uwp.edu/academic/mathematics/usaco/2000/Winter/a-prob.htm -->
+<HTML><HEAD><TITLE>Problems</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=ks_c_5601-1987">
+<META content="MSHTML 5.50.4134.100" name=GENERATOR></HEAD>
+<BODY>
+<TABLE width="99%" border=0>
+  <TBODY>
+  <TR>
+    <TD width="7%"></TD>
+    <TD width="93%" colSpan=2><STRONG><FONT face=Arial><BIG>Problems - 2000 
+      Winter Open, Green</BIG></FONT></STRONG>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD width="7%"></TD>
+    <TD width="83%"><FONT face=Arial><SMALL><A name=p1></A><B>PROBLEM 1: Gift 
+      Giving </B>[Hal Burch]&nbsp;<B><BR></B>
+      <P>It's a holiday down at the farm. You've purchased gifts for the cows 
+      and now are trying to choose the perfect gift for each cow. Each cow has 
+      given you her wish list for gifts. Each cow will receive exactly one gift. 
+      A cow is pleased by her gift only if it appears on her wish list. 
+      <P>Your job is to determine the greatest number of cows that can be 
+      pleased given a certain set of gifts to give. The list of gifts might list 
+      a gift more than once if more than one was bought. 
+      <P>In this problem, each gift will be designated by an integer in the 
+      range 1..1000. 
+      <P>INPUT FORMAT: 
+      <P>
+      <UL>
+        <LI>Line 1: two integers: C, 1 &lt;= C &lt;= 100, the number of cows 
+        getting gifts G, C &lt;= G &lt;= 100, the number of gifts to give 
+        <LI>Line 2: G single-space separated integers denoting gifts to give 
+        <LI>Line 3..C+2: C lines specifying gifts cows want, each line like 
+        this:<BR>n&nbsp; w1 w2 ... wn<BR>where n is the number of gifts that cow 
+        wants and w0, w1, etc. are the gift numbers. </LI></UL>
+      <P>SAMPLE INPUT (file INPUT.TXT): 
+      <P>5 5<BR>35 35 483 622 801<BR>1 35<BR>1 35<BR>1 35<BR>3 483 622 801<BR>3 
+      35 801 483<BR>
+      <P>OUTPUT FORMAT: 
+      <P>A single line with an integer that tells how many cows can be satisfied 
+      by the list of gifts. 
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): 
+      <P>4 
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Winter/a-data.htm#p1">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Winter/a-sol.htm#p1">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p2></A><B>PROBLEM 2: Building Blocks</B> [Adapted by Hal Burch] 
+      <P>The cows want to build a tower out of the blocks they found. They want 
+      you to tell them how high the tower will be, given the sizes of the 
+      blocks. Each block has a width and length in addition to being one unit in 
+      height. The blocks must be stacked with all their edges parallel to a set 
+      of axes, and the blocks can be rotated 90 degrees, if you wish. In order 
+      to build a stable tower, each higher block must be no larger than the 
+      block on which it sits -- both the width and the length of each higher 
+      block must be no larger than the width and length of the block upon which 
+      it sits. 
+      <P>Your job is to determine the height of the tallest possible stable 
+      tower that can be built with a given collection of blocks. 
+      <P>INPUT FORMAT: 
+      <P>
+      <UL>
+        <LI>Line 1: one integer: B, 1 &lt;= B &lt;= 100, the number of blocks 
+        <LI>Line 2..B+1: B lines, each with two integers denoting the width and 
+        length of a square block. Each of these dimensions is at least one unit 
+        and at most 100 units. </LI></UL>
+      <P>SAMPLE INPUT (file INPUT.TXT): 
+      <P>5<BR>3 7<BR>4 5<BR>4 5<BR>5 6<BR>2 2 
+      <P>OUTPUT FORMAT: 
+      <P>A single line with an integer telling how high the tallest possible 
+      stable tower can be. 
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): 
+      <P>4 
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Winter/a-data.htm#p2">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Winter/a-sol.htm#p2">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p3></A><B>PROBLEM 3: Cow Calisthenics </B>[Hal Burch &amp; Russ 
+      Cox] 
+      <P>The cows hate calisthenics (exercises). They do, however, enjoy jogging 
+      a little bit. They have surveyed their pasture and have created a list of 
+      all the possible paths in the field. Interestingly, the paths are 
+      "directed" -- paths can be traversed only in one direction. Sometimes, two 
+      different paths connect a pair of points, one path going one way and one 
+      path going the other way. 
+      <P>Your job is to help the cows find the shortest "circular route" around 
+      which they can jog. A circular route is one which starts and ends at the 
+      same location. The length of a route is the sum of the lengths of the 
+      paths one must traverse to jog around the route. 
+      <P>Paths in their pasture always connect two points. Each point is named 
+      as a positive integer. These points are sequentially numbered, starting at 
+      1. Distances between points are positive integers. 
+      <P>It is guaranteed that at least one "circular route" appears in any 
+      supplied cow pasture. 
+      <P>INPUT FORMAT: 
+      <P>
+      <UL>
+        <LI>Line 1: integer: N, 1 &lt;= N &lt;= 2000, the number of connections 
+        between pairs of points in the pasture; the number of distinct points 
+        will never exceed 400 
+        <LI>Line 2..N+1: N lines specifying a space-separated beginning point, 
+        end point, and distance; no distances exceeds 1000 </LI></UL>
+      <P>SAMPLE INPUT (file INPUT.TXT): 
+      <P>4<BR>3 1 5<BR>1 2 4<BR>2 3 3<BR>1 3 44 
+      <P>OUTPUT FORMAT: 
+      <P>A single line with the integer distance around the shortest possible 
+      circuit. 
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): 
+      <P>12 
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Winter/a-data.htm#p3">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Winter/a-sol.htm#p3">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p4></A><B>PROBLEM 4: Equal Summed Subsets</B> [Adapted by Rob 
+      Kolstad]
+      <P>Given the set of integers {1, 2, 3, ..., N}, determine the total number 
+      of ways you can divide the set into two equal-summed subsets A and B of 
+      that set. The union of A and B is the set of integers {1,2,...n} and A and 
+      B have no integers in common. Do not count answers that are just mirror 
+      images of each other, e.g.: 
+      <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{1, 4} and {2, 
+      3}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vs.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{2, 
+      3} and {1, 4} 
+      <P>counts as a single solution, not two solutions just because the two 
+      sets can be ordered the other way. 
+      <P>INPUT FORMAT: 
+      <P>A single line with an integer 1 &lt;= N &lt;= 36 that denotes the size 
+      of the set. </SMALL><SMALL>It is guaranteed that at least one pair of 
+      equal summed subsets can be generated</SMALL><SMALL> 
+      <P>SAMPLE INPUT (file INPUT.TXT): 
+      <P>12 
+      <P>OUTPUT FORMAT: </SMALL>
+      <P><SMALL>A single line with an integer that tells how many 
+      pair</SMALL><SMALL>s of equal<BR>summed subsets can be 
+      created.</SMALL><SMALL> 
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): 
+      <P>62 
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Winter/a-data.htm#p4">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Winter/a-sol.htm#p4">Solutions</A>]</SMALL> 
+
+      <HR>
+      </FONT></SMALL></TD>
+    <TD width="10%"></TD></TR></TBODY></TABLE></BODY></HTML>

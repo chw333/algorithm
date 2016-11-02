@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0048)http://www.karrels.org/Ed/ACM/weur94/prob_a.html -->
+<HTML><HEAD><TITLE>1994 ACM Regional, Problem A - Presentation Error</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type><LINK 
+href="mailto:Ed@Tool.com" rev=made>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY><EM>Not an official ACM page</EM> <BR>[<A 
+href="http://www.karrels.org/Ed/ACM/weur94/prob_b.html">Problem B</A> | <A 
+href="http://www.karrels.org/Ed/ACM/weur94/index.html">1994 Western European 
+Regional problem set</A> | <A href="http://www.karrels.org/Ed/ACM/index.html">My 
+ACM problem archive</A> | <A href="http://www.karrels.org/Ed/index.html">my home 
+page</A>] 
+<HR>
+
+<CENTER>
+<H4>1994-1995 ACM International Collegiate Programming Contest<BR>Western 
+European Regional</H4>
+<H1>Problem A </H1>
+<H2>Presentation Error </H2></CENTER>One of the main burdens of the Jury of the 
+Scholastic Programming Contest is not to decide whether a submitted program is 
+incorrect, but how to classify the error. In the past, we had '<CODE>Failed 
+Testcase</CODE>', '<CODE>Wrong Answer</CODE>', '<CODE>Wrong Output 
+Format</CODE>', and '<CODE>Too much/Too Little Output</CODE>' to worry about. 
+<P>The interpretation of these messages depended largely on the jury member 
+involved. For instance, while some believe that '<CODE>Wrong Answer</CODE>' 
+indicates that all answers are wrong, and '<CODE>Failed Testcase</CODE>' applies 
+when at least one answer is right, others feel that '<CODE>Wrong Answer</CODE>', 
+should be used if more than one answer is wrong, and '<CODE>Failed 
+Testcase</CODE>' only if exactly one test went wrong. 
+<P>Fortunately, all these worries are gone, since now we only need to 
+distinguish between '<CODE>Wrong Answer</CODE>', '<CODE>Presentation 
+Error</CODE>' and '<CODE>Accepted</CODE>' (all other messages are the result of 
+compilation errors, run-time errors, and non-terminating programs). 
+<P>To eliminate any subjectivity in deciding between a '<CODE>Presentation 
+Error</CODE>' and a '<CODE>Wrong Answer</CODE>', the Jury of this year's 
+Programming Contest has defined an exact procedure to determine whether a 
+program produces a '<CODE>Wrong Answer</CODE>', a '<CODE>Presentation 
+Error</CODE>', or should be '<CODE>Accepted</CODE>'. 
+<P>In the description of the rules, we distinguish between JuryOut and 
+SubmitOut, as the output intended by the Jury, and the output submitted, 
+respectively. The JuryOut contains parts which are considered essential in the 
+output of a correct algorithm. Those essentials are placed between '[' and ']'. 
+Those brackets are not part of the output, thus they should not appear in 
+SubmitOut. The algorithm to decide between '<CODE>Accepted</CODE>', '<CODE>Wrong 
+Answer</CODE>' and '<CODE>Presentation Error</CODE>' is as follows: 
+<OL>
+  <LI>From each line in both outputs, all trailing white space (blanks and tabs) 
+  should be removed. After that, all trailing empty lines should be removed. 
+  <LI>If after step 1, JuryOut and SubmitOut are identical, the algorithm 
+  returns '<CODE>Accepted</CODE>'. 
+  <LI>All letters in both outputs are changed to uppercase (including those 
+  between square brackets). 
+  <LI>We name the essentials E<SUB>1</SUB> through E<SUB>n</SUB>. 
+  <LI>If each of the strings E<SUB>1</SUB> through E<SUB>n</SUB> occurs as a 
+  string in SubmitOut, and E<SUB>i</SUB> comes after (without overlapping) 
+  E(<SUB>i-1</SUB>), for all 2&lt;=i&lt;=n, then the algorithm returns 
+  '<CODE>Presentation Error</CODE>'. 
+  <LI>The algorithm returns '<CODE>Wrong Answer</CODE>'. </LI></OL>As we (the 
+Jury) need to have such a program (and we need it NOW), your job is to write it 
+for us. 
+<H3>Input</H3>The input contains on the first line the number of test cases (N). 
+Each test case has on its first line the number (J) of lines in JuryOut, and the 
+number (S) of SubmitOut lines, separated by a single space. Then follow the J 
+lines of JuryOut and the S lines of SubmitOut. Both JuryOut and SubmitOut are no 
+longer than 10 lines. A line is at most 80 characters long. Essentials are 
+non-empty strings that do not cross line boundaries. The first and last 
+characters of an essential are not white space. Essentials will not be nested. 
+<H3>Output</H3>The output has to be '<CODE>Accepted</CODE>', '<CODE>Wrong 
+Answer,</CODE>', or '<CODE>Presentation Error</CODE>' on a single line for each 
+test case. <A href="http://www.karrels.org/Ed/ACM/weur94/prob_a.c">
+<H3>Sample Solution</H3></A>
+<H3>Sample Input</H3><PRE>4
+1 2
+Just one line?
+Just one line?
+ 
+2 2
+The first characters of the alphabet are:
+[abcde]
+Here they come:
+a b c d e
+1 1
+That's it: [abcde]
+That's it: AbCdE
+1 1
+[2] and [3] make [5]
+I guess 2 and 3 are less than 50.
+</PRE>
+<H3>Sample Output</H3><PRE>Accepted
+Wrong Answer
+Presentation Error
+Presentation Error
+</PRE>
+<HR>
+This page maintained by <A href="mailto:Ed@Tool.com">Ed Karrels</A>.<BR>Last 
+updated September 20, 1999 </BODY></HTML>

@@ -1,0 +1,383 @@
+-----------------------------------------------------
+문제 1 : 다음트리 (nextree) ㅡㅡ;
+(교묘하게 t를 뺏군요.. 하마터면 nexttree로 할번한....)
+농부 존의 농장에는 나무(트리)가 많다. 베시는 컴퓨터 과학시간에 배운후, 그 모든 트리는 엄격한 2진 트리라는 것을 알았다. 엄격한 이진트리에는 단말노드가 아닌 노드의 자식은 확실히 2개이다. 베시는 각 노드에 숫자를 할당했는데, 그 숫자는 그 노드를 루트로 하는 부트리의 단말노드(잎)의 갯수이다.(자기 노드아래 단말노드의 갯수)
+베시는 프리오더로 연관된(줄줄이 나열된) 숫자를 리스트화 했다. 하지만 그녀는 오직 루트와 어떤 노드의 왼쪽 자식만으로 나열된 숫자를 리스트화 했다.
+다음 트리를 고려해보자.
+                                *7
+                                / \
+                                /  \
+                              /    \
+                            *4      3
+                            / \    / \
+                          *1  3  *1  2
+                              / \    / \
+                            *2  1  *1  1
+                            / \
+                          *1  1
+별표는 베시가 리트스화한 모든 숫자를 표시한다. 이 트리를 나타내는 코드는 (7 4 1 2 1 1 1) 이다.
+이 방법으로 농부존의 땅위에 있는 각 나무를 나타내고 난후, 베시는 다음을 보았다.
+*모든 나무(트리)는 같은 수의 단말노드를 가진다.
+*모든 나무는 서로 다른 코드를 가진다.
+*농장위에는 모든 가능한 엄격한 이진 트리가 있다.
+이렇게, 창조적인 소이기때문에??(내용과 관련 없으므로 무시하시길..베시가 소인가??ㅡㅡ;) 그녀는 트리의 코드를 수적으로 정렬할것을 결심했다.(원소 대 원소)
+베시의 안내를 따르라. 트리의 코드가 주어지면, 베시의 리스트에서 바로 다음에 뒤따르는 코드를 찾아라.
+
+입력
+줄1. L, 베시의 코드의 길이
+줄2. L개의 베시의 리스트에서 코드를 대표하는 공백으로 분리된 숫자.
+5
+5 3 2 1 1
+
+출력
+사전순으로 주어진 코드에 뒤따르는 공백으로 분리된 정수 코드.
+입력이 베시의 리스트에서 마지막이면, 0을 찍어라. 기억하라: 입력에 의해 열거된 트리와 제출된 출력은 같은 수의 단말노드를 가져야한다.
+
+5 4 1 1 1
+----------------------------------------------------
+문제2 : 소의 잡지
+소들은 F개의 그림과 P개의 글(문단?)이 완비된 과학 잡지를 출판하기를 결정했다. 글과 그림은 프린트될 1<=?<=100의 데시라인(deci-line 그냥 단위로 생각하세요. 자세한건 묻지 마세요.)을 필요로한다. 어떤 글이나 그림도 너무 길어서 한 페이지에 놓이지 않는 경우는 없다. 가장 좋은 잡지는 길이가 L(1<=L<=100)데시라인인 한 페이지에 글과 그림이 전체다 놓여야함을 필요로한다. 글과 그림은 한페이지의 끝에서 다음 페이지의 위에 놓이지 않는다.
+글 그림 둘다 입력에서 주어진 순서대로 출판되어야 한다. 그림이 참조글과 한페이지 보다 멀지 안는한, 그림은 글사이사이 어디나 놓일수 있다.(그 페이지 전,그페이지,그페이지후)
+데시라인과 hence paper(아직도 미스테리 ㅡㅡ; hence가 무엇인지.. 추측하건데.. 그냥 출판될 페이지를 말하는듯..)를 최소화 하는 최적의 순서를 찾아라. 항상 잡지 출판에 알맞은 가능한 몇몇 순서가 존재할것이다.
+
+입력
+줄1 3개의 공백으로 분리된 정수 F, P, L
+줄2..P+1 각 줄은 글을 나타낸다. 2줄은 첫버째글,3줄은 두번째글...기타등등. 각 줄은 2개의 정수를 포함한다:글의 길와, 참조하는 그림. 0의 참조그림은 어떤 그림도 참조하지 않음을 뜻한다.  각 그림은 정확히 1번만 참조된다.
+줄P+2..P+F+1 각줄은 하나의 정수로 하나의 그림을 표시한다. 줄 P+2는 첫번째 그림 ... 등등. 
+2 4 20
+10 1
+7 0
+9 2
+3 0
+12
+11
+
+출력
+2개의 공백으로 분리된 정수의 한줄. 최적의 레이아웃에서 완전히 또는 부분적으로 사용된 페이지의 총수와, 마지막 페이지에 사용된 데시라인의 수.
+
+4 3
+
+하나의 최적의 배열
+페이지1 : 글1,글2
+페이지2 : 그림1
+페이지3 : 글3 그림2
+페이지4 : 글4
+------------------------------------------------
+문제3 : 죄수전쟁 (가장 섬뜩한 문제 ㅡㅡ;)
+2002년 소의 반란이후, 소는 그들이 잡은 많은 인간죄수를 감시해야만 했다.
+그 들은 (Px, Py)좌표에 감옥을 가지고 있다.(-100,000 <= Px, Py <= 100,000). 그리고, 그들은 가능한 탈출을 어렵에 만들기 위해, 가능한 많은 겹겹의 울타리를 감옥 주변에 건설하고자 한다. 운이 없게도, 이 문제 경우, 감옥 점은 하나의 점으로 나타내어진다.
+이것을 성취하기 위해, 그들은 N(3<=N<=1000)개의 울타리포스트를 감옥 주변에 놓았다. (울타리 포스트는 그 말대로 울타리 끝 부분 입니다. 울타리를 만들기 위한 끝점같은것 골 포스트 처럼). 각 울타리는 완변하게 감옥과 그 울타리 안에 있는 모든 울타리를 둘러 싼다. (어떤 울타리도 교차하지 않음). 모든 울타리 포스트의 위치와 감옥 위치 사이에는, 어떤 3개의 점도 직선에 있지 않다. 이 울타리 포스트의 위치가 주어지면, 너는 소들이 건설할수 있게, 교차하지 않고, 둥지처럼 둘러싼 가장 많은 겹의 울타리를 계산해야만한다. (단 소들이 건설한 울타리 포스트사이에 곧게 울타리 레일(그물 같은거)이 놓임). 경비원은 각 쌍의 둥지처럼 둘어싼 울타리 사이(그리고 안쪽 울타리와 감옥 사이) 를 순찰할수 있어야 한다. 따라서 둥지 같은 것들 사이에는 적어도 작은 양의 공간은 남겨라. (2개의 둥지같은 울타리사이에 같은 점을 공유 하지 마라).
+
+입력
+줄1. 3개의 공백으로 분리된 정수(N,Px,Py)
+줄2..N+1 2개의 공백으로 분리된 정수 Xi과 Yi (-100,000 <= Xi , Yi <= 100,000) 나열된 울타리의 좌표.
+
+8 -1 0
+2 2
+2 -2
+-2 2
+-2 -2
+0 10
+8 0
+-12 1
+1 -5
+
+출력
+울타리 겹겹의 최대수.
+2
+-------------------------------------------
+문제4 소의 프로 테니스
+전문적으로 테니스하는 소들은 프로테니스협회에의해 순위가 매겨진다.
+가끔 정확히 테니스 경기 결과의 예특이 가능하다. 만약 두 소의 차가 주어진 K보다 크면(0 <= k <=N-1) (|cow1rank - cow2rank|), 그러면 더 좋은 순위를 가진소는 두 소간의 경기에서 항상이긴다. 
+다음주에 N개의 소들과 우승자를 가리기 위한 큰 단식 경기가 있다. (N=1,2,4,8...65536 --- 항상 2의 제곱수) 
+첫 라운드(round, 경기의 집합이라고 보면됩니다)에서는 N/2개의 경기가 열리고, 그 결과 N/2의 우승자가 다음 라운드로 진출한다. 각 연속되는 라운드에는 소들의 절반인 우승자가 토너먼트에서 다음 라운드로 1명만 남을때 까지 진출한다.
+소의 나머지(즉 경기에 도박하는)는 토너먼트를 이길 찬스가 있는 가장 낮은 순위의 소를 알고 싶어한다. 그소의 승리로 끝나는 시나리오와 함께...
+너의 일은 토너먼트에서 이길수 있는 가장 낮은 순위릐 소를 계산하는 것이다. 그리고 그소가 이기는데 가능한 일정을 보여줘라.
+
+입력
+줄1 : 2개의 공백으로 분리된 숫자 : N ,K
+16 3
+
+출력
+줄1 : 토너먼트에서 이길수 있는 가장 낮은 순위의 소의 순위 (말이 꼬였네요.. 어쨋든 그냥 그 소의 순위를 찍으라는것..)
+줄2 : N개의 첫 라운드를 표시하는 순위 숫자. 첫 숫자쌍은 첫 경기를 나타낸다. 2번째 쌍은 2번째 경기를 나타낸다... 등등. 
+각 쌍에서 첫번재 숫자는 토너먼트에서 이길 가장 낮은 순위의 소를 위해 이겨야만 하는 소이다.(한쌍에 2숫자가 있으면 첫번재 숫자가 둘중에서는 이길 소라는 뜻일겁니다.)
+줄3 : N/2 개의 2번째 라운드를 나타내는 숫자. 같은 형식
+등등 : 마지막 줄은 하나의 경기만을 포함한다.(2개의 순위숫자). 첫 숫자는(승리자) 첫번째 줄에서의 숫자여야 한다.
+.
+.
+.
+
+11
+3 1 5 2 6 4 7 16 8 13 9 14 10 15 11 12
+5 3 8 5 9 7 11 10
+8 5 11 9
+11 8
+이것은 많은 가능한 답중의 하나이다. 프로그램은 너의 출력을 채점 할 것 이다.(이게 진짜 뜻하는게 뭔지는 모르겠네요.. 이런데는 아무거나 많은 답중 아무거나 찍어도 된다는 소리가 있어야 되는데.. ㅡㅡ;  그소리인지도 모르겟네요.)
+
+
+
+
+*********************************************************************
+                        GREEN PROBLEMS
+**********************************************************************
+                  Four problems numbered 1 through 4
+**********************************************************************
+
+PROBLEM 1: Nextree [Romania Olympiad, 2001]
+
+Farmer John's property has a large number of trees. After taking a
+computer science class, Betsy noticed that all these trees were
+actually strict binary trees. In a strict binary tree, every node that
+is not a leaf has exactly two descendents. Betsy assigned each node
+a number that is the number of leaves in the subtree that have that
+node as their root.
+
+Betsy then listed the numbers associated with each node in preorder;
+however, she only listed the numbers associated with the root and all
+nodes that were the left descendent of another node.  Consider the
+following tree:
+
+                                *7
+                                / \
+                                /  \
+                              /    \
+                            *4      3
+                            / \    / \
+                          *1  3  *1  2
+                              / \    / \
+                            *2  1  *1  1
+                            / \
+                          *1  1
+
+Asterisks mark every node that Betsy listed. The representational code
+for this tree is (7 4 1 2 1 1 1).
+
+After representing each tree on Farmer John's property in this manner,
+Betsy saw that:
+
+  * All the trees had the same number of leaves,
+
+  * All the trees had distinct codes, and
+
+  * All possible strict binary trees existed on the farm.
+
+So, being a creative cow, she decided to sort the codes of these trees
+numerically (element-by-element).
+
+Follow Betsy's lead.  Given the code of a tree, find the code that
+immediately follows it on Betsy's list.
+
+PROBLEM NAME: nextree
+
+INPUT FORMAT:
+
+* Line 1:  L, the length of the code on line 2 (1 <= L <= 1000)
+
+* Line 2:  L space-separated integers that represent a code on Betsy's list
+
+SAMPLE INPUT (file nextree.in):
+
+5
+5 3 2 1 1
+
+OUTPUT FORMAT:
+
+A single line with the space-separated integers of the code that
+follows the given code in lexicographical order. If the input code is
+last on Betsy's list, output 0. Remember: the trees specified by the
+input and reported in the output must have the same number of leaves.
+
+SAMPLE OUTPUT (file nextree.out):
+
+5 4 1 1 1
+
+**********************************************************************
+
+PROBLEM 2: The Bovine Journal [Hal Burch, 2002]
+
+The cows have decided to publish a scientific journal complete with
+F (1 <= F <= 30) figures and P (1 <= P <= 30) paragraphs, each of
+which requires a certain number of deci-lines (1 <= length <= 100) to
+be printed. No paragraph or figure is so long that it cannot fit on
+a single page.
+
+The best journals require that each figure and each paragraph must
+fit entirely on one page whose length is L deci-lines (1 <= L <= 100).
+Thus, they do not span from the bottom of one page to the top of the
+next.
+
+Both the paragraphs and figures must run through the paper in the
+order presented in the input.  The figures can be interspersed among
+the paragraphs anywhere as long as they are no further than one page
+away from their referencing paragraph (i.e., on the page before, the
+page of, or the page after the referencing paragraph).
+
+Find an optimal ordering that minimize deci-lines and hence paper.
+There will always be some ordering that will enable proper printing
+of the journal.
+
+PROBLEM NAME: journal
+
+INPUT FORMAT:
+
+* Line 1: Three space-separated integers: F, P, and L
+
+* Lines 2..P+1: Each line describes a paragraph: line 2 describes
+  paragraph 1; line 3 describes paragraph 2; etc.  Each line
+  contains two space-separated integers: the length of the
+  paragraph and a figure reference.  A figure reference of 0
+  means the paragraph does not reference any figures. Each
+  figure is referenced precisely once.
+
+* Lines P+2..P+F+1: Each line describes a single figure with a single
+  integer, its length.  Line P+2 describes figure 1; line P+3
+  describes figure 2; etc.
+
+SAMPLE INPUT (file journal.in):
+
+2 4 20
+10 1
+7 0
+9 2
+3 0
+12
+11
+
+OUTPUT FORMAT:
+
+A single line with two space-separated integers: the total number of
+complete and partial pages used and the number of decilines used on
+the last page for the optimal layout.
+
+SAMPLE OUTPUT (file journal.out):
+
+4 3
+
+[One optimal arrangement:
+  Page 1: Para 1, Para 2
+  Page 2: Fig 1
+  Page 3: Para 3, Fig 2
+  Page 4: Para 4]
+
+**********************************************************************
+
+PROBLEM 3: Captives of War [SSivek, Burnim, Abbott, Baek, 2002]
+
+After the Bovine Uprising of 2002, the cows must keep watch over the
+large number of human prisoners they captured.
+
+They have a prison at coordinate (Px, Py) (where -100,000 <= Px <=
+100,000 and -100,000 <= Py <= 100,000) and they want to construct as
+many layers of fences as possible around the prison to make escape as
+difficult as possible. It is unfortunate that, for this problem, the
+prison is modeled as a single point.
+
+In order to accomplish this, they have placed N (3 <= N <= 1000) fence
+posts in the vicinity of the prison.  Each fence completely surrounds
+the prison and all fences inside it (i.e., no fence crossing). Among
+the set of all fence post locations and the prison location, no three
+points are collinear.  Given the locations of these fence posts, you
+must compute the maximum number of layers of non-intersecting nested
+fences the cows can construct around the prison by placing straight
+fence rails between the fence posts they have constructed.  A guard
+must be able to patrol between each pair of nested fences (and between
+the inner fence and the prison), so leave at least a small amount of
+space in the nestings (i.e., don't share a vertex between two nested
+fences).
+
+PROBLEM NAME: captives
+
+INPUT FORMAT:
+
+* Line 1: Three space-separated integers: N, Px, and Py.
+
+* Lines 2..N+1: Two space-separated integers, Xi and Yi (-100000 <=
+  Xi, Yi <= 100000) specifying the coordinates of a fence post.
+
+SAMPLE INPUT (file captives.in):
+
+8 -1 0
+2 2
+2 -2
+-2 2
+-2 -2
+0 10
+8 0
+-12 1
+1 -5
+
+OUTPUT FORMAT:
+
+A single line with a single integer that is the maximum number of
+layers of fences.
+
+SAMPLE OUTPUT (file captives.out):
+
+2
+
+**********************************************************************
+
+PROBLEM 4: Bovine Tennis Professionals [Romanian Olympiad via Stroe, 2002]
+
+Those cows who play tennis professionally are ranked by the Bovine
+Tennis Professionals (BTP) governing body.
+
+Sometimes it is possible to predict perfectly the results of a tennis
+match.  If the rank difference between two cows is larger than a given
+K (0 <= K <= N-1) (i.e., | cow1rank - cow2rank | > K) then the cow
+with the better rank will always win in a match between the two cows.
+
+There is a big single-elimination competition next week, with N cows
+(N=1, 2, 4, 8, ..., 65536 -- always a power of two) from which one
+will be chosen the winner. In the first round, N/2 matches are played
+and the resulting N/2 winners proceed to the next round.  On each
+successive round, the winning half of the cows proceed in the
+tournament until only one cow remains.
+
+The rest of the cows (who are betting on the competition, of course)
+want to know the rank of the lowest-ranked cow who has a chance of
+winning the tournament, along with a scenario that would result in
+her victory.
+
+Your job is to calculate the lowest-ranked cow that could win the
+tournament and show a schedule which would enable that cow to win.
+
+PROBLEM NAME: btp
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and K
+
+SAMPLE INPUT (file btp.in):
+
+16 3
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer that is the rank of the lowest-ranked
+  cow who could possibly win the tournament.
+
+* Line 2: N rank numbers describing the first round matches.  The
+  first pair of numbers describes the first match, the second pair
+  describes the second match, and so on.  The first number in each
+  pair is the cow who must win for the lowest-ranked cow to
+  win the tournament.
+
+* Line 3: N/2 rank numbers describing the second round matches, in
+  the same format.
+
+* and so on; the last line should contain only one match (two rank
+  numbers).  The first number (the winner) should be the number from
+  line 1.
+
+SAMPLE OUTPUT (file btp.out):
+
+11
+3 1 5 2 6 4 7 16 8 13 9 14 10 15 11 12
+5 3 8 6 9 7 11 10
+8 5 11 9
+11 8
+
+[This is only one of many possible answers.  A program will grade your
+output.]

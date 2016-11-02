@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0072)http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidCen/2001/split.html -->
+<HTML><HEAD><TITLE>Split Windows</TITLE>
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR>
+<META content="Andrew Harrington" name=Author></HEAD>
+<BODY bgColor=white>
+<CENTER>
+<H1>Problem C: Split Windows</H1></CENTER>
+<CENTER>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD>Source file:</TD>
+    <TD><TT>split.</TT>{<TT>c</TT>, <TT>cpp</TT>, <TT>java</TT>, 
+    <TT>pas</TT>}</TD></TR>
+  <TR>
+    <TD>Input file:</TD>
+    <TD><TT>split.in</TT></TD></TR>
+  <TR>
+    <TD>Output file:</TD>
+    <TD><TT>split.out</TT></TD></TR></TBODY></TABLE></CENTER>
+<P>The Dotty Software Company makes software that is displayed on inexpensive 
+text based terminals.&nbsp; One application for this system has a main window 
+that can be subdivided into further subwindows.&nbsp; Your task is to take a 
+description of the screen layout after a sequence of window splits and draw the 
+minimum sized window grid that is consistent with the description. </P>
+<P>In this problem we will concentrate on the boundaries of windows, so all the 
+characters inside of windows will be left blank.&nbsp; Each window that is not 
+further subdivided has a label.&nbsp; Each label is a distinct uppercase 
+letter.&nbsp; For a text terminal the boundaries of windows must be drawn with 
+characters, chosen as follows:&nbsp; A capital letter label is placed in the 
+upper left-hand corner of each undivided window.&nbsp; Asterisks,'<TT>*</TT>', 
+appear in corners of windows where there is not a label. Dashes, '<TT>-</TT>', 
+appear on upper and lower boundaries where there are not corners. Vertical bars, 
+'<TT>|</TT>', appear on side boundaries where there are not corners. </P>
+<P>For example, the sequence of splits below would generate Window 1:&nbsp; 
+Initially there could be an application window labeled <TT>M</TT>, that is split 
+next into left and right subwindows, adding label <TT>R</TT>, and the left 
+subwindow is split into top and bottom subwindows, adding the label <TT>C</TT>. 
+</P><IMG src="Split Windows.files/wt1.gif"> 
+<P>For each pattern of splits there is a binary tree of characters that can 
+describe it.&nbsp; The window splitting and tree structures are described 
+together, building up from the simplest cases. </P>
+<OL>
+  <LI>A window may be an undivided rectangle.&nbsp; Such a window has a capital 
+  letter as label.&nbsp; The tree for the window contains just the label. 
+  <LI>A window may either be split into left and right subwindows or into top 
+  and bottom subwindows, and the corresponding trees have as root the boundary 
+  character for the split: a vertical line '<TT>|</TT>' or a horizontal dash 
+  '<TT>-</TT>' respectively.&nbsp; The root has left and right subtrees 
+  corresponding to the top and bottom or left and right subwindows respectively. 
+  </LI></OL>Tree 1, above, and Trees 2-4, below, would be consistent with Windows 
+1-4.&nbsp; Note that Tree 4 contains Trees 2 and 3. 
+<P><IMG src="Split Windows.files/wt23.gif"> 
+<P><IMG src="Split Windows.files/wt4.gif"> 
+<P>The trees may be more succinctly expressed via a preorder traversal: 
+<OL>
+  <LI>The preorder traversal of a tree with just one node (containing a letter) 
+  is that letter. 
+  <LI>The preorder traversal of a tree with a left and a right subtree is the 
+  character from the root of the tree ('<TT>-</TT>' or '<TT>|</TT>') followed by 
+  the preorder traversal of the left subtree, and then the preorder traversal of 
+  the right subtree. </LI></OL>The preorder traversals for Trees 1 through 4 are 
+<BR><PRE>   |-MCR    -|-ABC-D|E-FG   -P-|Q|RST    |-|-ABC-D|E-FG-P-|Q|RST</PRE>
+<P>Each undivided window must have space for at least one character 
+inside.&nbsp; Hence each tree of splits will be associated with a minimum window 
+size.&nbsp; Windows 1-4 are minimum sized windows for Trees 1-4.&nbsp; Each 
+window illustrates the fact that even in a minimum sized window, not all 
+undivided windows contain only one character. </P>
+<P>Consider Tree 4 and Window 4.&nbsp; The main window is split into a left 
+window with Tree 2 and right window with Tree 3. The left window is like Window 
+2, but the right window is not just like Window 3.&nbsp; The heights of left and 
+right subwindows must match, so the right window must be stretched. </P>
+<P>The stretching rule depends on a definition of the size of windows.&nbsp; For 
+dimension calculations it is easiest to imagine that a window contains its 
+interior and a half character wide boundary on all sides, so the total 
+dimensions of a window are one more than the dimensions of the 
+interior.&nbsp;&nbsp; Hence the minimum dimensions of a window are 2 by 2, since 
+a window must contain one character inside, and we add one for the 
+boundary.&nbsp; This definition also means that the sum of the widths of left 
+and right subwindows is the width of their enclosing window.&nbsp; The sum of 
+the heights of top and bottom subwindows is the height of their enclosing 
+window. </P>
+<P>The right window in Window 4 must be stretched to match the height 10 of the 
+left window.&nbsp; The right window is split into a top with tree <TT>P</TT> 
+having minimum height 2 and a bottom with tree <TT>-|Q|RST</TT> having minimum 
+height 4.&nbsp; The rule for the dimensions in the stretched window is that the 
+heights of the subwindows expand in proportion to their minimum heights, if 
+possible.&nbsp; Some symbols may help here:&nbsp; Let <I>D</I> = 10 be the 
+height of the combined stretched window.&nbsp; We want to determine 
+<I>D<SUB>1</SUB></I> and <I>D<SUB>2</SUB></I>, the stretched heights of the top 
+and bottom subwindow.&nbsp; Call the corresponding minimum dimensions <I>d</I> = 
+6, <I>d<SUB>1</SUB></I> = 2, and <I>d<SUB>2</SUB></I> = 4.&nbsp; If the window 
+were expanded from a total height <I>d</I> to <I>D</I> in proportion, we would 
+have <I>D<SUB>1</SUB></I> = <I>d<SUB>1</SUB></I>*(<I>D</I>/<I>d</I>) = 2*(10/6) 
+= 3.333...and <I>D<SUB>2</SUB></I> = <I>d<SUB>2</SUB></I>*(<I>D</I>/<I>d</I>) = 
+6.666....&nbsp;&nbsp; Since the results are not integers we increase 
+<I>D<SUB>1</SUB></I> to 4 and decrease <I>D<SUB>2</SUB></I> to 6. 
+<P>There is a similar calculation for the bottom window with tree 
+<TT>-|Q|RST</TT>.&nbsp; It is further subdivided into a top with tree 
+<TT>|Q|RS</TT> and a bottom with tree <TT>T</TT>, each having minimum height 2 = 
+<I>d<SUB>1</SUB></I> = <I>d<SUB>2</SUB></I>.&nbsp; The heights need to add up to 
+<I>D</I> = 6, so they are increased proportionally to <I>D<SUB>1</SUB></I> = 
+<I>D<SUB>2</SUB></I> = 2*(6/4) = 3 (exact integers). 
+<P>The final dimensions of an enclosing window are always determined before the 
+final dimensions of its subwindows.&nbsp; In this example only heights needed to 
+be apportioned.&nbsp; If all horizontal and vertical splits were interchanged in 
+this example, producing a tree&nbsp; <TT>-|-|ABC|D-E|FG|P|-Q-RST</TT>, then 
+widths would be apportioned correspondingly, as shown in the third part of the 
+sample output below.&nbsp; If the proportion calculations do not work out to 
+integers, it is always the top or left subwindow whose dimension is increased to 
+the next integer. 
+<P>The first line of input contains one integer, which is the total number of 
+preorder traversals describing window structures.&nbsp; This line is followed by 
+one line for each preorder traversal.&nbsp; Each preorder traversal will contain 
+appropriate dividers '<TT>|</TT>' and '<TT>-</TT>' and from 1 to 26 uppercase 
+letters. </P>
+<P>For each preorder traversal, print the number of the preorder traversal on 
+one line followed by the minimum sized window grid that the traversal could 
+represent.&nbsp; Contrary to the general contest output conventions, there may 
+be more than one consecutive blank in this output, but the other general rules 
+for contest output are followed.&nbsp; The total number of rows or columns in 
+output grids will be no more than 53. </P>
+<TABLE border=1 cellPadding=20>
+  <TBODY>
+  <TR>
+    <TD vAlign=top><B>Example input:</B> <PRE><TT>
+3
+|-MCR
+|-|-ABC-D|E-FG-P-|Q|RST
+-|-|ABC|D-E|FG|P|-Q-RST
+</TT></PRE></TD>
+    <TD><B>Example output:</B> <PRE><TT>
+1
+M-R-*
+| | |
+C-* |
+| | |
+*-*-*
+2
+A-C-P-----*
+| | |     |
+B-* |     |
+| | |     |
+D-*-Q-R-S-*
+|   | | | |
+E-F-* | | |
+| | T-*-*-*
+| G-*     |
+| | |     |
+*-*-*-----*
+3
+A-B-D-E---*
+| | | |  &nbsp;|
+C-*-* F-G-*
+|   | | | |
+P---Q-*T*-*
+|   |  |  |
+|   R--*  |
+|   |  |  |
+|   S--*  |
+|   |  |  |
+*---*--*--*</TT></PRE></TD></TR></TBODY></TABLE><I><FONT size=-1>Last modified 
+Sat Oct 27 21:16:21 2001</FONT></I> <BR>&nbsp; </BODY></HTML>

@@ -1,0 +1,51 @@
+begin
+op n
+op n
+continue
+op n
+op n
+loop n
+op n
+continue
+continue
+break
+op 11
+end
+loop n
+loop n
+op n
+loop 5
+loop 9
+loop 93
+op 28
+op n
+end
+op 85
+end
+loop n
+end
+loop n
+op n
+loop n
+loop 2
+loop 5
+op n
+loop 27
+op 7
+loop n
+break
+op 64
+end
+break
+end
+break
+loop 85
+loop n
+end
+end
+break
+loop 29
+loop 64
+end
+loop n
+end end end end end end end end end end

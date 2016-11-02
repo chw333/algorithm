@@ -1,0 +1,229 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="HTML DOCUMENT BY HWP 2002">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8"><TITLE>도로 구간 나누기</TITLE>
+<STYLE>
+<!--
+P.HS11 {style-name:"각주";font-family:"바탕"; font-size:12.0px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:-5%; margin-left:17.5px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:15.6px; text-indent:-17.5px;}
+P.HS10 {style-name:"머리말";font-family:"굴림"; font-size:12.0px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:-2%; margin-left:0.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:18.0px; text-indent:0.0px;}
+P.HS9 {style-name:"쪽 번호";font-family:"굴림"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:0.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:0.0px;}
+P.HS8 {style-name:"개요 7";font-family:"바탕"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:0.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:0.0px;}
+P.HS7 {style-name:"개요 6";font-family:"바탕"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:0.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:0.0px;}
+P.HS6 {style-name:"개요 5";font-family:"바탕"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:0.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:0.0px;}
+P.HS5 {style-name:"개요 4";font-family:"바탕"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:0.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:0.0px;}
+P.HS4 {style-name:"개요 3";font-family:"바탕"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:0.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:0.0px;}
+P.HS3 {style-name:"개요 2";font-family:"바탕"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:0.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:0.0px;}
+P.HS2 {style-name:"개요 1";font-family:"바탕"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:0.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:0.0px;}
+P.HS1 {style-name:"본문";font-family:"바탕"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:20.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:0.0px;}
+P.HS0 {style-name:"바탕글";font-family:"바탕"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:0.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:0.0px;}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+
+<!-- Document Start -->
+<P STYLE='font-family:"돋움";font-size:20px;color:"#000000";text-align:center;line-height:32px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"돋움";font-size:20px;color:"#000000";font-weight:"bold";line-height:32px;text-align:center;'>종이 구간 자르기</SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";font-weight:"bold";line-height:21px;text-align:justify;'>문제 설명</SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>n*m의 어떤 종이가 있다. 이 종이의 각 칸에는 숫자가 써있다. 이 종이를 가로로(→방향) x번 자르고, 세로로(↓방향) y번 자르면 (x+1)*(y+1)개의 조각으로 나뉘게 된다. 이때 나뉘어진 조각들에 써있는 숫자들의 총 합중 최대값을 가장 작게 만들려고 한다. 예를들면 아래와 같은 모양의 종이가 있을때 가로와 세로를 각각 한번씩 자르려고 한다면</SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><A NAME="#1246395524"></A></SPAN>
+<TABLE border="1"  width="163px" height="161px"cellspacing="0" cellpadding="0" style='border-collapse:collapse;border:none;'>
+<TR>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>5</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>4</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>10</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>11</SPAN></TD>
+</TR>
+<TR>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>1</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>3</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>9</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>12</SPAN></TD>
+</TR>
+<TR>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>2</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>1</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>8</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>13</SPAN></TD>
+</TR>
+<TR>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>3</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>2</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>7</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>14</SPAN></TD>
+</TR>
+<TR>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>4</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>5</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>6</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>15</SPAN></TD>
+</TR>
+</TABLE><SPAN>&nbsp;&nbsp; <A NAME="#1246395525"></A></SPAN>
+<TABLE border="1"  width="163px" height="161px"cellspacing="0" cellpadding="0" style='border-collapse:collapse;border:none;'>
+<TR>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>5</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>4</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.60mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>10</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.60mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>11</SPAN></TD>
+</TR>
+<TR>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.60mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>1</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.60mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>3</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.60mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.60mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>9</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.60mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.60mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>12</SPAN></TD>
+</TR>
+<TR>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.60mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>2</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.60mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>1</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.60mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.60mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>8</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" bgcolor="#c0c0c0" style='border-left-width:0.60mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.60mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>13</SPAN></TD>
+</TR>
+<TR>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>3</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>2</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.60mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>7</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" bgcolor="#c0c0c0" style='border-left-width:0.60mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>14</SPAN></TD>
+</TR>
+<TR>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>4</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>5</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" style='border-left-width:0.12mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.60mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>6</SPAN></TD>
+	<TD height="32px" width="41px" valign="middle" bgcolor="#c0c0c0" style='border-left-width:0.60mm; border-left-color:#000000; border-left-style:solid;border-right-width:0.12mm; border-right-color:#000000; border-right-style:solid;border-top-width:0.12mm; border-top-color:#000000; border-top-style:solid;border-bottom-width:0.12mm; border-bottom-color:#000000; border-bottom-style:solid;'><P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:center;'>15</SPAN></TD>
+</TR>
+</TABLE><SPAN></SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>오른쪽 그림과 같이 나누면 가장 큰 합이 42가 되고 다른 어떤 분할로도 이것보다 작게 만들수는 없으므로 최적해다. 이제 우리가 자르려고 하는 종이는 대부분 가로 길이가 큰 종이들이다. 이 종이들을 잘라서 조각들에 써있는 숫자의 합의 최대값을 최소화 하는 프로그램을 작성하시오.</SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";font-weight:"bold";line-height:21px;text-align:justify;'>입력 형식 (paper.in)</SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>첫줄에 n과 m이 주어지고 (n이 세로, m이 가로) 두 번째 줄에 자르는 수 x와 y가 주어진다. (1≤n≤10, 1≤m≤100) 다음 n줄 m칸에는 각 칸에 써있는 숫자들이 주어진다.</SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>5 4</SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>1 1</SPAN><SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'></SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>5 4 10 11</SPAN><SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'></SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>1 3 9 12</SPAN><SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'></SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>2 1 8 13</SPAN><SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'></SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>3 2 7 14</SPAN><SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'></SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>4 5 6 15</SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";font-weight:"bold";line-height:21px;text-align:justify;'>출력 형식 (paper.out)</SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>첫줄에 최적값을 출력하고 두 번째줄부터 x개의 줄에 가로로 자른 줄의 번호를 출력하고 다음 y개의 줄에 세로로 자른 줄의 번호를 출력한다. 줄번호는 맨 첫줄과 끝줄을 제외하고 첫 번째 칸과 두 번째 칸 사이의 줄부터 1번이다.</SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>42</SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>2</SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>3</SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";font-weight:"bold";line-height:21px;text-align:justify;'>주의 사항</SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>시간제한은 10초이다.</SPAN> 
+</P>
+<P STYLE='font-family:"바탕";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+ 
+</P>
+
+<!-- Document End -->
+</BODY>
+</HTML>

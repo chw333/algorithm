@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<dos.h>
+
+int ar[200], N;
+int sol[200], S;
+
+void main(void)
+{
+	int l1, l2, t;
+
+	printf("\nUser Program Input? "); scanf("%d", &N);
+
+	for(l1=0; l1<N; l1++)
+	{
+		printf("(%d/%d) : ", l1+1, N);
+		scanf("%d", &ar[l1]);
+	}
+
+	printf("\nUser Program Output? "); scanf("%d", &S);
+
+	for(l1=0; l1<S; l1++)
+	{
+		printf("(%d/%d) : ", l1+1, S);
+		scanf("%d", &sol[l1]);
+	}
+
+	for(l1=S-1; l1>=0; l1--)
+		t=ar[sol[l1]], ar[sol[l1]]=ar[sol[l1]-1], ar[sol[l1]-1]=t;
+
+	printf("\nResult>>\n");
+	for(l1=0; l1<N; l1++)
+		printf("%d ", ar[l1]);
+	puts("\n");
+
+	delay(700);
+}

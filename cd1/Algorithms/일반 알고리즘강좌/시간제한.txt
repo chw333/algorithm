@@ -1,0 +1,22 @@
+                              >> 시간 제한 프로그램 <<
+
+#include <Fstream.h>
+#include <Stdlib.h>
+#include <Time.h>
+
+main()
+{
+	clock_t c1, c2;
+	c1 = clock();
+	while(1){	
+		.
+		.                <- 처리부분
+		.
+		.
+		c2 = clock();
+		if((c2-c1)/CLK_TCK >= Time)  // Time은 제한 시간(초)
+			exit(1);
+	}
+}
+
+* Random 돌릴 때 아주 유용하게 쓰임.

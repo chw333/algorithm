@@ -1,0 +1,40 @@
+
+                   1.2 (BOI'95) Expression
+
+                   Evaluation protocol
+
+         Input                                Output          Points
+----------------------------------------------------------------------
+test 1   765                                  765              2p
+
+test 2   40+a-d        a=-38, d=100           -98              3p
+
+test 3   250ea-50c+4   a=-1, e=-2, c=5        254              3p
+
+test 4   -10babc+12aa  a=2, b=2, c=1          -32              3p
+
+test 5   25abc                                UNDEFINED        2p
+
+test 6   123acb+14de   a=2, b=12, d=-120      UNDEFINED        2p
+
+test 7   ab+abcd+98    a=2, b=0, d=3          98               5p
+
+test 8   59ac-bc-52c+431a   b=7, a=1          431              6p
+
+test 9   a-cb+def-gh
+         a=7, h=1, g=11, c=3, b=-1,
+         d=4, e=5, f=10                       199              2p
+test 10  -a+b-a+b-a+b-a+b-a+b-a+b-a+b-a+b-
+         a+b-a+b
+         a=-200000000
+         b=-199999999                         10               2p
+
+                                                            -----------
+                                                       Total   30p
+
+
+        The points for UNDEFINED are assigned only when at least
+one positive test containing variables is correct.
+
+
+

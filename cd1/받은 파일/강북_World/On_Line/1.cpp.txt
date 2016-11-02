@@ -1,0 +1,96 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#define Max 100
+char str[2][Max];
+char ins[Max];
+int solution;
+void input_dat()
+{
+  int i,j;
+  int point=0;
+  int point2=0;
+  char ins[Max];
+  printf("Input 1 : ");
+  gets(ins);
+  for(i=0;i<strlen(ins);i++) {
+	if(ins[i]==' ') continue;
+	if(ins[i]==',') {point2=0;point++;continue;}
+	str[point][point2++]=ins[i];
+  }
+  for(i=0;i<2;i++)
+	for(j=0;j<strlen(str[i]);j++)
+	  if(str[i][j]=='N'&&str[i][j-1]==str[i][j+1]) {
+		str[i][j]=str[i][j+1];str[i][j+1]='N';
+	  }
+}
+
+void read_dat()
+{
+  int i,j;
+  int len;
+  again:
+  ;
+  printf("Input 2 : ");
+  gets(ins);
+
+  len=strlen(ins);
+  for(i=0;i<len;i++) {
+	if(ins[i]==' ') {
+	  for(j=i;j<len-1;j++)
+		ins[j]=ins[j+1];
+	  ins[--len]=NULL;
+	}
+	if(ins[i]!='R'&&ins[i]!='G') {
+	  printf("Error!!!\n");goto again;
+	}
+  }
+}
+
+void process(int k,int str_point,int ins_point)
+{
+  int i,j;
+  if(solution) return;
+  if(str_point==strlen(str[k])) {
+	process(0,0,ins_point);
+	process(1,0,ins_point);
+	return;
+  }
+  if(ins_point==strlen(ins)) {
+	solution=1;
+	return;
+  }
+  if(str[k][str_point]=='N') {
+	if(str[k][str_point-1]==ins[ins_point])
+	  process(k,str_point,ins_point+1);
+	if(str[k][str_point+1]==ins[ins_point])
+	  process(k,str_point+2,ins_point+1);
+	return;
+  }
+  if(str[k][str_point]==ins[ins_point]) {
+	process(k,str_point+1,ins_point+1);
+	return;
+  }
+}
+
+void output_dat()
+{
+  if(solution)
+	printf("Yes\n");
+  else
+	printf("No\n");
+}
+
+
+void main()
+{
+  input_dat();
+  while(1) {
+	solution=0;
+	read_dat();
+	process(0,0,0);
+	process(1,0,0);
+	output_dat();
+  }
+}
+

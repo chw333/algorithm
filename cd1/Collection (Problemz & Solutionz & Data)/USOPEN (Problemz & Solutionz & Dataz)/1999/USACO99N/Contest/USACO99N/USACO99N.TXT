@@ -1,0 +1,653 @@
+Significant rule change from previous contests:
+
+        * Be sure to output LINES, not just a few digits without
+          a newline or return/linefeed.
+        * Pascal users must not use the CRT runtime library.  That is,
+          do not include `uses crt;' in your program.
+        * Lots of comments from Russ Cox much farther down the rules
+
+=============================================================================
+            USACO National Championship, International Division
+                           April 15-22, 1999
+
+WHAT:   The USA Computer Olympiad U. S. Open is a computer programming
+        contest open to all pre-college students throughout the world
+        who have access to the hs-computing@delos.com mailing list.
+        Several problems are presented for solution.  Results of the
+        proctored version of this contest and other contests will be
+        among the data used to choose delegates to the USA training camp
+        and potentially to the IOI.  Winners of both the domestic and
+        international divisions will receive a handsome plaque at the
+        end of the season.
+
+WHO:    All pre-college students who have access to the hs-computing
+        mailing list are eligible.  This is an individual contest, not
+        a team contest.
+
+WHEN:   Problems for the international division will be posted to the
+        mailing list between 0730 and 0800 a.m. US Mountain Daylight
+        Time (1430-1500 GMT) on Thursday, April 15, 1999.  All results
+        are due by 0800 am US Mountain Daylight Time (1400? GMT) Thursday,
+        April 22, 1999.  Late solutions will not be accepted.
+
+WHERE:  Students can work on problem solutions anywhere they wish,
+        including school and home.
+
+HOW:    Problems and rules will be posted to the hs-computing mailing
+        list.  Solutions must be written in Borland C/C++ or Turbo Pascal
+        and must be returned via e-mail by the contest completion
+        deadline.
+
+        Choosing a non-Borland Pascal compiler will potentially cause
+        a solution to fail to compile or run correctly on the judge's
+        machine.  After you have completed the contest, feel free to
+        take your final solution to a Borland Pascal equipped machine
+        to ensure it will work.  Do not charge this `repair' time against
+        your coding time limit.
+
+        Choosing a non-Borland C/C++ compiler has a greater chance of
+        working out okay: make sure you use no library functions other
+        than those provided by the following header files (i.e., don't
+        #include anything but these files -- not all of which are usually
+        needed, of course):
+             assert.h   io.h       mem.h      string.h
+             ctype.h    iostream.h stdio.h    values.h
+             fstream.h  math.h     stdlib.h
+        If you use an ANSI compiler and use (at most) only these headers,
+        your program should compile fine under our compilers.  Remember
+        that we are running the judging under MS-DOS and are thus subject
+        to its memory requirements.
+
+        The specific compilers used are as follows.
+                * Turbo Pascal 7.0
+                * Borland C/C++ 3.1
+        This restriction reflects the current IOI rules, not a philosophy
+        of the USACO.
+
+PRIZES: Winners will receive a handsome plaque and have their names
+        immortalized on the USACO Web Pages.
+
+FEES:   No entry fees are charged.
+
+RULES:  * Consultation with people other than the contest director is
+          prohibited.
+        * Do not work in a team environment.
+        * Submit questions to <kolstad@delos.com> who will try to fathom
+          an appropriate answer for you (and post it to the hs-computing
+          list, if appropriate).  Many times, the reply will often be
+          a suggestion to read the problem more carefully.
+        * Any amount of consultation with written materials (such as
+          programming books) is allowed (but this doesn't mean you can ask
+          someone to write an article on how to solve a problem, of course).
+          Do not ask someone where to look up an answer though, that
+          counts as `consultation with people.'
+        * Spend no more than three sessions solving problems (i.e., if
+          you work one hour in a session, take a one hour break, and
+          then work another hour, you have worked for two sessions).
+        * Spend no more than a total of five hours solving problems.  Really.
+        * Submit source code for the problems to the contest coordinators
+          via e-mail to open99@delos.com (see below for format).
+        * Solutions will be judged for correctness by running them against
+          several (usually 5-15) different sets of input data.  Points are
+          accrued for correct solutions.  Some datasets for a problem will be
+          worth more points than others.  Solutions to some problems will be
+          worth more points.  Judging will be performed expeditiously but
+          could take two weeks to complete.
+        * Unless otherwise stated, your program must run no longer than
+          5 seconds for any test case on the judge's computer
+          (approximately 200 MHz PentiumII).
+        * Unless otherwise specified, it is NOT guaranteed that all
+          possible legal datasets will be solvable within the time limit.
+        * The judges reserve the right to increase time limits during grading.
+        * Judges will not test all datasets against a program that crashes
+          the computer for initial datasets.
+        * Decision of the judges is final.
+        * Do not cheat; it's no fun for anyone.
+        * Do not use inline assembler statements.
+        * Do not submit programs that use data files that aren't supplied by
+          the contest coordinators.  Read only the specified input
+          files and write only the specified output files.
+        * Do not use `temporary' data files.
+        * Keep in mind that this is neither a `tricky input' nor a
+          `tricky output' contest, in general.  Input and output formats
+          are straightforward, though the input values may cause your
+          program difficulty.
+        * Problems are intended to be algorithmic in nature, meaning
+          clever algorithms and/or data structures may be needed to
+          score full marks.
+        * All problems are intended to be straightforward (yet
+          challenging); no problems are intended to have `hidden tricks'
+          in them.
+        * Nevertheless, legal but complex datasets are fair game for testing.
+        * If you find a problem with poor wording or an ambiguity,
+          document your assumptions carefully and move on.  Send e-mail;
+          we'll reply if we can.
+
+NOTES:  * We will be using automated grading procedures.
+        * The registration information at the front of each solution
+          should be in precisely the same format as requested below.
+          Otherwise, your solution could be lost.  Be sure that
+          each program has identically the same registration information.
+        * Programs that consist of essentially nothing more than print
+          statements will not be graded.  Programs must compute the
+          requested answers.
+        * Submitters of programs that attempt to thwart grading procedures
+          will be forever disqualified from USACO contests.  Do not join
+          this elite club!
+        * Rob Kolstad <kolstad@delos.com> is this contest's director.
+        * Russ Cox is this contest's grader.
+        * During the contest, feel free to send questions (one per e-mail
+          please!) to kolstad@delos.com.  He will reply by e-mail when he is
+          available.  Questions judged to be germane to the entire hs-computing
+          list will be summarized and posted there, also.  Be sure to check
+          your e-mail occasionally for contest updates, should there be any.
+          For fairness, sometimes your question will be answered with a null
+          answer (`Sorry, I can't elaborate on that').
+        * All programs read their input from file INPUT.TXT; do not
+          specify a complete path name in your `open' statement, just
+          `INPUT.TXT'.
+        * All programs write their output to file OUTPUT.TXT; do not
+          specify a path name in your `open' statement, just `OUTPUT.TXT'.
+        * Remember that your output should be written only to the file
+          OUTPUT.TXT.  Do not clear the screen or print anything to the
+          screen.
+        * Note that test data run by the judges will surely be more
+          challenging than the example data supplied with each problem.
+        * We will assess scoring penalties when certain rules are abused.
+        * Don't use any of C++'s Standard Template Library (STL) or any
+          classes other than those provided by iostream.h and fstream.h.
+          We're using a very old C++ compiler: it probably doesn't know
+          about the special classes you want to use.
+        * If your source code does not compile without changes, your
+          program will not be graded.  The only exception to this is: we
+          will fix source codes mangled by mail agents' treatment of line
+          wraps and the like.
+        * Don't use C's ``bool'' type.  That is specific to Borland
+          C/C++ 5.0.  If you can compile your code under ANSI C, you're
+          probably safe.
+        * Pascal users must not use the CRT runtime library.  That is,
+          do not include `uses crt;' in your program.
+        * Your programs should neither expect nor depend on having
+          any more than about 500 kilobytes of free conventional memory (as
+          reported by DOS's mem command).
+NEW:
+        * The scorer will compile with exactly the command-line compiler
+          options you specify in your '#pragma options' line.  You must
+  set any relevant options using the appropriate method in the
+  source file, as illustrated above.  (Of course, if you don't
+  wish to specify any, you can omit the #pragma line.) Note that
+  not all command-line options are valid in the "#pragma".
+   In particular, don't bother specifying "-P" or "-P-" on the
+  "#pragma option" line, as the compiler will not accept it.
+        * If you come upon a particularly spectacular test case,
+          please share it with <kolstad@delos.com>.
+
+-----------------------------------------------------------------------------
+No special registration form is required.  Each problem solution has,
+within its submission, an entry form (see below).  You enter when you
+send in your solution.
+-----------------------------------------------------------------------------
+
+Submit your answers to problems via e-mail to open99@delos.com.  Please
+send precisely one problem's solution program per e-mail (i.e., send
+three separate e-mails for three problems, etc.).  If you send in more
+than one solution for a single problem (e.g., on subsequent e-mails),
+only the last one received by our automatic mail reader will be graded.
+That means if you find a bug after your submission, you can re-submit.
+This is dangerous ground, of course, since your newer program might, in
+fact, be worse than the previous one.
+
+Every e-mail is acknowledged almost instantly by an automated mail
+reader.  If you do not receive an acknowledgment, double-check the
+address.  Note that some networks connect to the Internet only
+occasionally.
+
+Each solution e-mail submission should have the format below for the
+e-mail message.  SEND ASCII MESSAGES.  DO NOT USE ATTACHMENTS or MIME
+ENCODING, fancy mail options, or anything else.  The programs that read
+the mail are looking for just plain old ASCII (just like this message).
+Submissions that use some format other than ASCII might not be graded.
+
+Submissions must have special comments separating sections of the mail;
+you must insert the three `#'s and the word that follows them.  Here is
+the exact format for submitting solutions so the grading programs can
+read them (be sure you note that those ### things are important!):
+
+### Program
+
+... [any compiler options you use] ...
+
+... [header comments -- see below for format] ...
+
+... [text of program in C or Pascal] ...
+
+### End
+
+NOTES:  * Put comments precisely like the ones below at the front of each and
+          every solution (after the `### Program' marker).
+        * These messages are read by a program; do not change the format.
+        * Be sure your email address and name are always spelled precisely
+          the same way.  We use the combination of email address and name as
+          a unique identifier for you.
+        * Data after `### End' are ignored (e.g., signatures)
+        * All registration lines (below) are required; your program won't
+          be graded until they are filled in.
+        * Do not insert any extra blanks, please.
+        * Put compiler directives just before the header (as shown below)
+          but nevertheless after the `### Program' marker.  Choose your
+          directives based on your own experience.
+
+Here is the C/C++ header (with some compiler options) filled out for a
+youthful Rob Kolstad (my explanatory comments on far right -- do not
+include them).  Do not remove any blank lines -- the automatic grader
+uses them.  You should fill out a header out for each problem with your
+own data (save it in a file on your computer for easy inclusion on later
+submissions):
+
+### Program
+
+#pragma option -O2
+
+/*                                (This goes on a separate line)
+
+Problem: 1                        (problem number)
+Name: Rob Kolstad                 (First name then last name)
+Email: kolstad@delos.com          (Email address)
+School: Norman High School
+Grade: 12                         (Grade in school, numerical: 7, 8, 9, ..., 13)
+Age: 18
+CityState: Norman, OK
+Country: USA                      (Three letters: CAN, COL, DEU, ROM, USA, etc.)
+
+*/                                (This goes on a separate line)
+
+If you live somewhere that has a city but no state, please omit the
+state.  If your school system uses a notation like `Form 6' for older
+students, please pro-rate your `Grade' by calculating the equivalent
+USA school grade.  In the USA: grade 10 students begin around age 15;
+grade 11 students begin around age 16; grade 12 students begin around
+age 17.
+
+Here is the PASCAL header (with compiler options) filled out for a
+youthful Rob Kolstad (my comments on far right -- do not include them).
+Do not remove any blank lines -- the automatic grader uses them.  You
+should fill out a header for each problem with your own data (why not
+save it in a file on your computer for easy inclusion on later
+submissions):
+
+### Program
+
+{$G+,N+}
+
+{                                 (on a line by itself, please)
+
+Problem: 1                        (problem number)
+Name: Rob Kolstad                 (first name then last name)
+Email: kolstad@delos.com          (email address)
+School: Norman High School
+Grade: 12                         (grade in school, numerical: 7, 8, 9, ..., 13)
+Age: 18
+CityState: Norman, OK
+Country: USA                      (three letters: CAN, COL, DEU, ROM, USA, etc.)
+
+}
+
+Watch your mailbox for a quick (automatically-generated) reply.  If you
+don't see one fairly soon (i.e., 15 minutes) after sending in your
+solution, send another e-mail to kolstad@delos.com explaining the
+situation (including which problem you submitted, when you sent it).
+
+==============================================================================
+
+                      1998-99 USA Computing Olympiad
+                                US Open
+                           Back to the Farm
+                       April 15-April 22, 1999
+
+=======================================================================
+
+PROBLEM 1: Bessie Come Home [Kolstad & Burch]
+
+The cows are out in their separate pastures.  It's dinner time.  Farmer
+John rings the bell and they all start walking to the barn.  Your job
+is to figure out which one cow gets to the barn first.  The supplied
+test data will always have exactly one fastest cow.
+
+Between milkings, each cow is located in her own pasture. Some pastures
+have no cows in them.  Each pasture is connected by a path to one or
+more other pastures.  One or more of the pastures has a path to the
+barn.  Thus, all cows have a path to the barn and they always know the
+shortest path.  Of course, cows can go either direction on a path and
+they all walk at the same speed.
+
+The pastures are labeled `a'..`z' and `A'..`Y'.  One cow is in each
+pasture labeled with a capital letter. No cow is in a pasture labeled
+with a lower case letter.  The barn's label is `Z'; no cows are in the
+barn, though.
+
+INPUT FORMAT:
+
+Line 1:       integer P, 1 <= P <= 10000, the number of paths that
+              interconnect the pastures (and the barn)
+Lines 2..P+1: two letters and an integer: the names of the
+              interconnected pastures (barn) and the distance between them
+              Column 1:    the name of the first pasture (or the barn)
+              Column 2:    a space
+              Column 3:    the name of the second pasture (or the barn)
+              Column 4:    a space
+              Column 5..:  integer, 1 <= x <= 1000, the distance
+                           between the two named entities
+
+SAMPLE INPUT (file INPUT.TXT):
+
+5
+A d 6
+B d 3
+C e 9
+d Z 8
+e Z 3
+
+OUTPUT FORMAT:
+
+The output is a single line of output that contains two items:
+   * the capital letter name of the pasture with the cow that arrives
+     first back at the barn.
+followed by:
+   * the length of the path traveled by that cow
+
+SAMPLE OUTPUT (file OUTPUT.TXT):
+B 11
+
+==============================================================================
+
+PROBLEM 2: Milk Measuring [Burch]
+
+Farmer John must measure Q quarts of his finest milk and deliver it in
+one big bottle to a customer.  He fills that bottle with exactly the
+number of quarts that the customer orders.
+
+Farmer John has always been frugal.  He is at the cow hardware store
+where he must purchase a set of pails with which to measure out Q quarts
+of milk from his giant milk tank.  Since the pails each cost the same
+amount, your task is to figure out a minimal set of pails Farmer John
+can purchase in order to fill a bottle with exactly Q quarts of milk.
+
+To measure out milk, F.J. may completely fill a pail from the tank and
+pour it into the bottle.  He can never remove milk from the bottle or
+pour milk anywhere except into the bottle.  With a one-quart pail, FJ
+would need only one pail to create any number of quarts in a bottle.
+Other pail combinations are not so convenient.
+
+Determine the optimally small number of pails to purchase, given the
+guarantee that at least one solution is possible for all contest input
+data.
+
+INPUT FORMAT:
+
+Line 1:       integer Q (1 <= Q <= 20000): number of quarts to be
+              measured out
+Line 2:       integer P (1 <= P <= 100): number of pails in the store
+Lines 3..P+2: integer pail_value (1 <= pail_value <= 10000), the number
+              of quarts a pail holds
+
+SAMPLE INPUT (file INPUT.TXT):
+
+11
+3
+3
+5
+7
+
+OUTPUT FORMAT:
+
+The output is a single line that contains:
+   * the minimum number of pails required to measure out the desired
+     number of quarts
+followed by:
+   * a SORTED list (from smallest to largest) of the capacity of each of
+     the required pails
+
+SAMPLE OUTPUT (file OUTPUT.TXT):
+
+2 3 5
+
+==============================================================================
+
+PROBLEM 3: Healthy Holsteins [Burch & Kolstad]
+
+Farmer John prides himself on having the healthiest dairy cows in the
+world.  He knows the vitamin content for one scoop of each feed type
+and the minimum daily vitamin requirement for the cows.  Your goal is
+to help Farmer John feed his cows so they stay healthy while minimizing
+the number of scoops that a cow is fed.
+
+Given the daily requirements of each kind of vitamin that a cow needs,
+identify the smallest combination of scoops of feed a cow can be fed in
+order to meet at least the minimum vitamin requirements.
+
+Vitamins are measured in integer units.  Cows can be fed at most one
+scoop of any feed type.  It is guaranteed that a solution exists for
+all contest input data.
+
+INPUT FORMAT:
+
+Line 1:       integer V (1 <= V <= 25), the number of types of vitamins
+Line 2:       V integers  (1 <= each one <= 1000), the minimum requirement
+              for each of the V vitamins that a cow requires each day
+Line 3:       integer G (1 <= G <= 15), the number of types of feeds
+              available
+Lines 4..G+3: V integers (0 <= each one <= 1000), the amount of each
+              vitamin that one scoop of this feed contains.  The first
+              line of these G lines describes feed #1; the second line
+              describes feed #2; and so on.
+
+SAMPLE INPUT (file INPUT.TXT):
+
+4
+100 200 300 400
+3
+50   50  50  50
+200 300 200 300
+900 150 389 399
+
+OUTPUT FORMAT:
+
+The output is a single line of output that contains:
+   * the minimum number of scoops a cow must eat
+followed by:
+   * a SORTED list (from smallest to largest) of the feed types
+     the cow is given
+
+SAMPLE OUTPUT (file OUTPUT.TXT):
+
+2 1 3
+
+[Other answers might be possible; any one correct answer is fine]
+
+==============================================================================
+
+PROBLEM 4: Big Barn [USACO FALL '97]
+
+Farmer John wants to place a big square barn on his square farm.  He
+hates to cut down trees on his farm and wants to find a location for
+his barn that enables him to build it only on land that is already clear
+of trees.  For our purposes, his land is divided into N x N parcels.
+The input contains a list of parcels that contain trees.  Your job is
+to determine and report the largest possible square barn that can be
+placed on his land without having to clear away trees.  The barn sides
+must be parallel to the horizontal or vertical axis.
+
+EXAMPLE
+
+Consider the following grid of Farmer John's land where `.' represents
+a parcel with no trees and `#' represents a parcel with trees:
+
+          1 2 3 4 5 6 7 8
+        1 . . . . . . . .
+        2 . # . . . # . .
+        3 . . . . . . . .
+        4 . . . . . . . .
+        5 . . . . . . . .
+        6 . . # . . . . .
+        7 . . . . . . . .
+        8 . . . . . . . .
+
+The largest barn is 5 x 5 and can be placed in either of two locations
+in the lower right part of the grid.
+
+INPUT FORMAT
+
+Line 1:      two integers: N (1 <= N <= 200), the number of parcels
+             on a side, and T (1 <= T <= 500) the number of parcels with
+             trees
+Line 2..T+1: two integers  (1 <= each integer <= N), the row and column
+             of a tree parcel
+
+SAMPLE INPUT (file INPUT.TXT):
+
+8 3
+2 2
+2 6
+6 3
+
+OUTPUT FORMAT
+
+The output file should consist of exactly one line, the maximum side
+length of John's barn.
+
+SAMPLE OUTPUT (file OUTPUT.TXT):
+
+5
+
+==============================================================================
+
+PROBLEM 5: Cow Tours [Burch]
+
+Farmer John has a number of pastures on his farm. Cow paths connect a
+pasture with certain other pastures. But, at the present time, you can
+find at least two pastures that cannot be connected by a sequence of
+cow paths.
+
+Farmer John would like create cow paths between one extra pair of pastures
+so that more pastures are connected by a sequence of cow paths.
+
+In a set of connected pastures, the `diameter' is defined to be the
+largest distance of all the shortest walks between any pair of pastures.
+Consider the five pastures below with the cow paths marked by a line:
+
+                15,15   20,15
+                  D       E
+                  *-------*
+                  |     _/|
+                  |   _/  |
+                  | _/    |
+                  |/      |
+         *--------*-------*
+         A        B       C
+         10,10   15,10   20,10
+
+The `diameter' of this set of farm pastures is approximately 12.07106,
+since the longest of the set of shortest paths between pairs of pastures
+is the path from A to E (which includes the point set {A,B,E}). No other
+pair of pastures is farther apart when connected by an optimal sequence
+of cow paths.
+
+Suppose another set of pastures on the same plane is connected by cow
+paths as follows:
+
+                          *F 30,15
+                         / 
+                       _/  
+                     _/    
+                    /      
+                   *------ 
+                   G      H
+                   25,10   30,10
+
+In the scenario of just two pastures on his farm, Farmer John would add
+a cow path between a point in each of these two pastures (namely point sets
+{A,B,C,D,E} and {F,G,H}) so that the joined set of pastures
+{A,B,C,D,E,F,G,H} has the smallest possible diameter.
+
+Note that cow paths do not intersect or connect by crossing each other;
+they only connect at listed points.
+
+The input contains the pastures, their locations, and a symmetric
+"adjacency" matrix that tells whether pastures are connected by cow
+paths. Pastures are not considered to be connected to themselves.  Here's
+one annotated adjacency list for the pasture {A,B,C,D,E,F,G,H} as shown
+above:
+
+                A B C D E F G H
+              A 0 1 0 0 0 0 0 0
+              B 1 0 1 1 1 0 0 0
+              C 0 1 0 0 1 0 0 0
+              D 0 1 0 0 1 0 0 0
+              E 0 1 1 1 0 0 0 0
+              F 0 0 0 0 0 0 1 0
+              G 0 0 0 0 0 1 0 1
+              H 0 0 0 0 0 0 1 0
+
+Other adjacency lists might permute the rows and columns by using some
+other order than alphabetical to show the point connections.  The input
+data contains no names for the points.
+
+The input will contain a least two pastures that are not connected by
+any sequence of cow paths.
+
+Find a way to connect exactly two pastures in the input with a cow path
+so that the new combined pasture has the smallest possible diameter of
+any possible pair of connected pastures. Output that smallest possible
+diameter.
+
+INPUT FORMAT:
+
+Line 1:           integer, N (1 <= N <= 150) the number of pastures
+Lines 2..N+1:     two integers, X, Y, (0 <= X <= 100000, 0 <= Y <=
+                  100000), that denote that X,Y grid location of the
+                  pastures; all input pastures are unique
+Lines N+2..2*N+1: N lines, each containing N space-separated integers
+                  (each integer 0 1) that represent the adjacency matrix
+                  as described above.
+
+SAMPLE INPUT (file INPUT.TXT):
+
+8
+10 10
+15 10
+20 10
+15 15
+20 15
+30 15
+25 10
+30 10
+0 1 0 0 0 0 0 0
+1 0 1 1 1 0 0 0
+0 1 0 0 1 0 0 0
+0 1 0 0 1 0 0 0
+0 1 1 1 0 0 0 0
+0 0 0 0 0 0 1 0
+0 0 0 0 0 1 0 1
+0 0 0 0 0 0 1 0
+
+OUTPUT FORMAT:
+
+The output consists of a single line with the diameter of the newly
+joined pastures.  Print the answer to exactly six decimal places.  Do
+not perform any special rounding on your output.
+
+SAMPLE OUTPUT (file OUTPUT.TXT):
+
+22.071068
+
+[The precise answer is closer to 22.071067811865475244 and might print
+as 22.071067 with your compiler/output libraries.]
+
+
+   ====================================================================
+         /\      Rob Kolstad              www.delos.com
+      /\/  \     kolstad@delos.com        15235 Roller Coaster Road
+     /  \   \    +1 719-481-6542          Colorado Springs, CO  80921
+   ====================================================================
+
+

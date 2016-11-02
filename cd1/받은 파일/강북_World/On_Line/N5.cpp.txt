@@ -1,0 +1,50 @@
+#include <fstream.h>
+
+const int Maxn = 100;
+const char Infilename[30] = "jaryo.dat";
+
+int n, m;
+int pr[Maxn];
+int table[Maxn][Maxn];
+
+int input();
+int output();
+
+int main()
+{
+	input();
+	char c;
+	do
+	{
+		cout << "배열 A의 행과 열의 개수는?";
+		cin >> n >> m;
+		int mi;
+		for(int i = n - 1; i >= 0; i--)
+		{
+			mi = i;
+			for(int j = m - 1; j > i; j--)
+				if (table[i][j] > table[i][mi]) mi = j;
+			pr[i] = mi;
+			m = mi;
+		}
+		for(i = 0; i < n; i++)
+			cout << i + 1 << "행의 최대값은 " << pr[i] + 1 << "열의 " << table[i][pr[i]] << endl;
+		do
+		{
+			cout << "다시하시겠습니까?(y/n)";
+			cin >> c;
+		} while(c != 'y' && c != 'n');
+	} while(c != 'n');
+	return 0;
+}
+
+int input()
+{
+	ifstream fin(Infilename);
+	int i, j;
+	for(i = 0; i < 10; i++)
+		for(j = 0; j < 10; j++)
+			fin >> table[i][j];
+	fin.close();
+	return 0;
+}

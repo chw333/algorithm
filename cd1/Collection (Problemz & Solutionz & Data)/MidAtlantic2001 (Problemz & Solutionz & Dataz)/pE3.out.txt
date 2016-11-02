@@ -1,0 +1,8 @@
+:ABCDEFGH:
+:BCDEFGH:
+:CDEFGH:
+:DEFGH:
+:EFGH:
+:FGH:
+:GH:
+:H:

@@ -1,0 +1,91 @@
+<html>
+<head> <title>Analysis 29: Name That Number</title> </head>
+<body background="../../usaco/bg3.jpg">
+<img src="../../usaco/cow1.jpg" width="742" height="118">
+<center>
+<b><font size="7">Name That Number</font></b><br>
+Russ Cox
+</center>
+<html>
+
+<p>There are two ways to do this problem.  One is, given the number,
+to generate all possible strings that encode to that number and look
+them up in the dictionary.  Since there are 3 letters for each number
+and 12 digits in the string, that's 3^12 = 531441 lookups into a dictionary
+of size 5000, which although manageable would be a little on the long side.
+
+<p>Instead, we store the dictionary as both names and the corresponding
+numbers, which are computed as we read the dictionary into memory.
+To find the translations of our given number, we just walk
+the dictionary and print out any names with that number.
+
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;assert.h&gt;
+#include &lt;ctype.h&gt;
+
+#define MAXNAME 5000
+#define NAMELEN 18
+
+typedef struct Name	Name;
+struct Name {
+	char name[NAMELEN];
+	char num[NAMELEN];
+};
+
+char char2num[] = "22233344455566670778889990";	/* 0 for Q, Z */
+
+Name dict[MAXNAME];
+int ndict;
+
+int
+name2num(char *num, char *name)
+{
+	int n;
+	char *p;
+
+	n = 0;
+	strcpy(num, name);
+	for(p=num; *p; p++)
+		if(isupper(*p))
+			*p = n * 10 + char2num[*p-'A'];
+	return n;
+}
+
+void
+main(void)
+{
+	char *p, buf[NAMELEN];
+	FILE *fin, *fout, *fdict;
+	int i, nfound;
+
+	fdict = fopen("dict.txt", "r");
+	fin = fopen("namenum.in", "r");
+	fout = fopen("namenum.out", "w");
+	assert(fdict != NULL &amp;&amp; fin != NULL &amp;&amp; fout != NULL);
+
+	/* read dictionary */
+	for(ndict=0; fscanf(fdict, "%s", dict[ndict].name) == 1; ndict++)
+		name2num(dict[ndict].num, dict[ndict].name);
+
+	/* look through dictionary for matching numbers */
+	fscanf(fin, "%s", buf);
+
+	nfound = 0;
+	for(i=0; i&lt;ndict; i++)
+		if(strcmp(dict[i].num, buf) == 0) {
+			fprintf(fout, "%s\n", dict[i].name);
+			nfound++;
+		}
+
+	if(nfound == 0)
+		fprintf(fout, "NONE\n");
+	exit(0);
+}
+</pre>
+<center>
+<a href="../BACK/default.htm">USACO Gateway</a> | <a href="mailto:kolstad@ace.delos.com">Comment or Question</a>
+</center>
+</body>

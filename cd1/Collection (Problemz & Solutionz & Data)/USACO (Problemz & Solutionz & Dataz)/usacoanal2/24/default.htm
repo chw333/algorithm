@@ -1,0 +1,94 @@
+<html>
+<head> <title>Analysis 24: Barn Repair</title> </head>
+<body background="../../usaco/bg3.jpg">
+<img src="../../usaco/cow1.jpg" width="742" height="118">
+<center>
+<b><font size="7">Barn Repair</font></b><br>
+Russ Cox
+</center>
+<html>
+
+<p>If we can purchase M boards, then we can leave unblocked M-1 runs of
+stalls without cows in them, in addition to any stalls on the leftmost
+side that don't have cows and any stalls on the rightmost side that
+don't have cows.
+
+<p>We input the list of cows in stalls, storing into an array whether
+or not there is a cow in a particular stall.  Then we walk the array
+counting sizes of runs of cowless stalls.  We sort the list of sizes
+and pick the M-1 largest ones as the stalls that will remain uncovered.
+
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;assert.h&gt;
+
+#define MAXSTALL 200
+int hascow[MAXSTALL];
+
+int
+intcmp(const void *va, const void *vb)
+{
+	return *(int*)vb - *(int*)va;
+}
+
+void
+main(void)
+{
+    FILE *fin, *fout;
+    int n, m, nstall, ncow, i, j, c, lo, hi, nrun;
+    int run[MAXSTALL];
+
+    fin = fopen("barn1.in", "r");
+    fout = fopen("barn1.out", "w");
+    
+    assert(fin != NULL &amp;&amp; fout != NULL);
+
+    fscanf(fin, "%d %d %d", &amp;m, &amp;nstall, &amp;ncow);
+    for(i=0; i&lt;ncow; i++) {
+	fscanf(fin, "%d", &amp;c);
+	hascow[c-1] = 1;
+    }
+
+    n = 0;	/* answer: no. of uncovered stalls */
+
+    /* count empty stalls on left */
+    for(i=0; i&lt;nstall &amp;&amp; !hascow[i]; i++)
+	n++;
+    lo = i;
+
+    /* count empty stalls on right */
+    for(i=nstall-1; i&gt;=0 &amp;&amp; !hascow[i]; i--)
+	n++;
+    hi = i+1;
+
+    /* count runs of empty stalls */
+    nrun = 0;
+    i = lo;
+    while(i &lt; hi) {
+	while(hascow[i] &amp;&amp; i&lt;hi)
+	    i++;
+
+	for(j=i; j&lt;hi &amp;&amp; !hascow[j]; j++)
+	    ;
+
+	run[nrun++] = j-i;
+	i = j;
+    }
+
+    /* sort list of runs */
+    qsort(run, nrun, sizeof(run[0]), intcmp);
+
+    /* uncover best m-1 runs */
+    for(i=0; i&lt;nrun &amp;&amp; i&lt;m-1; i++)
+	n += run[i];
+
+    fprintf(fout, "%d\n", nstall-n);
+    exit(0);
+}
+</pre>
+<center>
+<a href="../BACK/default.htm">USACO Gateway</a> | <a href="mailto:kolstad@ace.delos.com">Comment or Question</a>
+</center>
+</body>

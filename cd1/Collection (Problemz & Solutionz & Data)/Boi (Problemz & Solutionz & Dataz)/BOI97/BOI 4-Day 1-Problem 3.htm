@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)http://skyblue.csd.auth.gr/boi/boi_problems/413.html -->
+<HTML><HEAD><TITLE>BOI 4-Day 1-Problem 3</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY>
+<H2 align=center>4th Balkan Olympiad in Informatics <BR>Nicosia, Cyprus, 19-25 
+October 1997</H2>
+<HR>
+
+<H2 align=center>Day 1 - Problem 3 (Heads and tails)</H2>
+<P align=center><BR><BR>A NxN matrix (where N&lt;=10) of coins is given, some 
+heads up and some tails up. A player must flip coins so as to achieve an all 
+tails configuration. However, when a player flips a particular coin, each 
+rectilinearly adjacent neighbors (i.e. its left, right, top and bottom 
+neighbors, if they exist), also flip over. <BR>The problem is, given an initial 
+configuration, to achieve an all tails matrix by flipping the minimum number of 
+coins. Note that by flip we mean "point to a coin, and change it and its 
+neighbors". </P>
+<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%" msimagelist>
+  <TBODY>
+  <TR msimagelist>
+    <TD vAlign=baseline width=42 msimagelist><IMG height=14 hspace=13 
+      src="BOI 4-Day 1-Problem 3.files/blueball.gif" width=16></TD>
+    <TD vAlign=top width="100%"><B>Input:</B> <BR>INPUT DATA (file INPUT.TXT) 
+      <BR>The first line contains the integer N. Each of the next N lines 
+      contains N characters, H or T standing for the heads/tails respectively. 
+      <BR><BR></TD></TR>
+  <TR msimagelist>
+    <TD vAlign=baseline width=42 msimagelist><IMG height=14 hspace=13 
+      src="BOI 4-Day 1-Problem 3.files/blueball.gif" width=16></TD>
+    <TD vAlign=top width="100%"><B>Output:</B> <BR>OUTPUT DATA (file 
+      OUTPUT.TXT) <BR>The first line should contain the minimum number of flips. 
+      The next N lines comprise a matrix of N integers per line. hese integers 
+      have an 1 or a 0 value. The value 1 means that the corresponding coin has 
+      been flipped at least once. The alue 0 means that the corresponding coin 
+      has not been flipped at all. <BR><BR></TD></TR>
+  <TR msimagelist>
+    <TD vAlign=baseline width=42 msimagelist><IMG height=14 hspace=13 
+      src="BOI 4-Day 1-Problem 3.files/blueball.gif" width=16></TD>
+    <TD vAlign=top width="100%"><B>Examples:</B><BR>
+      <UL>
+        <LI><I>Input </I><BR>3 <BR>H T T <BR>H T T <BR>T T T <BR>
+        <LI><I>Output </I><BR>5 <BR>1 0 0 <BR>0 1 0 <BR>1 1 1 <BR></LI></UL></TD></TR>
+  <TR msimagelist>
+    <TD vAlign=baseline width=42 msimagelist><IMG height=14 hspace=13 
+      src="BOI 4-Day 1-Problem 3.files/blueball.gif" width=16></TD>
+    <TD vAlign=top width="100%"><B>Remark </B>You may assume that there is 
+      always a solution to the problem. <BR></TD></TR></TBODY></TABLE>
+<P><BR>Time-limit for each test: 20 seconds. <BR>Maximal score: 40 points 
+<BR><BR></P>
+<HR>
+</BODY></HTML>

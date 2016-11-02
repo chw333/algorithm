@@ -1,0 +1,34 @@
+#include <fstream.h>
+
+int data[10][10],out[10],out2[10];
+
+void main(void)
+{
+    int n,m,mr,i,j,max,mmr;
+    ifstream fin("jaryo.dat");
+    for(i=0;i<10;i++)
+        for(j=0;j<10;j++)
+            fin >> data[i][j];
+    cout << "Input Array's Row and column ? ";
+    cin >> n >> m;
+    mr=m-1;
+    for(i=n-1;i>=0;i--)
+    {
+        max=-32768;
+        for(j=i;j<=mr;j++)
+        {
+            if(data[i][j]>max)
+            {
+                max=data[i][j];
+                mmr=j;
+            }
+        }
+        out[i]=max;out2[i]=mmr;
+        mr=mmr-1;
+        if(mr==-1) mr=0;
+    }
+    for(i=0;i<n;i++)
+    {
+        cout << "row" << i+1 << "'s Maximum : " << out2[i]+1 << " column's " << out[i] << endl;
+    }
+}

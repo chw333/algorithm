@@ -1,0 +1,665 @@
+Thanks for entering the USACO WINTER 1999 TOURNAMENT.  This automated
+report tells how we think you did (so far).  We're sending it out so
+that you can double-check our work and let us know if you see any
+immediate problems.
+
+Please read the results carefully (the test data are not so interesting
+to read!) and let us know if you see anything that we should change.
+Please reply (to <kolstad@delos.com>) by Monday evening (USA Mountain
+Time, just a few days from now) so we can send out results soon.
+
+Speak soon or forever hold your peace!
+
+Here's your demographic information:
+
+ID: x017
+NAME: Grant
+EMAIL: grantguo@163.net
+SCHOOL: Affiliated Middle School of Fudan University
+GRADE: 11
+AGE: 16
+CITY: Shanghai
+CNTRY: CHN
+
+And now let's talk about results.  Here's the various ways we think your
+program's treament of a single task could end up:
+
+KEY   MEANING
+OK     means that your program produced the correct output.
+POKEY  means that your program produced the correct output but
+            too long (100-150% of time limit).
+SLOW   means your program ran too long.  No answers were checked.
+WRONG  means your program produced an incorrect answer.
+NORUN  means your program was not run (didn't compile, usually)
+
+We have included our grading program's report for all your output for
+the grading tasks.  It looks like this:
+
+OK    time.1     0.27  Five o'clock
+|       |         |   |
+|       |         |   Your program's answer
+|       |       Your program's runtime
+|    Task (title, test dataset number)
+Whether we think your answer was right or not (see `KEY's above)
+
+Multiline output is condensed to a single line by substituting vertical
+bars for line separators like this:
+
+OK    palind.1   0.27  26|27|28
+
+This line means the actual output was:
+
+26
+27
+28
+
+Any output printed to the console is shown as `#output ...'.  Other
+informative messages begin with a `#'.
+
+After each of the task grading summary lines is a line that shows what
+we think is the right answer:
+
+          grader ans:  Five o'clock
+
+Here are your individual program outputs, special comments (if any) are
+shown in square brackets [like this]:
+
+Result  Task     Time    Answer
+OK    fence.1     0.68  20
+           grader ans:  20
+OK    fence.2     0.65  571
+           grader ans:  571
+OK    fence.3     0.63  9801
+           grader ans:  9801
+OK    fence.4     0.65  1182682
+           grader ans:  1182682
+OK    fence.5     0.64  567644
+           grader ans:  567644
+OK    fence.6     0.65  532
+           grader ans:  532
+OK    fence.7     0.65  1110
+           grader ans:  1110
+OK    fence.8     0.63  0
+           grader ans:  0
+OK    fence.9     0.64  0
+           grader ans:  0
+OK    fence.10    0.82  67100673
+           grader ans:  67100673
+OK    fence.11    0.67  21511333
+           grader ans:  21511333
+OK    fence.12    0.99  16014498
+           grader ans:  16014498
+OK    fence.13    0.64  15967500
+           grader ans:  15967500
+OK    fence.14    1.00  511935997
+           grader ans:  511935997
+OK    fence.15    0.98  511904004
+           grader ans:  511904004
+OK    cowscan.1   0.66  .##########....|.##########....|....######.....|......####.....|.......####..##|.......########|#####..########|###############|..#########..##|....######.....
+           grader ans:  .##########....|.##########....|....######.....|......####.....|.......####..##|.......########|#####..########|###############|..#########..##|....######.....
+OK    cowscan.2   0.65  #.............#|###.........###|...###...###...|....########...|...#........#..|...#..#...#.#..|...#....#...#..|....#......#...|.....######....|..############.
+           grader ans:  #.............#|###.........###|...###...###...|....########...|...#........#..|...#..#...#.#..|...#....#...#..|....#......#...|.....######....|..############.
+OK    cowscan.3   0.65  ...............|.##............|#############..|##############.|...###########.|...##########.#|...##..###.##.#|...##...#..##..|...##......##..|....#.......#..
+           grader ans:  ...............|.##............|#############..|##############.|...###########.|...##########.#|...##..###.##.#|...##...#..##..|...##......##..|....#.......#..
+OK    cowscan.4   0.64  .##.........##.|##########.####|####......####.|..#...#...####.|..#........##..|..#........#...|..#.........#..|...#.####.####.|....#....#..#..|..#.......##...
+           grader ans:  .##.........##.|##########.####|####......####.|..#...#...####.|..#........##..|..#........#...|..#.........#..|...#.####.####.|....#....#..#..|..#.......##...
+OK    cowscan.5   0.64  .###.......##..|#########..###.|.###.....######|###....#..####.|...........##..|............#..|............#..|....#####.####.|####.....#..#..|###.......##...
+           grader ans:  .###.......##..|#########..###.|.###.....######|###....#..####.|...........##..|............#..|............#..|....#####.####.|####.....#..#..|###.......##...
+OK    net.1       0.64  28
+           grader ans:  28
+OK    net.2       0.64  18
+           grader ans:  18
+OK    net.3       0.65  15
+           grader ans:  15
+OK    net.4       0.81  32037
+           grader ans:  32037
+OK    net.5       0.85  3822
+           grader ans:  3822
+OK    net.6       0.72  5000
+           grader ans:  5000
+OK    net.7       0.77  49
+           grader ans:  49
+OK    net.8       0.96  696
+           grader ans:  696
+OK    net.9       0.66  32344
+           grader ans:  32344
+OK    net.10      0.85  41546
+           grader ans:  41546
+OK    net.11      1.33  45662
+           grader ans:  45662
+OK    net.12      1.92  49834
+           grader ans:  49834
+OK    net.13      0.63  900
+           grader ans:  900
+OK    net.14      0.68  2400
+           grader ans:  2400
+OK    net.15      1.54  9900
+           grader ans:  9900
+OK    crypt.1     0.66  1 1
+           grader ans:  1 1
+OK    crypt.2     0.65  1 2
+           grader ans:  1 2
+OK    crypt.3     0.64  1 15
+           grader ans:  1 15
+OK    crypt.4     0.63  0 0
+           grader ans:  0 0
+OK    crypt.5     0.65  1 3
+           grader ans:  1 3
+OK    crypt.6     0.63  0 0
+           grader ans:  0 0
+OK    crypt.7     0.63  0 0
+           grader ans:  0 0
+OK    crypt.8     5.10  1 8
+           grader ans:  1 8
+OK    crypt.9     5.04  1 14
+           grader ans:  1 14
+OK    crypt.10    0.64  0 0
+           grader ans:  0 0
+
+[Test cases are not shown here.  Get the entire 185K+ byte file by
+ftp'ing to ftp.delos.com and retrieving pub/win99a.dat.  Login as
+"anonymous" with your e-mail address as password...RK]
+
+################
+
+Here are the entrants for the Winter '99 contest.  I have sorted them
+alphabetically by country and person.  If you thought you entered and
+do not see your name here, please ensure you have sent your mail to
+winter99a@delos.com or winter99b@delos.com.  Likewise, if you see
+a missing problem.
+
+If you have sent in mail from multiple places, please let me know so I
+can delete the extra entries (even if you've already told me once).
+
+If you sent MIME enclosures, please resubmit as just ASCII.
+
+We'll start grading soon (we think we know how to do this now), so please
+send your corrections quickly.
+
+ID numbers for this contest are assigned independently of all other ID
+numbers; they are just for my convenience.  I'll merge the correct ID
+numbers into the master database at a later date.
+
+Rob
+
+             --------- Division A -------------
+ID  CTRY GR AG PROB NAME                     EMAIL
+X117 BUL 11 16 1234 Haralambiev, Christian   kkh447@bse.bg
+X075 BUL 11 17 1.3. Chuchulanov, Benjamin    benjo3@hotmail.com
+X042 CAN 12 16 1234 Arthur, Dave             master_zed@hotmail.com
+X017 CHN 11 16 1234 Grant                    grantguo@163.net
+X036 COL 11 15 12.4 Prieto, Michael          soponcho@geocities.com
+X064 COL 11 16 1234 Congote, John            jhonec@epm.net.co
+X009 COL 11 16 1234 Garcia, Raul             hdarkness@hotmail.com
+X007 COL 11 16 1234 Torres, Sebastian        schmitt@lettera.net
+X037 COL 11 17 1234 Ruiz, Sebastian          jmono@lettera.net
+X112 CZE 12 17 1.34 Brozovsky, Lukas         lubr@geocities.com
+X069 GRE 10 15 1234 Tsoukalidis, John        itsouk@otenet.gr
+X001 INA 10 14 1234 Kartiwa, Johan Mustika   johanmk@geocities.com
+X005 INA 11 17 1234 Hutagalung, Ronny        SonicSpeed@usa.net
+X140 INA 12 17 12.. Soetjipto, Rusmin        mrsableng@hotmail.com
+X032 INA 12 17 1234 Wirawan, Juki            drake@cbn.net.id
+X003 IRI 12 17 1234 Ghandi, Mahmoud          MahmoudGhandi@yahoo.com
+X025 LAT 10 15 1..4 Gorbovitskiy, Igor       cm@dic.fortech.lv
+X026 LAT 10 15 1.34 Gorbovitskiy, Igor       cm@dk.fortech.lv
+X019 LAT 10 15 1.34 Redjko, Vladimir         red256@hotmail.com
+X023 LAT 10 16 1..4 Rebrov, Maxim            cm@dk.fortech.lv
+X135 LAT 10 16 12.4 Zalais, Mikelis          mikels@valmiera.lanet.lv
+X020 LAT 11 16 1... Denisov, Sergej          CM@dk.fortech.lv
+X018 LAT 11 16 1.3. Hamidullin, Konstantin   CM@dk.fortech.lv
+X024 LAT 11 16 1.34 Shantar, Alexander       cm@dk.fortech.lv
+X022 LAT 11 16 1.34 Zaitsev, Vadim           cm@dk.fortech.lv
+X021 LAT 11 16 12.. Olin, Andrew             cm@dk.fortech.lv
+X119 LAT 11 16 1234 Zarins, Guntis           uvsk@fix.lv
+X138 LAT 12 17 .234 Rutko, Dmitry            vdv@dk.fortech.lv
+X047 LAT 12 17 1234 Sermulins, Janis         janiss@r1g.edu.lv
+X038 LAT 12 17 1234 Zogla, Arturs            uvsk@fix.lv
+X127 LAT 12 18 1234 Silevics, Edijs          uvsk@fix.lv
+X063 MDA 12 17 1234 Andoni, Alexandru        andoni@moldnet.md
+X039 NED 11 16 1.34 Verver, Maks             maksverver@geocities.com
+X066 NED 12 17 1234 Beltman, Herbert         beltman@hetnet.nl
+X131 NED 12 17 1234 Vogelzang, Mathijs       m_v@dds.nl
+X012 POL 10 16 1.34 Sadziak, Slawomir        maxislaw@boss.staszic.waw.pl
+X079 POL 11 17 1234 Dlugolecki, Czeslaw      czd@kki.net.pl
+X132 POL 12 18 ...4 Findeisen, Stanislaw     stfind@polbox.com
+X133 POL 12 18 1234 Findeisen, Stanislaw     stfind@kki.net.pl
+X002 POR 12 17 12.4 Santos, Jose             jcsantos@iname.com
+X053 ROM 10 16 1.34 Florin, Sabau            fsabau@cs.ro
+X027 ROM 12 18 1.34 Stanciu, Adrian          sadyc@lbi.ro
+X055 RSA 11 16 1234 Merry, Bruce             bmerry@iafrica.com
+X051 RSA 12 18 1234 Cronje, Jaco             s9805027@student.up.ac.za
+X046 SRI 12 16 1234 Karunaratne, Tushara     Tushara@mailcity.com
+X128 SRI 13 19 1.3. Gunawardane, Prabath     prabathg@usa.net
+X048 UKR 10 14 1.34 Mauze, Victor            guest@phmliceum.kiev.ua
+X057 UKR 10 15 1234 Surogin, Victor          guest@phmliceum.kiev.ua
+X059 UKR 10 16 1234 Bulanov, Oleksander      guest@phmliceum.kiev.ua
+X058 UKR 11 14 1.34 Vasya, Petruskho         guest@phmliceum.kiev.ua
+X060 UKR 11 15 1.3. Vitaliy, Kabakhevskiy    guest@phmliceum.kiev.ua
+X056 UKR 11 15 1.34 Andrey, Kurinny          guest@phmliceum.kiev.ua
+X123 UKR 11 16 1.34 Anton, Nesterenko        guest@pmhliceum.kiev.ua
+X125 UKR 11 16 1234 Bryhidur, Stepan         guest@pmhliceum.kiev.ua
+X118 UKR 11 16 1234 Uschapovsky, Alexander   sanya@phmliceum.kiev.ua
+X050 UKR 11 17 1234 Pankiv, Bogdan           bogdan@phmliceum.kiev.ua
+X062 UKR 11 17 1234 Tyrchak, Yuri            guest@phmliceum.kiev.ua
+X134 UKR 12 16 1.34 Shvets, Sergey           wolf@phmliceum.kiev.ua
+X049 UKR 12 16 1234 Chumack, Andrew          guest@phmliceum.kiev.ua
+X061 UKR 12 16 1234 Prikhodko, Sergey        sergey@phmliceum.kiev.ua
+X052 UKR 12 16 1234 Pshenichniy, Dmitriy     dmitriy@phmliceum.kiev.ua
+X124 UKR 12 18 1234 Pavlus, Vitaliy          pavvit@phmliceum.kiev.ua
+X101 USA  9 13 1234 Novakovski, Vladimir     vnovakov@lan.tjhsst.edu
+X090 USA  9 14 1... Agarwal, Shailesh        SK1953@hotmail.com
+X030 USA 10 15 1234 Barton, Reid             reid@tiac.net
+X080 USA 10 15 1234 Huang, Gary              ghuang@execpc.com
+X093 USA 10 15 1234 Lu, Yuran                ylu71@maine.maine.edu
+X110 USA 10 15 1234 Mirkin, Ilia             imirkin@lan.tjhsst.edu
+X107 USA 10 15 1234 Nir, Oaz                 thenir@aol.com
+X103 USA 10 15 1234 Valiant, Paul            Paul_Valiant@Milton.edu
+X115 USA 10 16 123. Ferguson, Kevin          vampyr_is@hotmail.com
+X073 USA 10 16 1234 Dave, Nirav              ndave@lan.tjhsst.edu
+X098 USA 11 15 1234 Yue, Tao                 taoyue@geocities.com
+X111 USA 11 16 .2.. Cheng, David             dcheng@darkorb.net
+X071 USA 11 16 1.3. Freeman, Wesley          wfreeman@lan.tjhsst.edu
+X028 USA 11 16 1.34 Connor, Michael          mconnor@tjhsst.edu
+X068 USA 11 16 1.34 Danaher, John            danaher@erols.com
+X006 USA 11 16 1.34 Kirlin, Phil             pkirlin@tjhsst.edu
+X000 USA 11 16 1.34 Lee, Jason               leey@stuy.edu
+X122 USA 11 16 1.34 Willenson, Daniel        dwillens@tjhsst.edu
+X083 USA 11 16 12.. Blank, Seth              antifrez@interport.net
+X045 USA 11 16 12.. Lee, George              sir_garr@hotmail.com
+X108 USA 11 16 1234 Do, Chuong               luando@fastlane.net
+X120 USA 11 16 1234 Gondarenko, Alexander    gng_nt@sprynet.com
+X087 USA 11 16 1234 Liang, Percy             psliang@juno.com
+X097 USA 11 16 1234 Loh, Po-Shen             ploh@madison.k12.wi.us
+X084 USA 11 16 1234 Zaharopol, Daniel        bc20338@binghamton.edu
+X091 USA 11 17 1... Ramaswamy, Satish        saturn7@aol.com
+X041 USA 11 17 1234 Goodman, Brian           bjgoodman1@aol.com
+X065 USA 11 17 1234 O'Rorke, John            jororke@micron.net
+X054 USA 12 16 1234 Hamm, Kenn               vincevalentine@yahoo.com
+X044 USA 12 17 1... Bennett, Nicholas        nick@jtan.com
+X081 USA 12 17 1... Ceperley, Daniel         ceperley@erols.com
+X082 USA 12 17 1... Fishman, Tal             sheegaon@aol.com
+X099 USA 12 17 1... Flaxman, Joel            joel@kenlaw.com
+X085 USA 12 17 1.3. Porter, Adrian           aporter@tjhsst.edu
+X136 USA 12 17 1.34 Freer, Cameron           freer@buffalo.edu
+X113 USA 12 17 1.34 Sipsey, Brian            sipsey@cwix.com
+X088 USA 12 17 12.4 Tong, Mark               mktong@roanoke.infi.net
+X015 USA 12 17 123. Maderich, Michael        ScrffMcGrf@aol.com
+X096 USA 12 17 123. Santini, Paul            yakko24@aol.com
+X105 USA 12 17 1234 Berdnikov, Ilya          berdniki@stuy.edu
+X029 USA 12 17 1234 Brazier, Ken             kenny@bsdi.com
+X016 USA 12 17 1234 Davis, Darren            jpdavis@webspan.net
+X076 USA 12 17 1234 Gregg, John              johng1@randolph.spa.edu
+X095 USA 12 17 1234 Haspel, Daniel           dhaspel@tjhsst.edu
+X102 USA 12 17 1234 Impollonia, Bobby        bobblade@ix.netcom.com
+X126 USA 12 17 1234 Jang, Jae                akubi@stones.com
+X043 USA 12 17 1234 McAlister, Jon           dcjmac@flash.net
+X014 USA 12 17 1234 More, Yogesh             y1729@hotmail.com
+X078 USA 12 17 1234 Stanek, Sean             Srstanek@aol.com
+X116 USA 12 17 1234 Wissner-Gross, Alex      xanzak@idt.net
+X104 USA 12 18 1... Boyce, Ivyl              iboyce@mho.net
+X137 USA 12 18 1.34 Roths, Andrew            cyanide25@pcisys.net
+X121 USA 12 18 1.34 Thompson, Aaron          meteu@imsa.edu
+X106 USA 12 18 1.34 Wetuski, David           dwetuski@hotmail.com
+X089 USA 12 18 12.4 Paris, Jim               jim@jtan.com
+X013 USA 12 18 12.4 Radtke, Nicholas         radtken@aztec.asu.edu
+X031 USA 12 18 1234 Mathews, Benjamin        glebe@airmail.net
+X011 USA 12 18 1234 Wright, Daniel           wrightfam@iname.com
+X109 USA 12 19 123. Pride, Theodore          Theodore@home-school.com
+X139 VIE ju 20 12.. Vien, Tran Dang          u3924938@au.ac.th
+X040 YUG 12 18 1234 Stanojevic, Milan        milanst@beotel.yu
+
+#################
+
+Here are the pretty much final results of the contest; some people are
+currently not included pending review of their submissions.  Existing
+scores will not change.
+
+Thanks to Russ for rewriting the grading software, automating it, and
+working through multiple problems until we think we got it right.  He
+was FAST, too!
+
+Comments on the contests:
+* Fastest grading and analysis ever
+* 21 different countries (25):
+   1 AUS       8 COL    1 IRI       3 POL    1 SLO       1 YUG
+   2 BUL       1 CZE   15 LAT       1 POR    2 SRI
+   2 CAN       1 GRE    1 MDA       3 ROM   11 UKR
+   1 CHN       4 INA    3 NED       2 RSA   73 USA
+* Good score breakdown in both divisions
+* In the final analysis, there weren't enough people entered in
+  the Silver Division.  If you have comments on this, please
+  e-mail me at kolstad@delos.com.  I'm going to publicize to
+  the AP Computer Science List this next time.
+
+General comments:
+
+The score results are shown below.  I used a program to determine how
+much each problem was worth and how much each test case was worth.
+Basically, it counts how many people got test cases and problems wrong
+and uses that to estimate a difficulty and choose a weight.
+
+Consider this (partial) result line for the Silver Division
+Problem 1:
+
+               x--45 6 30 
+
+Given these symbols:
+
+pts     sum   meaning              pts sym meaning
+100% 1..9a..f correct               0   x  too slow
+80%     -    correct but slow      0   .  incorrect
+60%     *    half correct          0   n  no run, no answer, no compile
+
+That means he was too slow on test case one, correct but slow
+on test cases 2 and 3, and was correct for cases 4, 5, and 6.
+Here's how the 30 points out of 39 was determined:
+
+First the problem weights were consulted:
+
+Problem 1:  1: 6 2: 5 3: 6 4: 5 5: 6 6:11   Total: 39
+
+Then the percents were tabulated along with the weights for his score:
+
+x  0.6 x  6 ->  0.0
+-  0.8 x  5 ->  4.0
+-  0.8 x  6 ->  4.8
+4  1.0 x  5 ->  5.0
+5  1.0 x  6 ->  6.0
+6  1.0 x 11 -> 11.0
+
+which sums to 30.8, which was displayed as 30.  Subsequently,
+that 30.8 problem points out of 39 possible points was multiplied
+by the problem's value (396.6) to calculate his total points
+for problem 1:
+
+30.8/39  * 396.6 -> about 313.2 points towards the 1,000 point total.
+
+Congrats to our winners -- their programs made it through tough test
+data designed by Greg Galperin, et al.  And, of course, thanks to all
+the problem submitters and pre-contest testers.
+
+Thanks for Russ Cox for the incredible effort he's put into constructing
+an ever more bullet-proof grading system.
+
+On a sad note, 5% of the entries I received indicated cheating.  They
+are all disqualified for the time being until we resolve just what was
+going on.  They are not included in these results.
+
+We assessed a 35% penalty for each PASCAL program that included `uses crt;'.
+
+Rob
+
+#################################################################################
+#################################################################################
+
+         -------------------------------------------------------
+         -------------------- GOLD DIVISION --------------------
+         -------------------------------------------------------
+
+-------------------------- Test Case Weights ---------------------------
+Problem 1:  1: 4 2: 5 3: 7 4: 8 5: 9 6: 6 7: 6 8: 4 9: 5 a: 6 b: 7 c: 8 d: 6 e: 9 f: 9   Total: 99
+Problem 2:  1: 4 2: 6 3: 4 4: 5 5: 6   Total: 25
+Problem 3:  1: 5 2: 6 3: 7 4: 6 5: 6 6: 7 7: 6 8: 7 9: 7 a: 8 b: 8 c: 8 d: 5 e: 5 f: 5   Total: 96
+Problem 4:  1: 5 2: 6 3:11 4: 7 5: 7 6: 7 7:12 8:12 9:12 a:12   Total: 91
+Problem Weights:  1:34.4  2:48.9  3:34.6  4:46.2
+Problem Values:  1:209.6  2:298.0  3:210.8  4:281.5  
+
+-------------------------- SCORING LEGEND -------------------------------
+
+pts     sum   meaning              pts sym meaning
+100% 1..9a..f correct               0   x  too slow
+80%     -    correct but slow      0   .  incorrect
+60%     *    half correct          0   n  no run, no answer, no compile
+
+GR AG CTR Name................. -- Electric Fence -- - Scan - --- Agri-Net ------- ---- Crypt --- TOTAL
+-------------------------------------------------------------------------------------------------------
+11 16 CHN Grant                 12345 6789a bcdef 99 12345 25 12345 6789a bcdef 96 12345 6789a 91  1000
+11 16 UKR Uschapovsky, Alexande 12345 6789a bcdef 99 12345 25 12345 6789a bcdef 96 12345 6789a 91  1000
+12 17 LAT Sermulins, Janis      12345 6789a bcdef 99 12345 25 12345 6789a bcdef 96 12345 6789a 91  1000
+12 16 UKR Pshenichniy, Dmitriy  12345 6789a bcdef 99 12345 25 12345 6789a bcdef 96 12345 67.9a 79   963
+12 17 IRI Ghandi, Mahmoud       12345 6789a bcdef 99 12345 25 12345 6789a bcdef 96 12345 6.89a 79   963
+10 15 UKR Surogin, Victor       12345 6789a bcdef 99 12345 25 12.45 .789a bcdef 82 1.345 6789a 85   951
+12 18 USA Wright, Daniel        12345 6789a bcdef 99 123.5 20 12345 6789a bcdef 96 12345 6789a 91   940
+11 16 USA Loh, Po-Shen          12345 6789a bcdef 99 12345 25 12345 6789a bcdef 96 12x45 678xa 68   929
+12 18 USA Mathews, Benjamin     12345 6789a bcdef 99 12345 25 12345 6789a bcdef 96 12-45 6.89. 64   916
+10 15 GRE Tsoukalidis, John     123.. 678.a b.d.. 51 12345 25 12345 6789a bcdef 96 12345 6789a 91   898
+12 18 RSA Cronje, Jaco          1..4. 6789. ..d.. 39 12345 25 12345 6789a bcdef 96 12345 6789a 91   873
+12 16 CAN Arthur, Dave          12.4. ..89a b.de. 54 12345 25 12345 6789a bcdef 96 12345 678xa 79   868
+9 13 USA Novakovski, Vladimir  12345 6789a bcdef 99 12345 25 12... 6-8.. ..... 29 12345 6789a 91   853
+12 17 USA McAlister, Jon        12x4x xx89a .xd.x 38 12345 25 12.45 .789a bcdef 82 12345 6789a 91   840
+12 17 USA More, Yogesh          12345 6789. .cd.. 68 12345 25 12345 6789a bcdef 96 12345 ..89. 60   838
+12 18 UKR Pavlus, Vitaliy       1.... .789a b.... 32 12345 25 12345 6789a bcdef 96 12-45 67--a 84   836
+11 16 RSA Merry, Bruce          12345 6789a bcdef 99 12345 25 12345 6789a bcdef 96 12345 ..xx. 36   830
+12 17 NED Beltman, Herbert      12.45 6789a .cdef 85 1x34x 13 12345 6789a bcdef 96 12345 6789a 91   827
+12 17 LAT Zogla, Arturs         12345 6789a bcdef 99 12345 25 12345 6789a bcdef 96 12.45 6xx.. 32   817
+12 18 YUG Stanojevic, Milan     12345 6789a bcdef 99 1x3xx  8 12345 6789a bcdef 96 12345 6789a 91   797
+12 18 POL Findeisen, Stanislaw  123.5 678.a bcdef 86 1x.x5 10 12345 6789a bcdef 96 12345 6789a 91   794
+11 16 USA Liang, Percy          12345 6789a bcdef 99 1.3..  8 12345 6789a bcdef 96 123.5 6789a 84   776
+10 15 USA Barton, Reid          1234. 6.89a bcde. 75 12345 25 12345 6789a bcdef 96 12x45 6xxxx 32   767
+12 16 SRI Karunaratne, Tushara  12... ..8.a ..... 19 12345 25 12345 6789a bcdef 96 12x45 67xxa 56   722
+11 16 BUL Haralambiev, Christia 12..5 678.a bcdef 79 1234x 19 12345 6789a bcdef 96 12.45 6.... 32   704
+12 17 NED Vogelzang, Mathijs    12345 6789a bcdef 99 xxxxx  0 12345 6789a bcdef 96 12345 6789a 91   702
+10 15 USA Nir, Oaz              123.5 678.a bcdef 86 12345 25 12345 67... ..def 58 1.345 .xxxx 30   700
+10 14 INA Kartiwa, Johan Mustik 12.4. ..89. ..d.. 32 12345 25 12.45 .789a b.def 74 12-.5 6.--. 53   692
+12 17 USA Berdnikov, Ilya       1.3.. ..89a bc... 41 12345 25 1..45 67... ..def 45 12345 67xxa 67   691
+12 17 USA Gregg, John           123.. 6789. ..... 37 12345 25 1.... ..... .xdex 15 12345 6789a 91   691
+11 17 UKR Tyrchak, Yuri         ..3.5 678.. .c..f 49 12345 25 12345 6789a bcdef 96 12xx5 6xxxx 25   690
+12 17 USA Davis, Darren         1.3.. ..89a bc... 41 12345 25 1.345 6789. ..def 66 12.4. 67..a 49   681
+12 17 USA Tong, Mark            12345 6789a bcdef 99 12345 25 nnnnn nnnnn nnnnn  0 1234. .7.9. 53   672
+12 17 USA Haspel, Daniel        12345 6789a bcdef 99 12345 25 12345 6789. ..def 72 xxxxx xxxxx  0   666
+12 16 USA Hamm, Kenn            12345 6789a bcdef 99 12345 25 1.345 67... ..def 52 ..x4. 6xxxx 14   665
+12 17 USA Wissner-Gross, Alex   12345 6789a bcdef 99 1x3xx  8 12345 6789a bcdef 96 12345 6xxxx 43   649
+12 18 LAT Silevics, Edijs       12.4. 6789a b.de. 66 12345 25 12.4. .-8.. ..def 43 1.3.5 ...9. 35   640
+12 17 USA Stanek, Sean          1234. ..89a b.de. 61 12345 25 1..4. 678.. ..def 46 12x45 6xxxx 32   627
+12 17 CZE Brozovsky, Lukas      12345 6789a bcdef 99 nnnnn  0 1...5 ...9a bcdef 57 12345 6789a 91   616
+10 16 USA Ferguson, Kevin       1..4. 6.89. .cd.f 50 12345 25 12345 6789a bcdef 96 nnnnn nnnnn  0   615
+11 16 LAT Zarins, Guntis        12... ..8.a b.... 26 12345 25 12.45 .789a bcdef 82 12xx5 6xx.x 25   610
+12 17 AUS Wong, Ka-shu          123.. ..89. ..... 25 12345 25 12345 6789. ..def 72 12x45 6xxxx 32   608
+12 17 USA Santini, Paul         12345 6789a bcdef 99 12345 25 12.45 .7... ..def 44 nnnnn nnnnn  0   604
+10 16 USA Dave, Nirav           12.4. ..89a b.d.. 45 12345 25 1x.x5 .7xxx xxdef 32 12345 6xxxx 43   597
+12 17 POR Santos, Jose          12345 6789a bcdef 99 12345 25 nnnnn nnnnn nnnnn  0 12..5 ..... 18   563
+10 15 USA Lu, Yuran             123.. 6789. ..... 37 1234. 19 1.... ..... .....  5 12345 678xa 79   560
+11 14 UKR Vasya, Petruskho      12345 6789a bcdef 99 nnnnn  0 12345 6789a bcdef 96 1...5 67.xa 43   554
+11 15 USA Yue, Tao              12345 6789a bcdef 99 1.34. 13 1..4. 6.8.. ..def 40 12x45 6xxxx 32   551
+12 17 INA Wirawan, Juki         12345 6789a bcd.f 90 1x3xx  8 1...5 ..... ..def 26 12x45 6.89. 56   516
+12 17 USA Maderich, Michael     1234. 6789. ..d.x 51 12345 25 1..4. 678.. ..def 46 nnnnn nnnnn  0   507
+10 15 USA Valiant, Paul         12345 6789a bcdef 99 xxxxx  0 12345 6789a bcdef 96 12xx5 6xxxx 25   498
+12 17 MDA Andoni, Alexandru     12345 6789a bcdef 99 x-34x 13 123.5 .7... ..def 45 12x.. ...x. 11   497
+10 16 POL Sadziak, Slawomir     12..5 ....a b.de. 46 nnnnn  0 12345 6789a bcdef 96 12345 ..89. 60   494
+12 17 USA Impollonia, Bobby     12... ...9. ..... 14 1....  4 12345 6789a bcdef 96 123.5 6.89. 60   474
+12 17 USA Brazier, Ken          12... ..8.a b.de. 41 .....  0 12.4. .78.. ..def 45 12345 6789a 91   467
+11 16 USA Zaharopol, Daniel     123.5 678.a b.d.. 60 12345 25 123.. xxx.. ..xxx 18 nnnnn nnnnn  0   465
+12 17 USA Freer, Cameron        1234. ..89a b..e. 55 nnnnn  0 12.45 .789a bcdef 82 123.5 ..89. 53   461
+11 16 NED Verver, Maks          123.5 678.a .cd.f 70 nnnnn  0 12345 6789a bcdef 96 12x45 6xxxx 32   458
+12 18 USA Radtke, Nicholas      123.. 6789. ..... 37 12345 25 nnnnn nnnnn nnnnn  0 12xx5 6xxxx 25   454
+12 18 ROM Stanciu, Adrian       1.... ..8.. ..d.. 14 nnnnn  0 12345 6789a bcdef 96 12345 67xxa 67   448
+10 15 LAT Gorbovitskiy, Igor    12345 6789a bcdef 99 nnnnn  0 1234. 678.. ..def 59 12x45 6xxxx 32   438
+10 15 USA Mirkin, Ilia          1.3.. 6.8.. ..... 21 12345 25 123.. --... ..--- 40 ..xx. .xxxx  0   430
+10 15 USA Huang, Gary           1.... ..89. ..... 13 12345 25 xx.xx xxxxx xxxxx  0 1..4x 6x..a 31   421
+12 17 INA Soetjipto, Rusmin     12345 6789a b.d.. 73 xxxxx  0 12345 6789a bcdef 96 12xx5 ..xx. 18   421
+11 15 UKR Andrey, Kurinny       12345 6789a bcdef 99 nnnnn  0 12345 6789a bcdef 96 ..... .....  0   420
+11 15 UKR Vitaliy, Kabakhevskiy 12345 6789a bcdef 99 nnnnn  0 12345 6789a bcdef 96 nnnnn nnnnn  0   420
+11 16 LAT Shantar, Alexander    12345 6789a bcdef 99 nnnnn  0 1...5 .7... ..def 32 12-45 ...9. 45   419
+12 16 UKR Shvets, Sergey        12345 6789a bcdef 99 nnnnn  0 12.45 .789a bcdef 82 1.... ..x..  5   405
+11 16 USA Danaher, John         1.... 678.. ..d.. 26 nnnnn  0 12345 6789a bcdef 96 1..4. 67..a 43   399
+11 16 USA Gondarenko, Alexander 1.... ..... .....  4 1x3xx  8 1234. 678.. ..def 59 123.5 ..89. 53   397
+11 16 COL Garcia, Raul          1..4. 6789. ..d.. 39 .x..x  0 12.45 .789a bcdef 82 1x... .7x9a 41   390
+11 16 USA Connor, Michael       12... 6...a bc... 36 nnnnn  0 12345 6789a bcdef 96 12x45 6xxxx 32   386
+11 16 LAT Zaitsev, Vadim        1234. 6.89a b.... 52 nnnnn  0 1..4. 678.. ..def 46 123.5 ..89. 53   375
+11 16 USA Kirlin, Phil          123.. ..89. ..... 25 nnnnn  0 12345 6789. ..def 72 123.5 ..89. 53   375
+12 18 USA Thompson, Aaron       123.5 678.a .cd.f 70 nnnnn  0 1.... .7.9a bcdef 57 12.4. 6xxxx 25   351
+11 15 COL Prieto, Michael       12.4. ..89a b.de. 54 .....  0 12.4. .78.. ..def 45 1..4. 67..a 43   346
+11 16 UKR Anton, Nesterenko     1..4. 6789a ..d.. 45 nnnnn  0 12345 6789a bcdef 96 ..... ...9. 12   343
+11 16 USA Lee, George           12... ..89. ..... 18 12345 25 nnnnn nnnnn nnnnn  0 nnnnn nnnnn  0   336
+11 17 COL Ruiz, Sebastian       ..345 6789. bcd.f 49 nnnnn  0 12.45 .789a bcdef 54 123.5 ..89. 35   331 *pnlty*
+12 17 LAT Rutko, Dmitry         nnnnn nnnnn nnnnn  0 xxxxx  0 123.5 .7.9a bcdef 76 12x4x 67xxa 49   319
+11 16 COL Congote, John         12... ..89. ..... 18 x....  0 12.45 .789a bcdef 82 12x45 6xxxx 32   317
+10 16 LAT Rebrov, Maxim         12.4. 6789a b.de. 66 nnnnn  0 nnnnn nnnnn nnnnn  0 123.5 ..89. 53   304
+12 18 USA Roths, Andrew         1.... ..89. ..... 13 nnnnn  0 123.5 .7x9. ..de. 47 12x45 67.xa 56   304
+10 15 LAT Redjko, Vladimir      12345 6789a bcdef 99 nnnnn  0 123xx xxxxx xxdxx 23 ..x4. 6xxxx 14   303
+11 17 POL Dlugolecki, Czeslaw   12... ..89. ..... 18 xxxxx  0 1...5 .7... ..def 32 12345 ..89. 60   294
+11 16 USA Blank, Seth           12345 6789a bcd.f 90 .....  0 nnnnn nnnnn nnnnn  0 12x45 6xxxx 32   290
+10 16 ROM Florin, Sabau         123.5 678.a bcdef 56 nnnnn  0 1...5 .7... ..def 21 12..5 678xa 40   288 *pnlty*
+13 19 SRI Gunawardane, Prabath  12... 6789. ..... 30 nnnnn  0 12345 6789a bcdef 96 nnnnn nnnnn  0   274
+11 16 USA Do, Chuong            1.... 678.. ..d.. 26 xxxxx  0 12345 6789a bcdef 96 nnnnn nnnnn  0   266
+12 18 USA Paris, Jim            123.. 6789. ..... 37 .....  0 nnnnn nnnnn nnnnn  0 12345 ..89. 60   264
+12 18 USA Wetuski, David        12... ...9. ..... 14 nnnnn  0 12345 6789a bcdef 96 xxxx. 6xxxx  7   262
+11 16 USA Lee, Jason            12... 6789x xxxxx 30 nnnnn  0 1..45 678.. ..def 52 12xx5 6xxxx 25   255
+11 17 INA Hutagalung, Ronny     12... ..89. ..... 18 1x3xx  8 123.. ...9. ..def 40 12... ..... 11   255
+12 17 USA Porter, Adrian        12345 6789a bcdef 99 nnnnn  0 ..3.. ..... .c..f 20 nnnnn nnnnn  0   254
+10 16 LAT Zalais, Mikelis       1.3.. 6789. ..... 32 .....  0 nnnnn nnnnn nnnnn  0 12345 ..89. 60   253
+12 19 USA Pride, Theodore       1.3.. ..89. ..... 20 1x3xx  8 12345 .7... ..def 51 nnnnn nnnnn  0   250
+11 16 USA Willenson, Daniel     12345 6789a bcdef 99 nnnnn  0 ..... ..... .....  0 1xx4x xxxxx 12   247
+11 15 USA Shende, Vivek         ..... ...9. .....  5 .....  0 12345 6789. ..def 72 1x.4x x7.xx 24   243
+11 17 BUL Chuchulanov, Benjamin 1.... 678.. ..dxx 26 nnnnn  0 12.45 .789a bcdef 82 nnnnn nnnnn  0   235
+11 16 USA Cheng, David          nnnnn nnnnn nnnnn  0 1x345 19 nnnnn nnnnn nnnnn  0 nnnnn nnnnn  0   226
+11 16 COL Torres, Sebastian     ..... ..... .....  0 .....  0 12345 6789a bcdef 63 1..4. 67..a 28   225 *pnlty*
+11 16 LAT Hamidullin, Konstanti 12345 6789a bcdef 99 nnnnn  0 1..xx .xx.x xx..x  5 nnnnn nnnnn  0   221
+11 16 LAT Denisov, Sergej       12345 6789a bcdef 99 nnnnn  0 nnnnn nnnnn nnnnn  0 nnnnn nnnnn  0   210
+11 16 LAT Olin, Andrew          123.5 678.a bcdef 86 .....  0 nnnnn nnnnn nnnnn  0 nnnnn nnnnn  0   182
+11 17 USA O'Rorke, John         12.4. ..89a ..... 32 1x3..  8 ..... ..... .x..x  0 ..... .....  0   163
+12 17 USA Jang, Jae             1.... 678.. ..... 20 xxxxx  0 1..4. 67... ..def 39 1.... .....  5   143
+11 17 USA Goodman, Brian        1.... ..89a ..d.. 25 .....  0 1..4. 67... ..def 39 ..... .....  0   139
+12 17 USA Galatali, Tugrul      nnnnn nnnnn nnnnn  0 nnnnn  0 xxxxx xx.xx xxdef 15 ...4. 67.xx 26   113
+10 14 UKR Mauze, Victor         12... .78.. ..... 19 nnnnn  0 123xx xxxxx xxxxx 18 12... .....  8   105 *pnlty*
+11 17 USA Ramaswamy, Satish     12... ..8.a b.de. 41 nnnnn  0 nnnnn nnnnn nnnnn  0 nnnnn nnnnn  0    87
+12 17 USA Ceperley, Daniel      123.. 6789. ..... 37 nnnnn  0 nnnnn nnnnn nnnnn  0 nnnnn nnnnn  0    78
+12 17 USA Flaxman, Joel         123.. 678.. ..... 32 nnnnn  0 nnnnn nnnnn nnnnn  0 nnnnn nnnnn  0    68
+11 16 USA Freeman, Wesley       ..... ..89. .....  9 nnnnn  0 ..... .7... ....f 11 nnnnn nnnnn  0    43
+12 17 USA Fishman, Tal          12... ..89x xxxxx 18 nnnnn  0 nnnnn nnnnn nnnnn  0 nnnnn nnnnn  0    38
+12 17 USA Bennett, Nicholas     ..... ..89. .....  9 nnnnn  0 nnnnn nnnnn nnnnn  0 nnnnn nnnnn  0    19
+12 18 USA Boyce, Ivyl           1.... ..8.. .....  8 nnnnn  0 nnnnn nnnnn nnnnn  0 nnnnn nnnnn  0    17
+9 14 USA Agarwal, Shailesh     xxxxx xxxxx xxxxx  0 nnnnn  0 nnnnn nnnnn nnnnn  0 nnnnn nnnnn  0     0
+12 17 USA Sipsey, Brian         xxxxx xxxxx xxxxx  0 nnnnn  0 xxxxx xxxxx xxxxx  0 xxxxx xxxxx  0     0
+
+====== Distributions =====
+
+  Distribution by age:
+     Age  #  Percent
+      13   1 ( 0.8%) 
+      14   4 ( 3.4%) **
+      15  15 (12.7%) *********
+      16  40 (33.9%) **************************
+      17  42 (35.6%) ***************************
+      18  14 (11.9%) *********
+      19   2 ( 1.7%) *
+
+  Distribution by grade:
+    Grde  #  Percent
+       9   2 ( 1.7%) *
+      10  18 (15.3%) ***********
+      11  43 (36.4%) ****************************
+      12  54 (45.8%) ***********************************
+      13   1 ( 0.8%) 
+
+  Distribution by country:
+   Cntry  #  Percent
+     AUS   1 ( 0.8%) 
+     BUL   2 ( 1.7%) *
+     CAN   1 ( 0.8%) 
+     CHN   1 ( 0.8%) 
+     COL   5 ( 4.2%) ***
+     CZE   1 ( 0.8%) 
+     GRE   1 ( 0.8%) 
+     INA   4 ( 3.4%) **
+     IRI   1 ( 0.8%) 
+     LAT  14 (11.9%) *********
+     MDA   1 ( 0.8%) 
+     NED   3 ( 2.5%) *
+     POL   3 ( 2.5%) *
+     POR   1 ( 0.8%) 
+     ROM   2 ( 1.7%) *
+     RSA   2 ( 1.7%) *
+     SRI   2 ( 1.7%) *
+     UKR  11 ( 9.3%) *******
+     USA  61 (51.7%) ***************************************
+     YUG   1 ( 0.8%) 
+
+===== Distribution of scores =====
+951..1000  5  *****
+901.. 950  4  ****
+851.. 900  4  ****
+801.. 850  6  ******
+751.. 800  4  ****
+701.. 750  3  ***
+651.. 700  9  *********
+601.. 650  8  ********
+551.. 600  5  *****
+501.. 550  2  **
+451.. 500  9  *********
+401.. 450  9  *********
+351.. 400  6  ******
+301.. 350 10  **********
+251.. 300 11  ***********
+201.. 250  8  ********
+151.. 200  2  **
+101.. 150  4  ****
+51.. 100  3  ***
+  1..  50  4  ****
+  0..   0  2  **
+
+           +   -   *   x   .   n
+prob1.1  107   0   0   2   6   3
+prob1.2   87   0   0   2  26   3
+prob1.3   68   0   0   3  44   3
+prob1.4   59   0   0   2  54   3
+prob1.5   52   0   0   3  60   3
+prob1.6   76   0   0   3  36   3
+prob1.7   73   0   0   3  39   3
+prob1.8  106   0   0   2   7   3
+prob1.9   86   0   0   2  27   3
+prob1.10  71   0   0   4  40   3
+prob1.11  64   0   0   4  47   3
+prob1.12  54   0   0   5  56   3
+prob1.13  73   0   0   4  38   3
+prob1.14  52   0   0   5  58   3
+prob1.15  49   0   0   7  59   3
+Total correct: 1077 (60.85%)
+
+           +   -   *   x   .   n
+prob2.1   58   0   0   9  10  41
+prob2.2   45   1   0  18  13  41
+prob2.3   57   0   0   7  13  41
+prob2.4   48   0   0  14  15  41
+prob2.5   45   0   0  17  15  41
+Total correct: 253 (42.88%)
+
+           +   -   *   x   .   n
+prob3.1   93   0   0   3   4  18
+prob3.2   73   0   0   4  23  18
+prob3.3   61   0   0   2  37  18
+prob3.4   74   0   0   7  19  18
+prob3.5   72   0   0   6  22  18
+prob3.6   60   1   0   6  33  18
+prob3.7   81   3   0   7   9  18
+prob3.8   68   0   0   8  24  18
+prob3.9   62   0   0   6  32  18
+prob3.10  55   0   0   7  38  18
+prob3.11  55   0   0   7  38  18
+prob3.12  55   0   0   9  36  18
+prob3.13  88   1   0   4   7  18
+prob3.14  87   1   0   5   7  18
+prob3.15  87   1   0   8   4  18
+Total correct: 1071 (60.51%)
+
+           +   -   *   x   .   n
+prob4.1   84   0   0   3   8  23
+prob4.2   71   0   0   6  18  23
+prob4.3   41   4   0  28  22  23
+prob4.4   62   0   0  10  23  23
+prob4.5   68   0   0   6  21  23
+prob4.6   62   0   0   4  29  23
+prob4.7   37   0   0  27  31  23
+prob4.8   36   2   0  34  23  23
+prob4.9   38   2   0  39  16  23
+prob4.10  36   0   0  27  32  23
+Total correct: 535 (45.34%)
+
+
+  ==NEW===NEW===NEW===NEW===NEW===NEW==NEW===NEW===NEW===NEW===NEW====
+         /\      Rob Kolstad              www.delos.com
+      /\/  \     kolstad@delos.com        15235 Roller Coaster Road
+     /  \   \    +1 719-481-6542          Colorado Springs, CO  80921
+   ====================================================================
+
+

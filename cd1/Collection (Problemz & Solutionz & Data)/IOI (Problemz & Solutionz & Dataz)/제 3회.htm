@@ -1,0 +1,384 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0041)http://user.chollian.net/~pjykym/ioi3.htm -->
+<HTML><HEAD><TITLE>제 3회</TITLE>
+<META content="MSHTML 5.00.2614.3500" name=GENERATOR>
+<META content="text/html; charset=euc-kr" http-equiv=Content-Type></HEAD>
+<BODY>
+<P align=center><B><FONT size=6>제 3회</FONT></B></P>
+<P>제 3회는 1991년 5월 19일부터 25일까지 그리스 아테네에서 열렸다. 이 때 우리 나라에서는 참관단만을 파견했다. 대체로 기본적인 
+알고리즘 지식을 테스트하는 문제가 출제되었다. 아직 문제가 뜻이 막연한 부분이 간혹 있고 경진대회 스타일을 많이 벗어나지 못했지만, 6번과 
+7번은 형식면에서는 입출력 체계를 완전히 갖추고 난이도로 봐도 올림피아드 문제로는 그런 대로 괜찮아 보인다. 4번에서 언어 판별 알고리즘을 
+고안해라는 지시와, 5번에서 S-식을 효율적으로 계산하는 자료 구조를 만들어라는 지시는 컴퓨터 창의성 경진대회 문제 같기도 하다(?).</P>
+<P><A href="http://user.chollian.net/~pjykym/ioi3.htm#1">1. 카드놀이</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi3.htm#2">2. 사이프러스 나무</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi3.htm#3">3.&nbsp;정사각형 행렬</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi3.htm#4">4. 언어 판별</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi3.htm#5">5. S 전개식 문제</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi3.htm#6">6. 가장 큰 강도 조직</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi3.htm#7">7. 제약 회사 직원의 
+스케줄</A></P>
+<HR>
+
+<H2><A name=1></A>1. 카드놀이</H2>
+<P>카드 한 벌은 52장의 카드로 구성돼 있다. 그리고 카드는 1부터 10, J, Q, K까지 13가지의 값어치를 갖는 카드들이 모두 네 가지 
+형태로 들어있다. 네 가지 형태란 스페이드와 클럽(검은색), 다이아몬드와 하트(빨간색)이다.</P>
+<P>모든 카드가 빠짐없이 있는 카드 한 벌이 있다. 우리는 이것을 잘 섞어 12장을 연속해서 꺼낸 뒤 이를 한 줄에 4개씩 총 세 줄로 하여 
+탁자 위에 배열한다. 이러한 과정에서 탁자 위에 있는 카드 중엔 J, Q, K가 없게 한다. 이들 중 하나를 꺼내면 이는 카드 묶음(남은 패)의 
+맨 마지막에 보내고 다른 카드를 다시 꺼내 3행 4열의 카드를 만든다.</P>
+<P>다음으로, 탁자에 놓인 카드 중에서 점수 합이 10점인 카드의 쌍이 있는지 확인한다. 있으면 둘 중 하나는 점수가 0인 것으로 간주한다. 
+그리고 그 두 카드 위에 남은 패에서 다른 카드를 뽑아 그 위에 각각 한 장씩 쌓아놓는다. 이 때 또 패에서 J, Q, 또는 K가 나오면, 이것 
+역시 점수 합이 10점인 카드의 쌍에 놓고, 그 카드는 더 이상 건드리지 않는다.</P>
+<P>이 과정을 꺼내놓은 12장의 카드 표면이 모두 J, Q, K로 바뀌거나 더 이상 점수 합계가 10인 두 카드 쌍이 없을 때까지 반복한다. 
+위에서 말한 모든 과정을 다음 요구 조건에 맞게 모의 실험으로 보여주는 프로그램을 작성하라.</P>
+<P>1. 위 과정의 반복 횟수를 나타내는 N의 값을 키보드로 입력받는다. N이 1과 같으면 다음 2, 3, 4 과정이 각각 실행된다.</P>
+<P>2. - (a) 카드 한 벌 전체를 생성하고 뒤섞는 것은 프로그램이 자체적으로 수행해야 한다.</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(b) 카드 전체 상태는 화면에 표시되어야 한다.</P>
+<P>3. - (a) 선택된 12장의 카드는 앞에서 말한 3×4 크기에 맞게 화면에 배치되어야 한다.</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(b) 남은 패에 있는 카드 또한 화면에 표시되어야 한다.</P>
+<P>4. - (a) 위의 조건을 만족하여 남은 패에 있던 다른 카드가 위에 놓인 위치가 생긴 경우, 그 위치에 있는 카드는 그것으로 교체되어야 
+하며, 프로그램은 이 모습을 화면에 표시해야 한다.</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(b) 각 교체 작업이 끝나면 남은 패에 변화가 생겼으므로 이 변화 역시 
+화면에 표시되어야 한다.</P>
+<P>5. 다섯 번 반복하고 나서는 각 과정이 끝난 뒤 남은 패에 있는 카드의 수를 나타내는 막대 그래프를 출력하도록 한다.</P>
+<H3>배점</H3>
+<UL type=disc>
+  <LI>1단계: 10점 
+  <LI>2-(a)단계: 15점 
+  <LI>2-(b)단계: 5점 
+  <LI>3-(a)단계: 10점 
+  <LI>3-(b)단계: 5점 
+  <LI>4-(a)단계: 10점 
+  <LI>4-(b)단계: 5점 
+  <LI>5단계: 15점 
+  <LI>코딩: 10점 
+  <LI>심사 점수: 15점 </LI></UL>
+<HR>
+
+<H2><A name=2></A>2. 사이프러스 나무</H2>
+<P>한 농부가 희귀종인 사이프러스 나무 여러 그루를 보호하려고 한다. 그러기 위해 그는 나무의 위치를 조사하여 모든 나무를 둘러싸는 다각형 
+모양의 철조망을 만들기로 작정했다. 비용을 줄이려면 철사를 될 수 있는 대로 적게 써야 할 것이다. 또한 농부는 한 변이 가로축과 평행하게 
+직사각형 모양의 집도 지으려고 해서, 집의 적절한 위치를 알고 싶어한다.</P>
+<P>다음 문제를 푸는 프로그램을 작성하라.</P>
+<P>(A) 철조망의 꼭지점 위치에 있는 나무를 찾아라.</P>
+<P>(B) 필요한 철조망의 최소 길이를 구하라.</P>
+<P>(C) 집이 있는 위치를 입력받아 집과 철조망의 위치 관계를 아래 세 가지 중에 판별하라.</P>
+<OL type=1>
+  <LI>집이 철조망 밖에 있다. 
+  <LI>집이 철조망 안에 있다. 
+  <LI>철조망이 집을 가로질러 지나간다. (집 벽과 철조망이 붙은 건 괜찮음.) </LI></OL>
+<H3>입력</H3>
+<UL type=disc>
+  <LI>N: 나무의 개수 
+  <LI>(Xi,Yi) 1&lt;=i&lt;=N, N&lt;=20, Xi,Yi&gt;0; 나무의 위치를 나타내는 좌표 
+  <LI>(a,b), (c,d), a,b,c,d&gt;0; 집의 직사각형 좌표 </LI></UL>
+<H3>출력</H3>
+<UL type=disc>
+  <LI>철조망의 꼭지점에 놓이는 M개의 나무 위치(1 M N) 
+  <LI>나무를 모두 둘러싸는데 필요한 철조망의 최소 길이 
+  <LI>집이 이 위치에 있을 때 철조망과의 위치 관계 (1, 2, 3 중 하나) </LI></UL>
+<H4>배점</H4>
+<UL type=disc>
+  <LI>입력: 10점 
+  <LI>A 과정: 40점 
+  <LI>B 과정: 10점 
+  <LI>C 과정: 30점 
+  <LI>나머지 10점은 기본 점수로 예정되어 있다. </LI></UL>
+<HR>
+
+<H2><A name=3></A>3. 정사각형 행렬</H2>
+<P>1부터 25까지의 수가 하나씩 있는 5×5 행렬이 있다. 한 숫자 i(1&lt;=i&lt;=25)가 행렬의 한 위치(x, y)에 배당되어 
+있을 때, i+1이란 수는 행렬에서 (x±3, y), (x, y±3), (x±2, y±2)의 여덟 군데 중 한 곳에 있을 수 있다. 이 때, 이 
+행렬 전체의 상태를 계산하는 게 이번 문제다.</P>
+<P>(A) 1이 배당되는 시작 위치를 지정받았을 때, 1부터 25까지 모든 수가 채워진 5×5 행렬은 어떤 모습일지 계산하여 있을 수 있는 
+결과를 모두 열거하는 프로그램을 작성하라. 1의 위치가 (2, 2)일 때 정답 중 하나는 다음과 같다.</P>
+<TABLE border=1 width=182>
+  <TBODY>
+  <TR>
+    <TD width=30>
+      <P>4</P></TD>
+    <TD width=30>
+      <P>23</P></TD>
+    <TD width=30>
+      <P>8</P></TD>
+    <TD width=30>
+      <P>5</P></TD>
+    <TD width=28>
+      <P>13</P></TD></TR>
+  <TR>
+    <TD width=30>
+      <P>18</P></TD>
+    <TD width=30>
+      <P>1</P></TD>
+    <TD width=30>
+      <P>11</P></TD>
+    <TD width=30>
+      <P>21</P></TD>
+    <TD width=28>
+      <P>16</P></TD></TR>
+  <TR>
+    <TD width=30>
+      <P>9</P></TD>
+    <TD width=30>
+      <P>6</P></TD>
+    <TD width=30>
+      <P>14</P></TD>
+    <TD width=30>
+      <P>24</P></TD>
+    <TD width=28>
+      <P>7</P></TD></TR>
+  <TR>
+    <TD width=30>
+      <P>3</P></TD>
+    <TD width=30>
+      <P>22</P></TD>
+    <TD width=30>
+      <P>17</P></TD>
+    <TD width=30>
+      <P>2</P></TD>
+    <TD width=28>
+      <P>12</P></TD></TR>
+  <TR>
+    <TD width=30>
+      <P>19</P></TD>
+    <TD width=30>
+      <P>25</P></TD>
+    <TD width=30>
+      <P>10</P></TD>
+    <TD width=30>
+      <P>20</P></TD>
+    <TD width=28>
+      <P>15</P></TD></TR></TBODY></TABLE>
+<P>(B) 대각선 방향을 포함하여 행렬의 우측 상단을 선택했을 때, 모든 시작점에 대해 가능한 모든 조합의 개수(있을 수 있는 행렬 상태)를 
+계산하라.</P>
+<H3>예제</H3>
+<P>행렬의 시작 위치--1이 들어가는 위치--로 (2, 2)가 선택되었다면 2가 배당되는 다음 위치는 (2, 5), (5, 2) 또는 (4, 
+4)가 될 수 있다.</P>
+<H3>참고</H3>
+<P>출력을 위의 그림과 같은 형식으로 하길 권한다.</P>
+<H3>배점</H3>
+<UL type=disc>
+  <LI>A 과정: 50점 
+  <LI>B 과정: 25점 
+  <LI>출력: 15점 
+  <LI>나머지 10점은 기본 점수로 예정되어 있다. </LI></UL>
+<HR>
+
+<H2><A name=4></A>4. 언어 판별</H2>
+<P>어떤 자연어로 쓰여진 글이 담긴 아스키 텍스트 파일을 받았다. (언어는 영어, 프랑스어, 독일어 등 어느 것이든 좋다.) 어떤 언어로 
+쓰였는지는 모르나 로마자로만 구성되어 있다. 이번 문제는 이 파일의 내용을 분석하여 이 글이 어떤 언어인지 알아내는 것이다.</P>
+<P>(A) 파일을 읽어 쓰인 문자수가 총 몇 자인지 세는 프로그램을 작성하라. 총 합계를 출력한다.</P>
+<P>(B) (A)의 프로그램을 수정하여 각 알파벳이 나타난 빈도 수도 세도록 하라. 구분자나 문장 부호는 모두 공백에 포함시키며, 대소문자는 
+구분하지 않고 빈도 수를 조사한다. 그래서 세는 문자의 종류는 공백과 A~Z까지만 있게 한다. 조사 결과는 출현 빈도가 가장 높은 문자 순으로 
+정렬하여 나타낸다.</P>
+<P>(C) (B)의 프로그램을 수정하여 출현 빈도를 상대적인 값으로 나타내도록 하라. 각 글자의 출현 빈도수에 총 읽은 문자의 수를 나누면 
+글의 크기에 관계없이 글에 있는 특정 글자 수의 비율을 알 수 있을 것이다. 출현 빈도의 상대치를 데이터 파일에 기록하라.</P>
+<P>(D) (C)의 프로그램을 확장하여 언어를 알 수 없는 파일을 읽어, 어떤 언어인지 아는 텍스트 파일 여러 개와 비교할 수 있게 하라. 
+비교 방법은 응시자가 마음대로 고안할 수 있다. 실행 결과는 원본 텍스트가 어떤 언어라고 생각되는지 프로그램이 판단한 종류여야 한다.</P>
+<P>단, 쓰인 언어가 어떤 것인지 아는 텍스트 파일은 ITA, FRA와 같은 이름을 갖고 있다. 각각 이탈리아어, 프랑스어를 뜻한다. 그리고 
+조사 대상인 파일 이름은 TEXT이다.</P>
+<H3>배점</H3>
+<UL type=disc>
+  <LI>A 과정: 10점 
+  <LI>B 과정: 20점 
+  <LI>C 과정: 20점 
+  <LI>D 과정: 40점 
+  <LI>나머지 10점은 기본 점수로 예정되어 있다. </LI></UL>
+<H3>글의 한 예</H3>
+<P>Morire in consequenza di anabolizzanti intrapresa per migliorare le proprie 
+prestazioni atletihce 'e poi molto diverso dal morire al volante di un'auto di 
+formula uno mentre si tentra di battere un record affrontando i rischi legati a 
+quelle prove, o dal perire vittime di una scarica di sassi mentre si tenta una 
+prima salita su una parete Nord di qualche colosso alpino? Che ci sia o no di 
+mezzo la farmacologia, l'artificiale,il chimico, conta relativamente poco,sul 
+piano essenziale, anche se sembra molto rilevante dal punto di vista 
+dell'immaginario cillettivo; il quale ancora considera spesso un eroe il pilota 
+di auto da corsa o il grande alpinista, e ha invece un atteggiamento molto 
+diverso nel caso di chi perisca vittima di un doping incauto. Naturalmente , qui 
+entrano in gioco altri elementi,solo indirettamente morali. Fare uso di 
+stimolanti chimici 'e in genere vietato nello sport, chi viola questa norma 
+commette una grace slealta: ma qui l' esecrazione morale non 'e motivata 
+anzitutto dal fatto che viene messa a repentaglio l'integrita fisica 
+dell'atleta, bensi dal mancato rispetto per regole del gioco. Le quali, per 
+altro,vietano il doping anche e soprattutto per il danno fisico che esso alla 
+lunga provoca; ma in base allo stesso principio, forse, dovrebbero vietare anche 
+pratiche sportive "leali" e tuttavia non memo pericolose per chi le 
+pratica..</P>
+<HR>
+
+<H2><A name=5></A>5. S 전개식 문제</H2>
+<P>S-식이란 S와 괄호의 나열로, 다음과 같이 재귀적으로 정의된다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>1. S는 S-식이다. &nbsp;&nbsp;&nbsp;2. M과 N이 S-식이면, (MN) 역시 
+S-식이다.</FONT></P>
+<P>S-식의 한 예를 들어보자.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>((((SS)(SS))S)(SS))</FONT></P>
+<P>오른쪽 괄호는 있어야 할 곳이 확실하므로 아무런 정보도 제공하지 않는다. 그래서 생략할 수 있다. (MN) 대신 (MN만으로 표현하는 
+것이다. 그럼 위의 S-식은 다음과 같이 된다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>((((SS(SSS(SS</FONT></P>
+<P>1. S-식을 생성하는 gensterm이라는 함수를 작성하라. 이 함수는 길이, 다시 말해 그 식에 든 S의 개수에 따라 n개의 텍스트 
+파일을 생성하여 각각 길이가 1부터 n까지인 S-식을 모두 수록하고 있어야 한다. 각 S-식의 끝은 ;로 구분하며, 각 파일의 마지막에 있는 
+S-식은 .(마침표)로 끝내도록 한다. 정수 n(n&lt;=10)을 입력받아 이 함수를 실행한 뒤 생성된 S-식을 화면에 보이는 프로그램을 
+작성하라.</P>
+<P>한편, S-식에 행할 수 있는 변환법을 하나 생각해 보자. S-식에 적용할 수 있는 유일한 대수적인 규칙(S-rule)은 한 S-식에서 
+(((SA)B)C)란 꼴을 하는 부분은(A, B, C 모두 S-식이다.) ((AC)(BC))로 고쳐 표기할 수 있다는 것이다. S-식에 이를 
+적용하는 것을 S-식의 축소라고 규정하겠다.</P>
+<P>S-식을 적용할 부분을 고르는 방법은 여러 가지가 있을 수 있다. 그래서 더 이상 s-rule을 적용할 수 없을 때까지 축소를 계속하는 
+것을 S-식의 일반화라고 규정하겠다.</P>
+<P>한 S-식을 축소해 가는 과정을 아래에 보였다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>((((SS)(SS))S)(SS)) → (((SS)((SS)S))(SS)) →((S(SS))(((SS)S)(SS))) → 
+((S(SS))((S(SS))(S(SS))))</FONT></P>
+<P>2. S-식을 나타내는 자료 구조 중 s-rule을 적용하는 것을 쉽게 할 수 있는 데 알맞은 것을 고르라. 그래서 'readterm'과 
+'printterm'이라는 두 함수를 만들어 S-식을 여러분의 방식으로 변형해서 출력하거나 반대로 여러분 형식을 다시 S-식대로 바꾸는 것을 
+구현하라. 답안 프로그램은 이 변환 과정을 시연해 보일 수 있어야 한다.</P>
+<P>3. 제시된 S-식의 특정 부분에 축소 변환을 수행하는 reduce라는 함수를 만들어라. 답안 프로그램은 이를 시연해 보일 수 있어야 
+한다.</P>
+<P>4. 제시된 S-식에 더 이상 그것을 축소시킬 수 없거나 특정 횟수를 넘을 때까지(예를 들어 30번) 축소 변환을 적용하는 
+normalize라는 함수를 만들어라. 답안 프로그램은 이를 시연할 수 있어야 한다.</P>
+<P>5. 그래서 앞의 모든 기능을 한 프로그램으로 융합하라.</P>
+<UL type=disc>
+  <LI>사용자에게서 n의 값을 입력받는다. 
+  <LI>gensterm 함수가 생성해 낸 길이가 n인 S-식을 사용한다. 
+  <LI>S-식을 여러분이 고안한 방식대로 변환한다. 
+  <LI>가능한 경우 일반화한다. 
+  <LI>일반화된 S-식을 출력한다. 
+  <LI>각 S-식을 일반화하기 위해 시행한 축소 작업의 횟수를 출력하고, 축소되지 않았거나 30회를 넘도록 축소 작업이 끝나지 않은 경우 
+  "일반화하지 않음"이란 말을 출력한다. 
+  <LI>길이가 n인 S-식에 대해 일반화된 것과 일반화되지 못한 것의 개수를 출력한다. </LI></UL>
+<H3>배점</H3>
+<UL type=disc>
+  <LI>1단계: 20점 
+  <LI>2단계: 25점 
+  <LI>3단계: 15점 
+  <LI>4단계: 20점 
+  <LI>5단계: 10점 
+  <LI>심사 점수: 10점 (코드의 간결. 명료함, 프로그래밍 양식 등) </LI></UL>
+<HR>
+
+<H2><A name=6></A>6. 가장 큰 강도 조직</H2>
+<P>한 경찰서장은 자기가 맡은 도시에 있는 모든 범법자들에 대해 잘 알고 있다. 경찰서장은 그뿐만 아니라 이들이 범죄를 같이 모의할 수 있는 
+다른 범법자들도 파악하고 있다. 단 그는 이 정보를 바탕으로 자기 도시에서 가장 큰 갱에 어떤 사람들이 들어 있는지를 알아내고 싶어한다.</P>
+<P>여기서 갱이란 범법자들의 일부로, 여기에 든 사람은 누구나 이 갱의 다른 멤버와 공모한다. 가장 큰 갱이란, 공모하는 범죄자들이 가장 많이 
+연결되어 있는 갱을 말한다. 다음과 같은 처리를 하는 프로그램을 작성하라.</P>
+<P>(A) 경찰서장이 가지고 있는 범법자들의 정보를 받아들인다. 범법자 수는 40명 이하이다. 입력 파일의 구조는 아래와 같다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>a(1,1)</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>a(2,1)a(2,2)</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>a(3,1)a(3,2)a(3,3)</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>...</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>a(n,1)a(n,2)a(n,3)...a(n,n) </FONT></P>
+<P>a(i, j)가 1이라면 번호가 i인 범법자는 번호가 j인 사람과 공모하고 있거나 i와 j의 값이 같다는 뜻이다. 그렇지 않으면 이 값은 
+0이다. 범법자가 6명인 경우 입력 파일의 한 예를 보자.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>1</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>01</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>101</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>1011</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>01101</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>101111</FONT></P>
+<P>이 입력 파일이 들어온 경우 (C)과정을 올바로 풀었다면 출력 결과는 다음과 같다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>가장 큰 갱에는 다음 강도가 있습니다.</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>1 
+&nbsp;3 &nbsp;4 &nbsp;6</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>강도 수는 총 4명입니다.</FONT></P>
+<P>(B) 데이터 입력을 받는 부분을 확장하여, 범법자들이 공모할 확률이 임의의 값 d(0&lt;d&lt;1)인 데이터를 프로그램이 무작위로 
+만들어내기도 하게 한다.</P>
+<P>(C) 파일에서 읽은 데이터 또는 무작위로 만든 데이터를 써서 이 도시에서 가장 큰 갱을 찾아낸다. 출력 형식은 (A)에서 제시한 방식대로 
+한다.</P>
+<H3>배점</H3>
+<UL type=disc>
+  <LI>A 과정: 5점 
+  <LI>B 과정: 15점 
+  <LI>C 과정: 50점 
+  <LI>프로그램이 답을 구하는 데 걸린 총 실행 시간: 20점 
+  <LI>심사 점수: 10점 </LI></UL>
+<HR>
+
+<H2><A name=7></A>7. 제약 회사 직원의 스케줄</H2>
+<P>한 제약 회사 홍보 직원은 자기 회사 제품을 하루 동안 최대한 많은 의사에게 광고할 수 있게 의사들과 만나는 스케줄을 잡아주는 프로그램을 
+갖고 싶어한다.</P>
+<P>그래서 당신은 이 프로그램을 제작해 달라는 부탁을 받았다. 입력 파일의 각 줄에는 의사의 이름, 그 의사가 자신과 만날 수 있는 시간과 그 
+때 의사가 있는 연구소 이름이 들어있다.</P>
+<P>스케줄을 잡는 규칙은 다음과 같다.</P>
+<OL type=1>
+  <LI>약속 한 건은 시간이 최소한 70분 이상으로 잡힌다. 또한 직원은 다음 연구소로 가는데 최소 30분이 걸리므로 두 약속 사이에 그만한 
+  공백이 필요하다. 
+  <LI>입력 파일에 있는 모든 시간은 모두 같은 날짜의 시간이다. 그래서 직원은 한 의사를 하루에 두 번 만나고 싶어하지 않는다. 
+  <LI>한편 약속이 두 번 연속 같은 연구소로 배정되지도 않는다. 
+  <LI>여러 의사들 중 직원은 일찍 만날 수 있는 의사를 우선적으로 택한다. 
+  <LI>같은 시간에 만날 수 있는 의사가 두 명 이상 있으면(직원이 이전 약속을 끝낼 때까지 이미 기다리고 있는 의사가 있거나, 정해진 
+  약속이 나중에 시작하더라도 당일 같은 시간에 시작해서) 자신과 만날 수 있는 시간이 더 적게 남은 의사를 우선적으로 택한다. (물론 
+  70분보다는 많이 남아 있어야 만날 수 있을 것이다.) 
+  <LI>최대한 많은 의사를 만나기 위해 직원은(의사와 만나 있는 중에도) 늘 다음 약속 시간에 신경을 쓰고 있다. 그래서 70분만 지나면 그 
+  의사가 직원과 더 시간을 낼 수 있어도 지금의 약속을 끝내고 30분 동안 다른 연구소로 가 다음 약속을 시작할 수 있다. 
+  <LI>다음 약속 시간까지 여유가 있으면 직원은 지금 만난 의사와 시간이 될 때까지 계속 있는다. </LI></OL>
+<H3>입력 자료</H3>
+<P>입력 파일의 각 줄에는 의사의 이름과 이 사람이 직원과 만날 수 있는 시간의 범위, 그리고 연구소 이름이 순서대로 들어 있다. 의사와 
+연구소 이름은 영어 알파벳으로만 되어 있고 각 항목은 공백으로 구분한다. 시간은 hh.mm의 형식이며 시간 사이는 대시(-)로 구분한다. 입력 
+파일에 빈줄은 없으며 줄 끝을 구분하는 특수문자 같은 것도 없다.</P>
+<P>입력 파일의 한 예는 아래와 같다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Bob 16.00-17.25 Cross </FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>John 09.30-11.50 Health </FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Charles 11.00-20.00 Chest </FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Don 08.00-13.20 Cross </FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Norman 22.00-23.05 Brain </FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Jerry 10.00-17.00 Health </FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Charles 09.20-10.40 Orthopedic </FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Evelyn 19.15-20.40 Orthopedic </FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Peter 09.35-11.55 Brain </FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Don 18.00-20.00 Eye </FONT></P>
+<H3>출력 자료</H3>
+<P>출력 파일에는 의사를 최대한 많이 만날 수 있는 스케줄을 시간 순으로 차례대로 출력해야 한다. 각 줄에는 만나는 시간과 헤어지는 시간, 
+연구소와 거기서 만나는 의사가 차례대로 들어가야 한다. 위에서 제시한 규칙 때문에 하지 않게 된 약속은 출력해서는 안 된다. 항목 사이에 간격을 
+맞추는 게 그리 중요한 건 아니지만 않지만 아래와 같이 보기 좋게 출력하길 권한다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>08.00-09.10 &nbsp;&nbsp;&nbsp;Cross 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Don </FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>09.40-10.50 &nbsp;&nbsp;&nbsp;Health 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;John </FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>11.20-12.30 &nbsp;&nbsp;&nbsp;Chest 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Charles </FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>13.00-15.30 &nbsp;&nbsp;&nbsp;Health 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jerry </FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>16.00-17.25 &nbsp;&nbsp;&nbsp;Cross 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bob </FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>19.15-20.40 &nbsp;&nbsp;&nbsp;Orthopedic &nbsp;&nbsp;&nbsp;&nbsp;Evelyn 
+</FONT></P>
+<H3>추가 지시</H3>
+<P>위의 문제를 직원이 A, B 두 명이 같은 스케줄대로 의사를 만나는 경우에 맞춰 풀어라. 더해지는 조건은 두 명이 같은 의사를 만나서는 안 
+된다는 것이다. 어떤 약속이 있어 A, B 모두 의사를 만날 여유가 있으면 두 사람 중 다음 약속까지 여유가 더 많은 사람이 그 약속을 맡는다. 
+여유 시간까지 두 명 모두 같다면 A가 약속을 맡는다. 출력은 위와 같은 형식으로 하되, 두 사람의 스케줄을 따로 출력하면 된다.</P>
+<H3>배점 </H3>
+<UL type=disc>
+  <LI>직원 한 명의 스케줄 계산: 45점 
+  <LI>두 명의 스케줄 계산: 45점 
+  <LI>심사 점수: 10점 (코드의 간결. 명료함, 프로그래밍 양식 등) </LI></UL>
+<P>&nbsp;</P></BODY></HTML>

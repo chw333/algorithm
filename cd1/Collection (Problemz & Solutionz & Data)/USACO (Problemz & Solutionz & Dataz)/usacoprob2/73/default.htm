@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Problem 73: Shaping Regions</title>
+</head>
+
+<body background="../../usaco/bg3.jpg">
+<img src="../../usaco/cow1.jpg" width="742" height="118">
+
+<center>
+<h1>Shaping Regions</h1>
+</center>
+
+<p> N opaque rectangles (1 &lt;= N &lt;= 1000) of various colors are
+placed on a white sheet of paper whose size is A wide by B long.  The
+rectangles are put with their sides parallel to the sheet's borders.
+All rectangles fall within the borders of the sheet so that different
+figures of different colors will be seen.
+
+<p> The coordinate system has its origin (0,0) at the sheet's lower left
+corner with axes parallel to the sheet's borders.
+
+<h3>PROGRAM NAME: rect1</h3>
+
+<h3>INPUT FORMAT</h3>
+
+<p>The order of the input lines dictates the order of laying down the
+rectangles.  The first input line is a rectangle "on the bottom".
+
+<table border="1">
+<tr> <td> Line 1: </td> <td> A, B, and N, space separated (1 &lt;= A,B
+&lt;= 10,000)</td></tr>
+<tr> <td> Lines 2-N+1: </td> <td>Five integers: llx, lly, urx, ury,
+color:  the lower left coordinates and upper right coordinates of the
+rectangle whose color is `color' (1 &lt;= color &lt;= 2500) to be placed
+on the white sheet.  The color 1 is the same color of white as the sheet
+upon which the rectangles are placed.</td>
+</table>
+
+<h3>SAMPLE INPUT (file rect1.in) </h3>
+
+<pre>
+20 20 3
+2 2 18 18 2
+0 8 19 19 3
+8 0 10 19 4
+</pre>
+
+<h3>OUTPUT FORMAT</h3>
+
+The output file should contain a list of all the colors that can be seen
+along with the total area of each color that can be seen (even if the
+regions of color are disjoint), ordered by increasing color.  Do not
+display colors with no area.
+
+<h3>SAMPLE OUTPUT (file rect1.out)</h3>
+
+<pre>
+1 91
+2 84
+3 187
+4 38
+</pre>

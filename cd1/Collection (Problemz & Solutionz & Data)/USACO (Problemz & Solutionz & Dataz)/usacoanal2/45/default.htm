@@ -1,0 +1,97 @@
+<html>
+<head> <title>Analysis 45: What Time Is It?</title> </head>
+<body background="../../usaco/bg3.jpg">
+<img src="../../usaco/cow1.jpg" width="742" height="118">
+<center>
+<b><font size="7">What Time Is It?</font></b><br>
+Russ Cox
+</center>
+<html>
+<p>Most of the structure of this program is dictated by the problem
+statement.  To convert numbers to english, we use two arrays.  The "ones"
+array is the strings for all numbers less than twenty.  The "tens" array
+contains the strings for all multiples of ten.
+
+<p>To handle a number that is bigger than twenty and not a multiple of
+ten, we look up the tens digit in the "tens" array and the ones digit
+in the "ones" array.
+
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;assert.h&gt;
+#include &lt;ctype.h&gt;
+
+char *ones[] = {
+	"zero", "one", "two", "three", "four", "five",
+	"six", "seven", "eight", "nine", "ten",
+	"eleven", "twelve", "thirteen", "fourteen", "fifteen",
+	"sixteen", "seventeen", "eighteen", "nineteen"
+};
+
+char *tens[] = {
+	"zero",
+	"ten",
+	"twenty",
+	"thirty",
+	"forty",
+	"fifty"
+};
+
+char*
+inenglish(char *buf, int n)
+{
+	if(n &lt; 20)
+		strcpy(buf, ones[n]);
+	else if(n%10 == 0)
+		strcpy(buf, tens[n/10]);
+	else
+		sprintf(buf, "%s-%s", tens[n/10], ones[n%10]);
+	return buf;
+}
+
+void
+main(void)
+{
+	FILE *fin, *fout;
+	int hh, mm;
+	char hhbuf[40], mmbuf[40];
+	char buf[100];
+
+	fin = fopen("clock.in", "r");
+	fout = fopen("clock.out", "w");
+
+	assert(fin != NULL &amp;&amp; fout != NULL);
+
+	fscanf(fin, "%d:%d", &amp;hh, &amp;mm);
+
+	if(mm == 0)
+		sprintf(buf, "%s o'clock", inenglish(hhbuf, hh));
+	else if(mm == 15)
+		sprintf(buf, "Quarter past %s", inenglish(hhbuf, hh));
+	else if(mm &lt; 45)
+		sprintf(buf, "%s %s", inenglish(hhbuf, hh), inenglish(mmbuf, mm));
+	else {
+		/* figure out next hour */
+		hh++;
+		if(hh == 13)
+			hh = 1;
+
+		if(mm == 45)
+			sprintf(buf, "Quarter to %s", inenglish(hhbuf, hh));
+		else
+			sprintf(buf, "%s to %s", inenglish(mmbuf, 60-mm), inenglish(hhbuf, hh));
+	}
+
+	buf[0] = toupper(buf[0]);
+	fprintf(fout, "%s\n", buf);
+
+	exit(0);
+}
+</pre>
+
+<center>
+<a href="../BACK/default.htm">USACO Gateway</a> | <a href="mailto:kolstad@ace.delos.com">Comment or Question</a>
+</center>
+</body>

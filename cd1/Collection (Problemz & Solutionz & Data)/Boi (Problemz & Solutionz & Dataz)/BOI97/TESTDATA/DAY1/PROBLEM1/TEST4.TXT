@@ -1,0 +1,22 @@
+20
+8 2
+W W W W W W W W W W W W W W W W W W W W
+W W W P P P P W P W W W W W W P W W W W
+W P D P D P D W P D P D P D P P D P P W
+W D P D W W P W P P W W W W W P W D W W
+W P D P D P D W D P D P W W W P W P W W
+W D P D W W P W P D W P D P P D W D W W
+W P D P D P D W D P W D W W W P W P W W
+W D P D W W P W P P W P W W W D W D W W
+W P D P W W D W P P W D P W W P W P W W
+W D P D P D P W P P W W W W W D W D W W
+W W P P W W D W P D P D P P D P W P W W
+W W P P W W P W W W W W W W W D W D W W
+W W D P W W D W W W W W W W W P W P W W
+W W P P P P P W W W W W W W W W W D W W
+W W D P D P P D P P D P P P P P D P W W
+W W W W P W W W W W W W W W W W W D W W
+W W W W D W W P P P P P P P P W W P W W
+W W W W P W W P D P D P D P D P P D W W
+W W W W P W W P P D P D P P P W W P W W
+W W W W E W W W W W W W W W W W W W W W

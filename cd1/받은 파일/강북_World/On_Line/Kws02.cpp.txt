@@ -1,0 +1,129 @@
+#include <fstream.h>
+
+int input( void );
+int process( void );
+void output( int res );
+
+int ta[ 10 ][ 10 ] = { 0 };
+int back[ 10 ][ 10 ][ 2 ];
+int sx, sy, ex, ey;
+
+int main( void )
+{
+	input();
+	output( process() );
+
+	return 0;
+}
+
+int input( void )
+{
+	int l1;
+	int n, x, y;
+
+	cout << "Input number of walls : "; cin >> n;
+	cout << "Input walls(x, y)." << endl;
+	for( l1 = 0; l1 < n; l1++ )
+	{
+		cout << "? "; cin >> x; cin.get(); cin >> y; cin.get();
+		x--; y--;
+		if( x >= 10 || y >= 10 || x < 0 || y < 0 ) { l1--; continue; }
+		ta[ x ][ y ] = 1;
+	}
+aa:
+	cout << "Input start point(x, y). : "; cin >> sx; cin.get(); cin >> sy; cin.get(); sx--; sy--;
+	if( sx >= 10 || sy >= 10 || sx < 0 || sy < 0 ) { cout << "Input erorr!!!" << endl; goto aa; }
+	if( ta[ sx ][ sy ] == 1 ) { cout << "Input erorr!!!" << endl; goto aa; }
+bb:
+	cout << "Input start point(x, y). : "; cin >> ex; cin.get(); cin >> ey; cin.get(); ex--; ey--;
+	if( ex >= 10 || ey >= 10 || ex < 0 || ey < 0 ) { cout << "Input erorr!!!" << endl; goto bb; }
+	if( ta[ ex ][ ey ] == 1 ) { cout << "Input erorr!!!" << endl; goto bb; }
+
+	return 0;
+}
+
+int process( void )
+{
+	int arr[ 10 ][ 10 ];
+	int sw;
+	int l1, l2, l3;
+
+	for( l1 = 0; l1 < 10; l1++ )
+	{
+		for( l2 = 0; l2 < 10; l2++ )
+		{
+			arr[ l1 ][ l2 ] = 10000;
+		}
+	}
+	arr[ sx ][ sy ] = 0;
+	sw = 1;
+	for( l1 = 0; sw; l1++ )
+	{
+		sw = 0;
+		for( l2 = 0; l2 < 10; l2++ )
+		{
+			for( l3 = 0; l3 < 10; l3++ )
+			{
+				if( arr[ l2 ][ l3 ] == l1 )
+				{
+					if( l2 > 0 && arr[ l2 - 1 ][ l3 ] == 10000 && ta[ l2 - 1 ][ l3 ] == 0 )
+					{
+						arr[ l2 - 1 ][ l3 ] = l1 + 1;
+						back[ l2 - 1 ][ l3 ][ 0 ] = l2;
+						back[ l2 - 1 ][ l3 ][ 1 ] = l3;
+						sw = 1;
+					}
+					if( l2 < 9 && arr[ l2 + 1 ][ l3 ] == 10000 && ta[ l2 + 1 ][ l3 ] == 0 )
+					{
+						arr[ l2 + 1 ][ l3 ] = l1 + 1;
+						back[ l2 + 1 ][ l3 ][ 0 ] = l2;
+						back[ l2 + 1 ][ l3 ][ 1 ] = l3;
+						sw = 1;
+					}
+					if( l3 > 0 && arr[ l2 ][ l3 - 1 ] == 10000 && ta[ l2 ][ l3 - 1 ] == 0 )
+					{
+						arr[ l2 ][ l3 - 1 ] = l1 + 1;
+						back[ l2 ][ l3 - 1 ][ 0 ] = l2;
+						back[ l2 ][ l3 - 1 ][ 1 ] = l3;
+						sw = 1;
+					}
+					if( l3 < 9 && arr[ l2 ][ l3 + 1 ] == 10000 && ta[ l2 ][ l3 + 1 ] == 0 )
+					{
+						arr[ l2 ][ l3 + 1 ] = l1 + 1;
+						back[ l2 ][ l3 + 1 ][ 0 ] = l2;
+						back[ l2 ][ l3 + 1 ][ 1 ] = l3;
+						sw = 1;
+					}
+				}
+			}
+		}
+	}
+
+	return arr[ ex ][ ey ];
+}
+
+void output( int res )
+{
+	int arr[ 100 ][ 2 ];
+	int x, y, xx, yy;
+	int k, l1;
+
+	cout << "Robot's shortest path : ";
+	if( res == 10000 ) cout << "Impossible." << endl;
+	else
+	{
+		x = ex; y = ey;
+		for( k = 0; x != sx || y != sy; k++ )
+		{
+			arr[ k ][ 0 ] = x + 1; arr[ k ][ 1 ] = y + 1;
+			xx = back[ x ][ y ][ 0 ]; yy = back[ x ][ y ][ 1 ];
+			x = xx; y = yy;
+		}
+		arr[ k ][ 0 ] = x + 1; arr[ k ][ 1 ] = y + 1;
+		for( l1 = k; l1 > 0; l1-- )
+		{
+			cout << '(' << arr[ l1 ][ 0 ] << ',' << arr[ l1 ][ 1 ] << ")-";
+		}
+		cout << '(' << arr[ l1 ][ 0 ] << ',' << arr[ l1 ][ 1 ] << ')';
+	}
+}

@@ -1,0 +1,145 @@
+2001 Problem A - Andrew's Exam II
+## Input Data #1 ##
+--------PASCAL-------------
+var A, B : array[0..3999] of integer;
+    i,j,k,l,m : integer;
+
+begin
+  for i:=0 to 3999 do begin
+    A[i] := 0;  B[i] := 0;
+  end;
+  k := -1; m := 0;
+  while (A[1000]=0) do begin
+    A[0] := A[0] + 1; B[0] := B[0] + 1;
+    for j:=0 to 3998 do begin
+      B[j+1] := B[j+1] + B[j] div 13;
+      B[j] := B[j] mod 13;
+    end;
+    l := -1;
+    for j:=0 to 3998 do begin
+      if (A[j]>0) and (k<j) then begin
+        k:=j; l:=j;
+      end;
+      A[j+1] := A[j+1] + (A[j] div (j+2)); 
+      A[j] := A[j] mod (j+2);
+    end;
+    if l>-1 then m := m+B[0];
+  end;
+end.
+
+----------C----------------
+#include <stdio.h>
+
+int A[4000], B[4000];
+int i,j,k,l,m;
+
+int main(void) {
+  for (i=0;i<4000;i++) { A[i]=B[i]=0; } k=-1; m=0;
+  while (!A[1000]) {
+    A[0]++; B[0]++;
+    for (j=0;j<3999;j++) { B[j+1]+=B[j]/13; B[j]%=13; }
+    for (j=0,l=-1;j<3999;j++) { 
+      if ((A[j]>0) && (k<j)) { k=l=j; }
+      A[j+1]+=A[j]/(j+2); A[j]%=(j+2); 
+    }
+    if (l>-1) m+=B[0];
+  }
+  printf("%d\n",m);
+  return 0;
+}
+
+## Input data #2 ##
+--------PASCAL-------------
+function foo(a,b : integer): integer;
+begin
+  if a<b then foo:=0 else foo:=a-b;
+end;
+
+function goo(a,b : integer): integer;
+begin
+  goo := a + foo(b,a);
+end;
+
+function boo(a,b : integer): integer;
+begin
+  boo := a + b - goo(b,a);
+end;
+
+function moo(a,b : integer): integer;
+var i,j,r : integer;
+begin
+  r:=0;
+  for i:=b+boo(a,b)-goo(b,a) to b+foo(a,b)+foo(b,a)+7 do begin
+    if i<=0 then continue;
+    j := foo(a mod i, b mod i) + foo(goo(a mod i, 0), boo(b mod i,0));
+    j := j + foo(b mod i, a mod i) + foo(boo(0, b mod i), goo(0, a mod i));
+    if j = 0 then r:=i;
+  end;
+  if boo(r,b) = a-foo(a,b) then moo:=1 else moo:=0;
+end;
+
+function soo(a : integer): integer;
+var i,s : integer;
+begin
+  s := 0;
+  for i:=1 to a do 
+    if moo(a,i)>0  then s := s+1;
+  soo := s;
+end;
+
+var i : integer;
+begin
+  i := 0;
+  while soo(i)<>7777 do
+    i := i + 1;
+  writeln(i);
+end.
+
+----------C----------------
+#include <stdio.h>
+
+int foo(int a, int b)
+{
+  return a<b?0:a-b;
+}
+
+int goo(int a, int b)
+{
+  return a+foo(b,a);
+}
+
+int boo(int a, int b)
+{
+  return a+b-goo(b,a);
+}
+
+int moo(int a, int b)
+{
+  int i,j,r;
+  r = 0;
+  for (i=b+boo(a,b)-goo(b,a); i<=b+foo(a,b)+foo(b,a)+7; i++) {
+    if (i<=0) continue;
+    j = foo(a%i, b%i) + foo(goo(a%i, 0), boo(b%i, 0));
+    j += foo(b%i, a%i) + foo(boo(0, b%i), goo(0, a%i));
+    if (!j) r=i;
+  }
+  return ( boo(r,b)==(a-foo(a,b)) );
+}
+
+int soo(int a)
+{
+  int i,s;
+  s = 0;
+  for (i=1; i<=goo(a,7)+boo(7,a)-7; i++)
+    if (moo(a,i)) s++;
+  return s;
+}
+
+int main(void){
+  int i;
+  i = 0;
+  while(soo(i)!=7777)
+    i++;
+  printf("%d\n",i);
+  return 0;
+}

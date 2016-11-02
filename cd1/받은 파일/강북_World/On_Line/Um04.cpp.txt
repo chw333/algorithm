@@ -1,0 +1,111 @@
+#include <fstream.h>
+#include <conio.h>
+
+char name[100],memo[100]={0},queue[100],queue2[100];
+int size[100],tim[100],elast[100],n,ttt=0,nn=0;
+
+int fill(int a)
+{
+    int i,j;
+    for(i=0;i<10;i++)
+    {
+        if((!memo[i]) && (i+size[a]<10))
+        {
+            for(j=i;j<i+size[a];j++)
+                if(memo[i]) goto ax;
+            for(j=i;j<i+size[a];j++)
+                memo[j]=name[a];
+            for(j=0;j<10;j++)
+                if(!queue[j])
+                {
+                    queue[j]=name[a];
+                    queue2[j]=a;
+                    break;
+                }
+            nn++;
+            return 1;
+        }
+ax:
+    }
+    return 0;
+}
+
+void showboard(void)
+{
+    int i;
+    clrscr();
+    cout << "                                                            " << endl;
+    cout << " ( Ready Queue ) " << endl;
+    cout << "-----------------" << endl;
+    cout << queue << endl;
+    cout << "-----------------" << endl;
+    cout << "                      (Work List)" << endl;
+    cout << "     (Memory)        Num  Name  Size  Time  Elasp" << endl;
+    cout << "    -----------   ----------------------------------" << endl;
+    cout << "  Up |  " << memo[0] << "  |" << endl;
+    cout << "     |  " << memo[1] << "  |" << endl;
+    cout << "     |  " << memo[2] << "  |" << endl;
+    cout << "     |  " << memo[3] << "  |" << endl;
+    cout << "     |  " << memo[4] << "  |" << endl;
+    cout << "     |  " << memo[5] << "  |" << endl;
+    cout << "     |  " << memo[6] << "  |" << endl;
+    cout << "     |  " << memo[7] << "  |" << endl;
+    cout << "     |  " << memo[8] << "  |" << endl;
+    cout << "  Dn |  " << memo[9] << "  |" << endl;
+    for(i=0;i<n;i++)
+    {
+        gotoxy(22,i+9);
+        cout << i+1;
+        gotoxy(29,i+9);
+        cout << name[i];
+        gotoxy(34,i+9);
+        cout << size[i];
+        gotoxy(40,i+9);
+        cout << tim[i];
+        gotoxy(47,i+9);
+        {
+            if(elast[i]==0)
+                cout << "End";
+            else
+                cout << elast[i];
+        }
+    }
+    gotoxy(1,20);
+    cout << "Time = " << ttt;
+}
+
+void main(void)
+{
+    int i,p=0,fp;
+    ifstream fin("input.txt");
+    fin >> n;
+    for(i=0;i<n;i++)
+    {
+        fin >> name[i] >> size[i] >> tim[i];
+        elast[i]=tim[i];
+    }
+    for(fp=0;fp<n;fp++)
+        if(!fill(fp)) break;
+aaaaa:
+    showboard();
+    getch();
+    elast[queue2[p]]--;
+    if(elast[queue2[p]]==0)
+    {
+        for(i=0;i<10;i++)
+            if(memo[i]==queue[p])
+                memo[i]='\0';
+        for(i=p;i<10;i++)
+        {
+            queue[i]=queue[i+1];
+            queue2[i]=queue2[i+1];
+        }
+        p--;nn--;
+        for(;fp<n;fp++)
+            if(!fill(fp)) break;
+    }
+    p++;
+    if(p==nn) p=0;
+    ttt++;
+    goto aaaaa;
+}

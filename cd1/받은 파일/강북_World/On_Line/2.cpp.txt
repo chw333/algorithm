@@ -1,0 +1,115 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define Max 11
+#define Max_Q 1000
+
+int board[Max][Max];
+int dist[Max][Max];
+int back[Max_Q];
+int sx,sy;
+int ex,ey;
+int n;
+
+int q[Max_Q][2];
+int d[Max_Q];
+int head,tail;
+int mov[4][2]={{0,1},{1,0},{-1,0},{0,-1}};
+int solution;
+int solve[Max_Q][2],sp;
+
+void read_dat()
+{
+  int i,j;
+  int x,y;
+  printf("Input 1 : ");
+  scanf("%d",&n);
+  printf("Input 2\n");
+  for(i=1;i<=n;i++) {
+  again3:
+  ;
+	printf("? ");
+	scanf("%d,%d",&x,&y);
+
+	if(x<1||x>10||y<1||y>10) {
+	  printf("Error!!\n");goto again3;
+	}
+	board[x][y]=1;
+  }
+  again:
+  ;
+  printf("Input 3 :");
+  scanf("%d,%d",&sx,&sy);
+  if(board[sx][sy]) {printf("Error!!\n");goto again;}
+  again2:
+  ;
+  printf("Input 4 :");
+  scanf("%d,%d",&ex,&ey);
+  if(board[ex][ey]) {printf("Error!!\n");goto again2;}
+}
+
+
+void process()
+{
+  int i,j;
+  int tx,ty;
+  back[tail]=-1;
+  q[tail][0]=sx;
+  q[tail++][1]=sy;
+  for(i=1;i<Max;i++)
+	for(j=1;j<Max;j++)
+	  dist[i][j]=300;
+  for(i=0;i<=Max;i++)
+	dist[i][0]=dist[0][i]=dist[Max][i]=dist[i][Max]=-1;
+  dist[sx][sy]=0;
+  while(head!=tail) {
+	if(q[head][0]==ex&&q[head][1]==ey) {
+	  solution=head;
+	  head++;
+	  continue;
+	}
+	for(i=0;i<4;i++) {
+	  tx=q[head][0]+mov[i][0];
+	  ty=q[head][1]+mov[i][1];
+	  if(dist[tx][ty]>d[head]+1) {
+		back[tail]=head;
+		q[tail][0]=tx;q[tail][1]=ty;
+		dist[tx][ty]=d[tail++]=d[head]+1;
+	  }
+	}
+	head++;
+  }
+}
+
+void Get_solution()
+{
+  int i,j;
+  while(solution>=0) {
+	solve[++sp][0]=q[solution][0];
+	solve[sp][1]=q[solution][1];
+	solution=back[solution];
+  }
+}
+
+void output_dat()
+{
+  int i,j;
+  printf("Path = ");
+  printf("(%d,%d)",solve[sp][0],solve[sp][1]);
+  for(i=sp-1;i>0;i--)
+	printf("-(%d,%d)",solve[i][0],solve[i][1]);
+}
+
+void main()
+{
+  read_dat();
+  process();
+  Get_solution();
+  output_dat();
+}
+
+
+
+
+
+
+

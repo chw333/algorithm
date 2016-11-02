@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0046)http://www.karrels.org/Ed/ACM/ec92/prob_f.html -->
+<HTML><HEAD><TITLE>1992 ACM East-Central Regional, Problem F - Draggin' The Line</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type><LINK 
+href="mailto:Ed@Tool.com" rev=made>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY><EM>Not an official ACM page</EM> <BR>[<A 
+href="http://www.karrels.org/Ed/ACM/ec92/prob_g.html"> Problem G </A>| <A 
+href="http://www.karrels.org/Ed/ACM/ec92/index.html">1992 ACM East-Central 
+Regional problem set</A> | <A href="http://www.karrels.org/Ed/ACM/index.html">My 
+ACM problem archive</A> | <A href="http://www.karrels.org/Ed/index.html">my home 
+page</A>] 
+<HR>
+
+<CENTER><IMG alt="1992 ACM East Central Regional Programming Contest" height=21 
+src="1992 ACM East-Central Regional, Problem F - Draggin' The Line.files/header.gif" 
+width=561></CENTER>
+<P>
+<CENTER><IMG height=94 
+src="1992 ACM East-Central Regional, Problem F - Draggin' The Line.files/probf.gif" 
+width=233><BR><IMG alt="Draggin' The Line" height=90 
+src="1992 ACM East-Central Regional, Problem F - Draggin' The Line.files/dragginline.gif" 
+width=213> </CENTER>
+<P>A popular speechwriter has recently decided to offer an additional service to 
+her clients. She will transfer the text of the speeches she develops for them 
+onto a series of 3"×5" index cards which they can then use during their 
+presentation. Since she uses a 12-point monospaced font for visual clarity, she 
+is able to get 18 lines of 50 characters onto each card. 
+<P>Many of her clients prefer to have some room reserved for notes on the top, 
+bottom, or both top and bottom of each index card so that they can add 
+last-minute comments or jot down a few related thoughts with the text on the 
+front of the card just before delivering the speech. Consider the structure of 
+each card as conveyed by the diagram below: 
+<P><IMG align=left height=171 
+src="1992 ACM East-Central Regional, Problem F - Draggin' The Line.files/notecard.gif" 
+width=305> The speechwriter is especially concerned about formatting the index 
+cards to avoid four potential typographical miscues that can affect the number 
+of index cards necessary and, more importantly, their readability for the 
+speaker. These are: 
+<DL>
+  <DT><EM>orphans</EM> 
+  <DD>when the last line of a paragraph begun on the previous card appears at 
+  the top of the current index card 
+  <DT><EM>widows</EM> 
+  <DD>when the first line of a paragraph continued on the next card appears at 
+  the bottom of the current index card 
+  <DT><EM>leading blank lines</EM> and <EM>trailing blank lines</EM> 
+  <DD>when a blank line which appears between two paragraphs appears at the top 
+  or bottom of the current index card </DD></DL>
+<P>Write a program that will assist the speechwriter by accepting a set of 
+margin parameters and the text of a speech and output a format report detailing 
+which of these typographical miscues will occur if the text is transcribed 
+without further modification onto 3"×5" index cards. 
+<P><BR clear=all>
+<H3>Input</H3>The input file will consis of two integers on a single line 
+followed by the text to be placed onto the index cards. The two integers (which 
+will be separated by at least one space) respectively denote the number of lines 
+which are to be reserved for the top and bottom margins on each card. You may 
+assume that any margin settings given will not overlap and that there will 
+always be enough room left over for at least two lines of text to appear on each 
+index card. The remainder of the file will consist of an unknown number of lines 
+of text from the speechwriter. Each line of text will have already been 
+formatted so that it consists of zero to fifty characters, not counting a 
+standard carriage return character which will be used to terminate each line. 
+Paragraphs are delineated by exactly one blank line and will always contain at 
+least two lines of text. 
+<P>
+<H3>Output</H3>Your output will consist of a formatting report detailing the 
+formatting errors (if any) which would appear on each index card. Each line of 
+the report should indicate the index card number and the formatting error 
+(<CODE>widow</CODE>, <CODE>orphan</CODE>, <CODE>leading blank line</CODE>, or 
+<CODE>trailing blank line</CODE>) or the letters <CODE>OK</CODE> if none of 
+these formatting errors is present. Should multiple formatting errors occur on a 
+single index card, these errors must be indicated across the output line in the 
+order in which they occur on the card (top to bottom), with each error separated 
+by a comma and a space from the one preceding it. Refer to the example on the 
+next page. 
+<P>
+<H3>Sample Input</H3><PRE>3 5
+Why multiprocessing? Some computer systems employ
+a uniprocessor approach, in which a single
+processor performs the work. Multiprocessing
+systems (systems that employ two or more
+processors) offer a number of advantages over
+uniprocessors.  The most obvious is speed.
+
+     In theor, if a single processor can solve a
+problem in a given length of time, two identical
+processors working together should be able to
+solve the same problem in half of the time.
+
+     In practice, the nature of the problem of the
+design of the multiprocessing system may not
+provide such an ideal result. But there are many
+applications which show nearly linear speedups in
+processing speed as more processors are provided.
+
+Potential speedups from multiprocessing are even
+more attractive in light of recent developments in
+technology. The preformance of processors is
+increasing, while their price is dropping. System
+performance is being boosted by improvements in
+hardware design and programming techniques.
+
+    Multiprocessing also offers a level of system
+reliability not found in uniprocessor system.  If
+a processor fails, it can be quickly deconfigured
+while the remaining processors pick up its work.
+
+There are two basic approaches to multiprocessing
+evident in commercial systems today. Distributed
+memory multiprocessor systems usually consist of
+from eight to several thousand processors, each
+of which has its own memory. Processors typically
+communicate with each other only to read initial
+code and data, and to write final results. This is
+termed loose-coupling.
+
+The other common approach is called the shared-
+memory approach. These systems typically employ
+2 to 30 processors and use a common memory, all
+linked by a high-speed bus. This design is called
+tightly-coupled, since the processors must all
+coordinate their access to the common memory.
+</PRE>
+<H3>Output for the Sample Input</H3><PRE>Index Card #1:     OK
+Index Card #2:     orphan
+Index Card #3:     trailing blank line
+Index Card #4:     widow
+Index Card #5:     OK
+</PRE>
+<HR>
+This page maintained by <A href="mailto:Ed@Tool.com">Ed Karrels</A>.<BR>Last 
+updated December 12, 1999 </BODY></HTML>

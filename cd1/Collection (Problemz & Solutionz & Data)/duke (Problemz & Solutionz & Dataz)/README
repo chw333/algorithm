@@ -1,0 +1,45 @@
+There are four things in this distribution directory:
+
+problems90.tar.Z: Contains the problem set used in the October 1990 Duke
+Internet programming contest. The rules, problems, solutions, test data, and
+correct output are all given, along with the list of participants, team
+names, and scores.
+
+problems91.tar.Z contains the problems, solutions in C, test data and
+expected output from the November 1991 Duke Internet programming contest.
+
+problems92.tar.Z contains the problems, solutions in C, test data and
+expected output from the November 1992 Duke Internet programming contest.
+
+run-a-contest.tar.Z contains all of problems.tar.Z (as
+duke-contest/netwide90/ftp/contest) as well as all of the support
+structure needed to run your own contest. This software is supplied
+AS-IS, with no promise of support from us. Have fun. If you plan to
+run an internet-wide contest, please coordinate with us, as there may
+be others with the same idea.
+
+contest91.tar.Z contains similar material to run-a-contest.tar.Z, but does
+not include problems91.tar.Z.  It contains most of the material from
+run-a-contest.tar.Z with the updates needed for the 1991 contest.
+
+judge-software-1.0.tar.Z contains the distributed judging software used in
+the 1992 contest.  It is mostly written in Perl, and is capable of handling
+hundreds of submissions by distributing the judging across several
+machines.  The software is very Unix-centric.  It also includes the scripts
+needed by the participants to submit programs/questions.  There is a
+PostScript paper which describes the contest software architecture as
+applied to our specific contest.
+
+TO RETRIEVE, eg, problems91.tar.Z
+...
+ftp> binary
+ftp> get problems91.tar.Z
+ftp> quit
+% uncompress problems91.tar.Z
+% tar xf problems91.tar
+
+
+Vivek Khera
+Owen Astrachan
+David Kotz
+

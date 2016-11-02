@@ -1,0 +1,50 @@
+#include <fstream.h>
+#include <conio.h>
+#include <ctype.h>
+
+int as[100],bs[100];
+
+void main(void)
+{
+    int sw,i,tmp,n,min=32767,max=-32768;
+    char instr[100],yn;
+a:
+    cout << "Input Expression : ";
+    cin.getline(instr,100);
+    sw=0;i=0;tmp=1;
+    while(1)
+    {
+        if(sw)
+        {
+            bs[i]=instr[tmp]-48;
+            if(instr[tmp+1]=='\0') break;
+            tmp+=5;
+            i++;
+        }
+        else
+        {
+            as[i]=instr[tmp]-48;
+            tmp+=3;
+        }
+        sw=!sw;
+    }
+    n=i+1;
+    if(as[n-1]==as[0])
+        cout << "a" << as[0] << " ";
+    else
+        cout << "a<" << as[0] << "," << as[n-1] << "> ";
+    for(i=0;i<n;i++)
+    {
+        if(bs[i]>max)
+            max=bs[i];
+        if(bs[i]<min)
+            min=bs[i];
+    }
+    if(min==max)
+        cout << "b" << min << endl;
+    else
+        cout << "b<" << min << "," << max << ">" << endl;
+    cout << "retry?(y/n)" << endl;
+    yn=getch();
+    if(toupper(yn)=='Y') goto a;
+}

@@ -1,0 +1,361 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0068)http://www.uwp.edu/academic/mathematics/usaco/1999/National/prob.htm -->
+<HTML><HEAD><TITLE>Problems</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 5.50.4134.100" name=GENERATOR>
+<META content=FrontPage.Editor.Document name=ProgId></HEAD>
+<BODY>
+<TABLE width="99%" border=0>
+  <TBODY>
+  <TR>
+    <TD width="6%"></TD>
+    <TD width="94%" colSpan=2><BIG><STRONG><FONT face=Arial>Problems - 1999 
+      National Championship - Back to the Farm</FONT></STRONG></BIG> 
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD width="6%"></TD>
+    <TD width="84%"><FONT face=Arial><SMALL><A name=p1></A><B>PROBLEM 1: 
+      Bessie Come Home </B>[Kolstad &amp; Burch] 
+      <P>The cows are out in their separate pastures. It's dinner time. Farmer 
+      John rings the bell and they all start walking to the barn. Your job is to 
+      figure out which one cow gets to the barn first. The supplied test data 
+      will always have exactly one fastest cow. 
+      <P>Between milkings, each cow is located in her own pasture. Some pastures 
+      have no cows in them. Each pasture is connected by a path to one or more 
+      other pastures. One or more of the pastures has a path to the barn. Thus, 
+      all cows have a path to the barn and they always know the shortest path. 
+      Of course, cows can go either direction on a path and they all walk at the 
+      same speed. 
+      <P>The pastures are labeled `a'..`z' and `A'..`Y'. One cow is in each 
+      pasture labeled with a capital letter. No cow is in a pasture labeled with 
+      a lower case letter. The barn's label is `Z'; no cows are in the barn, 
+      though. 
+      <P>INPUT FORMAT: 
+      <P>
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD vAlign=top><FONT face=Arial><SMALL>Line 1:</SMALL></FONT></TD>
+          <TD><FONT face=Arial><SMALL>integer P, 1 &lt;= P &lt;= 10000, the 
+            number of paths that interconnect the pastures (and the barn) 
+            </SMALL></FONT></TD></TR>
+        <TR>
+          <TD vAlign=top><FONT face=Arial><SMALL>Lines 
+          2..P+1:</SMALL></FONT></TD>
+          <TD><FONT face=Arial><SMALL>two letters and an integer: the names of 
+            the interconnected pastures (barn) and the distance between them 
+            <UL>
+              <LI>Column 1: the name of the first pasture (or the barn) 
+              <LI>Column 2: a space 
+              <LI>Column 3: the name of the second pasture (or the barn) 
+              <LI>Column 4: a space 
+              <LI>Column 5..: integer, 1 &lt;= x &lt;= 1000, the distance 
+              between the two named entities 
+        </LI></UL></SMALL></FONT></TD></TR></TBODY></TABLE>
+      <P>SAMPLE INPUT (file INPUT.TXT): </SMALL><PRE>5
+A d 6
+B d 3
+C e 9
+d Z 8
+e Z 3
+</PRE><SMALL>
+      <P>OUTPUT FORMAT: 
+      <P>The output is a single line of output that contains two items: 
+      <UL>
+        <LI>the capital letter name of the pasture with the cow that arrives 
+        first back at the barn, followed by 
+        <LI>the length of the path traveled by that cow </LI></UL>
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): </SMALL><PRE>B 11
+</PRE><SMALL>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/National/data.htm#p1">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/National/sol.htm#p1">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p2></A><B>PROBLEM 2: Milk Measuring </B>[Burch] 
+      <P>Farmer John must measure Q quarts of his finest milk and deliver it in 
+      one big bottle to a customer. He fills that bottle with exactly the number 
+      of quarts that the customer orders. 
+      <P>Farmer John has always been frugal. He is at the cow hardware store 
+      where he must purchase a set of pails with which to measure out Q quarts 
+      of milk from his giant milk tank. Since the pails each cost the same 
+      amount, your task is to figure out a minimal set of pails Farmer John can 
+      purchase in order to fill a bottle with exactly Q quarts of milk. 
+      <P>To measure out milk, F.J. may completely fill a pail from the tank and 
+      pour it into the bottle. He can never remove milk from the bottle or pour 
+      milk anywhere except into the bottle. With a one-quart pail, FJ would need 
+      only one pail to create any number of quarts in a bottle. Other pail 
+      combinations are not so convenient. 
+      <P>Determine the optimally small number of pails to purchase, given the 
+      guarantee that at least one solution is possible for all contest input 
+      data. 
+      <P>INPUT FORMAT: 
+      <P>
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD vAlign=top><FONT face=Arial><SMALL>Line 1:</SMALL></FONT></TD>
+          <TD><FONT face=Arial><SMALL>integer Q (1 &lt;= Q &lt;= 20000): 
+            number of quarts to be measured out </SMALL></FONT></TD></TR>
+        <TR>
+          <TD vAlign=top><FONT face=Arial><SMALL>Line 2:</SMALL></FONT></TD>
+          <TD><FONT face=Arial><SMALL>integer P (1 &lt;= P &lt;= 100): number 
+            of pails in the store </SMALL></FONT></TD></TR>
+        <TR>
+          <TD vAlign=top><FONT face=Arial><SMALL>Lines 
+          3..P+2:</SMALL></FONT></TD>
+          <TD><FONT face=Arial><SMALL>integer pail_value (1 &lt;= pail_value 
+            &lt;= 10000), the number of quarts a pail holds 
+        </SMALL></FONT></TD></TR></TBODY></TABLE>
+      <P>SAMPLE INPUT (file INPUT.TXT): </SMALL><PRE>11
+3
+3
+5
+7
+</PRE><SMALL>
+      <P>OUTPUT FORMAT: 
+      <P>The output is a single line that contains: 
+      <UL>
+        <LI>the minimum number of pails required to measure out the desired 
+        number of quarts, followed by: 
+        <LI>a SORTED list (from smallest to largest) of the capacity of each of 
+        the required pails </LI></UL>
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): </SMALL><PRE>2 3 5
+</PRE><SMALL>
+      <P align=right><SMALL>[<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/National/prob.htm">Problem</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/National/data.htm#p2">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/National/sol.htm#p2">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p3></A><B>PROBLEM 3: Healthy Holsteins </B>[Burch &amp; Kolstad] 
+      <P>Farmer John prides himself on having the healthiest dairy cows in the 
+      world. He knows the vitamin content for one scoop of each feed type and 
+      the minimum daily vitamin requirement for the cows. Your goal is to help 
+      Farmer John feed his cows so they stay healthy while minimizing the number 
+      of scoops that a cow is fed. 
+      <P>Given the daily requirements of each kind of vitamin that a cow needs, 
+      identify the smallest combination of scoops of feed a cow can be fed in 
+      order to meet at least the minimum vitamin requirements. 
+      <P>Vitamins are measured in integer units. Cows can be fed at most one 
+      scoop of any feed type. It is guaranteed that a solution exists for all 
+      contest input data. 
+      <P>INPUT FORMAT: 
+      <P></SMALL></FONT>
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD vAlign=top><FONT face=Arial><SMALL>Line 1: </SMALL></FONT></TD>
+          <TD><FONT face=Arial><SMALL>integer V (1 &lt;= V &lt;= 25), the 
+            number of types of vitamins </SMALL></FONT></TD></TR>
+        <TR>
+          <TD vAlign=top><FONT face=Arial><SMALL>Line 2: </SMALL></FONT></TD>
+          <TD><FONT face=Arial><SMALL>V integers (1 &lt;= each one &lt;= 
+            1000), the minimum requirement for each of the V vitamins that a cow 
+            requires each day </SMALL></FONT></TD></TR>
+        <TR>
+          <TD vAlign=top><FONT face=Arial><SMALL>Line 3: </SMALL></FONT></TD>
+          <TD><FONT face=Arial><SMALL>integer G (1 &lt;= G &lt;= 15), the 
+            number of types of feeds available </SMALL></FONT></TD></TR>
+        <TR>
+          <TD vAlign=top><FONT face=Arial><SMALL>Lines 4..G+3: 
+          </SMALL></FONT></TD>
+          <TD><FONT face=Arial><SMALL>V integers (0 &lt;= each one &lt;= 
+            1000), the amount of each vitamin that one scoop of this feed 
+            contains. The first line of these G lines describes feed #1; the 
+            second line describes feed #2; and so on. 
+        </SMALL></FONT></TD></TR></TBODY></TABLE><FONT face=Arial><SMALL>
+      <P>SAMPLE INPUT (file INPUT.TXT): </SMALL><PRE>4
+100 200 300 400
+3
+50   50  50  50
+200 300 200 300
+900 150 389 399
+</PRE><SMALL>
+      <P>OUTPUT FORMAT: 
+      <P>The output is a single line of output that contains: 
+      <UL>
+        <LI>the minimum number of scoops a cow must eat, followed by: 
+        <LI>a SORTED list (from smallest to largest) of the feed types the cow 
+        is given </LI></UL>
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): </SMALL><PRE>2 1 3
+</PRE><SMALL>
+      <P>[Other answers might be possible; any one correct answer is fine] 
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/National/data.htm#p3">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/National/sol.htm#p3">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p4></A><B>PROBLEM 4: Big Barn </B>[USACO FALL '97] 
+      <P>Farmer John wants to place a big square barn on his square farm. He 
+      hates to cut down trees on his farm and wants to find a location for his 
+      barn that enables him to build it only on land that is already clear of 
+      trees. For our purposes, his land is divided into N x N parcels. The input 
+      contains a list of parcels that contain trees. Your job is to determine 
+      and report the largest possible square barn that can be placed on his land 
+      without having to clear away trees. The barn sides must be parallel to the 
+      horizontal or vertical axis. 
+      <P>EXAMPLE 
+      <P>Consider the following grid of Farmer John's land where `.' represents 
+      a parcel with no trees and `#' represents a parcel with trees: </SMALL><PRE>          1 2 3 4 5 6 7 8
+        1 . . . . . . . .
+        2 . # . . . # . .
+        3 . . . . . . . .
+        4 . . . . . . . .
+        5 . . . . . . . .
+        6 . . # . . . . .
+        7 . . . . . . . .
+        8 . . . . . . . .
+</PRE><SMALL>
+      <P>The largest barn is 5 x 5 and can be placed in either of two locations 
+      in the lower right part of the grid. 
+      <P>INPUT FORMAT 
+      <P></SMALL></FONT>
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD vAlign=top><FONT face=Arial><SMALL>Line 1: </SMALL></FONT></TD>
+          <TD><FONT face=Arial><SMALL>two integers: N (1 &lt;= N &lt;= 200), 
+            the number of parcels on a side, and T (1 &lt;= T &lt;= 500) the 
+            number of parcels with trees </SMALL></FONT></TD></TR>
+        <TR>
+          <TD><FONT face=Arial><SMALL>Line 2..T+1: </SMALL></FONT></TD>
+          <TD vAlign=top><FONT face=Arial><SMALL>two integers (1 &lt;= each 
+            integer &lt;= N), the row and column of a tree parcel 
+          </SMALL></FONT></TD></TR></TBODY></TABLE><FONT face=Arial><SMALL>
+      <P>SAMPLE INPUT (file INPUT.TXT): </SMALL><PRE>8 3
+2 2
+2 6
+6 3
+</PRE><SMALL>
+      <P>OUTPUT FORMAT 
+      <P>The output file should consist of exactly one line, the maximum side 
+      length of John's barn. 
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): </SMALL><PRE>5
+</PRE><SMALL>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/National/data.htm#p4">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/National/sol.htm#p4">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p5></A><B>PROBLEM 5: Cow Tours </B>[Burch] 
+      <P>Farmer John has a number of pastures on his farm. Cow paths connect a 
+      pasture with certain other pastures. But, at the present time, you can 
+      find at least two pastures that cannot be connected by a sequence of cow 
+      paths. 
+      <P>Farmer John would like create cow paths between one extra pair of 
+      pastures so that more pastures are connected by a sequence of cow paths. 
+      <P>In a set of connected pastures, the `diameter' is defined to be the 
+      largest distance of all the shortest walks between any pair of pastures. 
+      Consider the five pastures below with the cow paths marked by a line: 
+      <P></SMALL><PRE>                15,15   20,15
+                  D       E
+                  *-------*
+                  |     _/|
+                  |   _/  |
+                  | _/    |
+                  |/      |
+         *--------*-------*
+         A        B       C
+         10,10   15,10   20,10
+</PRE><SMALL>
+      <P>The `diameter' of this set of farm pastures is approximately 12.07106, 
+      since the longest of the set of shortest paths between pairs of pastures 
+      is the path from A to E (which includes the point set {A,B,E}). No other 
+      pair of pastures is farther apart when connected by an optimal sequence of 
+      cow paths. 
+      <P>Suppose another set of pastures on the same plane is connected by cow 
+      paths as follows: 
+      <P></SMALL><PRE>                          *F 30,15
+                         / 
+                       _/  
+                     _/    
+                    /      
+                   *------ 
+                   G      H
+                   25,10   30,10
+</PRE><SMALL>
+      <P>In the scenario of just two pastures on his farm, Farmer John would add 
+      a cow path between a point in each of these two pastures (namely point 
+      sets {A,B,C,D,E} and {F,G,H}) so that the joined set of pastures 
+      {A,B,C,D,E,F,G,H} has the smallest possible diameter. 
+      <P>Note that cow paths do not intersect or connect by crossing each other; 
+      they only connect at listed points. 
+      <P>The input contains the pastures, their locations, and a symmetric 
+      "adjacency" matrix that tells whether pastures are connected by cow paths. 
+      Pastures are not considered to be connected to themselves. Here's one 
+      annotated adjacency list for the pasture {A,B,C,D,E,F,G,H} as shown above: 
+
+      <P></SMALL><PRE>                A B C D E F G H
+              A 0 1 0 0 0 0 0 0
+              B 1 0 1 1 1 0 0 0
+              C 0 1 0 0 1 0 0 0
+              D 0 1 0 0 1 0 0 0
+              E 0 1 1 1 0 0 0 0
+              F 0 0 0 0 0 0 1 0
+              G 0 0 0 0 0 1 0 1
+              H 0 0 0 0 0 0 1 0
+</PRE><SMALL>
+      <P>Other adjacency lists might permute the rows and columns by using some 
+      other order than alphabetical to show the point connections. The input 
+      data contains no names for the points. 
+      <P>The input will contain a least two pastures that are not connected by 
+      any sequence of cow paths. 
+      <P>Find a way to connect exactly two pastures in the input with a cow path 
+      so that the new combined pasture has the smallest possible diameter of any 
+      possible pair of connected pastures. Output that smallest possible 
+      diameter. 
+      <P>INPUT FORMAT: 
+      <P></SMALL></FONT>
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD vAlign=top><FONT face=Arial><SMALL>Line 1: </SMALL></FONT></TD>
+          <TD vAlign=top><FONT face=Arial><SMALL>integer, N (1 &lt;= N &lt;= 
+            150) the number of pastures </SMALL></FONT></TD></TR>
+        <TR>
+          <TD><FONT face=Arial><SMALL>Lines 2..N+1: </SMALL></FONT></TD>
+          <TD vAlign=top><FONT face=Arial><SMALL>two integers, X, Y, (0 &lt;= 
+            X &lt;= 100000, 0 &lt;= Y &lt;= 100000), that denote that X,Y grid 
+            location of the pastures; all input pastures are unique 
+            </SMALL></FONT></TD></TR>
+        <TR>
+          <TD><FONT face=Arial><SMALL>Lines N+2..2*N+1: </SMALL></FONT></TD>
+          <TD vAlign=top><FONT face=Arial><SMALL>N lines, each containing N 
+            space-separated integers (each integer 0 1) that represent the 
+            adjacency matrix as described above. 
+      </SMALL></FONT></TD></TR></TBODY></TABLE><FONT face=Arial><SMALL>
+      <P>SAMPLE INPUT (file INPUT.TXT): </SMALL><PRE>8
+10 10
+15 10
+20 10
+15 15
+20 15
+30 15
+25 10
+30 10
+0 1 0 0 0 0 0 0
+1 0 1 1 1 0 0 0
+0 1 0 0 1 0 0 0
+0 1 0 0 1 0 0 0
+0 1 1 1 0 0 0 0
+0 0 0 0 0 0 1 0
+0 0 0 0 0 1 0 1
+0 0 0 0 0 0 1 0
+</PRE><SMALL>
+      <P>OUTPUT FORMAT: 
+      <P>The output consists of a single line with the diameter of the newly 
+      joined pastures. Print the answer to exactly six decimal places. Do not 
+      perform any special rounding on your output. 
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): </SMALL><PRE>22.071068
+</PRE><SMALL>
+      <P>[The precise answer is closer to 22.071067811865475244 and might print 
+      as 22.071067 with your compiler/output libraries.] 
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/National/data.htm#p5">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/National/sol.htm#p5">Solutions</A>]</SMALL> 
+
+      <HR>
+      </FONT></SMALL></TD>
+    <TD width="10%"></TD></TR></TBODY></TABLE></BODY></HTML>

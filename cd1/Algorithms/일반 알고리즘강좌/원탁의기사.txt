@@ -1,0 +1,27 @@
+                         >> 원탁의 기사(Josephus Problem) <<
+
+* 입력
+8 2 3 (N,m,k)
+
+* 풀이방법
+=======================================
+I for(i=1; i<N; i++) a[i] = i + 1;    I
+I a[N] = 1;                           I
+I move = m - 1;                       I
+I if (move < 1) move = N;             I
+I fout << m << " ";                   I
+I a[move] = a[a[move]];               I
+I for(i=1; i<N-1; i++){               I
+I         for(j=1; j<k; j++)          I
+I                 move = a[move];     I
+I         fout << a[move] << ' ';     I
+I         a[move] = a[a[move]];       I
+I }                                   I
+I fout << endl << move;               I
+=======================================
+
+* 출력
+2 5 8 4 1 7 3 (차례대로 제외된 기사들의 번호)
+6 (용과 싸우게 될 기사)
+
+* 환형큐나 리스트를 사용한다.

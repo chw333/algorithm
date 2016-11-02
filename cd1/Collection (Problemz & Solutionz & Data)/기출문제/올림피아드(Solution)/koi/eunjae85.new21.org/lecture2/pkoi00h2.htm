@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>2000년 17회 한국정보올림피아드</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0">
+    <tr>
+        <td width="595"><table border="0" width="595">
+                <tr>
+                    <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+                        17회 고등부 2. 유전자</b></font></td>
+                    <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="skoi00h2.htm"><img src="button2.gif"
+                         width="72" height="22" border="0"></a></td>
+                    <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi00h2.htm"><img src="button3.gif"
+                         width="72" height="22" border="0"></a></td>
+                </tr>
+            </table>
+            <p><img src="bar1.gif" width="592" height="25" border="0"></p>
+            <ul>
+                <p><font size="2">최근에 인간의 유전자 염기서열을 밝히는 인간게놈(genome) 
+                프로젝트가 완료되었다. 염색체내의 유전자의 염기서열을 알아내는 
+                방법은 다음과 같다. 한 염색체의 염기서열이 너무 길면 현재의 
+                기술로는 그 내용을 알아낼 수 없다. 따라서, 이를 PCR이라는 방식을 
+                이용하여 여러 벌로 복제한 다음, 효소를 가하게 되면 염색체 조각들로 
+                나뉘어진다. 이 염색체 조각들은 길이가 충분히 짧으므로 현재의 
+                기술로 그 내용을 밝혀 낼 수 있다. 내용이 밝혀진 염색체 조각들을 
+                다시 이어서 여러 벌의 동일한 염색체로 복구하여, 원래 염색체의 
+                염기서열을 알아낸다. (유전자의 염기는 A, G, T, C라는 네 종류가 
+                있으며, 이들의 조합으로 염기서열을 표시한다.)</font></p>
+                <p><font size="2">예를 들어, 염색체의 염기서열이 있을 때, 이 
+                염기서열을 3벌로 복제한 뒤, 효소를 가하여 11개로 나누고, 그 
+                조각들의 내용을 밝힌 결과가 다음과 같다고 하자. </font></p>
+                <p><font size="2">CGATGCCA<br> CAGGAAGCG<br> AGGTGCCC<br> CAGGA<br> 
+                AGGTGCCCGATGC<br> GGAAGCGATGGAGCTTT<br> ATGGAGCTTT<br> GATGC<br> 
+                CCGTGGA<br> AGCGATGG<br> TTTCGA<br> &nbsp;&nbsp;&nbsp;<br> 이 
+                조각들을 다시 모아서 동일한 3벌의 염기서열로 재구성하면 다음과 
+                같이 되고, 이를 통해서 <br> 전체 염색체의 염기서열을 알아낼 
+                수 있다. 조각들은 그대로 사용할 수도 있고, 뒤집어서 사용할 수도 
+                있다. 예를 들어 위의 마지막 조각인 TTTCGA는 AGCTTT로 뒤집어서 
+                아래의 마지막 염기서열을 만드는데 사용하였다.</font></p>
+                <p><font size="2">AGGTGCCCGATGC CAGGAAGCG ATGGAGCTTT<br> AGGTGCC 
+                CGATGCCA GGAAGCGATGGAGCTTT<br> AGGTGCCC GATGC CAGGA AGCGATGG 
+                AGCTTT</font></p>
+                <p><font size="2">복제된 염색체의 벌 수와 내용이 밝혀진 염색체 
+                조각들이 입력으로 주어져 있을 때 전체 염기서열을 구하는 프로그램을 
+                작성하시오.<br> &nbsp;&nbsp;<br> 실행 파일 이름은 GENOME.EXE로 
+                하고 부분 점수는 없다.</font></p>
+            </ul>
+            <p><img src="bar2.gif" width="591" height="26" border="0"></p>
+            <ul>
+                <p><font size="2">입력 파일 이름은 INPUT.TXT로 한다. 입력 파일의 
+                첫 줄에는 복제한 염기서열의 벌 수 (는 2이상 20이하)가 주어진다. 
+                그 다음 줄에는 염색체 조각 수 이 주어진다(은 200이하). 다음 
+                개의 줄에 염색체 조각들이 한 줄에 하나씩 주어진다(각 염색체 
+                조각의 길이는 5이상 70이하). 주어진 염색체의 조각에 열거된 순서대로 
+                1번부터 번까지의 번호를 부여한다. 즉, 앞의 예에서 염색체 조각 
+                CAGGA의 번호는 4이다. 전체 염기서열의 길이는 30이상 700이하이다. 
+                </font></p>
+            </ul>
+            <p><img src="bar3.gif" width="590" height="26" border="0"></p>
+            <ul>
+                <p><font size="2">출력 파일 이름은 OUTPUT.TXT로 한다. 출력 파일에는 
+                알아낸 벌의 염기서열을 구성하는 순서대로 그 조각 번호들을 한 
+                줄에 한 벌씩 출력한다. 만일 어떤 염색체 조각이 뒤집어서 사용된 
+                경우는 그 조각 번호의 음의 값을 출력한다. 조각 번호 사이에는 
+                빈 칸을 하나 씩 둔다. 알아낸 염기서열의 시작은 염색체 양 끝 
+                어느 쪽에서 시작해도 무방하며 경우에 따라서 답은 하나 이상일 
+                수가 있는데 이 경우에는 하나만 출력하면 된다. 그리고 출력되는 
+                벌의 염기서열들의 순서는 상관없다. 단, 출력된 조각번호 순서대로 
+                구성된 벌의 염기서열들은 앞 뒤 순서가 모두 같아야 한다.</font></p>
+            </ul>
+            <p><img src="bar4.gif" width="593" height="25" border="0"></p>
+            <ul>
+                <p><font size="2">입력(INPUT.TXT)</font> 
+                <table border cellspacing="0">
+                        <tr>
+                            <td width="191"><p><font size="2">3<br> 11<br> CGATGCCA<br> 
+                            CAGGAAGCG<br> AGGTGCCC<br> CAGGA<br> AGGTGCCCGATGC<br> 
+                            GGAAGCGATGGAGCTTT<br> ATGGAGCTTT<br> GATGC<br> CCGTGGA<br> 
+                            AGCGATGG<br> TTTCGA</font></td>
+                    </tr>
+                </table>
+                <p><font size="2">출력(OUTPUT.TXT)<br> </font>
+                <table border cellspacing="0">
+                        <tr>
+                            <td width="191"><p><font size="2">5 2 7<br> -9 1 
+                            6<br> 3 8 4 10 -11</font></td>
+                    </tr>
+                </table>
+
+                </ul><p><img src="bar5.gif" width="595" height="26" border="0"></p>
+            <ul>
+                <p>&nbsp;<font size="2">제한시간은 5초이다.</font> 
+            </ul></td>
+    </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+[핵심:] 
+VC에서 conio.h에 clrscr()함수가 없으므로 이를 만들어야 함다. 
+
+[만들기:] 
+그러면, 어떻게 할거냐? 
+1. 커서를 화면의 맨 위로 위치 시킨다. 
+gotoxy(0,0); 
+
+2. 화면의 내용을 공백으로 덮어쓴다. 
+for(i=0; i<25; i++) { 
+    for(j=0; j<80; j++) { 
+        cout << " "; 
+    } 
+    cout << endl; 
+    cout.flush(); 
+} 
+
+3. 커서를 다시 화면의 맨 위로 위치 시킨다. 
+gotoxy(0,0); 
+
+[이를 함수로 만들면:] 
+void clrscr() 
+{ 
+    gotoxy(0,0); 
+    for(i=0; i<25; i++) { 
+        for(j=0; j<80; j++) { 
+            cout << " "; 
+        } 
+        cout << endl; 
+        cout.flush(); 
+    } 
+    gotoxy(0,0); 
+} 

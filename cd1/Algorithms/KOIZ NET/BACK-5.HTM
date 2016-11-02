@@ -1,0 +1,128 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ks_c_5601-1987">
+<title>부분 집합의 합</title>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font size="5" color="#0066CC"><b>부분 집합의 합</b></font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">문제 설명</font></p>
+<p><font size="2">정수 집합 S={w1,w2,...,wn}과 정수 W가 주어져 있을 때, 원소들의 
+합이 W가 되는 S의 부분집합 T를 찾는 문제이다. (즉 X=W이 부분 집합 T를 구하는 
+문제.)</font></p>
+<p><font size="2">예를 들어, 집합 S = {11,13,24,7} 이고, W=31일 때, 위 조건을 
+만족하는 부분집합 T는 T= {11,13,7} 또는 T= {24,7}이 된다. 이 문제는 겉으로 봐서는 
+쉬운 문제인 것처럼 보이지만 NP-hard에 속하는 매우 어려운 문제이다. 따라서, 욕심쟁이법, 
+동적계획법등을 이용하더라도 효율적으로 풀 수 없다. 퇴각 검색 법은 바로 이런 
+문제를 다루기 위해 존재하는 것이다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">이 문제에 대한 간단한 해법을 생각해보자. 문제의 해는 S의 부분집합이므로 
+S의 모든 부분집합을 하나하나 조사한다면 해를 찾을 수 있다. 문제는 S의 부분집합들의 
+개수가 얼마나 되는 가이다. 어떤 집합의 부분집합들로 구성된 집합을 멱집합(power 
+set)이라고 부른다. n개의 원소를 가진 집합의 멱집합의 크기는 2^n이다. 조사해야 
+할 부분 집합들의 개수가 너무 많아서 주어진 시간안에 문제를 해결하기 어렵다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">해의 표현과 상태공간트리</font></p>
+<p><font size="2">앞서 언급했듯이 문제를 퇴각검색법으로 풀기 위해서는 다음의 
+세가지 단계를 거쳐야 한다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">1. 해의 표현 방식 결정2. 한계 함수의 결정3. 알고리즘의 설계 
+및 구현</font></p>
+<p><font size="2">먼저, 해의 표현 방식부터 살펴보자. 부분집합의 합문제에 대한 
+해의 표현은 다음과 같이 두 가지 표현 방식을 고려할 수 있다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">1. 고정크기 n-순서리스트 방식2. 가변크기 순서리스트 방식</font></p>
+<p><font size="2">고정크기 n-순서리스트는 부분집합을 표현하는데 있어 bit-vector방식을 
+사용하는 것이다. 즉, 각 원소들에 대해 부분집합에 포함 되는지 여부를 표시하는 
+이진 값을 순서리스트로 구성하는 것이다. 부분집합 T를 나타내는 n-순서리스트가 
+(x1,x2,...,xn)일 때, xi 가 1이면 i번째 원소는 T에 포함되고, 0이면 포함되지 않는 
+다는 것을 의미한다. 예를 들어, S = {11,13,24,7}일 때, T={11,13,7}이면 (1,1,0,1)로 
+표현하고, T={24,7}이면 (0,0,1,1)로 표현하는 것이다. 따라서 이방식은 해의 후보를 
+나타내는 순서리스트의 길이가 모두 동일하다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">가변 크기 순서리스트는 부분집합을 표현하는데 있어 직접 원소를 
+나열 하는 방식을 사용하는 것이다. 즉, 부분집합에 포함되는 원소의 id(or index)를 
+순서리스트로 구성한다. 부분집합 T를 나타내는 n-순서리스트가 (x1,x2,...,xn)일 
+때, xi는 T에 포함되는 원소의 id를 의미하므로 1에서 n까지의 값을 가질 수 있다. 
+예를 들어, S={11,13,24,7}일 때, T= {11,13,7}이면 {1,2,4}로 표현하고, T={24,7}이면 
+(3,4)로 표현한다. 따라서, 해의 후보들에 대한 순서리스트의 길이가 다룰 수 있다는 
+것에 유의해야 한다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">해의 표현은 상태공간트리의 형태를 결정하게 된다. 고정크기 
+순서리스트의 경우는 상태공간트리가 포화이진트리(full binary tree)형태로 구성되고, 
+해의 후보들은 모두 잎 노드에 위치한다. 다음 그림은 4개 원소를 가진 집합에 대한 
+상태공간트리이다.</font></p>
+<p align=center><font size="2">&nbsp;</font><img src="images/back-03.gif" border=0></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">위 그림에서 각 노드의 왼쪽 에지는 xi=1 이 지정되어 있고, 오른 
+쪽 에지는 0으로 지정되어 있다. 이것은 왼쪽 자식은 i번째 원소를 부분집합에 포함하는 
+것을 의미하고, 오른쪽 자식은 i번째 원소를 포함하지 않는 것을 의미한다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">가변크기 순서리스트의 경우는 상태공간트리가 다음의 그림처럼 
+차수가 2이상인 트리 형태로 구성된다. 위의 상태공간트리와는 달리 이 트리의 모든 
+노드는 해의 후보가 될 수 있다. 루트노드는 공집합에 해당하고, 임의의 노드는 루트에서 
+해당 노드까지 경로상에 지정된 값들로 구성된 순서리스트에 해당된다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">두 상태공간트리를 비교해 보면, 고정크기의 경우는 트리가 단순한 
+대신에 노드수가 많고, 가변크기의 경우는 노드수가 적은 대신에 트리가 다소 복잡해 
+보인다. 나중에 알고리즘으로 구현할 때, 고정크기의 경우는 알고리즘이 비교적 쉽게 
+구현된다는 장점이 있고, 가변 크기는 알고리즘이 탐색할 노드의 수가 적기 때문에 
+수행 시간이 다소 효율적이라는 장점을 가지게 된다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">한계 함수</font></p>
+<p><font size="2">퇴각검색법에서 가장 중요한 한계 함수를 어떻게 정의할 것인가를 
+생각해보자. 이에 앞서, 부분집합의 합 문제에 대한 해의 표현으로 고정 크기 순서리스트방식을 
+사용하기로 한다. 부분집합의 합문제와 같이 주어진 제한 조건을 만족하는 해를 찾는 
+문제의 한계 함수는 기본적으로 제한 조건을 기반으로 하여 정의한다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">먼저, 아주 간단한 한계 함수를 생각해보자. 상태공간트리에서 
+level이 k인 노드 p가 있다고 하자. 상태공간트리를 탐색하여 현재 노드 p에 도달했다고 
+하면, 집합 S의 1부터 k-1번째 원소까지는 부분집합에 포함여부가 결정되어 있는 
+상태가 된다. 이 때, 한계 함수를 다음과 같이 정의할 수 있다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp; 부분집합에 포함된 원소의 합이 용량 W를 초과하면 이 
+노드에서 퇴각을 하고, 그렇지 않으면 계속 탐색한다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">위의 방법도 한계 함수로 사용 할수 있으나 좀더 효과적이고 지능적인 
+방법을 생각해보자. 탐색을 시작하기전에 집합 S의 원소들을 크기가 증가하는 순으로 
+정렬해둔다. 그러면 w1 &lt;= w3 &lt;= ... &lt;= wn</font></p>
+<p><font size="2">가 된다. 이때, 노드 p에서 퇴각할 것인지에 대한 결정을 다음과 
+같이한다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">즉, 앞의 한계 함수에 비해 한 수 앞을 더 보게 된다. k번째 원소뿐만 
+아니라 k+1번째 원소까지 포함해서 그 합이 W를 초과하면 나머지 원소들은 모두 k+1번째 
+원소보다 더 큰 값이므로 현 상태에서는 원소들의 합이 W가 될 수 없다. 따라서 퇴각을 
+결정할 수있다.</font></p>
+<p align="center"><font size="2">&nbsp;<img src="images/back-04.gif" width="568" height="335" border="0"></font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">한계 함수는 여러 조건들이 적절하게 결합되면 상승효과를 얻을 
+수 있으므로, 위의 두조건을 모두 한계 함수로 채택하는 것이 효과적이다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">알고리즘</font></p>
+<p><font size="2">알고리즘의 입력인 부분집합 S에 대한 배열 w[1..n]과 가중치 
+W은 모두 전역 변수로 설정되어 있습니다. 알고리즘의 출력은 모든 해를 찾아 각 
+해의 표현인 x[1..n]을 출력하는 것이다. 알고리즘은 sumOfSubsets()와 promising()으로 
+구성되어 있다. sumOfSubsets(i,weight,total)의 매개변수에서 i는 현재 고려하고 
+있는 원소의 id를 의미하고, weight는 현재까지 선택한 원소들의 합, total은 현재 
+상태에서 아직 고려되지 않은 원소들의 총합을 의미한다. sumOfSubsets()의 초기 
+호출에서 i = 0, weight = 0, total = 가 된다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">void sumOfSubsets(int i,int weight, int total){</font></p>
+<p><font size="2">&nbsp;if (!promising(i)) return; if (weight==W) &nbsp;cout 
+&lt;&lt; x[1..n]; else {</font></p>
+<p><font size="2">&nbsp; x[i+1]=1; &nbsp;sumOfSubsets(i+1,weight+w[i+1],total-w[i+1]); 
+&nbsp;x[i+1]=0; &nbsp;sumOfSubsets(i+1,weight,total-w[i+1]); }</font></p>
+<p><font size="2">}</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">bool promising(int i){</font></p>
+<p><font size="2">&nbsp;return (weight + total &gt;=W) &amp;&amp; (weight ==W|| 
+weight + w[i+1] &lt;=W);}</font></p>
+<p><font size="2">}</font></p>
+</body>
+
+</html>

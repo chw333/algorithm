@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>1999년 16회 한국정보올림피아드</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0">
+    <tr>
+        <td width="595"><table border="0" width="595">
+                <tr>
+                    <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+                        16회 중등부 2. 회로 배치</b></font></td>
+                    <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="skoi99m2.htm"><img src="button2.gif"
+                         width="72" height="22" border="0"></a></td>
+                    <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi99m2.htm"><img src="button3.gif"
+                         width="72" height="22" border="0"></a></td>
+                </tr>
+            </table>
+            <p><img src="bar1.gif" width="592" height="25" border="0"></p>
+            <ul>
+                <p><font face="굴림체" size="2">회로를 n X n의 격자 판에 배치하려고 
+                한다. 여기서 각 격자(정사각형 칸)는 가장자리에 있는 격자를 제외하고 
+                상, 하, 좌, 우 4개의 이웃 격자를 갖는다. 회로는 시작과 끝이 
+                있는 연속된 이웃 격자들의 길(path)이다. 아래 그림에서는 X와 
+                Y, P와 Q를 연결한 두 개의 회로가 있다. 이미 회로들이 배치되어 
+                있는 격자 판에 새로 배치할 회로의 양 끝 격자가 주어져 있을 때, 
+                이들 두 격자를 잇는 새로운 회로를 배치하려고 한다. <br></font></p>
+                <p><font face="굴림체" size="2">새로 배치될 회로는 이미 회로가 
+                배치된 격자 위에 배치될 수도 있다. 이 회로의 배치 비용은 이 
+                회로가 지나는 격자에 따라 다음과 같이 결정된다. 회로가 배치되지 
+                않은 빈 격자를 지나는 비용은 1이고, 이미 회로가 놓여있는 격자를 
+                지날 때는 비용이k(k≥2) 이다. 주어진 문제는 최소의 비용이 소요되는 
+                새로운 회로를 찾는 것이다. <br></font></p>
+                <p><font face="굴림체" size="2">예를 들어 아래의 그림에서 k가 
+                4로 주어진다면, 점선을 따라 격자 A와 B를 잇는 회로의 비용은 
+                19이지만, 비용이 16인 최소비용 회로가 존재한다. (이 비용에는 
+                격자 A, B의 비용도 포함된다.)</font></p>
+                <p align="center"><img src="pkoi99m2-1.jpg" width="289" height="254"
+                 border="0">&nbsp;</p>
+                <p><font face="굴림체" size="2">실행 파일의 이름은 CIRCUIT.EXE로 
+                하고, 최소 비용을 구하지 못하는 경우는 0점으로 처리된다. </font></p>
+            </ul>
+            <p><img src="bar2.gif" width="591" height="26" border="0"></p>
+            <ul>
+                <p><font face="굴림체" size="2">입력 파일명은 INPUT.TXT로 한다. 
+                입력 파일의 첫째 줄에는 격자 판의 크기를 나타내는 정수 (2≤n≤50)가 
+                주어진다. 둘째 줄에는 새로 배치할 회로의 시작 격자, 마지막 격자의 
+                위치를 나타내는 4개의 정수가 주어진다. 한 격자의 위치는 위 그림에서 
+                주어진 행과 열의 번호 순서로 주어진다. (시작 격자와 마지막 격자의 
+                위치는 같을 수 없다.) 셋째 줄에는 회로가 배치된 격자를 지나는 
+                데 드는 비용인 정수 k가 주어진다. 넷째 줄에는 이미 배치된 회로의 
+                개수가 주어진다. 다섯째 &nbsp;줄부터는 한 줄에 한 회로의 배치 
+                정보가 다음과 같이 주어진다. 첫째 정수는 회로의 시작 격자, &nbsp;90°로 
+                꺾이는 방향 전환 격자들, 그리고 마지막 격자의 총 개수이고, 그 
+                다음부터는 이들 격자의 위치가 시작 격자부터 마지막 격자까지 
+                행과 열의 순서대로 주어진다.</font></p>
+            </ul>
+            <p><img src="bar3.gif" width="590" height="26" border="0"></p>
+            <ul>
+                <p><font size="2">출력 파일명은 OUTPUT.TXT로 한다. 첫째 줄에는 
+                회로의 최소 비용을 출력한다. 둘째 줄에는 최소비용 회로의 정보를 
+                다음과 같이 출력한다. (입력 형식과 동일함.) 처음에 회로의 시작 
+                격자, 90°로 꺾이는 방향 전환 격자들, 그리고 마지막 격자의 총 
+                개수를 출력하고, 그 다음부터는 이들 격자의 위치를 시작 격자부터 
+                마지막 격자까지 행과 열의 순서대로 한 개씩 공백을 두고 출력한다.</font></p>
+            </ul>
+            <p><img src="bar4.gif" width="593" height="25" border="0"></p>
+            <ul>
+                <p><font face="굴림체" size="2">앞 그림에 해당되는 입력과 출력은 
+                다음과 같다.</font></p>
+                <p><font face="굴림체" size="2">입력(INPUT.TXT)</font> 
+                <table border cellspacing="0">
+                        <tr>
+                            <td width="155"><p><font face="굴림체" size="2">11<br> 
+                            2 3 9 8<br> 4<br> 2<br> 3 3 9 3 4 10 4<br> 4 9 2 
+                            7 2 7 7 5 7</font></td>
+                    </tr>
+                </table>
+                <p><font face="굴림체" size="2">출력(OUTPUT.TXT)</font> 
+                <table border cellspacing="0">
+                        <tr>
+                            <td width="154"><p><font face="굴림체" size="2">16<br> 
+                            3 2 3 2 8 9 8</font></td>
+                    </tr>
+                </table>
+
+                </ul><p><img src="bar5.gif" width="595" height="26" border="0"></p>
+            <ul>
+                <p>&nbsp;<font size="2">제한시간은 10초이다.</font> 
+            </ul></td>
+    </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+
+</html>

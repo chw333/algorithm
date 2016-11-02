@@ -1,0 +1,21 @@
+PA:active {
+	COLOR: deepskyblue; TEXT-DECORATION: none
+}
+A:link {
+	COLOR: navy; TEXT-DECORATION: underline
+}
+BODY {
+	FONT-FAMILY: µ¸¿ò; FONT-SIZE: 10pt
+}
+TABLE {
+	FONT-FAMILY: µ¸¿ò; FONT-SIZE: 10pt
+}
+A:visited {
+	COLOR: indigo; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: deepskyblue; TEXT-DECORATION: underline
+}
+.abc {
+	COLOR: #000000; FONT-FAMILY: "µ¸¿ò"; FONT-SIZE: 10pt; FONT-STYLE: normal; LINE-HEIGHT: normal
+}

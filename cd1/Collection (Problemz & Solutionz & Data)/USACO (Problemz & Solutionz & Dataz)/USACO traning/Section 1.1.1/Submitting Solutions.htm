@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0058)http://ace.delos.com/usacotext/s=1.1.1/a=zresBHhJD3H/grade -->
+<HTML><HEAD><TITLE>Submitting Solutions</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type>
+<META content="MSHTML 5.00.2614.3500" name=GENERATOR></HEAD>
+<BODY background="Submitting Solutions.files/bg3.jpeg"><IMG height=118 
+src="Submitting Solutions.files/cow1.jpeg" width=742> 
+<CENTER><B><FONT size=4>Submitting Solutions</FONT></B></CENTER>
+<P>The USACO Training Program features an automatic grading system for your 
+homework problems. You submit your programs from the problem page itself or via 
+e-mail; they are compiled and graded, the results conveyed back to you, often in 
+under a minute. 
+<P>C/C++ and PASCAL available. This system uses the GNU GCC compilation suite 
+for C/C++ programs and the Free Pascal system for Pascal programs. 
+<P>The grading system compilers are those that will be used at the IOI. 
+<P>These newer compilers uses 32 bit int's; the Borland compilers use 16 bit 
+int's. DO NOT GET IN TROUBLE BECAUSE OF THIS! <B>
+<P>Everyone should submit solutions via the web. To submit a program from the 
+web page, just type in its filename. Be sure to include the ID/PROG headers, but 
+do not include <TT>### PROGRAM</TT>/<TT>### END</TT>.</B> 
+<HR>
+If you absolutely do not wish to use the web, you can submit via e-mail. To 
+submit a program via e-mail, use the e-mail interface that is similar to that 
+used for USACO programming contests, though with far fewer fields. Basically, 
+you insert a line that says `<TT>### PROGRAM</TT>' before your program and a 
+line that says `<TT>### END</TT>' after your program. Add some header comments 
+and mail in the program. 
+<P>The header comments are very simple, just your ID number (your USACO login 
+name) and the name of the program (which will be given in each programming 
+assignment. Here is a complete example for the `hello world' program written in 
+C: <PRE>### PROGRAM
+/*
+ID: kolstad001
+PROG: hello
+*/
+
+#include &lt;stdio.h&gt;
+
+main ()
+{
+    FILE *out = fopen ("hello.out", "w");
+    fprintf(out, "Hello world.\n");
+    exit (0);
+}
+### END
+</PRE>And here's the `hello world' program written in Pascal: <PRE>### PROGRAM
+{
+ID: kolstad001
+PROG: hello
+}
+
+program hello;
+var f: text;
+begin
+   Assign(f,'hello.out');
+   ReWrite(f);
+   writeln(f, 'Hello world.');
+   close (f);
+end.
+### END
+</PRE>
+<HR>
+
+<P>You can try as many different things (subject to the caveats below) as you 
+like to see how the grading system works. Theoretically, you can't break it or 
+crash it. If you see a problem, please let me know. 
+<P>Programs read and write to file names like `hello.in' and `hello.out'. Each 
+program will tell you the proper filenames. This program uses `hello.out' only. 
+Filenames are case-sensitive - and pretty much always lower-case for this 
+grading system. 
+<P>The restrictions are few: 
+<UL>
+  <LI>Five second runtime limit unless other specified (500 MHz Celeron) 
+  <LI>About 16MB datasize limit 
+  <LI>About 1MB stacksize limit 
+  <LI>Be sure your program exits with status 0 
+  <LI>Be sure you print complete lines (with terminating newline), not just a 
+  few words or numbers 
+  <LI>Don't use files other than the specified input and output files 
+  <LI>Other common sense rules that need not be listed </LI></UL>
+<P>The rules are simple: 
+<UL>
+  <LI>Don't try to cheat. 
+  <LI><B>Don't just print the answers</B>, you must calculate them in your 
+  program. If you just print answers, your login ID will be removed. 
+  <LI>Don't try to look at other files on the system or use other schemes to 
+  break security 
+  <LI>Don't try to break common sense rules of privacy 
+  <LI>Please report anomalous behavior to me right away (<A 
+  href="mailto:kolstad@ace.delos.com">mailto:kolstad@ace.delos.com</A>) 
+  <LI>Have as much fun as possible 
+  <LI>Earn a trip to the IOI and other exotic contests! </LI></UL>
+<P>Some hints: 
+<UL>
+  <LI>Both stderr and stdout are returned to you if your program exits properly 
+  <LI><B>Feel free to ask questions and send in comments</B> 
+  <LI>Your reported output has `_'s substituted for spaces 
+  <LI>Include this comment if you use try/catch/throw in C++: 
+  <TT>/*pragma&nbsp;handle-exceptions*/</TT> </LI></UL>
+<P>Compiler comments (please send in new compiler comments as you find them): 
+<UL>
+  <LI>We're using g++ (a.k.a. djgpp on PCs) and Free Pascal 
+  <LI>In C/C++, ints are 32 bits (char is 8; short is 16; long is 32; long long 
+  is 64) 
+  <LI>some libraries have new names; some have different or missing functions 
+  <LI>stricmp doesn't exist; use strcmp for string compares 
+  <LI>strrev does not exist 
+  <LI>neither itoa nor ltoa exists (use sprintf instead) 
+  <LI>No need for huge - pointers already go everywhere 
+  <LI>Pascal users: be sure to "close" your output file or the output will not 
+  appear </LI></UL>Please let me know (<A 
+href="mailto:kolstad@ace.delos.com">mailto:kolstad@ace.delos.com</A>) if you 
+ever have to wait ten minutes for a response. They should arrive within a 
+minute. </TD></TR></TABLE>
+<P>Why not give it a try? Submit the program above, <FONT color=#ff0000>using 
+your own ID</FONT>, to the standard submission address: <A 
+href="mailto:grader@ace.delos.com">mailto:grader@ace.delos.com</A>. The subject 
+line is ignored, by the way. Your results should be returned via email quickly. 
+<BR>
+<HR>
+
+<FORM action=/upload encType=multipart/form-data method=post><B>Submission file 
+Name:</B> <INPUT name=filename type=file> <INPUT type=submit value="Send it in!"> <INPUT name=id type=hidden 
+value=/usacogate?a=zresBHhJD3H> <INPUT name=sid type=hidden value=1.1.1> <INPUT 
+name=nid type=hidden value=none> </FORM></BODY></HTML>

@@ -1,0 +1,146 @@
+<html>
+<head> <title>Problem 13: Cow Scans</title> </head>
+<body background="../../usaco/bg3.jpg">
+<img src="../../usaco/cow1.jpg" width="742" height="118">
+<center>
+<b><font size="7">Cow Scans</font></b><br>
+<b>ACM 1992 & Galperin, Burch, Kolstad, Simenov</b>
+</center>
+<title>Problems</title>
+</head>
+
+<p> Farmer John has just invested in a shiny new Locowter-2000 for tracking
+his grazing cows.  The Locowter-2000's best feature is that it does not
+need to get input from anywhere except the perimeter of the verdant
+pastures in which the cows are grazing.
+
+<p> Farmer John has conveniently partitioned his field into a grid of 10
+rows and 15 columns of cow-sized grazing-cells, each of which can host
+either 0 or 1 dining bovines.
+
+<p> The Locowter-2000 sports a battery of scanners located on fence posts
+around the pasture.  Each of the 73 scanners counts the number of cows in
+its direct line of sight.  Farmer John has arranged the scanners to observe
+the number of cows in each row, in each column, and in each diagonal (both
+directions!).
+
+<p> The numbers are fed back to the L2000's cowputer, which cowculates the
+locowtions of Farmer John's feeding friends and displays a graphical map
+of those locowtions using ASCII graphics.  Regrettably, the L2000's
+cowputer has been decowmissioned for maintenance and Farmer John needs you
+to cowculate his cow locowtions.
+
+<p> The scanners' output is given as a set of integers representing the
+numbers of cows observed on the various rows, columns, and diagonals.
+The first 10 numbers represent the rows; note the order of letters in
+the diagram below:
+</small><pre>
+a-&gt;.##########....
+b-&gt;.##########....
+c-&gt;....######.....
+d-&gt;......####.....
+e-&gt;.......####..##
+f-&gt;.......########
+g-&gt;#####..########
+h-&gt;###############
+i-&gt;..#########..##
+j-&gt;....######.....
+</pre><small>
+<p>
+The second 24 numbers are diagonals; see the letters below for the ordering:
+</small><pre>
+   .##########....
+  /.##########....
+a/....######.....
+b/......####.....
+c/.......####..##
+d/.......########
+e/#####..########
+f/###############
+g/..#########..##
+h/....######.....
+i///////////////
+jklmnopqrstuvwx
+</pre><small>
+<p>
+The third 15 numbers are the columns; see the letters below for the ordering:
+</small><pre>
+   .##########....
+   .##########....
+   ....######.....
+   ......####.....
+   .......####..##
+   .......########
+   #####..########
+   ###############
+   ..#########..##
+   ....######.....
+   |||||||||||||||
+   abcdefghijklmno
+</pre><small>
+<p>
+The final 24 numbers are the other diagonals; see the letters below for
+the ordering:
+</small><pre>
+   .##########....
+   .##########....\
+   ....######.....\x
+   ......####.....\w
+   .......####..##\v
+   .......########\u
+   #####..########\t
+   ###############\s
+   ..#########..##\r
+   ....######.....\q
+    \\\\\\\\\\\\\\\p
+     abcdefghijklmno
+</pre><small>
+<p>
+The sample input datafile for this particular example looks just like
+this:
+</small><pre>
+10 10 6 4 6 8 13 15 11 6
+0 1 2 2 2 2 4 5 5 6 7 6 5 6 6 5 5 6 6 3 2 2 1 0
+2 4 5 5 7 6 7 10 10 10 7 3 3 5 5
+0 0 1 3 4 4 4 4 3 4 5 7 8 8 9 9 6 4 4 2 0 0 0 0
+</pre><small>
+
+<p> Note that there do exist datasets in the universe that can not be
+precisely decoded given this kind of input data.  Farmer John's Courteous
+Cows never arrange themselves in any of these positions.  You will be able
+to determine the value of every grazing-cell without resorting to any
+guesswork.
+
+<h3>PROGRAM NAME: cowscan</h3>
+
+<h3>INPUT FORMAT</h3>
+
+<p> Four input lines with 10, 24, 15, and 24 numbers, respectively, denote
+the number of cows seen (as per the rules above).
+
+<h3>SAMPLE INPUT (file cowscan.in)</h3>
+<pre>
+10 10 6 4 6 8 13 15 11 6
+0 1 2 2 2 2 4 5 5 6 7 6 5 6 6 5 5 6 6 3 2 2 1 0
+2 4 5 5 7 6 7 10 10 10 7 3 3 5 5
+0 0 1 3 4 4 4 4 3 4 5 7 8 8 9 9 6 4 4 2 0 0 0 0
+</pre>
+
+<h3>OUTPUT FORMAT</h3>
+<p>
+Ten lines of 15 characters that represent the only possible set of
+cows described by the input file.
+
+<h3>SAMPLE OUTPUT (file cowscan.out)</h3>
+<pre>
+.##########....
+.##########....
+....######.....
+......####.....
+.......####..##
+.......########
+#####..########
+###############
+..#########..##
+....######.....
+</pre>

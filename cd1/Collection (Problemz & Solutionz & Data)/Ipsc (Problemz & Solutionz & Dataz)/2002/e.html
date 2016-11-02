@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+  <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <META name="description" content="Internet Problem Solving Contest (IPSC) is an online programming contest for teams up three people.">
+  <META name="keywords" content="IPSC, programming, contest, online contest">
+  <TITLE>IPSC 2002 Problem E - Expressions</TITLE>
+  <link rel="stylesheet" type="text/css" href="main.css">
+  
+</HEAD>
+	
+<BODY BGCOLOR=white TEXT="#191970" LINK="#F4A460" VLINK="#CD853F" ALINK="#FFDEAD">
+
+
+	
+<!-- Title and Logo -->
+<TABLE class="title" WIDTH="100%"><TR VALIGN="top">
+<TD WIDTH="140"><A HREF="http://ipsc.ksp.sk/"><IMG BORDER=0 SRC="ipsc.gif" TITLE="Home" ALT="IPSC Logo"></a></TD>
+<TD ALIGN=CENTER>
+	<H5>Internet Problem Solving Contest</H5>
+	<H1>IPSC 2002<br> Problem E - Expressions</H1>
+</TD>
+</TR></TABLE>
+<!-- end of Title and Logo -->
+
+<TABLE CLASS=page ALIGN=center WIDTH="97%"><TR><TD>
+	
+
+<ul>
+<li><a href="e1.in">Easy input data set - E1</a></li>
+<li><a href="e2.in">Difficult input data set - E2</a></li>
+</ul>
+
+<p>
+
+Little Michael got a really interesting present last Christmas.
+It was a box full of colorful tiles with fancy symbols.
+After a closer inspection, Michael found out that there were several types 
+of tiles. There were red tiles displaying symbols
+"<b>+</b>", "<b>*</b>", "<b>!</b>", green tiles with symbols
+"<b>(</b>" and "<b>)</b>", and a few blue tiles with large symbols
+"<b>1</b>" across their faces.
+</p>
+
+<p>
+Michael soon realized that red tiles represented mathematical
+operations: 
+<b>+</b> stood for addition, <b>*</b> for multiplication, <b>!</b>
+for the factorial function.
+(The factorial of a positive integer <b>n</b> is defined as
+the product of all positive integers less than or equal to <b>n</b>, i.e.
+<b>n! = n(n-1)(n-2)...2.1</b>.)
+Green tiles certainly represented left and right parentheses.
+But why were there only a few blue tiles and each of them had a <b>1</b>
+on its top? 
+</p>
+
+<p>
+The brochure he found in the box after taking all the tiles out said 
+that the game was named "<i>Express your number</i>". 
+It claimed that the game is a great companion 
+for his free time and is good for players of all skills and ages.
+It went further explaining that the point of the game is
+to find an expression consisting of additions, multiplications, 
+factorials, parentheses and numbers <b>1</b> that would evaluate to a
+given number <b>n</b>.
+The brochure also contained a list of sample numbers and encouraged him to
+find expressions for them. Michael soon realized that since there
+were only a few blue tiles, he had to find expressions that would
+not contain too many <b>1</b>s. Now he is trying to express every number
+by an expression that contains as few <b>1</b>s as possible.
+</p>
+
+Formally, 
+<ol>
+<li> <b>1</b> is an expression.
+<li> If <b>e</b> is an expression then
+        <b>(e)</b> and <b>e<tt>!</tt></b> are expressions.
+<li> If <b>e<sub>1</sub></b> and <b>e<sub>2</sub></b> are expressions then 
+<b>e<sub>1</sub><tt>+</tt>e<sub>2</sub></b> and
+<b>e<sub>1</sub><tt>*</tt>e<sub>2</sub></b> are expressions.
+<li> Nothing else is considered to be an expression.
+</ol>
+
+Expressions are evaluated using standard precedence rules
+(i.e. <tt>!</tt> has the highest priority, followed by <tt>*</tt> with a lower
+priority and <tt>+</tt> with the lowest priority).
+Note that it is not possible to obtain a number by concatenating digits,
+i.e. <b>11</b> is not a valid expression.
+
+<H3>Input file specification</H3>
+
+<p>
+The input file contains a list of positive integers, one per line.
+The list is terminated by the number <tt>-1</tt>, which should not be
+processed. 
+</p>
+
+<H3>Output file specification</H3>
+
+<p>
+Express each number in the input file by an expression that contains
+the minimum number of <b>1</b>s. If there are multiple such expressions,
+output an arbitrary one of them. For technical reasons, we allow only
+expressions that consist of <b>no more than 10000 symbols</b>.
+ Output an empty line after each expression.
+You can delimit characters in your expression
+by spaces and divide your expression into multiple lines. Do not insert
+any blank lines inside expressions!
+</p>
+
+<h3>Example</h3>
+
+<b>Input file:</b>
+<pre>18
+5040
+11
+-1
+</pre>
+
+<b>Output file:</b>
+(out of several possibilities)
+<pre>
+(1+1+1)*(1+1+1)!
+
+((1+1+1)!+1)!
+
+((1+1+1+1)+1)*(1+1)+1
+
+</pre>
+
+
+
+	   
+<!-- END OF PAGE -->   
+</TD></TR></TABLE>
+</BODY>
+</HTML>

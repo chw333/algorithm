@@ -1,0 +1,54 @@
+<html>
+<head> <title>Problem 18: Raucous Rockers</title> </head>
+<body background="../../usaco/bg3.jpg">
+<img src="../../usaco/cow1.jpg" width="742" height="118">
+<center>
+<b><font size="7">Raucous Rockers</font></b><br>
+</center>
+
+<p> You just inherited the rights to N (1 &lt;= N &lt;= 20) previously
+unreleased songs recorded by the popular group Raucous Rockers. You plan
+to release a set of M  (1 &lt;= M &lt;= 20) compact disks with a selection
+of these songs. Each disk can hold a maximum of T (1 &lt;= T &lt;= 20)
+minutes of music, and a song can not overlap from one disk to another.
+
+<p> Since you are a classical music fan and have no way to judge the
+artistic merits of these songs, you decide on the following criteria for
+making the selection:
+
+<ul>
+<li> The songs on the set of disks must appear in the order of the 
+     dates that they were written. 
+<li> The total number of songs included will be maximized. 
+</ul>
+
+<h3>PROGRAM NAME: rockers</h3>
+
+<h3>INPUT FORMAT</h3>
+
+<table>
+<tr><td>Line 1:<td> Three integers: N, T, and M.
+<tr><td>Line 2:<td> N integers that are the lengths of the songs
+ordered by the date they were written.
+</table>
+
+<h3>SAMPLE INPUT (file rockers.in)</h3>
+
+<pre>
+4 5 2
+4 3 4 2
+</pre>
+
+<h3>OUTPUT FORMAT</h3>
+
+A single line with an integer that is the number of songs that will fit on
+M disks.
+
+<h3>SAMPLE OUTPUT (file rockers.out)</h3>
+
+<pre>
+3
+</pre>
+
+</body>
+</html>

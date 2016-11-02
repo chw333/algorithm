@@ -1,0 +1,43 @@
+<html>
+<script language="Javascript">
+function send(form) {
+	if (form.writer.value=="") 
+		{ alert("\n이름을 입력해 주세요."); return; }
+	if (form.title.value=="") 
+		{ alert("\n제목을 입력해 주세요."); return; }
+	if (form.content.value=="") 
+		{ alert("\n질문을 입력해 주세요."); return; }
+
+	form.submit();
+}
+</script>
+
+<body bgcolor=eeeeee topmargin=0 leftmargin=0 marginwidth=0 marginheight=0 link=FFB90F vlink=ffB90F>
+<form action=save.html>
+<table width=100% border=0 cellpadding=0 cellspacing=0>
+<tr>
+	<td width=50% bgcolor=000000 align=left>
+	<font color=FFB90F></font>
+	</td>
+	<td width=50% bgcolor=000000 align=right>
+	<font color=FFB90F size=-1>
+	<a href=index.html?pos=>닫기</a>
+	</font>
+	</td>
+</tr>
+<tr>
+	<td colspan=2 align=center width=100%>
+	<font size=-1>
+	이름 <input type=text name=writer size=17><br>
+	제목 <input type=text name=title size=17><br>
+	<textarea name=content rows=9></textarea>
+	<input type=hidden name=pos value= >
+	<input type=hidden name=re value=0 >
+	<input type=button value="확인" onclick=send(this.form)>
+	</font>
+	</td>
+</tr>
+</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+  <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <META name="description" content="Internet Problem Solving Contest (IPSC) is an online programming contest for teams up three people.">
+  <META name="keywords" content="IPSC, programming, contest, online contest">
+  <TITLE>IPSC 2002 Problem C - Chamber of Secrets</TITLE>
+  <link rel="stylesheet" type="text/css" href="main.css">
+  
+</HEAD>
+	
+<BODY BGCOLOR=white TEXT="#191970" LINK="#F4A460" VLINK="#CD853F" ALINK="#FFDEAD">
+
+
+	
+<!-- Title and Logo -->
+<TABLE class="title" WIDTH="100%"><TR VALIGN="top">
+<TD WIDTH="140"><A HREF="http://ipsc.ksp.sk/"><IMG BORDER=0 SRC="ipsc.gif" TITLE="Home" ALT="IPSC Logo"></a></TD>
+<TD ALIGN=CENTER>
+	<H5>Internet Problem Solving Contest</H5>
+	<H1>IPSC 2002<br> Problem C - Chamber of Secrets</H1>
+</TD>
+</TR></TABLE>
+<!-- end of Title and Logo -->
+
+<TABLE CLASS=page ALIGN=center WIDTH="97%"><TR><TD>
+	
+
+<ul>
+<li><b>This problem has no input :-)</b></li>
+</ul>
+
+
+<!--
+<ul>
+<li><a href="c1.in">Easy input data set - C1</a></li>
+<li><a href="c2.in">Difficult input data set - C2</a></li>
+</ul>
+-->
+
+<p>
+In the 24<sup>th</sup> century, the humankind has conquered all the inner planets
+of the Solar System and it is slowly beginning to colonize the outer ones.  Yet,
+they have not made any contact with extraterrestrial civilizations so far.  This day, however, may
+give an answer to one of the oldest questions humans ever asked - "Are we alone
+in the universe?"
+</p>
+
+<p>
+A group of four geo- and archeologists is exploring a very strange cave on
+Uranus. It is very deep and does not seem to be of natural
+origin. As soon as the first member of the team reaches the bottom, she shouts with
+an excitement - there is a door (clearly a sign of intelligent beings) with
+strange runes.  Immediately they send a photo of the runes to the main
+lingo-analysis headquarters on the Earth.  Surprisingly, the analysis is finished
+in a few minutes as the language is very similar to Latin.  The runes
+(translated into English for your convenience) read:
+</p>
+
+<i>
+<br>
+<p>
+Welcome, stranger!  You have entered our major archive which is the most
+heavily guarded place on our planet.  The single fact you are still alive
+means that we have already abandoned the land and went to the stars... or...
+our civilization might have been destroyed by a great cosmic catastrophe.
+In either case, be welcome. After you open this door, you will enter
+a big labyrinth consisting of five major parts, four of them made of seven
+smaller chambers.  The last part is the most important - it hides a
+treasure of immense value - the highest wisdom of our civilization.  First,
+however, you will need to prove you are worth it - you have to overcome a
+tiny (...ahem) obstacle.  The chamber will open only if you correctly guess the
+time currently shown on the Big Clock.  Its display consists of four digits
+(described below), the first two of them correspond to hours and the other two
+to minutes.  Minutes increase by one until they reach 59 (the first digit
+corresponds to tens, the second to ones).  The next minute increment increases
+hours and resets minutes back to zero.  Hours go likewise, they increase by
+one (again, the first digit means tens, the second means ones), until the time reaches
+11:59, when it wraps back to 00:00 on the next increment [translator's note:
+note that this is different from the two formats used on earth - the 24 hour
+format 0-23 and the 12 hour format 1-12]. If you
+think you know the time on the display, you can set it on the panel by the
+door leading to the main chamber and push the Big Red Button.  If you set
+the right time, the chamber will reveal its secrets.  However, if you set a
+wrong time... a little will remain of the whole planet... very little...
+Of course, this would be quite unfair (...heh), so we provide you with a few
+clues:
+</i>
+
+<ol>
+	<li>
+	First, we have lied a little bit - you have ten guesses instead of just
+ 	one, but should you guess wrong for the tenth time...
+	</li>
+	
+   	<li>
+	You might have wondered what the smaller chambers in the labyrinth are
+	for. They are numbered 1 through 28 and look as follows:
+
+<!--
++6+
+5 1  .... .... .... % sa mi nechce kreslit, aj tak to vyzera strasne :-)
++7+
+4 2
++3+
+-->
+
+<div align="center">
+<img src="digit.gif" alt="segment numbers" title="segment numbers">
+</div>
+
+        Each of them is connected to one segment of the Big Clock display.
+   	Whenever you set a time on the main panel and press the button, the
+	chambers corresponding to active segments of the Big Clock flash
+        with a bright light, whereas the other chambers remain dark. Active
+        segments of the ten digits are shown in the following picture:
+<!--
+
+% asi by to chcelo gifko, kvoli uplnej jednoznacnosti - jednotka
+ 0     1     2     3     4     5     6     7     8     9
++-+     +   +-+   +-+   + +   +-+   +-+   +-+   +-+   +-+
+| |     |     |     |   | |   |     |       |   | |   | |
++ +     +   +-+   +-+   +-+   +-+   +-+     +   +-+   +-+
+| |     |   |       |     |     |   | |     |   | |     |
++-+     +   +-+   +-+     +   +-+   +-+     +   +-+   +-+
+
+-->
+
+<table width="95%" border="0" class=podklad>
+<tr>
+<td align="center"><img src="0.gif" alt="zero" title="zero">	<br>0</td>
+<td align="center"><img src="1.gif" alt="one" title="one">	<br>1</td>
+<td align="center"><img src="2.gif" alt="two" title="two">	<br>2</td>
+<td align="center"><img src="3.gif" alt="three" title="three">	<br>3</td>
+<td align="center"><img src="4.gif" alt="four" title="four">	<br>4</td>
+<td align="center"><img src="5.gif" alt="five" title="five">	<br>5</td>
+<td align="center"><img src="6.gif" alt="six" title="six">	<br>6</td>
+<td align="center"><img src="7.gif" alt="seven" title="seven">	<br>7</td>
+<td align="center"><img src="8.gif" alt="eight" title="eight">	<br>8</td>
+<td align="center"><img src="9.gif" alt="nine" title="nine">	<br>9</td>
+</tr>
+</table>
+
+  [translator's note: strange, they use the same digits as we do]
+
+	</li>
+	
+	<li>	
+	Whenever the button gets pressed (and after the flash), the clock is
+	advanced by a certain never-changing amount of time (expressed as an
+	integer number of minutes) called Big Delta, which was calculated from
+	several parameters of our planet. Apart from this advancement, the Big
+	Clock's display does not change.  However, we doubt you will be able to
+	find the Big Delta yourself with your poor tools, so we give you a small hint
+	- it is somewhere between 15 and 44 (inclusive).
+	</li>
+
+	<li>
+	If you are not confident enough to attempt this challenge,
+   	we have built a training facility on the next outer planet of this system
+   	[tn: probably Neptune], where you can test your skills in an easier 
+   	environment.  We were even generous enough to mount a device there which
+   	shows the Big Delta whenever you press the button (the Big Delta
+   	over there may be different from the Big Delta here).  However, the reward
+   	is incomparable with the one you can find here.
+   	</li>
+</ol>
+
+<p>
+Help the poor leader of scientists reveal the big secret of the ancient
+civilization by telling him what time he should try on the main panel
+and which chambers he should send his three colleagues to.
+</p>
+
+<H3>Formal specification</H3>
+<p>
+Neptune challenge corresponds to problem C1, Uranus is problem C2.
+Your submission should consist of two lines - the first line contains the time which is (in your opinion) currently shown
+on the Big Clock display (use hh:mm format).
+
+The second line containing at
+most three (remember, there are only four scientists in the cave and one has
+to remain at the main panel) numbers identifying the display segments.
+
+</p>
+
+<p>
+The response will consist of:
+<ul>
+	<li>information on the guessed time (did the door open?)</li>
+	<li>the state of the chambers (was there a light flash in the chamber?)</li>
+	<li>the Big Delta (only on Neptune, C1)</li>
+</ul>
+</p>
+
+<h3>Example</h3>
+
+<b>Example of a valid submission:</b>
+<pre>
+11:02
+7 8
+</pre>
+
+<b>Example of the response:</b>
+<pre>
+7:flash 8:dark
+The door remained closed, better luck next time!
+</pre>
+
+<b>Example of an invalid submission:</b>
+<pre>
+16:34
+9 12
+</pre>
+(the maximum possible time is 11:59).
+
+
+
+	   
+<!-- END OF PAGE -->   
+</TD></TR></TABLE>
+</BODY>
+</HTML>

@@ -1,0 +1,185 @@
+#include <fstream.h>
+#include <string.h>
+
+void input( void );
+void process( void );
+void output( void );
+void dfs( int x, int y, int z );
+
+int ta[ 50 ][ 50 ];
+int chk[ 50 ][ 50 ][ 2 ] = { 0 };
+int chk2[ 50 ][ 50 ];
+int n, m, sw;
+int res = 0, max = 0;
+
+int main( void )
+{
+	input();
+	process();
+	output();
+
+	return 0;
+}
+
+void input( void )
+{
+	char str1[ 100 ];
+	int l1, l2, l3;
+	int l, tmp1;
+
+	cout << "Input( Row, Column )=? "; cin >> m; cin.get(); cin >> n; cin.get();
+	for( l1 = 0; l1 < n; l1++ )
+	{
+aa:
+		cout << l1 + 1 << " column=? ";
+		for( l2 = 0; l2 < m - 1; l2++ )
+		{
+			tmp1 = 0;
+			cin.getline( str1, 100, ' ' );
+			l = strlen( str1 );
+			for( l3 = 0; l3 < l; l3++ )
+			{
+				if( str1[ l3 ] != ' ' ) tmp1++;
+			}
+			if( tmp1 > 1 ) goto aa;
+			for( l3 = 0; l3 < l; l3++ )
+			{
+				if( str1[ l3 ] != ' ' )
+				{
+					if( str1[ l3 ] == 'a' )
+					{
+						ta[ l1 ][ l2 ] = 0;
+					}
+					else if( str1[ l3 ] == 'b' )
+					{
+						ta[ l1 ][ l2 ] = 1;
+					}
+					else goto aa;
+				}
+			}
+		}
+		tmp1 = 0;
+		cin.getline( str1, 100, '\n' );
+		l = strlen( str1 );
+		for( l3 = 0; l3 < l; l3++ )
+		{
+			if( str1[ l3 ] != ' ' ) tmp1++;
+		}
+		if( tmp1 > 1 ) goto aa;
+		for( l3 = 0; l3 < l; l3++ )
+		{
+			if( str1[ l3 ] != ' ' )
+			{
+				if( str1[ l3 ] == 'a' )
+				{
+					ta[ l1 ][ l2 ] = 0;
+				}
+				else if( str1[ l3 ] == 'b' )
+				{
+					ta[ l1 ][ l2 ] = 1;
+				}
+				else goto aa;
+			}
+		}
+	}
+}
+
+void process( void )
+{
+	int l1, l2, l3, l4;
+
+	for( l1 = 0; l1 < n; l1++ )
+	{
+		for( l2 = 0; l2 < m; l2++ )
+		{
+			if( chk[ l1 ][ l2 ][ 0 ] == 0 )
+			{
+				sw = 0;
+				for( l3 = 0; l3 < n; l3++ )
+				{
+					for( l4 = 0; l4 < m; l4++ )
+					{
+						chk2[ l3 ][ l4 ] = 0;
+					}
+				}
+				dfs( l1, l2, 0 );
+				if( sw == 0 )
+				{
+					res++;
+					for( l3 = 0; l3 < n; l3++ )
+					{
+						for( l4 = 0; l4 < m; l4++ )
+						{
+							if( chk2[ l3 ][ l4 ] == 1 ) sw++;
+						}
+					}
+					if( max < sw ) max = sw;
+				}
+			}
+			if( chk[ l1 ][ l2 ][ 1 ] == 0 )
+			{
+				sw = 0;
+				for( l3 = 0; l3 < n; l3++ )
+				{
+					for( l4 = 0; l4 < m; l4++ )
+					{
+						chk2[ l3 ][ l4 ] = 0;
+					}
+				}
+				dfs( l1, l2, 1 );
+				if( sw == 0 )
+				{
+					res++;
+					for( l3 = 0; l3 < n; l3++ )
+					{
+						for( l4 = 0; l4 < m; l4++ )
+						{
+							if( chk2[ l3 ][ l4 ] == 1 ) sw++;
+						}
+					}
+					if( max < sw ) max = sw;
+				}
+			}
+		}
+	}
+}
+
+void output( void )
+{
+	cout << "Number of closed areas : " << res << endl;
+	cout << "Size of largest closed area : " << max << endl;
+}
+
+void dfs( int x, int y, int z )
+{
+	if( x < 0 || y < 0 || x >= n || y >= m ) { sw = 1; return; }
+	if( chk[ x ][ y ][ z ] == 1 ) return;
+	chk[ x ][ y ][ z ] = 1;
+	chk2[ x ][ y ]++;
+	if( ta[ x ][ y ] == 0 )
+	{
+		if( z == 0 )
+		{
+			dfs( x + 1, y, 1 - ta[ x + 1 ][ y ] );
+			dfs( x, y - 1, 1 );
+		}
+		else
+		{
+			dfs( x - 1, y, ta[ x - 1 ][ y ] );
+			dfs( x, y + 1, 0 );
+		}
+	}
+	else
+	{
+		if( z == 0 )
+		{
+			dfs( x - 1, y, ta[ x - 1 ][ y ] );
+			dfs( x, y - 1, 1 );
+		}
+		else
+		{
+			dfs( x + 1, y, 1 - ta[ x + 1 ][ y ] );
+			dfs( x, y + 1, 0 );
+		}
+	}
+}

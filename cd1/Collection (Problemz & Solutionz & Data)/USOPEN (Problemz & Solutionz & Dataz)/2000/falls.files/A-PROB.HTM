@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0066)http://www.uwp.edu/academic/mathematics/usaco/2000/Fall/a-prob.htm -->
+<HTML><HEAD><TITLE>Problems</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=ks_c_5601-1987">
+<META content="MSHTML 5.50.4134.100" name=GENERATOR></HEAD>
+<BODY>
+<TABLE width="99%" border=0>
+  <TBODY>
+  <TR>
+    <TD width="7%"></TD>
+    <TD width="93%" colSpan=2><STRONG><FONT face=Arial><BIG>Problems - 2000 
+      Fall Open, Green</BIG></FONT></STRONG>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD width="7%"></TD>
+    <TD width="83%"><FONT face=Arial><SMALL><A name=p1></A><B>PROBLEM 1: 
+      Highest Mountain </B>[Brian Dean]&nbsp;<B><BR></B></SMALL><FONT 
+      size=2><BR>&nbsp;You are given a rectangular grid representing a map. Each 
+      square in the grid contains an integer, 0 &lt;= H &lt;= 10000, giving the 
+      height (altitude) of the square. A square is `mountainous' if one or more 
+      of the four directly adjacent (north, east, south, or west) squares is at 
+      a lower elevation. A set of at least two directly adjacent `mountainous' 
+      squares together form a single `mountain'.&nbsp;<BR><BR>The height of any 
+      `mountain' is the difference between the the greatest height and the least 
+      height of all the squares that comprise the mountain. Your task is to find 
+      the highest mountain on a given grid.&nbsp;</FONT></FONT> 
+      <P><FONT face=Arial size=2>INPUT FORMAT:</FONT></P>
+      <UL>
+        <LI><FONT face=Arial size=2>Line 1: two integers: R, C&nbsp;<BR>(1 &lt;= 
+        R &lt;= 100, the number of rows in the&nbsp;&nbsp; grid, 1 &lt;= C &lt;= 
+        100, the number of columns in the grid).</FONT> 
+        <LI><FONT face=Arial size=2>Lines 2..R+1: C single-space separated 
+        integers denoting mountain heights</FONT> </LI></UL>
+      <P><BR><FONT face=Arial size=2>SAMPLE INPUT (file 
+      INPUT.TXT):</FONT><BR><BR>6 8<BR>1 3 3 4 4 4 1 1<BR>1 4 2 1 1 1 1 1<BR>1 5 
+      3 1 1 4 1 1<BR>1 6 5 3 1 7 4 1<BR>1 3 3 3 1 4 5 1<BR>1 3 3 1 1 1 1 
+      1<BR></P>
+      <P><FONT face=Arial><FONT size=2>OUTPUT FORMAT: The output is a single 
+      line that contains one integer that is the height of the highest mountain 
+      on the grid or -1 if no mountain exists.&nbsp;</FONT></FONT></P>
+      <P><FONT face=Arial><FONT size=2>SAMPLE OUTPUT (file 
+      OUTPUT.TXT):<BR><BR>&nbsp;4</FONT></P><SMALL>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Fall/a-data.htm#p1">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Fall/a-sol.htm#p1">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p2></A><B>PROBLEM 2: COPS--Cows On Pogo Sticks</B> [Brian 
+      Dean]<BR><BR>Bessie the Cow wants to use a pogo stick to travel along a 
+      cow path of integer length, L. Bessie starts at point 0 and proceeds in 
+      integer pogo-jumps to land exactly on point L. Bessie's velocity, V, 
+      starts out at zero and is always nonnegative. At the beginning of each 
+      bounce, she can change her velocity by -1, 0, or +1. The velocity is the 
+      distance Bessie travels along the path during the bounce. Bessie can be 
+      traveling at any nonnegative velocity when she lands on point 
+      L.<BR><BR>Bessie wishes to avoid jumping on any of the cow pies (small 
+      heaps of manure) that happen to be located at various integer points along 
+      the path (not including location 1 or location L, of course).<BR><BR>Your 
+      job is to determine the smallest number of bounces to reach exactly the 
+      end of the path, point L.<BR><BR>EXAMPLE of one legal 
+      traversal:<BR>Given&nbsp; L = 18 and Cow pies at 5, 10, 15.</SMALL></FONT> 
+
+      <P><FONT face="Courier New" 
+      size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp; 1 1 1 1 1 1 1 1 1<BR>locn&nbsp;&nbsp;&nbsp;&nbsp; 0 1 2 
+      3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8<BR>path&nbsp;&nbsp;&nbsp;&nbsp; 
+      +-+-+-+-+-*-+-+-+-+-*-+-+-+-+-*-+-+-+<BR>visited&nbsp; X X&nbsp;&nbsp; 
+      X&nbsp;&nbsp;&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp; 
+      X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X<BR>velocity&nbsp; 
+      1&nbsp; 2&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp; 
+      3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5<BR></FONT><FONT 
+      face=Arial><SMALL><BR>Total number of bounces in example: 6<BR>(Do not 
+      count the starting location, as no bounce happened there.)<BR><BR>INPUT 
+      FORMAT: </SMALL></FONT></P>
+      <UL>
+        <LI><FONT face=Arial><SMALL>Line 1: two integers: L, N (1 &lt;= L &lt;= 
+        500, the length of the path,1 &lt;= N &lt;= 250, the number of 
+        cowpies.)<BR></SMALL></FONT>
+        <LI><FONT face=Arial><SMALL>Lines 2..N+1: the integer location of a 
+        cowpie on the path. </SMALL></FONT></LI></UL>
+      <P><FONT face=Arial><SMALL>SAMPLE INPUT (file INPUT.TXT):<BR><BR>18 
+      3<BR>5<BR>10<BR>15<BR><BR>OUTPUT FORMAT:<BR><BR>The output is a single 
+      line that contains one integer that is the minimum number of bounces for 
+      Bessie to pogo-jump down the path and avoid jumping into the cowpies. If 
+      there is no way for Bessie to do this, output the integer 
+      -1.<BR><BR>SAMPLE OUTPUT (file 
+      OUTPUT.TXT):<BR><BR>6<BR></P></SMALL></FONT><FONT face=Arial><SMALL>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Fall/a-data.htm#p2">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Fall/a-sol.htm#p2">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p3></A><B>PROBLEM 3: Cow Sorting </B>[Undisclosed]<SMALL> 
+      <BR><BR></SMALL></SMALL><FONT size=2>All N of the cows are lining up to 
+      have their group picture taken, with cows from each state grouped 
+      together. Each cow is from one state, one of: Ohio, Wisconsin, or Iowa. 
+      The cows have decided to line up with all the Ohio cows first in line, 
+      Wisconsin cows next, and Iowa cows last.<BR><BR>The cows are not 
+      necessarily in order when they first line up, though. In order to get in 
+      the proper order, the cows have only one monotonous method: interchange 
+      some cow with some other cow -- basically "swap a pair of cows". They 
+      invoke this rule over and over again until the cows are lined up 
+      properly.<BR><BR>Your program must produce any minimal list of pairs of 
+      cows to be exchanged which orders them. The order of the list is 
+      important, of course.<BR><BR>INPUT FORMAT:<BR><BR>Line 1: two integers: N, 
+      1 &lt;= N &lt;= 1000, the number of cows<BR>[the cows are currently lined 
+      up in slots numbered 1..N]<BR>Lines 2..N+1: a single character (O, W, I) 
+      denoting the type of cow<BR><BR>SAMPLE INPUT (file 
+      INPUT.TXT):<BR><BR></FONT></FONT><FONT face=Courier 
+      size=1>10<BR>I<BR>I<BR>W<BR>W<BR>O<BR>O<BR>I<BR>W<BR>O<BR>W</FONT><FONT 
+      face=Arial size=2><BR><BR>OUTPUT FORMAT: </FONT>
+      <UL>
+        <LI><FONT face=Arial size=2>Line 1: The number of exchanges required to 
+        order the cows<BR></FONT>
+        <LI><FONT face=Arial size=2>Lines 2..end: Two single-space separated 
+        integers, E1 &amp; E2, 1 &lt;= E1 &lt;= N, 1 &lt;= E2 &lt;= N 
+        representing two locations of cows to be exchanged. The exchanges are 
+        listed starting with line 2 and continuing through the end.</FONT> 
+      </LI></UL>
+      <P><FONT face=Arial size=2>SAMPLE OUTPUT (file OUTPUT.TXT):<BR><BR>This is 
+      one of many potential solutions.<BR><BR></FONT><FONT face=Courier 
+      size=2>5<BR>1 9<BR>3 5<BR>7 10<BR>2 6<BR>6 8<BR></FONT><FONT 
+      face=Arial><FONT size=2><BR></FONT><SMALL></P>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Fall/a-data.htm#p3">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Fall/a-sol.htm#p3">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p4></A><B>PROBLEM 4: Achluphobic Angus</B> [Hal Burch] 
+      <SMALL><SMALL><BR><BR></SMALL></SMALL></SMALL><FONT size=2>Bessie's newest 
+      calf, Calfbert, has become achluophic; Calfbert is afraid of the dark. 
+      Bessie has decided light up the entire field so Calfbert will be able to 
+      go to sleep. Farmer John has already set up lamps in his field which light 
+      it completely, but, being an environmentally friendly cow, Bessie wishes 
+      to use as few of these lamps as possible.<BR><BR>Farmer John's field is a 
+      rectangular grid that has lamps in some of the squares of the grid. Each 
+      lamp, when lit, illuminates a 3x3 region (9 squares total) with the center 
+      being the actual location of the lamp. The light from some lamps spills 
+      outside the field, with no effect one way or the other. No square contains 
+      more than one lamp.<BR><BR>Your job is to find the minimal number of lamps 
+      that will still light every square of the entire field.<BR><BR>INPUT 
+      FORMAT: </FONT>
+      <UL>
+        <LI><FONT size=2>Line 1: three integers:<BR>R, 1 &lt;= R &lt;= 24, the 
+        number of rows in the field<BR>C, 1 &lt;= C &lt;= 24, the number of 
+        columns in the field<BR>L, 1 &lt;= L &lt;= 256, the number of 
+        lamps<BR></FONT>
+        <LI><FONT size=2>Lines 2..L+1: two integers, LR &amp; LC, that represent 
+        row and column respectively of a lamp's location </FONT></LI></UL>
+      <P><FONT size=2><BR>SAMPLE INPUT (file INPUT.TXT):<BR><BR>5 8 7<BR>2 
+      2<BR>4 2<BR>2 4<BR>3 4<BR>4 4<BR>2 7<BR>4 7<BR><BR>OUTPUT 
+      FORMAT:<BR><BR>The output is a single line that contains one integer that 
+      is the minimum number of lit lamps required to illuminate each square in 
+      the field.<BR><BR>SAMPLE OUTPUT (file 
+      OUTPUT.TXT):<BR><BR>6<BR></FONT><SMALL></P>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Fall/a-data.htm#p4">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Fall/a-sol.htm#p4">Solutions</A>]</SMALL> 
+
+      <HR>
+      </SMALL></FONT></TD>
+    <TD width="10%"></TD></TR></TBODY></TABLE></BODY></HTML>

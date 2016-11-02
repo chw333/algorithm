@@ -1,0 +1,262 @@
+body{
+	/* bezpatkove pismo */
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+	/* midnight-blue */
+	color: #191970;
+	background-color : White;
+	/* aby bola lista uplne nadoraz hore a roztiahnuta*/
+	margin: 0;
+	padding: 0;
+}
+
+
+pre, tt, code{
+	font-family: "Courier New", Courier, monospace;
+	font-size: small;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+p{
+	text-align : justify;
+	margin-top: 0px;
+ 	margin-bottom: 12px;
+	margin-left: 0px;
+}
+
+
+hr {
+	height: 1px;
+	width: 100%;
+	color : #191970;
+}
+
+hr.mala {
+	width : 70%;
+}
+
+
+
+/************************************************************************/
+/********************** LINKS *******************************************/
+/************************************************************************/
+a {
+	color: #F4A460;
+	text-decoration : none;
+	font-weight: 700;
+}
+
+
+a:visited{
+	/* trochu tmavsia */
+	color: #CD853F;
+}
+
+a:hover, a:active {
+	/* deepsky-blue */
+	color: #00BFFF;
+}
+
+
+/************************************************************************/
+/********************** HEADERS *****************************************/
+/************************************************************************/
+
+/* toto bude vzdy len jeden hlavny nadpis stranky */
+h1{
+	text-align: center;
+	font-size: large;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+/* centrovane nadpisy */
+h2{
+	text-align: center;
+	font-size: medium;
+	margin-bottom: 5px;
+	margin-top: 30px;
+}
+
+/* necentrovane nadpisy */
+h3{
+	text-align: left;
+	font-size: medium;
+	margin-bottom: 5px;
+	margin-top: 20px;
+}
+
+/* podnadpisy */
+h4{
+	text-align: left;
+	font-size: 105%;
+	font-weight: bold;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+/* toto sluzi len na napdis "Internet Problem Solving Contest"*/
+h5 {
+	text-align: center;
+	font-size: medium;
+	margin-top: 10px;
+	margin-bottom: 0;
+}
+
+/* errory */
+h6 {
+	color: red;
+	margin-left: 15%;
+	text-align: left;
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size : x-small;
+}
+
+.error{
+	color: red;
+	font-size : x-small;
+	font-weight: bold;
+}
+
+.auth{
+	color: green;
+	margin-top: 0;
+	margin-bottom: 10px;
+	text-align: center;
+	font-size : 130%;
+	font-weight: bold;
+}
+/************************************************************************/
+/********************** INE *********************************************/
+/************************************************************************/
+.podklad{
+	background-color:white;
+}
+
+.small{
+	font-size: xx-small;
+	text-transform : uppercase;
+}
+
+/************************************************************************/
+/********************** FORMULARE ***************************************/
+/************************************************************************/
+.formular {
+	border : 1px solid #191970;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color: black;
+	background-color : #FFFFEF;
+}
+
+.tlacitko {
+	color: #191970;
+	border-color: #191970;
+	border-width : 0px 3px 3px 0px;
+}
+
+form {
+	margin : 0;
+}
+
+
+/************************************************************************/
+/********************** DETAILY PRI TLACI NA TLACIARNI ******************/
+/************************************************************************/
+
+@media print { 
+	a, a:hover, a:active, a:visited {
+		color: black;
+		text-decoration: underline;
+		font-weight: normal;
+	}
+
+	.navbar, .footer {
+		display: none;
+	}
+
+	body {
+		color: black;
+		font-size: xx-small;
+	}
+
+	pre, tt, code {
+		font-size: x-small;
+	}
+
+	h1 {
+	 	font-size: medium;
+	}
+	
+	h2, h3, h5 {
+		font-size: small;
+	}
+
+}
+
+
+/************************************************************************/
+/********************** TABULKY A VSETKY DOLEZITE DETAILY ***************/
+/************************************************************************/
+
+
+
+/* obycajne tabluky */
+table{
+	font-size: x-small;		/* dolezite kvoli IE5 */
+	background-color: #FAFAD2;
+	/* border: 1px solid black; */
+}
+th {
+	background-color : #191970;
+	color: #FAFAD2;
+}
+
+/* uplne horna navigacna lista */
+table.navbar{
+	width: 100%;
+	background-color: #191970;
+	font-family: inherit;
+	font-size: xx-small;
+	color: #FAFAD2;
+	font-weight : 700;
+	text-transform : uppercase;
+	margin: 0;
+}
+table.navbar th, table.navbar td {
+	border-bottom : 1px solid #FAFAD2;
+	padding: 2px 20px 2px 20px;
+	text-align: left; 
+	margin: 0;
+}
+
+/* tabulka na nadpis stranky a logo */
+table.title{
+	background-color : white;
+	width : 100%;
+}
+
+/* vnutro stranky je v jednej velkej tabulke */
+table.page{
+	background-color: white;
+	width: 97%;
+}
+
+/* paticka na spodku stranky */
+table.footer{
+	background-color : white;
+	font-size: xx-small;
+	text-transform : uppercase;
+}
+
+/* hodinky v lavom hornom rohu strany */
+table.navbar th.clock {
+	text-align: right;
+	letter-spacing : 1px;
+	font-size : x-small;
+	font-weight: bold;
+	text-transform : lowercase;
+	/* font-family : serif; */
+}
+

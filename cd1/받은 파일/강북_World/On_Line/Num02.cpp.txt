@@ -1,0 +1,72 @@
+#include <fstream.h>
+
+int nn,map[100][100],sx,sy,ex,ey;
+
+const int dx[4]={-1,1,0,0};
+const int dy[4]={0,0,-1,1};
+
+void btrack(int a,int b)
+{
+    int i;
+    if((a==sx) && (b==sy)) return;
+    for(i=0;i<4;i++)
+    {
+        if(map[a+dx[i]][b+dy[i]]==map[a][b]-1)
+        {
+            btrack(a+dx[i],b+dy[i]);
+            cout << "(" << a << "," << b << ") ";
+            return;
+        }
+    }
+}
+
+void main(void)
+{
+    int xx,yy,sw,i,j,k;
+    cout << "Input Number of Obstacles ?";
+    cin >> nn;
+    for(i=0;i<=11;i++)
+        for(j=0;j<=11;j++)
+            map[i][j]=0;
+    for(i=0;i<=11;i++)
+    {
+        map[i][0]=1;
+        map[i][11]=1;
+        map[0][i]=1;
+        map[11][i]=1;
+    }
+    cout << "Input Obstacles' Position" << endl;
+    for(i=0;i<nn;i++)
+    {
+        cout << "?";
+        cin >> xx >> yy;
+        map[xx][yy]=1;
+    }
+    cout << "Position of Starting ?";
+    cin >> sx >> sy;
+    cout << "Position of End ? ";
+    cin >> ex >> ey;
+    map[sx][sy]=2;
+a:
+    sw=0;
+    for(i=1;i<=10;i++)
+    {
+        for(j=1;j<=10;j++)
+        {
+            if(map[i][j]>=2)
+            {
+                for(k=0;k<4;k++)
+                {
+                    if((map[i+dx[k]][j+dy[k]]==0) || (map[i+dx[k]][j+dy[k]]>map[i][j]+1))
+                    {
+                        map[i+dx[k]][j+dy[k]]=map[i][j]+1;
+                        sw=1;
+                    }
+                }
+            }
+        }
+    }
+    if(sw) goto a;
+    btrack(ex,ey);
+    cout << endl;
+}

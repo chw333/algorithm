@@ -1,0 +1,156 @@
+<html>
+<head> <title>Analysis 31: Arithmetic Progressions</title> </head>
+<body background="../../usaco/bg3.jpg">
+<img src="../../usaco/cow1.jpg" width="742" height="118">
+<center>
+<b><font size="7">Arithmetic Progressions</font></b><br>
+Hal Burch
+</center>
+
+<p>This can be done by brute force, enumerating over all possible
+sequences.  It has to be done a little carefully in order to get it to
+run in time, however.
+
+<p>Precalculate the bisquares, first of all.  Calculate both a sorted
+list of the bisquares, along with a boolean array saying whether each
+number between 1 and 125000 (the maximum bisquare possible, for p,q &lt;
+250) is a bisquare.
+
+<p>Go through the skips in increasing order, starting at 1, and
+continuing along as the sequence starting at 1 with that skip doesn't
+exceed the maximum bisquare.  For each bisquare, determine if the
+sequence starting at that location and with the current skip value
+consists of all of bisquares.  If so, output it.
+
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define MAXN 251
+
+/* bisquares */
+int bisq[MAXN*MAXN/2]; /* in increasing order */
+int nbsq; /* number of bisquares */
+
+/* is this number a bisquare? */
+char isbisq[125001];
+
+/* number of sequences found */
+int cnt;
+
+/* initialize bisq, isbisq & nbsq */
+void make_bisquare(int max)
+ { 
+  int loc[MAXN]; /* next value of q to choose for a each p */
+  int lv; /* loop variable */
+  int mloc, min; /* minimum search locations */
+  int t; /* temporary value */
+  int last = -1; /* last bisquare */
+
+  for (lv = 0; lv &lt;= max; lv++)
+    loc[lv] = lv;
+
+  while (1)
+   {
+    /* find next bisquare */
+    /* find p/q pair which produces minimum value */
+    mloc = 0;
+    min = loc[0] * loc[0];
+
+    for (lv = 1; lv &lt;= max; lv++)
+     {
+      t = lv*lv + loc[lv]*loc[lv];
+      if (t &lt; min)
+       {
+        min = t;
+	mloc = lv;
+       }
+     }
+
+    if (loc[mloc] &lt;= max)
+     { /* found a new bisquare */
+      loc[mloc]++; /* next time, try next q value */
+      if (last == min) continue; /* same as last bisquare */
+
+      /* add the bisquare */
+      isbisq[min] = 1;
+      bisq[nbsq++] = min;
+      last = min;
+     } 
+    else 
+     {
+      if (loc[mloc] == 2*max) break; /* are we done? */
+      loc[mloc] = 2*max; /* make sure we don't select this again */
+     }
+   }
+ }
+
+int main(int argc, char **argv)
+ {
+  FILE *fout, *fin;
+  int lv, lv2, lv3;
+  int maxn;
+  int len;
+  int max;
+  int pos;
+  int dmax;
+  int abmax;
+  int amax;
+  int t;
+
+  if ((fin = fopen("ariprog.in", "r")) == NULL)
+   {
+    perror ("fopen fin");
+    exit(1);
+   }
+  if ((fout = fopen("ariprog.out", "w")) == NULL)
+   {
+    perror ("fopen fout");
+    exit(1);
+   }
+
+  fscanf (fin, "%d %d", &len, &maxn);
+  
+  make_bisquare(maxn);
+
+  /* maximum skip amount possible */
+  abmax = (bisq[nbsq-1]+len-1)/(len-1); 
+
+  for (lv = 1; lv &lt; abmax; lv++)
+   { /* for each skip value */
+
+    /* maximum starting location */
+    max = bisq[nbsq-1] - (lv*(len-1));
+
+    dmax = (len - 4) * lv;
+    for (lv2 = 0; lv2 &lt; nbsq && bisq[lv2] &lt;= max; lv2++)
+     { /* for each starting bisquare */
+      t = bisq[lv2]+lv;
+      
+      if (isbisq[t] + isbisq[t+lv] == 2)
+       { /* if x+lv and x+2*lv are bisquares */
+
+        /* check rest */
+        pos = t + lv + lv; /* where to start */
+	amax = dmax + pos; /* how far to go */
+	for (; pos &lt;= amax && isbisq[pos]; pos += lv)
+         ;
+        if (pos &gt; amax)
+         { /* we found a new sequence! */
+          cnt++; /* mark it as found */
+	  
+	  /* output it */
+          fprintf (fout, "%i %i\n", bisq[lv2], lv);
+         }
+       }
+     }
+   }
+  if (cnt == 0)  /* no sequences found */
+    fprintf (fout, "NONE\n");
+  return 0;
+ }
+</pre>
+<center>
+<a href="../BACK/default.htm">USACO Gateway</a> | <a href="mailto:kolstad@ace.delos.com">Comment or Question</a>
+</center>
+</body>

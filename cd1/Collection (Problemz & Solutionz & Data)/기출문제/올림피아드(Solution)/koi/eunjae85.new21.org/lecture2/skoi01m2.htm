@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>KOI 18회 중등부 2. 줄 세우기</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0" width="595">
+    <tr>
+        <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+            18회 중등부 2. 줄 세우기</b></font></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="pkoi01m2.htm"><img src="button1.gif"
+             width="72" height="22" border="0"></a></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi01m2.htm"><img src="button3.gif"
+             width="72" height="22" border="0"></a></td>
+    </tr>
+</table>
+<ul>
+    <p>&nbsp; 
+    <table border="0">
+            <tr>
+                <td width="550"><p style="line-height:150%;"><font size="2">&nbsp;&nbsp;동적 
+                계획법 문제이다. 하지만 동적계획법을 어떻게 적용시켜야 할 지는 
+                잘 생각해 봐야 할 문제이다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;문제에 
+                &quot;옮겨지는 아이의 최소 수를 구하는 프로그램&quot; 라는 말이 
+                있다. 이것을 깊이 생각해 봐야 한다. 아이들이 줄 서 있고, 그 
+                중 최소의 아이를 뽑아서 이동시켜 번호 순으로 줄 세우는데, 뽑히게 
+                되는 최소의 아이들 말고 나머지 아이들은 어떤 관계에 놓여 있을까?</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;예를 
+                들자. 순서 없이 서 있는 아이들이 있다. &quot;9 2 1 4 3&nbsp;6&nbsp;5 
+                7 10 8&quot; &nbsp;이렇게 있다면 이 중 뽑히게 되는 최소 아이들은 
+                &quot;9, 1, 4, 6, 8&quot; 이다. (다른 경우도 있을 수 있다.) 
+                그러면 원래의 아이들 중에서 저 최소의 아이들을 빼보자.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;&quot;2 
+                3 5 7 10&quot; 이렇게 된다. 자 눈을 크게 뜨고 보자. 번호 순서대로 
+                서 있는 저 2, 3, 5, 7, 10 다섯 명만 빼고 나머지 다섯 명을 움직이면 
+                번호순으로 줄을 세울 수 있는 것이다. 그럼 움직이지 않고 놔둘 
+                아이들은 과연 어떤 아이들일까? 결론부터 말하자면 &quot;최장 
+                길이 증가 수열&quot;을 뽑아 내면 되는 것이다. 가능한한 번호순서대로 
+                서 있는 아이들을 많이 알아 내고 그 외 나머지 최소의 아이들을 
+                움직여서 번호 순으로 줄을 세우는 것이다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;결국은 
+                &quot;최장 길이 증가 수열&quot; 의 길이를 N에서 빼면 총 몇 명을 
+                움직여야 하는지 알 수 있다. 그러고 보면 이 문제는 n = 30000 
+                일 때도 답을 즉석으로 뽑아 낼 수 있는 것이다!!!</font></td>
+        </tr>
+    </table>
+    <p><font size="2">&nbsp;</font></p>
+</ul>
+</body>
+
+</html>

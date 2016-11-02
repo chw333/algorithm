@@ -1,0 +1,57 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>삽입 정렬(Insertion Sort)</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><B><FONT size="5" color="#0066FF">삽입 정렬(Insertion Sort)</FONT></B></p>
+<div align="left">
+    <table border="0" style="font-size:10pt;">
+        <tr>
+            <td width="974">
+                <p align="left">선택정렬만큼이나 간단한 알고리즘입니다.<BR>제목그대로 삽입해서 정렬한다고 해서 
+삽입정렬이죠.<br>그러나 막 삽입하는게 아니라 적절한 위치에 삽입하는겁니다. <br>그러니까... 더 큰 요소를 한자리 이동시키고 그 요소를 비어있는 
+위치에 삽입시킵니다.<br>말로는 어려우니 데이터를 보면서 차근차근 이해해 봅시다.<BR></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="974">
+                <p align="center"><br>30 15 20 17 40 ------&gt; 
+초기상태 : 15 이전의 수를 비교해서 15 &lt; 30 이므로 교환<BR>15 30 20 17 40 ------&gt; &nbsp;1회전후 : 20 
+이전 수만 비교. 20을 30과 교환. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>15 20 30 17 40 ------&gt; &nbsp;2회전후 : 17 이전 수만 비교. 17을 20 
+앞으로 이동 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>15 17 20 30 40 ------&gt; &nbsp;정렬 완료 : 40 이전수. 삽입은 없습니다. 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="974">
+                <p align="left"><br>올림차순으로 
+설명했습니다. <BR>이제 이해가 조금 가시나요? ( 아시나요~ 얼매나 사랑했는지... 먼소리야 ㅡㅡ; )<BR>이해가 덜 되시면 다음에 
+나와있는 소스 코드를 보면 아~ 이게 이렇게 되는구나~ 하실거여요! ^^;<BR></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="974">
+                <p align="left"><font color="#003399"><BR>void insertion_sort()<BR>{</font><font color="#993366"><BR>&nbsp; 
+&nbsp; &nbsp; &nbsp;int i, j, v;</font><font color="#006666"><BR><BR>&nbsp; &nbsp; &nbsp; &nbsp;for ( i = 2 ; i &lt;= n ; i++ ) {<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp;v = data[i];<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;j = i;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;while( data[j-1] &gt; 
+v ) {<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;data[j] = data[j-1];<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;j--;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;data[j] = v;<BR>&nbsp; &nbsp; &nbsp; 
+&nbsp;}</font><font color="#003399"><BR>}<BR></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="974">
+                <p align="left"><br>이상 Insertion Sort 강좌였습니다.<BR>궁금하시거나 흠이 있으면 멜(<A href="mailto:hwayoujun@hanmail.net"><U><FONT 
+color=#208fff>hwayoujun@hanmail.net</FONT></U></A>)이나 본 홈피<BR>Koiz.Net Q/A게시판에 
+질문 던져주세요~</p>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+#include <windows.h> 
+void main(){ 
+    HANDLE hout; 
+    hout=GetStdHandle(STD_OUTPUT_HANDLE); 
+    COORD cscr; 
+    cscr.X=x; 
+    cscr.Y=y; 
+    SetConsoleCursorPosition(hout,cscr); 
+    //출력 
+    cout << "test"; 
+} 
+
+
+Handle = 장치 번호(여기서는 화면 번호) 
+         (화면을 번호를 알려 주는 것은 STD_...) 
+만냑 gotoxy로 쓰고 싶으면 
+void gotoxy(int x,int y){ 
+    HANDLE hout; 
+    hout=GetStdHandle(STD_OUTPUT_HANDLE); 
+    COORD cscr; 
+    cscr.X=x; 
+    cscr.Y=y; 
+    SetConsoleCursorPosition(hout,cscr); 
+} 
+Handle 이란 명령은 Windows에서만 쓸수 있다. 
+
+-------------보강------------------ 
+위와 같이 함수를 만들었다면, main함수에서 gotoxy를 사용하면 된다. 
+void main() 
+{ 
+    //바꾸고 싶은 커서의 위치 
+    gotoxy(0,0); 
+    //그리고 나서 화면에 cout으로 내용을 출력하면 0,0좌표에 
+    //글씨가 출력된다. 
+    cout << "test"; 
+    //글씨를 화면에 출력후 꼭 flush()를 호출해야 한다. 그렇지 않으면 
+    //가끔 글씨가 제대로 출력이 안되는 경우가 있다. 
+    cout.flush(); 
+} 

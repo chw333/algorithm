@@ -1,0 +1,56 @@
+#include <graphics.h> 
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+void main()
+{
+  int x1,x2,y1,y2,dx,dy,x,y,p,const1,const2,x_end;
+  int gd=DETECT,gm,ecode;
+  initgraph(&gd,&gm,"c:\\tc\\bgi\\");
+  ecode=graphresult();
+
+  setbkcolor (15);
+  if (ecode!=grOk)
+  {
+  printf("GRAPHIC ERROR :%s\n",grapherrormsg(ecode));
+  printf("PRESS ANY KEY TO HALT");
+  getch();
+  exit(0);
+  }
+
+  printf("\n   input x1,y1,x2,y2,......!");
+  scanf("%d %d %d %d",&x1,&y1,&x2,&y2);
+
+  dx = abs(x1-x2);
+  dy = abs(y1-y2);
+  p = 2*dy-dx;
+  const1 = 2*dy;
+  const2 = 2*(dy-dx);
+
+  if(x1 > x2) {
+  x = x2; y = y2;
+  x_end = x1;
+  }
+  else {
+  x = x1; y = y1;
+  x_end = x2;
+  }
+
+  putpixel(x,y,13);
+
+  while(x < x_end)
+  {
+  x = x+1;
+  if (p < 0) p = p + const1;
+  else {
+  y = y + 1;
+  p = p + const2;
+  }
+
+  putpixel(x,y,13);
+  }
+  getch();
+  closegraph();
+}
+ 

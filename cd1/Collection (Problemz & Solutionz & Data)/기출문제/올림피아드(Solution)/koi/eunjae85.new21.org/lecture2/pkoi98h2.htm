@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>1998년 15회 한국정보올림피아드</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0">
+    <tr>
+        <td width="595"><table border="0" width="595">
+                <tr>
+                    <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+                        15회 고등부 2. 통나무 옮기기</b></font></td>
+                    <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="skoi98h2.htm"><img src="button2.gif"
+                         width="72" height="22" border="0"></a></td>
+                    <td width="100" height="27" bgcolor="#CFD3FF"><p align="center">&nbsp;<a href="ckoi98h2.htm"><img src="button3.gif"
+                         width="72" height="22" border="0"></a></td>
+                </tr>
+            </table>
+            <p><img src="bar1.gif" width="592" height="25" border="0"></p>
+            <ul>
+                <p><font face="굴림" size="2">&nbsp;가로와 세로의 길이가 같은 
+                평지에서 벌목을 한다. 그 지형은 0과 1로 나타나 있다. 1은 아직 
+                잘려지지 않은 나무를 나타내고 0은 아무 것도 없음을 나타낸다. 
+                다음과 같은 지형을 보자. <br></font></p>
+                <p><font face="굴림" size="2">&nbsp;&nbsp;</font><font face="굴림"
+                 size="1">B</font><font face="굴림" size="2"> 0 0 1 1<br> &nbsp;&nbsp;</font><font
+                 face="굴림" size="1">B </font><font face="굴림" size="2">0 
+                0 0 0<br> &nbsp;</font><font face="굴림" size="1">&nbsp;B </font><font
+                 face="굴림" size="2">0 0 0 0<br> &nbsp;&nbsp;1 1&nbsp;0 0 0<br> 
+                &nbsp; </font><font face="굴림" size="1">E E E </font><font face="굴림"
+                 size="2">0 0 </font></p>
+                <p><font face="굴림" size="2">위의 지형에서 길이 3인 통나무 
+                BBB를 밀거나 회전시켜 EEE의 위치로 옮기는 작업을 하는 문제를 
+                생각해 보자. BBB와 EEE의 위치는 임의로 주어진다. 단 문제에서 
+                통나무의 길이는 항상 홀수이다. 즉 B의 개수는 항상 홀수(3,5,7,…)이며 
+                통나무는 한 행이나 한 열에 놓여있다. 또한 B의 개수와 E의 개수는 
+                같다</font></p>
+                <p><font face="굴림" size="2">통나무를 움직이는 방법은 아래와 
+                같이 상하좌우(Up,Down,Left,Right)와 회전(Turn)이 있다.<br> &nbsp;</font> 
+                
+                <div align="center"><table border cellpadding="2" cellspacing="0"
+                 width="318" height="194" bordercolordark="white" bordercolorlight="black">
+                        <tr>
+                            <td width="12%"><p align="center"><font face="굴림"
+                             size="2">코드</font></td>
+                        <td width="87%"><p align="center"><font face="굴림" size="2">의 
+                            미</font></td>
+                    </tr>
+                    <tr>
+                        <td width="12%"><p align="center"><font face="굴림" size="2">U</font></td>
+                        <td width="87%"><p align="left"><font face="굴림" size="2">통나무를 
+                            위로 한 칸 옮긴다.</font></td>
+                    </tr>
+                    <tr>
+                        <td width="12%"><p align="center"><font face="굴림" size="2">D</font></td>
+                        <td width="87%"><p align="left"><font face="굴림" size="2">통나무를 
+                            아래로 한 칸 옮긴다.</font></td>
+                    </tr>
+                    <tr>
+                        <td width="12%"><p align="center"><font face="굴림" size="2">L</font></td>
+                        <td width="87%"><p align="left"><font face="굴림" size="2">통나무를 
+                            왼쪽으로 한 칸 옮긴다.</font></td>
+                    </tr>
+                    <tr>
+                        <td width="12%"><p align="center"><font face="굴림" size="2">R</font></td>
+                        <td width="87%"><p align="left"><font face="굴림" size="2">통나무를 
+                            오른쪽으로 한 칸 옮긴다.</font></td>
+                    </tr>
+                    <tr>
+                        <td width="12%"><p align="center"><font face="굴림" size="2">T</font></td>
+                        <td width="87%"><p align="left"><font face="굴림" size="2">중심점을 
+                            중심으로 90도 회전시킨다.</font></td>
+                    </tr>
+                </table></div>
+                <p><font face="굴림" size="2">예를 들면, 다음과 같다.</font> 
+                <br> &nbsp; 
+                <div align="center"><table border cellpadding="2" cellspacing="0"
+                 bordercolordark="white" bordercolorlight="black">
+                        <tr>
+                            <td width="70"><p align="center"><font face="굴림"
+                             size="2">초기상태</font></td>
+                        <td width="70"><p align="center"><font face="굴림" size="2">상(U)</font></td>
+                        <td width="70"><p align="center"><font face="굴림" size="2">하(D)</font></td>
+                        <td width="70"><p align="center"><font face="굴림" size="2">좌(L)</font></td>
+                        <td width="70"><p align="center"><font face="굴림" size="2">우(R)</font></td>
+                        <td width="70"><p align="center"><font face="굴림" size="2">회전(T)</font></td>
+                    </tr>
+                    <tr>
+                        <td width="70"><p align="center"><font face="굴림" size="2"><br> 
+                            0 0 0 0 0 0<br> 0 0 0 0 0 0<br> 0 0 0 0 0 0<br> 
+                            0 </font><font face="굴림" size="1">B B B</font><font
+                             face="굴림" size="2"> 0 0<br> 0 0 0 0 0 0<br> 0 
+                            0 0 1 0 0<br> &nbsp;</font></td>
+                        <td width="70"><p align="center"><font face="굴림" size="2"><br> 
+                            0 0 0 0 0 0<br> 0 0 0 0 0 0<br> 0 </font><font face="굴림"
+                             size="1">B B B</font><font face="굴림" size="2"> 
+                            0 0<br> 0 0 0 0 0 0<br> 0 0 0 0 0 0<br> 0 0 0 1 
+                            0 0<br> &nbsp;</font></td>
+                        <td width="70"><p align="center"><font face="굴림" size="2"><br> 
+                            0 0 0 0 0 0<br> 0 0 0 0 0 0<br> 0 0 0 0 0 0<br> 
+                            0 0 0 0 0 0<br> 0 </font><font face="굴림" size="1">B 
+                            B B</font><font face="굴림" size="2"> 0 0<br> 0 
+                            0 0 1 0 0<br> &nbsp;</font></td>
+                        <td width="70"><p align="center"><font face="굴림" size="2"><br> 
+                            0 0 0 0 0 0<br> 0 0 0 0 0 0<br> 0 0 0 0 0 0<br> 
+                            </font><font face="굴림" size="1">B B B</font><font
+                             face="굴림" size="2"> 0 0 0<br> 0 0 0 0 0 0<br> 
+                            0 0 1 0 0 0<br> &nbsp;</font></td>
+                        <td width="70"><p align="center"><font face="굴림" size="2"><br> 
+                            0 0 0 0 0 0<br> 0 0 0 0 0 0<br> 0 0 0 0 0 0<br> 
+                            0 0 </font><font face="굴림" size="1">B B B</font><font
+                             face="굴림" size="2"> 0<br> 0 0 0 0 0 0<br> 0 0 
+                            0 0 1 0<br> &nbsp;</font></td>
+                        <td width="70"><p align="center"><font face="굴림" size="2"><br> 
+                            0 0 0 0 0 0<br> 0 0 0 0 0 0<br> 0 0 </font><font
+                             face="굴림" size="1">B</font><font face="굴림" size="2"> 
+                            0 0 0<br> 0 0 </font><font face="굴림" size="1">B 
+                            </font><font face="굴림" size="2">0 0 0<br> 0 0 
+                            </font><font face="굴림" size="1">B</font><font face="굴림"
+                             size="2"> 0 0 0<br> 0 0 0 1 0 0<br> &nbsp;</font></td>
+                    </tr>
+                </table></div>
+                <p><font face="굴림" size="2"><br> 이와 같은 방식으로 이동시킬 
+                때에 그 움직일 위치에 다른 나무, 즉 1이 없어야만 움직일 수 있다. 
+                그리고 움직임은 위의 그림과 같이 한 번에 한 칸씩만 움직인다. 
+                단 움직이는 통나무는 어떤 경우이든지 중간단계에서 한 행이나 
+                한 열에만 놓일 수 있다. 예를 들면 아래 그림에서 a와 같은 단계는 
+                불가능하다. 그리고 회전의 경우에서는 반드시 중심점을 중심으로 
+                90도 회전을 해야 한다. (항상 통나무의 길이가 홀수이므로 중심점이 
+                있음에 유의하라.)</font></p>
+                <p><font face="굴림" size="2">그리고 이런 회전(Turn)이 가능하기 
+                위해서는 그 통나무를 둘러싸고 있는 정사각형의 구역에 단 한 그루의 
+                나무도 없어야만 한다. 즉, 아래그림 b, d와 같이 ?로 표시된 지역에 
+                다른 나무, 즉 1이 없어야만 회전시킬 수 있다. 따라서 c와 같은 
+                경우에, 통나무는 왼쪽 아직 벌채되지 않은 나무 때문에 회전시킬 
+                수 없다.</font> <br> &nbsp; 
+                <div align="center"><table border cellpadding="2" cellspacing="0"
+                 bordercolordark="white" bordercolorlight="black">
+                        <tr>
+                            <td width="100"><p align="center"><font face="굴림"
+                             size="2">a</font></td>
+                        <td width="100"><p align="center"><font face="굴림" size="2">b</font></td>
+                        <td width="100"><p align="center"><font face="굴림" size="2">c</font></td>
+                        <td width="100"><p align="center"><font face="굴림" size="2">d</font></td>
+                    </tr>
+                    <tr>
+                        <td width="100"><p align="center"><font face="굴림" size="2"><br> 
+                            0 0 0 0 0 0<br> 0 0 0 0 0 0<br> 0 0 0 </font><font
+                             face="굴림" size="1">B </font><font face="굴림"
+                             size="2">0 0<br> 0 0 </font><font face="굴림" size="1">B</font><font
+                             face="굴림" size="2"> 0 0 0<br> 0 </font><font face="굴림"
+                             size="1">B</font><font face="굴림" size="2"> 0 
+                            0 0 0<br> 0 0 0 1 0 0<br> &nbsp;</font></td>
+                        <td width="100"><p align="center"><font face="굴림" size="2"><br> 
+                            0 0 0 0 0 0<br> 0 ? ? ? ? ?<br> 0 ? ? ? ? ?<br> 
+                            0</font><font face="굴림" size="1"> B B B B B</font><font
+                             face="굴림" size="2"><br> 0 ? ? ? ? ?<br> 0 ? ? 
+                            ? ? ?<br> &nbsp;</font></td>
+                        <td width="100"><p align="center"><font face="굴림" size="2"><br> 
+                            0 0 0 0 0 0<br> 0 0 0 </font><font face="굴림" size="1">B</font><font
+                             face="굴림" size="2"> 0 0<br> 0 1 0 </font><font
+                             face="굴림" size="1">B</font><font face="굴림" size="2"> 
+                            0 0<br> 0 0 0</font><font face="굴림" size="1"> 
+                            B </font><font face="굴림" size="2">0 0<br> 0 0 
+                            0</font><font face="굴림" size="1"> B </font><font
+                             face="굴림" size="2">0 0<br> 0 0 0</font><font face="굴림"
+                             size="1"> B </font><font face="굴림" size="2">0 
+                            0<br> &nbsp;</font></td>
+                        <td width="100"><p align="center"><font face="굴림" size="2"><br> 
+                            0 0 0 0 0 0<br> 0 ? ? </font><font face="굴림" size="1">B 
+                            </font><font face="굴림" size="2">? ?<br> 0 ? ? 
+                            </font><font face="굴림" size="1">B</font><font face="굴림"
+                             size="2"> ? ?<br> 0 ? ? </font><font face="굴림"
+                             size="1">B</font><font face="굴림" size="2"> ? 
+                            ?<br> 0 ? ? </font><font face="굴림" size="1">B</font><font
+                             face="굴림" size="2"> ? ?<br> 0 ? ? </font><font
+                             face="굴림" size="1">B </font><font face="굴림"
+                             size="2">? ?<br> &nbsp;</font></td>
+                    </tr>
+                </table></div>
+                <p><font face="굴림" size="2">문제는 통나무를 5개의 기본동작(U,D,L,R,T)만을 
+                사용하여 처음위치(BBB…B)에서 최종위치(EEE…E)로 옮기는 프로그램을 
+                작성하는 것이다. 최소 횟수의 단위 동작을 사용하면 만점을 받고, 
+                그렇지 않은 경우 횟수가 많을수록 낮은 점수를 받는다. 실행파일의 
+                이름은 MOVE.EXE로 하시오.<br></font></p>
+                <p><font face="굴림" size="2">주어지는 구역의 크기는 최대 50×50을 
+                넘지 않는다. 통나무의 최대길이는 20을 넘지 않는다. 만일 동작이 
+                불가능한 경우인데도 불구하고 옮기는 작업을 하게 되면 0점 처리된다. 
+                </font></p>
+            </ul>
+            <p><img src="bar2.gif" width="591" height="26" border="0"></p>
+            <ul>
+                <p><font face="굴림" size="2">입력 파일의 이름은 INPUT.TXT이다. 
+                이 파일의 첫 줄은 주어진 평지의 한 변의 길이를 나타낸다. 이어서 
+                그 지형의 정보가 주어진다. 입력문자 사이에는 빈칸이 없다.</font></p>
+            </ul>
+            <p><img src="bar3.gif" width="590" height="26" border="0"></p>
+            <ul>
+                <p><font face="굴림" size="2">출력 파일의 이름은 OUTPUT.TXT이다. 
+                출력 파일에서 첫 줄은 처음위치에서 최종위치까지 도달하는 데 
+                사용한 동작의 횟수를 출력한다. 다음 줄부터 동작순서대로 코드(U,D,L,R,T)를 
+                한 줄에 한 개씩 출력한다. 만약 최종위치에 도달할 수 없으면 첫 
+                줄에 0만을 출력한다.</font></p>
+            </ul>
+            <p><img src="bar4.gif" width="593" height="25" border="0"></p>
+            <ul>
+                <p><font face="굴림" size="2">입 력(INPUT.TXT) <br></font> 
+                <table border cellpadding="2" cellspacing="0" width="100" height="1">
+                        <tr>
+                            <td width="147" height="88"><p><font face="굴림"
+                             size="2">5<br> </font><font face="굴림" size="1">B</font><font
+                             face="굴림" size="2">0011<br> </font><font face="굴림"
+                             size="1">B</font><font face="굴림" size="2">0000<br> 
+                            </font><font face="굴림" size="1">B</font><font face="굴림"
+                             size="2">0000<br> 11000<br> </font><font face="굴림"
+                             size="1">EEE</font><font face="굴림" size="2">00&nbsp;</font></td>
+                    </tr>
+                </table>
+                <p><font face="굴림" size="2">출 력(OUTPUT.TXT)<br></font> 
+                <table border cellpadding="2" cellspacing="0" width="100">
+                        <tr>
+                            <td width="38"><p><font face="굴림" size="2">9<br> 
+                            R<br> T<br> R<br> R<br> D<br> D<br> D<br> L<br> 
+                            L&nbsp;</font></td>
+                    </tr>
+                </table>
+
+                </ul><p><img src="bar5.gif" width="595" height="26" border="0"></p>
+            <ul>
+                <p>&nbsp;<font size="2">제한시간은 10초이다.</font> 
+            </ul></td>
+    </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+
+</html>

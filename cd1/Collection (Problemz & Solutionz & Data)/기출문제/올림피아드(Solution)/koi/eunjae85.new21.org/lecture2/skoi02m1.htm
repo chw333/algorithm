@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>KOI 19회 중등부 1. 음악 프로그램</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0" width="595">
+    <tr>
+        <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+            19회 중등부 1. 음악 프로그램</b></font></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="pkoi02m1.htm"><img src="button1.gif"
+             border="0"></a></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi02m1.htm"><img src="button3.gif"
+             border="0"></a></td>
+    </tr>
+</table>
+<ul>
+    <p>&nbsp; 
+    <table border="0" style='line-height:170%'>
+            <tr>
+                <td width="550" height="210">
+                <p><font size="2">&nbsp;이 문제는 재귀호출을 이용해서 오일러의 
+                경로와&nbsp;비슷하게 하면 쉽게 짤 수 있습니다. 소스를 보시면서 
+                풀이를 보시면 더 쉽게 이해 갈 것입니다. </font></p>
+                <p><font size="2">&nbsp;소스에서 dfs(now) 라는 함수의 의미는, 
+                &quot;가수 now를 출연 시키기 전에 먼저 출연시켜야 할 가수들은 
+                다 출연시키고, 그런 다음에 가수 now를 출연시킨다&quot; 라는 
+                겁니다. dfs(now) 가 호출되면, now 보다 먼저 출연되어야 할 가수들을 
+                출연시킵니다. 물론 그 가수가 i 라면, dfs(i)를 해줘서 처리를 
+                해주고, 가수 now 보다 먼저 출연되어야 할, 그리고 아직 출연되지 
+                않은&nbsp;모든 가수 i들에 대해서 dfs(i)를 해주고 난 다음에, 
+                가수 now를 출연(배열에 저장)시켜주는 겁니다.</font></p>
+                <p><font size="2">&nbsp;그다지 긴 설명은 필요 없는 듯 하네요. 
+                직접 소스를 보시면 더 쉽게 이해 갈 거라 생각됩니다.</font></p>
+</td>
+        </tr>
+    </table>
+    <p><font size="2">&nbsp;</font></p>
+</ul>
+</body>
+
+</html>

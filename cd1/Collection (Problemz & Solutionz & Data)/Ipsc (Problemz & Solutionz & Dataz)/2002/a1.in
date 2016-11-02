@@ -1,0 +1,191 @@
+======================== C source ==============================
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define	N	42
+
+int a[N];
+int b[N];
+int c[N];
+char *d = "THIS STRING IS NOT IMPORTANT, DO NOT THINK ABOUT IT!";
+
+int
+fun1 (int a, int b)
+{
+  int z;
+
+  if (b == 0)
+    return 1;
+  z = fun1 (a, b >> 1);
+  return (z * z * (1 + (a - 1) * (b & 1))) % (N + 1);
+}
+
+int
+fun2 ()
+{
+  int i, j;
+  for (i = 1; i <= N; i++)
+    {
+      for (j = 1; j < N; j++)
+	if (fun1 (i, j) == 1)
+	  break;
+      if (j >= N)
+	return (i);
+    }
+  return (61);
+}
+
+int
+fun3 (int i)
+{
+  if (i > N * N)
+    return -41;
+  else
+    return fun1 (fun2 (), i) - 1;
+}
+
+void
+fun4 (int i)
+{
+  int j, k = 0;
+
+  if (i == N)
+    {
+      for (j = 1; j < N; j++)
+	if (b[j - 1] >= b[j])
+	  return;
+      printf ("%c\n", d[N - 1]);
+      exit (0);
+    }
+
+  while (1)
+    {
+      j = fun3 (++k);
+      if (j < 0)
+	return;
+      if (c[j])
+	continue;
+      if (i == N / 2)
+	printf ("%c", d[N / 2 + 1]);
+      b[i] = a[j];
+      c[j] = 1;
+      fun4 (i + 1);
+      c[j] = 0;
+    }
+}
+
+int
+main ()
+{
+  int i;
+
+  for (i = 0; i < N; i++)
+    scanf ("%d", &a[i]);
+
+  for (i = 0; i < N; i++)
+    c[i] = 0;
+
+  fun4 (0);
+
+  printf ("Wrong answer\n");
+  return 0;
+  printf ("OK\n");
+}
+
+
+======================== Pascal source ==============================
+
+
+Const N = 42;
+
+Var a : Array [0 .. N - 1] Of Integer;
+    b : Array [0 .. N - 1] Of Integer;
+    c : Array [0 .. N - 1] Of Boolean;
+
+Const d : Array [0 .. 51] Of Char = 'THIS STRING IS NOT IMPORTANT, DO NOT THINK ABOUT IT!';
+
+Function fun1 (a, b : Integer) : Integer;
+Var z : Integer;
+Begin
+  fun1 := 1;
+  If b = 0 then
+    Exit;
+  
+  z := fun1 (a, b ShR 1);
+  fun1 := (z * z * (1 + (a - 1) * (b And 1))) Mod (N + 1);
+End;
+
+Function fun2 : Integer;
+Var i, j : Integer;
+Begin
+  For i := 1 To N Do
+  Begin
+    j := 1;
+    While j < N Do
+    Begin
+      If fun1 (i, j) = 1 Then
+        Break;
+      Inc (j);
+    End;
+    If j >= N Then
+    Begin
+      fun2 := i;
+      Exit;
+    End;
+  End;
+  fun2 := 61;
+End;
+
+Function fun3 (i : Integer) : Integer;
+Begin
+  If i > N * N Then
+    fun3 := - 41
+  Else
+    fun3 := fun1 (fun2, i) - 1;
+End;
+
+Procedure fun4 (i : Integer);
+Var j, k : Integer;
+Begin
+  k := 0;
+  If i = N Then
+  Begin
+    For j := 1 To N - 1 Do
+      If b[j - 1] >= b[j] Then
+        Exit;
+    WriteLn (d[N - 1]);
+    Halt;
+  End;
+  While True Do
+  Begin
+    Inc (k);
+    j := fun3 (k);
+    If j < 0 Then
+      Exit;
+    If c[j] Then
+      Continue;
+    If i = N Div 2 Then
+      Write (d[N Div 2 + 1]);
+    b[i] := a[j];
+    c[j] := True;
+    fun4 (i + 1);
+    c[j] := False;
+  End;
+End;
+
+Var i:Integer;
+
+Begin
+  For i := 0 To N - 1 Do
+    Read (a[i]);
+  
+  For i := 0 To N - 1 Do
+    c[i] := False;
+
+  fun4 (0);
+  
+  WriteLn ('Wrong answer');
+  Exit;
+  WriteLn ('OK');
+End.

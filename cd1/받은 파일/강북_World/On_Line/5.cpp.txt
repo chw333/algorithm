@@ -1,0 +1,66 @@
+#include <Stdio.h>
+#include <Stdlib.h>
+#define Max 20
+int row,col;
+int solve[Max];
+int table[Max][Max];
+void read_dat()
+{
+  FILE *in=fopen("jaryo.dat","r");
+  int i,j;
+  for(i=1;i<=10;i++)
+	for(j=1;j<=10;j++)
+	  fscanf(in,"%d",&table[i][j]);
+  fclose(in);
+}
+
+void input_dat()
+{
+  int i,j;
+  printf("Input (Row, col) ? ");
+  scanf("%d,%d",&row,&col);
+}
+
+void process()
+{
+  int i,j;
+  int point;
+  int p=col+1;
+  for(i=1;i<=row;i++)
+	solve[i]=-32767;
+  for(i=row;i>0;i--) {
+	for(j=i;j<p;j++) {
+	  if(solve[i]<table[i][j]) {
+		solve[i]=table[i][j];
+		point=j;
+	  }
+	}
+	p=point;
+  }
+}
+
+void output_dat()
+{
+  int i,j;
+  for(i=1;i<=row;i++)
+	printf("%dRow = %d\n",i,solve[i]);
+}
+
+
+void main()
+{
+  char ins_key;
+  read_dat();
+  while(1) {
+	input_dat();
+	process();
+	output_dat();
+	printf("\nTry again? (y/n)");
+	scanf("%s",&ins_key);
+	if(ins_key=='n'||ins_key=='N') break;
+  }
+}
+
+
+
+

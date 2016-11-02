@@ -1,0 +1,175 @@
+<html>
+<head> <title>Analysis #110: Two Five</title> </head>
+<body background="../../usaco/bg3.jpg">
+<img src="../../usaco/cow1.jpg" width="742" height="118">
+<center>
+<b><font size="7">Analysis: Two Five</font></b><br>
+Brian Jacokes
+</center>
+<p>This problem seems complicated at first, but it's simply dynamic
+programming.  The trick is to look at the ways in which we can place the
+first N letters, and see how this relates to the ways in which we can place
+the first N-1 letters.
+
+<p>The only rule that seems to govern the placement of the Nth letter is
+that it must go in a position where the spots immediately to the left and
+to the top are already filled (if there is no spot to the left or top,
+which is the case for squares touching the side, we can assume that this
+spot is already taken).  For example, with N=5, and the previous placement
+of the letters being:
+
+<pre>
+   1 2 3 4 5
+1  A B C _ _
+2  D _ _ _ _
+3  _ _ _ _ _
+4  _ _ _ _ _
+5  _ _ _ _ _
+</pre>
+
+we can put the next letter, E, in either position (1, 4), (2, 2), or (3,
+1).
+
+<p>Why can't we put it in another position, such as (2, 3), which is empty
+immediately to the left?  Well, eventually we will have to fill up the
+square immediately to the left of it, and since we're going alphabetically,
+we'll have to put in a letter that follow the letter E in the alphabet.
+This would make the ordering wrong, so we only need to concern ourselves
+with squares whose neighbors to the top and left are filled/off the board.
+
+<p>Now all that's left is to create an array, called "numways", where
+numways[a][b][c][d][e] is the number of legal grids in which, when the
+first (a+b+c+d+e) numbers are placed, wil have 'a' slots filled in the
+first row, 'b' slots filled in the second row, etc.  This is where the DP
+comes in: once you have all the rows filled (a=b=c=d=e=5), there is only
+one way to complete the grid (in fact, we've already done it!).
+
+<p>The number of ways in which we can make any other combination of rows
+is the sum of all the positions that could immediately follow that
+combination of rows.  In other words, for the above example, the number of
+grids that start with the given placement of the letters 'A'-'D' is the
+sum of the number of grids that start with the given placement of those
+letters with an 'E' added in any of the three available places.  Once we
+have this function, we can easily find the Nth grid alphabetically.  Let's
+start out with the letter 'A' placed in the top left.
+
+<p>Say we want to find the Nth grid, where N is large, like 7,000,000.
+Examining all of the (two) possible placements for 'B', we need to know
+where to place it.  Well, let's look at the number of ways where 'B' is
+placed to the right of 'A'.  Notice that we've already calculated this.
+This number is less than 'N', therefore, we subtract it from N and try
+placing 'B' in the next row.  This is because we have skipped over a large
+portion of the possible grids, and so now we're only concerned about the
+grids that have 'B' placed later on, which will eventually mean that
+they're later when sorted alphabetically.
+
+<p>The process of determining the number of a grid is much the same: we go
+through each letter, and for each of the rows above where the letter is
+actually placed, we pretend that we placed the number there instead and
+add the number of grids that start with that placement.  All that's left
+is to write up these functions, paying special attention to ordering, etc.
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#define MAX 5
+
+FILE   *in, *out;
+long    numways[MAX + 1][MAX + 1][MAX + 1][MAX + 1][MAX + 1];
+
+void 
+get_ways (void)
+{
+    int     ind[MAX], a;
+    long    curways;
+    numways[MAX][MAX][MAX][MAX][MAX] = 1;
+    for (ind[0] = MAX; ind[0] &gt;= 0; ind[0]--)
+	for (ind[1] = ind[0]; ind[1] &gt;= 0; ind[1]--)
+	    for (ind[2] = ind[1]; ind[2] &gt;= 0; ind[2]--)
+		for (ind[3] = ind[2]; ind[3] &gt;= 0; ind[3]--)
+		    for (ind[4] = ind[3]; ind[4] &gt;= 0; ind[4]--) {
+			curways = 0;
+			for (a = 0; a &lt; MAX; a++)
+			    if (ind[a] &lt; MAX) {
+				ind[a]++;
+				curways += numways[ind[0]][ind[1]][ind[2]][ind[3]][ind[4]];
+				ind[a]--;
+			    }
+			numways[ind[0]][ind[1]][ind[2]][ind[3]][ind[4]] += curways;
+		    }
+}
+
+void 
+solve_for_num (void)
+{
+    int     a, b;
+    long    num = 1;
+    char    string[MAX * MAX + 1];
+    int     wid[MAX] = {0};
+    fscanf (in, "%s", &amp;string);
+    for (a = 0; a &lt; MAX * MAX; a++) {
+	for (b = 0; b &lt; MAX; b++)
+	    if (wid[b] &lt; MAX) {
+		if (int (string[b * MAX + wid[b]] - 'A') == a)
+		    break;
+		else {
+		    wid[b]++;
+		    num += numways[wid[0]][wid[1]][wid[2]][wid[3]][wid[4]];
+		    wid[b]--;
+		}
+	    }
+	wid[b]++;
+    }
+    fprintf (out, "%ld\n", num);
+}
+
+void 
+solve_for_string (void)
+{
+    char    string[MAX * MAX + 1] = {0};
+    int     a, b, last;
+    int     wid[MAX] = {0}, found;
+    long    num, totalsum, tempsum;
+    fscanf (in, "%ld", &amp;num);
+    totalsum = 0;
+    for (a = 0; a &lt; MAX * MAX; a++) {
+	for (b = 0; b &lt; MAX; b++)
+	    if (wid[b] + 1 &lt;= MAX &amp;&amp; (b == 0 || (wid[b] + 1 &lt;= wid[b - 1]))) {
+		wid[b]++;
+		tempsum = numways[wid[0]][wid[1]][wid[2]][wid[3]][wid[4]];
+		wid[b]--;
+		if (tempsum + totalsum &gt;= num)
+		    break;
+		totalsum += tempsum;
+	    }
+	string[MAX * b + wid[b]] = char (a + 'A');
+	wid[b]++;
+    }
+    for (a = 0; a &lt; MAX * MAX; a++)
+	fprintf (out, "%c", string[a]);
+    fprintf (out, "\n");
+    exit (0);
+}
+
+int 
+main ()
+{
+    in = fopen ("twofive.in", "r");
+    out = fopen ("twofive.out", "w");
+    get_ways ();
+    char    option;
+    fscanf (in, "%c", &amp;option);
+    if (option == 'W')
+	solve_for_num ();
+    else
+	solve_for_string ();
+    return 0;
+}
+</pre>
+
+<br><br>
+<center>
+<a href="../BACK/default.htm"> USACO Gateway </a>  &nbsp;| &nbsp;
+<a href="mailto:kolstad@ace.delos.com">Comment or Question </a>
+</center>
+</body>
+</html>

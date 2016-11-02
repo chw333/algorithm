@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <conio.h>
+
+struct point {
+	int x, y;
+} data[20];
+int size;
+int ux, uy, dx, dy;
+
+void get_data(void)
+{
+	clrscr();
+	ux = 30; uy = -10; dx = -30; dy = 10;
+	do {
+		printf("Dots = ? ");
+		scanf("%d", &size);
+	} while (size < 1 || size >= 20);
+	int i;
+	for(i = 0; i < size; i++)
+	{
+		do {
+			printf("%dth point ? ", i + 1);
+			scanf("%d%d", &data[i].x, &data[i].y);
+		} while (data[i].x < -30 || data[i].x > 30 || data[i].y < -10 || data[i].y > 10);
+		if (data[i].x < ux) ux = data[i].x;
+		if (data[i].y < dy) dy = data[i].y;
+		if (data[i].x > dx) dx = data[i].x;
+		if (data[i].y > uy) uy = data[i].y;
+	}
+}
+
+void print_screen(void)
+{
+	clrscr();
+	printf("                              |\n");
+	printf("                              |\n");
+	printf("                              |\n");
+	printf("                              |\n");
+	printf("                              |\n");
+	printf("                              |\n");
+	printf("                              |\n");
+	printf("                              |\n");
+	printf("                              |\n");
+	printf("                              |\n");
+	printf("------------------------------+------------------------------>\n");
+	printf("                              |\n");
+	printf("                              |\n");
+	printf("                              |\n");
+	printf("                              |\n");
+	printf("                              |\n");
+	printf("                              |\n");
+	printf("                              |\n");
+	printf("                              |\n");
+	printf("                              |\n");
+	printf("                              |\n");
+	int i;
+	for(i = 0; i < size; i++)
+	{
+		gotoxy(data[i].x + 31, -data[i].y + 11);
+		printf("*");
+	}
+}
+
+void check(void)
+{
+	int left = 0, right = 0, collinear = 0;
+	int i, temp;
+	for(i = 0; i < size; i++)
+	{
+		temp = dx * uy + ux * data[i].y + data[i].x * dy - ux * dy - data[i].x * uy - dx * data[i].y;
+		if (temp > 0) left++;
+		if (temp < 0) right++;
+		if (temp == 0) collinear++;
+	}
+	gotoxy(1, 23);
+	printf("Left : %d   Right : %d    Collinear : %d", left, right, collinear);
+}
+
+int main(void)
+{
+	get_data();
+	print_screen();
+	check();
+	return 0;
+}

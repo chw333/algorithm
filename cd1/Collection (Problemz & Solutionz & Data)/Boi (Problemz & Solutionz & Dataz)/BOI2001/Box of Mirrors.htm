@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0047)http://www.ii.uni.wroc.pl/boi/task/boxzad.phtml -->
+<HTML><HEAD><TITLE>Box of Mirrors</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type><LINK 
+href="Box of Mirrors.files/oi.css" rel=stylesheet>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY background="Box of Mirrors.files/tlo.jpg" bgColor=#ff7f00>
+<TABLE bgColor=#ff7f00 border=0 cellPadding=0 cellSpacing=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD><IMG border=0 src="Box of Mirrors.files/rlg.gif" width=12></TD>
+    <TD><IMG border=0 height=12 src="Box of Mirrors.files/dl.gif" 
+    width="100%"></TD>
+    <TD><IMG border=0 height=12 src="Box of Mirrors.files/dl.gif" 
+    width="100%"></TD>
+    <TD><IMG border=0 src="Box of Mirrors.files/rpg.gif" width=12></TD></TR>
+  <TR>
+    <TD><IMG border=0 height=80 src="Box of Mirrors.files/dpion.gif" 
+    width=12></TD>
+    <TD id=Htop width="100%">Box of Mirrors</TD>
+    <TD><IMG align=middle src="Box of Mirrors.files/LOGO.gif"></TD>
+    <TD><IMG border=0 height=80 src="Box of Mirrors.files/dpion.gif" 
+    width=12></TD></TR>
+  <TR>
+    <TD><IMG border=0 src="Box of Mirrors.files/rld.gif" width=12></TD>
+    <TD><IMG border=0 height=12 src="Box of Mirrors.files/dl.gif" 
+    width="100%"></TD>
+    <TD><IMG border=0 height=12 src="Box of Mirrors.files/dl.gif" 
+    width="100%"></TD>
+    <TD><IMG border=0 src="Box of Mirrors.files/rpd.gif" 
+  width=12></TD></TR></TBODY></TABLE>
+<P>Mathematician Andris likes different puzzles and one of his favorites is 
+covered box of mirrors. If we look at the horizontal cross-section of such a 
+box, we can see that its basement contains <I>n*m</I> square cells (<I>n</I> 
+rows, and <I>m</I> columns). In each cell there can be placed mirror which is 
+oriented diagonally from lower left corner to upper right corner. Both sides of 
+the mirror reflect light. At the box edges opposite to each cell row or column 
+there is a gap through which you can light a beam into box or the beam can come 
+out of the box. Through each gap you can light the beam in only one 
+direction--perpendicular to the edge containing the gap. Therefore, beam 
+reflecting from mirror changes its direction by 90<SUP>o</SUP>. When the beam 
+goes through empty cells, its direction doesn't change. Gaps are numbered 
+consecutively from 1 to <I>2*(n+m)</I>, around the box, counter-clockwise, 
+starting from the gap on the left side of the upper left cell and going 
+downwards. Since arrangement of mirrors in the box is not visible, the only way 
+to determine it is by lighting beams in some gaps and watching where light comes 
+out. </P><IMG src="Box of Mirrors.files/box2.gif"> 
+<H2>Task</H2>
+<P>Write program that: 
+<UL>
+  <LI>reads the size of the box and gaps describing beams coming in and out of 
+  the box from the input file <TT>box.in</TT>, 
+  <LI>determines in which cells there are mirrors and which cells are empty, 
+  <LI>writes the result to the output file <TT>box.out</TT>. </LI></UL>
+<P>If there are several possible solutions, your program should output anyone of 
+them. 
+<H2>Input</H2>
+<P>First line of input file <TT>box.in</TT> contains two positive integers: 
+<I>n</I> (the number of cells rows, <I>1&lt;=n&lt;=100</I>) and <I>m</I> (the 
+number of cells columns, <I>1&lt;=m&lt;=100</I>) separated by a single space. 
+Each of the following <I>2*(n+m)</I> lines contains one positive integer. The 
+number in the <I>i+1</I>-th line denotes the number of gap from which light 
+comes out if it is lightened into gap number <I>i</I>. 
+<H2>Output</H2>
+<P>Your program should write to the output file <TT>box.out</TT> <I>n</I> lines, 
+each of them containing <I>m</I> integers separated by single spaces. The 
+<I>j</I>-th number in the <I>i</I>-th line should be 1, if there is a mirror in 
+the cell in the <I>i</I>-th row and <I>j</I>-th column of the box, or it should 
+be 0 if the cell is empty. 
+<H2>Example</H2>
+<P>
+<P>Input file <TT>box.in</TT>: <PRE>2 3
+9
+7
+10
+8
+6
+5
+2
+4
+1
+3</PRE>
+<P>correct answer in file <TT>box.out</TT> <PRE>0 1 0
+0 1 1</PRE><IMG src="Box of Mirrors.files/box1.gif">
+<P></P><A href="javascript:window.history.go(-1)">Back</A></BODY></HTML>

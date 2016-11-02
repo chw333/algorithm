@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0046)http://www.karrels.org/Ed/ACM/ec92/prob_h.html -->
+<HTML><HEAD><TITLE>1992 ACM East-Central Regional, Problem H - Bad To The Bone</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type><LINK 
+href="mailto:Ed@Tool.com" rev=made>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY><EM>Not an official ACM page</EM> <BR>[<A 
+href="http://www.karrels.org/Ed/ACM/ec92/index.html">1992 ACM East-Central 
+Regional problem set</A> | <A href="http://www.karrels.org/Ed/ACM/index.html">My 
+ACM problem archive</A> | <A href="http://www.karrels.org/Ed/index.html">my home 
+page</A>] 
+<HR>
+
+<CENTER><IMG alt="1992 ACM East Central Regional Programming Contest" height=21 
+src="1992 ACM East-Central Regional, Problem H - Bad To The Bone.files/header.gif" 
+width=561></CENTER>
+<P>
+<CENTER><IMG height=94 
+src="1992 ACM East-Central Regional, Problem H - Bad To The Bone.files/probh.gif" 
+width=233><BR><IMG alt="Bad To The Bone" height=87 
+src="1992 ACM East-Central Regional, Problem H - Bad To The Bone.files/badbone.gif" 
+width=229> </CENTER>
+<P>Consider a standard set of double-six dominoes with each piece in the set 
+(each <EM>bone</EM>) assigned an identification number as shown below:<BR>
+<CENTER><IMG height=454 
+src="1992 ACM East-Central Regional, Problem H - Bad To The Bone.files/bones1.gif" 
+width=610> </CENTER>
+<P>A popular diversion among domino layers involves laying several of the bones 
+form the set (selected at random) end-to-end, and then eliminating adjacent 
+pairs of cominoes (from left to right) which touch at the same pip value. 
+Consider the example with six dominoes shown below. 
+<P><IMG height=78 
+src="1992 ACM East-Central Regional, Problem H - Bad To The Bone.files/bones2.gif" 
+width=633><BR><IMG height=79 
+src="1992 ACM East-Central Regional, Problem H - Bad To The Bone.files/bones3.gif" 
+width=425><BR><IMG height=77 
+src="1992 ACM East-Central Regional, Problem H - Bad To The Bone.files/bones4.gif" 
+width=212> 
+<P>The original draw resulted in these six dominoes. Note that when each domino 
+is aligned, it may appear in either its <EM>forward</EM> or its 
+<EM>backward</EM> orientation (the table above shows the forward orientations of 
+all non-doubles). Play begins from the left end and returns to the left end 
+after any pair of dominoes is eliminated. In this case, domino #12 (in its 
+forward orientation) and domino #17 (in its backward orientation) are eliminated 
+from the row since they touch each other with 5 pips. The row is collapsed and 
+play begins again at the left end. This time, dominoes #15 and #20 (both in 
+their forward orientations) are eliminated since they touch each other with 3 
+pips. The row is again collapsed. Since no further eliminations can be made, the 
+game ends. Note that dominoes #20 and #11 could not be eliminated since they 
+were never the left-most pair. 
+<P>Write a program that will accept a row of domino I. D. numbers and their 
+orientations, and carry out any such successive left-most eliminations until no 
+more are possible. 
+<P>
+<H3>Input</H3>The input file will contain an unknown number of domino datasets, 
+each corresponding to a left-to-right sequence of dominoes that are to be 
+subjected to the elimination procedure. Each domino dataset will consist of from 
+1 to 28 domino records followed by a terminating record. A domino record 
+consists of an integer from 1 through 28 (denoting the domino I. D. number), a 
+space, and a single character (uppercase <CODE>F</CODE> or <CODE>B</CODE>) which 
+indicates the domino's orientation (forward or backward, respectively). The 
+terminating record will always be <CODE>0 F</CODE>. Although it is unnecessary 
+information for doubles (dominoes with the same number of pips on each end), an 
+(arbitrary) orientation of <CODE>F</CODE> or <CODE>B</CODE> will still be part 
+of that domino's record. Each domino record (including the terminating record) 
+will appear on a line by itself. The first domino in each set is the leftmost, 
+while the one preceding the terminator is the rightmost. You may assume that 
+each domino will appear at most once in each dataset and that all data will be 
+valid. 
+<P>
+<H3>Output</H3>Your program will produce a report showing which dominoes remain 
+in each sequence following the elimination procedure. The report will begin with 
+the heading <CODE>RESULTS OF ELIMINATIONS</CODE> and will have two blank lines 
+separating it form the rest of the report. The remainder of the report will 
+consist of one line for each domino dataset. Each of these lines will contain 
+the domino I. D. numbers which remain in each set after all eliminations have 
+been carried out (in sequence from left to right). Each domino I. D. number 
+should be printed in a field that is exactly the I. D. number's width and 
+followed by exactly one space. Domino orientations are <EM>not</EM> to be 
+printed. One blank line should appear between the results for each dataset. 
+Should it ever be possible to eliminate every domino in a dataset, the line 
+<CODE>DATASET CLEARED</CODE> hsould be printed in place of any domino I. D. 
+numbers. 
+<P>
+<H3>Sample Input</H3><PRE>5 B
+15 F
+12 F
+17 B
+20 F
+11 B
+0 F
+18 F
+22 B
+0 F
+23 F
+12 B
+2 B
+4 F
+15 B
+20 B
+19 B
+7 B
+6 F
+0 F
+</PRE>
+<H3>Output for the Sample Input</H3><PRE>RESULTS OF ELIMINATIONS
+
+
+5 11
+
+DATASET CLEARED
+
+19
+</PRE>
+<HR>
+This page maintained by <A href="mailto:Ed@Tool.com">Ed Karrels</A>.<BR>Last 
+updated December 12, 1999 </BODY></HTML>

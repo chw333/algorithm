@@ -1,0 +1,72 @@
+<html>
+
+<head>
+<title>Problem 45: What Time Is It?</title>
+</head>
+
+<body background="../../usaco/bg3.jpg">
+<img src="../../usaco/cow1.jpg" width="742" height="118">
+
+<center>
+<h1>What Time Is It?</h1>
+</center>
+
+<p> Years ago, Brian Redman amused the entire networking community by
+asking on a newsgroup, ``What time is it?  E-mail me and I'll summarize
+to the net.''  Ha ha.
+
+<p> Write a program to convert a time expressed as hour:minute to
+the (stylized, see below) American english language version of the time.
+Here are the rules to implement (note that they might be different from
+what you are used to and are certainly different from British rules):
+
+<ul>
+  <li> Capitalize the first letter of the output
+  <li> Compound english numbers are hyphenated, e.g.: forty-four
+  <li> Express x:00 as [x_in_english] o'clock
+  <li> Express x:15 as Quarter past [x_in_english]
+  <li> Express x:30 as [x_in_english] thirty
+  <li> Express x:45 as Quarter to [next_hour_in_english]
+  <li> Otherwise, express x:nn as:
+  <ul>
+    <li> [x_in_english] [nn_in_english] when nn&lt;45
+    <li> [60-nn_in_english] to [next_hour_in_english] when nn&gt;45
+  </ul>
+</ul>
+
+<p>
+Examples:
+<ul>
+<li> 5:00   Five o'clock
+<li> 10:10  Ten ten
+<li> 9:22   Nine twenty-two
+<li> 5:15   Quarter past five
+<li> 2:30   Two thirty
+<li> 6:40   Six forty
+<li> 5:45   Quarter to six
+<li> 8:47   Thirteen to nine
+</ul>
+
+
+<h3>PROGRAM NAME: clock</h3>
+
+<h3>INPUT FORMAT</h3>
+
+A single line with a time expressed as hour:minutes.  Each hour is in
+the range 1..12; minutes are always expressed in two digits and are in
+the range 0..59
+
+<h3>SAMPLE INPUT (file clock.in) </h3>
+
+5:45
+
+
+<h3>OUTPUT FORMAT</h3>
+
+A single line with the time expressed as English.
+
+<h3>SAMPLE OUTPUT (file clock.out)</h3>
+
+<pre>
+Quarter to six
+</pre>

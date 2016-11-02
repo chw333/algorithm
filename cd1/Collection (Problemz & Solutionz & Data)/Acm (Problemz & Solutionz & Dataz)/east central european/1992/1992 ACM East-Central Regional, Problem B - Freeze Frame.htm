@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0046)http://www.karrels.org/Ed/ACM/ec92/prob_b.html -->
+<HTML><HEAD><TITLE>1992 ACM East-Central Regional, Problem B - Freeze Frame</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type><LINK 
+href="mailto:Ed@Tool.com" rev=made>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY><EM>Not an official ACM page</EM> <BR>[<A 
+href="http://www.karrels.org/Ed/ACM/ec92/prob_c.html"> Problem C </A>| <A 
+href="http://www.karrels.org/Ed/ACM/ec92/index.html">1992 ACM East-Central 
+Regional problem set</A> | <A href="http://www.karrels.org/Ed/ACM/index.html">My 
+ACM problem archive</A> | <A href="http://www.karrels.org/Ed/index.html">my home 
+page</A>] 
+<HR>
+
+<CENTER><IMG alt="1992 ACM East Central Regional Programming Contest" height=21 
+src="1992 ACM East-Central Regional, Problem B - Freeze Frame.files/header.gif" 
+width=561></CENTER>
+<P>
+<CENTER><IMG height=94 
+src="1992 ACM East-Central Regional, Problem B - Freeze Frame.files/probb.gif" 
+width=233><BR><IMG alt="Freeze Frame" height=91 
+src="1992 ACM East-Central Regional, Problem B - Freeze Frame.files/freezeframe.gif" 
+width=188> </CENTER>
+<P>A word frame puzzle is a new twist on the classic word search puzzle. In a 
+word frame puzzle, the hidden words are arranged in a rectangular frame, reather 
+than in a single straight line. Consider the two sample word frame puzzles 
+below: 
+<P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><IMG height=283 
+      src="1992 ACM East-Central Regional, Problem B - Freeze Frame.files/crosswd1.gif" 
+      width=292> 
+    <TD>
+      <CENTER><STRONG>Hidden Word List</STRONG>
+      <P><CODE>&lt;--</CODE>
+      <P>REPRESENTATIVE<BR>AMENDMENTS<BR>DISTRICT<BR>
+      <HR>
+      <CODE>--&gt;</CODE>
+      <P>PAINTERS<BR>MEDICALDOCTORS<BR>BOOKKEEPER<BR></CENTER></P>
+    <TD><IMG height=289 
+      src="1992 ACM East-Central Regional, Problem B - Freeze Frame.files/crosswd2.gif" 
+      width=301> </TR></TBODY></TABLE>
+<P>The solver must locate words from a given wordlist hidden in the puzzle 
+diagram in the form of a rectangular frame parallel to the sides of the puzzle 
+(a <EM>word frame</EM>). Only words appearing in the puzzle in a word frame 
+count (finding the letters of a word in a straight line or in any other 
+rectilinear pattern is not considered to be the discovery of a hidden word). 
+Word frames may be nested or overlap within a puzzle. Once all word frames have 
+been located and all words not appearing in the puzzle have been discarded, the 
+<EM>frozen letters</EM> letters that are not part of any word block) must be 
+indicated on a line-by-line basis. Note that any letters surrounded by a word 
+frame are also considered frozen unless they are part of some other word block. 
+Write a program that will solve word frame puzzles. 
+<P>
+<H3>Input</H3>The input file will contain a series of datasets in standard 
+textfile format. Each dataset will consist of a puzzle (15 lines of 15 
+characters), an integer representing the size of the wordlist on the sixteenth 
+line, and the wordlist itself (one word per line) beginning on the seventeenth 
+line. No word in the wordlist will be longer than 20 characters and all words 
+which are hidden in the puzzle and wordlist will be in uppercase. There will be 
+no intervening whitespace or extraneous characters. There are an unknown number 
+of datasets in the input file. Your program must process all datasets in the 
+file. 
+<P>
+<H3>Output</H3>The output from this program will show the results of solving 
+each puzzle. Each result should be labeled with a puzzle number, beginning with 
+1. These should be followed by a list of words from the wordlist which do not 
+appear in the puzzle in the form of a word frame. Following the list of unused 
+words will be a line-by-line listing of the frozen letters (from left to right). 
+If a row contains no frozen letters, it will appear in the frozen letters list 
+with no letters indicated. Several blank lines should separate the results from 
+each dataset. Refer to the example for the acceptable output format for this 
+problem. 
+<P>
+<H3>Sample Input</H3><PRE>QUNJOIPPCHYQUEN
+PLOZZNYJACNETOT
+SCILLTHOCHEMIXS
+GRSSESPSWAIRTHC
+TOXEWLLMJLCOSNO
+OTANSQUAKETDIZL
+ROLXYBBEXRYCJPG
+LJSOIXOPSSACILM
+EGIASTLICVNOOBY
+PETMANITIFREPUG
+RESEXECOLOUTEMO
+PAINDMOCIBUSDRC
+EXATOMISHSJITAR
+RHRAWIBEOSENIBB
+EVITWTTEMMRGDEW
+20
+POLITICS
+AMENDMENTS
+BUSINESS
+COMMETTEES
+DISTRICT
+CONSTITUENTS
+DEBATING
+TABLED
+DEMOCRAT
+FILIBUSTER
+JOINTSESSION
+SPEAKERS
+LOBBYIST
+MAKELAWS
+PRESTIGE
+REPRESENTATIVE
+CHAIRMEN
+REPUBLICAN
+SENATORS
+LEGISLATOR
+RIHCRNERBRAINTE
+OOFEONYOUINAPSR
+PRACTTALKCCHIRO
+RSLANTORSMECIAN
+UERTSCARPODICAB
+NSPLYODLACITUAE
+ARFUSNEISTPAREL
+EEBMEGRRKOOBBUT
+SERSAIETAIDREEL
+IARPPNEMSTRIKSO
+ACPASTBARBETANR
+OSERREPESSSSMUS
+URNABARENNUSROC
+RETROOKKGORJETA
+FOOREFATIEGANIT
+25
+CARPENTERS
+JANITORS
+APPRAISERS
+PROFESSORS
+SURGEONS
+PLUMBERS
+BARBER
+CONSULTANT
+MECHANIC
+ROOFER
+BARTENDERS
+BEAUTICIAN
+NURSES
+ENGINEER
+SEAMSTRESS
+ATTORNEY
+BRICKLAYER
+MEDICALDOCTORS
+PODIATRIST
+BOOKKEEPER
+DRESSMAKER
+PAINTERS
+COUNSELORS
+BUTLER
+CHIROPRACTOR
+</PRE>
+<H3>Output for the Sample Input</H3><PRE>---Results of Puzzle #1---
+
+TABLED - not found
+
+Frozen Letters in Row # 1: QUPPCHYQ
+Frozen Letters in Row # 2: PLZZYJAO
+Frozen Letters in Row # 3: SCLLHOCEX
+Frozen Letters in Row # 4: GPH
+Frozen Letters in Row # 5: TXWLLJO
+Frozen Letters in Row # 6: SQUZL
+Frozen Letters in Row # 7: OXXYCJPH
+Frozen Letters in Row # 8: JOXM
+Frozen Letters in Row # 9: IVOOY
+Frozen Letters in Row #10: EAG
+Frozen Letters in Row #11: XCOOU
+Frozen Letters in Row #12: AIR
+Frozen Letters in Row #13: XAOIHJ
+Frozen Letters in Row #14: HRWBOIB
+Frozen Letters in Row #15: WMMRW
+
+
+---Results of Puzzle #1---
+
+PROFESSORS - not found
+BARTENDERS - not found
+
+Frozen Letters in Row # 1: A
+Frozen Letters in Row # 2: OFENOU
+Frozen Letters in Row # 3: CIRO
+Frozen Letters in Row # 4: L
+Frozen Letters in Row # 5: RSARPOCA
+Frozen Letters in Row # 6: Y
+Frozen Letters in Row # 7: AF
+Frozen Letters in Row # 8: EEKO
+Frozen Letters in Row # 9: 
+Frozen Letters in Row #10: I
+Frozen Letters in Row #11: AASTBRBT
+Frozen Letters in Row #12: OR
+Frozen Letters in Row #13: UAARN
+Frozen Letters in Row #14: RGEA
+Frozen Letters in Row #15: FOOATIT
+</PRE>
+<HR>
+This page maintained by <A href="mailto:Ed@Tool.com">Ed Karrels</A>.<BR>Last 
+updated December 12, 1999 </BODY></HTML>

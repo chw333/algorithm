@@ -1,0 +1,1065 @@
+<html>
+
+<head>
+<title>C++기초플러스(번역서),  StephenPrata, 성안당</title>
+<meta name="generator" content="Namo WebEditor v4.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p style="line-height:110%;"><font size="2" face="굴림" color="#666666">2001년 
+5월, 컴퓨터 전문잡지 &quot;마이크로소프트웨어&quot;의 &quot;북 벤치 마크&quot;코너 
+에 소개된 글로<br>&quot;중앙대 JSTORM 벤치마크팀&quot;에서 평가하였습니다.<br>좀 
+더 깊게 C++를 공부하고자 하시는 분은 참고하시길 바라며,<br>여기에 소개된 서적 
+이외에 추천할 책이 있으면 Q&amp;A 게시판에 글을 남겨주세요.<br></font><font size="2" face="굴림">&nbsp;</font></p>
+<ul>
+    <table cellspacing="0" width="610" bordercolordark="white" bordercolorlight="#97B9FF" cellpadding="0" height="126">
+        <tr>
+            <td width="596" height="25">
+                <p>&nbsp;&nbsp;<SPAN class="tie-2" style="font-size:18pt;"><b><font face="Arial Black">C++</SPAN><SPAN class="tie-2" style="font-size:15pt;"> </font></SPAN><SPAN class="tie-2" style="font-size:14pt;"><font face="굴림">프로그래밍 
+                서적</font></SPAN></b></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="596" height="97">
+                <p style="line-height:110%;"><font size="2">간편성과 실용성으로 
+                널리 사랑을 받던 C언어에 객체지향의 개념을 더한 C++가 탄생했을 
+                때 많은 사람이 객체지향이란 개념을 보고 놀라워했다. 지금은 C++를 
+                기반으로 자바와 C#도 생겨나 C++의 자리를 넘보지만, C++는 아직도 
+                많은 사람들로부터 사랑받는 언어임에 틀림없다. 골수팬이 가장 
+                많은 언어 C++만이 가진 독특한 매력을 맘껏 느낄 수 있는 안내서를 
+                소개한다. </font></p>
+            </td>
+        </tr>
+    </table>
+</ul>
+<p><font size="2" face="굴림"><br></font></p>
+<ul>
+    <table border="1" cellspacing="0" width="610" bordercolor="#C1D4FA" bordercolordark="white" bordercolorlight="#97B9FF" cellpadding="5" height="126">
+        <tr>
+            <td width="596" height="25" colspan="2" bgcolor="#AAC6FF">
+                <p>&nbsp;&nbsp;<SPAN class=tit><B><font size="2">C++ 기초플러스(번역서), 
+                &nbsp;&nbsp;Stephen Prata, &nbsp;성안당</B></SPAN></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="412" height="126">
+                <table cellpadding="0" cellspacing="0" width="411" height="124">
+                    <tr>
+                        <td width="115">                <p align="center"><font face="Times New Roman" size="4"><b><img src="image/1.jpg" width="87" height="120" border="0" align="middle"></b></font></p>
+                        </td>
+                        <td width="280">
+                            <p><b><span style="font-size:11pt;">[+]<br></span></b><font size="2">깊고 
+                            폭넓게 소개한 개념과 문법 설명이 돋보인다.<br><br><b>[-]&nbsp;</b><br>기본적인 
+                            문법 이외에 객체지향에 대한 내용은&nbsp;다소 미흡하다.</font></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="172" bgcolor="#E0E9FC">
+                <table align="center" cellpadding="0" cellspacing="0" width="148">
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">예제의 
+                            적합성</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">객체지향 
+                            개념</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">기본문법</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">93</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">클래스 
+                            </span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">상속</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;템플릿</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;예외처리</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                </table>
+</td>
+        </tr>
+        <tr>
+            <td width="596" height="136" colspan="2">
+                <p style="line-height:110%; margin-right:5; margin-left:5;"><font size="2" color="#666666"><b>[마이크로소프트웨어 
+                북 벤치마크] 초급 베스트 선정</b></font><font size="2"><br>&nbsp;&nbsp;&nbsp;</font><font size="2" color="#666666">C++에 관한 서적은 많이 출판됐지만 대부분 기존의 C에 객체지향을 간단히 덧붙여 설명하는 수준에 머물고 있는 것이 사실이다. ‘C++ 기초 
+플러스’는 다른 책에 비해 기본 문법부터 객체지향 개념과 활용까지 전반적인 내용이 충실하다는 점에서 초급 부분 베스트로 선정됐다. C++를 처음 
+접하는 독자에게는 많은 개념 설명이 오히려 혼란스럽게 느껴질 수도 있으나, 이 책에서는 이해하기 어려운 개념을 쉽게 전하려는 노력이 곳곳에서 
+엿보인다. 곁들인 예제 또한 간단하면서도 핵심을 짚을 수 있도록 그림과 함께 구성해 독자의 이해를 돕고 있다. C++를 처음 접하는 독자에게는 
+확실한 기본 개념의 이해를, 그리고 중급 개발자에게는 더할 나위 없는 참고서가 될 것이다.</font><font size="2"> </font>            </td>
+        </tr>
+    </table>
+</ul>
+<p style="line-height:0;">&nbsp;</p>
+<ul>
+    <table border="1" cellspacing="0" width="610" bordercolor="#C1D4FA" bordercolordark="white" bordercolorlight="#97B9FF" cellpadding="5" height="126">
+        <tr>
+            <td width="596" height="25" colspan="2" bgcolor="#AAC6FF">
+                <p><SPAN class=tit><B><font size="2">&nbsp;&nbsp;C 프로그래머를 
+                위한 C++(번역서), &nbsp;Gregory Satir, &nbsp;한빛미디어</B></SPAN></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="412" height="126">
+                <table cellpadding="0" cellspacing="0" width="411" height="124">
+                    <tr>
+                        <td width="115">                <p align="center"><font face="Times New Roman" size="4"><b><img src="image/2.gif" width="87" height="120" border="0"></b></font></p>
+                        </td>
+                        <td width="280">
+                            <p><b><span style="font-size:11pt;">[+]<br></span></b><font size="2">C와 
+                            C++를 비교 분석해 확실히 구분할 수 있다.<br><br><b>[-]&nbsp;<br></b>많은 
+                            분량을 압축해놓아 개념 설명이 모호한 부분이 간혹 
+                            눈에 띈다.<br></font></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="172" bgcolor="#E0E9FC">
+                <table align="center" cellpadding="0" cellspacing="0" width="148">
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">예제의 
+                            적합성</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">객체지향 
+                            개념</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">기본문법</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">73</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">클래스 
+                            </span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">상속</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">77</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;템플릿</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;예외처리</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">63</span></p>
+                        </td>
+                    </tr>
+                </table>
+</td>
+        </tr>
+        <tr>
+            <td width="596" height="136" colspan="2">
+                <p style="line-height:110%; margin-right:5; margin-left:5;"><font size="2">&nbsp;&nbsp;&nbsp;</font><span style="font-size:10pt;"><font color="#666666">이 책은 C언어를 다룰 줄 아는 사람을 대상으로 썼기 때문에 기초문법에 대한 설명은 없다. 대신 C언어에 없는 C++의 특성을 비교 분석해 
+C언어를 공부한 독자라면 C++의 개념을 잡는 데 큰 도움이 될 것이다. 또한 컴팩트한 분량 때문에 C++ 언어를 공부했던 사람이 다시금 중심 
+개념을 정리하는데도 유용하게 참고할 수 있을 것으로 보인다. <BR>&nbsp;&nbsp;&nbsp;그러나 방대한 C++를 압축해 놓았기 때문에 심도 있게 다루지는 못해 
+이 책 한 권으로 C++를 전부 이해하려고 하는 사람에게는 어울리지 않는다. 또한, 설명이 모호한 부분이 간혹 눈에 띄었다. 그렇다고 책 내용 
+자체가 어려운 것은 아니므로 C프로그래밍의 경험이 있는 독자에게 부담 없이 C++ 언어의 기본 개념을 정리할 수 있는 책으로 추천한다.<BR> </font></span>            </td>
+        </tr>
+    </table>
+</ul>
+<p style="line-height:0;">&nbsp;</p>
+<ul>
+    <table border="1" cellspacing="0" width="610" bordercolor="#C1D4FA" bordercolordark="white" bordercolorlight="#97B9FF" cellpadding="5" height="126">
+        <tr>
+            <td width="596" height="25" colspan="2" bgcolor="#AAC6FF">
+                <p><SPAN class=tit><B><font size="2">&nbsp;&nbsp;C++ 객체지향 
+                프로그래밍의 이해, &nbsp;오종철, &nbsp;인터비전</B></SPAN></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="412" height="126">
+                <table cellpadding="0" cellspacing="0" width="411" height="124">
+                    <tr>
+                        <td width="115">                <p align="center"><font face="Times New Roman" size="4"><b><img src="image/3.gif" width="87" height="120" border="0"></b></font></p>
+                        </td>
+                        <td width="280">
+                            <p><b><span style="font-size:11pt;">[+]<br></span></b><span style="font-size:10pt;">C++의 
+                            컴파일러부터 문법설명, 클래스 등 기본 개념에 대해 
+                            쉽게 설명하고 있다.</span><font size="2"><br><br><b>[-]&nbsp;<br></b>객체지향 
+                            개념에 대한 설명이 부족하다.<b><br></b></font></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="172" bgcolor="#E0E9FC">
+                <table align="center" cellpadding="0" cellspacing="0" width="148">
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">예제의 
+                            적합성</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">객체지향 
+                            개념</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">67</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">기본문법</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">클래스 
+                            </span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">상속</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;템플릿</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">67</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;예외처리</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">67</span></p>
+                        </td>
+                    </tr>
+                </table>
+</td>
+        </tr>
+        <tr>
+            <td width="596" height="136" colspan="2">
+                <p style="line-height:110%; margin-right:5; margin-left:5;"><span style="font-size:10pt;"><font color="#666666">&nbsp;&nbsp;&nbsp;C++에 대한 초급서적답게 기본적인 내용을 자세히 다루고 있다. C++에 경험이 없는 사람에게는 큰 도움이 될 것이다. 또한 이론적인 설명, 
+간단한 예제, 실행 결과까지 단계별로 보여줘 독자의 이해를 돕고 있다. 각 장의 연습문제는 실제로 코딩하도록 유도하고 있다. 
+<BR>&nbsp;&nbsp;&nbsp;그러나, C++를 처음 접하는 사람이나 C와 같은 절차식 언어에 익숙한 사람에게 C++의 객체지향 개념은 상당히 어려울 수 있다. 
+또한 객체지향 프로그래밍에 관한 설명이 부족해 단점으로 지적된다. 객체지향에서 꼭 알아야 하는 캡슐화, 상속, 오버로딩과 오버라이딩 등의 설명도 
+부족해 깊이 있는 공부를 원하는 사람에게는 덜 어울리는 책이다.<BR> </font></span>            </td>
+        </tr>
+    </table>
+</ul>
+<p style="line-height:0;"><br></p>
+<ul>
+    <table border="1" cellspacing="0" width="610" bordercolor="#C1D4FA" bordercolordark="white" bordercolorlight="#97B9FF" cellpadding="5" height="126">
+        <tr>
+            <td width="596" height="25" colspan="2" bgcolor="#AAC6FF">
+                <p><SPAN class=tit><B><font size="2">&nbsp;&nbsp;C/C++ 제대로 
+                알기,  김기권, 서정길, 한숙, &nbsp;가남사 </B></SPAN></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="412" height="126">
+                <table cellpadding="0" cellspacing="0" width="411" height="124">
+                    <tr>
+                        <td width="115">                <p align="center"><font face="Times New Roman" size="4"><b><img src="image/4.gif" width="88" height="120" border="0"></b></font></p>
+                        </td>
+                        <td width="280">
+                            <p><b><span style="font-size:11pt;">[+]<br></span></b><span style="font-size:10pt;">그림을 
+                            통해 초보자도 쉽게 이해할 수 있다.</span><font size="2"><br><br><b>[-]&nbsp;<br></b></font><span style="font-size:10pt;">입출력 
+                            부분을 제외하고 C와 C++의 분명한 구분을 두지 않았다.</span></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="172" bgcolor="#E0E9FC">
+                <table align="center" cellpadding="0" cellspacing="0" width="148">
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">예제의 
+                            적합성</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">객체지향 
+                            개념</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">73</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">기본문법</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">77</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">클래스 
+                            </span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">77</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">상속</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;템플릿</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;예외처리</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">63</span></p>
+                        </td>
+                    </tr>
+                </table>
+</td>
+        </tr>
+        <tr>
+            <td width="596" height="136" colspan="2">
+                <p style="line-height:110%; margin-right:5; margin-left:5;"><span style="font-size:10pt;"><font color="#666666">&nbsp;&nbsp;&nbsp;'C/C++ 제대로 알기'는 누구나 쉽게 이해할 수 있는 간략한 에제로 구성되 있어 프로그램에 대한 경험이 전혀 없는 사람의 입문서로 좋다. 
+특히 포인터와 메모리 내용을 그림으로 보여줌으로써 독자의 이해를 돕고 있으며 기본적인 문법 내용도 상세히 다루고 있다. 7장 배열에서는 처음 
+프로그램을 하는 사람도 알 수 있도록 주소표현 방법과 다양한 소프 알고리즘을 다뤄 눈길을 끌었다. <BR>&nbsp;&nbsp;&nbsp;11장 부터는 클래스에 대한 
+소개, 생성자, 소멸자, 클래스 멤버 멤버함수의 내부 작동원리, friend 함수, 오버로딩, 오버라이딩, this 포인터 등을 다뤄 C++의 
+특징을 설명하고 있으며, 상속과 가상함수, 템플릿을 통한 객체지향 프로그램의 모습을 구체적으로 제시하고 있다. 다만 아쉬운 점은 입출력 부분을 
+제외하고 C와 C++의 차이점에 대해 명쾌하게 구분하고 있지 않아 처음 시작하는 사람에게 자칙 혼란을 줄 우려가 있다.<BR> </font></span>            </td>
+        </tr>
+    </table>
+</ul>
+<p style="line-height:0;"><br></p>
+<ul>
+    <table border="1" cellspacing="0" width="610" bordercolor="#C1D4FA" bordercolordark="white" bordercolorlight="#97B9FF" cellpadding="5" height="126">
+        <tr>
+            <td width="596" height="25" colspan="2" bgcolor="#AAC6FF">
+                <p><SPAN class=tit><B><font size="2">&nbsp;&nbsp;C++ 프로그래밍의 
+                이해(번역서), &nbsp;Steve Oualline, &nbsp;한빛미디어</B></SPAN></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="412" height="126">
+                <table cellpadding="0" cellspacing="0" width="411" height="124">
+                    <tr>
+                        <td width="115">                <p align="center"><font face="Times New Roman" size="4"><b><img src="image/5.jpg" width="87" height="120" border="0"></b></font></p>
+                        </td>
+                        <td width="280">
+                            <p><b><span style="font-size:11pt;">[+]<br></span></b><span style="font-size:10pt;">다양한 
+                            내용을 여러 플랫폼으로 구분해 설명하고 있으며, 초급부터 
+                            중급까지 포괄하고 있다.</span><font size="2"><br><br><b>[-]&nbsp;<br></b>실무에 
+                            적용할 만한 예제가 부족하다. <b><br></b></font></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="172" bgcolor="#E0E9FC">
+                <table align="center" cellpadding="0" cellspacing="0" width="148">
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">예제의 
+                            적합성</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">객체지향 
+                            개념</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;- 
+                            </span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">기본문법</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">클래스 
+                            </span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">상속</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">67</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;템플릿</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;예외처리</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">77</span></p>
+                        </td>
+                    </tr>
+                </table>
+</td>
+        </tr>
+        <tr>
+            <td width="596" height="136" colspan="2">
+                <p style="line-height:110%; margin-right:5; margin-left:5;"><font size="2" color="#666666">&nbsp;&nbsp;&nbsp;617쪽이라는 페이지가 무색할 정도로 기본 문법부터 템플릿, 예외처리, 최적화 등 많은 내용을 담고 있다. 더 욕심을 내자면 이 책 한 권으로 
+중급 수준까지 넘볼 수 있을 정도다. 그러나 한정된 지면에 많은 내용을 담은 만큼 모든 것을 자세히 다루고 있지는 않다. 하지만 어려운 부분은 
+그림까지 동원해 자세히 소개해 내용을 이해하는 데 큰 어려움은 없을 것이다. 또한 다른 서적과는 달리 필요에 따라 유닉스, MS-DOS, 맥 
+OS 등의 여러 플랫폼으로 나눠 설명하고 있다는 점이 돋보인다. 특히 책의 구성 순서를 프로그램 사이클에 맞췄다는 점 또한 프로그래밍을 
+이해하는데 도움을 주고 있다. ‘C++ 프로그래밍이란 무엇인가’를 제대로 이해하려는 사람, 프로그램의 전체를 보고자 하는 사람에게 추천할 만한 
+책이다.</font>            </td>
+        </tr>
+    </table>
+</ul>
+<p style="line-height:0;"><br></p>
+<ul>
+    <table border="1" cellspacing="0" width="610" bordercolor="#C1D4FA" bordercolordark="white" bordercolorlight="#97B9FF" cellpadding="5" height="126">
+        <tr>
+            <td width="596" height="25" colspan="2" bgcolor="#AAC6FF">
+                <p><SPAN class=tit><B><font size="2">&nbsp;&nbsp;초보자를 위한 
+                C++ 21일 완성 (번역서), Jesse Liberty, 인포북</B></SPAN></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="412" height="126">
+                <table cellpadding="0" cellspacing="0" width="411" height="124">
+                    <tr>
+                        <td width="115">                <p align="center"><font face="Times New Roman" size="4"><b><img src="image/6.jpg" width="87" height="120" border="0"></b></font></p>
+                        </td>
+                        <td width="280">
+                            <p><b><span style="font-size:11pt;">[+]<br></span></b><span style="font-size:10pt;">각 
+                            장에 걸쳐 다양한 예제와 상세한 주석으로 C++ 프로그래밍의 
+                            감각을 익힐 수 있다.</span><font size="2"><br><br><b>[-]&nbsp;<br></b></font><span style="font-size:10pt;">빠른 
+                            전개와 깊은 부분까지 설명한 탓에 C++를 처음 접하는 
+                            독자라면 읽기가 쉽지 않을 것이다.</span><font size="2"><b><br></b></font></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="172" bgcolor="#E0E9FC">
+                <table align="center" cellpadding="0" cellspacing="0" width="148">
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">예제의 
+                            적합성</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">객체지향 
+                            개념</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">기본문법</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">클래스 
+                            </span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">상속</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;템플릿</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;예외처리</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                </table>
+</td>
+        </tr>
+        <tr>
+            <td width="596" height="136" colspan="2">
+                <p style="line-height:110%; margin-right:5; margin-left:5;"><font size="2" color="#666666">&nbsp;&nbsp;&nbsp;처음 프로그래밍에 입문하려는 사람을 대상으로 만들어져 기초부터 중고급 수준의 고급 기술에 이르기까지 다양하게 소개하고 있다. 각 내용에 대해 
+다양한 예제를 제시해 설명하고 있으며, 그에 대한 주석 또한 비교적 자세하다. 또한 C++가 구조적 프로그래밍의 결함을 극복하기 위한 객체지향 
+프로그래밍의 결함을 극복하기 위한 객체지향 프로그래밍이라는 특징에 관한 설명을 이론과 실기를 적절히 배분해 짜임새 있게 설명하고 있다. 물론 
+21일 안에 C++라는 언어를 마스터하기는 어렵지만 사실 이 책의 내용대로 따라가면 C++ 프로그래밍에 대한 기본적인 감각은 어느 정도 익힐 수 
+있다. 뒷부분의 예외처리나 객체지향 분석과 설계 등은 독자가 C++에 대해 깊이 있게 학습할 수 있는 발판이 될 것이다. 그러나 너무 자세한 
+부분까지 언급하고 있다는 것, 전개가 비교적 빠른 편이란 점은 처음 프로그래밍을 접하는 독자에게는 다소 부담으로 다가올 것 같다. </font><span style="font-size:10pt;"><font color="#666666"> </font></span>            </td>
+        </tr>
+    </table>
+</ul>
+<p style="line-height:0;"><br></p>
+<ul>
+    <table border="1" cellspacing="0" width="610" bordercolor="#C1D4FA" bordercolordark="white" bordercolorlight="#97B9FF" cellpadding="5" height="126">
+        <tr>
+            <td width="596" height="25" colspan="2" bgcolor="#AAC6FF">
+                <p><SPAN class=tit><B><font size="2">&nbsp;&nbsp;객체지향 프로그래밍 
+                C++, &nbsp;김성진, 임경수, 빅인호, &nbsp;대림</B></SPAN></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="412" height="126">
+                <table cellpadding="0" cellspacing="0" width="411" height="124">
+                    <tr>
+                        <td width="115">                <p style="line-height:110%; margin-right:5; margin-left:5;" align="center"><span style="font-size:10pt;"><font color="#666666"><img src="image/7.gif" width="86" height="120" border="0"></font></span></td>
+                        <td width="280">
+                            <p><b><span style="font-size:11pt;">[+]<br></span></b><span style="font-size:10pt;">전체적으로 
+                            깔끔한 구성과 쉬운 설명으로 C++ 초보자에게 알맞은 
+                            책이다.</span><font size="2"><br><br><b>[-]&nbsp;<br></b></font><span style="font-size:10pt;">예제가 
+                            다소 실용성이 부족한 경향이 있다.</span><font size="2"><b><br></b></font></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="172" bgcolor="#E0E9FC">
+                <table align="center" cellpadding="0" cellspacing="0" width="148">
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">예제의 
+                            적합성</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">객체지향 
+                            개념</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">77</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">기본문법</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">77</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">클래스 
+                            </span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">77</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">상속</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">73</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;템플릿</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;예외처리</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;-</span></p>
+                        </td>
+                    </tr>
+                </table>
+</td>
+        </tr>
+        <tr>
+            <td width="596" height="136" colspan="2">
+                <p style="line-height:110%; margin-right:5; margin-left:5;"><font size="2">&nbsp;&nbsp;&nbsp;</font><span style="font-size:10pt;"><font color="#666666">우선 책의 구성이 전체적으로 깔끔한 느낌이다. 다른 책과 비교해 볼 때 그다지 특별한 점은 눈에 띄지 않지만 개념 설명과 중간 중간에 쉬운 
+에제를 담고 있어 차근차근 따라가다 보면 쉽게 C++의 내용을 배울 수 있을 것이다. 객체지향의 개념, 문법 설명, 클래스, 상속 등을 쉽게 
+설명하고 있으며, 예제를 통한 설명으로 개념에 대한 이해를 돕고 있다. <BR>&nbsp;&nbsp;&nbsp;후반부에서는 템플릿과 입출력 스트림에 대해 각각 한 장에 
+걸쳐 다루고 있다. 함수, 포인터, 가상 함수 등을 설명하는 데 있어 그림을 통해 쉽게 이해할 수 있도록 했다. 구성명, 내용, 가격도 맘에 
+들지만 굳이 개선해야 할 점을 꼽는다면 제시한 예제가 그다지 실용성이 없어 보인다는 점과 내용이 너무 평이하다는 점이다. 객체 지향의 개념과 
+기본적인 문법 등 전반적으로 C++ 를 익히고자 하는 초보자에게 권할 만한 책이다.<BR></font></span>            </td>
+        </tr>
+    </table>
+</ul>
+<p style="line-height:0;"><br></p>
+<ul>
+    <table border="1" cellspacing="0" width="610" bordercolor="#C1D4FA" bordercolordark="white" bordercolorlight="#97B9FF" cellpadding="5" height="126">
+        <tr>
+            <td width="596" height="25" colspan="2" bgcolor="#AAC6FF">
+                <p><SPAN class=tit><B><font size="2">&nbsp;&nbsp;The C++ Programming 
+                Language, &nbsp;Bjame Stroustrup, &nbsp;Addison Wesley &nbsp;</B></SPAN></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="412" height="126">
+                <table cellpadding="0" cellspacing="0" width="411" height="124">
+                    <tr>
+                        <td width="115">                <p align="center"><font face="Times New Roman" size="4"><b><img src="image/8.jpg" width="87" height="120" border="0"></b></font></p>
+                        </td>
+                        <td width="280">
+                            <p><b><span style="font-size:11pt;">[+]<br></span></b><span style="font-size:10pt;">C++ 
+                            창시자가 쓴 책답게 체계적인 내용을 담고 있다.</span><font size="2"><br><br><b>[-]<br></b></font><span style="font-size:10pt;">실용예제를 
+                            통한 개념 설명이 다소 부족하다.</span><font size="2"><b><br></b></font></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="172" bgcolor="#E0E9FC">
+                <table align="center" cellpadding="0" cellspacing="0" width="148">
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">예제의 
+                            적합성</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">객체지향 
+                            활용</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">객체지향 
+                            설계</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">STL</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">최적화</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">63</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;고급기술</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">77</span></p>
+                        </td>
+                    </tr>
+                </table>
+</td>
+        </tr>
+        <tr>
+            <td width="596" height="136" colspan="2">
+                <p style="line-height:110%; margin-right:5; margin-left:5;"><font size="2">&nbsp;&nbsp;&nbsp;</font><font size="2" color="#666666">이 책은 일단 저자가 C++ 언어의 창시자 Bjarne Stroustrup이라는 점에서 눈길을 끈다. 이런 점으로 이 서적은 다른 서적과 달리 
+C++ 언어를 다루는 방법에서 그치지 않고 디자인과 개발방법까지 아우르고 있다. 내용은 기본개념, 추상화 메터니즘, 표준 라이브러리, 디자인 
+순서로 엮어졌다. 특히 표준 라이브러리 부분에서는 라이브러리 사용 방법, 효과적 설계 방법, 프로그래밍 테크닉을 제시하고 있으며 확장하고 
+재사용하는 부분에 대해 자세히 설명해, 단지 C++ 언어를 접하고 단순하게 사용하는 데만 그치지 않고 개발자가 직접 활용하고자 할 때 도움이 
+된다. 다만, 개념을 다소 원론적으로 설명하고 있다는 점, 실용적인 예제를 통해 개념을 다루지 못하고 있다는 점이 아쉽다. 하지만 이 책을 통해 
+현재 주요 프로그래밍의 근간을 이루는 C++ 언어가 갖는 힘을 충분히 느낄 수 있다. C++ 언어를 제대로 마스터하고자 하는 독자에게 추천한다. </font><span style="font-size:10pt;"><font color="#666666"> </font></span>            </td>
+        </tr>
+    </table>
+</ul>
+<p style="line-height:0;"><br></p>
+<ul>
+    <table border="1" cellspacing="0" width="610" bordercolor="#C1D4FA" bordercolordark="white" bordercolorlight="#97B9FF" cellpadding="5" height="126">
+        <tr>
+            <td width="596" height="25" colspan="2" bgcolor="#AAC6FF">
+                <p><SPAN class=tit><B><font size="2">&nbsp;&nbsp;Core C++ &nbsp;A 
+                Software Engineering Approach, &nbsp;Victor Shtern, &nbsp;Prentice 
+                Hall</B></SPAN></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="412" height="126">
+                <table cellpadding="0" cellspacing="0" width="411" height="124">
+                    <tr>
+                        <td width="115">                <p style="line-height:110%; margin-right:5; margin-left:5;" align="center"><span style="font-size:10pt;"><font color="#666666"><img src="image/9.gif" width="90" height="119" border="0"></font></span></td>
+                        <td width="280">
+                            <p><b><span style="font-size:11pt;">[+]<br></span></b><span style="font-size:10pt;">객체지향에 
+                            대한 개념과 활용을 자세히 다루고 있다.</span><font size="2"><br><br><b>[-]<br></b></font><span style="font-size:10pt;">소스코드 
+                            보기가 다소 불편하다.</span><font size="2"><b><br></b></font></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="172" bgcolor="#E0E9FC">
+                <table align="center" cellpadding="0" cellspacing="0" width="148">
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">예제의 
+                            적합성</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">객체지향 
+                            활용</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">객체지향 
+                            설계</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">STL</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">73</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">최적화</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">77</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;고급기술</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                </table>
+</td>
+        </tr>
+        <tr>
+            <td width="596" height="136" colspan="2">
+                <p style="line-height:110%; margin-right:5; margin-left:5;"><font size="2" color="#666666"><b>[마이크로소프트웨어 
+                북 벤치마크] 중고급 베스트 선정</b><br>&nbsp;&nbsp;&nbsp;제목에서 알 수 있듯이 이 책은 소프트웨어 엔지니어링 관점에서 C++를 다루고 있다. 이 관점에서 객체지향에 대한 개념과 활용에 대한 내용을 
+자세히 다뤄 개념이 부족한 독자에게 적절하다. UML에 대해서도 다뤄 소프트웨어 엔지니어링 부분을 알고 싶어하는 독자의 이해를 돕고 있다, 
+최적화, 예외처리, 메모리 관리 부분은 조금 어렵지만 중요한 내용인 만큼 자세히 다루고 있으며, 한두 줄 정도의 간단한 소스와 그 결과 화면을 
+내용과 함께 보여주고 있다. 특히 설명한 내용을 뒷받침 할 수 있는 예제와, 그 예제에 대한 설명도 충실하다. 그러나 블록 구문에서 줄 띄우기와 
+탭 사용 등의 코딩 규칙을 제대로 지키지 않아 소스코드 보기가 불편하다는 단점이 있다. C++를 어느 정도 공부한 초급자가 중고급 개발자로 
+나아가기 위해 이 책을 선택한다면 큰 도움이 될 것이다. </font>            </td>
+        </tr>
+    </table>
+</ul>
+<p style="line-height:0;"><br></p>
+<ul>
+    <table border="1" cellspacing="0" width="610" bordercolor="#C1D4FA" bordercolordark="white" bordercolorlight="#97B9FF" cellpadding="5" height="126">
+        <tr>
+            <td width="596" height="25" colspan="2" bgcolor="#AAC6FF">
+                <p><SPAN class=tit><B><font size="2">&nbsp;&nbsp;The ANSI/ISO 
+                C++ Professional Programmer's Handbook, &nbsp;Danny Kalev, &nbsp;QUE 
+                Professional</B></SPAN></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="412" height="126">
+                <table cellpadding="0" cellspacing="0" width="411" height="124">
+                    <tr>
+                        <td width="115">                <p align="center"><font face="Times New Roman" size="4"><b><img src="image/10.gif" width="90" height="113" border="0"></b></font></p>
+                        </td>
+                        <td width="280">
+                            <p><b><span style="font-size:11pt;">[+]<br></span></b><span style="font-size:10pt;">C++ 
+                            자체의 기술보다는 OOP 설계 등 전문 개발자에게 필요한 
+                            지식을 다룬다.</span><font size="2"><br><br><b>[-]<br></b></font><span style="font-size:10pt;">예제의 
+                            실용성이 떨어지고 단순한 편이다.</span></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="172" bgcolor="#E0E9FC">
+                <table align="center" cellpadding="0" cellspacing="0" width="148">
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">예제의 
+                            적합성</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">77</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">객체지향 
+                            활용</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">객체지향 
+                            설계</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">STL</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">77</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">최적화</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;고급기술</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                </table>
+</td>
+        </tr>
+        <tr>
+            <td width="596" height="136" colspan="2">
+                <p style="line-height:110%; margin-right:5; margin-left:5;"><font size="2" color="#666666">&nbsp;&nbsp;&nbsp;</font><font color="#666666" size="2">핸드북이라는 말은 ‘반드시 알아야 할 필수적인 내용을 간략히 적은’ 또는 ‘적은 분량의 책’을 연상하게 한다. 그래서 핸드북의 내용은 빈약할 
+수밖에 없고, 전문가에게 핸드북은 큰 의미를 갖지 못하는 것도 사실이다. 그럼에도 불구하고, 이 책은 전문 개발자를 위한 핸드북이다. 10년 
+이상 OOP 분석 설계 분야에서 일해온 저자의 약력이 말해주듯 이 책은 C++ 언어 자체에 대한 단편적인 기술을 다루지 않는다. 바로 OOP 
+개념이 C++에서 어떻게 구현되고, 또 프로그램을 어떻게 설계해야 하는지 등 전문가로서 반드시 알아야 할 사항을 지식적 측면에서 다뤄 초급에서 
+중고급 개발자로 나아가기 위한 지침서 역할을 하고 있다. 따라서, 이 책은 컴퓨터 옆에 가까이 두고 바로 바로 참고할 수 있는 핸드북으로 
+사용하기보다는 한번쯤 읽어보고 전문가로서의 기본 소양을 쌓는 데 이용하기를 권하고 싶다. </font><span style="font-size:10pt;"><font color="#666666"><BR> </font></span>            </td>
+        </tr>
+    </table>
+</ul>
+<p style="line-height:0;"><br></p>
+<ul>
+    <table border="1" cellspacing="0" width="610" bordercolor="#C1D4FA" bordercolordark="white" bordercolorlight="#97B9FF" cellpadding="5" height="126">
+        <tr>
+            <td width="596" height="25" colspan="2" bgcolor="#AAC6FF">
+                <p><SPAN class=tit><B><font size="2">&nbsp;&nbsp;Effective C++ 
+                CD, &nbsp;Scott Meyers, &nbsp;Addsion Wesley</B></SPAN></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="412" height="126">
+                <table cellpadding="0" cellspacing="0" width="411" height="124">
+                    <tr>
+                        <td width="115">                <p align="center"><font face="Times New Roman" size="4"><b><img src="image/11.gif" width="90" height="112" border="0"></b></font></p>
+                        </td>
+                        <td width="280">
+                            <p><b><span style="font-size:11pt;">[+]<br></span></b><span style="font-size:10pt;">잘 
+                            짜여진 C++ 코드와 함께 설계와 최적화 기법에 대한 
+                            소개가 압권이다.</span><b><span style="font-size:11pt;"><br></span></b><font size="2"><br><b>[-]&nbsp;<br></b></font><span style="font-size:10pt;">객체지향 
+                            설계에 대한 소개가 미흡하다.</span><font size="2"><b><br></b></font></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="172" bgcolor="#E0E9FC">
+                <table align="center" cellpadding="0" cellspacing="0" width="148">
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">예제의 
+                            적합성</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">객체지향 
+                            활용</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">87</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">객체지향 
+                            설계</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">STL</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">최적화</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">93</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;고급기술</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">93</span></p>
+                        </td>
+                    </tr>
+                </table>
+</td>
+        </tr>
+        <tr>
+            <td width="596" height="136" colspan="2">
+                <p style="line-height:110%; margin-right:5; margin-left:5;"><font size="2" color="#666666">&nbsp;&nbsp;&nbsp;Effective C++ 2/e : 50 specific ways to improve your programs and designs는 일반적인 
+C++ 문법을 소개하는 책은 아니다. 1'st edition이 나온 후 쏟아진 여러 추천의 글들을 구태여 들지 않더라도 C++에 경험이 없는 
+프로그래머들에게는 보통은 거치게 되는 여러 실수와 비효율을 미리 피할 수 있도록 지침을 내려주고 어느 정도 경험이 있는 프로그래머들에게는 수긍과 
+공감을 느낄 수 있는 책이다. 그러나 이 책은 읽는 이로 하여금 어렵지 않게 따라올 수 있게 하는 친절함까지 갖추고 있는 추천서이다. 분량은 
+많지 않으며, 할 말만 한 압축된 내용을 담고 있으며, 어느 정도 시행착오를 거친 프로그래머들에게 권하고 싶지만 내용이 어렵지 않게 잘 서술되어 
+있어서 영어에 약하신 분들이나 자신을 초보라고 생각하시는 이들에게도 권하고 싶은 책이다.</font>            </td>
+        </tr>
+    </table>
+</ul>
+<p style="line-height:0;"><br></p>
+<ul>
+    <table border="1" cellspacing="0" width="610" bordercolor="#C1D4FA" bordercolordark="white" bordercolorlight="#97B9FF" cellpadding="5" height="126">
+        <tr>
+            <td width="596" height="25" colspan="2" bgcolor="#AAC6FF">
+                <p><SPAN class=tit><B><font size="2">&nbsp;&nbsp;Accelerated 
+                C++ Practical Programming by Example, Andrew Koenig, Barbara 
+                E. Moo, Addison Wesley</B></SPAN></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="412" height="126">
+                <table cellpadding="0" cellspacing="0" width="411" height="124">
+                    <tr>
+                        <td width="115">                <p align="center"><font face="Times New Roman" size="4"><b><img src="image/12.gif" width="90" height="114" border="0"></b></font></p>
+                        </td>
+                        <td width="280">
+                            <p><b><span style="font-size:11pt;">[+]<br></span></b><span style="font-size:10pt;">기본 
+                            문법 설명과 심도있는 개념을 적절히 혼합해 C++를 
+                            빠르게 익힐 수 있다.</span><font size="2"><br><br><b>[-]&nbsp;<br></b></font><span style="font-size:10pt;">어렵게 
+                            설명한 부분이 눈에 띄어 다른 책을 참조하게 만든다.</span></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="172" bgcolor="#E0E9FC">
+                <table align="center" cellpadding="0" cellspacing="0" width="148">
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">예제의 
+                            적합성</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">객체지향 
+                            활용</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;-</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">객체지향 
+                            설계</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">77</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">STL</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">                <p style="margin-right:5; margin-left:5;" align="left"><span style="font-size:10pt;">최적화</span></td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="92">
+                            <p align="left"><span style="font-size:10pt;">&nbsp;고급기술</span></p>
+                        </td>
+                        <td width="40">
+                            <p align="left"><span style="font-size:10pt;">83</span></p>
+                        </td>
+                    </tr>
+                </table>
+</td>
+        </tr>
+        <tr>
+            <td width="596" height="136" colspan="2">
+                <p style="line-height:110%; margin-right:5; margin-left:5;"><font size="2">&nbsp;&nbsp;&nbsp;</font><font size="2" color="#666666">일반적으로 프로그래밍 언어책이라면 기본 개념과 문법 설명 중심의 책을 떠올리기 쉽다. 하지만 제목에서 말해주듯 이 책은 실무적인 프로그래밍을 
+하는 데 초점을 맞춘 독특한 방식을 취한다. 다시 말해, 문법 설명과 진보된 개념을 혼합한 방식으로 구성했다고 할 수 있다. 예를 들면, 
+스탠더드 라이브러리를 통해 프로그램을 작성하면서 동시에 분기문, 반복문 등 개념 설명을 해 나간다. 이런 구성으로 책 전반에 걸쳐 설명하고 
+있다. 컨테이너, 템플릿 등을 배우면서 자신만의 템플릿을 작성하는 방법을 배우고, 동시에 기본 개념을 습득해 표준 C++의 강점을 살리는 
+방법까지 익힐 수 있다. 예제는 GUI가 아닌 콘솔 창으로 실행해 OS에 관계없이 볼 수 있다. 메모리 관리에 대한 내용과 함께 벡터, 알고리즘 
+등의 내용 또한 짤막하게 나마 소개하고 있다. 이 서적은 C++ 전반을 알고자 하는 초보자보다는 C++의 심도 있는 개념을 배우고자 하는 
+사람에게 추천한다. </font>            </td>
+        </tr>
+    </table>
+</ul>
+<p><br></p>
+</body>
+
+</html>

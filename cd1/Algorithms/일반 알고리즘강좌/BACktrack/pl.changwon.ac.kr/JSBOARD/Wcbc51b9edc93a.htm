@@ -1,0 +1,215 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=EUC-KR">
+<TITLE>Jsboard 1.2.2 - 알고리즘 게시판  [ 게시물 읽기 ]</TITLE>
+<STYLE TYPE="text/css">
+<!--
+A:link, A:visited, A:active { TEXT-DECORATION: none; }
+A:hover { TEXT-DECORATION: underline; }
+TD { FONT: 9pt 굴림체; }
+INPUT {font: 9pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:2x solid #b5b5c5}
+SELECT {font: 9pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:1x solid #b5b5c5}
+TEXTAREA {font: 10pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:2x solid #b5b5c5}
+ #radio {font: 9pt 굴림체; BACKGROUND-COLOR:#ffffff; COLOR:#656565; BORDER:2x solid #ffffff}
+ #title {font:20pt 굴림체; color:#ffe4c4}
+ #eng {font:11px tahoma,Verdana,arial; line-height:120%}
+-->
+</STYLE>
+
+<script LANGUAGE=JavaScript>
+<!-- Begin
+  var child = null;
+  var count = 0;
+  function new_windows(addr,tag,scroll,resize,wid,hei) {
+    var childname = 'JSBoard' + count++;
+    // child window가 떠 있을 경우 child window를 닫는다.
+    if(child != null) {
+      if(!child.closed) { child.close(); }
+    }
+    child = window.open(addr,tag,'left=0, top=0, toolbar=0,scrollbars=' + scroll + ',status=0,menubar=0,resizable=' + resize + ',width=' + wid + ',height=' + hei +'');
+    // child window가 로드 될때 가장 앞으로 올린다.
+    child.focus();
+    return;
+  }
+//-->
+</script>
+</HEAD>
+
+<BODY BACKGROUND="" BGCOLOR="#ffffff" TEXT="#656565" LINK="#80320d" VLINK="#80320d" ALINK="#80320d">
+<!-- ========================= A foreword  ========================= -->
+<center>
+<img src=../algorithm/images/cyber_alg2.jpg BORDER="0" USEMAP="#ImageMap1">
+<p>
+<!-- ========================= A foreword  ========================= -->
+
+<DIV ALIGN=center>
+<!------ 상단 메뉴 시작 --------->
+<TABLE WIDTH="600" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+<TR>
+  <TD VALIGN=bottom><nobr>[ <a href=./admin/user_admin/auth.php?table=algorithm title="JSBoard 1.2.2 관리자 페이지"><font color=#6d7bc9>admin</font></a> ]</nobr></TD>
+  <TD ALIGN=right VALIGN=bottom>
+<TABLE WIDTH="1%" BORDER="0" CELLSPACING="4" CELLPADDING="0" >
+<TR>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wcf9b3d77867a1.htm"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>목록보기</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc287afab76152.htm" onMouseOut="window.status=''; return true;" onMouseOver="window.status='No.9: 교수님 목소리가 넘 작습니다...ㅠ.ㅠ'; return true;"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>윗글</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc7c90ceeaf9ac.htm" onMouseOut="window.status=''; return true;" onMouseOver="window.status='No.7: 질문에 자바접속에 관해'; return true;"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>아랫글</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc3740532edff1.htm"><FONT COLOR="#999999" style="line-height=120%"><NOBR>글쓰기</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wcebc6e5f67d5.htm"><FONT COLOR="#999999" style="line-height=120%"><NOBR>답장쓰기</NOBR></FONT></A></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc77e293a763b1.htm"><FONT COLOR="#999999" style="line-height=120%"><NOBR>수정</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc45d6a113069e.htm"><FONT COLOR="#999999" style="line-height=120%"><NOBR>삭제</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"></TD>
+  
+</TR>
+</TABLE>
+</TD>
+</TR>
+</TABLE>
+<!------ 상단 메뉴 끝 --------->
+
+<TABLE WIDTH="600" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+<TR><TD valign=top BGCOLOR="#7e7e9a">
+<TABLE WIDTH="100%" border="0" CELLSPACING="1" CELLPADDING="3">
+<TR>
+  <TD COLSPAN="3" BGCOLOR="#b5b5c5"><FONT COLOR="#555555" style="line-height=120%">8번 : 예제 답</FONT></TD>
+</TR><TR>
+  <TD WIDTH="40%" BGCOLOR="#dcdcdc"><FONT COLOR="#000000" style="line-height=120%">글쓴이: <A HREF=javascript:new_windows('Wc2e0d395b3981.htm','form',0,0,600,420)><FONT COLOR="#000000">신용호</FONT></A></FONT></TD>
+  <TD WIDTH="40%" BGCOLOR="#dcdcdc"><FONT COLOR="#000000" style="line-height=120%">등록: 2000-09-08 10:32:49</FONT></TD>
+  <TD WIDTH="20%" BGCOLOR="#dcdcdc"><FONT COLOR="#000000" style="line-height=120%">조회: 176</FONT></TD>
+
+</TR><TR>
+  <TD COLSPAN="3" BGCOLOR="#ffffff">
+
+<TABLE ALIGN="center" WIDTH="100%" HEIGHT="140" BORDER="0" CELLSPACING="4" CELLPADDING="0">
+<TR>
+  <TD valign=top height=60>
+    <FONT COLOR="#555555">
+
+<!-- =============================== 글내용 =============================== -->
+<PRE>
+단락회로가 아닐 경우에 비슷하게 생긴게 반환문이 있군요. 그런데
+while문 안에 반환문을 쓸 수는 없을 거고 원래 논리연산자가 단락회로
+라면 &quot;location을 n보다 작거나 같으면 반복하라. 그리고 location이 x
+와 같지 않으면 반복해라.&quot; 이니까 아니라면 '그리고'가 쓸 수 없을겁니
+다.
+그러니까 n보다 작거나 같을 때까지 반복하면서 x는 신경도 쓰지 않게
+되는 겁니다. 결국 x를 찾을 수 없는 거지요!!
+교수님 제가 복수전공 하는거 아시죠? 
+저 C언어 공부는 하는데 많이 미숙합니다. 
+포인터 부분은 아직 제대로 손도 못댔습니다.
+답이 틀렸으면 틀렸다고 꼭 말씀해 주십시오.
+</PRE>
+<!-- =============================== 글내용 =============================== -->
+
+    </FONT>
+  </TD>
+</TR>
+</TABLE>
+
+  </TD>
+</TR>
+</TABLE>
+
+</TD>
+</TR>
+<TR><TD BGCOLOR="#7e7e9a">
+
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="6" ALIGN="center">
+<TR>
+  <TD VALIGN="top" ROWSPAN="2">
+
+<!-- =============================== 검색폼 =============================== -->
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="1">
+<FORM METHOD="post" ACTION="list.php?table=algorithm">
+<TR>
+  <TD>
+    <FONT SIZE="-1" COLOR="#ffffff">
+    <INPUT TYPE="hidden" NAME="o[at]" VALUE="s">
+    <SELECT NAME="o[sc]">
+      <OPTION VALUE="t">제목
+      <OPTION VALUE="c">내용
+      <OPTION VALUE="n">글쓴이
+      <OPTION VALUE="a">전체
+    </SELECT>
+    <INPUT TYPE="text" NAME="o[ss]" SIZE="9" MAXLENGTH="255" VALUE="">
+    <INPUT TYPE="submit" VALUE="검색">
+    </FONT>
+  </TD>
+</TR><TR>
+  <TD>
+    <FONT SIZE="-1" COLOR="#ffffff">
+    <SELECT NAME="o[st]">
+      <OPTION VALUE="m">최근 한달
+      <OPTION VALUE="w">최근 한주
+      <OPTION VALUE="a">전체
+    </SELECT>
+    <INPUT TYPE="checkbox" NAME="o[er]" VALUE="y"> 정규표현식
+    </FONT>
+  </TD>
+</TR></FORM>
+</TABLE>
+<!-- =============================== 검색폼 =============================== -->
+
+  </TD><TD ALIGN="right">
+    <FONT SIZE="-1" COLOR="#ffffff" style="line-height=120%">[ 0.03 sec ]</FONT>
+  </TD>
+</TR><TR>
+  <TD ALIGN="right" VALIGN="bottom">
+
+<!-- ============================== 페이지폼 ============================== -->
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="1">
+<FORM METHOD="post" ACTION="locate.php?table=algorithm">
+<TR>
+  <TD ALIGN="right">
+    <FONT SIZE="-1" COLOR="#ffffff">
+    <SELECT NAME="o[go]">
+      <OPTION VALUE="p" SELECTED>페이지
+      <OPTION VALUE="n">글번호
+    </SELECT>
+    <INPUT TYPE="text" NAME="o[no]" SIZE="2" MAXLENGTH="6" VALUE="">
+    <INPUT TYPE="submit" VALUE="이동">
+  </TD>
+</TR></FORM>
+</TABLE>
+<!-- ============================== 페이지폼 ============================== -->
+
+  </TD>
+</TR>
+</TABLE>
+</TD></TR>
+</TABLE>
+<TABLE WIDTH="600" BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD>
+
+<TABLE WIDTH="1%" BORDER="0" CELLSPACING="4" CELLPADDING="0" ALIGN="center">
+<TR>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wcf9b3d77867a1.htm"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>목록보기</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc287afab76152.htm" onMouseOut="window.status=''; return true;" onMouseOver="window.status='No.9: 교수님 목소리가 넘 작습니다...ㅠ.ㅠ'; return true;"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>윗글</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc7c90ceeaf9ac.htm" onMouseOut="window.status=''; return true;" onMouseOver="window.status='No.7: 질문에 자바접속에 관해'; return true;"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>아랫글</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc3740532edff1.htm"><FONT COLOR="#999999" style="line-height=120%"><NOBR>글쓰기</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wcebc6e5f67d5.htm"><FONT COLOR="#999999" style="line-height=120%"><NOBR>답장쓰기</NOBR></FONT></A></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc77e293a763b1.htm"><FONT COLOR="#999999" style="line-height=120%"><NOBR>수정</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc45d6a113069e.htm"><FONT COLOR="#999999" style="line-height=120%"><NOBR>삭제</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"></TD>
+  
+</TR>
+</TABLE></TD></TR>
+</TABLE>
+</DIV><!-- ========================= Tail ========================= -->
+<p><center>
+<!--Copyleft 1999-2000 by <a href=http://jsboard.kldp.org target=_blank JSBoard Open Project</a--> 
+<!-- ========================= Tail ========================= -->

@@ -1,0 +1,268 @@
+<html>
+<head> <title>Problem 12: Map Labelling</title> </head>
+<body background="../../usaco/bg3.jpg">
+<img src="../../usaco/cow1.jpg" width="742" height="118">
+<center>
+<b><font size="7">Map Labelling</font></b><br>
+IOI 1997
+</center>
+
+<P>You are a cartographer's assistant, and have been given the difficult
+task of writing the names of N (1 <= N <= 1000) cities onto a new map.
+Each of the city names is a single word with no spaces and fewer than
+200 characters.
+
+<P>The map is a grid of 1000 x 1000 cells.  Each city occupies a single
+cell on the map.  City names are to be placed on the map in rectangular
+boxes of cells.  Such boxes are called labels.</P>
+
+<CENTER><IMAGE SRC="/usaco/maplabel1.gif"></CENTER>
+<P ALIGN="CENTER">A city with the four possible positions of its label</P>
+
+<P>The placement of labels must satisfy the following constraints:</P>
+<OL>
+
+<LI>A city's label must appear in one of four positions with respect to the city as illustrated above.
+<LI>Labels must not overlap each other.
+<LI>Labels must not overlap cities.
+<LI>Labels must completely fit on the map.</OL>
+
+<P>Each label contains all the letters in a city name plus a single space
+on the end.  For each city name the width and height of each of its letters
+will be given; the single space has the same size.</P>
+
+<CENTER>
+<TABLE CELLSPACING=1 WIDTH=302>
+<TR><TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">4</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=2><P ALIGN="CENTER">L</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=2><P ALIGN="CENTER">a</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=2><P ALIGN="CENTER">n</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=2><P ALIGN="CENTER">g</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=2><P ALIGN="CENTER">a</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<FONT SIZE=2><P ALIGN="CENTER">_</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+</TR>
+<TR><TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">3</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=2><P ALIGN="CENTER"><FONT>O</FONT>
+</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=2><P ALIGN="CENTER"><FONT>O</FONT>
+</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+</TR>
+<TR><TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">2</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" ROWSPAN=2 HEIGHT=16>
+<B><FONT SIZE=6><P ALIGN="CENTER">P</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" ROWSPAN=2 HEIGHT=16>
+<B><FONT SIZE=6><P ALIGN="CENTER">a</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" ROWSPAN=2 HEIGHT=16>
+<B><FONT SIZE=6><P ALIGN="CENTER">a</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" ROWSPAN=2 HEIGHT=16>
+<B><FONT SIZE=6><P ALIGN="CENTER">r</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" ROWSPAN=2 HEIGHT=16>
+<B><FONT SIZE=6><P ALIGN="CENTER">l</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" ROWSPAN=2 HEIGHT=16>
+<FONT SIZE=5><P ALIGN="CENTER">_</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+</TR>
+<TR><TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">1</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=2><P ALIGN="CENTER"><FONT>O</FONT>
+</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+</TR>
+<TR><TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">0</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<FONT SIZE=2><P ALIGN="CENTER">_</FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=2><P ALIGN="CENTER">C</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=2><P ALIGN="CENTER">e</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=2><P ALIGN="CENTER">r</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=2><P ALIGN="CENTER">e</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=2><P ALIGN="CENTER">s</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+</TR>
+<TR><TD WIDTH="6%" VALIGN="TOP" HEIGHT=16><P></P></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">0</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">1</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">2</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">3</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">4</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">5</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">6</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">7</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">8</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">9</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">10</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">11</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">12</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">13</B></FONT></TD>
+<TD WIDTH="6%" VALIGN="TOP" HEIGHT=16>
+<B><FONT SIZE=1><P ALIGN="CENTER">14</B></FONT></TD>
+</TR>
+</TABLE>
+
+<FONT SIZE=2><b>_</b> represents a space
+<B><br><FONT>O</FONT></B> represents the position of a city
+</CENTER>
+<P ALIGN="CENTER"><b>Section of a map </b></P>
+
+<P>The leftmost column of the map has horizontal index 0 and the bottom
+row has vertical index 0. The figure above shows the bottom left section
+of a map for the cities Langa at (0,3), Ceres at (6,1) and Paarl at (7,3).
+All the labels are validly placed, but this is not the only valid
+placement.</P>
+
+<P>Your program must read the locations of the cities on the map, followed
+by their letter dimensions and names.  The program must then place as many
+labels on the map as it can without violating the constraints above, and
+output the locations of the labels that have been placed. </P>
+
+<h3>PROGRAM NAME: maplabel</h3>
+
+<h3>INPUT FORMAT</h3>
+
+<P>The first line contains a single integer, N
+
+<p> The subsequent N lines each contain:
+<UL>
+<LI>the city's horizontal index (X),
+<LI>the city's vertical index (Y),
+<LI>the integer width (W) for each character in the city name,
+<LI>the integer height (H) for each character in the city name, and
+<LI>the city name itself.</UL>
+
+<h3>SAMPLE INPUT (file maplabel.in)</h3>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=7>
+<TR><TD VALIGN="TOP">
+<B><FONT SIZE=2><P>MAPS.DAT</B></FONT></TD>
+<TD VALIGN="TOP">
+<B><FONT SIZE=2><P>Explanation</B></FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>3</FONT></TD>
+<TD VALIGN="TOP">
+<FONT SIZE=2><P>N=3</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>0 3 1 1 Langa</FONT></TD>
+<TD VALIGN="TOP">
+<FONT SIZE=2><P>X=0, Y=3, W=1, H=1, city_name='Langa'</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>6 1 1 1 Ceres</FONT></TD>
+<TD VALIGN="TOP">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>7 3 1 2 Paarl</FONT></TD>
+<TD VALIGN="TOP">&nbsp;</TD>
+</TR>
+</TABLE>
+<h3>OUTPUT FORMAT</h3>
+
+<P>Your program is required to output N lines.  Each line must contain the
+horizontal index followed by the vertical index of the top left cell of
+the city's label. If your program is unable to place a label for a city,
+it must output -1 -1. These lines should be output in the same order as
+the cities are given in the input file. You must put a single space between
+the two numbers.</P>
+
+<h3>SAMPLE OUTPUT (file maplabel.out)</h3>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=7>
+<TR><TD VALIGN="TOP">
+<B><FONT SIZE=2><P>MAPS.OUT</B></FONT></TD>
+<TD VALIGN="TOP">
+<B><FONT SIZE=2><P>Explanation:</B></FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>1 4</FONT></TD>
+<TD VALIGN="TOP">
+<FONT SIZE=2><P>Langa's label is at (1,4)</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>0 0</FONT></TD>
+<TD VALIGN="TOP">
+<FONT SIZE=2><P>Ceres's label is at (0, 0)</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>8 2</FONT></TD>
+<TD VALIGN="TOP">
+<FONT SIZE=2><P>Paarl's label is at (8, 2)</FONT></TD>
+</TR>
+</TABLE>
+
+</FONT></BODY>
+</HTML>

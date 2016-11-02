@@ -1,0 +1,94 @@
+a b f g 
+a b g f 
+a g b f 
+g a b f 
+
+w x z v y 
+w z x v y 
+x w z v y 
+x z w v y 
+z w x v y 
+z x w v y 
+
+a b f g 
+a b g f 
+a g b f 
+g a b f 
+
+a b c d 
+a b d c 
+a d b c 
+d a b c 
+
+a e i o u 
+a e i u o 
+a e o i u 
+a e o u i 
+a e u i o 
+a e u o i 
+a i e o u 
+a i e u o 
+a i o e u 
+a i o u e 
+a i u e o 
+a i u o e 
+a o e i u 
+a o e u i 
+a o i e u 
+a o i u e 
+a o u e i 
+a o u i e 
+a u e i o 
+a u e o i 
+a u i e o 
+a u i o e 
+a u o e i 
+a u o i e 
+i a e o u 
+i a e u o 
+i a o e u 
+i a o u e 
+i a u e o 
+i a u o e 
+i o a e u 
+i o a u e 
+i o u a e 
+i u a e o 
+i u a o e 
+i u o a e 
+o a e i u 
+o a e u i 
+o a i e u 
+o a i u e 
+o a u e i 
+o a u i e 
+o i a e u 
+o i a u e 
+o i u a e 
+o u a e i 
+o u a i e 
+o u i a e 
+u a e i o 
+u a e o i 
+u a i e o 
+u a i o e 
+u a o e i 
+u a o i e 
+u i a e o 
+u i a o e 
+u i o a e 
+u o a e i 
+u o a i e 
+u o i a e 
+
+a b c d 
+a b d c 
+a c b d 
+a c d b 
+a d b c 
+a d c b 
+
+a b c d e 
+
+a b c d e f g h i 
+

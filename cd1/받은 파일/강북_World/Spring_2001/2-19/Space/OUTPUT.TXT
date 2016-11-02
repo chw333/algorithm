@@ -1,0 +1,3 @@
+The number of spaceship is 2
+Spaceship 1 : 1 2 3 
+Spaceship 2 : 4 5 

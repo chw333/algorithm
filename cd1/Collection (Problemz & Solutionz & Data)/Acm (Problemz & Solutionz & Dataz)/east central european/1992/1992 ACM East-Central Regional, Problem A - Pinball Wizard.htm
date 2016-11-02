@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0046)http://www.karrels.org/Ed/ACM/ec92/prob_a.html -->
+<HTML><HEAD><TITLE>1992 ACM East-Central Regional, Problem A - Pinball Wizard</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type><LINK 
+href="mailto:Ed@Tool.com" rev=made>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY><EM>Not an official ACM page</EM> <BR>[<A 
+href="http://www.karrels.org/Ed/ACM/ec92/prob_b.html"> Problem B </A>| <A 
+href="http://www.karrels.org/Ed/ACM/ec92/index.html">1992 ACM East-Central 
+Regional problem set</A> | <A href="http://www.karrels.org/Ed/ACM/index.html">My 
+ACM problem archive</A> | <A href="http://www.karrels.org/Ed/index.html">my home 
+page</A>] 
+<HR>
+
+<CENTER><IMG alt="1992 ACM East Central Regional Programming Contest" height=21 
+src="1992 ACM East-Central Regional, Problem A - Pinball Wizard.files/header.gif" 
+width=561></CENTER>
+<P>
+<CENTER><IMG height=94 
+src="1992 ACM East-Central Regional, Problem A - Pinball Wizard.files/proba.gif" 
+width=233><BR><IMG alt="Pinball Wizard" height=92 
+src="1992 ACM East-Central Regional, Problem A - Pinball Wizard.files/pinballwiz.gif" 
+width=204> </CENTER>
+<P>Constructing a state-of-the-art pinball machine is no longer the relatively 
+simple problem in electromechanical design it once used to be. A few years ago, 
+pinball machine designers merely rearranged some bumpers, switches, and a few 
+relays and called it "this month's game". Contemporary pinball machine 
+designers, on the other hand, begin developing their machines almost two years 
+before they reach the marketplace. 
+<P>In addition to including true stereo sound and eye-catching artwork (often in 
+conjunction with movie, television, or other entertainment industry licenses), a 
+tremendous amount of effort is now being invested in developing the game itself. 
+Explicit attention is paid to the placement of all bumpers, targets, switches, 
+and other scoring features. Skill shots and "lucky bounces" are carefully 
+engineered into each playfield's design, providing both the novice and the more 
+experienced player with games that will provide hours of challenging fun. And, 
+of course, software now plays a major role in orchestrating the game and 
+delivering the pinball experience to the player. 
+<P>As a new software designer for Milliams/Wally Bidway Manufacturing Company, 
+your task is to implement the software for new pinball machines as specified by 
+the game's designer. Once a game reaches prototype production (the <EM>whitewood 
+stage</EM>), it is up to you to have the software ready that will monitor the 
+playfield switches and activate appropriate scoring features as they are 
+completed by the player. To ease the task of developing much of this software 
+from scratch each time a new game makes it to the whitewood stage, you have 
+decided to write a Pinball Playfield Scoring Engine. Based upon your many years 
+of pinball experience (mostly from playing it), you have noticed that many 
+scoring features generally fall into one of three basic categories: (1) a series 
+of targets that can be hit in any order at any time to activate a scoring 
+feature; (2) a series of targets that must be hit in some specified order 
+(perhaps with other unrelated or redundant targets hit in between) to activate a 
+feature; and (3) a series of targets that must be hit in an exact sequence (with 
+no intervening unrelated or redundant target hits) to activate a feature. This 
+problem asks you to construct the prototype for you Pinball Playfield Scoring 
+Engine. 
+<P>
+<H3>Input</H3>The input will consist of an unknown number of whitewood datasets. 
+Each whitewood dataset will consist of a pinball machine name, a series of 
+playfield scoring features with the targets and their activation mode, and a 
+sequence of target hits recorded by a test ball. The machine name will appear on 
+a line by itself and will be no longer than 30 characters. It will be terminated 
+by a standard end-of-line character. Following the machine name will be a series 
+of lines, each describing a playfield scoring feature. The first 15 character 
+positions of a scoring feature line will contain the name of the feature. 
+Beginning in the sixteenth position will be a series of uppercase alphabetic 
+characters (representing individual playfield target switches) which must all be 
+hit to activate the named feature. If these target switches are separated by a 
+single space, they may be hit in any order at any time to activate the named 
+feature. If the list of target switches is separated by commas, these targets 
+must be hit in the specified order to activate the named feature (any number of 
+unrelated targets may be hit along the way, but only redundant hits of the most 
+recently completed target in the sequence may occur without resetting the 
+<EM>entire</EM> sequence). If the target switch list is separated by hyphen 
+characters, this group of switches must be completed in the exact sequence 
+specified (without any redundant or unrelated target hits along the way) in 
+order to activate the named feature. No scoring feature line will exceed 80 
+characters, including a terminating end-of-line character. Since the same target 
+may have to be hit several times to activate (or assist in activating) a 
+particular scoring feature, the same target letter may appear several times in a 
+scoring feature line. The end of the scoring features is indicated by a single 
+'@' character on a line by itself. Following the end of the scoring features 
+will be a stream of consecutive uppercase characters representing targets struck 
+by a test ball. There will be an unknown number of target hits (which may extend 
+over several lines) and these may include target letters which do not contribute 
+to activating any of the given features. The test ball data (and the entire 
+whitewood dataset for that machine) is terminated by a single "#" character on a 
+line by itself. The input will end at the normal end-of-file. You may assume 
+that only valid data (according to the above description) will be supplied. 
+<P>
+<H3>Output</H3>Your program must process the whitewood dataset for each machine 
+and produce a report indicating which of the given game features were activated 
+by the test ball according to the designer's specifications. The report for each 
+machine will include the machine name and a list of all game features specified, 
+with an asterisk and a space preceding the features which the test ball 
+activated, and two spaces preceeding the names of unactivated features. The 
+output for each whitewood dataset must be separated by at least two blank lines. 
+Refer to the following example for the acceptable format for your output. 
+<P>
+<H3>Sample Input</H3><PRE>Simple Simon
+Next Pie FlavorA B C
+Ferris Wheel   D,E,F
+Ballon Bonus   G-H-I
+Pieman Jackpot C,E,G,J
+@
+GGHGIBGIDBCIBJXEIGAQZGHFIBWJAAC
+#
+Terminator 2: Judgment Day
+Advance Bonus  A B C
+Database       F,D
+Video Mode     H-P-E
+Advance Timer  I,J,K,L
+Hurry Up       I,J,K,I,J,K,I,J,K,E,G
+Multiball      F,F,N,T
+Light Kickback B C D
+Jackpot        F,F,N,T,F,N,T
+Loop 5 Million F-F-F-F-F
+Payback time   H,G,H,G,H,G,H,G,H,G
+Extra Ball     K,E,G,F,N,H,E
+@
+SRLFFFFLHUWIGWTLZSFVHURQOBTWLYGXZOWLSJTXUOWLTZKZOSXQUWPUTIYRJTVKIHU
+SFTGYJSKHRUDHPEZYGPZNRQXCPXVTOWVHOPUOAZSXTY
+WZSFFFFZGOQNWXZFTWSXYVTHRYRUVQRYWQZOEZSWTZPO
+#
+</PRE>
+<H3>Output for the Sample Input</H3><PRE>TESTING MACHINE - Simple Simon
+
+* Next Pie Flavor
+* Ferris Wheel
+  Ballon Bonus
+* Pieman Jackpot
+
+
+TESTING MACHINE - Terminator 2: Judgment Day
+
+* Advance Bonus
+* Database
+* Video Mode
+  Advance Timer
+  Hurry Up
+  Multiball
+* Light Kickback
+  Jackpot
+  Loop 5 Million
+* Payback Time
+  Extra Ball
+</PRE>
+<HR>
+This page maintained by <A href="mailto:Ed@Tool.com">Ed Karrels</A>.<BR>Last 
+updated December 12, 1999 </BODY></HTML>

@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0046)http://www.karrels.org/Ed/ACM/ec92/prob_c.html -->
+<HTML><HEAD><TITLE>1992 ACM East-Central Regional, Problem C - The Search Is Over</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type><LINK 
+href="mailto:Ed@Tool.com" rev=made>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY><EM>Not an official ACM page</EM> <BR>[<A 
+href="http://www.karrels.org/Ed/ACM/ec92/prob_d.html"> Problem D </A>| <A 
+href="http://www.karrels.org/Ed/ACM/ec92/index.html">1992 ACM East-Central 
+Regional problem set</A> | <A href="http://www.karrels.org/Ed/ACM/index.html">My 
+ACM problem archive</A> | <A href="http://www.karrels.org/Ed/index.html">my home 
+page</A>] 
+<HR>
+
+<CENTER><IMG alt="1992 ACM East Central Regional Programming Contest" height=21 
+src="1992 ACM East-Central Regional, Problem C - The Search Is Over.files/header.gif" 
+width=561></CENTER>
+<P>
+<CENTER><IMG height=94 
+src="1992 ACM East-Central Regional, Problem C - The Search Is Over.files/probc.gif" 
+width=233><BR><IMG alt="The Search Is Over" height=89 
+src="1992 ACM East-Central Regional, Problem C - The Search Is Over.files/searchover.gif" 
+width=283> </CENTER>
+<P>The Special Services Group within CompuCo specializes in the development of 
+products to meet the needs of physically disabled individuals. The engineering 
+staff within this division has recently completed the construction of their 
+latest prototype: an input device with just a single pushbutton that will 
+hopefully prove to be useful in making the power of the personal computer more 
+readily available to people with certain physical disabilities. This device has 
+been dubbed "The Clicker" by those associated with it in house. 
+<P>The Special Services Project Leader has assigned your software development 
+team the task of devising a way to use the Clicker to perform text input. After 
+considering several other options, your team has decided to initially explore 
+the idea of using the Clicker in conjunction with a scrolling menu of 128 
+possible selections, each corresponding to one of th 128 ASCII characters in the 
+range 0 to 127 (the menu must of necessity be long and narrow since it will need 
+to appear on the same screen as whatever application it is working with). The 
+first (topmost) character presented in the menu will be highlighted initially. 
+If the user makes a <EM>fast click</EM> (holding the button down for less than 
+half of a second), the menu highlight will move down one position, highlighting 
+the next character. For a user to actually "type" the highlighted character, 
+they must hold the button down for more than half of a second (a <EM>selection 
+click</EM>). The menu will wrap around to the beginning should the user 
+accidentally bypass a desired character when moving the highlight. 
+<P>To produce a character, the user will either make a selection click 
+immediately (indicating that the character initially presented at the top of the 
+menu is to be typed), or they will make a series of fast clicks to move to the 
+desired character first and then make a selection click (if the desired 
+character is presented in the fifth position, the user must make four fast 
+clicks and one selection click to cause it to be typed). The four fast clicks 
+are considered <EM>overhead</EM> clicks necessary to ensure that the proper 
+character is typed. 
+<P>Your team quickly realized that if the menu selections are always presented 
+in the standard ASCII code sequence (or any fixed sequence), users of the 
+Clicker are going to be become involved in an extremely time-consuming and 
+tedious task. It would be better if the menu could be presented more 
+dynamically, with each click causing the characters presented in the menu to be 
+re-arranged into an order of decreasing likelihood for the subsequent click. 
+With an accurate projection of the likelihood of each character, this scheme 
+would help to significantly reduce the total number of overhead clicks required 
+to enter text. Your team has decided to construct a <EM>transition matrix</EM> 
+based upon some sample text from a user and then use it to reorganize the menu 
+for that person, working under the assumption that a user's typing pattern will 
+follow similar transition probabilities in the future. In the transition matrix, 
+the (<EM>i</EM>, <EM>j</EM>) entry will reflect the number of times that the 
+character with ASCII value <EM>i</EM> was immediately followed by the character 
+with ASCII value <EM>j</EM> in the sample text. Once the transition matrix has 
+been built, the order of the characters displayed in the menu will depend upon 
+the most recently typed character. If that character has ASCII value <EM>x</EM>, 
+then the order of the characters presented in the menu will be based upon row 
+<EM>x</EM> of the matrix. If the (<EM>x</EM>, <EM>y</EM>) entry exceeds the 
+(<EM>x</EM>, <EM>z</EM>) entry, then the character with ASCII value <EM>y</EM> 
+will be presented in the menu ahead of the character with ASCII value 
+<EM>z</EM>. When the (<EM>x</EM>, <EM>y</EM>) entry and the (<EM>x</EM>, 
+<EM>z</EM>) entry are equal, the character which corresponds to the lesser of 
+<EM>y</EM> and <EM>z</EM> will appear earlier in the menu. The first menu 
+displayed (prior to any character being "typed") is to be based upon row 0 of 
+the transition matrix. 
+<P>Write a program that will construct such a transition matrix from a sample 
+input text. Then, use it to determine the minimum number of overhead clicks that 
+are required to enter a second passage of text with the Clicker, assuming that 
+the user never makes an error in selecting a character from the menu. The 
+program should also compute the average number of overhead clicks per character 
+(under this assumption) as well as displaying the number of characters appearing 
+in the passage of text entered with the Clicker. 
+<P>
+<H3>Input</H3>The input will consist of two passages of text. The first passage 
+is the sample text which is to be used to construct the transition matrix in the 
+manner described previously. The second passage represents the text which a user 
+would like to enter with the Clicker. Both passages of text are terminated by a 
+sequence of two successive linefeeds (ASCII 10) and the second passage 
+immediately follows the first. Note that only <EM>one</EM> linefeed of each 
+terminating pair is to be considered part of the text which it follows. Any data 
+which might appear after the terminating linefeed of the second passage is to be 
+ignored. Your program should consider all characters with ASCII code values in 
+the range 0 to 127. You may assume that neither passage of text will exceed 
+10,000 characters in length. 
+<P>
+<H3>Output</H3>Your program must count how many overhead clicks would be 
+required to type the second passage of text using the transition matrix to 
+prioritize the order of the menu choices after each character is entered. When 
+complete, it should output the following summary information: the number of 
+characters in the second passage of text, the number of overhead clicks 
+necessary to type the second passage of text, and the average number of overhead 
+clicks per typed character. The average must be presented as a floating point 
+number rounded to two decimal places. 
+<P>
+<H3>Sample Input 1</H3><PRE>a short piece of text
+
+a piece of short text
+
+</PRE>
+<H3>Output for Sample Input 1</H3><PRE>22 characters were "typed" with 13 overhead clicks.
+This is an average rate of 0.59 overhead clicks per character.
+</PRE>
+<H3>Sample Input 2</H3><PRE>The ACM Scholastic Programming Contest is a contest consisting of
+Regional Contests from which teams are selected to advance to the
+Contest Finals.  Competition is among teams of students
+representing institutions of higher education.  The ACM
+Scholastic Programming Contest is an activity of the Contest
+Steering Committee and, consequently, of the Local Activities
+Board.  The "Contest Director," who serves as chairman of the
+steering committee, coordinates these contests, oversees
+budgetary matters, and assures conformance with ACM policies and
+procedures.  Rules for the Scholastic Programming Contest are
+determined by the Contest Steering Committee.  The Contest
+Director is solely responsible for interpreting the rules and for
+ruling on any unforeseen situations.
+
+6.Contestants may report claims of rule violations or
+misconduct of the contest within 7 days of the Regional
+Contest to the Director of Regional Contests.  The Director of
+Regional Contests will make a recommendation within the next 7
+days to the Contest Steering Committee.  The Contest Steering
+Committee may, by a 2/3 vote, overturn the results of the
+Regional Contest no later than December 6.  Should circumstances
+disqualify finalists, the Contest Steering Committee shall designate
+the teams to advance to the Contest Finals.
+
+</PRE>
+<H3>Output for Sample Input 2</H3><PRE>534 characters were "typed" with 7944 overhead clicks.
+This is an average rate of 14.88 overhead clicks per character.
+</PRE>
+<HR>
+This page maintained by <A href="mailto:Ed@Tool.com">Ed Karrels</A>.<BR>Last 
+updated December 12, 1999 </BODY></HTML>

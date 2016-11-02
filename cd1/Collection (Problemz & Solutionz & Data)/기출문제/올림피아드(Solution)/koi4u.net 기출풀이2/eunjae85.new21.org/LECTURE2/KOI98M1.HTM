@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>안정된 집단</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p>안정된 집단</p>
+<p>그리 어려운 문제는 아닙니다. (아마 점수주기 문제였을 듯..) 하지만 약간 문제가 
+모호하고 명확하지 않아 보이므로 개념정리를 잘 하지 않고 프로그램 작성을 시작한다면 
+'어 안되네? 시불.. 처음부터 다시!'하는 결과가 생길지도 모릅니다 :)</p>
+<p>일단 안정된 집단의 정의부터 제대로 내려야 합니다. 문제의 장황한 설명을 요약하면,</p>
+<p>안정된 집단의 조건</p>
+<p>1. 같은 그룹에 속한 사람들끼리는 서로 좋아해야 한다.</p>
+<p>2. 다른 그룹에 속한 사람들끼리는 서로 싫어해야 한다.</p>
+<p>3. 한 그룹은 최소한 2명 이상이다.</p>
+<p>이렇게 세가지로 요약할 수 있습니다. 그리고 <a href="http://www.icc.or.kr">http://www.icc.or.kr</a> 
+의 문제에서는 나와있지 않지만 입력데이터는 A가 B를 좋아하면 B도 A를 좋아하고, 
+싫어하는 경우도 마찬가지로 '대칭성'을 갖습니다.</p>
+<p>이 문제는 특별히 알고리즘으로 설명하기 뭐하니까 그냥 주석을 붙여보도록 하겠습니다.</p>
+<p><font face="굴림체">program KOI98M1;</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+integer; {사람 수}<br>
+&nbsp;&nbsp;a &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+array[1..100, 1..100] of integer; {좋아하는 관계를 나타냄}<br>
+&nbsp;&nbsp;solution &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: array[1..100] of integer; 
+{각 사람이 어느 그룹에 속하는지}</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;l &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+integer;</font></p>
+<p><font face="굴림체">procedure input_file;<br>
+var<br>
+&nbsp;&nbsp;f &nbsp;&nbsp;&nbsp;&nbsp;: text;<br>
+&nbsp;&nbsp;i, j &nbsp;: integer;<br>
+begin<br>
+&nbsp;&nbsp;assign (f, 'input.txt');<br>
+&nbsp;&nbsp;reset (f);</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;read (f, n);</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;for i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read (f, a[i, j]);</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;close (f);<br>
+end;</font></p>
+<p><font face="굴림체">procedure solve;<br>
+var<br>
+&nbsp;&nbsp;i, j, k &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: integer;<br>
+&nbsp;&nbsp;flag &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: boolean;<br>
+begin<br>
+&nbsp;&nbsp;solution[1] := 1; {1번 사람은 1번 그룹에 속한다고 하자}<br>
+&nbsp;&nbsp;l := 1; {l은 현재 그룹의 개수}</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;for i := 2 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to l + 1 do begin {i가 그룹 j에 들어갈 때를 
+검사}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flag := false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for k := 1 to i - 1 do {i가 j에 속할 때 
+사람k와 문제가 있나?}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (j = solution[k]) xor (a[i, 
+k] = 0) then flag := true;<br>
+{그룹이 같은데 싫어하거나 그룹이 다른데 좋아하는 경우가 있는지 체크}</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if not flag then 
+begin {i번째 사람이 j그룹에 들어가도 아무 문제 없다면}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;solution[i] := j; {i번째 사람을 
+그룹j에 집어넣는다}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if j = l + 1 then inc (l); {i번째 
+사람이 새로운 그룹일 경우 그룹수 + 1}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;<br>
+end;</font></p>
+<p><font face="굴림체">procedure output_file;<br>
+var<br>
+&nbsp;&nbsp;f &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+text;<br>
+&nbsp;&nbsp;i, j, c &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: integer;<br>
+&nbsp;&nbsp;flag &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: boolean;<br>
+begin<br>
+&nbsp;&nbsp;assign (f, 'output.txt');<br>
+&nbsp;&nbsp;rewrite (f);</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;for i := 1 to l do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;c := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if solution[j] = i then inc (c);</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;if c &lt;= 1 then flag := true;<br>
+&nbsp;&nbsp;end; {각 그룹에 속한 사람 수를 셈}</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;if flag then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;writeln (f, 0); {어떤 그룹이 2명 미만이라면}<br>
+&nbsp;&nbsp;end else begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;writeln (f, l); {안정된 집단의 경우}</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to l do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if solution[j] = i then write 
+(f, j, ' ');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln (f);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;close (f);<br>
+end;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;input_file;<br>
+&nbsp;&nbsp;solve;<br>
+&nbsp;&nbsp;output_file;<br>
+end.</font></p>
+</body>
+
+</html></html>

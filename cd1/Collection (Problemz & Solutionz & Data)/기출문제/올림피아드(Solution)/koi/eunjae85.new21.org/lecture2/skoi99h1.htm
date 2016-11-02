@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>KOI 13회 중등부 1.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0" width="595">
+    <tr>
+        <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+            16회 고등부 1. 검은점과 하얀점 연결</b></font></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="pkoi99h1.htm"><img src="button1.gif"
+             width="72" height="22" border="0"></a></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi99h1.htm"><img src="button3.gif"
+             width="72" height="22" border="0"></a></td>
+    </tr>
+</table>
+<ul>
+    <p>&nbsp; 
+    <table border="0">
+            <tr>
+                <td width="550"><p style="line-height:150%;"><font size="2">&nbsp;&nbsp;이 
+                문제는 동적 계획법으로 풀 수 있는 문제로, 그 난이도도 상당히 
+                높은 편이다. 물론 문제에서 부분점수를 인정하므로 정 동적 계획법이 
+                생각나지 않는다면 다른 방법을 이용해 답을 구해도 된다(예를 들어 
+                서로 가장 가까운 검은 점과 하얀 점을 연결한다던지..) 하지만 
+                점수는 꽤 짜다.<br> &nbsp;&nbsp;동적 계획법(dynamic programming)을 
+                이용한 풀이를 생각해 보자. C[i, j]를 i번째 점부터 j번째 점까지의 
+                부분을 서로 연결했을 때 필요한 비용의 최소값이라 하자. 이 문제에서 
+                요구하는 답은 C[1, N]이 될 것이다. 이 부분문제를 위한 점화식은...</font></p>
+                <p style="line-height:150%;"><font size="2">C[i, j] = (k - i) 
+                + 2 * (L[i+1, k-1] + 1) + C[i+1, k-1] + C[k+1, j] 중 최소값<br> 
+                L[i, j] = L[i+1,k-1] + 1과 L[k+1, j] 둘 중에 큰 값</font></p>
+                <p style="line-height:150%;"><font size="2">가 된다. k는 i와 
+                j사이의 한 점이고, L[i, j]는 i~j까지의 선들 중 최대의 높이를 
+                담는 배열이다. 위의 점화식이 상당히 복잡한 편인데, 다음 그림을 
+                보면 이해가 갈 것이다.</font></p>
+                <p align="center" style="line-height:150%;"><font size="2"><img src="skoi99h1-1.gif"
+                 width="374" height="167" border="0"><br></font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;위에 
+                i부터 j까지의 점들이 있다. 여기에서 확실한 것은, i는 i+1과 j사이의 
+                한 점과 반드시 연결된다는 것이다. 그 점을 k라고 하자. i와 k를 
+                연결하게 되면, i+1~k-1과 k+1~j의 두 부분으로 나뉘게 된다. 위의 
+                점화식은 그것을 설명하고 있는 것이다. (k - i)는 새로 그은 선의 
+                가로 길이, 2 * (L[i+1, k-1] + 1)는 세로 길이, C[i+1, k-1] + 
+                C[k+1, j]는 나뉜 부분들의 값이다.</font></td>
+        </tr>
+    </table>
+    <p>&nbsp;</p>
+</ul>
+</body>
+
+</html>

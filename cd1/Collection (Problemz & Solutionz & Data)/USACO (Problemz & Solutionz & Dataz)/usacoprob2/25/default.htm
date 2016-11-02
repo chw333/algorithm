@@ -1,0 +1,90 @@
+<html>
+<head> <title>Problem 25: Polygon</title> </head>
+<body background="../../usaco/bg3.jpg">
+<img src="../../usaco/cow1.jpg" width="742" height="118">
+<center>
+<b><font size="7">Polygon</font></b><br>
+<b>IOI '98</b>
+</center>
+
+Polygon is a game for one player that starts on a polygon with <B>N</B>
+vertices, like the one in Figure 1, where <B>N</B>=4. Each vertex is
+labelled with an integer and each edge is labelled with either the symbol
++ (addition) or the symbol * (product). The edges are numbered from 1 to
+<B>N</B>.
+
+<center>
+<IMG SRC="/usaco/polygon-1.gif"><BR>
+<I>Figure 1. Graphical representation of a polygon</I><P>
+</center>
+
+<p>On the <B>first move</B>, one of the edges is removed.<P> Subsequent
+moves involve the following steps:
+<UL>
+<LI>pick an edge <B>E</B> and the two vertices <B>V_1</B> and <B>V_2</B>
+that are linked by <B>E</B>; and</LI>
+<LI>replace them by a new vertex, labelled with the result of performing
+the operation indicated in <B>E</B> on the labels of <B>V_1</B> and
+<B>V_2</B>.</LI>
+</UL>
+
+<p>The game ends when there are no more edges, and its score is the label
+of the single vertex remaining.
+
+<H3>Sample Game</H3>
+
+<p>Consider the polygon of Figure 1. The player started by removing edge 3. The effects are depicted in Figure 2.<P>
+<IMG SRC="/usaco/polygon-2.gif"><BR>
+<I>Figure 2. Removing edge 3</I><P>
+After that, the player picked edge 1,<P>
+<IMG SRC="/usaco/polygon-3.gif"><BR>
+<I>Figure 3. Picking edge 1</I><P>
+then edge 4,<P>
+<IMG SRC="/usaco/polygon-4.gif"><BR>
+<I>Figure 4. Picking edge 4</I><P>
+and, finally, edge 2. The score is 0.<P>
+<IMG SRC="/usaco/polygon-5.gif"><BR>
+<I>Figure 5. Picking edge 2</I><P>
+
+<p>Write a program that, given a polygon, computes the highest possible
+score and lists all the edges that, if removed on the first move, can lead
+to a game with that score.
+
+<h3>PROGRAM NAME: polygon</h3>
+
+<h3>INPUT FORMAT </h3>
+
+<ul>
+<li>Line 1: N
+<li>
+The second line contains the labels of edges 1, ..., <B>N</B>, interleaved
+with the vertices' labels (first that of the vertex between edges 1 and 2,
+then that of the vertex between edges 2 and 3, and so on, until that of
+the vertex between edges <B>N</B> and 1), all separated by one space. An
+edge label is either the letter <I>t</I> (representing +) or the letter
+<I>x</I> (representing *).
+</ul>
+
+<h3>SAMPLE INPUT (FILE polygon.in)</h3>
+<pre>
+4
+t -7 t 4 x 2 x 5
+</pre>
+This is the input file for the polygon of Figure 1. The second line starts
+with the label of edge 1.
+
+<H3>OUTPUT FORMAT</H3>
+<p> On the first line of file, write the highest score one can get for the
+input polygon. <BR>
+On the second line, write the list of all edges that, if removed on the
+first move, can lead to a game with that score. <BR>
+Edges must be written in increasing order, each separated by one space.
+<H3>SAMPLE OUTPUT (FILE polygon.out)</H2>
+<pre>
+33
+1 2
+</pre>
+This must be the output file for the polygon of Figure 1.
+<H3>Constraints</H3>
+3 &lt;= N &lt;= 50<BR>
+For any sequence of moves, vertex labels are in the range  [-32768,32767].

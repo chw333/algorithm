@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0066)http://www.uwp.edu/academic/mathematics/usaco/2000/Fall/b-prob.htm -->
+<HTML><HEAD><TITLE>Problems</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=ks_c_5601-1987">
+<META content="MSHTML 5.50.4134.100" name=GENERATOR></HEAD>
+<BODY>
+<TABLE width="99%" border=0>
+  <TBODY>
+  <TR>
+    <TD width="5%"></TD>
+    <TD width="95%" colSpan=2><STRONG><FONT face=Arial><BIG>Problems - 2000 
+      Fall Open, Orange</BIG></FONT></STRONG>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD width="5%"></TD>
+    <TD width="85%"><FONT face=Arial><SMALL><A name=p1></A><B>PROBLEM 1: 
+      Negative Number Bases </B>[Traditional, Rob Kolstad]<BR><BR>Negative 
+      number bases are just like positive ones, except that every other place 
+      value is negative.<BR><BR>The number seven represented in base positive 
+      two is: 111 base 2. In base negative 2, however, the place values mean 
+      that 7 is represented as 11011 base -2. This is because<BR><BR>(1 x 16 + 1 
+      x -8 + 0 x 4 + 1 x -2 + 1) = 7<BR><BR>since base 2's place values 1, -2, 
+      4, -8, 16, etc. Note that negative number bases can represent both 
+      positive and negative integers without using a sign! So, negative number 
+      base representation does not use a sign (in this task, 
+      anyway).<BR><BR>Write a program to convert ordinary integers from the 
+      input to another supplied base.<BR><BR>INPUT FORMAT:</SMALL> </FONT>
+      <UL>
+        <LI><FONT face=Arial><SMALL>A single line with two integers: N 
+        B<BR>&nbsp;-30000 &lt;= N &lt;= 30000, the number to be converted, 
+        expressed in base 10&nbsp;. -10 &lt;= B &lt;= -2 or 2 &lt;= B &lt;= 10, 
+        the new number base.</SMALL> </FONT></LI></UL>
+      <P><FONT face=Arial><SMALL>SAMPLE INPUT (file INPUT.TXT):<BR><BR>7 
+      -2<BR><BR>OUTPUT FORMAT:<BR><BR>The output is a single line that contains 
+      the numerical representation of the number in the new number 
+      base.<BR><BR>SAMPLE OUTPUT (file OUTPUT.TXT):<BR><BR>11011<BR></P>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Fall/b-data.htm#p1">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Fall/b-sol.htm#p1">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p2></A><B>PROBLEM 2: Crossword Puzzle Words </B>[Traditional, Rob 
+      Kolstad]<BR><BR>Consider a cross puzzle (where `-' represents a blank and 
+      `#' represents a black square):<BR><BR></SMALL></FONT><SMALL><FONT 
+      face=Courier>- - - - #<BR>- - # # -<BR>- - - - -<BR>- # # - -<BR># - - - 
+      -<BR></FONT><FONT face=Arial><BR>A word must be at least two characters in 
+      length and contiguous as per traditional crossword puzzle rules. In this 
+      example, there are five `across' words and four `down' words.<BR><BR>Your 
+      job is to read in a crossword puzzle and compute the number of words 
+      across and down.<BR><BR>INPUT FORMAT: </FONT></SMALL>
+      <UL>
+        <LI><SMALL><FONT face=Arial>Line 1: A single integer N, 3 &lt;= N &lt;= 
+        100, the dimension of the square puzzle<BR></FONT></SMALL>
+        <LI><SMALL><FONT face=Arial>Lines 2..N=1: N characters, each either `-' 
+        or `#' representing the puzzle </FONT></SMALL></LI></UL>
+      <P><SMALL><FONT face=Arial>SAMPLE INPUT (file 
+      INPUT.TXT):<BR><BR></FONT><FONT 
+      face=Courier>5<BR>----#<BR>--##-<BR>-----<BR>-##--<BR>#----<BR></FONT><FONT 
+      face=Arial><BR>OUTPUT FORMAT:<BR><BR>The output is a single line that 
+      contains two integers: </FONT></SMALL></P>
+      <UL>
+        <LI><SMALL><FONT face=Arial>the number of `across' words </FONT></SMALL>
+        <LI><SMALL><FONT face=Arial>the number of `down' words 
+        </FONT></SMALL></LI></UL>
+      <P><SMALL><FONT face=Arial>SAMPLE OUTPUT (file 
+      OUTPUT.TXT):<BR><BR>5&nbsp;<BR>4</P>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Fall/b-data.htm#p2">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Fall/b-sol.htm#p2">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p3></A><B>PROBLEM 3: Cows on Parade </B><SMALL>[Charley Ashbacher; 
+      JRM 25:4 p299 '93]</SMALL><B><BR></B><BR>Farmer John was marching 19 of 
+      his finest black Angus and white Jersey cows to market the other day when 
+      his wife, Farmeress Joanne, noticed that all 16 possible combinations of 
+      four successive black and white cows (e.g., bbbb, bbbw, bbwb, bbww, ..., 
+      wwww) were present (as contiguous cow-subsequences) as the parade passed 
+      by. Of course, some of the combinations overlapped others.<BR><BR>Your job 
+      is to find an ordering of N cows so that each of the possible sequences of 
+      C colors can be found as a contiguous `subsequence' of cows. Typical 
+      lengths and subsequences are: 2,5; 3,10; 4,19; 5,36 and others. Each input 
+      dataset is guaranteed to have a solution.<BR><BR>INPUT FORMAT:<BR><BR>A 
+      single line with two integers: 
+      <UL>
+        <LI>N, 1 &lt;= N &lt;= 32782, the number of cows on parade 
+        <LI>S, 1 &lt;= S &lt;= 15, the length of the subsequence </LI></UL>
+      <P>SAMPLE INPUT (file INPUT.TXT):<BR><BR>10 3<BR><BR>OUTPUT 
+      FORMAT:<BR><BR>The output is N lines, each with a single `b' or `w'. The 
+      lines represent a possible ordering of the parading cows.<BR><BR>SAMPLE 
+      OUTPUT (file 
+      OUTPUT.TXT):<BR><BR>b<BR>b<BR>b<BR>w<BR>b<BR>w<BR>w<BR>w<BR>b<BR>b<BR></FONT></SMALL><FONT 
+      face=Arial><SMALL></P>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Fall/b-data.htm#p3">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/2000/Fall/b-sol.htm#p3">Solutions</A>]</SMALL> 
+
+      <HR>
+      &nbsp; 
+      <P align=right>&nbsp; </SMALL></FONT></P></TD>
+    <TD width="10%"></TD></TR></TBODY></TABLE></BODY></HTML>

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>KOI 13회 중등부 1.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0" width="595">
+    <tr>
+        <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+            16회 중등부 2. 회로 배치</b></font></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="pkoi99m2.htm"><img src="button1.gif"
+             width="72" height="22" border="0"></a></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi99m2.htm"><img src="button3.gif"
+             width="72" height="22" border="0"></a></td>
+    </tr>
+</table>
+<ul>
+    <p>&nbsp; 
+    <table border="0">
+            <tr>
+                <td width="550"><p style="line-height:150%;"><font size="2">&nbsp;&nbsp;문제가 
+                복잡해 보이는데, 간단히 생각하면 &quot;그래프 상에서의 최단거리&quot;를 
+                찾는 문제가 된다. 정보올림피아드에 이런 유형의 문제는 상당히 
+                자주 나오는 편이므로 반드시 숙지하는게 좋을 것이다.<br></font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;그래프는 
+                자료구조의 일종인데, 기초가 있어야 하므로 그래프를 모른다면 
+                책을 참고하는 편이 좋을 것이다. 그래프를 구성하는 정점(node)는 
+                이 문제에서의 격자 하나하나가 되고, 간선(edge)은 각 정점에서 
+                왼쪽, 오른쪽, 위, 아래로 연결되어 있으면 된다. 간선의 가중치는 
+                회로가 배치되지 않은 빈 격자로 향하는 간선은 1이고, 회로가 배치된 
+                격자로 향하는 간선은 k가 될 것이다.<br></font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;그럼 
+                이 그래프가 준비되었다면(사실 그래프를 실제로 만드는 것은 아니고, 
+                그냥 가정하는 것이다) A점과 B점 사이의 최단거리를 구하면 답이 
+                나온다. 물론 시작점 A에서의 비용은 고려되지 않은 값이므로, 1또는 
+                k를 구하면 된다. 최단거리는 dijkstra 알고리즘을 이용해 구한다. 
+                이런 유형의 문제는 답을 구했더라도 그 경로를 알아내는 것 역시 
+                쉽지 않으므로 주의할 필요가 있다.<br></font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;이 문제는 
+                문제 자체의 난이도도 그렇지만, 데이터의 입력 형식도 까다로운 
+                편이다.</font></td>
+        </tr>
+    </table>
+    <p>&nbsp;</p>
+</ul>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+[DEFAULT]
+BASEURL=http://www.soriya.com/
+
+[DOC#3#4]
+BASEURL=http://www.soriya.com/top/top.html
+ORIGURL=./top/top.html
+
+[DOC#3#5]
+BASEURL=http://www.soriya.com/service/test_als.html?mod=jaga
+ORIGURL=./main/main.html
+
+[InternetShortcut]
+URL=http://www.soriya.com/
+Modified=80B7CCB0BFF0C00123

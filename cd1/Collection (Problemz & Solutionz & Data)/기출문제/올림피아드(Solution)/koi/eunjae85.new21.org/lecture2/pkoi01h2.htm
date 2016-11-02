@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>2001년 18회 한국정보올림피아드</title>
+<meta name="namo-theme" content="Mask; vert">
+<meta name="generator" content="Namo WebEditor v3.0">
+<style><!--
+h1 { font-family:굴림; font-size:12pt; color:rgb(255,0,0); }
+h2 { font-family:굴림; font-size:12pt; color:rgb(128,0,0); }
+p { font-family:굴림; color:rgb(0,0,0); }
+p.namo-bullet1 { font-family:굴림; font-size:12pt; color:rgb(128,0,0); }
+p.namo-bullet2 { font-family:굴림; font-size:10pt; color:rgb(0,0,0); }
+--></style>
+</head>
+
+<body bgcolor="white" text="black" link="red" vlink="#804000" alink="maroon">
+
+<table border="0">
+    <tr>
+        <td width="595"><table border="0" width="595">
+                <tr>
+                    <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+                        18회 고등부 2. 로봇</b></font></td>
+                    <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="skoi01h2.htm"><img src="button2.gif"
+                         width="72" height="22" border="0"></a></td>
+                    <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi01h2.htm"><img src="button3.gif"
+                         width="72" height="22" border="0"></a></td>
+                </tr>
+            </table>
+            <p><img src="bar1.gif" width="592" height="25" border="0"></p>
+            <ul>
+                <p align="left"><font size="2">&nbsp;&nbsp;이차원 평면상에서 
+                변들이 좌표축에 평행한 L-모양 다각형의 장애물들이 있다. 이들 
+                장애물들은 서로 겹치지 않고 또한 변이나 꼭지점에서 만나지 않는다. 
+                로봇이 어느 한 지점에서 출발하여 정해진 도착 지점으로 이들 장애물들을 
+                피해서 이동하고자 한다. 이 로봇은 항상 좌표축과 평행하게 이동하며 
+                장애물의 변을 따라서 이동할 수 있다. 로봇이 출발지점에서 도착지점까지 
+                이동하는 여러 경로들 중에서 꺾이는 횟수가 최소가 되는 경로를 
+                찾고자 한다. 단, 로봇의 크기를 무시하여 로봇을 이차원 상의 점으로 
+                표현할 수 있다고 가정한다. 또한, 로봇의 출발지점과 도착지점은 
+                항상 장애물의 내부나 경계선에 놓여 있지 않다.<br> &nbsp;&nbsp;아래 
+                그림의 예를 통해서 로봇이 도착지점에 도달하기 위한 이 경우에는 
+                꺾이는 수가 3이 최소임을 알 수 있다. </font></p>
+                <p align="center"><font size="2"><img src="pkoi01h2_1.gif" width="307"
+                 height="229" border="0"></font></p>
+                <p align="left"><font size="2">&nbsp;&nbsp;L-모양 다각형의 장애물들, 
+                출발지점, 도착지점이 입력으로 주어져 있을 때 로봇이 출발지점에서 
+                도착지점으로 이동하는 경로 중 꺾이는 횟수가 최소인 것을 찾는 
+                프로그램을 작성하시오.</font></p>
+                <p align="left"><font size="2">&nbsp;&nbsp;실행파일의 이름은 
+                ROBOT.EXE 로 하고 실행 시간은 5초를 초과할 수 없다. 부분점수는 
+                없다.</font></p>
+            </ul>
+            <p><img src="bar2.gif" width="591" height="26" border="0"></p>
+            <ul>
+                <p><font size="2">&nbsp;&nbsp;입력 파일의 이름은 INPUT.TXT 이다. 
+                첫째 줄에는 로봇의 출발지점 좌표가 주어지고 둘째 줄에는 로봇의 
+                도착지점 좌표가 주어진다. 셋째 줄에는 장애물의 개수 (&lt;= 50) 
+                가 주어지고, 그 다음 줄부터 각 줄에는 하나의 장애물의 위치를 
+                나타내는 네 점의 좌표 p1, p2, p3, p4 가 차례로 주어지고 이 네점의 
+                좌표의 위치는 다음의 그림과 같다. 단, 모든 좌표는 x-좌표, y-좌표가 
+                한&nbsp;칸씩 되어서 순서대로 주어지며, 좌표의 각 값은 자연수 
+                (&lt;= 100) 이다.</font></p>
+                <p align="center"><font size="2"><img src="pkoi01h2_2.gif" width="205"
+                 height="181" border="0"></font></p>
+            </ul>
+            <p><img src="bar3.gif" width="590" height="26" border="0"></p>
+            <ul>
+                <p><font size="2">출력 파일의 이름은 OUTPUT.TXT 이다. 로봇의 
+                경로들 중에서 꺾이는 회수가 최소가 되는 경로의 휫수를 출력한다. 
+                </font></p>
+            </ul>
+            <p><img src="bar4.gif" width="593" height="25" border="0">&nbsp;</p>
+            <ul>
+                <p><font face="굴림" size="2">입력(INPUT.TXT)</font> 
+                <div align="left"><table border cellpadding="2" cellspacing="0"
+                 width="180">
+                        <tr>
+                            <td><p><font face="굴림" size="2">3 6<br> 10 6<br> 
+                            4<br> 8 4 8 2 11 2 9 3<br> 4 5 2 5 2 2 3 3<br> 7 
+                            4 7 9 2 9 5 8<br> 11 8 8 8 8 5 9 7</font></td>
+                    </tr>
+                </table></div>
+                <p align="left"><font face="굴림" size="2"><br> 출력(OUTPUT.TXT)&nbsp;<br></font> 
+                
+                <div align="left"><table border cellpadding="2" cellspacing="0"
+                 width="180">
+                        <tr>
+                            <td height="17"><p><font face="굴림" size="2">3</font></td>
+                    </tr>
+                </table></div>
+
+                </ul><p><img src="bar5.gif" width="595" height="26" border="0"></p>
+            <ul>
+                <p><font size="2">&nbsp;제한시간은 5초이다.</font> 
+            </ul></td>
+    </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+
+</html>

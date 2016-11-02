@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0066)http://www.uwp.edu/academic/mathematics/usaco/1999/Spring/prob.htm -->
+<HTML><HEAD><TITLE>Problems</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=ks_c_5601-1987">
+<META content="MSHTML 5.50.4134.100" name=GENERATOR></HEAD>
+<BODY>
+<TABLE width="99%" border=0>
+  <TBODY>
+  <TR>
+    <TD width="6%"></TD>
+    <TD width="94%" colSpan=2><BIG><STRONG><FONT face=Arial>Problems - 1999 
+      Spring Open - The Fence Contest</FONT></STRONG></BIG>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD width="6%"></TD>
+    <TD width="84%"><FONT face=Arial><SMALL><A name=p1></A><B>PROBLEM 1: Fence 
+      Rails</B> [Burch, Kolstad, and Schrijvers] 
+      <P>Farmer John is trying to erect a fence around part of his field. He has 
+      decided on the shape of the fence and has even already installed the 
+      posts, but he's having a problem with the rails. The local lumber store 
+      has dropped off boards of varying lengths; Farmer John must create as many 
+      of the rails he needs from the supplied boards. 
+      <P>Of course, Farmer John can cut the boards, so a 9 foot board can be cut 
+      into a 5 foot rail and a 4 foot rail (or three 3 foot rails, etc.). Ignore 
+      the `kerf' (distance lost during sawing); presume that perfect cuts can be 
+      made. 
+      <P>The lengths required for the rails might or might not include 
+      duplicates (e.g., a three foot rail and also another three foot rail might 
+      both be required). There is no need to manufacture more rails (or more of 
+      any kind of rail) than called for the list of required rails. 
+      <P>Given: 
+      <UL>
+        <LI>N (1 &lt;= N &lt;= 50), the number of boards 
+        <LI>N lines, each containing a single integer that represents the length 
+        of one supplied board 
+        <LI>R (1 &lt;= R &lt;= 1023), the number of rails 
+        <LI>R lines each containing a single integer (1 &lt;= r<SUB>i</SUB> 
+        &lt;= 128) that represents the length of a single required fence rail 
+        </LI></UL>then calculate and print as a single integer on a line the 
+      maximum total number of fence rails that can be cut from the supplied 
+      boards. Of course, it might not be possible to cut all the possible rails 
+      from the given boards. 
+      <P>INPUT FORMAT: 
+      <P>The first line contains N<BR>N subsequent lines, each containing a 
+      supplied length<BR>The next line contains R<BR>R subsequent lines, each 
+      containing a required length 
+      <P>SAMPLE INPUT (file INPUT.TXT): </SMALL><PRE>4
+30
+40
+50
+25
+10
+15
+16
+17
+18
+19
+20
+21
+25
+24
+30
+</PRE><SMALL>
+      <P>OUTPUT FORMAT: 
+      <P>A single integer on a line. The integer is the maximum number of 
+      required fence lengths that can be cut from the supplied fence sections. 
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): </SMALL><PRE>7
+</PRE><SMALL>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Spring/data.htm#p1">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Spring/sol.htm#p1">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p2></A><B>PROBLEM 2: Barn Repair</B> [Kolstad, Burch, and 
+      Schrijvers] 
+      <P>It was a dark and stormy night that ripped the roof and gates off the 
+      stalls that hold Farmer John's cows. Happily, many of the cows were on 
+      vacation, so the barn was not completely full. 
+      <P>The cows spend the night in stalls that are arranged adjacent to each 
+      other in a long line. Some stalls have cows in them; some do not. All 
+      stalls are the same width. 
+      <P>Farmer John must quickly erect new boards in front of the stalls, since 
+      the doors were lost. His new lumber supplier will supply him boards of any 
+      length he wishes, but the supplier can only deliver a small number of 
+      total boards. Farmer John wishes to minimize the total length of the 
+      boards he must purchase. 
+      <P>Given M (1 &lt;= M &lt;= 50), the maximum number of boards that can be 
+      purchased; S (1 &lt;= S &lt;= 200), the total number of stalls; C (1 &lt;= 
+      C &lt;= S) the number of cows in the stalls, and the C occupied stall 
+      numbers (1 &lt;= stall_number &lt;= S), calculate the minimum number of 
+      stalls that must be blocked in order to block all the stalls that have 
+      cows in them. 
+      <P>Print your answer as the total number of stalls blocked. 
+      <P>INPUT FORMAT: 
+      <P>The first line has three space separated integers: M, S, and C<BR>C 
+      subsequent lines contain the stall numbers that are occupied. 
+      <P>SAMPLE INPUT (file INPUT.TXT): </SMALL><PRE>4 50 18
+3
+4
+6
+8
+14
+15
+16
+17
+21
+25
+26
+27
+30
+31
+40
+41
+42
+43
+</PRE><SMALL>
+      <P>OUTPUT FORMAT: 
+      <P>On a single line, print one integer that represents the total number of 
+      stalls blocked. 
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): </SMALL><PRE>25
+</PRE><SMALL>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Spring/data.htm#p2">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Spring/sol.htm#p2">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p3></A><B>PROBLEM 3: Overfencing</B> [Kolstad and Schrijvers] 
+      <P>Farmer John went crazy and created a huge maze of fences out in a 
+      field. Happily, he left out two fence segments on the edges, and thus 
+      created two "exits" for the maze. Even more happily, the maze he created 
+      by overfencing is a `perfect' maze: you can find a way out of the maze 
+      from any point inside it. 
+      <P>Given W (1 &lt;= W &lt;= 38), the width of the maze; H (1 &lt;= H &lt;= 
+      100), the height of the maze; 2*H+1 lines with width 2*W+1 characters that 
+      represent the maze in a format like that shown later -- then calculate the 
+      number of steps required to exit the maze from the `worst' point in the 
+      maze (the point that is `farther' from either exit even when walking 
+      optimally to the closest exit). Of course, cows walk only parallel or 
+      perpendicular to the x-y axes; they do not walk on a diagonal. Each move 
+      to a new square counts as a single unit of distance (including the move 
+      "out" of the maze. 
+      <P>Here's what one particular W=5, H=3 maze looks like: </SMALL><PRE>+-+-+-+-+-+
+|         |
++-+ +-+ + +
+|     | | |
++ +-+-+ + +
+| |     |  
++-+ +-+-+-+
+</PRE><SMALL>
+      <P>Fenceposts appear only in odd numbered rows and and odd numbered 
+      columns (as in the example). The format should be obvious and self 
+      explanatory. Each maze has exactly two blank walls on the outside for 
+      exiting. 
+      <P>INPUT FORMAT: 
+      <P>The first line contains two space separated integers, W and H. 2*H+1 
+      subsequent lines contain 2*W+1 characters that represent the maze. 
+      <P>SAMPLE INPUT (file INPUT.TXT): </SMALL><PRE>5 3
++-+-+-+-+-+
+|         |
++-+ +-+ + +
+|     | | |
++ +-+-+ + +
+| |     |  
++-+ +-+-+-+
+</PRE><SMALL>OUTPUT FORMAT: 
+      <P>A single integer on a single output line. The integer specifies the 
+      minimal number of steps that guarantee a cow can exit the maze from any 
+      possible point inside the maze. 
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): </SMALL><PRE>9
+</PRE><SMALL>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Spring/data.htm#p3">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Spring/sol.htm#p3">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p4></A><B>PROBLEM 4: Optimal Electric Fences</B> [Kolstad &amp; 
+      Schrijvers] 
+      <P>Farmer John has decided to construct electric fences. He has fenced his 
+      fields into a number of bizarre shapes and now must find the optimal place 
+      to locate the electrical supply to each of the fences. 
+      <P>A single wire must run from some point on each and every fence to the 
+      source of electricity. Wires can run through other fences or across other 
+      wires. Wires can run at any angle. Wires can run from any point on a fence 
+      (i.e., the ends or anywhere in between) to the electrical supply. 
+      <P>Given the locations of all F (1 &lt;= F &lt;= 125) fences (fences are 
+      always parallel to a grid axis and run from one integer gridpoint to 
+      another, 0 &lt;= X,Y &lt;= 100), your program must calculate both the 
+      total length of wire required to connect every fence to the central source 
+      of electricity and also the optimal location for the electrical source. 
+      <P>The optimal location for the electrical source might be anywhere in 
+      Farmer John's field, not necessarily on a grid point. 
+      <P>INPUT FORMAT: 
+      <P>The first line contains F, the number of fences.<BR>F subsequent lines 
+      each contain two X,Y pairs each of which denotes the endpoints of a fence. 
+
+      <P>SAMPLE INPUT (file INPUT.TXT): </SMALL><PRE>3
+0 0 0 1
+2 0 2 1
+0 3 2 3
+</PRE><SMALL>
+      <P>OUTPUT FORMAT: 
+      <P>On a single line, print three space-separated floating point numbers, 
+      each with a single decimal place. Presume that your computer's output 
+      library will round the number correctly. 
+      <P>The three numbers are: 
+      <UL>
+        <LI>the X value of the optimal location for the electricity, 
+        <LI>the Y value for the optimal location for the electricity, and 
+        <LI>the total (minimum) length of the wire required. </LI></UL>
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): </SMALL><PRE>1.0 1.6 3.7
+</PRE><SMALL>[Other answers might also be correct for some test data.] 
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Spring/data.htm#p4">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Spring/sol.htm#p4">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p5></A><B>PROBLEM 5: Riding the Fences</B> [Burch &amp; Kolstad] 
+      <P>Farmer John owns a large number of fences that must be repaired 
+      annually. He traverses the fences by riding a horse along each and every 
+      one of them (and nowhere else) and fixing the broken parts. 
+      <P>Farmer John is as lazy as the next farmer and hates to ride the same 
+      fence twice. Your program must read in a description of a network of 
+      fences and tell Farmer John a path to traverse each fence length exactly 
+      once, if possible. Farmer J can start and finish at any fence 
+      intersection. 
+      <P>Every fence connects two fence intersections, which are numbered 
+      inclusively from 1 through 500 (though some farms have far fewer than 500 
+      intersections). Any number of fences (&gt;=1) can meet at a fence 
+      intersection. It is always possible to ride from any fence to any other 
+      fence (i.e., all fences are "connected"). 
+      <P>INPUT FORMAT: 
+      <P>The first line of the input tells the number of fences, F (1 &lt;= F 
+      &lt;= 1024).<BR>F subsequent lines of input each contain a pair of 
+      integers (1 &lt;= i,j &lt;= 500) that tell which pair of intersections 
+      this fence connects. 
+      <P>There will always be at least one solution for each set of input data 
+      supplied to your program for testing. 
+      <P>SAMPLE INPUT (file INPUT.TXT): </SMALL><PRE>9
+1 2
+2 3
+3 4
+4 2
+4 5
+2 5
+5 6
+5 7
+4 6
+</PRE><SMALL>
+      <P>OUTPUT FORMAT: 
+      <P>The output consists of F+1 lines, each containing a single integer. 
+      Print the number of the starting intersection on the first line, the next 
+      intersection's number on the next line, and so on, until the final 
+      intersection on the last line. There might be many possible answers to any 
+      given input set. 
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): </SMALL><PRE>1
+2
+3
+4
+2
+5
+4
+6
+5
+7
+</PRE><SMALL>[Other answers are possible.] 
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Spring/data.htm#p5">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Spring/sol.htm#p5">Solutions</A>]</SMALL> 
+
+      <HR>
+      </FONT></SMALL></TD>
+    <TD width="10%"></TD></TR></TBODY></TABLE></BODY></HTML>

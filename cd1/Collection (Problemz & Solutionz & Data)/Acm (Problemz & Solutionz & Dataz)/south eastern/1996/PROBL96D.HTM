@@ -1,0 +1,177 @@
+<HTML>
+<HEAD>
+<TITLE>E:\OTHERS\WORK\ACM\NEW\d.htm</TITLE>
+</HEAD>
+<BODY>
+<HV>ACM Eastern European Regional Programming Contest.<BR>
+Bucharest, Romania<BR>
+October 19, 1996<BR>
+<BR>
+<B>Problem D<BR>
+</B>One Day Tours<BR>
+
+<P ALIGN=JUSTIFY>
+</P>
+
+<P ALIGN=JUSTIFY>
+Input File Name: D.DAT</P>
+
+<P ALIGN=JUSTIFY>
+Program Source File: D.PAS or D.C or D.CPP</P>
+<BR>
+
+<P ALIGN=JUSTIFY>
+     A hotel needs a program to assist any tourist who wants to visit N different places (N&nbsp&lt;=&nbsp20). Every day the tourist leaves the hotel, visits M places (may be fewer on the last day) and comes back to the hotel.</P>
+
+<P ALIGN=JUSTIFY>
+ Let us consider that the hotel is identified by 0, the places to visit by consecutive positive integers and the available roads by triples (i,j,d), where d represents the road length (in km) and 0&nbsp&lt;= i &lt; j &lt;= N.</P>
+
+<P ALIGN=JUSTIFY>
+     The input file (D.DAT) includes data about several tourists. For each tourist the available roads (at least 2) and a negative value (v &lt; -1) which designates the number of visits to be scheduled for one day (M = -v) are given, as in the following example:</P>
+<BR>
+</HV>
+<P ALIGN=JUSTIFY>
+<TT>0 1 10</P>
+
+<P ALIGN=JUSTIFY>
+0 2 10</P>
+
+<P ALIGN=JUSTIFY>
+0 3 10</P>
+
+<P ALIGN=JUSTIFY>
+0 4 10</P>
+
+<P ALIGN=JUSTIFY>
+1 2 10</P>
+
+<P ALIGN=JUSTIFY>
+3 4 15</P>
+
+<P ALIGN=JUSTIFY>
+4 5 10</P>
+
+<P ALIGN=JUSTIFY>
+-3</P>
+
+<P ALIGN=JUSTIFY>
+0 1 2</P>
+
+<P ALIGN=JUSTIFY>
+1 2 2</P>
+
+<P ALIGN=JUSTIFY>
+2 3 2</P>
+
+<P ALIGN=JUSTIFY>
+3 1 2</P>
+
+<P ALIGN=JUSTIFY>
+0 4 2</P>
+
+<P ALIGN=JUSTIFY>
+0 5 2</P>
+
+<P ALIGN=JUSTIFY>
+-2</P>
+</TT><HV><BR>
+
+<P ALIGN=JUSTIFY>
+     The program must schedule the visits according to the following constraints:</P>
+&middot;
+<P ALIGN=JUSTIFY>
+ each place is visited only once;</P>
+&middot;
+<P ALIGN=JUSTIFY>
+ a place must be visited when reached for the first time (afterwards it can be included in any tour as a passing by point);</P>
+&middot;
+<P ALIGN=JUSTIFY>
+ the total travel must be as short as possible; </P>
+&middot;
+<P ALIGN=JUSTIFY>
+ ties are solved by applying the &quot;shorter one day tour&quot; rule, from the last to the first day</P>
+
+<P ALIGN=JUSTIFY>
+      ( [ ... 180 km 50 km] is preferred to [... 200 km 50 km]);</P>
+&middot;
+<P ALIGN=JUSTIFY>
+ if the tie is not solved by the above rule, the &quot;preferred place first&quot; rule is applied (the schedule 1 3 5 ... is preferred to 1 3 7 ...).</P>
+<BR>
+
+<P ALIGN=JUSTIFY>
+The resulting schedules are stored in the output file (D.out) in the following format:</P>
+<BR>
+
+<P ALIGN=JUSTIFY>
+== Tourist  i  -- M visits a day --</P>
+<BR>
+
+<P ALIGN=JUSTIFY>
+ Day  1: [dfh] - fvp - [dpp] - ..... - lvp - [dth]</P>
+
+<P ALIGN=JUSTIFY>
+  . . . . . .</P>
+<BR>
+
+<P ALIGN=JUSTIFY>
+=== </P>
+<BR>
+
+<P ALIGN=JUSTIFY>
+where, for each day tour</P>
+
+<P ALIGN=JUSTIFY>
+          dfh - distance from hotel to the first visited place</P>
+
+<P ALIGN=JUSTIFY>
+          fvp - index of the first visited place</P>
+
+<P ALIGN=JUSTIFY>
+          dpp - distance betweeen consecutive visited places</P>
+
+<P ALIGN=JUSTIFY>
+          lvp - index of the last visited place</P>
+
+<P ALIGN=JUSTIFY>
+          dfh - distance from last visited place to the hotel</P>
+<BR>
+
+<P ALIGN=JUSTIFY>
+For the given example the output looks as follows:</P>
+<BR>
+
+<P ALIGN=JUSTIFY>
+== Tourist  1  --  3 visits a day --</P>
+<BR>
+
+<P ALIGN=JUSTIFY>
+ Day  1: [10] - 3 - [15] - 4 - [10] - 5 - [20]</P>
+
+<P ALIGN=JUSTIFY>
+ Day  2: [10] - 1 - [10] - 2 - [10]</P>
+<BR>
+
+<P ALIGN=JUSTIFY>
+===</P>
+<BR>
+
+<P ALIGN=JUSTIFY>
+== Tourist  2  --  2 visits a day --</P>
+<BR>
+
+<P ALIGN=JUSTIFY>
+ Day  1: [2] - 1 - [4] - 4 - [2]</P>
+
+<P ALIGN=JUSTIFY>
+ Day  2: [4] - 2 - [2] - 3 - [4]</P>
+
+<P ALIGN=JUSTIFY>
+ Day  3: [2] - 5 - [2]</P>
+<BR>
+
+<P ALIGN=JUSTIFY>
+===</P>
+<BR>
+
+</BODY>
+</HTML>

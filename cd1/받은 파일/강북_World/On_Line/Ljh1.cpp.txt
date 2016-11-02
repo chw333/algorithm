@@ -1,0 +1,88 @@
+#include <stdio.h>
+#define max(a,b) ((a>b) ? a:b)
+
+FILE *outfile;
+int size;
+int limit[] = {0, 1, 8, 27, 64};
+int count[5];
+int ans[101][6];
+
+void get_data(void)
+{
+	FILE *infile = fopen("input.txt", "r");
+	fscanf(infile, "%d", &size);
+	fclose(infile);
+}
+
+void back(int cur, int remain, int last)
+{
+	if (!cur)
+	{
+		if (remain) return;
+		if (!count) fprintf(outfile, "%d = ", size);
+		else fprintf(outfile, "  = ");
+		int i, j;
+		for(i = 0; i < last; i++)
+			for(j = 0; j < count[i]; j++)
+				fprintf(outfile, "%d^3 + ", i);
+		for(j = 1; j < count[last]; j++)
+			fprintf(outfile, "%d^3 + ", last);
+		fprintf(outfile, "%d^3\n", last);
+	}
+	else
+	{
+		int i, end;
+		back(cur - 1, remain, last);
+		end = remain / limit[cur];
+		for(i = 1; i <= end; i++)
+		{
+			count[cur] = i;
+			last = max(cur, last);
+			back(cur - 1, remain - limit[cur] * i, last);
+		}
+	}
+}
+
+void dynamic(void)
+{
+	int i, j, k;
+	for(i = 1; i < 5; i++) { ans[limit[i]][i] = 1; ans[limit[i]][0] = 1; }
+	for(i = 2; i <= size; i++)
+	{
+		ans[i][0] = i; ans[i][1] = i;
+		k = 0;
+		for(j = 1; j < 5; j++)
+			if (i - limit[j] > 0 && ans[i - limit[j]][0] + 1 < ans[i][0])
+				k = j;
+		if (k)
+		{
+			ans[i][0] = ans[i - limit[k]][0] + 1;
+			for(j = 1; j < 5; j++)
+				ans[i][j] = ans[i - limit[k]][j];
+			ans[i][k]++;
+		}
+	}
+}
+
+int main(void)
+{
+	outfile = fopen("output.txt", "w");
+	get_data();
+	fprintf(outfile, "Answer (1) :\n");
+	back(4, size, 0);
+	dynamic();
+	fprintf(outfile, "Answer (2) :\n");
+	fprintf(outfile, "%d = ", size);
+	int solve, solve1, last;
+	for(solve = 4; solve >= 0; solve--)
+		if (ans[size][solve]) break;
+	last = solve;
+	for(solve = 1; solve < last; solve++)
+		for(solve1 = 0; solve1 < ans[size][solve]; solve1++)
+			fprintf(outfile, "%d^3 + ", solve);
+	for(solve1 = 1; solve1 < ans[size][last]; solve1++)
+		fprintf(outfile, "%d^3 + ", last);
+	fprintf(outfile, "%d^3", last);
+	fclose(outfile);
+	return 0;
+}

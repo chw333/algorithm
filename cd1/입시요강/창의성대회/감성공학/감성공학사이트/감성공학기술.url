@@ -1,0 +1,14 @@
+[DEFAULT]
+BASEURL=http://203.237.183.163/~snjeong/index.html
+
+[DOC#5#6]
+BASEURL=http://203.237.183.163/~snjeong/title.html
+ORIGURL=title.html
+
+[DOC#5#7#9]
+BASEURL=http://203.237.183.163/~snjeong/bbs/main.php3?code=notice
+ORIGURL=./bbs/main.php3?code=notice
+
+[InternetShortcut]
+URL=http://203.237.183.163/~snjeong/index.html
+Modified=2029DD1CA5F0C00198

@@ -1,0 +1,34 @@
+begin
+ loop n loop n loop n loop n loop n loop n loop n loop n
+ loop n loop n loop n loop n loop n loop n loop n loop n
+   op n op 3 op 4 op n
+ end
+  op 1
+ end
+  op 2
+ end
+  op 3
+ end
+  op 4
+ end
+  op 5
+ end
+  op 6
+  continue
+  op n
+ end
+  op 7
+ end
+ end
+  continue
+  break
+ end
+ op 32
+ end
+ op 64
+   break
+ op 128
+ end
+  op 3000
+ end break end end end
+end

@@ -1,0 +1,40 @@
+서울시 대회에서 하나의 스트링으로 입력자료를 줄 가능성이 있습니다. 
+이럴 경우, 쉼표 또는 공백 아님 또 다른 구분자로 각 자료들을 잘라내야 합니다. 
+
+다음과 같은 방식을 사용하면 아주 간단히 해결할 수 있습니다. 
+
+입력자료가 "길동,영구,맹구,땡칠이,신데렐라"라고 들어 왔을 때 물론 
+쉼표 대신에 '/'이나 '#' 아님 " "(공백)으로 구분되었을 때 
+strtok함수를 사용합니다. 
+그대로 긁어다 사용해보면 압니다... 
+
+#include <string.h> 
+#include <stdio.h> 
+#include <iostream.h> 
+
+char st[255];  // 입력받을 데이터 
+char indata[100][100]; // 잘라내서 저장할 데이터 
+char sector[10]   = ", "; 
+                // 쉼표랑 공백이랑 같이 있을 경우. 만약 쉼표만 있다면, "," 
+char *p;    // 잘라낸 문자열을 임시로 보관하는 곳 
+
+void main( void ) 
+{ 
+   int cnt=0; 
+   int i; 
+
+   cin.getline(st,255); // "10, 2, 5, 256, 98" 이라면 
+                               // 만약 파일이라면, in.getline(st,255)해야 되겠죠.. 
+   p=strtok(st,sector); 
+   while(p!=NULL) 
+   { 
+       strcpy(indata[cnt],p); 
+       cnt++; 
+       p=strtok(NULL,sector); 
+   } 
+
+   // 테스트로 화면에 찍어보기... 
+   for(i=0;i<cnt;i++) { 
+      cout << indata[i] << endl; 
+   } 
+} 

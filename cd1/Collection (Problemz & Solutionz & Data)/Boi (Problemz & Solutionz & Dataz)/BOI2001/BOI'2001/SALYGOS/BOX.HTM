@@ -1,0 +1,98 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=windows-1257">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (Win98; I) [Netscape]">
+   <title>Box of Mirrors</title>
+</head>
+<body bgcolor="#FF7F00" background="tlo.jpg">
+
+<h2>
+Dėžutė su veidrodžiais</h2>
+(Vykdymo laikas - 1 sek.)
+<br>Matematikas Andrius mėgsta įvairius galvosūkius ir vienas jo mėgiamiausių
+yra uždara dėžutė su veidrodžiais. Jeigu pažvelgtume į tokios dėžutės horizontalų
+pjūvį, tai pamatytume, kad ši dėžutė turi <i>n*m </i>kvadratinių narvelių
+(<i>n</i> eilučių ir <i>m</i> stulpelių). Kiekviename narvelyje gali būti
+įdėtas veidrodis, orientuotas įstrižai iš apatinio kairiojo į viršutinį
+dešinįjį kampą. Abi veidrodžio pusės atspindi šviesą. Kiekvieno narvelio
+kiekvieno krašto viduryje yra plyšys, per kurį šviesos spindulys gali patekti
+į narvelį arba išeiti iš jo. Į dėžutę spindulį galima nukreipti tik viena
+kryptimi – statmenai narvelio, kuriame yra plyšys, kraštui. Todėl spindulys,
+atsispindėjęs nuo veidrodžio, keičia savo kryptį 90 laipsnių kampu. Kai
+spindulys eina per tuščią narvelį, jo kryptis&nbsp;&nbsp;&nbsp; nesikeičia.
+Plyšiai, per kuriuos patenkama į pačią dėžutę, sunumeruoti iš eilės nuo
+1 iki 2* (<i>n</i>+<i>m</i>) einant aplink dėžutę prieš laikrodžio rodyklę,
+pradedant&nbsp; nuo viršutinio kairiojo narvelio kairiojo krašto ir einat
+žemyn. Kadangi veidrodžių išdėstymas dėžutėje nėra žinomas, vienintelis
+būdas tam sužinoti yra pašviesti į dėžutę spinduliu ir stebėti, pro kur
+išeis spindulys.
+<br>&nbsp;
+<p><img SRC="pv/box2.gif" NOSAVE height=77 width=144>
+<h2>
+Užduotis</h2>
+Parašykite programą kuri:
+<ul>
+<li>
+&nbsp;perskaitytų iš pradinių duomenų bylos box.in dėžutės matmenis ir
+plyšių poras, kuriomis aprašomas spindulio įėjimas ir išėjimas,</li>
+
+<li>
+nustatytų, kuriuose narveliuose yra veidrodžiai ir kurie narveliai yra
+tušti,</li>
+
+<li>
+rezultatus užrašytų į rezultatų bylą <tt>box.out</tt>.</li>
+</ul>
+Jeigu yra keletas galimų sprendinių, reikia rasti vieną iš jų.
+<br>&nbsp;
+<h2>
+Pradiniai duomenys</h2>
+Pradinių duomenų bylos <tt>box.in</tt> pirmoje eilutėje įrašyti du sveikieji
+skaičiai: <i>n</i> (eilučių skaičius, <i>1&lt;=n&lt;=100</i>) ir <i>m </i>(stulpelių
+skaičius, <i>1&lt;=m&lt;=100</i>)&nbsp; vienas nuo kito atskirti vienu
+tarpu. Kiekvienoje iš tolesnių 2*(<i>n</i>+<i>m</i>) eilučių yra vienas
+teigimas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; skaičius. (<i>i</i>+1)-oje
+eilutėje esantis skaičius nurodo plyšio numerį, pro kurį spindulys išeina,
+jei jis buvo įėjęs pro plyšį, kurio numeris <i>i</i>.
+<br>&nbsp;
+<h2>
+Rezultatai</h2>
+Jūsų programa į rezultatų bylą <tt>box.out</tt> turi įrašyti <i>n</i> eilučių,
+kiekvienoje kurių turi būti po <i>m</i> sveikų skaičių, atskirtų vienu
+tarpu. <i>j</i>-tasis numeris <i>i</i>-tojoje eilutėje lygus 1, jeigu <i>i</i>-tosios
+eilutės ir <i>j</i>-tojo stulpelio narvelyje yra veidrodis, arba lygus
+0, jei šis narvelis tuščias.
+<br>&nbsp;
+<h2>
+Pavyzdys</h2>
+
+<p><br>Pradinių duomenų bylai <tt>box.in</tt>:
+<pre>2 3
+
+9
+
+7
+
+10
+
+8
+
+6
+
+5
+
+2
+
+4
+
+1
+
+3</pre>
+teisingas atsakymas yra rezultatų byla <tt>box.out</tt>
+<pre>0 1 0
+
+0 1 1</pre>
+<img SRC="pv/box1.gif" NOSAVE height=231 width=313>
+</body>
+</html>

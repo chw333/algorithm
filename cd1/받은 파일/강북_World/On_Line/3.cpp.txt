@@ -1,0 +1,128 @@
+#include <stdio.h>
+#include <iostream.h>
+#include <conio.h>
+#include <Stdlib.h>
+#define Max 11
+char board[Max][Max];
+int flag[Max][Max][2];
+int ret;
+int ret2;
+int solution,Best;
+int row,col;
+int mov[4][2]={{-1,0},{1,0},{-1,0},{0,1}};
+int ox,oy,oz;
+int count;
+void read_dat()
+{
+  int i,j;
+  char ins2[Max*2];
+  char ins;
+  printf("(Row, Col) ? ");
+  scanf("%d %d",&col,&row);
+  gets(board[1]);
+  for(i=1;i<=row;i++) {
+   printf("\n%d Row = ",i);
+   gets(board[i]);
+   for(j=1;j<=col;j++) {
+	 board[i][j]=board[i][(j-1)*2];
+	}
+  }
+}
+
+void Dfs(int x,int y,int z,int depth)
+{
+  int i,j;
+  if(ret) return;
+  if(x==ox&&y==oy&&z==oz&&depth>3) {
+	ret=1;
+	ret2=depth;
+	return;
+  }
+  if(flag[x][y][z]) return;
+  if(flag[x][y][!(z)]==count) depth-=2;
+  flag[x][y][z]=count;
+  if(board[x][y]=='a') {
+	if(z) {
+	  Dfs(x,y+1,0,depth+1);
+	  if(board[x-1][y]=='a')
+		Dfs(x-1,y,0,depth+1);
+	  else if(board[x-1][y]=='b')
+		Dfs(x-1,y,1,depth+1);
+	}
+	else {
+	  Dfs(x,y-1,1,depth+1);
+	  if(board[x+1][y]=='a')
+		Dfs(x+1,y,1,depth+1);
+	  else if(board[x+1][y]=='b')
+		Dfs(x+1,y,0,depth+1);
+	 }
+   }
+   else  {
+	if(z) {
+	  Dfs(x,y+1,0,depth+1);
+	  if(board[x+1][y]=='a')
+		Dfs(x+1,y,1,depth+1);
+	  else if(board[x+1][y]=='b')
+		Dfs(x+1,y,0,depth+1);
+	}
+	else {
+	  Dfs(x,y-1,1,depth+1);
+	  if(board[x-1][y]=='a')
+		Dfs(x-1,y,0,depth+1);
+	  else if(board[x-1][y]=='b')
+		Dfs(x-1,y,1,depth+1);
+	 }
+   }
+}
+
+
+
+
+void process()
+{
+  int i,j;
+  for(i=0;i<=row+1;i++) {
+	flag[i][0][0]=flag[i][col+1][0]=1;
+	flag[i][0][1]=flag[i][col+1][1]=1;
+  }
+  for(i=0;i<=col+1;i++) {
+	flag[0][i][0]=flag[row+1][i][0]=1;
+	flag[0][i][1]=flag[row+1][i][1]=1;
+  }
+
+  for(i=1;i<=row;i++)
+	for(j=1;j<=col;j++) {
+	  if(flag[i][j][0]==0) {
+		ox=i;oy=j;oz=0;count++;
+		Dfs(i,j,0,0);
+		if(ret) {
+		  solution++;
+		  if(ret2>Best) Best=ret2;
+		}
+	  }
+	  if(flag[i][j][1]==0) {
+		ox=i;oy=j;oz=1;         count++;
+		Dfs(i,j,1,0);
+		if(ret) {
+		  solution++;
+		  if(ret2>Best) Best=ret2;
+		  ret=0;
+		}
+	  }
+	}
+}
+void output_dat()
+{
+  printf("Output 1 : %d\n",solution);
+  printf("Output 2 : %d\n",Best);
+}
+
+void main()
+{
+  read_dat();
+  process();
+  output_dat();
+}
+
+
+

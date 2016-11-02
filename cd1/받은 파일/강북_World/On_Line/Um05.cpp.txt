@@ -1,0 +1,41 @@
+#include <fstream.h>
+#include <string.h>
+
+char huff[100][100],late[100][100],inpdata[100];
+int rate[100];
+
+struct tree
+{
+    tree left,right;
+    char data;
+};
+
+void swap(int &a,int &b)
+{
+    int t;
+    t=a;a=b;b=t;
+}
+
+void main(void)
+{
+    int i,j;
+    cout << "<1> Input String (must be shorter than 80 char)" << endl;
+    cin.getline(inpdata,100);
+    for(i=0;i<strlen(inpdata);i++)
+    {
+        if(inpdata[i]==' ')
+            rate[0]++;
+        rate[inpdata[i]-64]++;
+    }
+    for(i=0;i<26;i++)
+        for(j=i+1;j<27;j++)
+            if(rate[i]<rate[j])
+                swap(rate[i],rate[j]);
+    for(i=0;i<26;i++)
+    {
+        if(rate[i+2]==0)
+        {
+            strcat(
+        }
+    }
+}

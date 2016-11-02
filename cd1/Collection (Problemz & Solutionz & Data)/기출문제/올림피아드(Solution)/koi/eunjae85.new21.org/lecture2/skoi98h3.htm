@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>KOI 13회 중등부 1.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0" width="595">
+    <tr>
+        <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+            15회 고등부 3. 화물차의 경로</b></font></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="pkoi98h3.htm"><img src="button1.gif"
+             width="72" height="22" border="0"></a></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi98h3.htm"><img src="button3.gif"
+             width="72" height="22" border="0"></a></td>
+    </tr>
+</table>
+<ul>
+    <p>&nbsp; 
+    <table border="0">
+            <tr>
+                <td width="550"><p style="line-height:150%;"><font size="2">&nbsp;&nbsp;이 
+                문제 역시 최적해가 존재하지 않는 문제이다. 또한 문제의 특성상, 
+                백트래킹이나 시뮬레이티드 어닐링 같은 방법을 적용하기도 그렇게 
+                쉽지 않다. 따라서 휴리스틱(경험적 방법)을 이용해 문제를 풀어야 
+                한다. 상당히 효과가 좋은 휴리스틱이 있는데, 소개하자면,</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;운송회사로부터 
+                가장 먼 곳으로 가서 짐을 싣는다. 차에 공간이 남는 경우 현재 
+                위치로부터 가장 가까운 곳에 가서 다른 짐을 싣는 것을 반복한다. 
+                차에 짐을 가득 실으면 운송회사로 다시 돌아온다. 이 과정을 모든 
+                짐을 다 실을 때까지 반복한다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;무척 
+                간단한 방법이다. 어떤 위치에서 다른 위치까지의 거리는 floyd 
+                알고리즘을 이용해 쉽게 구할 수 있으므로, 프로그램 상으로 구현도 
+                쉬운 편이다. 실제로 손으로 문제의 예제 데이터에 대해 실험해 
+                보면, 꽤 성능이 좋은 것을 알 수 있을 것이다. 대회에서 이 방법을 
+                사용하신 분들도 결과가 좋았다고 한다.</font></td>
+        </tr>
+    </table>
+    <p>&nbsp;</p>
+</ul>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://home.hanmir.com/~iconhouse/main.htm
+
+[DOC#6#8#10]
+BASEURL=http://home.hanmir.com/~iconhouse/face00.htm
+ORIGURL=main3.htm
+
+[InternetShortcut]
+URL=http://home.hanmir.com/~iconhouse/main.htm
+Modified=005FACEC49F1C001F2

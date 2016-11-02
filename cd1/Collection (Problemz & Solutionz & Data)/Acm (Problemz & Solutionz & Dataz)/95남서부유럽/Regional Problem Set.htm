@@ -1,0 +1,731 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0082)http://www.acm.inf.ethz.ch/ProblemSetArchive/B_EU_SWERC/1995/RegionalProblems.html -->
+<HTML><HEAD><TITLE>Regional Problem Set</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<H2 align=center>ACM International Collegiate Programming 
+Contest<BR>Southwestern European Regional Contest<BR>ETH Zurich, Switzerland, 
+December 9, 1995</H2>
+<P align=center>
+<HR>
+
+<P></P>
+<H1 align=center>Problem Set</H1>
+<H2>Contents</H2>
+<P><A 
+href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_EU_SWERC/1995/RegionalProblems.html#advice">Rules 
+and Advice</A><BR><BR><A 
+href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_EU_SWERC/1995/RegionalProblems.html#intersection">Problem 
+A: Intersection</A><BR><BR><A 
+href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_EU_SWERC/1995/RegionalProblems.html#synchronous">Problem 
+B: Synchronous Design</A><BR><BR><A 
+href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_EU_SWERC/1995/RegionalProblems.html#coloring">Problem 
+C: Graph Coloring</A><BR><BR><A 
+href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_EU_SWERC/1995/RegionalProblems.html#triangle">Problem 
+D: Triangle</A><BR><BR><A 
+href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_EU_SWERC/1995/RegionalProblems.html#anagram">Problem 
+E: Anagram</A><BR><BR><A 
+href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_EU_SWERC/1995/RegionalProblems.html#spreadsheet">Problem 
+F: Spreadsheet</A><BR><BR><A 
+href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_EU_SWERC/1995/RegionalProblems.html#cube">Problem 
+G: Cube</A><BR><BR><A 
+href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_EU_SWERC/1995/RegionalProblems.html#calculator">Problem 
+H: Peter's Calculator</A><BR><BR><A 
+href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_EU_SWERC/1995/RegionalProblems.html#equation">Problem 
+J: Partial Differential Equations</A><BR></P>
+<P align=center><B>Sponsored by Microsoft<BR>Supported by Union Bank of 
+Switzerland</B></P>
+<P>
+<HR>
+
+<P></P>
+<H2><A name=advice></A>Some Rules and Advice </H2>
+<P>All questions require you to read the test data from a single input file and 
+to write the results to a single output file. The names of both files are given 
+in the header of the problem. Your are not allowed to read or write any other 
+files than the specified ones. Standard input and output are also considered 
+files.<BR><BR>Output must correspond exactly to the provided sample output, 
+including spelling and spacing. <BR><BR>All lines (including the last one) 
+should be terminated with a new-line character, and no whitespace should appear 
+at the end of a line unless explicitly specified. Tabs should never be used. 
+<BR><BR>All programs will be re-compiled prior to testing with the judges' data. 
+Non-standard libraries may not be used in your solutions. C programs may not 
+include any files except: <TT>ctype.h</TT>, <TT>math.h</TT>, <TT>stdio.h</TT>, 
+<TT>stdlib.h</TT>, <TT>string.h</TT>, and <TT>strings.h</TT>. Pascal programs 
+may use the extended <TT>Reset</TT>, <TT>Rewrite</TT> and the <TT>Close</TT> 
+statement, which are not part of the ISO Pascal standard.<BR><BR>After analyzing 
+a program, the judges will send one of the following messages: </P>
+<UL>
+  <LI><I>Program accepted</I>. Your program passed all tests and is accepted as 
+  correct. 
+  <LI><I>Compile-time error</I>. The judges were not able to successfully 
+  compile your program. The compiler returned an error (not just a warning). 
+  <LI><I>Run-time error</I>. Your program "crashed", i. e. it exited prematurely 
+  due to a run-time error. 
+  <LI><I>Wrong answer</I>. The program run through one or more test cases 
+  without a run-time error but the output did not match the expected output. 
+  <LI><I>Presentation error</I>. The output seems to be correct but it is not 
+  presented in the required format. Since it is not always easy to distinguish 
+  this message from the <I>wrong answer</I> message, it is only sent in obvious 
+  cases. 
+  <LI><I>Time-limit exceeded</I>. Your program did not finish within the given 
+  amount of time. 
+  <LI><I>Contest rule violation</I>. Your program violates a contest rule like 
+  calling non-standard libraries. </LI></UL>
+<P>Programming style is not considered in this contest. You are free to code in 
+whatever style you prefer. <BR><BR>The CPU time limit for all problems is 3 
+minutes except when specified otherwise. <BR><BR>All questions regarding the 
+contest material should be submitted to the judges by filling in a 
+<I>clarification request</I> form. You can ask the <I>runners</I> in the room 
+for any non-contest related matters or for getting your printer output. The 
+helpers will not answer any questions regarding the contest material. 
+<BR><BR>Judges' decisions are to be considered final. No cheating will be 
+tolerated. <BR><BR>Success! <BR><BR>
+<HR>
+
+<P></P>
+<H2><A name=intersection></A>Problem A: Intersection </H2>
+<P>Source file: intersection.c / intersection.p<BR>Input file: 
+intersection.in<BR>Output file: intersection.out<BR><BR>You are to write a 
+program that has to decide whether a given line segment intersects a given 
+rectangle. </P>
+<H4>An example:</H4>
+<P>line: start point: (4,9)<BR>end point: (11,2)<BR>rectangle: left-top: 
+(1,5)<BR>right-bottom: (7,1)<BR><BR><IMG align=bottom height=190 
+src="Regional Problem Set.files/Intersection.gif" width=217 
+NATURALSIZEFLAG="0"><BR><BR><I>Figure 1: Line segment does not intersect 
+rectangle</I><BR><BR>The line is said to intersect the rectangle if the line and 
+the rectangle have at least one point in common. The rectangle consists of four 
+straight lines and the area in between. Although all input values are integer 
+numbers, valid intersection points do not have to lay on the integer grid. </P>
+<H3>Input</H3>
+<P>The input consists of <I>n</I> test cases. The first line of the input file 
+contains the number <I>n</I>. Each following line contains one test case of the 
+format: <I>xstart ystart xend yend xleft ytop xright ybottom</I> where 
+(<I>xstart</I>, <I>ystart</I>) is the start and (<I>xend</I>, <I>yend</I>) the 
+end point of the line and (<I>xleft</I>, <I>ytop</I>) the top left and 
+(<I>xright</I>, <I>ybottom</I>) the bottom right corner of the rectangle. The 
+eight numbers are separated by a blank. The terms <I>top left</I> and <I>bottom 
+right</I> do not imply any ordering of coordinates. </P>
+<H3>Output</H3>
+<P>For each test case in the input file, the output file should contain a line 
+consisting either of the letter "T" if the line segment intersects the rectangle 
+or the letter "F" if the line segment does not intersect the rectangle. </P>
+<H3>Example</H3>
+<H4>Input</H4><PRE>1
+4 9 11 2 1 5 7 1</PRE>
+<H4>Output</H4><PRE>F</PRE>
+<P>
+<HR>
+
+<P></P>
+<H2><A name=synchronous></A>Problem B: Synchronous Design </H2>
+<P>Source file: synchronous.c / synchronous.p<BR>Input file: 
+synchronous.in<BR>Output file: synchronous.out<BR><BR>The designers of digital 
+integrated circuits (IC) are very concerned about the correctness of their 
+designs because, unlike software, ICs cannot be easily tested. Real tests are 
+not possible until the design has been finalized and the IC has been 
+produced.<BR><BR>To simulate the behavior of a digital IC and to more or less 
+guarantee that the final chip will work, all of today's digital ICs are based on 
+a <I>synchronous design</I>. <BR><BR><IMG align=bottom height=199 
+src="Regional Problem Set.files/Synchronous1.gif" width=350 
+NATURALSIZEFLAG="0"><BR><BR><I>Figure 1: The critical path (dashed line) takes 
+43ns to settle</I><BR><BR>In a synchronous design, an external clock signal 
+triggers the IC to go from a well defined and stable state to the next one. On 
+the active edge of the clock, all input and output signals and all internal 
+nodes are stable in either the high or low state. Between two consecutive edges 
+of the clock, the signals and nodes are allowed to change and may take any 
+intermediate state. The behavior of a synchronous network is predictable and 
+will not fail due to hazards or glitches introduced by irregularities of the 
+real circuit.<BR><BR>To analyze whether an IC has a synchronous design, we 
+distinguish between <I>synchronous</I> and <I>asynchronous nodes</I>. Flip flops 
+are synchronous nodes. On the active edge of the clock, the output of the flip 
+flop changes to the state of the input and holds that state throughout the next 
+clock cycle. Synchronous nodes are connected to the clock signal.<BR><BR>Simple 
+gates like ANDs or ORs are asynchronous nodes. Their output changes - with a 
+short delay - whenever one of their inputs changes. During that transition 
+phase, the output can even go into some undefined or intermediate 
+state.<BR><BR>For simplicity, we assume that all inputs of the circuits are 
+directly connected to the output of a synchronous node outside the circuit and 
+that all outputs of the circuit are directly connected to the input of a 
+synchronous node outside the circuit. <BR><BR>For an IC to have a synchronous 
+design, mainly two requirements must be met: </P>
+<UL>
+  <LI>The <I>signal delay</I> introduced between two synchronous nodes must be 
+  smaller or equal than the clock period so there is enough time for nodes to 
+  become stable. In figure 1, the round-ended boxes are asynchronous nodes 
+  whereas the square boxes are synchronous nodes. The delay introduced on the 
+  dashed path is 43ns and exceeds the given clock period of 30ns. 
+  <LI>There may be <I>no cycles</I> composed exclusively of asynchronous nodes. 
+  In the real circuit such cycles could oscillate. In figure 2, the dashed path 
+  constitutes a cycle of asynchronous nodes. </LI></UL>
+<P>Figure 3 shows a circuit with a synchronous design. It does not contain 
+cycles composed of asynchronous nodes and the longest path between two 
+synchronous nodes is shorter than the clock period of 30ns. <BR><BR><IMG 
+align=bottom height=217 src="Regional Problem Set.files/Synchronous2.gif" 
+width=350 NATURALSIZEFLAG="0"><BR><BR><I>Figure 2: The design contains a cycle 
+(dashed line)</I><BR><BR><IMG align=bottom height=200 
+src="Regional Problem Set.files/Synchronous3.gif" width=350 
+NATURALSIZEFLAG="0"><BR><BR><I>Figure 3: A synchronous design</I><BR><BR>Your 
+are to write a program that decides for a given IC whether it has a synchronous 
+design or not. You are given a network of synchronous and asynchronous nodes, a 
+delay for each node, some inputs and outputs and the clock period.<BR><BR>You 
+may safely assume that </P>
+<UL>
+  <LI>the delays introduced between any input and any output of the same node 
+  are equal, i.e. equal to the delay given for that node, 
+  <LI>synchronous nodes have no delay at all, 
+  <LI>all connections between two nodes connect an output to an input. </LI></UL>
+<H3>Input</H3>
+<P>The input file contains several circuits. The first line gives the number of 
+circuits in the file.<BR><BR>For each circuit in the file, the first line 
+contains the clock period for the circuit, given as an integer number in 
+nanoseconds. The next line gives the number of nodes. The following lines each 
+contain a node, described by a letter and a integer number. The letter is 'i' 
+for an input, 'o' for an output, 'a' for an asynchronous node and 's' for a 
+synchronous node. The number gives the delay introduced by the node as an 
+integer number in nanoseconds (only meaningful for an asynchronous node). Nodes 
+are implicitly numbered, starting at zero.<BR><BR>After the nodes, the number of 
+connections for the circuit follows. Each following line contains a pair of 
+integer numbers denoting a connection between the output and the input of two 
+nodes. The connection links an output of the node given by the first number and 
+an input of the node given by the second number.<BR><BR>The clock signal is not 
+given in the input file. We assume that all synchronous nodes are properly 
+connected to the clock signal. </P>
+<H3>Output</H3>
+<P>For each circuit in the input file, your output file should contain a line 
+with one of the following messages: </P>
+<UL>
+  <LI>"<TT>Synchronous design. Maximum delay: &lt;<I>ss</I>&gt;.</TT>" if the 
+  circuit has a synchronous design. &lt;<I>ss</I>&gt; should be replaced by the 
+  longest delay found on any path between two synchronous nodes. 
+  <LI>"<TT>Circuit contains cycle.</TT>" if the circuit contains a cycle 
+  composed exclusively of asynchronous nodes. 
+  <LI>"<TT>Clock period exceeded."</TT> if there is a path between two 
+  synchronous nodes that is longer than the given clock period and there are no 
+  cycles composed of asynchronous nodes. </LI></UL>
+<H3>Example</H3>
+<H4>Input</H4><PRE>1
+30
+10
+i 0
+i 0
+i 0
+i 0
+o 0
+o 0
+a 9
+a 11
+a 8
+s 0
+9
+0 8
+1 7
+2 6
+2 6
+6 7
+7 8
+8 4
+7 9
+9 5</PRE>
+<H4>Output</H4><PRE>Synchronous design. Maximum delay: 28</PRE>
+<P>
+<HR>
+
+<P></P>
+<H2><A name=coloring></A>Problem C: Graph Coloring </H2>
+<P>Source file: coloring.c / coloring.p<BR>Input file: coloring.in<BR>Output 
+file: coloring.out<BR><BR>You are to write a program that tries to find an 
+optimal coloring for a given graph. Colors are applied to the nodes of the graph 
+and the only available colors are black and white. The coloring of the graph is 
+called optimal if a maximum of nodes is black. The coloring is restricted by the 
+rule that no two connected nodes may be black. <BR><BR><IMG align=bottom 
+height=145 src="Regional Problem Set.files/Coloring.gif" width=217 
+NATURALSIZEFLAG="0"><BR><BR><I>Figure 1: An optimal graph with three black 
+nodes</I> </P>
+<H3>Input</H3>
+<P>The graph is given as a set of nodes denoted by numbers 1...<I>n</I>, 
+<I>n</I>&nbsp;&lt;=&nbsp;100, and a set of undirected edges denoted by pairs of 
+node numbers (<I>n</I>1, <I>n</I>2), <I>n</I>1&nbsp;!= <I>n</I>2. The input file 
+contains <I>m</I> graphs. The number <I>m</I> is given on the first line. The 
+first line of each graph contains <I>n</I> and <I>k</I>, the number of nodes and 
+the number of edges, respectively. The following <I>k</I> lines contain the 
+edges given by a pair of node numbers, which are separated by a space. </P>
+<H3>Output</H3>
+<P>The output should consists of 2<I>m</I> lines, two lines for each graph found 
+in the input file. The first line of should contain the maximum number of nodes 
+that can be colored black in the graph. The second line should contain one 
+possible optimal coloring. It is given by the list of black nodes, separated by 
+a blank. </P>
+<H3>Example</H3>
+<H4>Input</H4><PRE>1
+6 8
+1 2
+1 3
+2 4
+2 5
+3 4
+3 6
+4 6
+5 6</PRE>
+<H4>Output</H4><PRE>3
+1 4 5</PRE>
+<P>
+<HR>
+
+<P></P>
+<H2><A name=triangle></A>Problem D: Triangle </H2>
+<P>Source file: triangle.c / triangle.p<BR>Input file: triangle.in<BR>Output 
+file: triangle.out<BR><BR>A triangle is a basic shape of planar geometry. It 
+consists of three straight lines and three angles in between. Figure 1 shows how 
+the sides and angles are usually labeled. <BR><BR><IMG align=bottom height=172 
+src="Regional Problem Set.files/Triangle.gif" width=262 
+NATURALSIZEFLAG="0"><BR><BR><I>Figure 1: Triangle</I><BR><BR>A look into a book 
+about geometry shows that many formulas for triangles exist: <BR></P>
+<P align=center><IMG align=bottom height=15 
+src="Regional Problem Set.files/TriEqu1.gif" width=69 
+NATURALSIZEFLAG="0"><BR><BR><IMG align=bottom height=31 
+src="Regional Problem Set.files/TriEqu2.gif" width=103 
+NATURALSIZEFLAG="0"><BR><BR><IMG align=bottom height=15 
+src="Regional Problem Set.files/TriEqu3.gif" width=96 
+NATURALSIZEFLAG="0"><BR><BR><IMG align=bottom height=15 
+src="Regional Problem Set.files/TriEqu4.gif" width=116 
+NATURALSIZEFLAG="0"><BR><BR><IMG align=bottom height=30 
+src="Regional Problem Set.files/TriEqu5.gif" width=143 NATURALSIZEFLAG="0"></P>
+<P>The values of <I>a</I>, <I>b</I>, <I>c</I>, <I>alpha</I>, <I>beta</I>, and 
+<I>gamma</I> form a set of six parameters that fully define a triangle. If a 
+large enough subset of these parameters is given, the missing ones can be 
+calculated by using the formulas above.<BR><BR>You are to write a program that 
+calculates the missing parameters for a given subset of the six parameters of a 
+triangle. For some sets of parameters, it is not possible to calculate the 
+triangle because either too few is known about the triangle or the parameters 
+would lead to an invalid triangle. The sides of a valid triangle are greater 
+than 0 and the angles are greater than 0 and less than pi. Your program should 
+detect this case and output: "<TT>Invalid input.</TT>" The same phrase should be 
+output if more than the minimal set needed to compute the triangle is given but 
+the parameters conflict with each other, e.g. all three angles are given but 
+their sum is greater than pi.<BR><BR>Other sets of parameters can lead to more 
+than one but still a finite number of valid solutions for the triangle. In such 
+a case, your program should output: "<TT>More than one solution.</TT>"<BR><BR>In 
+all other cases, your program should compute the missing parameters and output 
+all six parameters. </P>
+<H3>Input</H3>
+<P>The first line of the input file contains a number indicating the number of 
+parameter sets to follow. Each following line consists of six numbers, separated 
+by a single blank character. The numbers are the values for the parameters 
+<I>a</I>, <I>alpha</I>, <I>b</I>, <I>beta</I>, <I>c</I>, and <I>gamma</I> 
+respectively. The parameters are labeled as shown in figure 1. A value of -1 
+indicates that the corresponding parameter is undefined and has to be 
+calculated. All floating-point numbers include at least eight significant 
+digits. </P>
+<H3>Output</H3>
+<P>Your program should output a line for each set of parameters found in the 
+input file. If a unique solution for a valid triangle can be found for the given 
+parameters, your program should output the six parameters a<I>,</I> 
+<I>alpha</I>, <I>b</I>, <I>beta</I>, <I>c</I>, <I>gamma</I>, separated by a 
+blank character. Otherwise the line should contain the phrase "<TT>More than one 
+solution.</TT>" or "<TT>Invalid input.</TT>" as explained above.<BR><BR>The 
+numbers in the output files should include at least eight significant digits. 
+Your calculations should be precise enough to get the six most significant 
+digits correct. </P>
+<H3>Example</H3>
+<H4>Input</H4><PRE>3
+62.72048064 2.26853639 -1.00000000 0.56794657 -1.00000000 -1.00000000
+15.69326944 0.24714213 -1.00000000 1.80433105 66.04067877 -1.00000000
+72.83685175 1.04409241 -1.00000000 -1.00000000 -1.00000000 -1.00000000</PRE>
+<H4>Output</H4><PRE>62.72048064 2.26853639 44.02668698 0.56794657 24.58722491 0.30510970
+Invalid input.
+Invalid input.</PRE>
+<P>
+<HR>
+
+<P></P>
+<H2><A name=anagram></A>Problem E: Anagram </H2>
+<P>Source file: anagram.c / anagram.p<BR>Input file: anagram.in<BR>Output file: 
+anagram.out<BR><BR>You are to write a program that has to generate all possible 
+words from a given set of letters. </P>
+<H4>Example</H4>
+<P>Given the word "abc", your program should - by exploring all different 
+combination of the three letters - output the words "abc", "acb", "bac", "bca", 
+"cab" and "cba".<BR><BR>In the word taken from the input file, some letters may 
+appear more than once. For a given word, your program should not produce the 
+same word more than once, and the words should be output in alphabetically 
+ascending order. </P>
+<H3>Input</H3>
+<P>The input file consists of several words. The first line contains a number 
+giving the number of words to follow. Each following line contains one word. A 
+word consists of uppercase or lowercase letters from A to Z. Uppercase and 
+lowercase letters are to be considered different. </P>
+<H3>Output</H3>
+<P>For each word in the input file, the output file should contain all different 
+words that can be generated with the letters of the given word. The words 
+generated from the same input word should be output in alphabetically ascending 
+order. </P>
+<H3>Example</H3>
+<H4>Input</H4><PRE>2
+abc
+acba</PRE>
+<H4>Output</H4><PRE>abc
+acb
+bac
+bca
+cab
+cba
+aabc
+aacb
+abac
+abca
+acab
+acba
+baac
+baca
+bcaa
+caab
+caba
+cbaa</PRE>
+<H3>Hint</H3>
+<P>The number of possible combinations raises very quickly with the number of 
+given letters. Make sure you do not use long words for testing your program 
+because the output file could become very big, waste a lot of space on the disk 
+and degrade the performance of the network. <BR><BR>
+<HR>
+
+<P></P>
+<H2><A name=spreadsheet></A>Problem F: Spreadsheet </H2>
+<P>Source file: spreadsheet.c / spreadsheet.p<BR>Input file: 
+spreadsheet.in<BR>Output file: spreadsheet.out<BR><BR>In 1979, Dan Bricklin and 
+Bob Frankston wrote VisiCalc, the first spreadsheet application. It became a 
+huge success and, at that time, was the killer application for the Apple II 
+computers. Today, spreadsheets are found on most desktop computers.<BR><BR>The 
+idea behind spreadsheets is very simple, though powerful. A spreadsheet consists 
+of a table where each cell contains either a number or a formula. A formula can 
+compute an expression that depends on the values of other cells. Text and 
+graphics can be added for presentation purposes.<BR><BR>You are to write a very 
+simple spreadsheet application. Your program should accept several spreadsheets. 
+Each cell of the spreadsheet contains either a numeric value (integers only) or 
+a formula, which only support sums. After having computed the values of all 
+formulas, your program should output the resulting spreadsheet where all 
+formulas have been replaced by their value. </P><PRE> A1    B1     C1     D1     E1     F1     ...    
+ A2    B2     C2     D2     E2     F2     ...    
+ A3    B3     C3     D3     E3     F3     ...    
+ A4    B4     C4     D4     E4     F4     ...    
+ A5    B5     C5     D5     E5     F5     ...    
+ A6    B6     C6     D6     E6     F6     ...    
+ ...   ...    ...    ...    ...    ...    ...    </PRE>
+<P><I>Figure 1: Naming of the top left cells</I> </P>
+<H3>Input</H3>
+<P>The first line of the input file contains the number of spreadsheets to 
+follow. A spreadsheet starts with a line consisting of two integer numbers, 
+separated by a space, giving the number of columns and rows. The following lines 
+of the spreadsheet each contain a row. A row consists of the cells of that row, 
+separated by a single space.<BR><BR>A cell consists either of a numeric integer 
+value or of a formula. A formula starts with an equal sign (=). After that, one 
+or more cell names follow, separated by plus signs (+). The value of such a 
+formula is the sum of all values found in the referenced cells. These cells may 
+again contain a formula. There are no spaces within a formula.<BR><BR>You may 
+safely assume that there are no cyclic dependencies between cells. So each 
+spreadsheet can be fully computed.<BR><BR>The name of a cell consists of one to 
+three letters for the column followed by a number between 1 and 999 (including) 
+for the row. The letters for the column form the following series: A, B, C, ..., 
+Z, AA, AB, AC, ..., AZ, BA, ..., BZ, CA, ... ZZ, AAA, AAB, AAC, ... AAZ, ABA, 
+..., ABZ, ACA, ..., ZZZ. These letters correspond to the number from 1 to 18278. 
+The top left cell has the name A1. See figure 1. </P>
+<H3>Output</H3>
+<P>The output of your program should have the same format as the input, except 
+that the number of spreadsheets and the number of columns and rows are not 
+repeated. Furthermore, all formulas should be replaced by their value. </P>
+<H3>Example</H3>
+<H4>Input</H4><PRE>1
+4 3
+10 34 37 =A1+B1+C1
+40 17 34 =A2+B2+C2
+=A1+A2 =B1+B2 =C1+C2 =D1+D2</PRE>
+<H4>Output</H4><PRE>10 34 37 81
+40 17 34 91
+50 51 71 172</PRE>
+<P>
+<HR>
+
+<P></P>
+<H2><A name=cube></A>Problem G: Cube </H2>
+<P>Source file: cube.c / cube.p<BR>Input file: <I>None</I><BR>Output file: 
+cube.out<BR><BR>There was once a 3 by 3 by 3 cube built of 27 smaller cubes. It 
+has fallen apart into seven pieces: <BR><BR><IMG align=bottom height=181 
+src="Regional Problem Set.files/Cube1.gif" width=350 
+NATURALSIZEFLAG="0"><BR><BR><I>Figure 1: The seven pieces that once formed a 
+cube</I><BR><BR>The seven pieces can be assembled in many ways to again form the 
+cube. Figure 2 shows one of these possibilities. The first square stands for the 
+front plane, the next one for the middle plane and the last one for the back 
+plane of the cube. The letters in the cells stand for the name of piece filling 
+out the corresponding space in the cube. The name of the seven pieces can be 
+found in figure 1. </P><PRE>a   d   c      d   d   g      d   g   g   
+a   c   c      b   f   g      b   f   e   
+a   a   c      f   f   e      b   e   e   
+
+
+a   a   b      f   f   e      f   e   e   
+a   b   b      g   f   c      g   g   e   
+a   d   c      d   d   c      d   g   c   </PRE>
+<P><I>Figure 2: Two possibilities of assembling the cube</I><BR><BR>You are to 
+write a program that outputs all possibilities of assembling the cube but 
+suppress solutions that are mere rotations of another solution. The time limit 
+for this problem is 15 minutes! </P>
+<H3>Input</H3>
+<P>No input is needed. </P>
+<H3>Output</H3>
+<P>For each solution found, your program should output a line containing the 
+solution as a string. The string is a linearized form of the cube. Each letter 
+stands for the piece filling out the corresponding space in the cube. It is 
+linearized as follows: </P>
+<UL>
+  <LI>The string consists of substrings representing the front, middle and back 
+  plane. 
+  <LI>Each substring consists of substrings representing the top, middle and 
+  bottom row. 
+  <LI>Each row substring consists of letters representing the left, middle and 
+  right cell. </LI></UL>
+<P>The solutions in figure 2 would be represented like this: </P><PRE>adcaccaacddgbfgffedggbfebee
+aababbadcffegfcddcfeeggedgc</PRE>
+<P>It is very important that your program uses the naming convention given in 
+figure 1 and linearizes the cube as explained above. <BR><BR><IMG align=bottom 
+height=213 src="Regional Problem Set.files/Cube2.gif" width=300 
+NATURALSIZEFLAG="0"><BR><BR><I>Figure 3: Positions of the cells in the string 
+</I><BR><BR>Figure 3 again shows how the cells of the cube are linearized. </P>
+<H3>Example</H3>
+<P>The output of your program could start like this: </P><PRE>aababbadcggeffcddcgeegfedfc
+aababbadceffgdcgdceefedfggc
+aababbadcffegfcddcfeeggedgc
+...</PRE>
+<H3>Hint</H3>
+<P>Piece <I>a</I> is the only part that, by rotation and translation, cannot be 
+transformed into itself. In order to avoid solutions that are mere rotations of 
+an already found solution, you may restrict transformations of piece <I>a</I> to 
+translations. <BR><BR>
+<HR>
+
+<P></P>
+<H2><A name=calculator></A>Problem H: Peter's Calculator </H2>
+<P>Source file: calculator.c / calculator.p<BR>Input file: 
+calculator.in<BR>Output file: calculator.out<BR><BR>Unfortunately, Peter's 
+Calculator broke down last week. Now Peter is left with his computer, which has 
+no calculator application, and paper and pencil, which is too tiresome for an 
+engineer. As one of Peter's friends, you are asked to write him a calculator 
+application. After talking to him, you figure out the following: </P>
+<UL>
+  <LI>Peter does only integer arithmetic. The operations he needs are addition, 
+  subtraction and multiplication. 
+  <LI>He would like to use an arbitrary number of variables whose names are not 
+  longer than 50 characters. 
+  <LI>His main way of doing calculations are to type in a few formulas and to 
+  assign them to variables. Some formulas are complicated expressions, which can 
+  refer to yet undefined variables, while other formulas consist of a single 
+  number. Then Peter asks for the value of some variables, i.e. he evaluates the 
+  formulas. 
+  <LI>Peters wants to redefine some variables and then to reevaluate formulas 
+  that depend on these variables. </LI></UL>
+<P>The input strictly adheres to the following syntax (given in EBNF): </P><PRE>file = line { line } &lt;EOF&gt;.
+line = [ assignment | print | reset ] &lt;CR&gt;.
+assignment = var ":=" expression.
+print = "PRINT" var.
+reset = "RESET".
+expression = term { addop term }.
+term = factor { mulop factor }.
+factor = "(" expression ")" | var | number.
+addop = "+" | "-".
+mulop = "*". </PRE>
+<P>In the Extended Backus-Naur Formalism (EBNF), <TT>A = B C</TT> declares that 
+the grammatical construct <TT>A</TT> consists of a <TT>B</TT> followed by a 
+<TT>C</TT>. <TT>A = B | C</TT> means that <TT>A</TT> consists of a <TT>B</TT> 
+or, alternatively, of a <TT>C</TT>. <TT>A = [ B ]</TT> defines construct 
+<TT>A</TT> to be either a <TT>B</TT> or nothing and <TT>A = { B }</TT> tells you 
+that <TT>A</TT> consists of the concatenation of any number of <TT>B</TT>s 
+(including none).<BR><BR>The production <TT>var</TT> stands for the name of a 
+variable, which starts with a letter followed by up to 49 letters or digits. 
+Letters may be uppercase or lowercase. The production <TT>number</TT> stands for 
+a integer number. The precise syntax for these productions are given below. The 
+case of letters is important for both variables and statements. </P><PRE>var = letter { letter | digit }.
+number = [ "-" ] digit { digit }.
+letter = "A" | "B" | ... | "Z" | "a" | "b" | ... | "z".
+digit = "0" | "1" | ... | "8" | "9".</PRE>
+<P>Between the parts of a grammatical construct but not within the names of 
+variables or integer numbers, any number of spaces may appear. &lt;EOF&gt; 
+stands for the end of the input file and &lt;CR&gt; stands for the new-line 
+character. All lines in the input file are shorter than 200 
+characters.<BR><BR>The value of a variable is said to be undefined: </P>
+<UL>
+  <LI>if it has not yet been defined or it refers to a variable, which has not 
+  yet been defined; 
+  <LI>if the definition of the variable contains a cycle. </LI></UL>
+<P>Your are to write a program that implements Peter's calculator. It should 
+store all variable definitions and for each "PRINT" statement evaluate the 
+specified variable based on the latest variable definitions. If your program 
+encounters a "RESET" statement, it should delete all stored variables so that 
+all variables become undefined. </P>
+<H3>Input</H3>
+<P>The input file contains calculations adhering to the syntax given above. Each 
+line contains either an assignment to a variable, a "PRINT" statement, a "RESET" 
+statement or nothing. </P>
+<H3>Output</H3>
+<P>For each "PRINT" statement found in the input file, your program should 
+output a line containing the numerical value of the specified variable or the 
+word "UNDEF" if the variable is undefined. </P>
+<H3>Example</H3>
+<H4>Input</H4><PRE>a := b + c
+b := 3
+c := 5
+PRINT d
+PRINT a
+b := 8
+PRINT a
+RESET
+PRINT a</PRE>
+<H4>Output</H4><PRE>UNDEF
+8
+13
+UNDEF</PRE>
+<P>
+<HR>
+
+<P></P>
+<H2><A name=equation></A>Problem J: Partial differential equations </H2>
+<P>Source file: equation.c / equation.p<BR>Input file: equation.in<BR>Output 
+file: equation.out<BR><BR>In engineering sciences, partial differential 
+equations play an important and central role. For example, the temperature of a 
+metal plate can be expressed as a partial differential equation if the 
+temperature on the boundaries is known. This is called a boundary value 
+problem.<BR><BR>Usually, it is not easy to solve these problems. Analytical 
+solutions exist only in very special cases. But there are some more or less 
+"good" numerical ways to solve boundary value problems.<BR><BR>We now will look 
+at one method which works with finite difference approximations for the 
+derivatives of a function. For this approach, we do not look at an analytical 
+function <I>u</I>(<I>x</I>) but we are only interested in the values of <I>u</I> 
+at a finite set of discrete points <I>x<SUB>i</SUB></I>: <I>u<SUB>i</SUB></I> = 
+<I>u</I>(<I>xi</I>). The distance between two adjacent points, 
+<I>x<SUB>i</SUB></I> and <I>x<SUB>i</SUB></I>+1, is constant: <I>h</I> = 
+<I>x<SUB>i</I>+1</SUB> - <I>x<SUB>i</SUB></I> (cf. figure 1). <BR><BR><IMG 
+align=bottom height=231 src="Regional Problem Set.files/Equation1.gif" width=450 
+NATURALSIZEFLAG="0"><BR><BR><I>Figure 1: u(x) at some discrete points 
+x<SUB>i</SUB></I><BR><BR>The finite difference approximation of a first 
+derivative of the function <I>u</I>(<I>x</I>) is <BR></P>
+<P align=center><IMG align=middle height=33 
+src="Regional Problem Set.files/EquEqu1.gif" width=117 NATURALSIZEFLAG="0">(1) 
+</P>
+<P>The second derivative is approximated by <BR></P>
+<P align=center><IMG align=middle height=36 
+src="Regional Problem Set.files/EquEqu2.gif" width=141 NATURALSIZEFLAG="0">(2) 
+</P>
+<P>This approximation works with 2-dimensional functions <I>u</I>(<I>x</I>, 
+<I>y</I>) as well. For simplicity we only work on square problems, i.e. 
+(<I>x</I>, <I>y</I>) is element of [0,1] x [0,1]. Again, the area of the 
+function is discretized in a similar way: <I>x<SUB>i</I>+1</SUB> - 
+<I>x<SUB>i</SUB></I> = <I>y<SUB>i</I>+1</SUB> - <I>y<SUB>i</SUB></I> = <I>h</I> 
+= 1 / <I>n</I>, for some integer <I>n</I> &gt;= 2. We only look at the values of 
+<I>u</I>(<I>x</I>, <I>y</I>) at the discrete points <I>P<SUB>k</SUB></I> = 
+(<I>x<SUB>i</SUB></I>, <I>y<SUB>j</SUB></I>): <I>u<SUB>i</I>,<I>j</SUB></I> = 
+<I>u</I>(<I>P<SUB>k</SUB></I>). With this discretization, we have a function 
+<I>u<SUB>i</I>,<I>j</SUB></I> as shown in figure 2: <BR><BR><IMG align=bottom 
+height=377 src="Regional Problem Set.files/Equation2.gif" width=400 
+NATURALSIZEFLAG="0"><BR><BR><I>Figure 2: Function u<SUB>i,j</SUB> in the 
+discretization area</I><BR><BR>On the boundary, <I>u</I>(<I>x<SUB>i</SUB></I>, 
+<I>y<SUB>j</SUB></I>) is given by 4 known functions: <BR></P>
+<P align=center><IMG align=middle height=63 
+src="Regional Problem Set.files/EquEqu3.gif" width=79 NATURALSIZEFLAG="0">(3) 
+</P>
+<P>The points <I>P<SUB>k</SUB></I> cover the inner points of the discretization 
+area, i.e. the area without the boundary. They are numbered from left to right 
+and from top to bottom like English text. <BR><BR>What we now want to do is to 
+solve the poisson-equation in the area [0,1] x [0,1]: <BR></P>
+<P align=center><IMG align=middle height=33 
+src="Regional Problem Set.files/EquEqu4.gif" width=112 NATURALSIZEFLAG="0">(4) 
+</P>
+<P>with the above boundary conditions. <I>f</I>(<I>x</I>, <I>y</I>) is a given 
+2-dimensional function. With equation (2) and the above discretization, the 
+poisson-equation can be approximated at <BR></P>
+<P align=center><IMG align=middle height=27 
+src="Regional Problem Set.files/EquEqu5.gif" width=199 NATURALSIZEFLAG="0">, (5) 
+</P>
+<P>where <I>f<SUB>i</I>,<I>j</SUB></I> is the function <I>f</I>(<I>x</I>, 
+<I>y</I>), evaluated at the discrete points (<I>x<SUB>i</SUB></I>, 
+<I>y<SUB>j</SUB></I>). <BR><BR>Formula (5) can be written in a more readable 
+form, depending on the position of the discrete points: <BR></P>
+<P align=center><IMG align=middle height=53 
+src="Regional Problem Set.files/EquEqu6a.gif" width=177 NATURALSIZEFLAG="0">(6a) 
+</P>
+<P>A similar equation, which we will use as an example below, is: <BR></P>
+<P align=center><IMG align=middle height=53 
+src="Regional Problem Set.files/EquEqu6b.gif" width=178 NATURALSIZEFLAG="0">(6b) 
+</P>
+<P>We call the 3x3 matrix on the left hand side <I>v</I> and the 3x3 matrix on 
+the right hand side <I>g</I>. Now, equation (6b) can be formulated in every 
+point of the discrete area of figure 2:<BR></P>
+<P align=center><IMG align=middle height=69 
+src="Regional Problem Set.files/EquEqu7.gif" width=432 NATURALSIZEFLAG="0">(7) 
+</P>
+<P>(7) is a linear equation system for the values of <I>u</I>(<I>x</I>, 
+<I>y</I>) at the points <I>P</I><SUB>1</SUB>, <I>P</I><SUB>2</SUB>, 
+<I>P</I><SUB>3</SUB> and <I>P</I><SUB>4</SUB>.<BR><BR>By rearranging and adding 
+the terms on each line, the linear equation system can be formulated as: 
+<BR></P>
+<P align=center><I>az</I> = <I>b</I> (8) </P>
+<P>where <I>a</I> is a 4x4 matrix and b is a vector with 4 elements. Vector 
+<I>z</I> represents the unknown values of <I>u</I>(<I>x</I>, <I>y</I>) at the 
+points <I>P</I><SUB>1</SUB>, <I>P</I><SUB>2</SUB>, <I>P</I><SUB>3</SUB> and 
+<I>P</I><SUB>4</SUB>. <BR><BR>You are to write a program that creates the linear 
+equation system (7) in the form (8) for any two matrices <I>v</I> and <I>g</I> 
+(6). As input, the two matrices <I>v</I> and <I>g</I> and the functions 
+<I>b</I><SUB>1</SUB>, <I>b</I><SUB>2</SUB>, <I>b</I><SUB>3</SUB>, 
+<I>b</I><SUB>4</SUB>, and <I>f</I> are given. Also, a parameter <I>n</I> is 
+given as the number of discretization intervals. Thus, h = 1/n. As the result, 
+your program should calculate the matrix <I>a</I> and the vector <I>b</I>. For 
+this more general case, there are (<I>n</I>-1)<SUP>2</SUP> inner points and 
+<I>a</I> and <I>b</I> must be sized accordingly. </P>
+<H3>Input</H3>
+<P>The input file consists of <I>m</I> tests. The number <I>m</I> is given in 
+the first line of the file. The first line of each test contains the number 
+<I>n</I> which gives the number of discretizations intervals as defined above. 
+You may assume that 2 &lt;= n &lt;= 30. Then the 3x3 matrices <I>v</I> and 
+<I>g</I> follow. The following four lines contain the functions 
+<I>b</I><SUB>1</SUB>, <I>b</I><SUB>2</SUB>, <I>b</I><SUB>3</SUB> and 
+<I>b</I><SUB>4</SUB>, each given as a vector of order <I>n</I>+1, containing the 
+values for 0, <I>h</I>, 2<I>h</I>, ..., 1. Finally, the function <I>f</I> is 
+given as a n+1 by n+1 matrix. Like the vectors before, it contains the values 
+for <I>x</I>, <I>y</I> = 0, <I>h</I>, 2<I>h</I>, ..., 1. Each row contains from 
+left to right the function values for increasing <I>x</I> values while each 
+column contains from top to bottom the function values for increasing <I>y</I> 
+values. <BR><BR>A vector occupies one line. Its values are given in ascending 
+order, separated by a space. A <I>n</I> by <I>n</I> matrix occupies <I>n</I> 
+lines. Its rows are given in ascending order as vectors, which occupy one line 
+each. All values found in the input file are integer values. </P>
+<H3>Output</H3>
+<P>For each test found in the input file, your program should output the 
+matrices <I>a</I> and <I>b</I>. Matrix <I>a</I> is a (<I>n</I>-1)<SUP>2</SUP> x 
+(<I>n</I>-1)<SUP>2 </SUP>matrix (the discretization area (cf. figure 2) contains 
+(<I>n</I>-1)<SUP>2 </SUP>inner points, which are unknown). The vector <I>b</I> 
+is of order (<I>n</I>-1)<SUP>2</SUP>. They should be output in the same format 
+as the vectors and matrices in the input file. Your output should only contain 
+integer values. Note that the expression 1 / <I>h</I><SUP>2</SUP> yields an 
+integer number and that all other calculations can also be done using integer 
+numbers. </P>
+<H3>Example</H3>
+<H4>Input</H4><PRE>1
+3
+1 0 2
+0 -4 0
+3 0 4
+0 5 0
+6 0 7
+0 8 0
+3 4 5 6
+0 1 2 3
+3 2 1 0
+6 5 4 3
+1 1 1 1
+2 2 2 2
+3 3 3 3
+4 4 4 4</PRE>
+<H4>Output</H4><PRE>-36 0 0 36
+0 -36 27 0
+0 18 -36 0
+9 0 0 -36
+-8 -152 -198 -333</PRE></BODY></HTML>

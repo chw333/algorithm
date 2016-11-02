@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://members.tripod.lycos.co.kr/skyhw/foryou.htm
+
+[DOC#10#12]
+BASEURL=http://members.tripod.lycos.co.kr/skyhw/b.htm
+ORIGURL=intexs.htm
+
+[InternetShortcut]
+URL=http://members.tripod.lycos.co.kr/skyhw/foryou.htm
+Modified=8046587549F1C0018E

@@ -1,0 +1,66 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>분할 정복(Divide and Conquer)</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font size="5" color="#0066CC"><b>분할 정복(Divide and Conquer)</b></font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;&nbsp;분할 정복 문제 해결 방법은 주어진 문제를 해결하기 
+쉬운 작은 문제로 나눈 다음 (divide), 각각의 작은 문제들을 푼 뒤 (Conquer)에 
+이 답들을 병합하여(Combine) 전체 문제의 해를 찾는 방법이다. 일반적으로 분할 
+정복 문제 해결법을 사용하는 프로그램은 두 개 이상의 재귀 호출이 있는 형태가 
+된다.</font></p>
+<p><b><font size="2">(1) C/C++</font></b></p>
+<p><font size="2" color="#996600">void&nbsp;Mergesort(A,p,r) {</font></p>
+<p><font size="2" color="#0099CC">&nbsp;&nbsp;&nbsp;&nbsp;int q;</font></p>
+<p><font size="2" color="#009933">&nbsp;&nbsp;&nbsp;&nbsp;if (p&gt;r) return;</font></p>
+<p><font size="2" color="#009933">&nbsp;&nbsp;&nbsp;&nbsp;q= (p+r) / 2;</font></p>
+<p><font size="2" color="#009933">&nbsp;&nbsp;&nbsp;&nbsp;Mergesort(A,p,q);</font></p>
+<p><font size="2" color="#009933">&nbsp;&nbsp;&nbsp;&nbsp;Mergesort(A,q+1,r);</font></p>
+<p><font size="2" color="#009933">&nbsp;&nbsp;&nbsp;&nbsp;Merge(A,p,q,r);</font></p>
+<p><font size="2" color="#996600">}</font></p>
+<p><font size="2"><b>(2) Pascal</b></font></p>
+<p><font size="2"><b>(3) Basic</b></font></p>
+<p><font size="2">다음과 같은 수열을 만드는 프로그램을 생각해 보자.</font></p>
+<p><font size="2">&nbsp;1 2 1 3 1 2 1 4 1 2 1 3 1 2 1</font></p>
+<p><font size="2">이러한 수열은 어떻게 그릴 수 있는지 생각해보라. 각 숫자는 
+큰 숫자&nbsp;가운데 조금 더 작은 숫자이 있고, 이 숫자&nbsp;가운데에도 또 더 
+작은 숫자가 있다. 이를 분할 정복 기법을 사용하여 해결하는 방법을 찾는 것이다.</font></p>
+<p><b><font size="2">(1) C/C++</font></b></p>
+<p><font size="2" color="#009933">void ruler (int a[],int left, int right, int height) {</font></p>
+<p><font size="2" color="#996600">&nbsp;&nbsp;&nbsp;&nbsp;if (h&gt; 0)</font></p>
+<p><font size="2" color="#996600">&nbsp;&nbsp;&nbsp;&nbsp;{</font></p>
+<p><font size="2" color="#996600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int middle;</font></p>
+<p><font size="2" color="#996600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;middle = (left+right) 
+/ 2;</font></p>
+<p><font size="2" color="#996600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a[middle]=height;</font></p>
+<p><font size="2" color="#996600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ruler(left,middle,height-1);</font></p>
+<p><font size="2" color="#996600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ruler(middle,right,height-1);</font></p>
+<p><font size="2" color="#996600">&nbsp;&nbsp;&nbsp;&nbsp;}</font></p>
+<p><font size="2" color="#009933">}</font></p>
+<p><font size="2"><b>(2) Pascal</b></font></p>
+<p><font size="2"><b>(3) Basic</b></font></p>
+<p><font size="2">분할 정복의 대표적인 예로 퀵 정렬(Quick Sort)이 있다. 퀵 정렬은 
+피보트(pivot) 원소라는 것을 설정하여, 피보트 원소의 왼쪽에는 피보트 원소보다 
+더 작은 값이 놓이게 하고, 오른쪽에는 큰 값이 놓이게 한뒤, 피보트 원소의 좌우에 
+각각 독립적으로 다시 퀵정렬을 수행하는 방법을 사용한다. &nbsp;퀵 소트에 의해 
+다음의 배열 원소가 바뀌는 모습을 잘 살펴보고, 퀵소트를 구현하는 방법을 생각해보자.</font></p>
+<p><font size="2">주어진 배열 :</font></p>
+<p align="center"><font size="2" color="#006666">26 5 37 1 61</font><font size="2"> </font><font size="2" color="#006666">11 59 15 48 19</font></p>
+<p align="center"><font size="2" color="#006666">11 5 19 1 15</font><font size="2"> 26 
+</font><font size="2" color="#006666">59 61 48 37</font></p>
+<p align="center"><font size="2" color="#006666">1 5</font><font size="2"> 11 </font><font size="2" color="#006666">19 
+15</font><font size="2"> 26 </font><font size="2" color="#006666">59 61 48 37</font></p>
+<p align="center"><font size="2">1 5 11 </font><font size="2" color="#006666">15 19</font><font size="2"> 
+26 </font><font size="2" color="#006666">59 61 48 37</font></p>
+<p align="center"><font size="2">1 5 11 15 19 26 </font><font size="2" color="#006666">48 
+37</font><font size="2"> 59 </font><font size="2" color="#006666">61</font></p>
+<p align="center"><font size="2">1 5 11 15 19 26 37 38 59 </font><font size="2" color="#006666">61</font></p>
+<p align="center"><font size="2">1 5 11 15 19 26 37 38 59 61</font></p>
+</body>
+
+</html>

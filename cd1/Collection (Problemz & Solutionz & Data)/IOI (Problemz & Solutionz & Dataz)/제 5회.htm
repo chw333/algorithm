@@ -1,0 +1,361 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0041)http://user.chollian.net/~pjykym/ioi5.htm -->
+<HTML><HEAD><TITLE>제 5회</TITLE>
+<META content="MSHTML 5.00.2614.3500" name=GENERATOR>
+<META content="text/html; charset=euc-kr" http-equiv=Content-Type></HEAD>
+<BODY>
+<P align=center><B><FONT size=6>제 5회</FONT></B></P>
+<P>제 5회는 1993년 10월 16일부터 25일까지 아르헨티나 멘토사에서 열렸다. 문제 수가 가장 적었고, 난이도 역시 상대적으로 평이했다. 
+5회 때부터 문제에 사용자 인터페이스를 요구하는 부분이 없어지고 입출력을 특정 파일로만 하기 시작했는데, 한 파일에 테스트할 입력 자료가 여러 
+개 있고, 여러 문제의 답 또한 한 파일에 모두 출력한다는 점이 요즘과 다른 점이다.</P>
+<P><A href="http://user.chollian.net/~pjykym/ioi5.htm#1">1. 목걸이</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi5.htm#2">2. 주식 소유</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi5.htm#3">3. 겹쳐 놓은 색종이</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi5.htm#4">4. 캐나다 여행</A></P>
+<HR>
+
+<H2><A name=1></A>1. 목걸이</H2>
+<P>여러분은 유리알이 n개 있는(n&lt;100) 목걸이를 갖고 있다. 목걸이에는 빨간색, 파란색 또는 흰색 유리알이 아무렇게나 배열돼 있다. 
+n=29인 경우의 두 가지 예를 다음에 들어보았다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 
+2 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 
+2</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+x x o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x 
+o o x</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+x o 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 
+o @</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;그림 
+1 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;그림 
+2</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o 붉은 유리알 
+&nbsp;&nbsp;&nbsp;x 푸른 유리알 &nbsp;&nbsp;&nbsp;@ 흰 유리알</FONT></P>
+<P>(다음에 나오는 예제에서 제시되는 두 목걸이를 그림으로 도시한 것이다.)</P>
+<P>그림 1에 있는 목걸이는 b와 r로 되어 있는 문자열로 표현할 수 있다. b는 푸른 알, r은 붉은 알을 뜻한다. 이를 표현하면 
+brbrrrbbbrrrrrbrrbbrbbbbrrrrb와 같이 될 것이다. 단, 그림에 있는 1번 위치부터 시작하여 2번이 있는 방향, 즉 시계 
+방향으로 알을 나열한 것이다.</P>
+<P>이 목걸이의 한 부분을 끊어서 한 줄로 늘어놓는다고 생각해 보자. 그래서 첫 줄에서부터 같은 색이 계속되는 유리알들을 모은다. 그리고 
+끝줄에서부터 같은 색이 계속되는 유리알들을 모은다. (첫줄의 알 색과 끝줄의 알 색은 다를 수 있다.)</P>
+<P>목걸이의 어디를 끊으면 알을 가장 많이 모을 수 있는지 계산하는 프로그램을 작성하라. 예를 들어 그림 1의 목걸이는 9번째 알과 10번째 
+알 사이, 혹은 24와 25 사이를 끊었을 때 최대치인 8개의 알을 모을 수 있다. 원리는 다음과 같다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>brbrrrbbb/rrrrrbrrbbrbbbbrrrrb → 
+(rrrrr)brrbbrbbbbrrrrbbrbrrr(bbb)</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>brbrrrbbbrrrrrbrrbbrbbbb/rrrrb → 
+(rrrr)bbrbrrrbbbrrrrrbrrbbr(bbbb)</FONT></P>
+<P>그런데 어떤 목걸이에는 그림 2처럼 흰색 알이 섞여 있다. 알을 모을 때, 흰색 알은 알을 더 많이 모으기 위해서라면 어떤 색으로든 칠할 
+수 있다. 흰색 알을 뜻하는 문자열은 w이다.</P>
+<P>다음과 같은 처리를 하는 프로그램을 작성하라.</P>
+<P>1. 목걸이 상태를 나타내는 아스키 파일인 NECKLACE.DAT를 읽는다. 한 파일에 여러 목걸이 모양이 앞에서 보인 문자열 형태로 한 
+줄에 한 개씩 들어있다. NECKLACE.DAT의 한 예는 다음과 같다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>brbrrrbbbrrrrrbrrbbrbbbbrrrrb</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>bbwbrrrwbrbrrrrrb</FONT></P>
+<P>2. 각 목걸이마다 가장 많이 모을 수 있는 알 수 M과 가장 많이 모으기 위해 끊어야 할 위치를 계산한다.</P>
+<P>3. NECKLACE.SOL에 가장 많이 모을 수 있는 알 수와 끊는 위치를 출력한다. 각 입력 자료마다 빈줄로 구분하여 답을 출력한다. 
+다음과 같이 출력하면 된다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>brbrrrbbbrrrrrbrrbbrbbbbrrrrb</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>9와(과) 10 사이를 끊었을 때, 8개</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>bbwbrrrwbrbrrrrrb</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>16와(과) 17 사이를 끊었을 때, 10개</FONT></P>
+<P>두 번째 예제는 목걸이를 다음과 같이 끊은 경우이다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>bbwbrrrwbrbrrrrr/b → (bbbwb)rrrwbrb(rrrrr)</FONT></P>
+<HR>
+
+<H2><A name=2></A>2. 주식 소유</H2>
+<P>어떤 회사가 다른 회사의 주식을 일부 갖고 있다면 주식을 가진 회사는 그 회사를 부분적으로 소유하고 있다고 말한다. 예를 들어 포드 사는 
+마쓰다 사를 12% 소유하고 있다. 그리고 다음 세 조건 중 하나라도 만족하는 두 회사 A, B가 있으면 회사 A가 회사 B를 지배한다고 
+말한다.</P>
+<OL type=1>
+  <LI>A = B 
+  <LI>A가 B를 50% 이상 소유한다. 
+  <LI>이미 A의 지배를 받고 있는 다른 회사들이 B를 소유하고 있는 정도의 합이 50%를 넘는다. </LI></OL>
+<P>"i라는 회사가 j라는 회사를 p% 소유하고 있다"를 뜻하는 세 수 (i, j, p)의 목록을 읽어 이들을 총 분석한 뒤 "회사 h가 회사 
+s를 지배하고 있다"를 뜻하는 숫자쌍 (h, s)을 계산, 출력하는 프로그램을 작성하라. 회사는 최대 100개까지 있다.</P>
+<P>다음과 같은 처리를 하는 프로그램을 작성하라.</P>
+<OL type=1>
+  <LI>입력 파일 COMPANY.DAT에서 (i, j, p)의 값을 읽는다. 세 숫자는 한 줄에 한 개씩 들어있으며, 모두 양수이다. 입력 
+  파일에 따로 처리할 입력 자료가 여러 개 있을 수 있으며, 이들은 빈줄로 구분한다. 
+  <LI>지배하는 회사(h)와 지배당하는 회사의 짝(s)을 모두 찾아낸다. 
+  <LI>COMPANY.SOL에 찾은 (h, s) 쌍을 모두 기록한다. h와 s는 서로 다른 수치이어야 하며, h를 기준으로 오름차순으로 
+  정렬하여 출력하도록 한다. 다른 입력 파일로 넘어가서 답을 출력한다면 빈줄로 각 자료를 구분한다. </LI></OL>
+<P>한 입력 파일과 이에 대한 출력 파일의 예를 들었다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>COMPANY.DAT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COMPANY.SOL</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>2 
+&nbsp;3 &nbsp;25&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 
+&nbsp;2</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>1 
+&nbsp;4 &nbsp;36&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 
+&nbsp;3</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>4 
+&nbsp;5 &nbsp;63&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 
+&nbsp;5</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>2 
+&nbsp;1 &nbsp;48</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>3 
+&nbsp;4 &nbsp;30</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>4 
+&nbsp;2 &nbsp;52</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>5 
+&nbsp;3 &nbsp;30</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>1 
+&nbsp;2 &nbsp;30&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 
+&nbsp;3</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>2 
+&nbsp;3 &nbsp;52&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 
+&nbsp;4</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>3 
+&nbsp;4 &nbsp;51&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 
+&nbsp;5</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>4 
+&nbsp;5 &nbsp;70&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 
+&nbsp;4</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>5 
+&nbsp;4 &nbsp;20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 
+&nbsp;5</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>4 
+&nbsp;3 &nbsp;20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 
+&nbsp;5</FONT></P>
+<HR>
+
+<H2><A name=3></A>3. 겹쳐 놓은 색종이</H2>
+<P>직사각형 모양의 색종이 N개가 흰 종이 위에 포개져 있다. 흰 종이의 크기는 가로 a cm, b cm이다. 모든 색종이는 변이 종이와 
+평행한 상태로 놓이며, 종이 영역 안에 완전히 들어간다. 이렇게 종이 위에 여러 색종이를 겹쳐 놓으면 색도 다르고 모양도 다른 다양한 도형이 
+보일 것이다. 색깔이 같은 모양이 두 개 있다면 두 도형이 최소 한 점이라도 공유한다면 한 도형으로 치고, 그렇지 않고 떨어져 있으면 다른 
+도형으로 친다. a, b는 30을 넘지 않는 양의 짝수이다.</P>
+<P>입력 파일인 RECTANG.DAT에는 흰 종이의 크기 a, b와 색종이의 개수 N의 값이 첫 줄에 들어있다. 입력 파일의 모든 숫자는 
+공백으로 구분한다. 그리고 다음 N 줄에는 줄마다 다섯 개의 숫자가 있다. 처음 두 개는 이 색종이의 좌측 하단 꼭지점의 좌표, 다음 두 개는 
+우측 상단 꼭지점의 좌표이며, 마지막 숫자는 이 색종이의 색깔을 번호로 표현한 것이다. 같은 색은 번호가 같으며, 이 수의 범위는 1부터 
+64까지이다. 그리고 흰색의 번호는 1이다. 흰색 색종이는 밑에 깔린 배경과 색이 같으므로 흰 색종이가 배경과 변 또는 꼭지점을 공유한다면 이는 
+배경과 같이 취급되어야 한다.</P>
+<P>좌표는 흰 종이의 중앙을 0, 0으로 하여 계산한다. 그리고 한 파일에 이와 같이 처리할 입력 자료가 여러 개 있으므로 모두 처리를 해야 
+한다. 입력 자료끼리는 빈줄로 구분한다.</P>
+<P>다음과 같은 처리를 하는 프로그램을 작성하라.</P>
+<OL type=1>
+  <LI>종이와 색종이 정보를 RECTANG.DAT에서 읽어들인다. 
+  <LI>각 색깔과 도형에 해당하는 넓이를 구한다. 입력 파일에서 먼저 나오는 색종이부터 밑에 깐다고 생각하여 넓이를 계산하면 된다. 
+  <LI>RECTANG.SOL에 각 색깔과 그 색깔을 가진 도형의 넓이를 아래 예제와 같이 출력한다. 색깔 번호를 기준으로 하여 오름차순으로 
+  정렬해서 출력한다. 한 입력 자료에 대한 처리가 끝나면 빈줄로 다음 자료와 구분한다. </LI></OL>
+<P>다음 입력 파일과 그에 해당하는 출력 파일의 한 예이다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>RECTANG.DAT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RECTANG.SOL</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>20 12 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 
+172</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>-7 -5 -3 -1 4&nbsp;&nbsp;&nbsp;&nbsp;2 47</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>-5 -3 5 3 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 12</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>-4 -2 -2 2 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 8</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>2 
+-2 3 -1 12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12 1</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>3 
+1 7 5 1</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>30 30 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 
+630 &nbsp;&nbsp;</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>0 
+0 5 14 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 70</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>-10 -7 0 13 15&nbsp;&nbsp;&nbsp;15 200</FONT></P>
+<P>첫 번째 입력 자료를 그림으로 표시해 보았다. 파란색은 4번색, 2번색은 초록색, 12번색은 빨간색이다. 그리고 변이 굵은 사각형은 흰색을 
+뜻한다. 흰색 색종이의 넓이는 배경 종이의 넓이와 같이 계산된다. 같은 색이라도 떨어져 있는 구역은 넓이를 따로 계산한다. (위의 
+파란색)</P>
+<P><IMG border=0 height=246 src="제 5회.files/ioi5-3-1.gif" width=408></P>
+<HR>
+
+<H2><A name=4></A>4. 캐나다 여행</H2>
+<P>당신은 항공사가 후원하는 어떤 경연 대회에서 우승을 차지했다. 그래서 상으로 캐나다 곳곳을 여행할 수 있는 비행기 표를 받았다.</P>
+<P>단, 이 표로 여행을 하는데는 몇 가지 규칙이 있다. 우선 가장 서쪽에 있는 도시부터 시작해서 현재 있는 곳보다 동쪽에 있는 도시들만 
+거쳐서 동쪽 가장 끝에 있는 도시까지 간 뒤, 돌아올 때는 지금보다 서쪽에 있는 도시만 거쳐서 출발지로 되돌아올 수 있다. 그리고, 왕복 
+전과정에서 각 도시는 한 번만 거쳐가야 한다. 단, 출발지만 출발할 때와 돌아올 때 정확히 두 번 방문할 수 있다. 여행이 끝났을 때는 출발지로 
+되돌아올 수 있어야 한다. 여행하는 동안 다른 항공편이나 다른 교통 수단을 사용해서는 안 된다.</P>
+<P>항공로에 든 도시와, 비행기 직선 코스로 가는 두 도시의 목록이 있을 때, 위의 조건을 만족하면서 가장 많은 도시를 방문할 수 있게 여행 
+일정을 잡는 프로그램을 작성하라. 목록에 있는 첫 번째 도시에서 출발하여, 목록의 맨 끝에 있는 도시를 반드시 거친 뒤 출발지로 되돌아올 수 
+있어야 한다.</P>
+<P>입력 파일 C:\IOI\ITIN.DAT에는 처리할 입력 자료가 여러 개 있다. 각 입력 자료의 구조는 다음과 같다.</P>
+<P>첫째 줄에는 항공로에 든 총 도시의 개수 N과 직선 코스의 개수 V를 나타내는 수치가 있다. N은 100 이하인 자연수이나, V는 0보다 
+큰 임의의 정수이다.</P>
+<P>다음 N줄에는 각 줄마다 그 도시의 이름이 들어있다. 도시는 서쪽부터 동쪽의 순서로 정렬되어 있다. 서로 같은 자오선 상에 있는 두 도시는 
+없다. 그러므로 i&lt;j인 경우 목록의 i번째에 있는 도시는 j번째에 있는 도시보다 서쪽에 있다고 말할 수 있다. 도시 이름은 로마자와 
+숫자로 구성되어 있고 최대 15글자인 문자열이다. AGR34, BEL4와 같은 명칭도 도시 이름이 될 수 있다. 이름 사이에 공백은 
+없다.</P>
+<P>그 다음 V줄에는 각 줄마다 앞 목록에 든 도시 이름 중 두 개가 있다. 각 도시는 공백으로 구분한다. 도시 1과 도시 2가 목록에 있다면 
+도시 1에서 도시 2로 또는 도시 2에서 도시 1로 가는 직선 항로가 있다는 것을 의미한다.</P>
+<P>한 파일에 여러 입력 자료가 있으므로 다른 자료끼리는 빈줄로 구분한다. 그러나 마지막 입력 자료 끝에는 빈줄이 없다. 다음은 예제 파일인 
+C:\IOI\ITIN.DAT의 내용을 두 단으로 나눈 예이다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>8 
+&nbsp;9</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Vancouver</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Yellowknife</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Edmonton</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Calgary</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Winnipeg</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Toronto</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Montreal</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Halifax</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Vancouver Edmonton</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Vancouver Calgary</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Calgary Winnipeg</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Winnipeg Toronto</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Toronto Halifax</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Montreal Halifax</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Edmonton Montreal</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Edmonton Yellowknife</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Edmonton Calgary</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT face=굴림체>5 
+&nbsp;5</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>C1</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>C2</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>C3</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>C4</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>C5</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>C5 &nbsp;C4</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>C2 &nbsp;C3</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>C3 &nbsp;C1</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>C4 &nbsp;C1</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>C5 &nbsp;C2</FONT></P>
+<P>입력 파일은 형식이 모두 올바르게 되어 있다고 생각해도 좋다. 그러므로 잘못됐을 때의 처리를 할 필요는 없다. 각 데이터마다 찾아낸 정답은 
+C:\IOI\ITIN.SOL이라는 출력 파일에 기록한다. 첫 줄에는 처리한 입력 자료에 있는 도시의 원래 개수를 기록한다. 둘째 줄에는 여행 
+일정에 잡힌 도시의 개수 M을 기록한다. 그리고 다음 M+1줄에는 한 줄에 한 개씩 방문할 도시 이름을 순서대로 기록한다. 맨 끝줄에는 출발지의 
+이름이 있어야 한다. 최적해가 여러 개 있어도 하나만 출력하면 된다. 또한 이 목록으로는 조건을 만족하는 일정을 짤 수 없다면 둘째 줄에 "해가 
+없음"이라고만 출력한다.</P>
+<P>위의 입력 파일에 대해 있을 수 있는 출력 결과는 다음과 같다.</P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>8</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>7</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Vancouver</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Edmonton</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Montreal</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Halifax</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Toronto &nbsp;← 이 다음 줄부터 서쪽으로 되돌아가는 행로</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Winnipeg</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Calgary</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>Vancouver</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>&nbsp;</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>5</FONT></P>
+<P style="MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%; MARGIN-TOP: 0px"><FONT 
+face=굴림체>해가 없음</FONT></P>
+<P>&nbsp;</P></BODY></HTML>

@@ -1,0 +1,212 @@
+ 
+Compiling `frameup'...
+Testing ...
+Test 1: OK
+Test 2: OK
+Test 3: OK
+Test 4: OK
+Test 5: OK
+Test 6: OK
+Test 7: OK
+Test 8: OK
+Test 9: OK
+Finished grading...
+
+
+USACO Training Grader Results
+
+
+Your program (`frameup') produced all correct answers! This is your submission #4 for this problem. Congratulations!
+Here are your execution times for each case:
+
+
+       Test  1:        0
+       Test  2:        0
+       Test  3:        0
+       Test  4: 0.011585
+       Test  5:        0
+       Test  6:        0
+       Test  7:        0
+       Test  8: 0.023902
+       Test  9: 0.050735
+
+Here are the test data inputs:
+
+
+------- test 1 -------
+9 8
+.CCC....
+ECBCBB..
+DCBCDB..
+DCCC.B..
+D.B.ABAA
+D.BBBB.A
+DDDDAD.A
+E...AAAA
+EEEEEE..
+------- test 2 -------
+3 3
+AAA
+A.A
+AAA
+------- test 3 -------
+5 7
+AAA.CCC
+A.A.C.C
+AABBBCC
+..B.B..
+..BBB..
+------- test 4 -------
+11 8
+UUUUU...
+U...U...
+U...EEEE
+U...E..E
+UMMMM..E
+UMUUMEEE
+.MJJJJJJ
+.MJ.M..J
+.MJ.M..J
+.MJMM..J
+..JJJJJJ
+------- test 5 -------
+6 9
+AAABBBCCC
+AQAQQQCQC
+AAABBBCCC
+XQXYYYZQZ
+XQQYQYQQZ
+XXXYYYZZZ
+------- test 6 -------
+20 20
+AAABCDEFGHIJKLMNOPQR
+A.ABCDEFGHIJKLMNOPQR
+AAABCDEFGHIJKLMNOPQR
+BBBBCDEFGHIJKLMNOPQR
+CCCCCDEFGHIJKLMNOPQR
+DDDDDDEFGHIJKLMNOPQR
+EEEEEEEFGHIJKLMNOPQR
+FFFFFFFFGHIJKLMNOPQR
+GGGGGGGGGHIJKLMNOPQR
+HHHHHHHHHHIJKLMNOPQR
+IIIIIIIIIIIJKLMNOPQR
+JJJJJJJJJJJJKLMNOPQR
+KKKKKKKKKKKKKLMNOPQR
+LLLLLLLLLLLLLLMNOPQR
+MMMMMMMMMMMMMMMNOPQR
+NNNNNNNNNNNNNNNNOPQR
+OOOOOOOOOOOOOOOOOPQR
+PPPPPPPPPPPPPPPPPPQR
+QQQQQQQQQQQQQQQQQQQR
+RRRRRRRRRRRRRRRRRRRR
+------- test 7 -------
+30 30
+...............OOOOO..........
+...............O...O..........
+...............O...O..........
+...............O...O..........
+...............O...O..........
+...............O...O..........
+...............O...O..........
+EEEEEEEEEEEEEEEOEEEOEEEEEEEEEE
+E..............OOOOO.........E
+E............................E
+EEIIUUUUUUUUUUUUUUUUUUUUUUUUEE
+..I.U...I..............AAAAUA.
+..I.U...I..............A...UA.
+..I.U...I..............A...UA.
+..I.UUUUUUUUUUUUUUUUUUUUUUUUA.
+..I.....I..............A....A.
+..I.....I..............A....A.
+..I.....I..............AAAAAA.
+..I.....I.....................
+..I.....I.....................
+..I.....I.....................
+..IIIIIII.....................
+..............................
+..............................
+..............................
+..............................
+..............................
+..............................
+..............................
+..............................
+------- test 8 -------
+30 30
+..............................
+.OOOOOOOOOYYYYYOO.............
+.O....PPPPYPPPYPOPP...........
+.O....P...Y...Y.O.P...........
+.O....P...Y...Y.O.P...........
+.O....P...Y...Y.O.P...........
+.O....P...Y...Y.O.P...........
+.O....P...Y...Y.O.P...........
+.O....P...Y...Y.O.P...........
+.O....P...Y...Y.O.P...........
+.OOOOOOOOOYOOOYOEEEEEEEEE.....
+......PPPPYPPPYPEPP.....E.....
+..........Y...Y.E.......E.....
+..WWWWWWWWWWWWWWWWWTT...E.....
+..W...T...Y...Y.E.W.T...E.....
+..W...T...Y...Y.E.W.T...E.....
+..W...T...Y...Y.E.W.T...E.....
+..W...T...YYYYY.EEWEEEEEE.....
+UUWWWWWWWWWWWWWWWWW.T.........
+U.....TTTTTTTTTTTTQQQQQQQQQQQ.
+U....RRRRRRRRRRRRRQRRRRR....Q.
+U....R............Q....R....Q.
+UIIIIRRRRRRRRRRRRRQRRRRRIIIIQ.
+UI................QQQQQQQQQQQ.
+UUUUUUUUUUUUUUUUUUU........I..
+.IIIIIIIIIIIIIIIIIIIIIIIIIII..
+..............................
+..............................
+..............................
+..............................
+------- test 9 -------
+30 30
+.DDDDRRRRQGGGGGGGGGGGGGQQQQQQ.
+.DSSDRSSSQGSRSSSSS....G.....Q.
+.D..DR...QG.R....SEEEEEEEEE.Q.
+.D..DRTTOOGOOOOOOOEOOOGOOOEOOO
+.D..DRT.OQG.R....SE...G...ETQO
+.D..DRT.OIGFFFFFFFEFFFGIIIEIQO
+.D..DRT.CCCCCCCCCSE..FG...EIQO
+.D..DRT.CIGFR...CSE..FG...EIQO
+.D..DRT.CIGFR...CMEMMFGMMMEIMO
+.DBBBBBBBBBBBBBBBBBBBBBBBBEIMO
+.DB.DRT.CIGFR...CSE..FG..BEIMO
+.DBLDLLHCHGFHHLLCLELLFGLOBEIMO
+.DBLDRTHCIGAAAA.CSE..FGL.BEIM.
+.DBDDRTHCIGARHA.CSE..FGL.BEIM.
+.SBL.RTHCIGARHA.CSE..FGL.BEIM.
+.SBLLLLHCIGALHALCLEKKFGKKBEIM.
+.SB..RTHCIGARHANCNENNFG.KBEIM.
+.SB..RTHCIGARHANCSE..FG.KBEIM.
+.SBBBBBBBBBABBABBBBBBBBBBBEIM.
+.S...RTHCIGAFFAFCFEFFFG.K.EIM.
+.S...RTHCIGAGGAGCGEGGGG.K.EIM.
+.S...RTHCIJAJHANCQEEEEEEEEEIM.
+.S...RTHCI.AJHANCSK..N..K..IM.
+.PPPPPPHCIIAIHAICIIIIIIIIIIIM.
+.P...RTHCHHAHHANCSKKKKKKKTTTM.
+.P...R.JCCCAAAACCS...N......M.
+.P...R.JJJJJJ..NMS...N......M.
+.PSSSRSSSSSSRSSNMMMMMMMMMMMMM.
+.P...RRRRRRRR..N.....N......P.
+.PPPPPPPPPPPPPPNNNNNNNPPPPPPP.
+----------------------
+
+This program will log your progress. Keep up the good work! Special thanks to Reid for creating this test data. 
+
+Thanks for your submission!
+
+PS: Please let us know if something appears wrong in these automated responses. 
+
+
+Previous Problem Statement  |  USACO Gateway  |   Comment or Question 
+
+
+--------------------------------------------------------------------------------
+
+Resubmit a file:      

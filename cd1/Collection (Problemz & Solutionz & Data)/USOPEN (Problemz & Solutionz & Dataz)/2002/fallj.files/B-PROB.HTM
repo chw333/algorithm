@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0066)http://www.uwp.edu/academic/mathematics/usaco/2002/Fall/b-prob.htm -->
+<HTML><HEAD><TITLE>Problems</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=ks_c_5601-1987">
+<META content="MSHTML 5.50.4134.100" name=GENERATOR></HEAD>
+<BODY>
+<TABLE width="99%" border=0>
+  <TBODY>
+  <TR>
+    <TD width="5%"></TD>
+    <TD width="95%" colSpan=2><STRONG><FONT face=Arial><BIG>Problems - 2002 
+      Fall Open, Orange</BIG></FONT></STRONG>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD width="5%"></TD>
+    <TD width="85%"><FONT face=Arial><PRE><B>
+PROBLEM 5:</B> [Traditional]
+
+Powers of two are just so easy to calculate. To find the Nth power of 2,
+just multiply 2 by itself N times (where 2 to the 0th power is 1 and 2 to
+the 1st power is 2).  Thus, we have a power table:
+
+    N    2 to the Nth power
+    2         4
+    5        32
+   10      1024
+
+Write a program that reads N (1 &lt;= N &lt;= 30) and prints 2 to the Nth power.
+Do not use a table of precalculated numbers in your program.
+
+PROBLEM NAME: power
+
+INPUT FORMAT:
+
+A single line with integer N.
+
+SAMPLE INPUT (file power.in):
+
+10
+
+OUTPUT FORMAT:
+
+A single line with 2 to the Nth power.
+
+SAMPLE OUTPUT (file power.out):
+
+1024
+
+----------------------------------------------------------------------
+
+<B>PROBLEM 6: Dictionary Numbers</B> [Piele, 2001]
+ 
+The number 79 becomes "seven nine" when translated digit by digit into a
+string of words. Likewise 80 becomes "eight zero"
+ 
+When sorted as numbers, 79 comes before 80. But as a translated string,
+the number "eight zero" comes before "seven nine" in dictionary order.
+ 
+Write a program that reads two whole numbers M and N (1 &lt;= M &lt; N &lt;= 999)
+and finds the first and last numbers in dictionary order of the numbers
+in the range M..N inclusive
+
+PROBLEM NAME: dictnum
+
+INPUT FORMAT:
+
+A single line with two integers: M and N
+
+SAMPLE INPUT (file dictnum.in):
+
+7 20
+
+OUTPUT FORMAT:
+
+A single line with two space-separated integers that are the first and last
+numbers when the numbers are sorted in dictionary sequence.
+
+
+SAMPLE OUTPUT (file dictnum.out):
+
+8 20
+
+---------------------------------------------------------------------------
+
+<B>PROBLEM 7: Hungry Cows</B> [Brian Dean, 2001]
+
+The cows are lined up at their feed trough, which has individualized
+feeding buckets numbered sequentially from 1 through N (1 &lt;= N &lt;= 2000).
+Each night a lucky cow gets to eat from a number of buckets according to
+Farmer John's rules.
+
+Farmer John posts a list of no more than B bucket-sequences (a bucket
+sequence is a pair of integers (a pair like start-end where 1 &lt;= start &lt;=
+end &lt;= N and the sequence includes buckets start through end, e.g., 1-3,
+7-8, 3-4). FJ's rules allow the cow to choose as many of the intervals as
+she wishes, as long as no bucket is mentioned more than once in the total
+set of chosen intervals.
+
+Of course, cows are like anyone else and want as much feed as they can get.
+Given a set of bucket-sequences, help the lucky cow find the best sequence
+which yields the greatest amount of feed.
+
+In the example above, bucket-sequences 1-3 and 3-4 overlap; the wise cow
+chooses the set of {1-3, 7-8} for a lavish dinner of five buckets.
+
+PROBLEM NAME: hunger
+
+INPUT FORMAT:
+
+* Line 1: One integer B (1 &lt;= B &lt;= 1000)
+
+* Lines 2..B+1: Each line contains a two integer bucket sequence with
+          the smaller bucket number first
+
+SAMPLE INPUT (file hunger.in):
+
+3
+1 3
+7 8
+3 4
+
+OUTPUT FORMAT:
+
+A single line with a single integer that is the greatest number of feed
+buckets the lucky cow can eat.
+
+SAMPLE OUTPUT (file hunger.out):
+
+5
+
+----------------------------------------------------------------------
+
+<B>PROBLEM 8: Cow Shuffle</B> [Piele, 2001]
+
+Each time cows shuffle a deck of 2N (1 &lt;= N &lt;= 9,000) cards marked 1..2N
+they do it as follows:
+
+* Cut the deck exactly in half to form two piles (A and B) of N cards each.
+  A is the top N cards and B is the bottom N cards.
+
+* Combine the cards back together into a single pile by taking one card
+  from pile A and placing it face down on a new pile and then one card from
+  pile B and placing it face down on top of the first card, then one from
+  A and one from B and so on until all the cards are perfectly shuffled
+  back into a single pile.
+
+They repeat this cow shuffle again and again until the cards are back in
+their original order.
+
+Given N, how many cow shuffles does it take to return the cards to their
+original order?
+
+EXAMPLE:
+
+Let N be 3; therefore, the the cards are {1, 2, 3, 4, 5, 6} and the
+shuffles go like this:
+
+orig   shuf1  shuf2   shuf3  shuf4
+  1      6      1      6      1
+  2      3      5      4      2   
+  3   -&gt; 5   -&gt; 4   -&gt; 2   -&gt; 3
+  4      2      3      5      4
+  5      4      2      3      5
+  6      1      6      1      6
+
+So, four cow shuffles suffice to put the deck of 2*3 cards back in order.
+ 
+PROBLEM NAME: shuffle
+
+INPUT FORMAT:
+
+A single line with the integer N
+
+SAMPLE INPUT (file shuffle.in):
+
+3
+
+OUTPUT FORMAT:
+
+A single line with the integer number of shuffles required to return
+2N cards to their original order.
+
+SAMPLE OUTPUT (file shuffle.out):
+
+4
+
+----------------------------------------------------------------------
+
+<B>PROBLEM 9: Negative Powers</B> [Traditional]
+
+Negative powers of two are kind of easy to calculate. To find the -Nth
+power of 2, just find the Nth power of 2 (see Problem 5) and invert it: 2
+to the -1st power is 0.5; 2 to the -10th power is 0.0009765625).  Thus, we
+have a power table:
+
+    N    2 to the -Nth power
+    2     0.25
+    5     0.03125
+   10     0.0009765625
+
+Write a program that reads N (1 &lt;= N &lt;= 999) and prints 2 to the -Nth power.
+Print the number with precisely one lead 0, the decimal point, and then
+the rest of the digits.  Do not print trailing 0's.
+
+PROBLEM NAME: neg
+
+INPUT FORMAT:
+
+A single line with integer N.
+
+SAMPLE INPUT (file neg.in):
+
+10
+
+OUTPUT FORMAT:
+
+A single line with 2 to the -Nth power in the format specified above.
+
+SAMPLE OUTPUT (file neg.out):
+
+0.0009765625    
+     </PRE></FONT></TD>
+    <TD width="10%"></TD></TR></TBODY></TABLE></BODY></HTML>

@@ -1,0 +1,352 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="HTML DOCUMENT BY HWP 2002">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=euc-kr"><TITLE>벡터 구하기</TITLE>
+<STYLE>
+<!--
+P.HS16 {style-name:"수식";font-family:"한양신명조"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:0.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:0.0px;}
+P.HS15 {style-name:"찾아보기";font-family:"한양신명조"; font-size:12.0px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:0.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:19.2px; text-indent:0.0px;}
+P.HS14 {style-name:"수식캡션";font-family:"한양중고딕"; font-size:12.0px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:0.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:19.2px; text-indent:0.0px;}
+P.HS13 {style-name:"표캡션";font-family:"한양중고딕"; font-size:12.0px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:0.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:19.2px; text-indent:0.0px;}
+P.HS12 {style-name:"그림캡션";font-family:"한양중고딕"; font-size:12.0px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:0.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:19.2px; text-indent:0.0px;}
+P.HS11 {style-name:"각주";font-family:"한양신명조"; font-size:12.6px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:17.6px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:16.4px; text-indent:-17.6px;}
+P.HS10 {style-name:"머리말";font-family:"한양중고딕"; font-size:12.0px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:0.0px; margin-right:13.3px; margin-top:0.0px; margin-bottom:0.0px; text-align:right; line-height:18.0px; text-indent:0.0px;}
+P.HS9 {style-name:"쪽 번호";font-family:"한양견고딕"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:0.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:0.0px;}
+P.HS8 {style-name:"개요 7";font-family:"한양신명조"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:89.9px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:-9.9px;}
+P.HS7 {style-name:"개요 6";font-family:"한양신명조"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:76.6px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:-9.9px;}
+P.HS6 {style-name:"개요 5";font-family:"한양신명조"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:63.3px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:-9.9px;}
+P.HS5 {style-name:"개요 4";font-family:"한양신명조"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:49.9px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:-9.9px;}
+P.HS4 {style-name:"개요 3";font-family:"한양신명조"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:36.6px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:-9.9px;}
+P.HS3 {style-name:"개요 2";font-family:"한양신명조"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:23.3px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:-9.9px;}
+P.HS2 {style-name:"개요 1";font-family:"한양신명조"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:9.9px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:-9.9px;}
+P.HS1 {style-name:"본문";font-family:"한양신명조"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:-5%; margin-left:23.4px; margin-right:23.4px; margin-top:5.7px; margin-bottom:5.7px; text-align:justify; line-height:22.0px; text-indent:0.0px;}
+P.HS0 {style-name:"바탕글";font-family:"한양신명조"; font-size:13.3px; color:#000000; font-weight:"normal"; font-style:"normal"; letter-spacing:0%; margin-left:0.0px; margin-right:0.0px; margin-top:0.0px; margin-bottom:0.0px; text-align:justify; line-height:21.3px; text-indent:0.0px;}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+
+<!-- Document Start -->
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>주의사항 : 어떤 데이터에서 컴퓨터가 다운되면 나머지 데이터에 대해서는 자동으로 0점 처리됨</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>채점 컴퓨터 사양 : PIII700, 128RAM, WINDOWS98</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>채점 기회 : 최대 3번, 그 이후로는 절대 채점을 안함</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:center;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:center;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:20px;color:"#000000";text-align:center;line-height:32px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:20px;color:"#000000";line-height:32px;text-align:center;'>벡터 구하기</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>&nbsp; n개의 숫자들로 이루어진 벡터가 있다. 이 벡터들은 다음과 같은 규칙을 지니고 있다.</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'> (1) i &lt; j 일 때, v[i] &lt; v[j]이다. (정렬되어 있다)</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'> (2) 임의의 두 숫자를 선택했을 때, 공약수는 1이다.</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'> (3) 벡터들은 이루는 숫자 v[i]는 소수가 아니다.</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'> (4) 같은 벡터는 한 번만 출력한다.</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>&nbsp; 당신은 위의 규칙을 만족하는 모든 벡터들을 구하고자 한다. 하지만 시간이 얼마 없기 때문에 주어진 시간동안 효율적으로 벡터를 구해야 한다. 만약 제한시간을 초과하면 그 데이터는 0점이 된다. </SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'> 제한 시간 : 3초</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>&nbsp;&nbsp; </SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'> 입력) vector.in</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>&nbsp;&nbsp; u, d, n ---&gt; 모든 벡터들을 이루는 숫자는 u 이상, d 이하로, </SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 하나의 벡터는 n개의 숫자로 이루어져 있다. (<IMG src=".\PIC5E.gif"  width=85px  height=16px >, <IMG src=".\PIC5F.gif"  width=58px  height=16px >)</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'> 출력) vector.out</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>&nbsp;&nbsp; 출력은 가능한 모든 벡터쌍을 출력한다. 마지막 줄에는 -1을 출력한다. 만약, 제약 조건에 맞지 않는 출력이 있는 경우 그 데이터는 0점 처리된다.</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>&nbsp; 입력 예)</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>&nbsp;&nbsp;&nbsp; 10 21 2</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>&nbsp; 출력 예) &lt;-- 답인지 아닌지는 잘 모르겠음.</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>&nbsp;&nbsp;&nbsp; 10 21</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>&nbsp;&nbsp;&nbsp; 14 15</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>&nbsp;&nbsp;&nbsp; 15 16</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>&nbsp;&nbsp;&nbsp; 16 21</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>&nbsp;&nbsp;&nbsp; -1</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>※ 부분 점수는 채점 프로그램과의 비율로 주어진다.</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'> 우체국</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>큰길이 직선으로 쭉 뻗어있고, 길 옆으로 여러 마을이 자리잡고 있다. 이 문제에서 큰길은 정수가 늘어서 있는 수평선이고, 각 마을의 위치는 수평선 위의 한 점으로 표현된다. 마을들의 좌표가 겹치는 경우는 없다. 두 마을 사이의 거리는 수평선상에 있는 좌표의 차이의 절대값으로 정의된다.</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>우리는 이들 마을이 있는 곳에 우체국을 몇 곳 지으려고 한다. 물론 모든 마을마다 다 짓는 건 아니다. 전체 마을 중 몇 곳을 골라, 그 위치에만 우체국을 짓게 된다. 그리고 우리는 각 마을과 그 마을과 가장 가까운 우체국 사이의 거리의 합이 최소가 되게 하고 싶다.</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>각 마을의 위치와 짓고자 하는 우체국 개수를 입력받는다. 그래서 각 마을과 그 마을과 가장 가까운 우체국 사이 거리의 합으로 있을 수 있는 최소값을 계산하고, 그런 결과를 낼 수 있도록 각 우체국을 지을 위치를 출력하는 프로그램을 작성하라.</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>제한 시간은 0.5초이다.</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>입력</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>입력 파일 이름은 post.in이다. 첫 줄에는 숫자가 두 개 있으며, 각각 마을의 수 V(1&lt;=V&lt;=300)와 짓고자 하는 우체국 수 P(1&lt;=P&lt;=30, P&lt;=V)를 나타낸다. 다음줄에는 각 마을의 위치를 나타내는 V개의 정수 좌표가 나온다. 좌표는 오름차순으로 정렬되어 있다. 각 좌표 X의 범위는 1&lt;=X&lt;=10000이다.</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>10 5</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>1 2 3 6 7 9 11 22 44 50</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>출력</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>출력 파일 이름은 post.out이다. 첫째줄에는, 각 마을과 거기서 가장 가까운 우체국 사이 거리들의 합의 최소값을 나타내는 정수 S를 출력한다. 다음 줄에는 우체국을 지을 마을을 골라, 그 마을의 위치를 나타내는 P개의 정수를 오름차순으로 출력한다.</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>9</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>2 7 22 44 50</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'><BR></SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>부분 점수</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>답안 프로그램이 출력해 낸 최소값이 S이고 실제로 가장 작은 최소값(최적해)이 Smin이라면, 점수 c는 아래 표에 나온 대로 매겨진다.</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>q=S/Smin </SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>q=1.0&nbsp; 1.0&lt;q&lt;=1.1&nbsp; 1.1&lt;q&lt;=1.15&nbsp; 1.15&lt;q&lt;=1.2&nbsp; 1.2&lt;q&lt;=1.25&nbsp; 1.25&lt;q&lt;=1.3&nbsp; 1.3&lt;q</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>c 10&nbsp;&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:21px;text-align:justify;'>하지만, 출력 파일이 출력 조건을 지키지 않으면 그 데이터에 대한 점수는 0점이 된다.&nbsp;&nbsp; </SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";text-align:justify;line-height:21px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+ 
+</P>
+
+<!-- Document End -->
+</BODY>
+</HTML>

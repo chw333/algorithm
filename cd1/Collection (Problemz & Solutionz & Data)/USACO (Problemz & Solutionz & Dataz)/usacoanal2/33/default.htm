@@ -1,0 +1,156 @@
+<html>
+<head> <title>Problem 33: Street Race</title> </head>
+<body background="../../usaco/bg3.jpg">
+<img src="../../usaco/cow1.jpg" width="742" height="118">
+<center>
+<b><font size="7">Street Race</font></b><br>
+Hal Burch
+</center>
+
+<p>The simplest algorithm to solve this is to use the flood fill
+algorithm.  A location is unavoidable if and only if removing it
+creates a graph where the finish point is not reachable from the
+beginning point.  A location is a splitting point if and only
+the set of points reachable from the location and the set of
+points reachable from the beginning point without going
+through that location are disjoint.
+
+<p>To use the flood fill algorithm to determine the set of
+all reachable points that do not go through a given location,
+mark the location as visited before the flood fill starts.
+This guarantees that whenever the flood fill checks arc
+into that location, it will not continue flooding on arcs
+out of that location, since the algorithm will think that
+the flooding has already occurred.
+
+<p>Each flood fill takes at most 50*50 = 2,500 operations (an
+adjacency list would get this count down, but, for this problem,
+it doesn't matter).  There are a maximum of 3 flood fills done
+per point (1 to determine if it's unavoidable, plus 2 more to
+determine if it's a splitting point), for a total of 150 flood
+fills, or 375,000 operations.  This will certainly run within
+the time limits.
+
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define MAXL 50
+int conn[MAXL][MAXL];
+int nloc;
+
+int flg[MAXL];
+
+int touched[MAXL];
+int otouched[MAXL];
+
+/* mark all the points reachable from this location */
+void flood_fill(int l)
+ {
+  int lv;
+
+  /* we've already flood fill from this place, no need to do again */
+  if (touched[l]) return;
+
+  /* mark as visited and reachable */
+  touched[l] = 1;
+
+  /* recurse on each connected location */
+  for (lv = 0; lv &lt; nloc; lv++)
+    if (conn[l][lv]) flood_fill(lv);
+ }
+
+
+int main(int argc, char **argv)
+ {
+  FILE *fout, *fin;
+  int lv, lv2;
+  int p;
+  int f;
+
+  if ((fin = fopen("race3.in", "r")) == NULL)
+   {
+    perror ("fopen fin");
+    exit(1);
+   }
+  if ((fout = fopen("race3.out", "w")) == NULL)
+   {
+    perror ("fopen fout");
+    exit(1);
+   }
+
+  nloc = 0;
+  while (1)
+   {
+    fscanf (fin, "%d", &p);
+    if (p == -1) break; /* end of file */
+    if (p == -2) nloc++; /* new location */
+    else conn[nloc][p] = 1; /* new arc */
+   }
+  f = 0;
+  /* for each location */
+  for (lv = 1; lv &lt; nloc-1; lv++)
+   {
+    /* clear reachable array */
+    memset(touched, 0, sizeof(touched));
+
+    /* don't allow it to flood fill thru this location */
+    touched[lv] = 1;
+
+    /* find all the locations reachable from start not using
+       this location */
+    flood_fill(0);
+
+    if (!touched[nloc-1]) 
+     { /* we can't reach finish, this is unavoidable */
+      flg[lv] = 1; 
+      f++;
+     } else flg[lv] = 0;
+   }
+  fprintf (fout, "%i", f); /* output count of unavoidable locs */
+  /* output unavoidable locations */
+  for (lv = 1; lv &lt; nloc; lv++)
+    if (flg[lv]) fprintf (fout, " %i", lv);
+  fprintf (fout, "\n");
+
+  f = 0;
+  for (lv = 1; lv &lt; nloc-1; lv++)
+    if (flg[lv]) /* a splitting point must be unavoidable */
+     {
+      /* determine everything reachable from this location */
+      memset(touched, 0, sizeof(touched));
+      flood_fill(lv);
+      /* store that data in otouched */
+      memcpy(otouched, touched, sizeof(otouched));
+
+      /* determine everything reachable from the beginning, not
+         using this location */
+      memset(touched, 0, sizeof(touched));
+      touched[lv] = 1;
+      flood_fill(0);
+
+      /* if any point is reachable in both flood fills,
+         this location is not a splitting */
+      for (lv2 = 0; lv2 &lt; nloc; lv2++)
+        if (touched[lv2] && otouched[lv2] && lv != lv2) break;
+      if (lv2 &gt;= nloc) /* no point was found */
+       { /* this location is a splitting point */
+        flg[lv] = 1;
+	f++;
+       } else flg[lv] = 0;
+     }
+  fprintf (fout, "%i", f); /* count of splitting points */
+  /* output splitting points themselves */
+  for (lv = 1; lv &lt; nloc-1; lv++)
+    if (flg[lv]) fprintf (fout, " %i", lv);
+  fprintf (fout, "\n");
+ }
+</pre>
+<br>
+<center>
+<a href="mailto:grader@ace.delos.com">Submit Solution via Email</a>
+&nbsp;|&nbsp; <a href="../BACK/default.htm"> USACO Gateway </a>  &nbsp;| &nbsp;
+<a href="mailto:kolstad@ace.delos.com">Comment or Question </a>
+</center>
+</body>
+</html>

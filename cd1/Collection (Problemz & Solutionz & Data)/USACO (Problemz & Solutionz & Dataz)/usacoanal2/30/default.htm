@@ -1,0 +1,91 @@
+<html>
+<head> <title>Analysis 30: A Game</title> </head>
+<body background="../../usaco/bg3.jpg">
+<img src="../../usaco/cow1.jpg" width="742" height="118">
+<center>
+<b><font size="7">A Game</font></b><br>
+Russ Cox
+</center>
+<html>
+<p>We use dynamic programming to determine, for every possible
+piece of board that could be left at any point in the game, how 
+many points the best strategy gets for the winner, and how many
+for the loser.
+
+<p>Let us define best[board] to be the highest score we can hope
+to get by going first starting with the given board.
+
+<p>If we are looking at a board "a ... b", the best number of points is
+the maximum of the following: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;    a + total[... b] - best[... b] <br>
+&nbsp;&nbsp;&nbsp;&nbsp;    b + total[a ...] - best[a ...] <br>
+
+<p>We use total[board] - best[board] as the best that we can hope to do
+going second starting with the given board.
+
+<p>If we are looking at the board "a", the best number of points is a.
+
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;assert.h&gt;
+
+#define MAXBOARD 100
+
+int board[MAXBOARD];
+
+/*
+ * best and total are indexed so that (e.g.) best[i, l] refers
+ * to the board of length l starting at place i.
+ */
+int total[MAXBOARD][MAXBOARD];
+int best[MAXBOARD][MAXBOARD];
+
+int
+max(int a, int b)
+{
+    return a &gt; b ? a : b;
+}
+
+void
+main(void)
+{
+    FILE *fin, *fout;
+    int j, l, n;
+
+    fin = fopen("game1.in", "r");
+    fout = fopen("game1.out", "w");
+    assert(fin != NULL &amp;&amp; fout != NULL);
+
+    fscanf(fin, "%d", &amp;n);
+    for(j=0; j&lt;n; j++)
+        fscanf(fin, "%d", &amp;board[j]);
+
+    /* calculate subboard totals */
+    for(j=0; j&lt;n; j++)
+        total[j][0] = 0;
+
+    for(l=1; l&lt;=n; l++)
+    for(j=0; j+l&lt;=n; j++)
+        total[j][l] = board[j] + total[j+1][l-1];
+
+    /* calc best for boards of size one */
+    for(j=0; j+1&lt;=n; j++)
+        best[j][1] = board[j];
+
+    /* calc best for bigger boards */
+    for(l=2; l&lt;=n; l++)
+    for(j=0; j+l&lt;=n; j++)
+        best[j][l] = max(board[j]     + total[j+1][l-1] - best[j+1][l-1],
+                         board[j+l-1] + total[j  ][l-1] - best[j  ][l-1]);
+
+    fprintf(fout, "%d %d\n", best[0][n], total[0][n]-best[0][n]);
+        
+    exit(0);
+}
+</pre>
+<center>
+<a href="../BACK/default.htm">USACO Gateway</a> | <a href="mailto:kolstad@ace.delos.com">Comment or Question</a>
+</center>
+</body>

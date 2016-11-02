@@ -1,0 +1,211 @@
+#include <fstream.h>
+#include <conio.h>
+#include <string.h>
+#include <ctype.h>
+
+typedef struct _pnt
+{
+	int x, y;
+} pnt;
+
+void input( void );
+int process( void );
+void output( int res );
+int ccw( pnt p1, pnt p2, pnt p3 );
+int cross( pnt p1, pnt p2, pnt p3, pnt p4 );
+
+pnt p[ 100 ];
+int n;
+int kk = 1;
+
+int main( void )
+{
+	while( kk )
+	{
+		input();
+		output( process() );
+	}
+
+	return 0;
+}
+
+void input( void )
+{
+aa:
+	cout << "Point(x,y) ? "; cin >> p[ 0 ].x; cin.get(); cin >> p[ 0 ].y; cin.get();
+	n = 1;
+	while( 1 )
+	{
+		cout << "Point(x,y) ? "; cin >> p[ n ].x; cin.get(); cin >> p[ n ].y; cin.get();
+		if( p[ n ].x > 20 || p[ n ].x < -20 || p[ n ].y > 10 || p[ n ].y < -10 ) { cout << endl; continue; }
+		if( p[ n ].x == p[ 0 ].x && p[ n ].y == p[ 0 ].y ) break;
+		n++;
+	}
+	if( n > 10 ) { cout << endl; goto aa; }
+}
+
+int process( void )
+{
+	int l1, l2;
+	int tmp1;
+
+	for( l1 = 0; l1 < n; l1++ )
+	{
+		for( l2 = 0; l2 < n; l2++ )
+		{
+			if( l1 != l2 && ( l1 + 1 ) % n != l2 && ( l2 + 1 ) % n != l1 )
+			{
+				if( cross( p[ l1 ], p[ ( l1 + 1 ) % n ], p[ l2 ], p[ ( l2 + 1 ) % n ] ) == 1 ) return 2;
+			}
+		}
+	}
+	for( l1 = 0; l1 < n; l1++ )
+	{
+		if( ccw( p[ l1 ], p[ ( l1 + 1 ) % n ], p[ ( l1 + 2 ) % n ] ) != 0 ) break;
+	}
+	tmp1 = ccw( p[ l1 ], p[ ( l1 + 1 ) % n ], p[ ( l1 + 2 ) % n ] );
+	for( ; l1 < n; l1++ )
+	{
+		if( ccw( p[ l1 ], p[ ( l1 + 1 ) % n ], p[ ( l1 + 2 ) % n ] ) == -tmp1 ) return 1;
+	}
+	return 0;
+}
+
+void output( int res )
+{
+	char str[ 100 ];
+	int l1;
+	int l, tmp1;
+
+	clrscr();
+	cout << "Points :";
+	for( l1 = 0; l1 < n; l1++ )
+	{
+		cout << " (" << p[ l1 ].x << ',' << p[ l1 ].y << ')';
+	}
+	for( l1 = -19; l1 <= 19; l1++ )
+	{
+		gotoxy( l1 + 20, 12 );
+		if( l1 % 5 == 0 ) cout << '+'; else cout << '-';
+	}
+	for( l1 = -9; l1 <= 9; l1++ )
+	{
+		gotoxy( 20, l1 + 12 );
+		if( l1 % 5 == 0 ) cout << '+'; else cout << '|';
+	}
+	gotoxy( 19, 7 ); cout << '5';
+	gotoxy( 18, 17 ); cout << "-5";
+	gotoxy( 9, 13 ); cout << "-10";
+	gotoxy( 30, 13 ); cout << "10";
+	for( l1 = 0; l1 < n; l1++ )
+	{
+		gotoxy( 20 + p[ l1 ].x, 12 - p[ l1 ].y );
+		cout << ( char )( l1 + 'A' );
+	}
+	gotoxy( 1, 23 );
+	switch( res )
+	{
+		case 0: cout << "Convex hull."; break;
+		case 1: cout << "Not convex hull."; break;
+		case 2: cout << "Not polygon."; break;
+	}
+bb:
+	gotoxy( 1, 24 ); cout << "																			";
+	gotoxy( 1, 24 );
+	cout << "Retry? "; cin.getline( str, 100, '\n' );
+	l = strlen( str ); tmp1 = 0;
+	for( l1 = 0; l1 < l; l1++ )
+	{
+		if( str[ l1 ] != ' ' ) tmp1++;
+	}
+	if( tmp1 != 1 ) goto bb;
+	for( l1 = 0; l1 < l; l1++ )
+	{
+		if( str[ l1 ] != ' ' )
+		{
+			if( tolower( str[ l1 ] ) == 'y' ) kk = 1;
+			else if( tolower( str[ l1 ] ) == 'n' ) kk = 0;
+			else goto bb;
+		}
+	}
+}
+
+int ccw( pnt p1, pnt p2, pnt p3 )
+{
+	long tmp1;
+
+	tmp1 = p1.x * p2.y + p2.x * p3.y + p3.x * p1.y - p1.y * p2.x - p2.y * p3.x - p3.y * p1.x;
+	if( tmp1 < 0 ) return -1;
+	else if( tmp1 > 0 ) return 1;
+	return 0;
+}
+
+int cross( pnt p1, pnt p2, pnt p3, pnt p4 )
+{
+	int tmp1, tmp2, tmp3, tmp4, tmp5;
+	pnt pp1, pp2;
+
+	tmp1 = ccw( p1, p2, p3 );
+	tmp2 = ccw( p1, p2, p4 );
+	tmp3 = ccw( p3, p4, p1 );
+	tmp4 = ccw( p3, p4, p2 );
+	if( tmp1 * tmp2 == -1 && tmp3 * tmp4 == -1 ) return 1;
+	if( tmp1 == 0 )
+	{
+		pp1 = p1;
+		pp2 = p2;
+		if( pp1.x > pp2.x )
+		{
+			tmp5 = pp1.x; pp1.x = pp2.x; pp2.x = tmp5;
+		}
+		if( pp1.y > pp2.y )
+		{
+			tmp5 = pp1.y; pp1.y = pp2.y; pp2.y = tmp5;
+		}
+		if( pp1.x <= p3.x && p3.x <= pp2.x && pp1.y <= p3.y && p3.y <= pp2.y ) return 1;
+	}
+	if( tmp2 == 0 )
+	{
+		pp1 = p1;
+		pp2 = p2;
+		if( pp1.x > pp2.x )
+		{
+			tmp5 = pp1.x; pp1.x = pp2.x; pp2.x = tmp5;
+		}
+		if( pp1.y > pp2.y )
+		{
+			tmp5 = pp1.y; pp1.y = pp2.y; pp2.y = tmp5;
+		}
+		if( pp1.x <= p4.x && p4.x <= pp2.x && pp1.y <= p4.y && p4.y <= pp2.y ) return 1;
+	}
+	if( tmp3 == 0 )
+	{
+		pp1 = p3;
+		pp2 = p3;
+		if( pp1.x > pp2.x )
+		{
+			tmp5 = pp1.x; pp1.x = pp2.x; pp2.x = tmp5;
+		}
+		if( pp1.y > pp2.y )
+		{
+			tmp5 = pp1.y; pp1.y = pp2.y; pp2.y = tmp5;
+		}
+		if( pp1.x <= p1.x && p1.x <= pp2.x && pp1.y <= p1.y && p1.y <= pp2.y ) return 1;
+	}
+	if( tmp4 == 0 )
+	{
+		pp1 = p3;
+		pp2 = p4;
+		if( pp1.x > pp2.x )
+		{
+			tmp5 = pp1.x; pp1.x = pp2.x; pp2.x = tmp5;
+		}
+		if( pp1.y > pp2.y )
+		{
+			tmp5 = pp1.y; pp1.y = pp2.y; pp2.y = tmp5;
+		}
+		if( pp1.x <= p2.x && p2.x <= pp2.x && pp1.y <= p2.y && p2.y <= pp2.y ) return 1;
+	}
+
+	return 0;
+}

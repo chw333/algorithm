@@ -1,0 +1,32 @@
+5
+dave laura owen vick amr
+dave 200 3 laura owen vick
+owen 500 1 dave
+amr 150 2 vick owen
+laura 0 2 amr vick
+vick 0 0
+3
+liz steve dave
+liz 30 1 steve
+steve 55 2 liz dave
+dave 0 2 steve liz
+1
+paul
+paul 50 0
+2
+punch judy
+punch 2000 1 judy
+judy 2000 1 punch
+10
+john paul george ringo mick eric longnamedguy bob joan bonnie
+john 20 3 paul george ringo
+paul 100 9 george ringo mick eric longnamedguy bob joan bonnie john
+george 105 9 paul ringo mick eric longnamedguy bob joan bonnie john
+ringo 0 0
+mick 2000 1 longnamedguy
+eric 55 5 bob bonnie joan ringo mick
+longnamedguy 1 2 paul john
+bob 3 4 bonnie joan eric longnamedguy
+joan 3 3 john paul george
+bonnie 7 5 john paul george ringo mick
+john 103 1 longnamedguy

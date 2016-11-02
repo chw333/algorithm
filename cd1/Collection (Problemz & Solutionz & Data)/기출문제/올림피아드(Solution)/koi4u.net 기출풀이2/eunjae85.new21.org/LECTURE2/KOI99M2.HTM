@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>조금은 복잡해 보이는 문제입니다.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p>조금은 복잡해 보이는 문제입니다. 이 문제를 바꾸어 생각하면 그래프 상에서 
+최단 경로를 찾는 문제가 됩니다. 최단 경로를 찾는 알고리즘의 하나가 dijkstra(다이크스라)입니다. 
+이 프로그램에서는 dijkstra를 이용하여 회로를 배치하였습니다. </p>
+<p>이 외에도 우선순위 큐를 이용하여 최단경로를 찾는 알고리즘을 쓸 수도 있습니다. 
+하지만 '소스의 경제성' 측면에서는 dijkstra가 훨씬 나은 듯 합니다.</p>
+<p>dijkstra에 대해서 간단히 설명을 하자면, 먼저 시작점의 이웃점들을 '갈 수 있는 
+점'으로 표시합니다. 그런 다음 '갈 수 있는 점' 중에서 가장 가까운(시작점에서 
+가까운) 점을 찾아서 그 곳으로 이동합니다. 이동한 점에서도 그 이웃점들을 '갈 
+수 있는 점'으로 표시합니다. 이제 또 '갈 수 있는 점'(예전에 표시한 것도 포함) 
+중에서 가장 가까운(역시 시작점에서...) 점을 찾아서 그곳으로 이동합니다.</p>
+<p>이런 일련의 과정을 반복하면 최단 거리를 찾을 수 있습니다.</p>
+<p>밑의 소스에서 끝점에서 시작해서 시작점으로 끝나는 것은, 경로를 찾으면 역순이 
+되기 때문에 뒤집어 주기 귀찮아서 그렇게 한 것입니다.</p>
+<p><font face="Fixed01">program KOI99M2;</font></p>
+<p><font face="Fixed01">type<br>
+&nbsp;&nbsp;Tbuffer = record<br>
+&nbsp;&nbsp;&nbsp;&nbsp;i, j : integer;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">const<br>
+&nbsp;&nbsp;dy : array[1..4] of integer = (-1, 1, 0, 0);<br>
+&nbsp;&nbsp;dx : array[1..4] of integer = (0, 0, -1, 1);</font></p>
+<p><font face="Fixed01">var<br>
+&nbsp;&nbsp;n : integer;<br>
+&nbsp;&nbsp;map, dis, parent : array[1..50, 1..50] of integer;<br>
+&nbsp;&nbsp;buffer : array[1..3000] of Tbuffer;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;si, sj, ei, ej : integer;<br>
+&nbsp;&nbsp;size : integer;</font></p>
+<p><font face="Fixed01">procedure input_file;<br>
+var<br>
+&nbsp;&nbsp;f : text;<br>
+&nbsp;&nbsp;i, j, ni, nj : integer;<br>
+&nbsp;&nbsp;k : integer;<br>
+&nbsp;&nbsp;t, l, z, x, q : integer;<br>
+begin<br>
+&nbsp;&nbsp;for i := 1 to 50 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to 50 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map[i, j] := 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;assign (f, 'input.txt');<br>
+&nbsp;&nbsp;reset (f);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;read (f, n);<br>
+&nbsp;&nbsp;read (f, si, sj, ei, ej);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;read (f, k);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;read (f, t);<br>
+&nbsp;&nbsp;for l := 1 to t do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;read (f, z);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;read (f, i, j);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;&nbsp;&nbsp;for x := 1 to z - 1 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read (f, ni, nj);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if i = ni then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if j &lt; nj then for q := j 
+to nj do map[i, q] := k<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else 
+for q := nj to j do map[i, q] := k;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end else begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if i &lt; ni then for q := i 
+to ni do map[q, j] := k<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else 
+for q := ni to i do map[q, j] := k;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i := ni;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j := nj;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;close (f);<br>
+end;</font></p>
+<p><font face="Fixed01">procedure get (var i, j : integer);<br>
+var<br>
+&nbsp;&nbsp;k, min, mink : integer;<br>
+begin<br>
+&nbsp;&nbsp;mink := 1;<br>
+&nbsp;&nbsp;min := dis[buffer[1].i, buffer[1].j];</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;for k := 2 to size do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if min &gt; dis[buffer[k].i, buffer[k].j] then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mink := k;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min := dis[buffer[k].i, buffer[k].j];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;i := buffer[mink].i;<br>
+&nbsp;&nbsp;j := buffer[mink].j;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;for k := mink to size - 1 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;buffer[k] := buffer[k + 1];<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;dec (size);<br>
+end;</font></p>
+<p><font face="Fixed01">procedure put (i, j : integer);<br>
+begin<br>
+&nbsp;&nbsp;inc (size);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;buffer[size].i := i;<br>
+&nbsp;&nbsp;buffer[size].j := j;<br>
+end;</font></p>
+<p><font face="Fixed01">procedure solve;<br>
+var<br>
+&nbsp;&nbsp;i, j, k, ni, nj, t : integer;<br>
+begin<br>
+&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dis[i, j] := maxint;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;size := 0;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;dis[ei, ej] := map[ei, ej];<br>
+&nbsp;&nbsp;parent[ei, ej] := 0;<br>
+&nbsp;&nbsp;put (ei, ej);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;while size &lt;&gt; 0 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;get (i, j);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;&nbsp;&nbsp;for k := 1 to 4 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ni := i + dy[k];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nj := j + dx[k];</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (ni &gt;= 1) 
+and (ni &lt;= n) and (nj &gt;= 1) and (nj &lt;= n) then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if dis[ni, nj] = maxint then 
+begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dis[ni, nj] := dis[i, 
+j] + map[ni, nj];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent[ni, nj] := 
+k;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;put (ni, nj);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end else begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if dis[ni, nj] &gt; 
+dis[i, j] + map[ni, nj] then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dis[ni, 
+nj] := dis[i, j] + map[ni, nj];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent[ni, 
+nj] := k;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;writeln (dis[si, sj]);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;i := si;<br>
+&nbsp;&nbsp;j := sj;<br>
+&nbsp;&nbsp;t := 0;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;while parent[i, j] &lt;&gt; 0 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;k := parent[i, j];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if k &lt;&gt; t then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln (i, ' ', j);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t := k;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;&nbsp;&nbsp;i := i - dy[k];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;j := j - dx[k];<br>
+&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;writeln (ei, ' ', ej);<br>
+end;</font></p>
+<p><font face="Fixed01">begin<br>
+&nbsp;&nbsp;input_file;<br>
+&nbsp;&nbsp;solve;<br>
+end.</font></p>
+<p>&nbsp;</p>
+</body>
+
+</html></html>

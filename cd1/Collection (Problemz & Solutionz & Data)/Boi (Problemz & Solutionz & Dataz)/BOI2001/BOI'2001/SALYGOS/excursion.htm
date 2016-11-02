@@ -1,0 +1,74 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=windows-1257">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (Win98; I) [Netscape]">
+   <title>Excursion</title>
+</head>
+<body bgcolor="#FF7F00" background="tlo.jpg">
+
+<h2>
+Ekskursija</h2>
+(Vykdymo laikas - 1 sek.) Grupė turistų turi galimybę aplankyti keletą
+miestų. Kiekvienas keliautojas pareiškia po du norus: kuriuos miestus jis
+pageidauja arba nepageidauja aplankyti. Vienas noras pateikiamas tik apie
+vieną miestą. Leidžiama, kad abu keliautojo norai būtų tie patys arba netgi
+priešingi, – pavyzdžiui: ,,Aš noriu aplankyti miestą A“ ir&nbsp; ,,Aš nenoriu
+aplankyti miesto A“.
+<br>&nbsp;
+<br>&nbsp;
+<h2>
+Užduotis</h2>
+
+<p><br>Jūs turite parašyti programą, kuri:
+<ul>
+<li>
+perskaitytų keliautojų norus iš pradinių duomenų bylos exc.in,</li>
+
+<li>
+nustatytų, ar įmanoma sudaryti tokių lankytinų miestų sąrašą (sąrašas gali
+būti tuščias), kad kiekvieno keliautojo bent vienas noras būtų patenkintas,</li>
+
+<li>
+lankytinų miestų sąrašą įrašytų į rezultatų bylą exc.out.</li>
+</ul>
+Jei yra keletas galimų sprendinių, Jūsų programa turi pateikti vieną iš
+jų.
+<br>&nbsp;
+<h2>
+Pradiniai duomenys</h2>
+Pradinių duomenų bylos exc.in pirmoje eilutėje įrašyti du sveikieji skaičiai
+<i>n</i>
+ir <i>m</i> ( <i>1&lt;=n&lt;=20 000</i>, <i>1&lt;=m&lt;=8 000</i> ); <i>n</i>
+yra keliautojų skaičius, <i>m</i> yra miestų skaičius. Keliautojai sunumeruoti
+nuo 1 iki <i>n</i>, miestai sunumeruoti nuo 1 iki <i>m</i>. Kiekvienoje
+iš tolesnių <i>n</i> eilučių įrašyta po du nelygius nuliui skaičius, atskirtus
+vienu tarpu. <i>i</i>+1-oje eilutėje esantys du numeriai
+<i>w<sub>i</sub></i>
+ir <i>v<sub>i</sub></i> nusako&nbsp; keliautojo norus,
+<i>-m&lt;= w<sub>i</sub>
+, v<sub>i</sub> &lt;=m</i>; <i>w<sub>i</sub> , v<sub>i</sub>&lt;>0. </i>Teigiamas
+numeris reiškia, kad keliautojas nori aplankyti šį miestą, neigiamas numeris
+reiškia, kad keliautojas šio miesto aplankyti nenori.
+<br>&nbsp;
+<h2>
+Rezultatai</h2>
+Jūsų programa turi rasti vieną neneigiamą skaičių <i>l</i> –&nbsp; pasirinktų
+aplankyti miestų skaičių – ir jį įrašyti į rezultatų bylos exc.out pirmą
+eilutę. Antroje eilutėje turi būti įrašyta lygiai <i>l</i> teigiamų skaičių,
+išdėstytų didėjančia tvarka, kurie nusakytų lankomus miestus.
+<p>Jei neįmanoma suformuoti miestų sąrašo, Jūsų programa vienintelėje rezultatų
+bylos eilutėje turi įrašyti žodį NO
+<br>&nbsp;
+<h2>
+Pavyzdys</h2>
+Pradinių duomenų bylai exc.in:
+<br><tt><font size=+1>3 4</font></tt>
+<br><tt><font size=+1>1 -2</font></tt>
+<br><tt><font size=+1>2 4</font></tt>
+<br><tt><font size=+1>3 1</font></tt>
+<p>teisingas atsakymas yra rezultatų byla exc.out:
+<br><tt>4</tt>
+<br><tt>1 2 3 4</tt>
+</body>
+</html>

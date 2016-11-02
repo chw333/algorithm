@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+  <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <META name="description" content="Internet Problem Solving Contest (IPSC) is an online programming contest for teams up three people.">
+  <META name="keywords" content="IPSC, programming, contest, online contest">
+  <TITLE>IPSC 2002 Problem F - (un)Fair Play</TITLE>
+  <link rel="stylesheet" type="text/css" href="main.css">
+  
+</HEAD>
+	
+<BODY BGCOLOR=white TEXT="#191970" LINK="#F4A460" VLINK="#CD853F" ALINK="#FFDEAD">
+
+
+	
+<!-- Title and Logo -->
+<TABLE class="title" WIDTH="100%"><TR VALIGN="top">
+<TD WIDTH="140"><A HREF="http://ipsc.ksp.sk/"><IMG BORDER=0 SRC="ipsc.gif" TITLE="Home" ALT="IPSC Logo"></a></TD>
+<TD ALIGN=CENTER>
+	<H5>Internet Problem Solving Contest</H5>
+	<H1>IPSC 2002<br> Problem F - (un)Fair Play</H1>
+</TD>
+</TR></TABLE>
+<!-- end of Title and Logo -->
+
+<TABLE CLASS=page ALIGN=center WIDTH="97%"><TR><TD>
+	
+
+<ul>
+<li><a href="f1.in">Easy input data set - F1</a></li>
+<li><a href="f2.in">Difficult input data set - F2</a></li>
+</ul>
+
+<p>
+It is not an easy job to be a coach of a football team.
+(A note to our American friends: football = soccer.)
+Especially if you do not coach great teams like Ajax, Inter, Dynamo (ok, fill in the name of your dream team),
+but only a mediocre one like FC Dead Horse, playing in the second league. 
+The season is almost over, only a few matches are left to play. 
+All of sudden the team manager comes to you and tells you bad news: the main sponsor of your club is not happy
+with your results and decided to stop sponsoring your team, which probably means the end of your club.
+The sponsor's decision is final and there is no way to change it unless... unless your team miraculously wins the league. 
+</p>
+
+<p>
+The manager left you in deep thought. If you increase the number of practices and offer players
+a generous bonus for each match,
+you may be able to win all the remaining matches. Is that enough? 
+You also have to make sure that teams with many points lose against teams with few points so that in the end,
+your team will have more points than any other team.
+You know some of the referees and can bribe them to manipulate the result of each match.
+But first you need to figure out how to manipulate the results and whether it is possible at all.
+</p>
+
+<H3>Problem Description</H3>
+<p>
+There are <b>N</b> teams numbered 1 through <b>N</b>, your team has the number <b>N</b>. 
+The current number of points of each team and the list of remaining matches are given.
+Your task is to find out whether it is possible to manipulate each remaining 
+match so that the team <b>N</b>
+will finish with strictly more points than any other team. 
+If it is possible, give one possible way to manipulate the results.
+In every match, the winning team gets 2 points, the losing team gets 0.
+If the match ends with a draw, both teams get 1 point.
+</p>
+
+<H3>Input file specification</H3>
+
+<p>
+The input file consists of several blocks. 
+Each block has the following form: 
+The first line contains two numbers <b>N</b> and <b>M</b>. 
+The next line contains <b>N</b> numbers separated by spaces giving the current
+number of points of teams 1, 2, ..., <b>N</b> respectively.
+The following <b>M</b> lines describe the remaining matches. Each line corresponds to one match and contains
+two numbers <b>a</b> and <b>b</b> (<b>a</b> not equal to <b>b</b>) identifying the teams that will play
+in the given match. There is a blank line after each block. 
+The last block is followed by a <tt>-1</tt> on a separate line.
+</p>
+
+<H3>Output file specification</H3>
+<p>
+For each block in the input file, output one possibility how to manipulate the remaining matches. 
+Output <b>M</b> numbers separated by spaces or end of line characters; the <b>i</b>-th number will represent the result
+of the <b>i</b>-th match. 
+Indicate the victory of the first team by 0, a draw by 1, and the victory of the second team by 2.
+If it is not possible to manipulate the remaining matches so that the team <b>N</b> would win the league,
+output a single line containing the word <tt>NO</tt>.
+Output a blank line after each block.
+
+<h3>Example</h3>
+
+<b>Input file:</b>
+<pre>5 8
+2 1 0 0 1
+1 2
+3 4
+2 3
+4 5
+3 1
+2 4
+1 4
+3 5
+
+5 4
+4 4 1 0 3
+1 3
+2 3
+3 4
+4 5
+
+-1
+</pre>
+
+<b>Output file:</b>
+<pre>
+2 0 2 2 2 1 2 2 
+
+NO
+</pre>
+
+<p><b>Note:</b>
+In the second input case, team 5 can get at most 3+2=5 points 
+(assuming it wins against team 4).
+Suppose team 5 could win. The only way for this to happen is if team 1
+(who has currently 4 points)
+loses against team 3 (otherwise team 1 would have 5 or more points).
+Similarly, team 2 must lose against team 3. 
+But if team 3 wins against both teams 1 and 2,
+it will have at least 1+2+2=5 points.
+Hence there is no way to ensure victory for team 5.
+</p>
+
+
+	   
+<!-- END OF PAGE -->   
+</TD></TR></TABLE>
+</BODY>
+</HTML>

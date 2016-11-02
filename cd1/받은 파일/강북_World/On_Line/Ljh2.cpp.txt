@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+int size;
+int data[100];
+int change[5000], outputs;
+
+void get_data(void)
+{
+	int i;
+	FILE *infile = fopen("ljh55.in", "r");
+	fscanf(infile, "%d", &size);
+	for(i = 0; i < size; i++)
+		fscanf(infile, "%d", &data[i]);
+	fclose(infile);
+}
+
+void process(void)
+{
+	int i, j, temp;
+	for(i = 1; i < size; i++)
+		for(j = i - 1; j >= 0; j--)
+			if (data[j] > data[j + 1])
+			{
+				temp = data[j]; data[j] = data[j + 1]; data[j + 1] = temp;
+				change[outputs++] = j + 1;
+			}
+			else break;
+}
+
+void output(void)
+{
+	FILE *outfile = fopen("ljh55.out", "w");
+	for(int i = outputs - 1; i >= 0; i--)
+		fprintf(outfile, "%d ", change[i]);
+	fclose(outfile);
+}
+
+int main(void)
+{
+	get_data();
+	process();
+	output();
+	return 0;
+}

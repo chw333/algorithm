@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>교차점 개수</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p>교차점 개수</p>
+<p>초등부 문제 중에서도 1번 문제이네요.. :) 실수로라도 틀리면 안되겠죠?</p>
+<p>문제가 약간 빙빙 돌려서 설명되어 있다는 느낌이 드네요. 최소니, 직선이니, 
+곡선이니 그런 말들 다 생각하지 않고 단지, '모든 교차점의 수'를 구하면 됩니다.</p>
+<p>이 모든 교차점의 수라는 것은 직선 i, j가 서로 겹치는 순서쌍 (i, j) 의 개수를 
+모두 구하면 됩니다. (i, j) 직선의 교차라고 하니 또 머리가 아파오기 시작하는데 
+이 문제에서는 모든 점들이 직사각형의 변 위에 있다는 것을 생각하면 그리 어렵지 
+않습니다.</p>
+<p>선의 교차를 검사하는 부분이 결국 가장 중요합니다. 아래 소스 정도는 무난히 
+해석할 수 있어야겠죠?</p>
+<p>일단 직사각형의 왼쪽 위의 꼭지점을 원점으로 잡고, 시계방향으로 도는 순서로 
+대소관계가 더 크다고 정의를 합시다. 예를 들어 윗변 7의 위치에 있는 점은 오른쪽 
+3의 점보다 더 '작다'라고 말할 수 있는 것이지요.</p>
+<p>어느 한 점이 다른 두 점의 사이에 있다는 말은, a b c 세 점이 있을 때 b가 a보다는 
+크지만 c보다는 작을 때를 나타냅니다.</p>
+<p>위의 간단한 몇가지 정의를 하고 나면 두 선분의 교차를 검사하는 일이 쉬워집니다. 
+선분이 교차되는 경우를 잘 보면, B1점은 A1점과 A2점 사이에 있고, B2점은 사이에 
+있지 않은 경우입니다.(혹은 B2점이 사이에 있고 B1점은 그렇지 않은 경우) 두 선분이 
+이런 모양을 하고 있는지 검사해 주면 선분의 교차 여부를 알 수 있겠죠.</p>
+<p><font face="굴림체">program KOI98E1;</font></p>
+<p><font face="굴림체">type<br>
+&nbsp;&nbsp;Tpoint = record<br>
+&nbsp;&nbsp;&nbsp;&nbsp;edge : integer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;p : integer;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;n : integer;<br>
+&nbsp;&nbsp;line : array[1..25, 1..2] of Tpoint;</font></p>
+<p><font face="굴림체">function less (a, b : Tpoint) : boolean;<br>
+const<br>
+&nbsp;&nbsp;temp : array[1..4] of integer = (1, 3, 4, 2);<br>
+begin<br>
+&nbsp;&nbsp;if temp[a.edge] &lt; temp[b.edge] then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;less := true<br>
+&nbsp;&nbsp;else if temp[a.edge] &gt; temp[b.edge] then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;less := false<br>
+&nbsp;&nbsp;else begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if ((a.edge = 1) or (a.edge = 4)) xor (a.p &gt; b.p) 
+then less := true<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else 
+less := false;<br>
+&nbsp;&nbsp;end;<br>
+end;</font></p>
+<p><font face="굴림체">function more (a, b : Tpoint) : boolean;<br>
+begin<br>
+&nbsp;&nbsp;more := not less (a, b);<br>
+end;</font></p>
+<p><font face="굴림체">procedure swap (var a, b : Tpoint);<br>
+var<br>
+&nbsp;&nbsp;t : Tpoint;<br>
+begin<br>
+&nbsp;&nbsp;t := a;<br>
+&nbsp;&nbsp;a := b;<br>
+&nbsp;&nbsp;b := t;<br>
+end;</font></p>
+<p><font face="굴림체">procedure input_file;<br>
+var<br>
+&nbsp;&nbsp;f : text;<br>
+&nbsp;&nbsp;i : integer;<br>
+begin<br>
+&nbsp;&nbsp;assign (f, 'input.txt');<br>
+&nbsp;&nbsp;reset (f);</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;read (f, n);</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;for i := 1 to n div 2 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;read (f, line[i, 1].edge, line[i, 1].p);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;read (f, line[i, 2].edge, line[i, 2].p);</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;if more (line[i, 1], line[i, 
+2]) then swap (line[i, 1], line[i, 2]);<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;close (f);<br>
+end;</font></p>
+<p><font face="굴림체">function between (a, b, c : Tpoint) : boolean;<br>
+begin<br>
+&nbsp;&nbsp;between := less (a, b) and more (c, b);<br>
+end;</font></p>
+<p><font face="굴림체">function cross (a, b, c, d : Tpoint) : boolean;<br>
+begin<br>
+&nbsp;&nbsp;cross := between (a, b, c) xor between (a, b, d);<br>
+end;</font></p>
+<p><font face="굴림체">procedure solve;<br>
+var<br>
+&nbsp;&nbsp;f : text;<br>
+&nbsp;&nbsp;i, j : integer;<br>
+&nbsp;&nbsp;c, max, total : integer;<br>
+begin<br>
+&nbsp;&nbsp;total := 0;<br>
+&nbsp;&nbsp;max := -1;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;for i := 1 to n div 2 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;c := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n div 2 do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if i &lt;&gt; j then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if cross (line[i, 1], line[i, 
+2], line[j, 1], line[j, 2]) then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc (total);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc (c);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if c &gt; max then max := c;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;assign (f, 'output.txt');<br>
+&nbsp;&nbsp;rewrite (f);</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;writeln (f, total div 2);<br>
+&nbsp;&nbsp;writeln (f, max);</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;close (f);<br>
+end;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;input_file;<br>
+&nbsp;&nbsp;solve;<br>
+end.</font></p>
+</body>
+
+</html></html>

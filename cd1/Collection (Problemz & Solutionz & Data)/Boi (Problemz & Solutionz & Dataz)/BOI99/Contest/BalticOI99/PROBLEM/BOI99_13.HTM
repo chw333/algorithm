@@ -1,0 +1,74 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 97">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (Win95; I) [Netscape]">
+   <title>boi'99 Day 1 Task 3</title>
+</head>
+<body background="backgrnd.gif">
+<img SRC="boi99bap.GIF" height=38 width=778>
+<p><b><font size=+1>"STRING MATCHING" (ESTONIA)</font></b>
+<p>You are given two collections of strings, collection <i>A</i> and collection
+<i>B</i>.
+Your task is to find out if there exists a non-empty string <i>S</i> that
+is expressible as a concatenation of members of collection <i>A</i> as
+well as a concatenation of members of collection <i>B</i>. If there is
+such string, you must find the shortest one. A member of collection may
+occur multiple times in a concatenation.
+<p><b><i>Input data</i></b>
+<p>On the first line of file <font face="Courier New">MATCH.IN</font> is
+integer N (0 <font face="Symbol">&pound;</font> N <font face="Symbol">&pound;</font>
+100), the number of strings in collection <i>A</i>. On the next N lines
+are the members of collection <i>A</i>, each on separate line. On the next
+line is integer M (0 <font face="Symbol">&pound;</font> M <font face="Symbol">&pound;</font>
+100), the number of strings in collection <i>B</i>. On the next M lines
+are the members of collection <i>B</i>, each on separate line. All collection
+members consist of capital Latin letters and have length between 1 and
+50 (inclusive).
+<p><b><i>Output data</i></b>
+<p>Your program must write it’s output to file <font face="Courier New">MATCH.OUT</font>.
+If there is no string <i>S</i>, the program must write 0 (zero) on the
+first and only line of the file. Otherwise, the first line must contain
+the length of the shortest possible <i>S</i>. The next line must contain
+the representation of <i>S</i> as concatenation of strings from collection
+<i>A</i>.
+The strings must be output in the order of concatenation and separated
+by '+' (plus) signs. The next line must contain the representation of the
+string as concatenation of strings from collection <i>B</i> in the same
+format as for strings from collection <i>A</i>. If different shortest strings
+are possible, you must output representation for one of them. If different
+representations from one collection for shortest string are possible, you
+must output one of them.
+<p><b><i>Evaluation</i></b>
+<p>Only absolutely correct answers are accepted - if the reported string
+is not the shortest possible, the program scores 0 for given test. A solution
+that fails all tests where string <i>S</i> exists will score 0 for the
+whole problem.
+<p><b><i>Example 1</i></b>
+<br>Input data(file<font face="Courier New"><font size=-1> </font>MATCH.IN</font>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Output data (file<font face="Courier New"><font size=-1> </font>MATCH.OUT</font><font size=-1>)</font>
+<br><font face="Courier New">1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0</font>
+<br><font face="Courier New">AB</font>
+<br><font face="Courier New">2</font>
+<br><font face="Courier New">A</font>
+<br><font face="Courier New">BA</font>
+<p><b><i>Example 2</i></b>
+<br>Input data(file<font face="Courier New"><font size=-1> </font>MATCH.IN</font>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Output data (file<font face="Courier New"><font size=-1> </font>MATCH.OUT</font>)
+<br><font face="Courier New">2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+5</font>
+<br><font face="Courier New">ABC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CB+ABC</font>
+<br><font face="Courier New">CB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CBA+BC</font>
+<br><font face="Courier New">2</font>
+<br><font face="Courier New">CBA</font>
+<br><font face="Courier New">BC</font>
+<br>
+<hr WIDTH="100%">
+<p><b><i><font size=+1><a href="Task13.zip">TEST CASES</a></font></i></b>
+<p><b><i><font size=+1><a href="BOI99_21.htm">NEXT TASK</a></font></i></b>
+</body>
+</html>

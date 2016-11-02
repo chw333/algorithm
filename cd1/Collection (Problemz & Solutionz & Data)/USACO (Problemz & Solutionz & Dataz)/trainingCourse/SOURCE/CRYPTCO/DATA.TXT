@@ -1,0 +1,58 @@
+Compiling `cryptcow'...
+Testing ...
+Test 1: OK
+Test 2: OK
+Test 3: OK
+Test 4: OK
+Test 5: OK
+Test 6: OK
+Test 7: OK
+Test 8: OK
+Test 9: OK
+Test 10: OK
+Finished grading...
+
+
+USACO Training Grader Results
+
+
+Your program (`cryptcow') produced all correct answers! This is your submission #107 for this problem. Congratulations!
+Here are your execution times for each case:
+
+
+       Test  1:        0
+       Test  2: 0.011823
+       Test  3:        0
+       Test  4:        0
+       Test  5: 0.011402
+       Test  6:   4.1844
+       Test  7: 0.023951
+       Test  8: 0.010159
+       Test  9:        0
+       Test 10: 0.011589
+
+Here are the test data inputs:
+
+
+------- test 1 -------
+Begin the Escape execution at the Break of Dawn
+------- test 2 -------
+CBegin the EscCution at the BreOape execWak of OWDawn
+------- test 3 -------
+Begin the EscCutino at the BreOape execWak of Dawn
+------- test 4 -------
+Begin the EscCCCCCCution at the BreOOOOOOape execWWWWWWak of Dawn
+------- test 5 -------
+CaOBegin the EscWpe CnCak OexeOt the BWcutioWofO aCreW Dawn
+------- test 6 -------
+BCC execuO the EsCinCaWCCreaOpWtiOn at OCDOcOWaOegCeWtheOW BWoWk of Wwn
+------- test 7 -------
+BegiCoWCWDOk oCthe EscOWaCn Oe Of On WexecutChe BreOOCat tWiWapCWawn
+------- test 8 -------
+BeCOgC CC execuOf DOBCiCCrWaOOt theCOCeak oWWin Oon aWtheOOW EscapeWtWWWwn
+------- test 9 -------
+CChCC Oe BWOWEscapCreOeOegin tWOe WatWaOe OBCexCOhWC of O tCWcutionWkWDawn
+------- test 10 -------
+CCC COhe BWOWEscapCreOeOegin tWOe WatWaOe OBCexCOhWC of O tCWcutionWkWDawn
+----------------------
+

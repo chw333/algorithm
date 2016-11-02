@@ -1,0 +1,22 @@
+10 10
+10
+house1 LOCATION A 0
+house2 LOCATION J 9
+building3 DISTANCE 4 house2
+building4 DISTANCE 5 building3
+building5 DISTANCE 4 building4
+building6 DISTANCE 5 building5
+building7 DISTANCE 5 building6
+building8 DISTANCE 4 building7
+building9 DISTANCE 5 building8
+building10 DISTANCE 5 building9
+building11 DISTANCE 4 building10
+building12 DISTANCE 5 building11
+building13 DISTANCE 4 building12
+building14 DISTANCE 5 building13
+building15 DISTANCE 4 building14
+building16 DISTANCE 4 building15
+building17 DISTANCE 5 building16
+building18 DISTANCE 5 building17
+building19 DISTANCE 4 building18
+building20 DISTANCE 5 building19

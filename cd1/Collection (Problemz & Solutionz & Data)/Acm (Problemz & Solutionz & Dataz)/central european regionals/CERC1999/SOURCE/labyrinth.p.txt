@@ -1,0 +1,97 @@
+program bludiste(input,output);
+
+(*
+  Labyrinth
+  CERC 1999, Jan Cada
+*)
+
+const MAXSIZE=1000;
+
+type mustdynamic1 = array[1..MAXSIZE*MAXSIZE,1..2] of integer;
+     mustdynamic2 = array[1..MAXSIZE,1..MAXSIZE] of integer;
+     mustdynamic3 = array[1..MAXSIZE,1..MAXSIZE,1..4] of integer;
+
+
+var BLUDISTE    : array[1..MAXSIZE,1..MAXSIZE] of boolean;
+    SOUSEDU     : ^mustdynamic2;
+    DELKA       : ^mustdynamic3;
+    RSIZE,CSIZE : integer;
+    pocetuloh   : integer;
+    r,c,i       : integer;
+    ch          : char;   
+    LIST        : ^mustdynamic1;
+    LFF, LACT   : integer;	   
+    maxd,max2d  : integer;
+    maxlen      : integer;
+    str         : string[MAXSIZE];
+    
+begin   
+ new (LIST); 
+ new (SOUSEDU);
+ new (DELKA);
+ readln( pocetuloh );
+ while(pocetuloh>0) do
+ begin
+  maxlen:=0;
+  LFF:=1; LACT:=1;
+  readln( CSIZE, RSIZE);
+  for r:=1 to RSIZE do
+   for c:=1 to CSIZE do
+    SOUSEDU^[r,c] := 0;
+  for r:=1 to RSIZE do 
+  begin
+   readln(str);
+   for c:=1 to CSIZE do
+   begin
+    ch:=str[c];
+    if ch = '.' then 
+    begin 
+     BLUDISTE[r,c] := true;
+     SOUSEDU^[r-1,c] := SOUSEDU^[r-1,c] + 1; SOUSEDU^[r,c-1] := SOUSEDU^[r,c-1] + 1;
+     SOUSEDU^[r+1,c] := SOUSEDU^[r+1,c] + 1; SOUSEDU^[r,c+1] := SOUSEDU^[r,c+1] + 1;
+    end 
+    else BLUDISTE[r,c] := false;
+    for i:=1 to 4 do DELKA^[r,c,i] := -1;     
+   end;
+  end;
+  for r:=1 to RSIZE do
+   for c:=1 to CSIZE do
+    if BLUDISTE[r,c] then  
+  begin
+   if not BLUDISTE[r,c-1] then DELKA^[r,c,1] := 0;
+   if not BLUDISTE[r,c+1] then DELKA^[r,c,2] := 0;
+   if not BLUDISTE[r-1,c] then DELKA^[r,c,3] := 0;
+   if not BLUDISTE[r+1,c] then DELKA^[r,c,4] := 0;
+   if SOUSEDU^[r,c] = 1 then
+   begin
+    LIST^[LFF,1] := r;
+    LIST^[LFF,2] := c;
+    LFF := LFF + 1;
+   end;  
+  end;
+  
+  while ( LFF>LACT ) do 
+  begin
+   r := LIST^[LACT,1]; c := LIST^[LACT,2]; 
+   SOUSEDU^[r-1,c] := SOUSEDU^[r-1,c] - 1; SOUSEDU^[r,c-1] := SOUSEDU^[r,c-1] - 1;
+   SOUSEDU^[r+1,c] := SOUSEDU^[r+1,c] - 1; SOUSEDU^[r,c+1] := SOUSEDU^[r,c+1] - 1;
+   if (SOUSEDU^[r-1,c]=1) and BLUDISTE[r-1,c] then begin LIST^[LFF,1] := r-1; LIST^[LFF,2] := c; LFF := LFF + 1; end;  
+   if (SOUSEDU^[r+1,c]=1) and BLUDISTE[r+1,c] then begin LIST^[LFF,1] := r+1; LIST^[LFF,2] := c; LFF := LFF + 1; end;  
+   if (SOUSEDU^[r,c-1]=1) and BLUDISTE[r,c-1] then begin LIST^[LFF,1] := r; LIST^[LFF,2] := c-1; LFF := LFF + 1; end;  
+   if (SOUSEDU^[r,c+1]=1) and BLUDISTE[r,c+1] then begin LIST^[LFF,1] := r; LIST^[LFF,2] := c+1; LFF := LFF + 1; end;  
+   if DELKA^[r,c,1] > DELKA^[r,c,2] then begin maxd := DELKA^[r,c,1]; max2d := DELKA^[r,c,2]; end
+   else begin max2d := DELKA^[r,c,1]; maxd := DELKA^[r,c,2]; end;
+   for i:=3 to 4 do 
+    if DELKA^[r,c,i] > maxd then begin max2d := maxd; maxd := DELKA^[r,c,i]; end
+    else if DELKA^[r,c,i] > max2d then max2d := DELKA^[r,c,i]; 
+   if (maxd+max2d) > maxlen then maxlen := maxd + max2d; 
+   DELKA^[r,c+1,1] := maxd+1; DELKA^[r,c-1,2] := maxd+1;
+   DELKA^[r+1,c,3] := maxd+1; DELKA^[r-1,c,4] := maxd+1;
+       
+   LACT := LACT + 1;  
+  end; 
+  writeln ('Maximum rope length is ',(maxlen):1,'.');  
+  pocetuloh := pocetuloh - 1;
+ end;
+end.
+ 

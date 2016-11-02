@@ -1,0 +1,79 @@
+#include <Stdio.h>
+#include <conio.h>
+#include <Stdlib.h>
+#include <String.h>
+#include <math.h>
+
+int Num;
+int Array[ 100 ];
+int P[ 100 ];
+int PP[ 100 ];
+unsigned long Digit;
+
+void Perm(int);
+
+void main(void)
+{
+clrscr();
+int L1;
+FILE *Fin = fopen("input.txt", "r");
+fscanf ( Fin, "%d", &Num );
+for ( L1 = 1; L1 <= Num; L1 ++ )
+	{
+		fscanf ( Fin, "%d", &Array[ L1 ] );
+		P[ L1 ] = Array[ L1 ];
+		//P[ L1 ] = L1;
+	}
+	Perm(1);
+}
+
+void Perm(int I)
+{
+int Bak1;
+int Check;
+int Loop1, Loop2, Loop3, Loop4;
+char String[ 100 ];
+
+	if ( I < Num )
+		{
+		for ( Loop1 = I; Loop1 <= Num; Loop1 ++ )
+			{
+			Bak1 = P[ Loop1 ];
+			for ( Loop2 = Loop1; Loop2 > I; Loop2 -- )
+				P[ Loop2 ] = P[ Loop2 - 1 ];
+			P[ I ] = Bak1;
+
+			Perm( I + 1 );
+
+		for ( Loop2 = I; Loop2 < Loop1; Loop2 ++ )
+			P[ Loop2 ] = P[ Loop2 + 1 ];
+		P[ Loop1 ] = Bak1;
+			}
+		}
+	else
+		{
+			Check = 0;
+			strcpy( String, "" );
+			for ( Loop3 = 1 ; Loop3 <= Num; Loop3 ++ )
+				{
+					Digit = 0;
+					for ( Loop4 = 1; Loop4 <= Loop3; Loop4 ++ )
+						{
+						Digit = Digit + pow( 10, Loop3 - Loop4 ) * P[ Loop4 ];
+						}
+					if ( Digit % Loop3 == 0 )
+							Check ++;
+
+				}
+			// Process
+		if ( Check == Num )
+		{
+			for ( Loop3 = 1; Loop3 <= Num; Loop3 ++ )
+				printf ("%d ", P[ Loop3 ] );
+			printf ("\n");
+//			exit(1);
+		}
+		Check = 0;
+
+		}
+}

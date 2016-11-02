@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>2000년 17회 한국정보올림피아드</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0">
+    <tr>
+        <td width="595"><table border="0" width="595">
+                <tr>
+                    <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+                        17회 고등부 1. 수열 축소</b></font></td>
+                    <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="skoi00h1.htm"><img src="button2.gif"
+                         width="72" height="22" border="0"></a></td>
+                    <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi00h1.htm"><img src="button3.gif"
+                         width="72" height="22" border="0"></a></td>
+                </tr>
+            </table>
+            <p><img src="bar1.gif" width="592" height="25" border="0"></p>
+            <ul>
+                <p><font size="2">n개의 정수들로 이루어진 수열 [a</font><font
+                 size="2"><sub>1</sub></font><font size="2">, a</font><font size="2"><sub>2</sub></font><font
+                 size="2">, ..., a</font><font size="2"><sub>n</sub></font><font
+                 size="2">]이 있다. 여기에 정수 i를 주면서 '축소'라는 명령을 
+                하면 a</font><font size="2"><sub>i</sub></font><font size="2">와 
+                a</font><font size="2"><sub>i+1</sub></font><font size="2">이 
+                없어지고, 대신 두 수의 차가 들어간다. 즉, 새로 들어간 수는 |a</font><font
+                 size="2"><sub>i</sub></font><font size="2"> - a</font><font
+                 size="2"><sub>i+1</sub></font><font size="2">|이다. 바꿔 말하면, 
+                축소 연산 i는</font></p>
+                <p><font size="2">축소([a</font><font size="2"><sub>1</sub></font><font
+                 size="2">, a</font><font size="2"><sub>2</sub></font><font size="2">, 
+                ..., a</font><font size="2"><sub>n</sub></font><font size="2">], 
+                i) = [a</font><font size="2"><sub>1</sub></font><font size="2">, 
+                ..., a</font><font size="2"><sub>i-1</sub></font><font size="2">, 
+                |a</font><font size="2"><sub>i</sub></font><font size="2"> - 
+                a</font><font size="2"><sub>i+1</sub></font><font size="2">|, 
+                a</font><font size="2"><sub>i+2</sub></font><font size="2">, 
+                ...]이다. 단, 1≤i≤n-1</font></p>
+                <p><font size="2">예를 들어, 수열 [12, 10, 4, 3, 5]에 축소연산들 
+                2, 3, 2, 1을 차례대로 적용하면</font></p>
+                <p><font size="2">축소([12, 10, 4, 3, 5], 2) = [12, 6, 3, 5]<br> 
+                축소([12, 6, 3, 5], 3) = [12, 6, 2]<br> 축소([12, 6, 2], 2) 
+                = [12, 4]<br> 축소([12, 4], 1) = [8] 이 되므로,마지막에 8이 
+                남는다. </font></p>
+                <p><font size="2">같은 수열에 축소연산들 1, 1, 1, 1을 적용하면,</font></p>
+                <p><font size="2">축소([12, 10, 4, 3, 5], 1) = [2, 4, 3, 5]<br> 
+                축소([2, 4, 3, 5], 1) = [2, 3, 5]<br> 축소([2, 3, 5], 1) = [1, 
+                5]<br> 축소([1, 5], 1) = [4] 가 되므로, 마지막에 4가 남는다.</font></p>
+                <p><font size="2">입력으로 수열과 최종값이 주어질 때, n-1번의 
+                축소 연산을 수행하여 최종값을 얻을 수 있는가를 알아내는 프로그램을 
+                작성하시오. 최종값을 얻을 수 있는 축소연산들이 여러 개일 경우는 
+                그 중 하나만 출력한다.</font></p>
+                <p><font size="2">실행파일의 이름은 SEQ.EXE 로 하고, 부분점수는 
+                없다.</font></p>
+            </ul>
+            <p><img src="bar2.gif" width="591" height="26" border="0"></p>
+            <ul>
+                <p><font size="2">입력 파일 이름은 INPUT.TXT이다. 첫 줄에는 
+                정수 n이 주어진다 (n은 1이상 30이하). &nbsp;둘째 줄에는 최종값이 
+                주어진다. 다음 n줄에는 a</font><font size="2"><sub>1</sub></font><font
+                 size="2">, a</font><font size="2"><sub>2</sub></font><font size="2">, 
+                ..., a</font><font size="2"><sub>n</sub></font><font size="2">에 
+                해당하는 수가 한 줄에 하나씩 순서대로 주어진다 (각 a</font><font
+                 size="2"><sub>i</sub></font><font size="2">는 1이상 30이하).</font></p>
+            </ul>
+            <p><img src="bar3.gif" width="590" height="26" border="0"></p>
+            <ul>
+                <p><font size="2">출력 파일 이름은 OUTPUT.TXT이다. 첫 줄부터 
+                &nbsp;구한 축소연산들을 한 줄에 하나씩 순서대로 출력한다. 최종값을 
+                구할 수 없는 경우에는 첫 줄에 0을 출력한다.</font></p>
+            </ul>
+            <p><img src="bar4.gif" width="593" height="25" border="0"></p>
+            <ul>
+                <p><font size="2">입력(INPUT.TXT)</font> 
+                <table border cellspacing="0">
+                        <tr>
+                            <td width="70"><p><font size="2">5<br> 8<br> 12<br> 
+                            10<br> 4<br> 3<br> 5</font></td>
+                    </tr>
+                </table>
+                <p><font size="2">출력(OUTPUT.TXT)<br> </font>
+                <table border cellspacing="0">
+                        <tr>
+                            <td width="70"><p><font size="2">2<br> 3<br> 2<br> 
+                            1</font></td>
+                    </tr>
+                </table>
+                <p><font size="2"><br> 입력(INPUT.TXT) </font>
+                <table border cellspacing="0">
+                        <tr>
+                            <td width="70"><p><font size="2">4<br> 7<br> 12<br> 
+                            10<br> 4<br> 5</font></td>
+                    </tr>
+                </table>
+                <p><font size="2">출력(OUTPUT.TXT)<br> </font>
+                <table border cellspacing="0">
+                        <tr>
+                            <td width="70"><p><font size="2">0</font></td>
+                    </tr>
+                </table>
+
+                </ul><p><img src="bar5.gif" width="595" height="26" border="0"></p>
+            <ul>
+                <p>&nbsp;<font size="2">제한시간은 2초이다.</font> 
+            </ul></td>
+    </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+
+</html>

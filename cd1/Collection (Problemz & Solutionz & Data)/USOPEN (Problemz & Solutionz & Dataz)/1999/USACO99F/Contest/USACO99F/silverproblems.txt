@@ -1,0 +1,142 @@
+ Problems - 1999 Fall Open, Silver
+--------------------------------------------------------------------------------
+ 
+ PROBLEM 1: Statistics [Traditional] 
+Find the mean, median, and mode of a set of numbers. Each number in the input set is an integer between -10000 and 10000 inclusive. 
+
+The `mean' is the sum of the numbers divided by the count of the numbers. 
+
+The median is the number `in the middle': in a sorted list of the numbers, half the numbers are less than or equal to the median and half are larger. In the case of an even count of the numbers, the median is the mean of the two numbers in the middle of the ordered set. 
+
+No number appears in the set more frequently than the `mode' (or set of modes). 
+
+INPUT FORMAT: 
+
+The first line of the input file has N (1 <= N <= 5000), the count of the input numbers. The subsequent N lines each contain an integer. 
+
+OUTPUT FORMAT: 
+
+The first line of the output file should contain the mean, printed to precisely four decimal places. Do not perform explicit rounding of the output; let the run-time libraries do that for you. 
+
+The second line of the output file should have the median, printed to precisely one decimal place. 
+
+The third line of the file should contain each of the modes, printed in ascending order. 
+
+SAMPLE INPUT (file INPUT.TXT): 
+
+7
+1
+2
+3
+3
+3
+4
+5
+SAMPLE OUTPUT (file OUTPUT.TXT): 
+
+3.0000
+3.0
+3
+
+--------------------------------------------------------------------------------
+PROBLEM 2: Musical Chords [Traditional] 
+This problem asks you to determine whether a set of three notes makes a minor chord, a major chord, or neither. 
+
+Musical notes are named by upper-case letters of the alphabet and occur in an endless sequence of `half steps', of which two octaves are shown here: 
+
+... C C# D D# E F F# G G# A A# B C C# D D# E F F# G G# A A# B C ...
+The `#' sign means `sharp', so F# is read `F sharp'. There are other ways of naming the notes, including `flats', but we'll not consider them here. 
+A chord is a major chord if its three notes, when ordered correctly, have successive differences of four and three half steps. Let's label a scale: 
+
+        ...  C  C# D  D# E  F  F#  G  G#  A  A#  B  C ...
+        ...  3  4  5  6  7  8  9  10  11 12  13 14 15 ...
+This example starts counting half-steps at 3; any integer is a fine starting point. A `C major chord' contains the notes C, G, and E. In one order (C, E, G) these chords have numbers 3, 7, and 10 respectively. The differences are four and three half-steps, so C,G,E, G,E,C, C,E,G, G,C,E, E,G,C, and E,C,G are major chords. 
+
+Note that chords can span the C note. The notes A, C#, and E form a major chord when considered in the order (A, C#, E). 
+
+A minor chord has successive differences of three and four half-steps, respectively. This means that C, G, D# is a minor chord (in another order: C, D#, G are half-step numbers 3, 6, and 10 -- successive differences of 3 and 4. 
+
+Read three notes from the input and print `major', `minor', or `neither'. Please print the words in lower-case, with no quote marks around them, and with a newline (or suitable end-of-line marker) after them. 
+
+INPUT FORMAT: 
+
+Three successive lines with notes from the set above. 
+
+OUTPUT FORMAT: 
+
+One line with a single word of output (no quotes needed, please). 
+
+SAMPLE INPUT (file INPUT.TXT): 
+
+C
+G
+E
+SAMPLE OUTPUT (file OUTPUT.TXT): 
+
+major
+
+--------------------------------------------------------------------------------
+PROBLEM 3: Circular Numbers 
+A positive integer is said to be CIRCULAR if, when you multiply the number by its units decimal digit, the result is the number with its decimal digits rotated to the right, with the units digit becoming the high-order digit of the result. 
+
+For example, 102564 is a circular number: 
+
+102564
+    x4
+--------
+410256
+410256 is the same as rotating the digits of 102564 to the right and wrapping the 4. 
+
+Write a program to find the smallest circular number with a given non-zero units digit. Note that sometimes the smallest circular number will have far more digits than can fit in a 32-bit `long' integer. 
+
+INPUT FORMAT: 
+
+The input file has a single line containing the units digit of interest. 
+
+SAMPLE INPUT (file INPUT.TXT): 
+
+4
+OUTPUT FORMAT: 
+
+Print a single line with the smallest circular number that has the input as its units digit. Such a number would not have a leading zero, of course. 
+
+SAMPLE OUTPUT (file OUTPUT.TXT): 
+
+102564
+
+
+--------------------------------------------------------------------------------
+PROBLEM 4: Shorthand Sampler [1998 Harvard Qual. Round] 
+Given a string of fewer than 250 lower-case letters [`a'..`z'], find the character that occurs most often (or, in case of ties, the most frequent character that occurs earliest in the USA Roman alphabet). Remove that character. Print the string. Repeat until the string has no remaining characters (but don't print the empty string. 
+
+INPUT FORMAT: 
+
+The input file contains a single string on a single line. 
+
+OUTPUT FORMAT: 
+
+Successive, shorter strings; one per line. 
+
+SAMPLE INPUT (file INPUT.TXT): 
+
+maryhadalittlelambitsfleecewaswhite
+SAMPLE OUTPUT (file OUTPUT.TXT): 
+
+mryhdlittlelmbitsfleecewswhite
+mryhdlittllmbitsflcwswhit
+mryhdittmbitsfcwswhit
+mryhdimbisfcwswhi
+mryhdmbsfcwswh
+mrydmbsfcwsw
+rydbsfcwsw
+rydbfcww
+rydbfc
+rydfc
+rydf
+ryf
+ry
+y
+
+
+--------------------------------------------------------------------------------
+  

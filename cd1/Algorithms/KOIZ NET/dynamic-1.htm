@@ -1,0 +1,51 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>동적 프로그래밍</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font size="5" color="#0066CC"><b>동적 프로그래밍</b></font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;&nbsp;동적프로그래밍이란 개념적으로 볼 때 주어진 문제를 
+여러 부분문제(Sub-Problem)로 분할하여 순환 수행한다느 점에서 분할 해결법(Divide-and-Conquer)과 
+같으나 분할해결법의 경우 한 번 순환 수행된 부분문제는 다시 수행되지 않는 경우에 
+적당하고 동적 계획법은 다시 수할 될 수 있을 때 사용되는 방법이다. 즉, 주어진 
+문제를 여러 부분문제로 분할하여 문제를 해결 할 때 중첩되는 여러 부분문제가 발생 
+할 수 있다. 그래서, 이런 중복에 대한 주의 기울이지 않으면 비효율적인 알고리즘이된다. 
+반면, 한번 해결한 부분문제를 저장하여 나중에 다시 사용한다면 더 효육적인 알고리즘이 
+된다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;&nbsp;반복해서 여러번 호출되는 부분문제가 있을 경우 
+해당되는 부분문제가 첫 번째 수행될 때 그 결과를 기록해 두었다가 이후에 다시 
+수행이 요구될 때 또 수행하는 것이 아니라 이전에 기록된 결과를 이용하는 것이 
+동적 프로그래밍의 핵심이 되는 부분이다. 이 때, &quot;dynamic programming&quot;의 
+&quot;programming&quot;이라는 말은 컴퓨터 프로그램과 무관하고 표를 이용하는 
+방법이라는 뜻이다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;&nbsp;분할 해결법이 문제를 더 작은 문제로 나누어서 해결하는 
+것과 같이, 동적 프로그래밍 역시 이렇게 문제를 더 작은 문제로 나누어 해결하는 
+방법인데, 분할-정복 기법과 달리, 동적 프로그래밍은 주어진 문보다 작은 모든 경우를 
+다 해결한 뒤에 주어진 문제를 해결하는 방식이다. 이때, 주어진 문제를 조깬 모든 
+경우에 대한 해(Solution)가 테이블 형태로 저장된다. 동적 프로그램은 가장 작은 
+문제부터 시작해 해를 점점 키워 최종적으로 주어진 문제에 도달하게 되는 것이다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;<b>&nbsp;동적 프로그래밍 기법을 이용할 때는 다음과 같은 
+사항에 유의해야 한다.</b></font></p>
+<p><font size="2">&nbsp;&nbsp;1. 작은 문제의 해를 병합하여 더 큰 문제의 해를 
+구하는 것이 항상 가능하지는 않다.</font></p>
+<p><font size="2">&nbsp;&nbsp;2. 주어진 문제를 해결하기 위해 작은 문제로 나눌 
+때, 해결해야 하는 작은 문제가 지나치게 많아질 수가 있다.</font></p>
+<p><font size="2"><b>&nbsp;</b></font></p>
+<p><font size="2"><b>&nbsp;&nbsp;동적 프로그래밍은 다음과 같은 특성을 가진다.</b></font></p>
+<p><font size="2">&nbsp;&nbsp;1. 결정의 최적의 순서는 최적화의 원칙으로 명백히 
+나타났다. 이 원칙을 보면, &quot; 최적 결정의 순서가 초기 상태와 결정이 무엇이든지 
+간에, 나머지의 모든 결정들은 첫 번째 결정에서 나타난 상태에 관해서 최적 결정 
+순서를 구성시키는 원칙&quot;을 지닌다.</font></p>
+<p><font size="2">&nbsp;&nbsp;2. 한 번 어떤 부분 문제가 해결되면 그 해를 기억함으로써 
+결코 두 번 다시 계산되지 않는다.</font></p>
+</body>
+
+</html>

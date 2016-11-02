@@ -1,0 +1,155 @@
+ Problems - 1999 Fall Open, Gold
+--------------------------------------------------------------------------------
+ 
+ PROBLEM 1: Number Triangles 
+Consider the number triangle shown below. Write a program that calculates the highest sum of numbers that can be passed on a route that starts at the top and ends somewhere on the base. Each step can go either diagonally down to the left or diagonally down to the right. 
+
+
+          7
+
+        3   8
+
+      8   1   0
+
+    2   7   4   4
+
+  4   5   2   6   5
+In the sample above, the route from 7 to 3 to 8 to 7 to 5 produces the highest sum: 30. 
+
+It is promised that each number in the triangle is an integer between 0 and 99 inclusive. 
+
+INPUT FORMAT: 
+
+The first line in INPUT.TXT contains R (1 <= R <= 100), the number of rows. Each subsequent line contains the integers for that particular row of the triangle. The SAMPLE INPUT describes triangle from the example above. 
+
+SAMPLE INPUT (file INPUT.TXT): 
+
+5
+7
+3 8
+8 1 0
+2 7 4 4
+4 5 2 6 5
+OUTPUT FORMAT: 
+
+Print a single line with the greatest possible sum that can be obtained following the rules of the problem. 
+
+SAMPLE OUTPUT (file OUTPUT.TXT): 
+
+30
+
+--------------------------------------------------------------------------------
+PROBLEM 2: Buy Low, Buy Lower [1995 USACO] 
+The advice to "buy low" is half the formula to success in the stock market. But to be considered a great investor you must also follow this problems' advice: 
+
+"Buy low, buy lower" 
+That is, each time you buy a stock, you must purchase at a lower price than the previous time you bought it. The more times you buy at a lower price than before, the better! Your goal is to see how many times you can continue purchasing at ever lower prices. 
+
+Unlike the regular stock market, you will be given the daily selling prices of a stock over a period of time. You can choose to buy stock on any of the days. Each time you choose to buy, the price must be lower than the previous time you bought stock. Write a program which identifies which days you should buy stock in order to maximize the number of times you buy. 
+
+For example, suppose on successive days stock is selling like this: 
+
+ Day   1  2  3  4  5  6  7  8  9 10 11 12
+Price 68 69 54 64 68 64 70 67 78 62 98 87
+In the example above, the best investor (by this problem, anyway) can buy at most four times if they purchase at a lower price each time. One four day sequence (there might be others) of acceptable buys is: 
+
+Day    2  5  6 10
+Price 69 68 64 62
+INPUT FORMAT: 
+
+The first line of file INPUT.TXT contains the number of days 1<=n<=5,000 for which prices are available. Each of N subsequent lines contains the price for that day (1 <="each" price <="32767)." 
+
+SAMPLE INPUT (file INPUT.TXT): 
+
+12
+68
+69
+54
+64
+68
+64
+70
+67
+78
+62
+98
+87
+OUTPUT FORMAT: 
+
+Print to the file OUTPUT.TXT two integers on a single line: 
+
+the length of the longest sequence of decreasing prices 
+the number of sequences that have this length 
+In counting the number of solutions, two potential solutions are considered the same (and would only count as one solution) if they repeat the same string of decreasing prices, that is, if they "look the same" when the successive prices are compared. Thus, two different sequence of "buy" days could produce the same string of decreasing prices and be counted as only a single solution. 
+
+SAMPLE OUTPUT (file OUTPUT.TXT): 
+
+4 2
+
+
+--------------------------------------------------------------------------------
+PROBLEM 3: Ordered Fractions [Paul ?, U. Oklahoma; and 1995 USACO] 
+Consider the set of all reduced fractions (rational numbers) between 0 and 1 inclusive with denominators less than or equal to N. 
+
+Here is the proper set when N = 5: 
+
+0/1 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 1/1 
+Write a program that, given an integer N between 1 and 500 inclusive, prints the total number of fractions, orders them, and prints a few of them to prove that your program can order them correctly. 
+
+INPUT FORMAT: 
+
+The only line in file INPUT.TXT contains two integers, N and M. 
+
+OUTPUT FORMAT: 
+
+On the first line of the output, print the total number of fractions per the rules above. Subsequent lines should print every Mth fraction from the ordered list, starting with the fourth fraction. So, the output has the 4th, (4+M)th, (4+2*M)th, (4+3*M)th, etc. fractions. 
+
+SAMPLE INPUT (file INPUT.TXT): 
+
+5 2
+SAMPLE OUTPUT (file OUTPUT.TXT): 
+
+11
+1/3
+1/2
+2/3
+4/5
+
+--------------------------------------------------------------------------------
+PROBLEM 4: Spinning Wheels [1998 ACM NE Regionals] 
+Five opaque spinning wheels each have one or more wedges cut out of their edges. These wedges must be aligned quickly and correctly to solve this problem. Each wheel has an alignment mark (at 0 degrees) so that the wheels can all be started in a known position. Wheels rotate in the `plus degrees' direction, so that shortly after they start, they pass through 1 degree, 2 degrees, etc. (though probably not at the same time). 
+
+This is an integer problem. Wheels are never actually at 1.5 degrees or 23.51234123 degrees. For example, the wheels are considered to move instantaneously from 20 to 25 degrees during a single second or even from 30 to 40 degrees if the wheel is spinning quickly. This eliminates problems of fractional seconds. 
+
+All angles in this problem are presumed to be integers in the range 0 <= angle <= 359 inclusive. The angle of 0 degrees follows the angle of 359 degrees. 
+
+Each wheel rotates at a certain number of degrees per second, 1 <= speed <= 180. The speed is specified as an integer. 
+
+Wedges for each wheel are specified by a start angle and angle size (or `extent'), both specified by an integer number of degrees. Wedges in the test data will be separated by at least one degree. 
+
+At the start, which is time 0, all the wheels' alignment marks line up. Your program must determine the earliest time (integer seconds) after the start that some wedge on each wheel will align with the wedges on the other wheel so that a light beam can pass through openings on all five wedges. The wedges can align at any part of the rotation. 
+
+INPUT FORMAT: 
+
+Each of five input lines describes a wheel. 
+
+The first integer on an input line is the wheel's rotation speed. The next integer is the number of wedges, 1 <= W <= 5. The next W pairs of integers tell each wedge's start angle and extent. 
+
+OUTPUT FORMAT: 
+
+A single line with a single integer that is the first time the wedges align so a light beam can pass through them. Print `none' (lower case, no quotes) if the wedges will never align properly. 
+
+SAMPLE INPUT (file INPUT.TXT): 
+
+30 1 0 120
+50 1 150 90
+60 1 60 90
+70 1 180 180
+90 1 180 60
+SAMPLE OUTPUT (file OUTPUT.TXT): 
+
+9
+
+
+--------------------------------------------------------------------------------
+  

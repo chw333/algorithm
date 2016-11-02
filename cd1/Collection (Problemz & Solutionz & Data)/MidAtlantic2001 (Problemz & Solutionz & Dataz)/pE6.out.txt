@@ -1,0 +1,10 @@
+:AC:
+:ABC:
+:ABC:
+:D:
+:ACEFGH:
+:FGH:
+:GH:
+:FGH:
+::
+::

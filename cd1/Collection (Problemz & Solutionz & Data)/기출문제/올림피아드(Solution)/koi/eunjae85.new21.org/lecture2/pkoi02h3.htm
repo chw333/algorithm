@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>2002년 19회 한국정보올림피아드</title>
+<meta name="namo-theme" content="Mask; vert">
+<meta name="generator" content="Namo WebEditor v5.0">
+<style><!--
+h1 { font-family:굴림; font-size:12pt; color:rgb(255,0,0); }
+h2 { font-family:굴림; font-size:12pt; color:rgb(128,0,0); }
+p { font-family:굴림; color:rgb(0,0,0); }
+p.namo-bullet1 { font-family:굴림; font-size:12pt; color:rgb(128,0,0); }
+p.namo-bullet2 { font-family:굴림; font-size:10pt; color:rgb(0,0,0); }
+--></style>
+</head>
+
+<body bgcolor="white" text="black" link="red" vlink="#804000" alink="maroon">
+
+<table border="0">
+    <tr>
+        <td width="595"><table border="0" width="595">
+                <tr>
+                    <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+                        19회 고등부 3. 트리 회전</b></font></td>
+                    <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="skoi02h3.htm"><img src="button2.gif"
+                         border="0"></a></td>
+                    <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi02h3.htm"><img src="button3.gif"
+                         border="0"></a></td>
+                </tr>
+            </table>
+            <p><img src="bar1.gif" width="592" height="25" border="0"></p>
+
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; 0-2 이진트리(binary tree)는 다음과 같이 정의된다.</SPAN> 
+</P>
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; (1) 항상 루트노드(root node)가 지정되어 있다.</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:15px;color:"#000000";text-align:justify;line-height:23px;text-indent:-27px;margin-left:27px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; (2) 모든 내부노드(internal node)는 반드시 두 개의 자식노드(child node)를 가지며, 왼쪽 자식노드와 오른쪽 자식노드를 구분한다.</SPAN> 
+</P>
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'><BR></SPAN> 
+</P>
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; 이러한 0-2 이진트리의 루트노드 혹은 루트노드의 오른쪽 자식노드에서 좌회전 연산과 우회전 연산은 아래 &lt;그림 1&gt;과 같이 표현된다.</SPAN> 
+</P>
+            <ul>
+                <p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="pkoi02h3-1.jpg" width="359" height="253" border="0"></p>
+            </ul>
+
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; &lt;그림 1-(a)&gt; 이진트리의 노드 'a'에서 좌회전 연산은</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:15px;color:"#000000";text-align:justify;line-height:23px;text-indent:-27px;margin-left:27px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; (1) 노드 'a'의 자리에 노드 'b'를 위치하게 하고,  
+</SPAN></P>
+<P STYLE='font-family:"한양신명조";font-size:15px;color:"#000000";text-align:justify;line-height:23px;text-indent:-27px;margin-left:27px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; (2) 노드 'a'를 노드 'b'의 왼쪽 자식노드로 만들며,</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:15px;color:"#000000";text-align:justify;line-height:23px;text-indent:-27px;margin-left:27px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; (3) 노드 'b'의 왼쪽 부트리(subtree) T<SUB>2</SUB>를 노드 'a'의 오른쪽 부트리로 만든다.</SPAN> 
+</P>
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'><BR></SPAN> 
+</P>
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; &lt;그림 1-(a)&gt; 트리의 노드 'a'에 좌회전 연산을 적용하면 &lt;그림 1-(b)&gt; 이진트리로 변환된다.</SPAN> 
+</P>
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'><BR></SPAN> 
+</P>
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; 이와 유사하게 우회전 연산을 정의할 수 있다. 위 &lt;그림 1-(b)&gt; 이진트리의 노드 'b'에서 우회전 연산은</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:15px;color:"#000000";text-align:justify;line-height:22px;text-indent:-27px;margin-left:27px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:22px;text-align:justify;'>&nbsp; (1) 노드 'b'의 자리에 노드 'a'를 위치하게 하고,  
+</SPAN></P>
+<P STYLE='font-family:"한양신명조";font-size:15px;color:"#000000";text-align:justify;line-height:23px;text-indent:-27px;margin-left:27px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; (2) 노드 'b'를 노드 'a'의 오른쪽 자식노드로 만들며,</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:15px;color:"#000000";text-align:justify;line-height:23px;text-indent:-27px;margin-left:27px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; (3) 노드 'a'의 오른쪽 부트리 T<SUB>2</SUB>를 노드 'b'의 왼쪽 부트리로 만든다.</SPAN> 
+</P>
+<P STYLE='font-family:"한양신명조";font-size:15px;color:"#000000";text-align:justify;line-height:23px;text-indent:-27px;margin-left:27px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'><BR></SPAN> 
+</P>
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; &lt;그림 1-(b)&gt; 트리의 노드 'b'에 우회전 연산을 적용하면 &lt;그림 1-(a)&gt; 이진트리로 변환된다.</SPAN> 
+</P>
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'><BR></SPAN> 
+</P>
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; 같은 개수의 노드를 가지는 두 개의 0-2 이진트리가 있을 때, 이 두 이진트리의 회전거리는 한 트리의 루트노드 혹은 루트노드의 오른쪽 자식노드에 좌회전 혹은 우회전 연산을 적용하여 다른 트리로 만드는 회전연산의 최소 회수를 나타낸다.</SPAN> 
+</P>
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; 예를 들면, 다음 쪽의 &lt;그림 2-(a)&gt; 트리를 &lt;그림 2-(g)&gt; 트리로 변환하기 위해서는 &lt;그림 2&gt;에서와 같이 6번의 좌/우회전 연산을 적용하면 된다. 또한 6번 이하 회수의 회전 연산을 사용하여서는 변환할 수 없으므로, 두 트리 사이의 회전거리는 6이다.</SPAN> 
+</P>
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; 두 개의 0-2 이진트리가 주어졌을 때, 두 트리 사이의 회전거리를 계산하는 프로그램을 작성하시오.</SPAN> 
+</P>
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'><BR></SPAN> 
+</P>
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>실행 파일의 이름은&nbsp; TREE.EXE로 하고 실행시간은 10초를 초과할 수 없다. 부분 점수는 회전거리에 따라 적절하게 주어진다.</SPAN> 
+</P>
+            
+                <p align="center"><img src="pkoi02h3-2.jpg" width="301" height="448" border="0"><img src="pkoi02h3-3.jpg" width="349" height="448" border="0"><img src="pkoi02h3-4.jpg" width="348" height="433" border="0"><img src="pkoi02h3-5.jpg" width="306" height="171" border="0"></p>
+          
+            <p><img src="bar2.gif" width="591" height="26" border="0"></p>
+           
+
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; 입력 파일의 이름은 INPUT.TXT이다. 첫 번째 줄에는 입력되는 두 트리의 노드 개수를 나타내는 정수 </SPAN><SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";font-style:"italic";line-height:23px;text-align:justify;'>N</SPAN><SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>(5≤</SPAN><SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";font-style:"italic";line-height:23px;text-align:justify;'>N</SPAN><SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>≤300)이 주어지며, 각 노드는 1번 부터 </SPAN><SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";font-style:"italic";line-height:23px;text-align:justify;'>N</SPAN><SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>번까지 번호가 부여된다.</SPAN> 
+</P>
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; 두 번째 줄부터 다음 </SPAN><SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";font-style:"italic";line-height:23px;text-align:justify;'>N</SPAN><SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>개의 줄에는 첫 번째 트리의 구조를 나타내는 데이터가 입력된다. 각 줄에는 세 개의 정수가 주어지는데, 두 번째, 세 번째 정수가 나타내는 노드들은 각각 첫 번째 정수가 나타내는 노드의 왼쪽, 오른쪽 자식임을 나타낸다. 첫 번째 정수가 나타내는 노드가 단말 노드(terminal node)인 경우에는, 두 번째, 세 번째 정수는 모두 0이다. 루트노드의 번호는 항상 1번으로 주어지며, 각 줄은 첫 번째 정수가 1부터 </SPAN><SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";font-style:"italic";line-height:23px;text-align:justify;'>N</SPAN><SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>까지 증가하는 순으로 입력된다.</SPAN> 
+</P>
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; 다음 </SPAN><SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";font-style:"italic";line-height:23px;text-align:justify;'>N</SPAN><SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>개의 줄에는 두 번째 트리의 구조를 나타내는 데이터가 첫 번째 트리의 구조를 나타내는 데이터와 같은 형식으로 입력된다.</SPAN> 
+</P>
+            <p><img src="bar3.gif" width="590" height="26" border="0"></p>
+
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; 출력 파일의 이름은 OUTPUT.TXT이다. 첫 번째 줄에 입력되는 두 트리의 회전거리를 나타내는 정수 </SPAN><SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";font-style:"italic";line-height:23px;text-align:justify;'>M</SPAN><SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>을 출력한다. 다음 </SPAN><SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";font-style:"italic";line-height:23px;text-align:justify;'>M</SPAN><SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>개의 줄에는 첫 번째 트리를 두 번째 트리로 변환하는 회전연산에 관한 정보를 회전하는 순서대로 출력한다.  
+</SPAN></P>
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>&nbsp; 회전정보는 두 개의 문자로 표시한다. 첫 번째 문자는 회전하는 노드를 나타내며, 루트노드에서 회전하는 경우에는 'T'로, 루트노드의 오른쪽 자식노드에서 회전하는 경우에는 'C'로 표시한다.&nbsp; 두 번째 문자는 회전하는 방향을 나타내며, 좌회전 연산은 'L'로, 우회전 연산은 'R'로 표시한다.두 문자 사이에는 공백이 없다.</SPAN> 
+</P>
+<P CLASS=HS1>
+ <SPAN  STYLE='font-family:"한양신명조";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>같은 회전거리를 가지는 회전변환 방법이 여러 가지인 경우는 그 중에서 한 가지 경우만을 출력한다. 입력되는 두 트리가 회전연산을 적용하여 서로 변환될 수 없는 경우에는 첫 번째 줄에 -1을 출력한다.</SPAN> 
+</P>
+            <p><img src="bar4.gif" width="593" height="25" border="0">&nbsp;</p>
+            <ul>
+                <p><font face="굴림" size="2">입력(INPUT.TXT)</font> 
+                <div align="left"><table border cellpadding="2" cellspacing="0"
+                 width="180">
+                        <tr>
+                            <td>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>11</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>1 2 3</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>2 0 0</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>3 4 5</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>4 6 7</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>5 8 9</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>6 0 0</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>7 0 0</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>8 0 0</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>9 10 11</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>10 0 0</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>11 0 0</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>1 2 3</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>2 4 5</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>3 6 7</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>4 0 0</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>5 0 0</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>6 8 9</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>7 0 0</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>8 0 0</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>9 10 11</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>10 0 0</SPAN> 
+</P>
+<P STYLE='font-family:"바탕체";font-size:15px;color:"#000000";text-align:justify;line-height:19px;text-indent:0px;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:19px;text-align:justify;'>11 0 0</SPAN> 
+</P>
+</td>
+                    </tr>
+                </table></div>
+                <p align="left"><font face="굴림" size="2"><br> 출력(OUTPUT.TXT)&nbsp;<br></font> 
+                
+                <div align="left"><table border cellpadding="2" cellspacing="0"
+                 width="180">
+                        <tr>
+                            <td height="17">
+<P CLASS=HS1>
+<SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>6</SPAN> 
+                                <br><SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>CR</SPAN> 
+                                <br><SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>TL</SPAN> 
+                                <br><SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>TL</SPAN> 
+                                <br><SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>CL</SPAN> 
+                                <br><SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>TR</SPAN> 
+                                <br><SPAN  STYLE='font-family:"바탕체";font-size:13px;color:"#000000";line-height:23px;text-align:justify;'>CL</SPAN> 
+</P>
+</td>
+                    </tr>
+                </table></div>
+
+                </ul><p><img src="bar5.gif" width="595" height="26" border="0"></p>
+            <ul>
+                <p>&nbsp;<font size="2">제한시간은 10초이다.</font> 
+            </ul></td>
+    </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>KOI 13회 중등부 1.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0" width="595">
+    <tr>
+        <td width="589" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;동적계획법 
+            - 점화식을 어떻게 만들 것인가? (5)</b></font></td>
+    </tr>
+</table>
+<ul>
+    <p>&nbsp; 
+    <table border="0">
+            <tr>
+                <td width="550"><p style="line-height:150%;"><font size="2">&nbsp;&nbsp;안녕하세요.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;동적계획법을 
+                이용해 문제를 풀기 위해 가장 중요한 것은 점화식을 만드는 것입니다. 
+                이번 회에서는 점화식을 만드는 일반적인 방법론(?)에 대해서 이야기해 
+                보도록 하겠습니다. 물론 동적계획법을 이용해 최적해를 구하는 
+                문제라면 최적해의 원리(principal of optimality)를 만족해야 겠죠.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;여기서는 
+                KOI 97년 중등부 2번 문제인 &quot;기업투자&quot;를 통해 설명해 
+                보기로 하지요. 일단 점화식을 만들기 위해 중요한 것은 부분문제를 
+                만드는 것입니다. 물론 한 문제에 대한 부분 문제는 여러 가지 형태로 
+                나올 수 있습니다. 하지만 가장 중요한 것은,</font></p>
+                <p align="center" style="line-height:150%;"><font size="2" color="red">전체 
+                문제도 부분 문제의 꼴로 표현할 수 있어야 한다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;생각해 
+                보죠. 기업투자 문제에서는, 보통 점화식을 다음과 같이 잡습니다.</font></p>
+                <ul>
+                    <p style="line-height:150%;"><font size="2">F[i, j] = 1~i개의 
+                    기업에 j원을 투자했을 때의 최대 이익</font></p>
+                </ul>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;이 부분 
+                문제의 꼴은 전체 문제를 C[N, M] (N은 기업 수, M은 가진 돈..)으로 
+                표현할 수 있습니다. 전체 문제를 부분 문제의 꼴로 나타내는 것이 
+                가능하다는 이야기입니다. 애초에 전체 문제도 표현하지 못하는 
+                점화식이라면 답을 얻지 못하게 될 것이 뻔합니다.</font></p>
+                <p align="center" style="line-height:150%;"><font size="2" color="red">문제를 
+                어떻게 쪼갤 것인지 생각해야 한다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;동적계획법은 
+                기본적으로 문제를 쪼개면서 풀어 나가는 알고리즘 설계법입니다. 
+                이 점에 대해서는 분할 정복(divide and conquer)과 비슷합니다. 
+                그런데 분할 정복은 보통 큰 문제를 비슷한 크기들의 작은 문제로 
+                쪼개서 해결하는데, 동적계획법은 좀 다릅니다.</font></p>
+                <p align="center" style="line-height:150%;"><font size="2" color="red">일반적으로 
+                동적계획법 문제는, 일정 회수의 선택을 반복하는 구조로 이루어져 
+                있다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;기업투자 
+                문제에서 선택이란 어떤 것인가요? 어떤 기업에 대해서 얼마의 돈을 
+                투자하는가가 바로 선택이 됩니다. 이 선택을 N번 반복하게 되는 
+                것입니다. SCV문제에서는 어떤가요? 2*N-2번의 선택(오른쪽으로 
+                갈 것인지, 아래쪽으로 갈 것인지)을 하게 됩니다. k-stage(혹은 
+                multi-stage)라는 문제에서는 k번의 선택을 하게 되구요, TSP라면 
+                N-1번의 선택(다음에 어느&nbsp;노드로 갈 것인지)을 하게 되겠지요. 
+                아, 그리구요. 저 위에서 &quot;일반적으로&quot;라는 말은 전문 
+                용업니다. -_-; 뜻은 대충 &quot;잘은 모르지만 보통은 이런다. 
+                안그럴 때도 있으니 토달지 말라&quot;라는 뜻을 함축하고 있습니다.</font></p>
+                <p align="center" style="line-height:150%;"><font size="2" color="red">그 
+                상태에서의 선택과 그 선택 전의 상태를 고려하라.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;F[i, 
+                j]는, i번의 선택을 통해 답이 구해 집니다. 일단 F[i, j] 상태에서의 
+                선택이란 바로 &quot;i번째 그룹에 얼마의 돈을 투자할 것인가&quot;입니다. 
+                그럼 i번째 그룹에 선택을 하기 전의 상황이란? 바로 1~i-1개의 
+                기업들에 투자를 하는 것이 될 것입니다.</font></p>
+                <p align="center" style="line-height:150%;"><font size="2" color="red">한 
+                번의 선택에서는 생길 수 있는 모든 가능성을 고려하라</font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;i번째 
+                그룹에 투자를 하는 선택에서는, 0원을 투자하는 경우, 1원을 투자하는 
+                경우.... j원을 투자하는 경우가 있습니다. 모든 가능성을 고려하지 
+                않는다면 저얼때! 최적해를 구할 수 없습니다. 만약 i번째 기업에 
+                2원을 투자했다면(현재 상태에서의 선택), 1~i-1개의 기업에 j-2원을 
+                투자하는 문제(그 선택 전의 상태)로 쪼개지겠죠.</font></p>
+                <p align="center" style="line-height:150%;"><font size="2" color="red">최적해를 
+                찾는 문제라면, 그 가능성 중에서 가장 좋은 선택을 찾아라.</font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;i번째 
+                기업에 0원을 투자하는 경우, 1원을 투자하는 경우, ... j원을 투자하는 
+                경우들 중에서 가장 좋은 방법을 찾아야 한다는 것이죠. 지금까지 
+                이야기했던 것을 정리하면, 다음과 같습니다.</font></p>
+                <ul>
+                    <p align="left" style="line-height:150%;"><font size="2">F[i, 
+                    j] = Max {F[i-1, j-k) + A[i, k]} (단, 0 &lt;= k &lt;= j)</font></p>
+                </ul>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;위의 
+                점화식은 i번째 기업에 k원을 투자하여 최대의 이익을 찾겠다는 
+                뜻입니다. 이런 방법으로 많이 생각해보시면, 부분문제만 적절히 
+                정했다면 점화식을 구하는 것은 그리 어렵지 않습니다.</font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;그런데 
+                위의 점화식을 구한 것만으로도 모든 것이 끝난 것인가요? 그렇진 
+                않습니다. 아무리 문제를 쪼개간다 하더라도, 언젠가는 쪼갤 수 
+                없는 경우가 생기게 마련이니까요. 그래서 보통 초기값이라고 부르는 
+                것을 정의해 주어야 합니다. 위의 점화식에 따르면, F[1, j]를 계산하기 
+                위해 F[0, ...]을 참조해야 합니다. 그런데 0이라는 말은 결국 아무 
+                기업에도 투자를 안한다는 뜻입니다. 그러므로, F[0, j]는 j의 값에 
+                상관 없이 무조건 0이 될 것입니다. 따라서 완성된 점화식은,</font></p>
+                <ul>
+                    <p align="left" style="line-height:150%;"><font size="2">F[i, 
+                    j] = (if i=0) 0<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(else) 
+                    Max {F[i-1, j-k) + A[i, k]} (단, 0 &lt;= k &lt;= j)</font></p>
+                </ul>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;이렇게 
+                될 것입니다. 가급적이면 기업 투자 문제말고도, 많은 문제들에 
+                대해 위에서 말했던 것을 적용해 보고 확인해 보시기 바랍니다.</font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;그럼 
+                도움이 되셨기를... 질문은 q/a게시판을 이용해 주시기 바랍니다.</font></td>
+        </tr>
+    </table>
+    <p>&nbsp;</p>
+</ul>
+</body>
+
+</html></html>

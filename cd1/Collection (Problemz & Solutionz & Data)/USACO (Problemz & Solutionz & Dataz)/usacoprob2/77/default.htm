@@ -1,0 +1,105 @@
+<html>
+
+<head>
+<title>Problem 77: Greedy Gift Givers</title>
+</head>
+
+<body background="../../usaco/bg3.jpg">
+<img src="../../usaco/cow1.jpg" width="742" height="118">
+
+<center>
+<h1>Greedy Gift Givers</h1>
+</center>
+
+<p> You are to determine, for a group of gift-giving friends, how much
+more each person gives than they receive (and vice versa for those who
+view gift giving with cynicism). In this problem, each person sets aside
+some money for gift-giving and divides this money evenly among all those
+to whom gifts are given. However, in any group of friends, some people
+are more giving than others (or at least may have more acquaintances)
+and some people have more money than others.
+
+<p> Given a group of friends, no one of whom has a name longer than 14
+characters, the money each person in the group spends on gifts, and a
+(sub)list of friends to whom each person gives gifts, determine how much
+more (or less) each person in the group gives than they receive.
+
+<h3>IMPRORTANT NOTE</h3>
+
+<p> The grader machine is a Linux machine that uses standard Unix
+conventions:  end of line is a single character often known as '\n'.
+This differs from Windows, which ends lines with two charcters,
+'\n' and '\r'.  Do not let your program get trapped by this!
+
+<h3>PROGRAM NAME: gift1</h3>
+
+<h3>INPUT FORMAT</h3>
+<p>The input is a group of gift-givers which consists of several lines:
+<table>
+<tr> <td> Line 1: </td> <td> The number of people in the group, 2 &lt;= NP &lt;= 10</td>
+<tr> <td> Lines 2..NP+1: </td> <td> NP names of the people in the group, one per line </td>
+</tr>
+<tr> <td valign='top'> Lines NP+2..end: </td> <td>NP groups of lines organized like this:
+<table>
+<tr><td>The first line in the group tells the person's name who will be giving gifts.
+<tr><td>The second line in the group contains two numbers: The initial
+	amount of money (in the range 0..2000) spent on gifts by the giver
+	and then the number of people to whom the giver will give gifts,
+	NG<sub>i</sub> (0 &lt;= NG<sub>i</sub> &lt;= NP-1).
+<tr><td> If NG<sub>i</sub> is nonzero, each of the next NG<sub>i</sub> lines lists the
+        the name of a recipient of a gift.  
+</table>
+</table>
+<p>
+
+<h3>SAMPLE INPUT (file gift1.in) </h3>
+
+<pre>
+5
+dave
+laura
+owen
+vick
+amr
+dave
+200 3
+laura
+owen
+vick
+owen
+500 1
+dave
+amr
+150 2
+vick
+owen
+laura
+0 2
+amr
+vick
+vick
+0 0
+</pre>
+
+<h3>OUTPUT FORMAT</h3>
+
+<p>The output is NP lines, each with the name of a person followed by
+a single blank followed by the net gain or loss (final_money_value - 
+initial_money_value) for that person.  The names should be printed in
+the same order they appear on line 2 of the input.
+
+<p> All gifts are integers. Each person gives the same integer amount
+of money to each friend to whom any money is given, and gives as much
+as possible that meets this constraint. Any money not given is kept by
+the giver.
+
+<h3>SAMPLE OUTPUT (file gift1.out)</h3>
+
+<pre>
+dave 302
+laura 66
+owen -359
+vick 141
+amr -150
+</pre>
+

@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0068)http://www.uwp.edu/academic/mathematics/usaco/1999/Winter/a-prob.htm -->
+<HTML><HEAD><TITLE>Problems</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=ks_c_5601-1987">
+<META content="MSHTML 5.50.4134.100" name=GENERATOR></HEAD>
+<BODY>
+<TABLE width="99%" border=0>
+  <TBODY>
+  <TR>
+    <TD width="6%"></TD>
+    <TD width="94%" colSpan=2><BIG><STRONG><FONT face=Arial>Problems - 1999 
+      Winter Open, Division A</FONT></STRONG></BIG>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD width="6%"></TD>
+    <TD width="84%"><FONT face=Arial><SMALL><A name=p1></A><B>PROBLEM 1: 
+      Electric Fence</B> [Don Piele] 
+      <P>In this problem, `lattice points' in the plane are points with integer 
+      coordinates. 
+      <P>In order to contain his cows, Farmer John constructs a triangular 
+      electric fence by stringing a "hot" wire from the origin (0,0) to a 
+      lattice point [n,m] (0&lt;n&lt;32000, 0&lt;m&lt;32000), then to a lattice 
+      point on the positive x axis [p,0] (p&gt;0), and then back to the origin 
+      (0,0). 
+      <P>A cow can be placed at each lattice point within the fence without 
+      touching the fence (very thin cows). Cows can not be placed on lattice 
+      points that the fence touches. How many cows can a given fence hold? 
+      <P>INPUT FORMAT: 
+      <P>The single input line contains three space-separated integers that 
+      denote n, m, and p. 
+      <P>SAMPLE INPUT (file INPUT.TXT): </SMALL><PRE>7 5 10
+</PRE><SMALL>
+      <P>OUTPUT FORMAT: 
+      <P>Print a line with a single integer that represents the number of cows 
+      the specified fence can hold. 
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): </SMALL><PRE>20
+</PRE><SMALL>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Winter/a-data.htm#p1">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Winter/a-sol.htm#p1">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p2></A><B>PROBLEM 2: Cow Scans</B> [ACM 1992; adapted by Galperin, 
+      Burch, Kolstad, Simeonov] 
+      <P>Farmer John has just invested in a shiny new Locowter-2000 for tracking 
+      his grazing cows. The Locowter-2000's best feature is that it does not 
+      need to get input from anywhere except the perimeter of the verdant 
+      pastures in which the cows are grazing. 
+      <P>Farmer John has conveniently partitioned his field into a grid of 10 
+      rows and 15 columns of cow-sized grazing-cells, each of which can host 
+      either 0 or 1 dining bovines. 
+      <P>The Locowter-2000 sports a battery of scanners located on fence posts 
+      around the pasture. Each of the 73 scanners counts the number of cows in 
+      its direct line of sight. Farmer John has arranged the scanners to observe 
+      the number of cows in each row, in each column, and in each diagonal (both 
+      directions!). 
+      <P>The numbers are fed back to the L2000's cowputer, which cowculates the 
+      locowtions of Farmer John's feeding friends and displays a graphical map 
+      of those locowtions using ASCII graphics. Regrettably, the L2000's 
+      cowputer has been decowmissioned for maintenance and Farmer John needs you 
+      to cowculate his cow locowtions. 
+      <P>The scanners' output is given as a set of integers representing the 
+      numbers of cows observed on the various rows, columns, and diagonals. The 
+      first 10 numbers represent the rows; note the order of letters in the 
+      diagram below: </SMALL><PRE>a-&gt;.##########....
+b-&gt;.##########....
+c-&gt;....######.....
+d-&gt;......####.....
+e-&gt;.......####..##
+f-&gt;.......########
+g-&gt;#####..########
+h-&gt;###############
+i-&gt;..#########..##
+j-&gt;....######.....
+</PRE><SMALL>
+      <P>The second 24 numbers are diagonals; see the letters below for the 
+      ordering: </SMALL><PRE>   .##########....
+  /.##########....
+a/....######.....
+b/......####.....
+c/.......####..##
+d/.......########
+e/#####..########
+f/###############
+g/..#########..##
+h/....######.....
+i///////////////
+jklmnopqrstuvwx
+</PRE><SMALL>
+      <P>The third 15 numbers are the columns; see the letters below for the 
+      ordering: </SMALL><PRE>   .##########....
+   .##########....
+   ....######.....
+   ......####.....
+   .......####..##
+   .......########
+   #####..########
+   ###############
+   ..#########..##
+   ....######.....
+   |||||||||||||||
+   abcdefghijklmno
+</PRE><SMALL>
+      <P>The final 24 numbers are the other diagonals; see the letters below for 
+      the ordering: </SMALL><PRE>   .##########....
+   .##########....\
+   ....######.....\x
+   ......####.....\w
+   .......####..##\v
+   .......########\u
+   #####..########\t
+   ###############\s
+   ..#########..##\r
+   ....######.....\q
+    \\\\\\\\\\\\\\\p
+     abcdefghijklmno
+</PRE><SMALL>
+      <P>The sample input datafile for this particular example looks just like 
+      this: </SMALL><PRE>10 10 6 4 6 8 13 15 11 6
+0 1 2 2 2 2 4 5 5 6 7 6 5 6 6 5 5 6 6 3 2 2 1 0
+2 4 5 5 7 6 7 10 10 10 7 3 3 5 5
+0 0 1 3 4 4 4 4 3 4 5 7 8 8 9 9 6 4 4 2 0 0 0 0
+</PRE><SMALL>
+      <P>Your program should prompt for a file name, then use the data in that 
+      file to reconstruct a diagram of the cow's grazing locations. Note that 
+      there do exist datasets in the universe that can not be precisely decoded 
+      given this kind of input data. Farmer John's Courteous Cows never arrange 
+      themselves in any of these positions. You will be able to determine the 
+      value of every grazing-cell without resorting to any guesswork. 
+      <P>INPUT FORMAT: 
+      <P>Four input lines with 10, 24, 15, and 24 numbers, respectively, denote 
+      the number of cows seen (as per the rules above). 
+      <P>SAMPLE INPUT (file INPUT.TXT): </SMALL><PRE>10 10 6 4 6 8 13 15 11 6
+0 1 2 2 2 2 4 5 5 6 7 6 5 6 6 5 5 6 6 3 2 2 1 0
+2 4 5 5 7 6 7 10 10 10 7 3 3 5 5
+0 0 1 3 4 4 4 4 3 4 5 7 8 8 9 9 6 4 4 2 0 0 0 0
+</PRE><SMALL>
+      <P>OUTPUT FORMAT: 
+      <P>Ten lines of 15 characters that represent the only possible set of cows 
+      described by the input file. 
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): </SMALL><PRE>.##########....
+.##########....
+....######.....
+......####.....
+.......####..##
+.......########
+#####..########
+###############
+..#########..##
+....######.....
+</PRE><SMALL>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Winter/a-data.htm#p2">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Winter/a-sol.htm#p2">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p3></A><B>PROBLEM 3: Agri-Net</B> [Russ Cox] 
+      <P>Farmer John has been elected mayor of his town! One of his campaign 
+      promises was to bring internet connectivity to all farms in the area. He 
+      needs your help, of course. 
+      <P>Farmer John ordered a high speed connection for his farm and is going 
+      to share his connectivity with the other farmers. To minimize cost, he 
+      wants to lay the minimum amount of optical fiber to connect his farm to 
+      all the other farms. 
+      <P>Given a list of how much fiber it takes to connect each pair of farms, 
+      you must find the minimum amount of fiber needed to connect them all 
+      together. Each farm must connected to some other farm such that a path 
+      exists from any farm to any other farm. 
+      <P>INPUT FORMAT: 
+      <P>The first line of input is the number of farms, N (3 &lt;= N &lt;= 
+      100). Each line i of N subsequent lines contains N non-negative integers 
+      (each less than 32000) that represent the distance between farm i and 
+      farms 1, 2, 3, ..., N. Of course, the diagonal will be 0, since the 
+      distance from farm i to itself is not interesting for this problem. 
+      <P>SAMPLE INPUT (file INPUT.TXT): </SMALL><PRE>4
+0 4 9 21
+4 0 8 17
+9 8 0 16
+21 17 16 0
+</PRE><SMALL>OUTPUT FORMAT: 
+      <P>The single output contains the integer length that is the sum of the 
+      minimum length of fiber required to connect the entire set of farms. 
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): </SMALL><PRE>28
+</PRE><SMALL>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Winter/a-data.htm#p3">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Winter/a-sol.htm#p3">Solutions</A>]</SMALL> 
+
+      <HR>
+      <A name=p4></A><B>PROBLEM 4: Cryptcowgraphy</B> [Brian Dean] 
+      <P>The cows of Farmer Brown and Farmer John are planning a coordinated 
+      escape from their respective farms and have devised a method of encryption 
+      to protect their written communications. 
+      <P>Specifically, if one cow has a message, say, "International Olympiad in 
+      Informatics", it is altered by inserting the letters C, O, and W, in 
+      random location in the message, such that C appears before O, which 
+      appears before W. Then the cows take the part of the message between C and 
+      O, and the part between O and W, and swap them. Here are a few examples: 
+      </SMALL><PRE>"International Olympiad in Informatics"
+                  -&gt; 
+"CnOIWternational Olympiad in Informatics"
+
+"International Olympiad in Informatics"
+                  -&gt; 
+"International Cin InformaticsOOlympiad W"
+</PRE><SMALL>
+      <P>To make matters more difficult, the cows can apply their encryption 
+      scheme several times, by again encrypting the string that results from the 
+      previous encryption. One night, Farmer John's cows receive such a 
+      multiply-encrypted message. Write a program to compute whether or not the 
+      non-encrypted original message could have been the string: </SMALL><PRE>     "Begin the Escape execution at the Break of Dawn".
+</PRE><SMALL>
+      <P>INPUT FORMAT: 
+      <P>A single line (with both upper and lower case) with fewer than 100 
+      characters that represents the encrypted message. 
+      <P>SAMPLE INPUT (file INPUT.TXT): </SMALL><PRE>Begin the EscCution at the BreOape execWak of Dawn
+</PRE><SMALL>OUTPUT FORMAT: 
+      <P>Two integers on a single line. The first integer is 1 if the message 
+      decodes as an excape message; 0 otherwise. The second integer specifies 
+      the number of encryptions that were applied. 
+      <P>SAMPLE OUTPUT (file OUTPUT.TXT): </SMALL><PRE>1 1
+</PRE><SMALL>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Winter/a-data.htm#p4">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/Winter/a-sol.htm#p4">Solutions</A>]</SMALL> 
+
+      <HR>
+      </FONT></SMALL></TD>
+    <TD width="10%"></TD></TR></TBODY></TABLE></BODY></HTML>

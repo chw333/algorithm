@@ -1,0 +1,39 @@
+#include <Stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+
+#define swap(a,b) {a^=b^=a^=b;}
+
+int Num;
+int Array[ 100 ];
+int Ladder[ 100 ];
+
+int Loop1, Loop2;
+int Check;
+
+void main(void)
+{
+	FILE *Fin = fopen("input.txt", "r");
+	clrscr();
+	fscanf ( Fin, "%d", &Num );
+	for ( Loop1 = 1; Loop1 <= Num; Loop1 ++ )
+		{
+		fscanf ( Fin, "%d", &Array[ Loop1 ] );
+		Ladder[ Array[ Loop1 ] ] = Loop1;
+		}
+
+	while(1)
+		{
+			Check = 0;
+			for ( Loop1 = 1; Loop1 < Num; Loop1 ++ )
+				{
+				if ( Ladder[ Loop1 ] > Ladder[ Loop1 + 1 ] )
+					{
+					Check = 1;
+					printf ("%d ", Loop1 );
+					swap( Ladder[ Loop1 ], Ladder[ Loop1 + 1 ] );
+					}
+				}
+			if ( Check == 0 ) break;
+		}
+}

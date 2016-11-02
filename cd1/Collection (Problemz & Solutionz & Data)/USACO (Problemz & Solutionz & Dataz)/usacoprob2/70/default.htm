@@ -1,0 +1,108 @@
+<html>
+<head> <title>Problem 70: Les Entarteurs</title> </head>
+<body background="../../usaco/bg3.jpg">
+<img src="../../usaco/cow1.jpg" width="742" height="118">
+<center>
+<b><font size="7">Les Entarteurs</font></b><br>
+<b>Greg Galperin</b>
+</center>
+
+<p> Billy Goats, Chairman and CEO of industry giant Mycowsoft, is visiting
+his European branch offices. But alas, the notorious Le Gloupier is at it
+still, and has placed his agents (the entarteurs) in the streets of Europe,
+waiting to throw cream pies in celebrities' faces. Luckily, Mycowsoft
+Corporate Intelligence has determined how many entarteurs lie in wait along
+each of the routes between offices, and has asked you to plan Billy's
+visits so as to minimize the number of pies Billy has to wipe off his face.
+
+<p> Billy needs to visit all N (1 <= N <= 50) of Mycowsoft's corporate
+offices, each one exactly once, starting from any of them and ending in
+any other.  You should create such a route and print the office numbers as
+discussed below.
+
+<p> Note that you will almost certainly not be able to find the optimum
+answer for some of the test cases within the short run time limit; you
+should try to get as good a solution as you can in time, making sure your
+program outputs it and exits before time runs out. In the Note below, we
+suggest how your program can keep track of its run time.
+
+<h3>PROGRAM NAME: pieface</h3>
+
+<h3>INPUT FORMAT</h3>
+
+<p> The first line of the input file will contain N.
+<p> Each of the next N lines is a space-separated list of N integers between
+0 and 1000 inclusive, where on the i-th line in the block the j-th number
+indicates the number of cream-pie-throwing pranksters who are waiting along
+the route from office i to office j. (Restated, this number is on the i-th
+row and j-th column of the NxN grid of numbers, where the i-th row in the
+block is on the i+1-st line of the file.)
+
+<h3>SAMPLE INPUT (file pieface.in)</h3>
+<pre>
+4                -- N, the number of offices to visit
+0 50 60 40       -- 60 entarteurs are on the way from 1-&gt;3, etc.
+80 0 10 30
+20 60 0 90
+60 70 40 0
+</pre>
+<h3>OUTPUT FORMAT</h3>
+Print the office numbers visited in order on the first line of the output
+file separated by spaces (there should be N of them), and on the second
+line of the file print the total number of entarteurs encountered on that
+route.  Your solution will be scored based on how many entarteurs were
+encountered; the better (smaller) that number is, the more points you get
+for that test case.
+
+<h3>SAMPLE OUTPUT (file pieface.out)</h3>
+
+<pre>
+2 3 1 4       -- which offices to visit, in order
+70            -- Billy encounters 70 entarteurs on this route.
+</pre>
+There are other valid answers, and any valid solution will receive some
+points; this is the optimal answer, and will receive the most points.
+To pass this problem, you need to be within XXX percent of the best
+answer.
+<p>
+NOTE:
+<p>
+You can use code like that suggested below to allow your program to keep track 
+of its run time, so it can exit within the time limit.
+<p>
+In C:
+<p>
+at the top of your file, put:
+<pre>
+#include &lt;time.h&gt;
+then, to check the time used by your program so far,
+if (clock() &gt;= 5*CLK_TCK) {
+    printBestAnswerSoFarAndExit(); 
+}
+</pre>
+<p>
+In Pascal:
+<p>
+at the top of your program:
+<pre>
+XXX rob needs to fix this
+uses dos;
+</pre>
+<p>
+declare the following global variables:
+<pre>
+      hour, min, sec, centisec, timeStart : Word;
+</pre>
+<p>
+as the first thing your program does:
+<pre>
+     GetTime(hour, min, sec, centisec);
+     timeStart := (((hour*60)+min)*60+sec)*100+centisec;
+</pre>
+<p>
+and whenever you want to check time:
+<pre>
+      GetTime(hour, min, sec, centisec);
+      If (((hour*60)+min)*60+sec)*100+centisec - timeStart &gt;= 500 Then
+          printBestAnswerSoFarAndExit();
+</pre>

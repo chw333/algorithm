@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>두 선분이 있을 때 서로 교차하는지 교차하지 않는지를 검사하는 것은 육안으로는 매우 쉽게 알 수 있지만 </title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p style="line-height:120%;">두 선분이 있을 때 서로 교차하는지 교차하지 않는지를 
+검사하는 것은 육안으로는 매우 쉽게 알 수 있지만 컴퓨터가 계산하기에는 그리 쉽지 
+않습니다. 하지만 앞서 배운 선분의 방향성 검사 함수를 이용하면 두 선분 a-b와 
+c-d가 교차하는지를 쉽게 판별할 수 있습니다.</p>
+<p style="line-height:120%;">다만 주의할 것은 아래의 intersect함수는 완전교차(한 
+점이 다른 선분 위에 있다던가 하지 않는 교차)의 경우에만 제대로 동작한다는 것입니다. 
+조금만 수정하면 완전교차가 아닌 경우도 검출할 수 있습니다.</p>
+<p style="line-height:120%;"><font face="Fixed01">type<br>
+&nbsp;&nbsp;Tpoint = record<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x, y : longint;<br>
+&nbsp;&nbsp;end;</font></p>
+<p style="line-height:120%;"><font face="Fixed01">function left (a, b, c : Tpoint) 
+: boolean;<br>
+var<br>
+&nbsp;&nbsp;t : longint;<br>
+begin<br>
+&nbsp;&nbsp;t := a.x * b.y + b.x * c.y + c.x * a.y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- a.x * c.y - b.x * a.y - c.x * b.y;</font></p>
+<p style="line-height:120%;"><font face="Fixed01">&nbsp;&nbsp;if t &gt; 0 then 
+left := true<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else left 
+:= false;<br>
+end;</font></p>
+<p style="line-height:120%;"><font face="Fixed01">function intersect (a, b, 
+c, d : Tpoint) : boolean;<br>
+begin<br>
+&nbsp;&nbsp;intersect := (left (a, b, c) xor left (a, b, d)) and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(left 
+(c, d, a) xor left (c, d, b));<br>
+end;</font></p>
+<p style="line-height:120%;"><font face="Fixed01">var<br>
+&nbsp;&nbsp;a, b, c, d : Tpoint;<br>
+begin<br>
+&nbsp;&nbsp;a.x := 0;<br>
+&nbsp;&nbsp;a.y := 0;<br>
+&nbsp;&nbsp;b.x := 5;<br>
+&nbsp;&nbsp;b.y := 5;<br>
+&nbsp;&nbsp;c.x := 5;<br>
+&nbsp;&nbsp;c.y := 0;<br>
+&nbsp;&nbsp;d.x := 0;<br>
+&nbsp;&nbsp;d.y := 5;</font></p>
+<p style="line-height:120%;"><font face="Fixed01">&nbsp;&nbsp;writeln (intersect 
+(a, b, c, d));<br>
+end.</font></p>
+</body>
+
+</html></html>

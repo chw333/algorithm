@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0072)http://www.uwp.edu/academic/mathematics/usaco/2002/National/problems.htm -->
+<HTML><HEAD><TITLE>Instructions</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=ks_c_5601-1987">
+<META http-equiv=Content-Language content=en-us>
+<META content="MSHTML 5.50.4134.100" name=GENERATOR>
+<META content=FrontPage.Editor.Document name=ProgId></HEAD>
+<BODY>
+<TABLE width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD width="6%"></TD>
+    <TD width="82%"><B><FONT face=Arial>Problems</FONT></B></TD>
+    <TD width="12%"></TD></TR>
+  <TR>
+    <TD width="6%"></TD>
+    <TD width="82%">
+      <HR>
+    </TD>
+    <TD width="12%"></TD></TR>
+  <TR>
+    <TD width="6%"></TD>
+    <TD width="82%">
+      <P class=MsoNormal align=center><FONT face=Arial size=2></FONT><BR><FONT 
+      face=Courier><B>GREEN PROBLEMS </B>(Senior Division)<BR>&nbsp;Four 
+      problems numbered 1 through 4<BR>&nbsp;</FONT>
+      <HR>
+
+      <P class=MsoNormal><FONT face=Courier size=2>PROBLEM 1: Mountain Majesties 
+      [Brian Dean, 2001]<BR><BR>The cows are summering near the Front Range of 
+      the Rocky Mountains, not so<BR>far from Coach Rob's house.&nbsp; Visible 
+      on the horizon are N mountains (N &lt;=<BR>100,000), for example (here, 
+      N=5):<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      /\<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      /\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /&nbsp; \&nbsp; 
+      /\<BR>&nbsp;&nbsp;&nbsp;&nbsp; /&nbsp; \/\&nbsp;&nbsp;&nbsp; 
+      /\/&nbsp;&nbsp;&nbsp; \/&nbsp; \<BR>&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp; 
+      \ \&nbsp; /&nbsp; \&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp; \<BR>&nbsp; 
+      -----------------------------<BR><BR>Each mountain is an isosceles 
+      triangle whose height is exactly twice the<BR>length of its base.&nbsp; A 
+      mountain is described by specifying the x-coordinate<BR>of each of the two 
+      endpoints of its base; these coordinates will be<BR>positive integers that 
+      fit nicely in a 16-bit signed entity.&nbsp; Your task is<BR>to compute the 
+      total area of the union of these mountains.<BR><BR>PROBLEM NAME: 
+      majesty<BR><BR>INPUT FORMAT:<BR><BR>* Line 1: A single integer, N<BR><BR>* 
+      Lines 2..N+1: Each line describes a single mountain with 
+      two<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sorted 
+      space-separated integers.<BR><BR>SAMPLE INPUT (file 
+      majesty.in):<BR><BR>5<BR>2 7<BR>6 9<BR>12 15<BR>14 21<BR>20 
+      25<BR><BR>OUTPUT FORMAT:<BR><BR>A single integer, giving the area of the 
+      union of the mountains.&nbsp; This area<BR>will always be an integer and 
+      will always fit into 32 signed bits.<BR><BR>SAMPLE 
+      OUTPUT<BR><BR>114<BR><BR>&nbsp;</FONT>
+      <HR>
+
+      <P class=MsoNormal><FONT face=Courier size=2><BR><BR>PROBLEM 2: Secret 
+      Milk Pipes [Barton, 2002]<BR><BR>Farmer John wants to connect his water 
+      distribution system cheaply, but he<BR>doesn't want his rival, Farmer 
+      Snidely, to be able to predict the actual<BR>routes he chooses.&nbsp; FJ 
+      knows that this kind of problem usually asks for<BR>the cheapest way to 
+      connect water pipes, so he decides to avoid that and<BR>use the second 
+      cheapest way instead.<BR><BR>Given a list of all the bidirectional pipes 
+      that might connect a set of W<BR>(3 &lt;= W &lt;= 2000) water stations 
+      (any one of which can be made into a well)<BR>along with the costs for no 
+      more than P (P &lt;= 20,000) pipes, find the second<BR>cheapest way to 
+      distribute water.&nbsp; No pipe connects a station to itself;<BR>no two 
+      pipes connect the same pair of stations.<BR><BR>It is guaranteed that 
+      there is only one cheapest way to distribute the<BR>water and that there 
+      are at least two ways to distribute the water.&nbsp; All<BR>costs are 
+      positive integers that fit into a signed 16-bit entity.&nbsp; A 
+      water<BR>station is identified by its ID number, which is an integer in 
+      the range<BR>1..W.<BR><BR>PROBLEM NAME: secret<BR><BR>INPUT 
+      FORMAT:<BR><BR>* Line 1: Two space-separated integers, W and P<BR><BR>* 
+      Lines 2..P+1: Each line describes a single pipe and contains 
+      three<BR>&nbsp; space-separated integers: a water station that is one 
+      endpoint<BR>&nbsp; of a pipe, a water station that is the other endpoint 
+      of a pipe,<BR>&nbsp; and the cost of that pipe.<BR><BR>SAMPLE INPUT (file 
+      secret.in):<BR><BR>5 7<BR>1 2 3<BR>2 3 4<BR>1 4 7<BR>2 4 11<BR>2 5 9<BR>5 
+      4 5<BR>3 5 8 <BR><BR>OUTPUT FORMAT:<BR><BR>A single line with a single 
+      integer that is the second lowest cost to<BR>construct a water 
+      distribution system.<BR><BR>SAMPLE OUTPUT (file 
+      secret.out):<BR><BR>20<BR><BR>&nbsp;</FONT>
+      <HR>
+
+      <P class=MsoNormal><FONT face=Courier size=2><BR><BR><BR>PROBLEM 3: Circus 
+      Tickets [Gadnell &amp; Backman/Kolstad, 1997]<BR><BR>Farmer John is taking 
+      16 cows to see the three ring circus.&nbsp; Being cows,<BR>they are seated 
+      in the cow section, a 4x4 set of seats near the front of<BR>the 
+      audience.&nbsp; The seats, rows, and columns are numbered 
+      thusly:<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp; col 1&nbsp;&nbsp;&nbsp; col 
+      3<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | col 2 | col 
+      4<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp; 
+      |&nbsp;&nbsp; |&nbsp;&nbsp; 
+      |<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; 
+      2&nbsp;&nbsp; 3&nbsp;&nbsp; 4&nbsp; &lt;-- row 
+      1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp;&nbsp; 
+      6&nbsp;&nbsp; 7&nbsp;&nbsp; 8&nbsp; &lt;-- row 
+      2<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9&nbsp; 10&nbsp; 11&nbsp; 
+      12&nbsp; &lt;-- row 3<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 13&nbsp; 
+      14&nbsp; 15&nbsp; 16&nbsp; &lt;-- row 4<BR><BR>The cows are herded 
+      helter-skelter into the seats.&nbsp; It is only after they<BR>are seated 
+      that they check their tickets.&nbsp; In a revelation that will<BR>surprise 
+      no one, they are not necessarily in the proper seats.&nbsp; The 
+      layout<BR>of the cow seating is such that they can rearrange themselves 
+      only by<BR>rotating a row right or left or rotating a column up or 
+      down.&nbsp; The examples<BR>below show all four operations applied to the 
+      first row or column of the<BR>proper seating shown above:<BR><BR>&nbsp; 
+      4&nbsp;&nbsp; 1&nbsp;&nbsp; 2&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp; 
+      2&nbsp;&nbsp; 3&nbsp;&nbsp; 4&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp; 
+      5&nbsp;&nbsp; 2&nbsp;&nbsp; 3&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp; 
+      13&nbsp;&nbsp; 2&nbsp;&nbsp; 3&nbsp;&nbsp; 4<BR>&nbsp; 5&nbsp;&nbsp; 
+      6&nbsp;&nbsp; 7&nbsp;&nbsp; 8&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp;&nbsp; 
+      6&nbsp;&nbsp; 7&nbsp;&nbsp; 8&nbsp;&nbsp;&nbsp;&nbsp; 9&nbsp;&nbsp; 
+      6&nbsp;&nbsp; 7&nbsp;&nbsp; 8&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; 
+      6&nbsp;&nbsp; 7&nbsp;&nbsp; 8<BR>&nbsp; 9&nbsp; 10&nbsp; 11&nbsp; 
+      12&nbsp;&nbsp;&nbsp;&nbsp; 9&nbsp; 10&nbsp; 11&nbsp; 12&nbsp;&nbsp;&nbsp; 
+      13&nbsp; 10&nbsp; 11&nbsp; 12&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp; 10&nbsp; 
+      11&nbsp; 12<BR>&nbsp;13&nbsp; 14&nbsp; 15&nbsp; 16&nbsp;&nbsp;&nbsp; 
+      13&nbsp; 14&nbsp; 15&nbsp; 16&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 14&nbsp; 
+      15&nbsp; 16&nbsp;&nbsp;&nbsp;&nbsp; 9&nbsp; 14&nbsp; 15&nbsp; 16<BR>Rot 
+      row 1 right&nbsp;&nbsp;&nbsp; Rot row 1 left&nbsp;&nbsp;&nbsp;&nbsp; Rot 
+      col 1 up&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rot col 1 down<BR><BR>Given the 
+      actual seating arrangement of the cows, determine a very good<BR>set of 
+      rotations to rearrange cows so that their tickets and seat 
+      numbers<BR>match.&nbsp; At least one solution always exists.<BR><BR>Your 
+      score for each test case will depend on how close you get to the 
+      best<BR>number of rotations submitted by other contestants for that 
+      case.&nbsp; Your<BR>output sequence must be shorter than 500 operations in 
+      order to receive<BR>credit for this problem.<BR><BR>HINT: The sequence 1l 
+      1l 1l 4u 1r 4d 1l 1l 4u 1r 4u 4u 4u swaps the cow in<BR>the upper left 
+      seat with the cow to her right.<BR><BR>PROBLEM NAME: tix<BR><BR>INPUT 
+      FORMAT:<BR><BR>Four lines, each with four space separated integers.&nbsp; 
+      Line 1 is the first<BR>row; line 2 is the second row; and so 
+      on.<BR><BR>SAMPLE INPUT (file tix.in):<BR><BR>4 1 2 3<BR>6 7 8 5<BR>10 11 
+      12 9<BR>14 15 16 13<BR><BR>OUTPUT FORMAT:<BR><BR>A series of output lines 
+      that contain the ordered sequence of rotations<BR>that will arrange the 
+      cows.&nbsp; Each line contains a row or column number<BR>(1..4) followed 
+      by a space followed by a lower-case letter that indicates<BR>the operation 
+      to be performed: 'r' for rotate a row right, 'l' for rotate<BR>a row left, 
+      'u' for rotate a column up, and 'd' for rotate a column 
+      down.<BR><BR>SAMPLE OUTPUT (file tix.out):<BR><BR>1 l<BR>2 r<BR>3 r<BR>4 
+      r<BR><BR>[Other correct sequences are equally valid though might not 
+      garner as many<BR>points.]<BR><BR>&nbsp;</FONT>
+      <HR>
+
+      <P class=MsoNormal><FONT face=Courier size=2><BR><BR>PROBLEM 4: Life Cycle 
+      [Piele, 2002]<BR><BR>The cows are calculating the "life cycle" for each of 
+      their identification<BR>tag numbers.<BR><BR>Take any positive integer N (1 
+      &lt;= N &lt;= 9999), say 57, square all the digits<BR>and add them 
+      up:&nbsp; 5^2 + 7^2 to get 25 + 49 = 74. Now do the same procedure<BR>with 
+      the result 74 to get the next number in the sequence 65. Continuing<BR>to 
+      apply this procedure to a sequence of terms eventually repeats 
+      one<BR>number of the sequence.<BR><BR>When starting with 57, the sequence 
+      repeats for the first time with 37,<BR>which is the next number in this 
+      part of the sequence:<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 57, 74, 65, 
+      61, <BR><BR>&gt;From then on the sequence is trapped in a "life 
+      cycle":<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 37, 58, 89, 145, 42, 20, 4, 
+      16, 37, . . .<BR><BR>If we cube the digits instead of squaring them the 
+      sequence has a similar<BR>fate. Your job is to write a program that 
+      computes how long the sequence<BR>lasts until it falls into a life cycle 
+      given a starting positive integer<BR>and a power P (1 &lt;= P &lt;= 
+      5).<BR><BR>PROBLEM NAME: life<BR><BR>INPUT FORMAT:<BR><BR>A single line 
+      with two space-separated integers: N and P.<BR><BR>SAMPLE INPUT (file 
+      life.in):<BR><BR>57 2<BR><BR>OUTPUT FORMAT:<BR><BR>Length of the sequence 
+      until it enters a life cycle, not including the<BR>first number in the 
+      cycle.<BR><BR>SAMPLE OUTPUT (file life.out):<BR><BR>4<BR><BR>[This 
+      corresponds to the sequence: 57, 74, 65, 61, 37, ...; 37 is the 
+      first<BR>number that is repeated.]<BR>&nbsp;</FONT>
+      <HR>
+
+      <P class=MsoNormal align=left><FONT face=Courier 
+      size=2><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>ORANGE 
+      PROBLEMS (Junior 
+      Division)<BR></B><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      Four problems numbered 6 through 9<BR>&nbsp;</FONT>
+      <HR>
+
+      <P class=MsoNormal><FONT face=Courier size=2><BR><BR>PROBLEM 6: Wiggle 
+      Numbers [Top Coder/Piele, 2002]<BR><BR>These positive integers:&nbsp; 
+      3748, 67, 869, 32435465768 are all wiggle numbers<BR>because if you 
+      examine the digits of each number they go up, down, up,<BR>down, ...&nbsp; 
+      or&nbsp; down, up, down, up, down, up, ... For example:<BR><BR>3 &lt; 7 
+      &gt; 4 &lt; 8&nbsp; and&nbsp; 3 &gt; 2 &lt; 4 &gt; 3 &lt; 5 &gt; 4 &lt; 6 
+      &gt; 5 &lt; 7 &gt; 6 &lt; 8&nbsp; <BR><BR>A single digit is a wiggle 
+      number of length 1.<BR><BR>Write a program that will determine how many of 
+      the initial digits of a<BR>number form a wiggle number.&nbsp; The answer 
+      could, of course, be the length<BR>of the number in some 
+      cases.<BR><BR>PROBLEM NAME: wiggle<BR><BR>INPUT FORMAT:<BR><BR>A single 
+      line with a single positive integer no longer than 75 
+      digits.<BR><BR>SAMPLE INPUT (file wiggle.in):<BR><BR>3748<BR><BR>OUTPUT 
+      FORMAT:<BR><BR>A single integer that is the number of initial digits of 
+      the number that<BR>form a wiggle number.<BR><BR>SAMPLE OUTPUT (file 
+      wiggle.out):<BR><BR>4<BR><BR>&nbsp;</FONT>
+      <HR>
+
+      <P class=MsoNormal><FONT face=Courier size=2><BR><BR>PROBLEM 7: Life Cycle 
+      [Piele, 2002]<BR><BR>The cows are calculating the "life cycle" for each of 
+      their identification<BR>tag numbers.<BR><BR>Take any positive integer N (1 
+      &lt;= N &lt;= 9999), say 57, square the digits<BR>and add them up:&nbsp; 
+      5^2 + 7^2 to get 25 + 49 = 74. Now do the same procedure<BR>with the 
+      result 74 to get the next number in the sequence 65. Continuing<BR>to 
+      apply this procedure to a sequence of terms eventually repeats 
+      one<BR>number of the sequence.<BR><BR>When starting with 57, the sequence 
+      repeats for the first time with 37:<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      57, 74, 65, 61, <BR><BR>and from then on the sequence is trapped in a 
+      "life cycle":<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 37, 58, 89, 145, 42, 
+      20, 4, 16, 37, . . .<BR><BR>If we cube the digits instead of squaring them 
+      the sequence has a similar<BR>fate. Your job is to write a program that 
+      computes how long the sequence<BR>lasts until it falls into a life cycle 
+      given a starting positive integer<BR>and a power P (1 &lt;= P &lt;= 
+      5).<BR><BR>PROBLEM NAME: life2<BR><BR>INPUT FORMAT:<BR><BR>A single line 
+      with two space-separated integers: N and P.<BR><BR>SAMPLE INPUT (file 
+      life2.in):<BR><BR>57 2<BR><BR>OUTPUT FORMAT:<BR><BR>Length of the sequence 
+      until it enters a life cycle, not including the<BR>first number in the 
+      cycle.<BR><BR>SAMPLE OUTPUT (file life2.out):<BR><BR>4<BR><BR>[This 
+      corresponds to the sequence: 57, 74, 65, 61, 37, ...; 37 is the 
+      first<BR>number that is repeated.]<BR><BR>&nbsp;</FONT>
+      <HR>
+
+      <P class=MsoNormal><FONT face=Courier size=2><BR><BR>PROBLEM 8: Superwords 
+      [Dan Adkins, 2002]<BR><BR>The cows are playing dictionary games again; 
+      there's not much else to do<BR>while chewing one's cud.&nbsp; The new game 
+      is a simple one but they need to<BR>verify their answers.<BR><BR>Given a 
+      list of N (1 &lt;= N &lt;= 100) words, what is the smallest 
+      "superword"<BR>that contains all of them, in order, as subwords?&nbsp; 
+      Consider an example<BR>using three words: 'big', 'green', and 
+      'engine'.&nbsp; To make a "superword"<BR>(which, regrettably, rarely 
+      appears in the dictionary), one combines them<BR>carefully to yield: 
+      'bigreengine'.<BR><BR>Words appear sequentially in a superword when the 
+      first letter of a<BR>constituent word appears strictly later in the 
+      superword than the first<BR>letter of the previous word and the last 
+      letter of that word appears<BR>strictly later in the superword than the 
+      last letter of the previous word.<BR>Here are some two word 
+      examples:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sin in&nbsp; -&gt; 
+      sinin<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sin si&nbsp; -&gt; 
+      sinsi<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sin int -&gt; 
+      sint<BR><BR>Your task is to find superwords.<BR><BR>PROBLEM NAME: 
+      suword<BR><BR>INPUT FORMAT:<BR><BR>* Line 1: A single integer, N<BR><BR>* 
+      Lines 2..N+1:&nbsp; Each line contains a single word that contains only 
+      lower<BR>&nbsp; case letters ('a'..'z').&nbsp; No word is longer than 75 
+      characters.<BR><BR>SAMPLE INPUT (file 
+      suword.in):<BR><BR>3<BR>big<BR>green<BR>engine<BR><BR>OUTPUT 
+      FORMAT:<BR><BR>A single line that contains the "superword".<BR><BR>SAMPLE 
+      OUTPUT (file suword.out):<BR><BR>bigreengine<BR><BR>&nbsp;</FONT>
+      <HR>
+
+      <P class=MsoNormal><FONT face=Courier size=2><BR><BR>PROBLEM 9: Cow 
+      Brainiacs [Hubert Chen, 2002]<BR><BR>One afternoon as the cows were 
+      chewing their cud, Bessie said, "Let's have<BR>a contest to see who is the 
+      smartest cow.&nbsp; Here's the contest:&nbsp; we will<BR>choose a positive 
+      number N (no larger than 2,000,000) and whoever computes<BR>the rightmost 
+      non-zero digit of N factorial will be crowned the 
+      smartest<BR>cow."<BR><BR>The other cows demurred, however, mooing, "We did 
+      that last year."<BR><BR>"Oh," said Bessie, "but there's a catch.&nbsp; 
+      We're not necessarily going to<BR>use base 10.&nbsp; I know my hooves 
+      don't have that many digits!&nbsp; We'll just<BR>specify a positive number 
+      base B from 2 through 30."<BR><BR>Write a program to help the cows judge 
+      their intelligence contest.<BR><BR>PROBLEM NAME: brain<BR><BR>INPUT 
+      FORMAT:<BR><BR>A single line with integers N and B<BR><BR>SAMPLE INPUT 
+      (file brain.in):<BR><BR>13 3<BR><BR>OUTPUT FORMAT:<BR><BR>A single line 
+      with the decimal-representation of the "digit" that is the<BR>rightmost 
+      non-zero digit for N! in base B.&nbsp; If B &gt; 10, go ahead and 
+      output<BR>a two-digit decimal number as a representation of the final 
+      "digit".<BR><BR>SAMPLE OUTPUT (file 
+      brain.out):<BR><BR>2<BR><BR>[13*12*11*10*9*8*7*6*5*4*3*2*1=6227020800 base 
+      10, which in base 3 is<BR>121001222020102200000, so the right-most 
+      non-zero digit is 2.]</FONT><BR>&nbsp;<FONT face=Arial size=2><O:P><PRE>      
+      </PRE></O:P></FONT>
+      <P></P>
+      <P><FONT face=Arial size=2><BR><BR></FONT></P></TD></TR>
+  <TR>
+    <TD width="6%">&nbsp;</TD>
+    <TD width="82%">&nbsp;</TD></TR></TBODY></TABLE></BODY></HTML>

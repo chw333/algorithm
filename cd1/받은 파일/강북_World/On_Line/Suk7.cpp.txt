@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+
+char g;
+
+int Ccw(int X1, int Y1, int X2, int Y2, int X3, int Y3 )
+	{
+	long Digit;
+	Digit = (long)X2 * Y3 - (long)Y1 * X2 - (long)X1 * Y3 - (long)Y2 * X3 + (long)X1 * Y2 + (long)Y1 * X3;
+	if ( Digit > 0 ) return 1;
+	else if ( Digit < 0 ) return -1;
+	else
+		return 0;
+	}
+
+int Intersect( int X1, int Y1, int X2, int Y2, int X3, int Y3, int X4, int Y4 )
+	{
+	if ( Ccw( X1, Y1, X2, Y2, X3, Y3 ) * Ccw( X1, Y1, X2, Y2, X4, Y4 ) < 0 && Ccw( X3, Y3, X4, Y4, X1, Y1 ) * Ccw( X3, Y3, X4, Y4, X2, Y2 ) < 0 )
+		return 1;
+	else
+		return -1;
+	}
+
+void main(void)
+{
+	int X1, Y1, X2, Y2, X3, Y3, X4, Y4;
+	int DX, DY ;
+	int X[ 100 ], Y[ 100 ];
+	int Num;
+	int Check;
+	int Loop1, Loop2, Loop3;
+	int Bak1, Bak2;
+
+/*	printf ("INPUT DOTS = ");
+	scanf ("%d %d %d %d %d %d %d %d", &X1, &Y1, &X2, &Y2, &X3, &Y3, &X4, &Y4 );
+	printf ("%d\n", Intersect( X1, Y1, X2, Y2, X3, Y3, X4, Y4 ));*/
+
+Restart:
+clrscr();
+
+	printf ("HOW MANY DOTS DO THEY HAVE ? ");
+	scanf ("%d", &Num );
+	for ( Loop1 = 1; Loop1 <= Num; Loop1 ++ )
+		{
+		printf ("DOT%d(x,y)=? ", Loop1);
+		scanf ("%d %d", &X[ Loop1 ], &Y[ Loop1 ] );
+		}
+
+Front:
+	clrscr();
+	for ( Loop1 = 1; Loop1 <= Num; Loop1 ++ )
+		{
+		gotoxy( X[ Loop1 ], Y[ Loop1 ] );
+		printf ("%c", 64 + Loop1 );
+		}
+	gotoxy( 35,24 );
+	printf ("CHECK DOT(x,y) = ");
+	scanf ("%d %d", &DX, &DY );
+	Check = 0;
+	X[ Num + 1 ] = X[ 1 ];
+	Y[ Num + 1 ] = Y[ 1 ];
+
+	for ( Loop1 = 1; Loop1 <= Num; Loop1 ++ )
+		{
+		if ( Intersect( DX, DY, 31, 16, X[ Loop1 ], Y[ Loop1 ], X[ Loop1 + 1 ], Y[ Loop1 + 1 ] ) == 1 )
+			Check ++;
+		}
+	if ( Check % 2 == 0 )
+		printf ("EXTERIOR DOT\n");
+	if ( Check % 2 == 1 )
+		printf ("INSIDE DOT\n");
+	getch();
+	printf ("CONTINUE? ");
+	g = getche();
+	if ( g == 'Y' || g == 'y' )
+		goto Front;
+	else
+		exit(1);
+
+
+
+}

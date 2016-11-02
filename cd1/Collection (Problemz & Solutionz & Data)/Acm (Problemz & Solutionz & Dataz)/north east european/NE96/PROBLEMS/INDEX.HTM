@@ -1,0 +1,682 @@
+<! META generator HTPL (c) Anton A. Sukhanov, 1996 ----------------------->
+ <HTML>
+       <HEAD>
+       <TITLE> ACM 1996-97 NorthEastern European Regional Collegiate Programming
+       Contest </TITLE> </HEAD>
+
+       <BODY BGCOLOR="#FFFFFF" !VLINK="#008000" !LINK="#FFFF00" BACKGROUND="IMG/ACM_LOGO.JPG" !BACKGROUND="0BACK.JPG">
+
+       <TABLE WIDTH="100%">
+       <TR>
+       <TD !BGCOLOR="#FF8888"> <FONT FACE="arial"> <B>ACM 1996-97</B> NEERC - Contest Magazine
+       </TD>
+       <TD !BGCOLOR="#FFFF00" ALIGN=RIGHT> <FONT FACE="arial">
+
+         - <A HREF="1.htm"> 1 </A> - <A HREF="2.htm"> 2 </A> - <FONT COLOR="#FF0000"> <B> 3 </B> </FONT> - <A HREF="4.htm"> 4 </A> - <A HREF="5.htm"> 5 </A> - <A HREF="6.htm"> 6 </A> - <A HREF="7.htm"> 7 </A> - <A HREF="8.htm"> 8 </A> -  </TD> </TR> </TABLE>
+       <HR NOSHADE SIZE=2>
+
+   
+
+
+
+
+
+
+
+
+
+
+
+<TABLE>  <TR VALIGN=TOP>
+ <TD>  <TABLE CELLSPACING=0 CELLPADDING=0>
+            <TR><TD !BGCOLOR="#FFCCCC"">  <FONT !COLOR="#FFCCCC""> Problem&nbspA:&nbsp</FONT></TD></TR></TABLE><!BR><A HREF="#A">Table </A>  </TD> <TD> <IMG SRC="IMG/DOT.GIF" WIDTH=1 HEIGHT=40>  </TD> 
+ <TD>  <TABLE CELLSPACING=0 CELLPADDING=0>
+            <TR><TD !BGCOLOR="#CCFFFF"">  <FONT !COLOR="#CCFFFF""> Problem&nbspB:&nbsp</FONT></TD></TR></TABLE><!BR><A HREF="#B">Black Box </A>  </TD> <TD> <IMG SRC="IMG/DOT.GIF" WIDTH=1 HEIGHT=40>  </TD> 
+ <TD>  <TABLE CELLSPACING=0 CELLPADDING=0>
+            <TR><TD !BGCOLOR="#FFFFCC"">  <FONT !COLOR="#FFFFCC""> Problem&nbspC:&nbsp</FONT></TD></TR></TABLE><!BR><A HREF="#C">Turing calculator </A>  </TD> <TD> <IMG SRC="IMG/DOT.GIF" WIDTH=1 HEIGHT=40>  </TD> 
+ <TD>  <TABLE CELLSPACING=0 CELLPADDING=0>
+            <TR><TD !BGCOLOR="#CCCCFF"">  <FONT !COLOR="#CCCCFF""> Problem&nbspD:&nbsp</FONT></TD></TR></TABLE><!BR><A HREF="#D">DEL command </A>  </TD> <TD> <IMG SRC="IMG/DOT.GIF" WIDTH=1 HEIGHT=40>  </TD> 
+ <TD>  <TABLE CELLSPACING=0 CELLPADDING=0>
+            <TR><TD !BGCOLOR="#FFCCFF"">  <FONT !COLOR="#FFCCFF""> Problem&nbspE:&nbsp</FONT></TD></TR></TABLE><!BR><A HREF="#E">Parallelepiped walk </A>  </TD> <TD> <IMG SRC="IMG/DOT.GIF" WIDTH=1 HEIGHT=40>  </TD> 
+ <TD>  <TABLE CELLSPACING=0 CELLPADDING=0>
+            <TR><TD !BGCOLOR="#CCFFCC"">  <FONT !COLOR="#CCFFCC""> Problem&nbspF:&nbsp</FONT></TD></TR></TABLE><!BR><A HREF="#F">Random number </A>  </TD> <TD> <IMG SRC="IMG/DOT.GIF" WIDTH=1 HEIGHT=40>  </TD> 
+ <TD>  <TABLE CELLSPACING=0 CELLPADDING=0>
+            <TR><TD !BGCOLOR="#AABBAA"">  <FONT !COLOR="#AABBAA""> Problem&nbspG:&nbsp</FONT></TD></TR></TABLE><!BR><A HREF="#G">Moscow time </A>  </TD> 
+</TABLE>
+
+<P> Also available: <BR>
+<DD><A HREF="turing.zip">Download TOOL for problem C (Turing machine interpreter)</A> <!BR>
+<DD><A HREF="ne96tst.zip">Download tests</A>
+<DD><A HREF="ne96sol.zip">Download solutions</A>
+
+
+
+
+<BR> &nbsp
+
+
+ <TABLE WIDTH="100%" CELLPADDING=0 CELLSPACING=0><TR>
+ <TD BGCOLOR="#FFCCCC">
+ <A NAME="A">
+ <CENTER>
+ <FONT !COLOR="#FF0000" SIZE="+2"> <B>
+  Problem A: Table </B> </FONT>
+ </CENTER>
+  </TD></TR></TABLE>
+
+
+
+  <P>
+  <TABLE BORDER=0 CELLSPACING=0> <TR> <TD> <FONT !SIZE="-1"> <B>Input File</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">INPUT.TXT</FONT> </TD><TR> <TD> <FONT !SIZE="-1"> <B>Output File</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">OUTPUT.TXT</FONT> </TD><TR> <TD> <FONT !SIZE="-1"> <B>Time-limit/Test:</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">15 seconds</FONT> </TD>  </TABLE>
+<P> <IMG SRC="IMG/C1.GIF" ALIGN=RIGHT> A lot of text editors allows us to make tables with the help of pseudographical characters but do not let edit them, i.e.
+after alternation of the text in cells, to restore the marking of lines and columns you have to align the whole table
+manually. You are offered to implement an editor fragment carrying out an automatic table alignment.<P>
+<P>
+The table represents a rectangle divided into cells with vertical and horizontal lines, linking its borders. Vertical and
+horizontal markers as well as the rectangle itself are formed by pseudographical characters from figure 1.<P>
+<P>
+The text in table cells can be located in several lines. Text does not contain control and pseudographical characters.<P>
+<P>
+While editing a table the text of cells is being changed and as a result symbols 'i' can be shifted to the left or to the
+right. The number of lines and columns of the table as well as the number of lines in each cell is not being changed.<P>
+<P>
+The text in each line of each cell should be separated from vertical markers exactly with one space on the left and no less
+than with one space on the right in the aligned table. All spaces between words are significant. It is allowed only:<P>
+<P>
+<!UL>
+<LI> to alter the number of leading and trailing spaces in cell lines;
+<LI> to add and delete characters "--" (ASCII 196) in horizontal table markers.
+<!/UL>
+<P>
+
+The table does not contain empty columns, i.e. each column contains at least one cell with non-empty text.<P>
+<P>
+It is required to format a given table making its width (the length of table line) minimal.<P>
+<P>
+
+<B>Input data</B><P>
+<P>
+Input data file INPUT.TXT contains an edited table. It consists of no more than 100 lines and line length is no more then
+255 characters. Lines themselves do not contain leading and trailing spaces. The file does not contain empty lines.<P>
+<P>
+<I>An example of input data file:</I><P>
+<P>
+
+<IMG SRC="IMG/C2.GIF">
+
+<P> <B>Output data</B><P>
+<P>
+Write to the output data file OUTPUT.TXT the aligned table. Output lines should not contain leading and trailing spaces.
+The output should not contain empty lines. The input data provides that the width of the formatted table does not exceed
+255 characters.<P>
+<P>
+<I>Our example gives:</I><P>
+<P>
+<IMG SRC="IMG/C3.GIF">
+
+
+
+
+
+
+
+<BR> &nbsp
+
+
+ <TABLE WIDTH="100%" CELLPADDING=0 CELLSPACING=0><TR>
+ <TD BGCOLOR="#CCFFFF">
+ <A NAME="B">
+ <CENTER>
+ <FONT !COLOR="#FF0000" SIZE="+2"> <B>
+  Problem B: Black Box </B> </FONT>
+ </CENTER>
+  </TD></TR></TABLE>
+
+
+
+  <P>
+  <TABLE BORDER=0 CELLSPACING=0> <TR> <TD> <FONT !SIZE="-1"> <B>Input File</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">INPUT.TXT</FONT> </TD><TR> <TD> <FONT !SIZE="-1"> <B>Output File</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">OUTPUT.TXT</FONT> </TD><TR> <TD> <FONT !SIZE="-1"> <B>Time-limit/Test:</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">20 seconds</FONT> </TD>  </TABLE>
+<P>
+Our Black Box represents a primitive database. It can save an integer array and has a special <I>i</I> variable. At the
+initial moment Black Box is empty and <I>i</I> equals 0. This Black Box processes a sequence of commands
+(transactions). There are two types of transactions:<P>
+
+<!UL>
+<LI> ADD (<I>x</I>): put element <I>x</I> into Black Box;
+<LI> GET: increase <I>i </I>by 1 and give an <I>i</I>-minimum out of all integers containing in the Black Box. Keep in
+mind that <I>i</I>-minimum is a number located at <I>i</I>-th place after Black Box elements sorting by non-
+descending.
+<!/UL>
+
+<P>
+Let us examine a possible sequence of 11 transactions:<P>
+
+<div align=right>Example 1: </div>
+
+<P> <TABLE CELLSPACING=0 WIDTH=100%>
+ <TR VALIGN=TOP>  <TD> <B>N</B> </TD>  <TD> <B>Transaction</B> </TD>  <TD> <B>i&nbsp&nbsp&nbsp&nbsp</B> </TD>  <TD> <B>Black Box contents after transaction </B><BR> (elements are arranged by non-descending) </TD>  <TD> <B>Answer</B> </TD>  </TR>  <TR VALIGN=TOP>  <TD> 1 </TD>  <TD> ADD (3) </TD>  <TD> 0 </TD>  <TD> 3 </TD>  <TD>  </TD>  </TR>  <TR VALIGN=TOP>  <TD> 2 </TD>  <TD> GET </TD>  <TD> 1 </TD>  <TD> <B>3</B> </TD>  <TD> 3 </TD>  </TR>  <TR VALIGN=TOP>  <TD> 3 </TD>  <TD> ADD (1) </TD>  <TD> 1 </TD>  <TD> 1, 3 </TD>  <TD>  </TD>  </TR>  <TR VALIGN=TOP>  <TD> 4 </TD>  <TD> GET </TD>  <TD> 2 </TD>  <TD> 1, <B>3</B> </TD>  <TD> 3 </TD>  </TR>  <TR VALIGN=TOP>  <TD> 5 </TD>  <TD> ADD (-4) </TD>  <TD> 2 </TD>  <TD> -4, 1, 3 </TD>  <TD>  </TD>  </TR>  <TR VALIGN=TOP>  <TD> 6 </TD>  <TD> ADD (2) </TD>  <TD> 2 </TD>  <TD> -4, 1, 2, 3 </TD>  <TD>  </TD>  </TR>  <TR VALIGN=TOP>  <TD> 7 </TD>  <TD> ADD (8) </TD>  <TD> 2 </TD>  <TD> -4, 1, 2, 3, 8 </TD>  <TD>  </TD>  </TR>  <TR VALIGN=TOP>  <TD> 8 </TD>  <TD> ADD (-1000)&nbsp&nbsp </TD>  <TD> 2 </TD>  <TD> -1000, -4, 1, 2, 3, 8 </TD>  <TD>  </TD>  </TR>  <TR VALIGN=TOP>  <TD> 9 </TD>  <TD> GET </TD>  <TD> 3 </TD>  <TD> -1000, -4, <B>1</B>, 2, 3, 8 </TD>  <TD> 1 </TD>  </TR>  <TR VALIGN=TOP>  <TD> 10 </TD>  <TD> GET </TD>  <TD> 4 </TD>  <TD> -1000, -4, 1, <B>2</B>, 3, 8 </TD>  <TD> 2 </TD>  </TR>  <TR VALIGN=TOP>  <TD> 11 </TD>  <TD> ADD (2) </TD>  <TD> 4 </TD>  <TD> -1000, -4, 1, 2, 2, 3, 8 </TD>  <TD>  </TD>  </TR> </TABLE>
+
+
+<P> It is required to work out an efficient algorithm which treats a given sequence of transactions. The maximum number of
+ADD and GET transactions - 30000 of each type.<P>
+Let us describe the sequence of transactions by two integer arrays:<P>
+
+1. <I>A</I>(1), <I>A</I>(2), ..., <I>A</I>(<I>M</I>): a sequence of elements which are being included into Black Box. <I>A</I> values are
+
+integers not exceeding 2 000 000 000 by their absolute value, <I>M</I>&lt=30000 . For the Example 1 we have
+<I>A</I>=(3, 1, -4, 2, 8, -1000, 2).<P>
+2. <I>u</I>(1), <I>u</I>(2), ..., <I>u</I>(<I>N</I>) : a sequence setting a number of elements which are being included into Black Box at the
+moment of first, second, ... and  <I>N</I>-transaction GET. For the Example 1 we have <I>u</I>=(1, 2, 6,  6).<P>
+
+<P>
+The Black Box algorithm supposes that natural number sequence <I>u</I>(1), <I>u</I>(2), ..., <I>u </I>(N) is sorted
+in non-descending order, <I>N</I>&lt=<I>M</I> and for each <I>p</I> (1&lt=<I>p</I>&lt=<I>N</I>)
+an inequality <I>p</I>&lt=<I>u</I>(<I>p</I>)&lt=<I>M</I> is valid. It follows from
+the fact that for the <I>p</I>-element of our <I>u</I> sequence we perform a GET transaction giving <I>p</I>-
+minimum number from our <I>A</I>(1),<I>A</I>(2),...,<I>A</I>(<I>u</I>(<I>p</I>)) sequence.<P>
+<P>
+<P>
+<B>Input data</B><P>
+<P>
+Input data file INPUT.TXT contains (in given order):<I> M</I>, <I>N</I>, <I>A(1)</I>, <I>A(2)</I>, ...,<I> A(M),
+u(1)</I>, <I>u(2)</I>, ..., <I>u(N)</I>. All numbers are divided by spaces and (or) carriage return characters.<P>
+<P>
+Input data file, corresponding to Example 1:<P>
+<P><pre><tt>7 4
+3 1 -4 2 8 -1000 2
+1 2 6 6</tt></PRE>
+
+<P> <B>Output data</B><P>
+<P>
+Write to the output data file OUTPUT.TXT Black Box answers sequence for a given sequence of transactions. The
+numbers can be separated with  spaces and end-of-line characters.<P>
+<P>
+Our example gives:<P>
+<P><pre><tt>3
+3
+1
+2</tt></PRE>
+
+
+
+
+
+
+<BR> &nbsp
+
+
+ <TABLE WIDTH="100%" CELLPADDING=0 CELLSPACING=0><TR>
+ <TD BGCOLOR="#FFFFCC">
+ <A NAME="C">
+ <CENTER>
+ <FONT !COLOR="#FF0000" SIZE="+2"> <B>
+  Problem C: Turing calculator </B> </FONT>
+ </CENTER>
+  </TD></TR></TABLE>
+
+
+  <P>
+  <TABLE BORDER=0 CELLSPACING=0> <TR> <TD> <FONT !SIZE="-1"> <B>Output File</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">OUTPUT.TXT</FONT> </TD><TR> <TD> <FONT !SIZE="-1"> <B>Tools</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">Turing Machine interpreter <A HREF="#turing">TURING.EXE</A></FONT> </TD><TR> <TD> <FONT !SIZE="-1"> <B>Time-limit/Test:</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">15 seconds</FONT> </TD>  </TABLE>
+<P>
+The storage of Turing Machine consists of unlimited (to both sides) tape <I>M</I>. Each cell of <I>M</I> can store
+one of the three characters "0", "1" or "E". Its read/write head moves along the tape <I>M</I>. At each moment the head
+is able to observe one character of the tape (the current character). The machine is also equiped with a tape <I>OUT</I>
+to output the result. Allowed characters on the output tape are "0" and "1". The machine always writes to the
+<I>OUT</I> in a strict sequence from left to right. At each moment the machine is in one of <I>N</I> states.<P>
+<P>
+Turing Machine operates in the single-stepping regime. Its program is a set of  rules which defines an action depending
+on a current character value and the machine's state. During one action (step) the machine can execute any combination
+of the following operations:<P>
+<P>
+
+ <IMG SRC="IMG/ROMB.GIF">  turn to a new state; <BR>
+ <IMG SRC="IMG/ROMB.GIF">  alter the current cell value (value of the cell of the tape <I>M</I> pointed by the head);<BR>
+ <IMG SRC="IMG/ROMB.GIF">  move the head by 1 cell leftward or rightward;<BR>
+ <IMG SRC="IMG/ROMB.GIF">  write one character to the output tape <I>OUT</I>.
+
+<P>
+The states are numbered by integers from 1 to <I>N</I>. The Machine starts working the an initial state <I>S</I>. It
+stops when the current state and the current character matches no rule.<P>
+
+<P>
+The program for Turing Machine is located in a text file as follows. The first line contains the number of states
+<I>N</I>, the second - the initial state <I>S</I>. The remainder of the file is the list of rules. Each rule is located in a
+single line in the following format:<P>
+<P>
+<CENTER>
+<I>q  w  q</I>1<I> w</I>1<I>  d</I> &nbsp&nbsp   OR  &nbsp&nbsp   <I>q w  q</I>1<I> w</I>1<I>  d  e</I>
+</CENTER>
+
+<P>
+
+where
+
+<P> <TABLE>
+<TR VALIGN=TOP><TD> q and w: </TD>
+<TD VALIGN=TOP>the current state and the current character;</TD></TR>
+<TR VALIGN=TOP><TD>q1 and w1:</TD>
+<TD>the new state and the character to be written to the current cell (q1 can be equal to q, and in this case
+there is no turning to a new state; similarly, the value of the current cell does not alter when w1
+equals w);</TD></TR>
+<TR VALIGN=TOP><TD>d:</TD>
+<TD>a number -1, 0 or 1, setting the head movement (-1 - to the left, 0 - do not  move,  1 - to the
+right);</TD></TR>
+<TR VALIGN=TOP><TD>e:</TD>
+<TD>the character to be written to the output tape OUT (no writing is performed if e absents)</TD>
+</TR>
+</TABLE>
+
+<P>
+The machine should be simple, i.e. there should be no different rules with the same values of <I>q</I> and <I>w</I>.
+The rules enumeration order is arbitrary. The of <I>q</I>, <I>w</I>, <I>q</I>1, <I>w</I>1, <I>d</I> and <I>e</I>
+values are separated with spaces. The file can include empty lines and comments. The comment starts with ";" character
+and follows up to the end of line.<P>
+<P>
+An input data for Turing Machine is a string of characters "0", "1" and "E". These characters are being written in adjacent
+cells of tape <I>M</I> and the head is set at the first character position. Character "E" is being written to all other cells
+of unlimited tape <I>M</I>. As a result,  the machine works out a string of "0" and "1" characters, formed on the output
+tape <I>OUT</I> when the machine stops.<P>
+<P>
+An example below contains a program turning an input sequence of "0" and "1" to the reverse order.<P>
+
+<P><pre><tt>3
+1
+2 E 3 E 0
+1 1 1 1 1
+2 0 2 0 -1 0
+2 1 2 1 -1 1   ; A comment
+1 0 1 0 1
+1 E 2 E -1</tt></PRE>
+
+<P>
+Write a program for Turing Machine which solves the task Q.<P>
+<P>
+
+<TABLE>
+<TR VALIGN=TOP>
+<TD> <B>Task&nbspQ: </B>
+</TD>
+<TD !BGCOLOR="#CCCCCC">&nbsp</TD>
+<TD>
+<!FONT SIZE="-1">
+<P>
+Tape <I>M</I> contains a positive integer <I>X</I>. It is required to write to the output tape the square of this number,
+i.e. <I>C*C</I>. Values <I>C</I> and <I>C*C</I> are presented in binary notation.<P>
+<P>
+In the initial state the head points at the last left digit of the number. Character "E" is written to all other cells of
+unlimited tape <I>M</I>. The input number does not include leading zeroes. The output also should not include leading
+zeroes. For example, if we had "1011" on tape <I>M</I>, the output should be "1111001".<P>
+<P>
+The program should meet the following restrictions:<P>
+<P>
+1) the number of states N&lt=1000;<BR>
+2) the number of operations is no more than 100+100*<I>K</I>*<I>K</I> steps, where <I>K</I> is a number of input binary
+number digits;<BR>
+3) the absolute head move (a number of cells having been observed by the head) is no more than  10+10*<I>K</I>.
+</FONT>
+</TD></TR></TABLE>
+
+<P><B>Output data</B>
+<P>
+Your program for Turing Machine solving the task   should be written to the output data file OUTPUT.TXT.
+
+<P><B>Tools</B>
+
+<P>
+There is an interpreter of Turing Machine at your disposal. To call the
+interpreter, type
+
+<P> TURING &ltProgram file name&gt [&ltFile name with the input string&gt]
+<P>
+from DOS command prompt. If the second parameter is not set, the input string is read from the keyboard. The
+interpreter has a built-in debugger which allows you to execute a program by steps. Follow the instructions of the
+interpreter prompt.
+<P>
+Examples:
+<P><pre><tt>TURING example.t input.txt
+TURING solution.t</tt></PRE>
+
+<P><B>Testing notes</B>
+<P> Do not forget that the solution for the task <I>C</I> is a <I>usual</I> program on one of allowed programming
+languages. Your program should create output data file OUTPUT.TXT containing Turing Machine's program to solve
+task Q. Testing results <I>Compilation error</I>, <I>Time limit exceeded</I>, <I>Runtime error</I> concern the
+<I>usual</I> program while <I>Presentation</I> <I>error</I> and <I>Wrong answer</I> concern the Turing
+Machine's program from OUTPUT.TXT. <I>Presentation</I> <I>error</I> is reported in the following cases:<P>
+
+<P>
+ <IMG SRC="IMG/ROMB.GIF"> No output data file OUTPUT.TXT <BR>
+ <IMG SRC="IMG/ROMB.GIF">  The number of states N &gt 1000<BR>
+ <IMG SRC="IMG/ROMB.GIF">  Error in your program for Turing Machine
+
+<P>
+Correct (from the point of view of syntax)  Turing Machine's program is being checked on the certain set of tests. If the
+answer is not correct or the program exceeds imposed restrictions to the number of operations or the absolute head
+move, you are reported <I>Wrong answer</I>. The task C requires no input data, that is why the reported wrong test
+number is always 1.<P>
+<P>
+We would recommend to check your solutions with the given interpreter.<P>
+
+
+
+
+
+
+<BR> &nbsp
+
+
+ <TABLE WIDTH="100%" CELLPADDING=0 CELLSPACING=0><TR>
+ <TD BGCOLOR="#CCCCFF">
+ <A NAME="D">
+ <CENTER>
+ <FONT !COLOR="#FF0000" SIZE="+2"> <B>
+  Problem D: DEL command </B> </FONT>
+ </CENTER>
+  </TD></TR></TABLE>
+
+
+
+  <P>
+  <TABLE BORDER=0 CELLSPACING=0> <TR> <TD> <FONT !SIZE="-1"> <B>Input File</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">INPUT.TXT</FONT> </TD><TR> <TD> <FONT !SIZE="-1"> <B>Output File</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">OUTPUT.TXT</FONT> </TD><TR> <TD> <FONT !SIZE="-1"> <B>Time-limit/Test:</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">15 seconds</FONT> </TD>  </TABLE>
+<P>
+It is required to find out whether it is possible to delete given files from MS-DOS directory executing the DEL
+command of  MS-DOS operation system only once. There are no nested subdirectories.<P>
+<P>
+<B>A note</B>
+<P>
+DEL command has the following format: <I>DEL wildcard</I><P>
+<P>
+The actual wildcard as well as a full file name can be made up either of a name containing 1 up to 8 characters or of a
+name and extension, containing up to 3 characters. The point character "." separates the extension from the file name. The
+extension can be empty and this is equivalent to a name without any extension (in this case a wildcard ends with a point).
+In a wildcard the characters "?" and "*" can be used. A question mark substitutes exactly one character of the full file
+name excluding a point,  an asterisk - any sequence of characters (containing no points) even empty one. An asterisk
+can appear only at the last position of the name and the extension.<P>
+<P>
+MS-DOS system can permit maybe other wildcards but they can not be used in this task. File names and extensions
+consist only of Latin capitals and digits.<P>
+<P>
+<B>Input data</B><P>
+<P>
+Input data file INPUT.TXT contains a list of full file names without empty lines and spaces. Each name is written in a
+separate line of input data file and preceded with a control sign: "-" for delete or "+" for keep. Full file names are not
+repeated. The list comprises at least one file, and at least one file is marked to be deleted. There are no more than 1000
+files.<P>
+<P>
+<B>Output data</B><P>
+<P>
+Write to the first line of output data file OUTPUT.TXT the required DEL command (only one proposal) or
+<I>IMPOSSIBLE </I>if there is no solution. A space should separate "DEL" from wildcard. <P>
+<P>
+Input data file example:<P>
+<P><PRE><tt>-BP.EXE
+-BPC.EXE
++TURBO.EXE</tt></PRE>
+<P>
+Possible output data file for our example:<P>
+<P><PRE><tt>DEL ?P*.*</tt></PRE>
+
+
+
+
+
+
+<BR> &nbsp
+
+
+ <TABLE WIDTH="100%" CELLPADDING=0 CELLSPACING=0><TR>
+ <TD BGCOLOR="#FFCCFF">
+ <A NAME="E">
+ <CENTER>
+ <FONT !COLOR="#FF0000" SIZE="+2"> <B>
+  Problem E: Parallelepiped walk </B> </FONT>
+ </CENTER>
+  </TD></TR></TABLE>
+
+
+
+  <P>
+  <TABLE BORDER=0 CELLSPACING=0> <TR> <TD> <FONT !SIZE="-1"> <B>Input File</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">INPUT.TXT</FONT> </TD><TR> <TD> <FONT !SIZE="-1"> <B>Output File</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">OUTPUT.TXT</FONT> </TD><TR> <TD> <FONT !SIZE="-1"> <B>Time-limit/Test:</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">15 seconds</FONT> </TD>  </TABLE>
+<P>
+<IMG SRC="IMG/C4.GIF" ALIGN=RIGHT> Two points <I>A</I> (<I>x1</I>, <I>y1</I>, <I>z1</I>) and <I>B</I> (<I>x2</I>, <I>y2</I>, <I>z2</I>) are placed
+on the surface of parallelepiped <I>P</I> = {(<I>x</I>, <I>y</I>, <I>z</I>): 0&lt=<I>x</I>&lt=<I>L</I>, 0&lt=<I>y</I>&lt=<I>W</I>, 0&lt=<I>z</I>&lt=<I>H</I>}  with  <I>L</I>*<I>W</I>*<I>H</I> dimensions
+(see figure). These two points can be linked with various curves lying on the surface of <I>P</I>. You are to find out
+the square of the shortest curve length.<P>
+<P>
+Parallelepiped dimensions <I>L</I>, <I>W</I>, <I>H </I>and coordinates of the points are integers,
+0&lt=<I>L</I>,<I>W</I>,<I>H</I>&lt=1000.<P>
+<P>
+<B>Input data</B><P>
+<P>
+Input data file INPUT.TXT contains (in indicated order): <I>L</I>, <I>W</I>, <I>H</I>, <I>x1</I>, <I>y1</I>,
+<I>z1</I>, <I>x2</I>, <I>y2</I>, <I>z2.</I> The numbers are separated with spaces and end-of-line characters.<P>
+<P>
+<B>Output data</B><P>
+<P>
+Output data file OUTPUT.TXT should contain the square of the shortest curve length between points <I>A</I> and
+<I>B</I> on the surface of <I>P</I>.<P>
+<P>
+Input data file example:<P>
+<P><PRE><tt>5 5 2
+3 1 2
+3 5 0</tt></PRE>
+
+<P> Output data file for our example:<P>
+<PRE><tt>36</tt></PRE>
+
+
+
+
+
+
+<BR> &nbsp
+
+
+ <TABLE WIDTH="100%" CELLPADDING=0 CELLSPACING=0><TR>
+ <TD BGCOLOR="#CCFFCC">
+ <A NAME="F">
+ <CENTER>
+ <FONT !COLOR="#FF0000" SIZE="+2"> <B>
+  Problem F: Random number </B> </FONT>
+ </CENTER>
+  </TD></TR></TABLE>
+
+
+
+  <P>
+  <TABLE BORDER=0 CELLSPACING=0> <TR> <TD> <FONT !SIZE="-1"> <B>Input File</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">INPUT.TXT</FONT> </TD><TR> <TD> <FONT !SIZE="-1"> <B>Output File</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">OUTPUT.TXT</FONT> </TD><TR> <TD> <FONT !SIZE="-1"> <B>Time-limit/Test:</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">20 seconds</FONT> </TD>  </TABLE>
+<TABLE WIDTH="100%">
+<TR> <TD WIDTH="50%">&nbsp</TD><TD WIDTH="50%">
+<TABLE BORDER=1><TR><TD>
+<P> <B>From task B (Black Box):</B>
+<P>
+The Black Box algorithm supposes that natural
+number sequence <I>u</I>(1), <I>u</I>(2), ...,
+<I>u </I>(N) is sorted in non-descending
+order, <I>N</I>&lt=<I>M</I> and for each <I>p</I> (1&lt=<I>p</I>&lt=<I>N</I>)
+an inequality <I>p</I>&lt=<I>u</I>(<I>p</I>)&lt=<I>M</I> is valid.<P>
+</TD></TR></TABLE>
+</TD></TR></TABLE>
+
+Making tests for task B we have met with the following problem. For setting a
+random sequence {<I>u</I>(<I>i</I>)} a usual random data generator did not fit. As
+the sequence itself had been imposed certain restrictions, the method of
+choosing the next random element (in the interval defined by restrictions)
+did not give the random sequence as a whole.<P>
+
+<P> We have come to a conclusion that the problem can be solved in the
+following way. If we arrange all possible sequences in certain order (for
+example, in lexicographical order) and assign each sequence its number, after
+choice of the random number it is possible to take the correspondent sequence
+for the random one. At the first glance it seems enough to make up a program
+generating all these sequences in such order. Alas! Even having not great
+values of <I>M</I> and <I>N</I> it would have taken any powerful modern
+computer centuries to enumerate all such sequences. It turned out it was
+possible to avoid generating all sequences if we managed to create required
+sequence according to its number immediately. But even this statement does
+not cover all. As the amount of sequences is quite large, the number can be a
+long one, composed of hundreds decimal digits, though our random data
+generator could give only normal numbers. We decided to produce a long random
+number from a real random number distributed in [0,1]. Namely, present the
+number in binary notation: 0.<I>b</I>(1)<I>b</I>(2)..., where all <I>b</I>(<I>i</I>) =
+0 or 1. Let us set a regulation to  associate such real number to an integer
+from [<I>A</I>,<I>B</I>] segment:
+
+<P>
+Formula 1:<P>
+
+<IMG SRC="IMG/C5.GIF">
+
+
+<P> Here we suppose, that  <I>A</I>&lt=<I>B</I>, <I>p</I>&gt=0, and  "<I>div 2</I>" is an integer division by 2.<P>
+<P>
+
+Let  <I>M, N</I> (1&lt=<I>N</I>&lt=<I>M</I>&lt=200) and a binary real number 0.<I>b</I>(1)<I>b</I>(2)...<I>b</I>(<I>p</I>) (1&lt=<I>p</I>&lt=400) be given. Write a
+program to find out the corresponding <I>u</I>(1), <I>u</I>(2), ..., <I>u</I>(<I>N</I>) sequence, i.e. to find a sequence with
+<I>G</I>(1, <I>T</I>, 0.<I>b</I>(1)<I>b</I>(2)...<I>b</I>(<I>p</I>)) number in lexicographical order of all possible {<I>u</I>(<I>i</I>)} for the given <I>M</I> and <I>N
+</I>(<I>T</I> - the quantity of such sequences). Numeration begins with 1.
+
+Keep in mind that in lexicographical order {<I>l</I>(<I>i</I>)}
+proceeds {<I>h</I>(<I>i</I>)} if after omitting equal beginnings, the first number of {<I>l</I>(<I>i</I>)}  tail is smaller than the first number or
+{<I>h</I>(<I>i</I>)} tail. Example 1 illustrates the list of all possible sequences for <I>M </I>= 4 and <I>N </I>= 3 in
+lexicographical order.<P>
+
+<P> Example 1:
+<P><PRE><tt>   1, 2, 3
+   1, 2, 4
+   1, 3, 3
+   1, 3, 4
+   1, 4, 4
+   2, 2, 3
+   2, 2, 4
+   2, 3, 3
+   2, 3, 4
+   2, 4, 4
+   3, 3, 3
+   3, 3, 4
+   3, 4, 4
+   4, 4, 4</tt></PRE>
+(here T=14)
+
+<P><B>Input data</B>
+
+<P> The first line of input data file INPUT.TXT contains <I>M</I> and <I>N.</I> The second line contains binary real
+number 0.<I>b</I>(1)<I>b</I>(2)...<I>b</I>(<I>p</I>) (without leading, trailing and other spaces).
+
+<P>Input data file example:<P>
+<P><PRE><tt>4 3
+0.01101101011110010001101010001011010</tt></PRE>
+
+<P> <B>Output data</B>
+
+<P> Write into the output data file OUTPUT.TXT the corresponding sequence
+<I>u</I>(1), <I>u</I>(2), ..., <I>u</I>(<I>N</I>). The sequence numbers
+should be separated with spaces and end-of-line characters.
+
+<P> Our example gives:
+<P><PRE><tt>2
+2
+4</tt></PRE>
+
+<P><B>A note (it does not concern the solution of this task):</B>
+
+<P> The choice of random binary vector 0.<I>b</I>(1)<I>b</I>(2)...<I>b</I>(<I>p</I>)  does not
+give an absolute uniform random data generator if we use Formula 1. However,
+taking into account the fact that [<I>A</I>,<I>B</I>] interval is big we shall obtain a
+distribution applicable in most cases.<P>
+
+<P>
+<P>
+<P>
+
+
+
+
+
+
+<BR> &nbsp
+
+
+ <TABLE WIDTH="100%" CELLPADDING=0 CELLSPACING=0><TR>
+ <TD BGCOLOR="#AABBAA">
+ <A NAME="G">
+ <CENTER>
+ <FONT !COLOR="#FF0000" SIZE="+2"> <B>
+  Problem G: Moscow time </B> </FONT>
+ </CENTER>
+  </TD></TR></TABLE>
+
+
+
+  <P>
+  <TABLE BORDER=0 CELLSPACING=0> <TR> <TD> <FONT !SIZE="-1"> <B>Input File</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">INPUT.TXT</FONT> </TD><TR> <TD> <FONT !SIZE="-1"> <B>Output File</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">OUTPUT.TXT</FONT> </TD><TR> <TD> <FONT !SIZE="-1"> <B>Time-limit/Test:</B></FONT> </TD><TD VALIGN=TOP> <FONT !SIZE="-1">15 seconds</FONT> </TD>  </TABLE>
+<P> In e-mail the following format for date and time setting is used:<P>
+
+<CENTER><I>EDATE </I>::<I>= Day_of_week</I>, <I>Day_of_month Month</I>
+<I>Year</I> <I>Time</I> <I>Time_zone</I></CENTER>
+
+<P> Here <I>EDATE</I> is the name of date and time format, the text to the
+right from "::=" defines how date and  time are written in this format. Below
+the descriptions of <I>EDATE</I> fields are presented:<P>
+
+ <P> <TABLE BORDER=0>   <TR VALIGN=TOP> <TD> <I>Day_of_wee</I>k </TD> <TD> The name of a day of the week. Possible values: MON, TUE, WED, THU, FRI, SAT, SUN.The name is followed by "," character (a comma).<P> <TR VALIGN=TOP> <TD> <I>Day_of_month</I> </TD> <TD> A day of the month. Set by two decimal digits.<P> <TR VALIGN=TOP> <TD> <I>Month</I> </TD> <TD> The name of the month. Possible values: JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG,SEP, OCT, NOV, DEC.<P> <TR VALIGN=TOP> <TD> <I>Year</I> </TD> <TD> Set by two or four decimal digits. If a year is set by two decimals it is assumed that this is anumber of the year of the XX century. For instance, 74 and 1974 set a year of 1974.<P> <TR VALIGN=TOP> <TD> <I>Time</I> </TD> <TD> Local time in fomat hours:minutes:seconds, where hours, minutes and seconds are madeup of two decimal digits. The time keeps within the limits from 00:00:00 to 23:59:59.<P> <TR VALIGN=TOP> <TD> <I>Time_zone</I> </TD> <TD> Offset of  local time from Greenwich mean time. It is set by the difference sign  "+" or "-"and by sequence of four digits. First two digits set the hours and the last two -  minutes ofoffset value. The absolute value of the difference does not exceed 24 hours. Time zone canalso be presented by one of the following names:<P><TABLE WIDTH="100%" !CELLPADDING=0 CELLSPACING=0><TR><TD WIDTH="50%"><B>Name</B> </TD> <TD> <B> Digital value</B></TD></TR><TR><TD>UT      </TD> <TD>        -0000</TD></TR><TR><TD>GMT     </TD> <TD>        -0000</TD></TR><TR><TD>EDT     </TD> <TD>        -0400</TD></TR><TR><TD>CDT     </TD> <TD>        -0500</TD></TR><TR><TD>MDT     </TD> <TD>        -0600</TD></TR><TR><TD>PDT     </TD> <TD>        -0700</TD></TR></TABLE> </TABLE>
+
+<P> Each two adjacent fields of <I>EDATA</I> are separated with exactly one
+space.  Names of day of the week, month and time zone are written in
+capitals. For instance, 10 a.m. of the Contest day in St.Petersburg can be
+presented as
+
+<P><CENTER> TUE, 03 DEC 96 10:00:00 +0300 </CENTER>
+
+<P> Write a program which transforms the given date and time in <I>EDATE</I>
+format to the corresponding date and time in Moscow time zone. So called
+"summer time" is not taken into consideration. Your program should rely on
+the predefined correctness of the given <I>Day</I>_<I>of</I>_<I>week </I>and
+<I>Time_zone.</I><P>
+
+<P> <B> A note </B>
+
+<P> <TABLE>
+
+<TR VALIGN=TOP><TD> <IMG SRC="IMG/ROMB.GIF"> </TD><TD> Moscow time is 3 hours later than Greenwich mean time (time zone +0300)
+</TD></TR>
+<TR VALIGN=TOP><TD> <IMG SRC="IMG/ROMB.GIF"> </TD><TD>  Months: January, March, May, July, August, October and December have 31 days. Months: April, June, September
+and November have 30 days. February, as a rule, has 28 days, save for the case of the leap year (29 days).
+</TD></TR>
+<TR VALIGN=TOP><TD> <IMG SRC="IMG/ROMB.GIF"> </TD><TD>  A year is a leap year if valid one out of two following conditions:<BR>
+Á) its number is divisible by 4 and is not divisible by 100; <BR>
+Â) its number is divisible by 400.
+</TD></TR>
+</TABLE>
+
+<P> For instance, 1996 and 2000 are the leap years, while 1900 and 1997 are not.
+
+<P><B>Input data</B>
+
+<P> Input data file INPUT.TXT contains date and time in <I>EDATE</I> format
+in the first line. Minimum permissible year in the input data is 0001,
+maximum - 9998. Input <I>EDATA</I> string does not contain leading and
+trailing spaces.
+
+<P>Input data file example 1:
+<P><PRE><tt>SUN, 03 DEC 1996 09:10:35 GMT</tt></PRE>
+
+<P>Input data file example 2:
+<P><PRE><tt>WED, 28 FEB 35 23:59:00 +0259</tt></PRE>
+
+<P> <B>Output data</B>
+
+<P> Output data file OUTPUT.TXT must contain a single line with date and time
+of Moscow time zone in <I>EDATE</I> format. In output <I>EDATE</I> string a
+<I>Year</I> can be presented  in any of the two allowed ways. The output
+string should not  include leading and trailing spaces. <P>
+
+<P>
+Possible output for Example 1:
+<P><PRE><tt>SUN, 03 DEC 1996 12:10:35 +0300</tt></PRE>
+<P> Possible output for Example 2:<P>
+<P><PRE><tt>THU, 01 MAR 1935 00:00:00 +0300</tt></PRE>
+
+
+
+
+ </BODY> </HTML> 

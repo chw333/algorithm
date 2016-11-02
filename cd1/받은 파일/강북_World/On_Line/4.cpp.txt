@@ -1,0 +1,103 @@
+#include <Stdio.h>
+#include <conio.h>
+#include <mem.h>
+#include <string.h>
+#include <stdlib.h>
+#define Max 30
+int table[Max][Max];
+int amin,amax,bmin,bmax;
+char ins[Max];
+int count;
+void read_dat()
+{
+  int i,j;
+  int len;
+  printf("\nInput 1 : ");
+  gets(ins);
+  len=strlen(ins);
+  for(i=0;i<len;i++) {
+	if(ins[i]<'0'||ins[i]>'9') {
+	  for(j=i;j<len-1;j++)
+		ins[j]=ins[j+1];
+	  len--;
+	  i--;
+	}
+  }
+  memset(table,0,sizeof(table));
+  for(i=0;i<len;i+=2) {
+	table[ins[i]-'0'][ins[i+1]-'0']=1;
+	count++;
+  }
+}
+
+void process()
+{
+  int i,j;
+  int k,l;
+  int m,n;
+  int check;
+  int best=-32;
+  amin=bmin=32767;
+  amax=bmax=-32;
+  for(i=1;i<Max;i++)
+	for(j=1;j<Max;j++)
+	  for(k=i;k<Max;k++)
+		for(l=j;l<Max;l++) {
+		  check=0;
+		  for(m=i;m<=k;m++)
+			for(n=j;n<=l;n++)
+			  if(table[m][n]==0) {check=1;break;}
+		  if(check) continue;
+		  if((k-i+1)*(l-j+1)>best) {
+			best=(k-i+1)*(l-j+1);
+			amin=i;amax=k;bmin=j;bmax=l;
+		  }
+	  }
+}
+
+void output_dat()
+{
+  int i,j;
+  printf("Output : a");
+  if(amax==amin) printf("%d ",amin);
+  else printf("<%d, %d> ",amin,amax);
+  printf("b");
+  if(bmax==bmin) printf("%d ",bmin);
+  else printf("<%d, %d> ",bmin,bmax);
+  for(i=amin;i<=amax;i++)
+	for(j=bmin;j<=bmax;j++) {
+	  table[i][j]--;count--;
+	}
+}
+
+void output_dat2()
+{
+  int i,j;
+  printf("+ a");
+  if(amax==amin) printf("%d ",amin);
+  else printf("<%d, %d> ",amin,amax);
+  printf("b");
+  if(bmax==bmin) printf("%d \n",bmin);
+  else printf("<%d, %d> \n",bmin,bmax);
+  for(i=amin;i<=amax;i++)
+	for(j=bmin;j<=bmax;j++) {
+	  table[i][j]--;count--;
+	}
+}
+
+void main()
+{
+  char ins;
+  again:
+  ;
+  read_dat();
+  process();
+  output_dat();
+  while(count>0) {
+	process();
+	output_dat2();
+  }
+  printf("\nTry again? (Y/n) ");
+  ins=getch();
+  if(ins=='Y'||ins=='y') goto again;
+}

@@ -1,0 +1,68 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=windows-1257">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (Win98; I) [Netscape]">
+   <title>Knights</title>
+<link rel='stylesheet' href='/boi/oi.css'>
+</head>
+<body bgcolor="#FF7F00" background="tlo.jpg">
+
+<h2>
+Knights</h2>
+
+(Running time - 1s.)
+<p><br>We are given a chess-board of size <i>n*n</i>, from which some fields
+have been removed. The task is to determine the maximum number of knights
+that can be placed on the remaining fields of the board in such a way that
+none of them check each other.
+<center><img SRC="pv/skoczki.gif" NOSAVE height=172 width=172>
+<br>Fig.1: A knight placed on the field S checks fields marked with x.</center>
+
+<h2>
+Task</h2>
+Write a program, that:
+<ul>
+<li>
+reads the description of a chess-board with some fields removed, from the
+input file <tt>kni.in</tt>,</li>
+
+<li>
+determines the maximum number of knights that can be placed on the chess-board
+in such a way that none of them check each other,</li>
+
+<li>
+writes the result to the output file <tt>kni.out</tt>.</li>
+</ul>
+
+<h2>
+Input</h2>
+The first line of the input file <tt>kni.in</tt> contains two integers
+<i>n</i> and <i>m</i>, separated by a single space, <i>1&lt;=n&lt;=200</i>,
+<i>0&lt;=m&lt;n<sup>2</sup></i>; <i>n</i> is the chess-board size and <i>m</i>
+is the number of removed fields. Each of the following <i>m</i> lines contains
+two integers: <i>x</i> and <i>y</i>, separated by a single space, <i>1&lt;=x,y&lt;=n</i>
+-- these are the coordinates of the removed fields. The coordinates of
+the upper left corner of the board are (1,1), and of the bottom right are
+<i>(n,n)</i>. The removed fields are not repeated in the file.
+<h2>
+Output</h2>
+The output file <tt>kni.out</tt> should contain one integer (in the first
+and only line of the file). It should be the maximum number of knights
+that can be placed on the given chess-board without checking each other.
+<h2>
+Example</h2>
+Input file <tt>kni.in</tt>:
+<pre>3 2
+
+1 1
+
+3 3
+
+</pre>
+correct output file <tt>kni.out</tt>
+<br>5<br>
+<br>
+<BR>
+</body>
+</html>

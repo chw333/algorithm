@@ -1,0 +1,115 @@
+PRINT "입력 식 =";
+INPUT a$
+DIM a(3, 3)
+a$ = a$ + "+"
+FOR i = 1 TO LEN(a$)
+    IF MID$(a$, i, 1) = "+" THEN n = n + 1
+NEXT
+FOR i = 1 TO n
+    b = INSTR(a$, "+")
+    c$ = LEFT$(a$, b - 1)
+    a(VAL(MID$(a$, 2, 1)), VAL(MID$(a$, 4, 1))) = 1
+    a$ = MID$(a$, b + 1, 1000)
+NEXT
+PRINT "변환된 식은 ";
+IF a(1, 1) = 1 AND a(1, 2) = 1 AND a(2, 1) = 1 AND a(2, 2) = 1 AND a(2, 3) = 1 AND a(3, 2) = 1 AND a(3, 3) = 1 THEN
+    PRINT "a<1,2>b1+a<1,3>b2+a<2,3>b3"
+ELSE
+    IF a(1, 3) = 1 AND a(1, 2) = 1 AND a(2, 1) = 1 AND a(2, 2) = 1 AND a(2, 3) = 1 AND a(3, 2) = 1 AND a(3, 1) = 1 THEN
+        PRINT "a<2,3>b1+a<1,3>b2+a<1,2>b3"
+    ELSE
+        a$ = ""
+        DO
+            FOR i = 1 TO 3
+                FOR j = 1 TO 3
+                    c(k, l) = 0
+                NEXT
+            NEXT
+            max = 0
+            FOR i = 1 TO 3
+                FOR j = i TO 3
+                    FOR k = 1 TO 3
+                        b(k) = 1
+                        FOR l = i TO j
+                            IF a(k, l) = 0 THEN b(k) = 0
+                        NEXT
+                    NEXT
+                    IF b(1) = 1 AND b(2) = 1 AND b(3) = 1 AND 3 * (j - i + 1) > max THEN
+                        max = 3 * (j - i + 1)
+                        FOR k = 1 TO 3
+                            FOR l = i TO j
+                                c(k, l) = 1
+                            NEXT
+                        NEXT
+                        IF i = j THEN b$ = "b" + LTRIM$(STR$(i)) ELSE b$ = "a<" + LTRIM$(STR$(i)) + "," + LTRIM$(STR$(j)) + ">"
+                        b$ = "a<1,3>" + b$
+                    END IF
+                    IF b(1) = 1 AND b(2) = 1 AND 2 * (j - i + 1) > max THEN
+                        max = 2 * (j - i + 1)
+                        FOR k = 1 TO 2
+                            FOR l = i TO j
+                                c(k, l) = 1
+                            NEXT
+                        NEXT
+                        IF i = j THEN b$ = "b" + LTRIM$(STR$(i)) ELSE b$ = "a<" + LTRIM$(STR$(i)) + "," + LTRIM$(STR$(j)) + ">"
+                        b$ = "a<1,2>" + b$
+                    END IF
+                    IF b(3) = 1 AND b(2) = 1 AND 2 * (j - i + 1) > max THEN
+                        max = 2 * (j - i + 1)
+                        FOR k = 2 TO 3
+                            FOR l = i TO j
+                                c(k, l) = 1
+                            NEXT
+                        NEXT
+                        IF i = j THEN b$ = "b" + LTRIM$(STR$(i)) ELSE b$ = "a<" + LTRIM$(STR$(i)) + "," + LTRIM$(STR$(j)) + ">"
+                        b$ = "a<2,3>" + b$
+                    END IF
+                    IF b(1) = 1 AND 1 * (j - i + 1) > max THEN
+                        max = 1 * (j - i + 1)
+                        FOR k = 1 TO 1
+                            FOR l = i TO j
+                                c(k, l) = 1
+                            NEXT
+                        NEXT
+                        IF i = j THEN b$ = "b" + LTRIM$(STR$(i)) ELSE b$ = "a<" + LTRIM$(STR$(i)) + "," + LTRIM$(STR$(j)) + ">"
+                        b$ = "a1" + b$
+                    END IF
+                    IF b(2) = 1 AND 1 * (j - i + 1) > max THEN
+                        max = 1 * (j - i + 1)
+                        FOR k = 2 TO 2
+                            FOR l = i TO j
+                                c(k, l) = 1
+                            NEXT
+                        NEXT
+                        IF i = j THEN b$ = "b" + LTRIM$(STR$(i)) ELSE b$ = "a<" + LTRIM$(STR$(i)) + "," + LTRIM$(STR$(j)) + ">"
+                        b$ = "a2" + b$
+                    END IF
+                    IF b(3) = 1 AND 1 * (j - i + 1) > max THEN
+                        max = 1 * (j - i + 1)
+                        FOR k = 3 TO 3
+                            FOR l = i TO j
+                                c(k, l) = 1
+                            NEXT
+                        NEXT
+                        IF i = j THEN b$ = "b" + LTRIM$(STR$(i)) ELSE b$ = "a<" + LTRIM$(STR$(i)) + "," + LTRIM$(STR$(j)) + ">"
+                        b$ = "a3" + b$
+                    END IF
+                NEXT
+            NEXT
+            n = n - max
+            FOR k = 1 TO 3
+                FOR l = 1 TO 3
+                    a(k, l) = a(k, l) - c(k, l)
+                NEXT
+            NEXT
+            a$ = a$ + b$ + "+"
+        LOOP UNTIL n = 0
+        PRINT LEFT$(a$, LEN(a$) - 1)
+    END IF
+END IF
+DO
+    PRINT "다시 하시겠습니까?(y/n)";
+    INPUT "", a$
+    IF a$ = "y" THEN RUN
+LOOP UNTIL a$ = "n"
+

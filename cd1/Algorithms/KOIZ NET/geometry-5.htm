@@ -1,0 +1,30 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>볼록 외피(Convex Hall)찾기</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font color="#0066CC" size="5"><b>볼록 외피(Convex Hall)찾기</b></font></p>
+<p align="center"><font color="#0066CC" size="2"><b>&nbsp;</b></font></p>
+<p><font size="2">&nbsp;&nbsp;볼록 외피를 찾는 것은 계산 기하학에서 매우 중요하면서도 기초적인 
+문제이다. 볼록 외피라는 것은 주어진 N개의 점을 포함하는 최소의 넚이의 볼록 다각형을 
+만들 때, 이 볼록 다각형의 정점이 되는 점들을 찾는 것이라고 할 수 있다. 이 볼록 
+외피를 구하는 문제는 앞서 살펴본 right-left 판별 방법, 즉 signed area와 함께, 
+단순 닫힌 경로를 찾는 방법을 같이 쓰면 쉽게 구할 수 있다.</font></p>
+<p><font size="2">&nbsp;&nbsp;여러 가지 방법들이 제안되었는데, 가장 이해하기 쉬운 방법은 그레이햄의 
+방법일 것이다.</font></p>
+<p><font size="2">&nbsp;&nbsp;이 방법은 다음과 같다.</font></p>
+<p><font size="2">&nbsp;&nbsp;1. 가장 아래쪽에 위치한 점을 찾는다.</font></p>
+<p><font size="2">&nbsp;&nbsp;2. 이 점들을 기준으로 단순 닫힌 경로를 찾는다.</font></p>
+<p><font size="2">&nbsp;&nbsp;3. 단순 닫힌 경로에서 진행 방향이 왼쪽으로만 꺽이면 볼록외피에 
+포함한다.</font></p>
+<p><font size="2">&nbsp;&nbsp;4. 오른쪽으로 꺽이는 경우에는 이미 구해 놓은 볼록 외피 정점에서 
+마지막을 찾는 것을 버리고 다시 검사한다.</font></p>
+<p><font size="2">&nbsp;&nbsp;5. 3과 4의 단계를 계속해서 반복하여 모든 정점이 검사될 때까지 
+수행한다.</font></p>
+</body>
+
+</html>

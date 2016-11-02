@@ -1,0 +1,166 @@
+200 Problem E- Andrew's Exam
+## Input Data #1 ##
+/*** C ***/
+#include <stdio.h>
+
+int a[100];
+
+void foo(int x, int y, int z)
+{
+  int w;
+
+  if (z > y) {
+    printf("*");
+  }
+  else {
+    for (w = a[z-1]+1; w <= x; w++) {
+       a[z] = w;
+       foo(x, y, z+1);
+    }
+  }
+}
+
+int main(void)
+{
+  a[0] = 0;
+  foo(300, 50, 1);
+}
+
+
+
+{*** Pascal ***}
+var a:array[0..99] of integer;
+
+procedure foo(x,y,z:integer);
+var w:integer;
+begin
+  if z > y then
+    write('*')
+  else begin
+    for w:=a[z-1]+1 to x do begin
+       a[z]:=w;
+       foo(x, y, z+1);
+    end;
+  end;
+end;
+
+begin
+  a[0]:=0;
+  foo(300,50,1);
+end.
+
+
+
+## Input Data # 2 ##
+/*** C ***/
+#include <stdio.h>
+
+#define n 11
+
+void boo(int a[])
+{
+  int i;
+  for (i = 0; i < n; i++) {
+    a[i] = i;
+  }
+}
+
+void foo(int a[])
+{
+  int i, c;
+  c = (a[n-1] + a[0]/3) % 1001;
+  for (i = 0; i < n-1; i++) {
+    a[i] = a[i+1];
+  }
+  a[n-1] = c;
+}
+
+int equal(int a[], int b[])
+{
+  int i, result;
+  result = 1;
+  for (i = 0; i < n; i++)
+    if (a[i] != b[i]) result = 0;
+  return result;
+}
+
+
+int main(void)
+{
+  int a[n], b[n];
+  long ac, bc;
+
+  printf("*");
+  ac = 1;
+  boo(a);
+  ac++;
+  foo(a);
+  bc = 1;
+  boo(b);
+  while (!equal(a,b)) {
+    bc++;
+    foo(b);
+    if (ac == bc) {
+      printf("*");
+      ac++;
+      foo(a);
+      bc = 1;
+      boo(b);
+    }
+  }
+}
+
+
+{*** Pascal ***}
+const n=11;
+type arr=array[1..n] of integer;
+
+procedure boo(var a:arr);
+var i:integer;
+begin
+  for i:=1 to n do
+    a[i]:=i-1;
+end;
+
+procedure foo(var a:arr);
+var i,c:integer;
+begin
+  c:=(a[n] + (a[1] div 3)) mod 1001;
+  for i:=1 to n-1 do
+    a[i]:=a[i+1];
+  a[n]:=c;
+end;
+
+function equal(a,b:arr):boolean;
+var i: integer;
+    result: boolean;
+begin
+  result:=true;
+  for i:=1 to n do
+    if a[i]<>b[i] then result:=false;
+  equal:=result;
+end;
+
+var a,b:arr;
+   ac,bc:longint;
+
+begin
+  write('*');
+  ac:=1;
+  boo(a);
+  ac:=ac+1;
+  foo(a);
+  bc:=1;
+  boo(b);
+  while not(equal(a,b)) do begin
+    bc:=bc+1;
+    foo(b);
+    if ac=bc then begin
+      write('*');
+      ac:=ac+1;
+      foo(a);
+      bc:=1;
+      boo(b);
+    end
+  end
+end.

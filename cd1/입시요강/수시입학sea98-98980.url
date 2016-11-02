@@ -1,0 +1,16 @@
+[DEFAULT]
+BASEURL=http://www2.mydriver.net/index.html
+[DOC#4#5]
+BASEURL=http://www2.mydriver.net/n2_top.php
+ORIGURL=n2_top.php
+[DOC#4#6#7]
+BASEURL=http://www2.mydriver.net/n2_left.php
+ORIGURL=n2_left.php
+[DOC#4#6#8]
+BASEURL=http://www2.mydriver.net/n2_bodyguest.php
+ORIGURL=n2_bodyguest.php
+[InternetShortcut]
+URL=http://www.susi119.co.kr/
+Modified=D0A3CE371EF4C1014C
+IconFile=http://www2.mydriver.net/favicon.ico
+IconIndex=1

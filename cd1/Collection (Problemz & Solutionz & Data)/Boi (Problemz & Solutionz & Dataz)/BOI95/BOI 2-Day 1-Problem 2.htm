@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)http://skyblue.csd.auth.gr/boi/boi_problems/212.html -->
+<HTML><HEAD><TITLE>BOI 2-Day 1-Problem 2</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY>
+<H2 align=center>2nd Balkan Olympiad in Informatics <BR>Thessaloniki, Greece, 
+1-6 October 1994 </H2>
+<HR>
+
+<H2 align=center>Day 1 - Problem 2 (40 points) </H2>
+<P align=center><BR><BR>Computer networking requires that the computers in the 
+network be linked. This problem considers a linear network in which the 
+computers are chained together so that each one is connected to exactly two 
+others except for the two computers on the ends of the chain which are connected 
+to only one computer. In the picture shown below, the computers are the black 
+dots and their locations in the network are identified by planar coordinates 
+(relative to a coordinate system not shown in the picture). <BR><BR><IMG 
+height=188 src="BOI 2-Day 1-Problem 2.files/212_1.gif" width=452> <BR><BR>For 
+various reasons it is desirable to minimize the length of the cable used. The 
+problem is to determine how the computers should be connected in such a chain to 
+minimize the total length of cable needed. In the installation being 
+constructed, the cable will run beneath the floor, so that the amount of cable 
+used to join 2 successive computers will be equal to the distance between the 
+computers plus 10 additional meters of cable to connect from the floor to the 
+computers and provide some slack for ease of installation. <BR></P>
+<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%" msimagelist>
+  <TBODY>
+  <TR msimagelist>
+    <TD vAlign=baseline width=42 msimagelist><IMG height=14 hspace=13 
+      src="BOI 2-Day 1-Problem 2.files/blueball.gif" width=16></TD>
+    <TD vAlign=top width="100%"><B>Example </B>: <BR>
+      <UL>
+        <LI>
+        <P align=center><B>Input</B>: <BR>The input file will represent a data 
+        set beginning with a line consisting of a single number indicating the 
+        number of computers in the network (at least 2 and at most 10 
+        computers). Then, in successive lines the coordinates are given as pairs 
+        of integer numbers (in the range [0..100]) separated by one or more 
+        space, e.g. <BR>5 <BR>8 11 <BR>8 16 <BR>12 16 <BR>13 8 <BR>24 10 
+        <BR><BR>The picture below shows the optimal way of connecting the 
+        computers shown above. <BR><BR><IMG height=238 
+        src="BOI 2-Day 1-Problem 2.files/212_2.gif" width=530> <BR><BR></P>
+        <LI><B>Output</B>:<BR>The output should consist of n lines, where n is 
+        the number of computers. The first line should give the total length of 
+        cable needed. Subsequent lines should comprise of three numbers, l, s, e 
+        (from: length, start, end). The first number, l, should depict the 
+        length of the cable to be cut to connect the two computers, s and e. The 
+        values of s and e should represent the order of computers in the input. 
+        Any direction for traversing the network from the one end to the other 
+        is valid. For example, <BR><BR>66.01 <BR>14 3 2 <BR>15 2 1 <BR>15.83 1 4 
+        <BR>21.58 4 5 <BR></LI></UL></TD></TR></TBODY></TABLE>
+<HR>
+</BODY></HTML>

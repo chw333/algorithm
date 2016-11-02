@@ -1,0 +1,89 @@
+PRINT "표준 무늬?";
+INPUT "", a$, b$
+DIM a(30, 20), b(30, 20)
+FOR i = 1 TO 30
+    FOR j = 1 TO 20
+        a(i, j) = 0
+    NEXT
+NEXT
+t = 0
+d$ = ""
+FOR i = 1 TO LEN(a$) - 1
+    IF MID$(a$, i, 1) = "N" THEN
+        IF MID$(a$, i - 1, 1) = "R" THEN a(t, t) = 1 ELSE a(t, t) = 2
+    ELSE
+        t = t + 1
+        d$ = d$ + MID$(a$, i, 1)
+    END IF
+NEXT
+IF MID$(a$, i, 1) = "N" THEN
+    IF MID$(a$, i - 1, 1) = "R" THEN a(t, t) = 1 ELSE a(t, t) = 2
+ELSE
+    t = t + 1
+    d$ = d$ + MID$(a$, i, 1)
+END IF
+g = t + 1
+IF MID$(a$, 1, 1) = "R" THEN a(t, 1) = 1 ELSE a(t, 1) = 2
+IF MID$(b$, 1, 1) = "R" THEN a(t, g) = 1 ELSE a(t, g) = 2
+a$ = d$
+t = 0
+FOR i = 1 TO LEN(a$) - 1
+    t = t + 1
+    IF MID$(a$, i + 1, 1) = "R" THEN a(t, t + 1) = 1 ELSE a(t, t + 1) = 2
+NEXT
+t = t + 1
+d$ = ""
+FOR i = 1 TO LEN(b$) - 1
+    IF MID$(b$, i, 1) = "N" THEN
+        IF MID$(b$, i - 1, 1) = "R" THEN a(t, t) = 1 ELSE a(t, t) = 2
+    ELSE
+        t = t + 1
+        d$ = d$ + MID$(b$, i, 1)
+    END IF
+NEXT
+IF MID$(b$, i, 1) = "N" THEN
+    IF MID$(b$, i - 1, 1) = "R" THEN a(t, t) = 1 ELSE a(t, t) = 2
+ELSE
+    t = t + 1
+    d$ = d$ + MID$(b$, i, 1)
+END IF
+IF MID$(a$, 1, 1) = "R" THEN a(t, 1) = 1 ELSE a(t, 1) = 2
+IF MID$(b$, 1, 1) = "R" THEN a(t, g) = 1 ELSE a(t, g) = 2
+b$ = d$
+t = g - 1
+FOR i = 1 TO LEN(b$) - 1
+    t = t + 1
+    IF MID$(b$, i + 1, 1) = "R" THEN a(t, t + 1) = 1 ELSE a(t, t + 1) = 2
+NEXT
+t = t + 1
+DO
+    DO
+        sw = 0
+        PRINT "판별할 무늬?";
+        INPUT "", c$
+        IF LEN(c$) > 20 THEN sw = 1
+        FOR i = 1 TO LEN(c$)
+            d$ = MID$(c$, i, 1)
+            IF d$ <> "R" AND d$ <> "G" THEN sw = 1
+        NEXT
+        IF sw = 1 THEN PRINT "입력 오류!"
+    LOOP UNTIL sw = 0
+    FOR i = 1 TO 30
+        FOR j = 1 TO 20
+            b(i, j) = 0
+        NEXT
+    NEXT
+    b(1, g - 1) = 1
+    FOR i = 1 TO LEN(c$)
+        FOR j = 1 TO t
+            IF b(i, j) = 1 THEN
+                FOR k = 1 TO t
+                    IF a(j, k) = 1 AND MID$(c$, i, 1) = "R" THEN b(i + 1, k) = 1
+                    IF a(j, k) = 2 AND MID$(c$, i, 1) = "G" THEN b(i + 1, k) = 1
+                NEXT
+            END IF
+        NEXT
+    NEXT
+    IF b(i, g - 1) = 1 OR b(i, t) = 1 THEN PRINT "비슷한 무늬입니다." ELSE PRINT "다른 무늬입니다."
+LOOP
+

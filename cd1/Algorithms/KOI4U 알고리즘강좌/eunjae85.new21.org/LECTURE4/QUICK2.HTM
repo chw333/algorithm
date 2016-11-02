@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>퀵 정렬 - 비재귀판</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p style="line-height:130%;">퀵 정렬 - 비재귀판</p>
+<p style="line-height:130%;">&nbsp;&nbsp;재귀호출을 하지 않는 퀵 소트입니다.<br>
+&nbsp;<br>
+&nbsp;&nbsp;원래 임중근 님이 베이직으로 올린 소스를 C로 옮겨서<br>
+만들었다가 원래 갖고 있던 임중근 님의 소스를 잃어버리는 바람에<br>
+C 로 만든 그 소스를 다시 BASIC으로 옮겼습니다.<br>
+&nbsp;<br>
+&nbsp;&nbsp;그러다 보니 원작과는 좀 차이가 있을 겁니다.<br>
+몇 개 명령문과 변수는 제가 없애기도 하고 이름을 바꾸기도 했으니<br>
+양해를....<br>
+&nbsp;<br>
+&nbsp;<br>
+<font face="System">DEFINT A-Z<br>
+DECLARE SUB QuickSort (arr(), n)<br>
+DECLARE SUB show (arr(), n)<br>
+&nbsp;<br>
+n = 10<br>
+DIM a(n)<br>
+&nbsp;<br>
+RANDOMIZE TIMER<br>
+FOR i = 1 TO n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a(i) = INT(RND * 100) + 1<br>
+NEXT i<br>
+&nbsp;<br>
+CLS<br>
+PRINT : PRINT &quot;Before sorting:&quot;<br>
+show a(), n<br>
+&nbsp;<br>
+QuickSort a(), n<br>
+&nbsp;<br>
+PRINT : PRINT &quot;After sorting:&quot;<br>
+show a(), n<br>
+&nbsp;<br>
+END<br>
+&nbsp;<br>
+&nbsp;<br>
+SUB QuickSort (arr(), n)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DIM l</font></p>
+<p style="line-height:130%;"><font face="System">s(n), rs(n)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;v = 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ls(v) = 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rs(v) = n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;v = v + 1<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DO WHILE v &gt; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = v - 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aa = ls(v)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bb = rs(v)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF aa &gt;= bb GOTO quicksort1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;center = arr(aa) / 2 + arr(bb) 
+/ 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = aa<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = bb<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DO<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHILE 
+(i &lt; bb AND arr(i) &lt; center): i = i + 1: WEND<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHILE 
+(j &gt; aa AND arr(j) &gt; center): j = j - 1: WEND<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF i 
+&gt;= j THEN EXIT DO<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SWAP 
+arr(i), arr(j)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = 
+i + 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = 
+j - 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LOOP<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ls(v) = aa: rs(v) = i - 1: v 
+= v + 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ls(v) = j + 1: rs(v) = bb: v 
+= v + 1<br>
+quicksort1:<br>
+&nbsp;&nbsp;LOOP<br>
+END SUB<br>
+&nbsp;<br></font></p>
+<p style="line-height:130%;"><font face="System">SUB show (arr(), n)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FOR i = 1 TO n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT arr(i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NEXT i<br>
+&nbsp;&nbsp;&nbsp;&nbsp;PRINT<br>
+END SUB</font></p>
+</body>
+
+</html></html>

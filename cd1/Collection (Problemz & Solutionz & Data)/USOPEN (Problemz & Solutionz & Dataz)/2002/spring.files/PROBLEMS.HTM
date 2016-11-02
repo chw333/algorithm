@@ -1,0 +1,381 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0070)http://www.uwp.edu/academic/mathematics/usaco/2002/spring/problems.htm -->
+<HTML><HEAD><TITLE>Problems</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=ks_c_5601-1987">
+<META content="MSHTML 5.50.4134.100" name=GENERATOR></HEAD>
+<BODY>
+<TABLE width="99%" border=0>
+  <TBODY>
+  <TR>
+    <TD width="5%">&nbsp;</TD>
+    <TD width="95%" colSpan=2><STRONG><FONT style="FONT-SIZE: larger" 
+      face=Arial>Problems</FONT></STRONG>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD width="5%"></TD>
+    <TD width="85%"><HTTP: train.usaco.org><HTTP: usacogate 
+      ace.delos.com><WWW.DELOS.COM><O:P><PRE> 
+
+                           <B><FONT size=3>USA Computing Olympiad
+                         Green Division</FONT></B></PRE><PRE>                     Three Problems Numbered 1 through 3</PRE>
+      <HR>
+<PRE>
+PROBLEM 1: Hypnotic Milk Improvement [Gadnell &amp; Backman, 1997;
+                                                Kolstad/Galperin, 2002]
+
+FJ hires a dairy hypnotist to improve milk production using hypnotic
+suggestions.  FJ knows how much milk each cow currently has for milking
+(an integer number of liters) and has asked the hypnotist to manipulate
+the cows to maximize total milk production.  FJ has arranged 36 cows on a
+6x6 grid.
+
+The hypnotist can spin his watch so that it is seen by the six cows in any
+one row, column, or the major diagonal (upper left to lower right) His
+power of suggestion can increase or decrease the amount of milk a cow can
+give by one liter.  Of course, if he asks for too much milk (more than 9
+liters), the cow gets confused and will give 0 liters.  Similarly, a cow
+asked to reduce from 0 liters will be confused and give 9 liters instead.
+
+Below is the arrangement of the milk production for the cows along with
+the results of hypnotizing cows in various rows and columns:
+
+   Initial        Hypnotize        Hypnotize
+ Milk Prod.    Row 1 Increase   Col 1 Decrease
+5 9 7 1 5 8      6 0 8 2 6 9      5 0 8 2 6 9
+2 5 3 5 2 0      2 5 3 5 2 0      1 5 3 5 2 0
+6 8 1 5 0 3  -&gt;  6 8 1 5 0 3  -&gt;  5 8 1 5 0 3
+4 8 2 6 9 2      4 8 2 6 9 2      3 8 2 6 9 2
+9 1 6 5 3 2      9 1 6 5 3 2      8 1 6 5 3 2
+7 0 2 4 3 1      7 0 2 4 3 1      6 0 2 4 3 1
+ 149 liters       145 liters       139 liters
+
+Using an unlimited number of hypnotic suggestions, maximize the amount of
+milk that FJ can expect.  The moves shown above were surely not optimal!
+
+PROBLEM NAME: hypno
+
+INPUT FORMAT:
+
+Six lines each containing six integers which represent the current
+state of a given cow's milk production.  The first line is
+the uppermost row as illustrated above, and so on.
+
+SAMPLE INPUT (file hypno.in):
+
+5 9 7 1 5 8
+2 5 3 5 2 0
+6 8 1 5 0 3
+4 8 2 6 9 2
+9 1 6 5 3 2
+7 0 2 4 3 1
+
+OUTPUT FORMAT:
+
+A single integer which is the largest amount of milk the hypnotist
+can coax from the cows.
+
+SAMPLE OUTPUT (file hypno.out):
+
+273
+ 
+**********************************************************************
+
+PROBLEM 2: Happy Cows [Ilham Kurnia, 2002]
+
+While standing in a perfect N x M (1 &lt;= N,M &lt;= 50) rectangle, the herd of
+Farmer John's cows has been reading psychology books together. One book
+had a test to rate "happiness" so each calculated their "happiness rating",
+an integer range from -100..100 inclusive.
+
+Another book suggested that a sub-rectangle of cows has an aggregate
+happiness rating that is the product of all the happiness ratings for the
+individual cows of the sub-rectangle.  This is interesting in that two
+unhappy cows pretty much cancel each other's unhappiness while wallowing
+in each other's self-pity.
+
+Find the happiest sub-rectangle of the herd of cows.  A sub-rectangle is
+a p x q rectangle of contiguous cows culled from the larger herd.
+
+PROBLEM NAME: happy
+
+INPUT FORMAT:
+
+* Line 1: Two integers: N and M.
+
+* Line 2..N + 1: Each line contains M integers that tell the cows'
+          happiness ratings; line 2 is row 1, etc.  The first integer
+          on each line is is column 1, etc.
+
+SAMPLE INPUT (file happy.in):
+
+4 2
+-1 4
+5 3
+-6 -2
+2 1
+
+OUTPUT FORMAT:
+
+A single line with four integers that define the happiest sub-group.  The
+first two integers are the (row,column) position of the upper left corner
+of the happiest sub-rectangle The next two integers are the (row,column)
+position of the lower right corner of the happiest sub-rectangle
+
+In the case where more than one sub-rectangle has the maximum product,
+output the one with the smallest number of elements. If more than one has
+the smallest number of elements, output the one the most left, and if more
+than one is most left, output the sub-rectangle closer to the top.
+
+SAMPLE OUTPUT (file happy.out):
+
+2 1 4 2
+
+**********************************************************************
+
+PROBLEM 3: Unary Cow Counting [Richard Forster, 2002]
+
+As you know, cows have no fingers.  Thus, they do not use base 10.  They
+use a sort of base 1 (a 'unary' system) with operations that extend its
+power.
+
+A cow number includes ones, pluses, minuses, asterisks (denoting
+multiplication) and potentially pairs of parentheses.  Not all cow numbers
+include all the various symbols.
+
+Cow numbers are powerful and can represent any positive integer.  For
+example, 22 = 1+1 + ((1+1+1+1) * (1+1+1+1+1)), which has a UCC length of
+11, since 11 ones are present.
+
+Another cow number representation of 22 is
+       1 + (1+1+1) * (1+(1+1)*(1+1+1))
+which has a UCC length of 10, since 10 ones are present.  There are no
+shorter ways to represent 22 in cow numbers.
+
+Being lazy, the cows are always seeking shorter ways to represent numbers.
+Write a program that tells them the shortest way to represent an input
+number smaller than 2,000,000.
+
+PROBLEM NAME: ucc
+
+TIME LIMIT:  The time limit for the hardest four test cases is 2.00 CPU seconds;
+             the time limit for the easier test cases is 1.00 CPU seconds.
+
+INPUT FORMAT:
+
+A single line with a positive integer (1 &lt;= integer &lt;= 2,000,000) to be
+represented as a cow number.
+
+SAMPLE INPUT (ucc.in):
+
+22
+
+OUTPUT FORMAT:
+
+A single line with an integer that is the minimum UCC length of any cow
+number equal to the input
+
+SAMPLE OUTPUT (ucc.out):
+
+10
+
+****************************************************************************
+                         END OF CONTEST TEXT
+****************************************************************************
+</PRE>
+      <HR>
+<PRE>                          <B><FONT size=4> USA Computing Olympiad
+                       Orange Division</FONT></B>
+</PRE>
+      <HR>
+<PRE>                      Three Problems Numbered 6 through 8
+</PRE>
+      <HR>
+<PRE>PROBLEM 6: Dairy Route [Piele, 2002]
+ 
+Consider the 'map' below of Farmer John's milk delivery service.  It has
+N (2 &lt;= N &lt;= 100) rows and M ( 2 &lt;= M &lt;= 80) columns.
+ 
+             North
+        . . . . . . . T
+        . . . . . . C .
+        . . . . C S . .
+        . S . . C . S .
+        D C . . S . . .
+
+Farmer John delivers milk to his rural customers (denoted as 'C') as he
+travels from the dairy (denoted as 'D' and always located in the lower left
+hand corner) to the town (denoted as 'T' and always located in the upper
+right corner). He traverses roads on the square grid by moving either
+horizontally to the right or vertically toward the top, never diagonally.
+FJ never travels toward the left or toward the bottom of his map.  Some
+roads are blocked by snow (denoted as 'S') which means FJ can not traverse
+that square.
+
+Write a program that cowculates the total number of different milk routes
+available from the dairy to the town.  Two routes are different if they
+differ on any part of the path.  FJ routes are always arranged so that all
+customers can be reached while moving north and east.  The total number of
+different milk routes will fit in a 32-bit signed integer.
+ 
+PROBLEM NAME: route
+
+INPUT FORMAT:
+
+* Line 1: Four integers: N, M, C (the number of customers, 1 &lt;= C),
+	  and S (the number of snow drifts, 0 &lt;= S)
+
+* Lines 2..C+1: Each line contains a pair of space separated integers that
+	  give, respectively, the row and column of a customer.  The dairy
+	  is located in the lower left corner at (1,1).  Customers will
+	  not be located at the dairy or in the town.
+
+
+* Lines C+2..C+S+1: If S &gt; 0, each line contains a pair of space separated
+	  integers that give, respectively, the row and column of a
+	  snowdrift.
+ 
+SAMPLE INPUT (file route.in):
+
+5 8 4 4
+1 2
+2 5
+3 5
+4 7
+1 5
+2 2
+2 7
+3 6
+ 
+OUTPUT FORMAT:
+
+A single integer that is the total number of different milk routes
+available for FJ to deliver his milk.
+ 
+SAMPLE OUTPUT (file route.out):
+
+4
+
+[Here are all four routes for the example input/output:
+ . . . . . . . *   . . . . . . . *   . . . . . . * *   . . . . . . * *
+ . . . . * * * *   . . . . * * * *   . . . . * * * .   . . . . * * * .
+ . . . . * S . .   . . . . * S . .   . . . . * S . .   . . . . * S . .
+ . S * * * . S .   . S . * * . S .   . S * * * . S .   . S . * * . S .
+ * * * . S . . .   * * * * S . . .   * * * . S . . .   * * * * S . . .
+]
+ 
+**********************************************************************
+
+PROBLEM 7: Calf Numbers [Richard Forster, 2002]
+
+The calves are not so good at speaking. They use funny words for digits.
+For calves, the digits from zero to nine are spoken and written as:
+
+       0 no      3 ci      6 xa      9 so
+       1 pa      4 vo      7 ze
+       2 re      5 mu      8 bi
+
+Larger numbers are created by gluing together the names of the digits.
+For example, 123 is 'pareci'.  A single space can be placed between the
+digits, so 123 can also be written as 'pa reci', 'pare ci' or even 'pa re
+ci'.
+
+Help the calves learn arithmetic.  Write a program that reads in six
+numbers of no more than 15 calf digits and sums them.  The output, of
+course, must be in the calf numbers.
+
+PROBLEM NAME: calfnum
+
+INPUT FORMAT:
+
+Six lines, each with a calf number of no more than 15 digits
+
+SAMPLE INPUT (file calfnum.in):
+
+pa
+papa
+civo
+xaze
+biso
+no
+
+OUTPUT FORMAT:
+
+A single line with a single calf number that is the sum of the six input
+calf numbers. The output line contains no spaces.
+
+SAMPLE OUTPUT (file calfnum.out):
+
+renore
+
+**********************************************************************
+
+PROBLEM 8: Hide and Seek [Ilham Kurnia, 2002]
+
+Farmer John and three of his calves are playing hide and seek, with Farmer
+John seeking. FJ, being a busy person, doesn't like to play this game as
+it wastes his time -- and the calves know it.
+
+The calves make use of the FJ's poor farm planning to hide. He has built
+a number of barns, each located at a spot (x, y) on the plane (x,y are
+integers; -1000000 &lt;= x, y &lt;= 1000000). The three calves always hide in at
+most three barns. When FJ can't find them, they only come out and return
+to the main barn if Farmer John shouts the correct geometric shape that
+the occupied barns form.
+
+FJ only pretends to be unable to find the calves.  He has installed a
+sensor in each barn so he knows exactly where each calf is. He is, however,
+not that good with geometry. Write a program to help him determine the
+geometric shape formed by the barns in which the calves are hiding
+('triangle', 'line', or 'point'). As a check to your work, also print a
+check number that is: the area of the triangle, the length of the line, or
+0.00 for a point.  Print exactly two digits after the decimal point.  Use
+your language's standard output formatting, do not perform any rounding.
+
+You might not already know Hero's formula for calculating the area of a
+triangle given its sides.  Given sides of length a, b, and c, first
+calculate
+
+        s = (a + b + c) / 2
+
+then the area is:
+
+        a = sqrt(s * (s-a) * (s-b) * (s-c))
+
+PROBLEM NAME: hdseek
+
+INPUT FORMAT:
+
+Three lines, each with two space-separated numbers that represent the x
+and y coordinates of a barn a calf occupy.
+
+SAMPLE INPUT (file hdseek.in):
+
+2 3
+5 3
+4 6
+
+OUTPUT FORMAT:
+
+A single line with a single letter followed by a space followed by a number
+printed with exactly two decimal places.  The letter should be 't' for a
+triangle, 'l' for a line, or 'p' for a point.  The number should be as
+described above.
+
+SAMPLE OUTPUT (file hdseek.out):
+
+t 4.50
+
+****************************************************************************
+                         END OF CONTEST TEXT
+****************************************************************************
+
+</PRE>
+      <HR>
+<PRE></PRE><PRE></PRE></FONT></O:P><HTTP: train.usaco.org><HTTP: 
+      train.usaco.org><WWW.DELOS.COM><HTTP: usacogate ace.delos.com><HTTP: 
+      train.usaco.org>
+      <P></P>
+      <P class=MsoPlainText><FONT face=Courier size=2><SPAN 
+      style="mso-spacerun: yes"></SPAN></FONT>&nbsp;</P></TD>
+    <TD width="10%"></TD></TR></TBODY></TABLE></BODY></HTML>

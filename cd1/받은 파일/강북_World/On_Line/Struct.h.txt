@@ -1,0 +1,147 @@
+// Struct.h
+//   by S.S.W
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#define BOOL int
+#define TRUE 1
+#define FALSE 0
+#define bool int
+#define true 1
+#define false 0
+
+struct point
+{
+	int x,y;
+};
+
+int ccw(point a,point b,point c)
+{
+	int t;
+	t=a.x*b.y+b.x*c.y+c.x*a.y-a.y*b.x-b.y*c.x-c.y*a.x;
+	if(t>0)return 1;
+	if(t<0)return -1;
+	return 0;
+}
+
+int cross(point a,point b,point c,point d)
+{
+	if(ccw(a,b,c)!=ccw(a,b,d) && ccw(c,d,a)!=ccw(c,d,b)) return 1;
+	return 0;
+}
+
+int max(int x,int y)
+{
+	if(x>y)return x;
+	return y;
+}
+
+int min(int x,int y)
+{
+	if(x<y)return x;
+	return y;
+}
+
+int swap(int &x,int &y)
+{
+	int t;
+	t=x;
+	x=y;
+	y=t;
+	return 0;
+}
+
+class stack
+{
+	int data[100];
+	int n;
+public:
+	stack();
+	void push(int x);
+	int pop();
+	int num();
+	void setn(int x);
+};
+
+stack::stack()
+{
+	n=0;
+}
+
+void stack::push(int x)
+{
+	data[n]=x;
+	n++;
+}
+
+int stack::pop()
+{
+	return data[--n];
+}
+
+int stack::num()
+{
+	return n;
+}
+
+void stack::setn(int x)
+{
+	n=x;
+}
+
+int strpchr(char *str,char chr)
+{
+	int t;
+	t=strlen(str);
+	str[t]=chr;
+	str[t+1]='\0';
+	return TRUE;
+}
+
+int operand(char x)
+{
+	if(x=='*' || x=='+' || x=='/' || x=='-')return 1;
+	return 0;
+}
+
+int calculate(char x,int a,int b)
+{
+	switch(x)
+	{
+	case '*':
+		return a*b;
+	case '+':
+		return a+b;
+	case '-':
+		return a-b;
+	case '/':
+		return a/b;
+	}
+	return 0;
+}
+
+char ucase(char x)
+{
+	if(x>='a' && x<='z')
+	{
+		return x-'a'+'A';
+	}
+	return x;
+}
+
+char lcase(char x)
+{
+	if(x>='A' && x<='Z')
+	{
+		return x-'A'+'a';
+	}
+	return x;
+}
+
+int ssearch(int a[],int n,int x)
+{
+	int i;
+	for(i=0;i<n;i++) if(a[i]==x) return i;
+	return -1;
+}

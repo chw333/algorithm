@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)http://skyblue.csd.auth.gr/boi/boi_problems/422.html -->
+<HTML><HEAD><TITLE>BOI 4-Day 2-Problem 2</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY>
+<H2 align=center>4th Balkan Olympiad in Informatics <BR>Nicosia, Cyprus, 19-25 
+October 1997</H2>
+<HR>
+
+<H2 align=center>Day 2 - Problem 2 (Satellite configuration)</H2>
+<P align=center><BR><BR>We want to launch a set of satellites in the sky in 
+orbit around earth. Two satellites may transmit data to each other in a direct 
+way, or in indirect way (i.e. via one or more intermediate satellites), or 
+finally may have no connection at all. We say that two satellites are neighbors 
+if they can send data to each other in a direct way. <BR><BR>Given a number n of 
+satellites and a set of n integers, find out: <BR></P>
+<OL type=a>
+  <LI>if there exists a configuration of n satellites such that the given set of 
+  n integers correspond to the neighbors of the satellites 
+  <LI>if the answer in part (a) is positive, then describe such a setting, 
+  <LI>given the setting of part (b), conclude if we can send data from any 
+  satellite to any other one. </LI></OL>
+<P><BR><BR><BR></P>
+<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%" msimagelist>
+  <TBODY>
+  <TR msimagelist>
+    <TD vAlign=baseline width=42 msimagelist><IMG height=14 hspace=13 
+      src="BOI 4-Day 2-Problem 2.files/blueball.gif" width=16></TD>
+    <TD vAlign=top width="100%"><B>Input:</B> <BR>The input file INPUT.TXT 
+      consists of a line containing a sequence of integers separated by spaces. 
+      The first integer, a number n &lt;= 20, gives the number of satellites in 
+      orbit. The following n integers represent the required number of neighbors 
+      for each one of the satellites. Note that the order of these n numbers 
+      (which represent the number of neighbors for each satellite) is not 
+      important. <BR><BR></TD></TR>
+  <TR msimagelist>
+    <TD vAlign=baseline width=42 msimagelist><IMG height=14 hspace=13 
+      src="BOI 4-Day 2-Problem 2.files/blueball.gif" width=16></TD>
+    <TD vAlign=top width="100%"><B>Output:</B> <BR>The first line of the 
+      output file OUTPUT.TXT contains the answer to part (a): a YES or a NO. In 
+      case of a NO in part (a), then no more output is required. In case of a 
+      YES in part (a), then a number of n lines follow containing n integers 1 
+      or 0 separated by spaces, forming an nxn matrix. If the (i,j)-th element 
+      of this matrix is 1, then the satellites i and j are neighbors, whereas if 
+      this element is 0 then these satellites are not neighbors. The (n+2)-th 
+      line of the output file corresponds to part (c) and is a YES or a NO. 
+      <BR><BR></TD></TR>
+  <TR msimagelist>
+    <TD vAlign=baseline width=42 msimagelist><IMG height=14 hspace=13 
+      src="BOI 4-Day 2-Problem 2.files/blueball.gif" width=16></TD>
+    <TD vAlign=top width="100%"><B>Example 1:</B> <BR>
+      <UL>
+        <LI><I>Input:</I> <BR>6 4 3 1 4 2 0 <BR>
+        <LI><I>Output:</I> <BR>NO <BR><BR></LI></UL></TD></TR>
+  <TR msimagelist>
+    <TD vAlign=baseline width=42 msimagelist><IMG height=14 hspace=13 
+      src="BOI 4-Day 2-Problem 2.files/blueball.gif" width=16></TD>
+    <TD vAlign=top width="100%"><B>Example 2:</B> <BR>
+      <UL>
+        <LI><I>Input:</I> <BR>7 4 3 1 5 4 2 1 <BR>
+        <LI><I>Output:</I> <BR>YES <BR>0 1 1 1 1 1 0 <BR>1 0 1 0 0 0 0 <BR>1 1 0 
+        1 0 1 0 <BR>1 0 1 0 0 1 0 <BR>1 0 0 0 0 0 0 <BR>1 0 1 1 0 0 1 <BR>0 0 0 
+        0 0 1 0 <BR>YES <BR></LI></UL>
+      <P><BR></P></TD></TR>
+  <TR msimagelist>
+    <TD vAlign=baseline width=42 msimagelist><IMG height=14 hspace=13 
+      src="BOI 4-Day 2-Problem 2.files/blueball.gif" width=16></TD>
+    <TD vAlign=top width="100%"><B>Example 3:</B> <BR>
+      <UL>
+        <LI><I>Input:</I> <BR>6 2 3 1 1 2 1 <BR>
+        <LI><I>Output:</I> <BR>YES <BR>0 1 0 1 0 0 <BR>1 0 1 1 0 0 <BR>0 1 0 0 0 
+        0 <BR>1 1 0 0 0 0 <BR>0 0 0 0 0 1 <BR>0 0 0 0 1 0 <BR>NO 
+  <BR></LI></UL></TD></TR></TBODY></TABLE>
+<P><BR><BR><BR>Time Limit : 20 <BR>Maximum Score : 35 <BR></P>
+<HR>
+</BODY></HTML>

@@ -1,0 +1,354 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0063)http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/prob.htm -->
+<HTML><HEAD><TITLE>Problems</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=ks_c_5601-1987">
+<META content="MSHTML 5.50.4134.100" name=GENERATOR></HEAD>
+<BODY>
+<TABLE width="99%" border=0>
+  <TBODY>
+  <TR>
+    <TD width="6%"></TD>
+    <TD width="94%" colSpan=2><BIG><STRONG><FONT face=Arial>Problems - 1999 
+      Challenges of the Week</FONT></STRONG></BIG>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD width="6%"></TD>
+    <TD width="84%"><FONT face=Arial><SMALL><A name=p1></A><B>PROBLEM 1: The 
+      Strange Sequence</B> [MIT elimination contest; submitted by Dan Adkins] 
+      <P>There is a sequence of positive integers a(i). For each i&gt;1, a(i) is 
+      the least possible integer with the following two features: 
+      <UL>
+        <LI>a(i) &gt; a(i-1) 
+        <LI>The sum of the digits of a(i) equals the sum of the digits of 4 x 
+        a(i-1) </LI></UL>
+      <P>For example, if a(1) = 4 and n = 5, the first five members of the 
+      sequence are: 4, 7, 19, 49, and 79. 
+      <P>Given a value of a(1) and an index n, find and print the value of a(n). 
+
+      <P>Input Format (file input.txt): 
+      <P>One line will contain two integers: a(1) (0&lt;a(1)&lt;20) and n 
+      (0&lt;n&lt;10000). 
+      <P>Sample Input: </SMALL><PRE>4 5
+</PRE><SMALL>
+      <P>Output Format (file output.txt): 
+      <P>One line (that ends with a newline or return/newline) with the integer 
+      a(n). Presume that a(n) will fit nicely into a signed 32 bit integer. 
+      <P>Sample Output: </SMALL><PRE>79
+</PRE><SMALL>
+      <P>Accuracy is paramount. Speed counts. Style counts. Good luck! 
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/data.htm#p1">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/sol.htm#p1">Solutions</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/rankings.htm#p1">Rankings</A>]</SMALL> 
+
+      <HR>
+      <A name=p2></A><B>PROBLEM 2: Superprime Rib</B> [Traditional; USACO 
+      coaches] 
+      <P>Butchering Farmer John's cows always yields the best prime rib. You can 
+      tell prime ribs by looking at the digits lovingly stamped across them, one 
+      by one, by FJ and the USDA. Farmer John ensures that a purchaser of his 
+      prime ribs gets really prime ribs because, when sliced from the right, the 
+      numbers on the ribs continue to stay prime right down to the last rib, 
+      e.g.: </SMALL><PRE>     7 3 3 1   
+</PRE><SMALL>is a SuperPrime of length 4 because the set of four ribs 
+      reads 7331, the set of three ribs reads 733; the two ribs read 73; and, of 
+      course, the last rib, which reads 7, are all prime. 
+      <P>Write a program that accepts a number N of ribs (digits) and prints all 
+      the superprimes of that length. 
+      <P>Notes: 
+      <OL>
+        <LI>The number 1 (by itself) is not a prime number. 
+        <LI>The number of ribs N satisfies 0&lt;N&lt;10. </LI></OL>
+      <P>Input Format (file input.txt): 
+      <P>One line will contain a single integer, 0&lt;N&lt;10. 
+      <P>Sample Input: </SMALL><PRE>4
+</PRE><SMALL>
+      <P>Output Format (file output.txt): 
+      <P>Print the primes, one per line, sorted from lowest to highest 
+      <P>Sample Output: </SMALL><PRE>2333
+2339
+2393
+2399
+2939
+3119
+3137
+3733
+3739
+3793
+3797
+5939
+7193
+7331
+7333
+7393 
+</PRE><SMALL>
+      <P>Accuracy is paramount. Speed counts. Style counts. Good luck! 
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/data.htm#p2">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/sol.htm#p2">Solutions</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/rankings.htm#p2">Rankings</A>]</SMALL> 
+
+      <HR>
+      <A name=p3></A><B>PROBLEM 3: Frame Up</B> [From a USACO qualifying 
+      contest] 
+      <P>Consider the following 5 picture frames placed on an 9 x 8 array. 
+      </SMALL><PRE>........   ........   ........   ........   .CCC....
+EEEEEE..   ........   ........   ..BBBB..   .C.C....
+E....E..   DDDDDD..   ........   ..B..B..   .C.C....
+E....E..   D....D..   ........   ..B..B..   .CCC....
+E....E..   D....D..   ....AAAA   ..B..B..   ........
+E....E..   D....D..   ....A..A   ..BBBB..   ........
+E....E..   DDDDDD..   ....A..A   ........   ........
+E....E..   ........   ....AAAA   ........   ........
+EEEEEE..   ........   ........   ........   ........
+
+  1          2            3         4          5
+</PRE><SMALL>
+      <P>Now place them on top of one another starting with 1 (so it ends up on 
+      the bottom) and ending up with 5 (on top). Any frame segment that overlaps 
+      another frame segment hides it. Thus, viewing the stack of 5 frames we see 
+      the following: </SMALL><PRE>.CCC....
+ECBCBB..
+DCBCDB..
+DCCC.B..
+D.B.ABAA
+D.BBBB.A
+DDDDAD.A
+E...AAAA
+EEEEEE..
+</PRE><SMALL>Your program must decide the order which the frames stacked 
+      (from bottom to top). 
+      <P>The answer for the data above is EDABC. 
+      <P>Technical details: 
+      <OL>
+        <LI>The width of a frame is always exactly 1 character and the length of 
+        the sides is never shorter than 3 characters. 
+        <LI>It is possible to see at least one part of each of the four sides of 
+        a frame. A corner shows two sides. 
+        <LI>The frames will be lettered with capital letters, and no two frames 
+        will be assigned the same letter. The empty frame is initialized to dots 
+        (`.'). </LI></OL>
+      <P>INPUT FORMAT (file INPUT.TXT): 
+      <P>The first two lines of the file INPUT.TXT contain the height, h 
+      (5&lt;=h&lt;=30) and the width w (5&lt;=w&lt;=30). A picture of the `frame 
+      up' is then given on successive lines as h strings with w characters each. 
+
+      <P>SAMPLE INPUT: </SMALL><PRE>9
+8
+.CCC....
+ECBCBB..
+DCBCDB..
+DCCC.B..
+D.B.ABAA
+D.BBBB.A
+DDDDAD.A
+E...AAAA
+EEEEEE..
+</PRE><SMALL>
+      <P>OUTPUT FORMAT (file OUTPUT.TXT): 
+      <P>Print the letters of the frames in the order they were stacked from 
+      bottom to top. If there are multiple possibilities for an ordering, list 
+      all such possibilities -- in alphabetical order -- on successive lines. 
+      There will always be at least one legal ordering. 
+      <P>SAMPLE OUTPUT: </SMALL><PRE>EDABC
+</PRE><SMALL>
+      <P>What a treat! More test data! This is a rare gift. </SMALL><PRE>Set #1:
+5
+5
+.....
+.CBBB
+AAACB
+ACACB
+AAABB
+
+Solution #1:
+CBA
+
+Set #2:
+9
+8
+.CCC....
+ECBCBB..
+DCBCDB..
+DCCC.B..
+D.B.ABAA
+D.BBBB.A
+DDDDAD.A
+E...AAAA
+EEEEEE..
+
+Solution #2:
+EDABC
+
+Set #3:
+10
+10
+..AAAAA...
+..ACCCA...
+..AC.CA...
+..AC.CA...
+..ACCCA...
+..AAAAA...
+..........
+...BBB....
+...B.B....
+...BBB....
+
+Solution #3:
+ABC
+ACB
+BAC
+BCA
+CAB
+CBA
+
+Set #4:
+10
+10
+HHHAAAAF..
+HFHGGGAFG.
+HHHCCCAFGJ
+GFACDDAFGJ
+GFACDCAFGJ
+.FAAEEEF.J
+....EDED.J
+..IBBBIIIJ
+..IBEBEJIJ
+..IBBBIII.
+
+Solution #4:
+JGCDFAEHIB
+JGCDFAEIBH
+JGCDFAEIHB
+JGCDFAHEIB
+</PRE><SMALL>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/data.htm#p3">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/sol.htm#p3">Solutions</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/rankings.htm#p3">Rankings</A>]</SMALL> 
+
+      <HR>
+      <A name=p4></A><B>PROBLEM 4: Betsy's Tour</B> [Don Piele presented this 
+      problem in 1995] 
+      <P>[This is a harder problem...RK] 
+      <P>A square township has been divided up into N^2 square plots. The Farm 
+      is located in the upper left plot and the Market is located in the lower 
+      left plot. Betsy takes her tour of the township going from Farm to Market 
+      by walking through every plot exactly once. Shown below is one possible 
+      tour for Betsy when N=3. 
+      <P>Write a program that will count how many unique tours Betsy can take in 
+      going from Farm to Market for a given value of N. 
+      <P>We'll test your program for values of N that tax the best programs. The 
+      number of tours grows very quickly with N. 
+      <P></SMALL><PRE>----------------
+|    |    |    |
+| F**********  |
+|    |    | *  |
+------------*---
+|    |    | *  |
+|  *****  | *  |
+|  * | *  | *  |
+---*---*----*---
+|  * | *  | *  |
+|  M | ******  | 
+|    |    |    |
+----------------
+</PRE><SMALL>
+      <P>INPUT FORMAT (file INPUT.TXT): 
+      <P>The single line of input contains the integer N. 
+      <P>SAMPLE INPUT: </SMALL><PRE>3 
+</PRE><SMALL>
+      <P>OUTPUT FORMAT (file OUTPUT.TXT): 
+      <P>The output file contains a single line with the number of unique tours. 
+
+      <P>Be sure to put a newline or whatever at the end of this line of output 
+      -- that's almost always a requirement at IOI contests. 
+      <P>SAMPLE OUTPUT: </SMALL><PRE>2
+</PRE><SMALL>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/data.htm#p4">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/sol.htm#p4">Solutions</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/rankings.htm#p4">Rankings</A>]</SMALL> 
+
+      <HR>
+      <A name=p5></A><B>PROBLEM 5: Prime Beef</B> [Chris Caldwell, JRM 27:2, 
+      1995] 
+      <P>All of Farmer John's cows have a serial number that is an integer 
+      between 10 and 3,600,000,000 inclusive. To encode that number on each cow, 
+      he brands it with an alphabetic word that corresponds precisely to that 
+      number. Of course, he maintains a list of brands used. 
+      <P>To determine a cow's serial number from the word on the cow, he changes 
+      every `A' to the digits `10', `B' to `11', `C' to `12', ..., and `Z' to 
+      35. The concatenation of the digits yields the cows' serial number. For 
+      example, cow serial #3,028,101,224 has the brand `USACO'. He chooses to 
+      number the best of his bovines [cows] with prime numbers, thus 
+      distinguishing them from the other cows. 
+      <P>Farmer John now wishes to take stock of his cows and find the number of 
+      prime cows. Unfortunately, he only keeps a list of the branded words, not 
+      the serial numbers themselves. Given this list of words, count how many 
+      prime cows Farmer John has. 
+      <P>INPUT FORMAT (file INPUT.TXT): 
+      <P>A list of brands, one on a line. There will be no more than 10,000 
+      words. Maybe there will be far fewer than that, if CPU time of reading is 
+      an issue. Use the end-of-file indication to know that there are no more 
+      words. 
+      <P>OUTPUT FORMAT (file OUTPUT.TXT): 
+      <P>The output file contains a single line with the number of brands that 
+      are prime. Be sure to put a newline or whatever at the end of this line of 
+      output -- that's almost always a requirement at IOI contests. 
+      <P>SAMPLE OUTPUT: </SMALL><PRE>5
+</PRE><SMALL>
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/data.htm#p5">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/sol.htm#p5">Solutions</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/rankings.htm#p5">Rankings</A>]</SMALL> 
+
+      <HR>
+      <A name=p6></A><B>PROBLEM 6: Partitioning Sets </B>[Richard Forster] 
+      <P>Consider the set of numbers {1..N}. 
+      <P>If N=3, one can partition this set in one way so that the sums of both 
+      subsets are identical: 
+      <UL>
+        <LI>{1,2} {3} </LI></UL>
+      <P>If N=4, there is one way as well: 
+      <UL>
+        <LI>{1,4}{2,3} </LI></UL>
+      <P>N can not be 5 or 6 since then you'd have two partitions whose equal 
+      sums must sum to an odd number (i.e., 15 and 21). 
+      <P>If N=7, there are 4 ways: 
+      <UL>
+        <LI>{2,3,4,5} {1,6,7} 
+        <LI>{1,3,4,6} {2,5,7} 
+        <LI>{1,2,5,6} {3,4,7} 
+        <LI>{3,5,6} {1,2,4,7} </LI></UL>
+      <P>If N=8, there are 7 ways: 
+      <UL>
+        <LI>{1,2,4,5,6} {3,7,8} 
+        <LI>{3,4,5,6} {1,2,7,8} 
+        <LI>{1,2,3,5,7} {4,6,8} 
+        <LI>{2,4,5,7} {1,3,6,8} 
+        <LI>{2,3,6,7} {1,4,5,8} 
+        <LI>{1,4,6,7} {2,3,5,8} 
+        <LI>{5,6,7} {1,2,3,4,8} </LI></UL>
+      <P>Here's a table for some larger values of N: </SMALL><PRE>11: 35
+12: 62
+15: 361
+16: 657
+19: 4110
+20: 7636
+23: 49910
+24: 93846
+</PRE><SMALL>Determine the same-sum-partitioning count for ever growing 
+      values of N. Of course, the answer must fit into 32 signed bits, so we're 
+      not talking about N ~= 10000 or anything. 
+      <P>Presume the obvious input.txt and output.txt formats. I don't have time 
+      for better documentation just now. 
+      <P align=right><SMALL>[Problem|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/data.htm#p6">Data</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/sol.htm#p6">Solutions</A>|<A 
+      href="http://www.uwp.edu/academic/mathematics/usaco/1999/CoW/rankings.htm#p6">Rankings</A>]</SMALL> 
+
+      <HR>
+      </FONT></SMALL></TD>
+    <TD width="10%"></TD></TR></TBODY></TABLE></BODY></HTML>

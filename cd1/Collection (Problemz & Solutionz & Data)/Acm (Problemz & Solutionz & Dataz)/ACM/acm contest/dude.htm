@@ -1,0 +1,79 @@
+<html>
+
+<head>
+<title>SER 2001: Dude...Where’s My Gas</title>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<h1>Dude…Where’s My Gas?</h1>
+
+<h3>input file: <code>dude.in</code></h3>
+
+<p>Joe likes highway driving on the edge…of an empty gas tank,
+that is.   Joe's fuel gauge only
+registers the number of eighths of a tank remaining (i.e., 1/8, 2/8,
+…8/8).   One of his favorite stretches of
+highway has exits spaced evenly so that he can reach the same number of exits, <i>k</i>,
+for each eighth of a tank of gas (for example, with 2/8 tank of gas, he can
+reach 2<i>k</i> exits).   Exits may or
+may not have a gas station.   Given the
+number of eighths of a tank of gas in Joe’s car, the value of <i>k</i>, and the
+locations of the gas stations, determine the farthest exit with a gas station
+that Joe can reach using only the gas in his tank (i.e., no fill-ups of the
+tank are allowed en route).   Of course,
+it is possible that Joe will run out of gas…</p>
+
+<h2>Input</h2>
+
+<p>Each data set begins with a line containing a single integer
+<i>t</i>, indicating the number of eighths of a tank of gas in Joe’s car (where
+1  &lt;=
+<i>t </i> &lt;=
+8).   The next line contains a single
+integer <i>k</i>, indicating how many highway exits can be reached per 1/8 tank
+of gas, (where 1     &lt;=
+<i>k</i> &lt;= 8).   Starting on the next line of the
+input, and possibly continuing over several input lines, will appear the
+numbers of the exits at which gas stations are located.
+Joe’s first available exit is always 1, and
+the exits are numbered consecutively.  
+The furthest possible exit number is 1000. 
+The list of exits will be terminated by a –1.
+Exit numbers in a particular data set will
+not be duplicated but may be listed in any order.
+Your program should stop processing data sets when it reaches a
+value of 0 for <i>t</i>.</p>
+
+<h2>Output</h2>
+
+<p>For each data set, output the exit number of the last gas
+station that the car can reach.   If the
+car runs out of gas before it can reach a gas station, output that information
+instead.   Follow the format illustrated
+in the sample output.</p>
+
+<h3>Sample Input</h3>
+
+<pre>
+8
+1
+1 2 7 4 5 6   -1
+1
+8
+44 45
+13 43
+50 -1
+0
+</pre>
+
+<h3>Output corresponding to the Sample Input</h3>
+
+<pre>
+Stop for gas at exit 7.
+Dude!  Ran out of gas.
+</pre>
+
+</body>
+
+</html>
