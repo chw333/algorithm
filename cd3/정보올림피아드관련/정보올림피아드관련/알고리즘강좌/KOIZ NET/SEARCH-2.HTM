@@ -1,0 +1,170 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>이진탐색 (Binary Search)</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><b><font size="5" color="#0066CC">이진탐색 (Binary Search)</font></b></p>
+<table border="0" style="font-size:10pt;">
+    <tr>
+        <td width="974">
+            <p>이분 탐색이 가능하려면 : 리스트의 원소들이 키에 의해 정렬되어 
+            있다.</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p>탐생방법</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;입력 : 리스트, 검색값-K</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;출력 : 예 ( 찾는&nbsp;값이 있으면 ) 또는 
+            아니오 ( 찾는 것이 없으면)</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p>1. 각 값의 의미</p>
+            <p><font color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;Low : 찾고자 하는 리스트 의 처음</font></p>
+            <p><font color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;High : 찾고자 하는 리스트의 끝</font></p>
+            <p><font color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;Mid : Low 와 High의 중간 값</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p>&nbsp;</p>
+            <p>2. 리스트의 중간에 있는 원소의 키 값 ( L.entry[Mid].key ) &nbsp;와 
+            탐색하려는 값 K를 비교한다.</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p>3. 비교한 결과</p>
+            <p><font color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if Key = K, 탐색완료</font></p>
+            <p><font color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if Key &gt; K, ( Low,Mid-1 사이의 
+            리스트에 대해 다시 탐색 ) : 단계2로 감</font></p>
+            <p><font color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if Key &lt; K, ( Mid+1, High 사이의 
+            리스트에 대해 다시 탐색 ) : 단계2로 감</font></p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p>예제2</p>
+            <p>찾으려는 Key 값 : 100</p>
+            <p>리스트 : 13, 28, 35, 49, 62, 66, 80, 90, 100, 122</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p style="font-size:10pt; border-width:1; border-style:none;">&nbsp;</p>
+        </td>
+    </tr>
+</table>
+<TABLE 
+style="font-size:10pt; border-width:0px;" width="100%" border="1">
+<TBODY>
+<TR>
+<TD width=484 height="50">
+<P align=center>13, 28, 35, 49, <b>62</b>, 66, 80, 90, 100, 122</P></TD>
+<TD width=484 height="50">
+<P align=center>L.entry[mid].key = 62 &lt;100</P>
+<P align=center>여기서 Low=1, High=10, Mid=5</P></TD></TR>
+<TR>
+<TD width=484 height="50">
+<P align=center>66, 80, <b>90</b>, 100, 122</P></TD>
+<TD width=484 height="50">
+<P align=center>L.entry[mid].key = 90 &lt; 100</P>
+<P align=center>Low=6, High=10, Mid=8 (6+(10-6) / 2)</P></TD></TR>
+<TR>
+<TD width=484 height="50">
+<P align=center><b>100</b>, 122</P></TD>
+<TD width=484 height="50">
+<P align=center>L.entry[mid].key = 100 =&nbsp;100</P>
+<P align=center>탐색성공</P></TD></TR></TBODY></TABLE><table border="0" style="font-size:10pt;">
+    <tr>
+        <td width="974">
+            <p>&nbsp;분석</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;한번의 비교로 탐색 대상 리스트의 크기가 약 반으로 
+줄어든다.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;만약 k번의 비교를 한다면 탐색 대상 부리스트의 크기는 
+n / 2 ^ k로 줄어들 게 &nbsp;된다.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;이분 탐색을 이용하여 원소&nbsp;n개의 리스트를 탐색할 
+때의 비교 횟수는 최악의 경우</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;탐색 대상 부리스티의 크기가 1이 될 때까지의 비교횟수 
+k를 구한다.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n / 2 ^ k = 1 , because k= 
+log2n</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" height="1074">
+            <p>&nbsp;(1) C/C++</p>
+<p><font color="#003333">int BinarySearch(int list[], int head, int end, int k)</font></p>
+<p><font color="#003333">{</font></p>
+<p><font color="#993300">&nbsp;&nbsp;&nbsp;&nbsp;int mid;</font></p>
+<p><font color="#336666">&nbsp;&nbsp;&nbsp;&nbsp;if (head &gt; end)</font></p>
+<p><font color="#336666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;</font></p>
+<p><font color="#336666">&nbsp;&nbsp;&nbsp;&nbsp;mid = (head+end) / 2;</font></p>
+<p><font color="#336666">&nbsp;&nbsp;&nbsp;&nbsp;if (list[mid] == k)</font></p>
+<p><font color="#336666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return mid;</font></p>
+<p><font color="#336666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</font></p>
+<p><font color="#336666">&nbsp;&nbsp;&nbsp;&nbsp;if (list[mid] &gt; k)</font></p>
+<p><font color="#336666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return BinarySearch(list,head,mid-1,k);</font></p>
+<p><font color="#336666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</font></p>
+<p><font color="#336666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return BinarySearch(list,mid+1,end,k);</font></p>
+<p><font color="#006666">}</font></p>
+<p>(2) Pascal</p>
+<p><font color="#006666">Function&nbsp;BinarySearch(list : array ;&nbsp;head, end, k : integer) : 
+integer;</font></p>
+<p><font color="#006666">begin</font></p>
+<p><font color="#996666">&nbsp;&nbsp;&nbsp;&nbsp; mid : integer;</font></p>
+<p><font color="#339933">&nbsp;&nbsp;&nbsp;&nbsp;if head &gt; end then</font></p>
+<p><font color="#339933">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BinarySearch := 0;</font></p>
+<p><font color="#339933">&nbsp;&nbsp;&nbsp;&nbsp;mid = (head+end) / 2;</font></p>
+<p><font color="#339933">&nbsp;&nbsp;&nbsp;&nbsp;if list[mid] = k then</font></p>
+<p><font color="#339933">&nbsp;&nbsp;&nbsp;&nbsp;beginssss</font></p>
+<p><font color="#339933">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BinarySearch:= mid;</font></p>
+<p><font color="#339933">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else</font></p>
+<p><font color="#339933">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+list(mid) &gt; k then</font></p>
+<p><font color="#339933">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BinarySearch := BinarySearch(list,head,mid-1,k);</font></p>
+<p><font color="#339933">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else</font></p>
+<p><font color="#339933">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BianrySearch :=&nbsp;BinarySearch(list,mid+1,end,k);</font></p>
+<p><font color="#339933">&nbsp;&nbsp;&nbsp;&nbsp;End;</font></p>
+<p><font color="#006666">End;</font></p>
+            <p><b>(3) Basic</b></p>
+            <p><font color="#003333">function binarysearch (list(),head,end,k)</font></p>
+            <p><font color="#0033CC">&nbsp;&nbsp;&nbsp;mid=0</font></p>
+            <p><font color="#0033CC">&nbsp;&nbsp;&nbsp;if head&gt;end then</font></p>
+            <p><font color="#0033CC">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;binarysearch=0</font></p>
+            <p><font color="#0033CC">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit 
+            function</font></p>
+            <p><font color="#0033CC">&nbsp;&nbsp;&nbsp;mid=(head+end)/2</font></p>
+            <p><font color="#0033CC">&nbsp;&nbsp;&nbsp;if list(mid)=k then</font></p>
+            <p><font color="#0033CC">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;binarysearch=mid</font></p>
+            <p><font color="#0033CC">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit 
+            function</font></p>
+            <p><font color="#0033CC">&nbsp;&nbsp;&nbsp;else</font></p>
+            <p><font color="#0033CC">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+            list(mid)&gt;k then</font></p>
+            <p><font color="#0033CC">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;binarysearch(list,head,mid-1,k)</font></p>
+            <p><font color="#0033CC">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit 
+            function</font></p>
+            <p><font color="#0033CC">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</font></p>
+            <p><font color="#0033CC">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;binarysearch(list,mid+1,end,k)</font></p>
+            <p><font color="#0033CC">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit 
+            function</font></p>
+            <p><font color="#0033CC">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end 
+            if</font></p>
+            <p><font color="#0033CC">&nbsp;&nbsp;&nbsp;end if</font></p>
+            <p><font color="#003333">:end function</font></p>
+        </td>
+    </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+
+</html>

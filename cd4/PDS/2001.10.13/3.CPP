@@ -1,0 +1,65 @@
+#include<stdio.h>
+#include<conio.h>
+main()
+{
+
+	static int buf[100],dd[100][100];
+	int cur1,cur2,k;
+	int i,j;
+
+	FILE *fp;
+	clrscr();
+	fp = fopen("01101303.in","r");
+		fscanf(fp,"%d ",&cur1);
+		fscanf(fp,"%d\n",&cur2);
+		for(i=0;i<cur1;i++){
+			fscanf(fp,"%d ",&buf[i]);
+		}
+	fclose(fp);
+
+		for(i=0;i<cur1-1;i++){
+			for(j=i+1;j<cur1;j++){
+				if(buf[i]>buf[j]){
+					int imsi;
+					imsi = buf[i];buf[i] = buf[j];buf[j] = imsi;
+				}
+			}
+		}
+
+	k = 0;
+	int ss;
+	for(i=0;;i++){
+		if( ss == 1 ){
+			ss = 0;
+			for(j=0;j<cur2;j++){
+				if(buf[k] == 0)
+					goto end;
+				dd[j][i] = buf[k];
+				k++;
+			}
+		}
+		else
+		{
+			ss = 1;
+			for(j=cur2-1;j>=0;j--){
+				if(buf[k] == 0)
+					goto end;
+				dd[j][i] = buf[k];
+				k++;
+			}
+		}
+
+	}
+		end:
+		for(j=0;j<cur2;j++){
+			for(i=0;;i++){
+				if(dd[j][i] != 0)
+					printf("%d ",dd[j][i]);
+				else{
+					goto end1;
+				}
+			}
+			end1:
+			printf("\n");
+		}
+}

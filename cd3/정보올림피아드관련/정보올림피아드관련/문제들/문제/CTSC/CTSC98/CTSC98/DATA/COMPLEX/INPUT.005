@@ -1,0 +1,45 @@
+begin
+ loop n
+  loop n
+   loop n
+    loop n
+       op 10
+     loop n
+      loop n
+       loop n
+               op 1
+               op 10
+               op 3
+       end
+      end
+     end
+      op 20
+    end
+    loop 3
+     op n end
+   end
+  end
+  break
+ end
+ loop n
+  loop n
+   loop n
+    loop n
+     loop n
+      loop n
+       loop n
+         op 123456
+       end
+       op 3
+      end
+      continue
+     end
+    end
+    continue
+    break
+   end
+  end
+  break
+ end
+ loop n loop n continue end op 9876 end
+end

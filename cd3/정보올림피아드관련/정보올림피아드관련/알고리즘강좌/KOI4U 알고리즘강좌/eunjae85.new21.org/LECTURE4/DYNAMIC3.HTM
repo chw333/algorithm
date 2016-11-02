@@ -1,0 +1,305 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>동적 계획법의 실전</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p style="line-height:130%;">동적 계획법의 실전</p>
+<p style="line-height:130%;">이제 동적 계획법을 이용해 실제로 문제를 풀어보는 
+시간을 갖겠습니다. 아직은 동적 계획법에 그리 익숙지 않으실 테니 비교적 간단한 
+문제를 보도록 하겠습니다. 아래의 문제는 제가 오래 전에 만들었던 자작 문제인 
+'자원 채취'라는 썰렁한 문제입니다.<br>
+&nbsp; 
+<table border cellspacing="0" bordercolordark="white" bordercolorlight="black">
+    <tr>
+        <td width="740"><p style="line-height:130%;"><font size="2">자원 채취<br> 
+            &nbsp;<br> NxN의 크기의 맵이 있다. SCV가 (1,1)의 위치에 서 있는데 
+            (N,N)까지 가면서 최대한 많은 미네랄을 채취하려고 한다. 단, 이 SCV는 
+            고물이라 한번에 오른쪽 또는 밑으로 밖에 이동하지 못한다.<br> &nbsp;<br> 
+            (입력 데이터에서 1은 미네랄 있음, 0은 미네랄 없음을 나타냅니다.)<br> 
+            &nbsp;<br> 예를 들어,<br> &nbsp;<br> 0 1 0 0 1<br> 0 0 1 0 0<br> 
+            1 0 1 1 0<br> 1 1 0 1 0<br> 1 0 0 0 1<br> &nbsp;<br> 이란 맵이 있으면,<br> 
+            &nbsp;<br> * * * 0 1<br> 0 0 * 0 0<br> 1 0 * * 0<br> 1 1 0 * *<br> 
+            1 0 0 0 *<br> &nbsp;<br> 이렇게 SCV가 이동해 오면 최대의(여기서는 
+            6) 미네랄을 채취하여<br> 올 수 있는겁니다.<br> &nbsp;<br> 입력 데이터<br> 
+            &nbsp;<br> 입력 파일은 INPUT.TXT 이며 첫째줄에는 맵의 크기 N이,<br> 
+            그 다음줄부터는 맵의 데이터가 나온다.<br> 편의상 N은 2이상 100이하라고 
+            하자.<br> &nbsp;<br> INPUT.TXT<br> &nbsp;<br> 5<br> 0 1 0 0 1<br> 
+            0 0 1 0 0<br> 1 0 1 1 0<br> 1 1 0 1 0<br> 1 0 0 0 1<br> &nbsp;<br> 
+            출력 데이터<br> &nbsp;<br> 출력 파일 OUTPUT에 첫번째 줄에는 최대로 
+            얻을 수 있는 미네랄의 양, 두번째 줄부터는 SCV가 이동한 경로를 출력한다. 
+            (오른쪽으로 움직였다면 R, 아래로 움직였다면 D) 제대로 된 답이라면 
+            이동한 경로의 크기가 2*N-2가 될것입니다.<br> &nbsp;<br> OUTPUT.TXT<br> 
+            &nbsp;<br> 6<br> R<br> R<br> D<br> D<br> R<br> D<br> R<br> D</font></td>
+    </tr>
+</table>
+<p style="line-height:130%;">&nbsp;</p>
+<p style="line-height:130%;">이제 문제를 간단히 생각해 보기로 하겠습니다. SCV는, 
+(1, 1)에서 (N, N)까지 이동하면서 최대한 많은 미네랄을 얻어야 합니다. 중요한 
+사실은 (N, N)에 오기 전에는 (N-1, N)이나 (N, N-1)의 위치에 있다는 것입니다.</p>
+<p align="center" style="line-height:130%;"><img src="dynamic2.gif" width="450"
+ height="157" border="0"></p>
+<p align="left" style="line-height:130%;">만약 어떤 데이터에서 SCV가 (1, 1)에서 
+(N, N-1)을 거쳐 (N, N)으로 가는 것이 최선의 경로라고 생각하면, (1, 1)에서 (N, 
+N-1)로 가는 것도 최선의 방법을 사용해야 합니다. 일전의 학교, 오락실, 당구장, 
+집의 예를 상기해 보세요. (N, N-1)을 거치는 것이 최적의 경로라면 (..., N)의 좌표는 
+전혀 쓸모 없게 됩니다. 만약 이 SCV가 (..., N)의 위치를 지난다면 결코 (N, N-1)로는 
+갈 수 없게 되죠. 이 SCV는 왼쪽 방향으로 못가니까요. 이것은 곧 이 문제가 부분 
+문제로 쪼개질 수 있다는 것을 알 수 있게 해줍니다.</p>
+<p align="center" style="line-height:130%;"><img src="dynamic3.gif" width="463"
+ height="150" border="0"></p>
+<p align="left" style="line-height:130%;">(N-1, N)을 거치는 경우도 마찬가지입니다. 
+이 두 가지 경우 중에 더 좋은 경우를 선택해야 할 것입니다. 이 문제를 동적 계획법으로 
+풀기 위해 부분문제 C를 정의하겠습니다.</p>
+<p align="center" style="line-height:130%;">'부분문제 C[i, j]는 (1, 1)에서 (i, 
+j)까지 가면서 얻을 수 있는 최대의 미네랄'</p>
+<p align="left" style="line-height:130%;">로 정의를 했습니다. 위의 정의에 따르면 
+우리가 구하고자 하는 문제는 C[N, N]이 됩니다.(명백하죠?) 이제 위에서 생각한 
+방법으로 점화식을 세워 보도록 하겠습니다. 일단 특수한 경우의 점화식을 생각해 
+보도록 하죠. </p>
+<p align="left" style="line-height:130%;">C[i, j]가 있을 때 일반적으로 i와 j는 
+1이상 N이하의 범위에 있지만, 우리는 그 밖의 범위를 가지는 부분문제에 대해서도 
+생각해 보기로 하죠. (왜 이래야 하는지는 나중에 이해할 수 있습니다) C[-2, 5]의 
+값을 얼마일까요? 음수의 범위가 있으므로 뭔가 문제의 정의와는 모순된 것처럼 보이지만, 
+우리는 이런 것들을 무시하고 '0'이란 값을 사용하도록 하죠.(어짜피 미네랄을 하나도 
+못주울 것은 분명하기 때문)</p>
+<p align="left" style="line-height:130%;">이제 특수한 경우가 아닌 일반적인 경우의 
+C[i, j]를 구해보도록 하겠습니다. SCV가 (i, j)로 가기 위해서는 (i-1, j)나 (i, 
+j-1)중 하나를 거치게 된다는 것은 앞서 살펴 보았습니다. 우린 이 둘 중에 더 최선의 
+경우를 선택해야 하구요. 이 문제에서 최선이란 미네랄을 좀 더 많이 줍는 것을 말합니다. 
+A[i, j]는 입력 데이터로 (i, j)에 미네랄이 있는지 없는지를 나타냅니다.</p>
+<p align="left" style="line-height:130%;"><font face="굴림체">C[i, j] = Max 
+{C[i-1, j] + A[i, j],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C[i, 
+j-1] + A[i, j]}</font></p>
+<p align="left" style="line-height:130%;"><font face="굴림">만약 C[1, 4]와 같은 
+함수를 계산할 때에는 C[0, 4]를 참조하게 되어 배열의 범위를 벗어나게 되는데, 
+이미 앞서 그런 특수한 경우는 '0'으로 가정을 했으므로 별 문제는 없습니다. 이제 
+점화식을 정리하면,</font></p>
+<ul>
+    <p align="left" style="line-height:130%;"><font face="굴림체">i, j가 1이상 
+    N이하의 범위 내에 있으면, <br> C[i, j] = Max {C[i-1, j] + A[i, j],C[i, j-1] 
+    + A[i, j]}</font></p>
+    <p align="left" style="line-height:130%;"><font face="굴림체">범위밖에 있으면,<br> 
+    C[i, j] = 0</font></p>
+</ul>
+<p align="left" style="line-height:130%;"><font face="굴림체">문제의 예시 데이터에 
+이 점화식에 따라 부분문제 C를 계산하면 테이블은 다음과 같이 채워집니다. 직접 
+손으로 확인해 보세요.</font></p>
+<p align="left" style="line-height:130%;">&nbsp; 
+<table border="0">
+    <tr>
+        <td width="282"><div align="center"><table border cellspacing="0" bordercolordark="white"
+             bordercolorlight="black">
+                <tr>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">0</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">1</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">0</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">0</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">1</td>
+                </tr>
+                <tr>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">0</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">0</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">1</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">0</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">0</td>
+                </tr>
+                <tr>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">1</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">0</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">1</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">1</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">0</td>
+                </tr>
+                <tr>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">1</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">1</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">0</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">1</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">0</td>
+                </tr>
+                <tr>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">1</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">0</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">0</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">0</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">1</td>
+                </tr>
+            </table></div>
+            <p align="center" style="line-height:130%;"><font color="red">예제 
+            데이터</font></td>
+        <td width="302"><div align="center"><table border cellspacing="0" bordercolordark="white"
+             bordercolorlight="black">
+                <tr>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">0</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">1</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">1</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">1</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">2</td>
+                </tr>
+                <tr>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">0</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">1</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">2</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">2</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">2</td>
+                </tr>
+                <tr>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">1</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">1</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">3</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">4</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">4</td>
+                </tr>
+                <tr>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">2</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">3</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">3</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">5</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">5</td>
+                </tr>
+                <tr>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">3</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">3</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">3</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">5</td>
+                    <td width="20" height="20"><p align="center" style="line-height:130%;">6</td>
+                </tr>
+            </table></div>
+            <p align="center" style="line-height:130%;"><font color="blue">계산된 
+            테이블의 값</font></td>
+    </tr>
+</table>
+<p style="line-height:130%;"><font face="굴림체">이제 C[N, N]을 보면 6인 것을 
+알 수 있습니다. 즉, 이 예시 데이터의 답은 6이 됩니다.</font></p>
+<p style="line-height:130%;"><font face="굴림체">이 과정을 프로그램으로 옮긴다면 
+다음과 같이 될 것입니다.</font></p>
+<p style="line-height:130%;"><font face="굴림체">var<br>
+&nbsp;&nbsp;n &nbsp;&nbsp;&nbsp;&nbsp;: integer;<br>
+&nbsp;&nbsp;a &nbsp;&nbsp;&nbsp;&nbsp;: array[1..100, 1..100] of integer;<br>
+&nbsp;&nbsp;table : array[0..100, 0..100] of integer;</font></p>
+<p style="line-height:130%;"><font face="굴림체">procedure solve;<br>
+var<br>
+&nbsp;&nbsp;i, j : integer;<br>
+begin<br>
+&nbsp;&nbsp;for i := 0 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a[0, i] := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a[i, 0] := 0;<br>
+&nbsp;&nbsp;end;</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;for i := 1 to n 
+do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if table[i - 1, j] &gt; table[i, j - 1] 
+then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table[i, j] := table[i - 1, 
+j] + a[i, j];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end else begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table[i, j] := table[i, j - 
+1] + a[i, j];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+end;</font></p>
+<p style="line-height:130%;"><font face="굴림">그런데 위의 소스를 통해서는 6이라는 
+답을 구할 수 있을 뿐 SCV가 어떤 경로를 통하여 길을 가는지에 대해서는 알 수 없습니다.. 
+이것은 실제 대회에서도 중요한 문제가 되는데, 실제로 답을 구하고도 그 과정을 
+출력하지 못해 쩔쩔 매는 경우가 흔하죠. 따라서 이 부분에 대한 연습은 크게 중요하다고 
+하겠습니다.</font></p>
+<p style="line-height:130%;"><font face="굴림체">만약 미네랄을 최대로 주으면서 
+(N, N)까지 가기 위해 (N-1, N)을 거쳐야 한다고 하죠. 이 말은 뒤집으면 미네랄을 
+최대로 주으면서 가기 위해서는 (N-1, N)에서는 아래로 이동해야 한다는 것을 나타냅니다.</font></p>
+<p style="line-height:130%;"><font face="굴림체">다음은 실제 소스입니다. 경로를 
+역추적하는 부분이 어떻게 표현되어 있는지 눈여겨 보시길..</font></p>
+<p style="line-height:130%;"><font face="굴림체">program resource_problem;</font></p>
+<p style="line-height:130%;"><font face="굴림체">var<br>
+&nbsp;&nbsp;n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+integer;<br>
+&nbsp;&nbsp;a &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+array[1..100, 1..100] of integer;<br>
+&nbsp;&nbsp;table, trace &nbsp;: array[0..100, 0..100] of integer;<br>
+&nbsp;&nbsp;solution &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: array[1..198] of (right, 
+down);</font></p>
+<p style="line-height:130%;"><font face="굴림체">procedure solve;<br>
+var<br>
+&nbsp;&nbsp;i, j, k : integer;<br>
+begin<br>
+&nbsp;&nbsp;for i := 0 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;table[0, i] := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;table[i, 0] := 0;<br>
+&nbsp;&nbsp;end;</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;for i := 1 to n 
+do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if table[i - 1, j] &gt; table[i, j - 1] 
+then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table[i, j] := table[i - 1, 
+j] + a[i, j];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace[i, j] := 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end else begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table[i, j] := table[i, j - 
+1] + a[i, j];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace[i, j] := 2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;i := n;<br>
+&nbsp;&nbsp;j := n;<br>
+&nbsp;&nbsp;k := n * 2 - 2;<br>
+&nbsp;&nbsp;while not ((i = 1) and (j = 1)) do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if i = 1 then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;solution[k] := right;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dec (j);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end else if j = 1 then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;solution[k] := down;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dec (i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end else if trace[i, j] = 1 then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;solution[k] := down;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dec (i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end else begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;solution[k] := right;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dec (j);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dec (k);<br>
+&nbsp;&nbsp;end;<br>
+end;</font></p>
+<p style="line-height:130%;"><font face="굴림체">procedure input_file;<br>
+var<br>
+&nbsp;&nbsp;f : text;<br>
+&nbsp;&nbsp;i, j : integer;<br>
+begin<br>
+&nbsp;&nbsp;assign (f, 'input.txt');<br>
+&nbsp;&nbsp;reset (f);</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;readln (f, n);</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;for i := 1 to n 
+do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j :=1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read (f, a[i, j]);</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;close (f);<br>
+end;</font></p>
+<p style="line-height:130%;"><font face="굴림체">procedure output_file;<br>
+var<br>
+&nbsp;&nbsp;f : text;<br>
+&nbsp;&nbsp;i : integer;<br>
+begin<br>
+&nbsp;&nbsp;assign (f, 'output.txt');<br>
+&nbsp;&nbsp;rewrite (f);</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;writeln (f, table[n, 
+n]);<br>
+&nbsp;&nbsp;for i := 1 to n * 2 - 2 do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if solution[i] = right then writeln (f, 'R')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else 
+writeln (f, 'D');</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;close (f);<br>
+end;</font></p>
+<p style="line-height:130%;"><font face="굴림체">begin<br>
+&nbsp;&nbsp;input_file;<br>
+&nbsp;&nbsp;solve;<br>
+&nbsp;&nbsp;output_file;<br>
+end.</font></p>
+<p style="line-height:130%;"><font face="굴림">다음에는 동적 계획법을 더 편하게 
+해주는 memoization이라는 테크닉에 대해서 알아보도록 하겠습니다.</font></p>
+</body>
+
+</html></html>

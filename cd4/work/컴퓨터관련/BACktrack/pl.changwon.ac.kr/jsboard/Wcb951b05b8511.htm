@@ -1,0 +1,252 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=EUC-KR">
+<TITLE>Jsboard 1.2.2 - 알고리즘 게시판  [ 게시물 읽기 ]</TITLE>
+<STYLE TYPE="text/css">
+<!--
+A:link, A:visited, A:active { TEXT-DECORATION: none; }
+A:hover { TEXT-DECORATION: underline; }
+TD { FONT: 9pt 굴림체; }
+INPUT {font: 9pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:2x solid #b5b5c5}
+SELECT {font: 9pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:1x solid #b5b5c5}
+TEXTAREA {font: 10pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:2x solid #b5b5c5}
+ #radio {font: 9pt 굴림체; BACKGROUND-COLOR:#ffffff; COLOR:#656565; BORDER:2x solid #ffffff}
+ #title {font:20pt 굴림체; color:#ffe4c4}
+ #eng {font:11px tahoma,Verdana,arial; line-height:120%}
+-->
+</STYLE>
+
+<script LANGUAGE=JavaScript>
+<!-- Begin
+  var child = null;
+  var count = 0;
+  function new_windows(addr,tag,scroll,resize,wid,hei) {
+    var childname = 'JSBoard' + count++;
+    // child window가 떠 있을 경우 child window를 닫는다.
+    if(child != null) {
+      if(!child.closed) { child.close(); }
+    }
+    child = window.open(addr,tag,'left=0, top=0, toolbar=0,scrollbars=' + scroll + ',status=0,menubar=0,resizable=' + resize + ',width=' + wid + ',height=' + hei +'');
+    // child window가 로드 될때 가장 앞으로 올린다.
+    child.focus();
+    return;
+  }
+//-->
+</script>
+</HEAD>
+
+<BODY BACKGROUND="" BGCOLOR="#ffffff" TEXT="#656565" LINK="#80320d" VLINK="#80320d" ALINK="#80320d">
+<!-- ========================= A foreword  ========================= -->
+<center>
+<img src=../algorithm/images/cyber_alg2.jpg BORDER="0" USEMAP="#ImageMap1">
+<p>
+<!-- ========================= A foreword  ========================= -->
+
+<DIV ALIGN=center>
+<!------ 상단 메뉴 시작 --------->
+<TABLE WIDTH="600" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+<TR>
+  <TD VALIGN=bottom><nobr>[ <a href=./admin/user_admin/auth.php?table=algorithm title="JSBoard 1.2.2 관리자 페이지"><font color=#6d7bc9>admin</font></a> ]</nobr></TD>
+  <TD ALIGN=right VALIGN=bottom>
+<TABLE WIDTH="1%" BORDER="0" CELLSPACING="4" CELLPADDING="0" >
+<TR>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wcf8f34e71361b.htm"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>목록보기</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc7990c75cb587.htm" onMouseOut="window.status=''; return true;" onMouseOver="window.status='No.4: 도움말 수정 했으면 합니다.'; return true;"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>윗글</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wcbbd159382024.htm" onMouseOut="window.status=''; return true;" onMouseOver="window.status='No.3: 온라인 강의실 사용법'; return true;"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>아랫글</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc38b0b81964f2.htm"><FONT COLOR="#999999" style="line-height=120%"><NOBR>글쓰기</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc2891070b487.htm"><FONT COLOR="#999999" style="line-height=120%"><NOBR>답장쓰기</NOBR></FONT></A></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc22805d012744.htm"><FONT COLOR="#999999" style="line-height=120%"><NOBR>수정</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wcd2176fb5426b.htm"><FONT COLOR="#999999" style="line-height=120%"><NOBR>삭제</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"></TD>
+  
+</TR>
+</TABLE>
+</TD>
+</TR>
+</TABLE>
+<!------ 상단 메뉴 끝 --------->
+
+<TABLE WIDTH="600" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+<TR><TD valign=top BGCOLOR="#7e7e9a">
+<TABLE WIDTH="100%" border="0" CELLSPACING="1" CELLPADDING="3">
+<TR>
+  <TD COLSPAN="3" BGCOLOR="#b5b5c5"><FONT COLOR="#555555" style="line-height=120%">4번 글의 답장글 : Re: 도움말 수정 했으면 합니다.</FONT></TD>
+</TR><TR>
+  <TD WIDTH="40%" BGCOLOR="#dcdcdc"><FONT COLOR="#000000" style="line-height=120%">글쓴이: PL Lab</FONT></TD>
+  <TD WIDTH="40%" BGCOLOR="#dcdcdc"><FONT COLOR="#000000" style="line-height=120%">등록: 2000-09-04 18:59:48</FONT></TD>
+  <TD WIDTH="20%" BGCOLOR="#dcdcdc"><FONT COLOR="#000000" style="line-height=120%">조회: 112</FONT></TD>
+
+</TR><TR>
+  <TD COLSPAN="3" BGCOLOR="#ffffff">
+
+<TABLE ALIGN="center" WIDTH="100%" HEIGHT="140" BORDER="0" CELLSPACING="4" CELLPADDING="0">
+<TR>
+  <TD valign=top height=60>
+    <FONT COLOR="#555555">
+
+<!-- =============================== 글내용 =============================== -->
+<PRE>
+지적 감사합니다.
+
+수정 작업이전까지는 다음과 같은 방식으로 봐 주세요.
+
+도움말이 나왔다. 그치만 가려서 보이지 않는다.
+
+그럴 경우에는 마우스는 가만히 두시고 
+
+방향키를 이용하세요. 
+
+그럼 볼 수 있습니다.
+
+
+박성준 wrote..
+: 마우스를 업 했을때 도움말이 뜨는 것중 
+: 
+: 아래부분에 있는 것들은 브라우저에 가려서 안보입니다.
+: 
+: 수정 해 주세요..
+</PRE>
+<!-- =============================== 글내용 =============================== -->
+
+    </FONT>
+  </TD>
+</TR>
+</TABLE>
+
+<p>[ 관련글 ]<HR width=40% size=1 noshade align=left>
+<TABLE WIDTH="100%" border="0" CELLSPACING="1" CELLPADDING="3">
+
+<TR>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><FONT COLOR="#555555" style="line-height=120%">4</FONT></TD>
+  <TD BGCOLOR="#ffffff">
+<A HREF="Wc7990c75cb587.htm"><FONT COLOR="#555555" style="line-height=120%">도움말 수정 했으면 합니다.</FONT></A>
+</TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><A HREF=javascript:new_windows('Wcebcc47ea453c.htm','form',0,0,600,420)><FONT COLOR="#555555">박성준</FONT></A>&nbsp;</TD>  <TD BGCOLOR="#ffffff" align=right><FONT SIZE="-1" COLOR="#555555" style="line-height=120%"><NOBR>2000.09.04</NOBR></FONT></TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff" COLSPAN="2"><FONT COLOR="#555555" style="line-height=120%"><FONT COLOR="#ffffff" style="line-height=120%">...</FONT>88</FONT></TD>
+</TR>
+
+<TR>
+  <TD ALIGN="right" BGCOLOR="#ebeaff"><FONT COLOR="#555555" style="line-height=120%">&nbsp;</FONT></TD>
+  <TD BGCOLOR="#ebeaff">
+<A HREF="Wcb951b05b8511.htm"><FONT COLOR="#555555" style="line-height=120%"><IMG SRC="images/n.gif" BORDER="0" ALT="" WIDTH="10" HEIGHT="1"><IMG SRC="images/rep.gif" WIDTH="12" BORDER="0" HEIGHT="12" ALT="답장"> <b><u>Re: 도움말 수정 했으면 합니다.</u></b></FONT></A>
+</TD>
+  <TD ALIGN="right" BGCOLOR="#ebeaff"><FONT COLOR="#555555" style="line-height=120%">PL Lab</FONT>&nbsp;</TD>  <TD BGCOLOR="#ebeaff" align=right><FONT SIZE="-1" COLOR="#555555" style="line-height=120%"><NOBR>2000.09.04</NOBR></FONT></TD>
+  <TD ALIGN="right" BGCOLOR="#ebeaff" COLSPAN="2"><FONT COLOR="#555555" style="line-height=120%"><FONT COLOR="#ebeaff" style="line-height=120%">..</FONT>112</FONT></TD>
+</TR>
+<TR>
+  <TD WIDTH="5%" ALIGN="center"><img src=images/blank.gif width=100% height=1></TD>
+  <TD WIDTH="54%" ALIGN="center"><img src=images/blank.gif width=100% height=1></TD>
+  <TD WIDTH="14%" ALIGN="center"><img src=images/blank.gif width=100% height=1></TD>
+
+  <TD WIDTH="13%" ALIGN="center"><img src=images/blank.gif width=100% height=1></TD>
+  <TD COLSPAN="2" WIDTH="5%" ALIGN="center"><img src=images/blank.gif width=100% height=1></TD>
+</TR>
+</TABLE>
+  </TD>
+</TR>
+</TABLE>
+
+</TD>
+</TR>
+<TR><TD BGCOLOR="#7e7e9a">
+
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="6" ALIGN="center">
+<TR>
+  <TD VALIGN="top" ROWSPAN="2">
+
+<!-- =============================== 검색폼 =============================== -->
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="1">
+<FORM METHOD="post" ACTION="list.php?table=algorithm">
+<TR>
+  <TD>
+    <FONT SIZE="-1" COLOR="#ffffff">
+    <INPUT TYPE="hidden" NAME="o[at]" VALUE="s">
+    <SELECT NAME="o[sc]">
+      <OPTION VALUE="t">제목
+      <OPTION VALUE="c">내용
+      <OPTION VALUE="n">글쓴이
+      <OPTION VALUE="a">전체
+    </SELECT>
+    <INPUT TYPE="text" NAME="o[ss]" SIZE="9" MAXLENGTH="255" VALUE="">
+    <INPUT TYPE="submit" VALUE="검색">
+    </FONT>
+  </TD>
+</TR><TR>
+  <TD>
+    <FONT SIZE="-1" COLOR="#ffffff">
+    <SELECT NAME="o[st]">
+      <OPTION VALUE="m">최근 한달
+      <OPTION VALUE="w">최근 한주
+      <OPTION VALUE="a">전체
+    </SELECT>
+    <INPUT TYPE="checkbox" NAME="o[er]" VALUE="y"> 정규표현식
+    </FONT>
+  </TD>
+</TR></FORM>
+</TABLE>
+<!-- =============================== 검색폼 =============================== -->
+
+  </TD><TD ALIGN="right">
+    <FONT SIZE="-1" COLOR="#ffffff" style="line-height=120%">[ 0.02 sec ]</FONT>
+  </TD>
+</TR><TR>
+  <TD ALIGN="right" VALIGN="bottom">
+
+<!-- ============================== 페이지폼 ============================== -->
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="1">
+<FORM METHOD="post" ACTION="locate.php?table=algorithm">
+<TR>
+  <TD ALIGN="right">
+    <FONT SIZE="-1" COLOR="#ffffff">
+    <SELECT NAME="o[go]">
+      <OPTION VALUE="p" SELECTED>페이지
+      <OPTION VALUE="n">글번호
+    </SELECT>
+    <INPUT TYPE="text" NAME="o[no]" SIZE="2" MAXLENGTH="6" VALUE="">
+    <INPUT TYPE="submit" VALUE="이동">
+  </TD>
+</TR></FORM>
+</TABLE>
+<!-- ============================== 페이지폼 ============================== -->
+
+  </TD>
+</TR>
+</TABLE>
+</TD></TR>
+</TABLE>
+<TABLE WIDTH="600" BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD>
+
+<TABLE WIDTH="1%" BORDER="0" CELLSPACING="4" CELLPADDING="0" ALIGN="center">
+<TR>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wcf8f34e71361b.htm"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>목록보기</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc7990c75cb587.htm" onMouseOut="window.status=''; return true;" onMouseOver="window.status='No.4: 도움말 수정 했으면 합니다.'; return true;"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>윗글</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wcbbd159382024.htm" onMouseOut="window.status=''; return true;" onMouseOver="window.status='No.3: 온라인 강의실 사용법'; return true;"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>아랫글</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc38b0b81964f2.htm"><FONT COLOR="#999999" style="line-height=120%"><NOBR>글쓰기</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc2891070b487.htm"><FONT COLOR="#999999" style="line-height=120%"><NOBR>답장쓰기</NOBR></FONT></A></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wc22805d012744.htm"><FONT COLOR="#999999" style="line-height=120%"><NOBR>수정</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wcd2176fb5426b.htm"><FONT COLOR="#999999" style="line-height=120%"><NOBR>삭제</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"></TD>
+  
+</TR>
+</TABLE></TD></TR>
+</TABLE>
+</DIV><!-- ========================= Tail ========================= -->
+<p><center>
+<!--Copyleft 1999-2000 by <a href=http://jsboard.kldp.org target=_blank JSBoard Open Project</a--> 
+<!-- ========================= Tail ========================= -->

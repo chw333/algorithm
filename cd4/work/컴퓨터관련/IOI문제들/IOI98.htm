@@ -1,0 +1,333 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0042)http://user.chollian.net/~pjykym/ioi10.htm -->
+<HTML><HEAD><TITLE>제10회</TITLE>
+<META content="MSHTML 5.50.4134.100" name=GENERATOR>
+<META http-equiv=Content-Type 
+content="text/html; charset=ks_c_5601-1987"></HEAD>
+<BODY text=black vLink=purple aLink=red link=blue bgColor=white>
+<P align=center><B><FONT size=6>제 10회</FONT></B></P>
+<P>제 10회는 1998년 9월 5일부터 12일까지 포루투갈 세튜발에서 열렸다. 이 대회부터 퀵베이직은 대회 공식 언어에서 빠졌다.</P>
+<P>문제가 작년보다 쉬워졌다. 그러나 문제의 형식이 무척 깔끔하고 마음에 들고, 내용이 실용적인 면이 많아 나는 개인적으로 이 대회 문제들을 
+무척 좋아한다. 문제가 전체적으로 이해도가 높아 번역하기도 쉬웠다. 점수는 700점이 만점인 수치로 계산됐으며, 만점자가 4명 나왔다고 
+한다.&nbsp;(2, 5번만 150점, 나머지는 100점) 대회 당시 적용됐던 실행 제한 시간은 5번만 30초이고 나머지는 모두 데이터당 
+20초였다.</P>
+<P><A href="http://user.chollian.net/~pjykym/ioi10.htm#1">1. 미지의 별과 교신</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi10.htm#2">2. 별이 총총한 밤</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi10.htm#3">3. 잔치용 전등</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi10.htm#4">4. 벽에 붙은 그림</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi10.htm#5">5. 카멜롯 게임</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi10.htm#6">6. 폴리곤 게임</A></P>
+<HR>
+
+<H2><A name=1></A><FONT size=5><B>1. 미지의 별과 교신</B></FONT></H2>
+<P>아스트로 인스키 박사는 전파 망원경 센터에서 근무한다. 최근 인스키는 은하수 중앙에서 곧바로 빛줄기를 뿜으며 흘러가는 아주 묘하게 생긴 
+극초단파를 주목하고 있다. 그 빛줄기는 외계의 다른 고등 생물이 보낸 신호인가, 아니면 그저 보통 별에서 뿜어져나오는 빛일 뿐일까?</P>
+<P><B><FONT size=4>문제</FONT></B></P>
+<P>당신은 인스키 박사가 기록한 비트열 데이터 파일을 분석하는 도구를 만들어, 박사가 진위 여부를 밝혀내는 것을 도와야 한다. 인스키는 관측 
+기계에서 매일 나오는 데이터 파일 가운데, 길이가 A와 B 사이이면서 자주 반복되어 나오는 비트열을 여러 개 찾아내고 싶어한다. 서로 다른 
+빈도수의 개수를 N이라고 한다. 비트열은 겹쳐도 상관없으며, (00000라는 비트열 안에는 000이 세 개 있다.) 적어도 한 번만 나타나면 
+그것은 빈도수의 개수로 쳐준다.</P>
+<P><B><FONT size=4>입력 자료</FONT></B></P>
+<P>CONTACT.IN에는 다음과 같은 형식의 정보가 들어 있다.</P>
+<UL>
+  <LI>첫째줄 - 정수 A의 값으로, 가장 짧은 패턴의 길이이다. 
+  <LI>둘째줄 - 정수 B의 값으로, 가장 긴 패턴의 길이이다. 
+  <LI>셋째줄 - 정수 N의 값으로, 서로 다른 빈도수의 개수 (아래 설명을 보면 이해가 될 것이다) 
+  <LI>넷째줄 - 0과 1로만 이루어졌고, 2로 끝나는 수열 </LI></UL>
+<P>예를 들면,</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>2</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>4</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>10</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>010100100100010001111011000010100110011110000100100111100100000002</FONT></P>
+<P>이는 01010010010001000111101100001010011001111000010010011110010000000이라는 패턴 
+중에서 길이가 2에서 4 사이인 가장 자주 나오는 비트열을 뽑아서 출력하되, 빈도수의 순위를 가장 긴 것부터 10개까지만 고르라는 뜻이다. 예를 
+들면, 1000은 다섯 번 나오고, 100은 12번 나왔다. 가장 빈도수가 높은 것은 00으로, 23번 나온다.</P>
+<P><B><FONT size=4>출력 자료</FONT></B></P>
+<P>답안 파일인 CONTACT.OUT은 최대 N줄이며, 가장 자주 나오는 빈도의 순서대로 빈도수를 기록하고 다음에 반복되어 나오는 패턴들을 
+모두 기록한다. 패턴과 패턴, 그리고 숫자 사이는 공백으로 구분한다. 앞의 입력 자료가 들어가면 그에 대응하는 출력 자료는 다음과 같아야 
+한다.</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>23 00</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>15 10 01</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>12 100</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>11 001 000 11 &nbsp;</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>10 010</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>8 
+0100</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>7 
+1001 0010</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>6 
+0000 111</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>5 
+1000 110 011</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>4 
+1100 0011 0001 &nbsp;</FONT></P>
+<P>00이 가장 자주 나왔고(23번), 10과 01은 15번, 100은 12번 나왔다. 그렇게 서로 다른 빈도수 순위를 10개까지 뽑아서 위와 
+같은 결과를 만드는 것이다.</P>
+<P><B><FONT size=4>제한</FONT></B></P>
+<P>입력 파일은 크기가 2MB까지 될 수 있다. 매개변수 A, B, N의 범위는 다음과 같다.</P>
+<P>0&lt;N&lt;=20, &nbsp;0&lt;A&lt;=B&lt;=12</P>
+<HR>
+
+<P><A name=2></A><B><FONT size=5>2. 별이 총총한 밤</FONT></B></P>
+<P><IMG height=210 src="IOI98.files/ioi10-2-1.gif" width=365 align=right 
+border=0>밤하늘을 바라보면 반짝이는 별들이 여러 모양의 성단으로 나타나 있는 것을 볼 수 있다. 성단이란, 가로, 세로, 대각선으로 서로 
+이어져 비어있지 않는 별들의 집단이다. 성단은 다른 더 큰 성단의 일부가 될 수 없다.</P>
+<P>한편, 닮은 성단이 존재할 수 있다. 90도 회전, 좌우 상하 바꾸기를 통해서 서로 합동이 되게 할 수 있는 성단은 서로 닮았다고 한다. 
+일반적으로 존재할 수 있는 닮은 성단의 개수는 오른쪽 그림과 같이 8개이다.</P>
+<P>밤하늘은 빈 곳은 0, 별이 있는 위치는 1의 정보를 갖는 이차원 행렬로 표현된다.</P>
+<P><B><FONT size=4>문제</FONT></B></P>
+<P>밤하늘 모습을 살펴보고, 개개의 성단을 소문자 알파벳으로 구분하여 도시하라. 단 닮은 성단끼리는 같은 글자로, 닮지 않은 성단끼리는 다른 
+글자로 도시하여야 한다. 성단을 나타내는 1을 그 알파벳으로 치환하여 출력하면 된다.</P>
+<P><B><FONT size=4>입력 자료</FONT></B></P>
+<P>파일 STARRY.IN의 처음 두 줄에는 밤하늘 지도의 가로(W), 세로(H) 크기가 들어가며, 다음부터는 H줄에 W글자만큼의 자료가 들어 
+있다. 예를 들면,</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체><IMG height=233 src="IOI98.files/ioi10-2-2.gif" width=334 align=right 
+border=0>23</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>15</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>10001000000000010000000</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>01111100011111000101101</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>01000000010001000111111</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>00000000010101000101111</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>00000111010001000000000</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>00001001011111000000000</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>10000001000000000000000</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>00101000000111110010000</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>00001000000100010011111</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>00000001110101010100010</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>00000100110100010000000</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>00010001110111110000000</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>00100001110000000100000</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>00001000100001000100101</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>00000001110001000111000</FONT></P>
+<P>이 경우라면, 밤하늘 지도의 크기가 가로 23, 세로 15가 된다. 이해를 쉽게 하기 위해 이 지도를 그림으로 표현해 보았다.</P>
+<P><B><FONT size=4>출력 자료</FONT></B></P>
+<P>STARRY.OUT에는 지도만 STARRY.IN과 같이 출력하면 된다. 단, 문자 '1'을 문제 조건 에 맞는 알파벳으로 치환해야 한다. 
+위의 입력 자료를 읽었다면, 올바른 출력 파일 중 하나는 아래와 같다. 꼭 위에 있는 성단부터 ABC 순으로 치환할 필요는 없다. 닮은 성단과 
+닮지 않은 성단만 잘 판단하면 된다.</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체><IMG height=236 src="IOI98.files/ioi10-2-3.gif" width=332 align=right 
+border=0>a000a0000000000b0000000</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>0aaaaa000ccccc000d0dd0d</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>0a0000000c000c000dddddd</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>000000000c0b0c000d0dddd</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>00000eee0c000c000000000</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>0000e00e0ccccc000000000</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>b000000e000000000000000</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>00b0f000000ccccc00a0000</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>0000f000000c000c00aaaaa</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>0000000ddd0c0b0c0a000a0</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>00000b00dd0c000c0000000</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>000g000ddd0ccccc0000000</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>00g0000ddd0000000e00000</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>0000b000d0000f000e00e0b</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>0000000ddd000f000eee000</FONT></P>
+<P><B><FONT size=4>제한</FONT></B></P>
+<UL>
+  <LI>0 &lt;=&nbsp;W (밤하늘 지도의 가로크기) &lt;=&nbsp;100 
+  <LI>0 &lt;=&nbsp;H (밤하늘 지도의 세로크기) &lt;=&nbsp;100 
+  <LI>0 &lt;=&nbsp;성단의 개수 &lt;=&nbsp;500 
+  <LI>0 &lt;=&nbsp;닮지 않은 성단의 개수 &lt;=&nbsp;26 (a..z) 
+  <LI>1 &lt;=&nbsp;&nbsp;한 성단이 포함할 수 있는 별 개수의 한계 &lt;=&nbsp;160 </LI></UL>
+<HR>
+
+<P><A name=3></A><B><FONT size=5>3. 잔치용 전등</FONT></B></P>
+<P>IOI '98의 저녁 잔치 때 주위를 밝히기 위해 우리는 N개의 전등을 두고 있다. 전등들은 1부터 N까지 번호가 매겨져 있고, 전등에는 
+네 개의 버튼이 연결돼 있다.</P>
+<UL>
+  <LI>버튼 1: 모든 전등의 상태를 바꾼다. 켜져 있던 전등은 켜지고 꺼져 있던 전등은 켜진다. 
+  <LI>버튼 2: 번호가 홀수인 전등만 상태를 바꾼다. 
+  <LI>버튼 3: 번호가 짝수인 전등만 상태를 바꾼다. 
+  <LI>버튼 4: 번호가 3K+1 수열(K는 0 이상의 정수)에 속하는 전등의 상태를 바꾼다. (1, 4, 7, ...) </LI></UL>
+<P>한편, 잔치가 시작된 후 이제까지 버튼을 누른 횟수를 기록하는 C라는 변수가 있다. 잔치를 시작하면 기본적으로 모든 전등은 켜지고, C는 
+0이 된다.</P>
+<P><B><FONT size=4>문제</FONT></B></P>
+<P>다음 정보를 읽어들인 뒤, 이 상황에서 전등 전체의 상태가 어떠할지 가능한 경우를 모두 계산하여, 중복 없이 출력하는 프로그램을 
+작성하라.</P>
+<UL>
+  <LI>총 전등의 개수 
+  <LI>이제까지 버튼이 눌러진 횟수 
+  <LI>잔치가 끝난 후(버튼을 다 누른 후) 켜져 있는 것이 확실한 전등들의 번호 
+  <LI>꺼져 있는 것이 확실한 전등들의 번호 </LI></UL>
+<P><B><FONT size=4>입력 자료</FONT></B></P>
+<P>PARTY.IN 파일은 네 줄이다. 첫 줄에는 사용 가능한 전등의 개수 N이고, 다음 C는 이제까지 버튼을 누른 횟수가 있다. 셋째 줄에는 
+지금 상황에서 켜져 있는 게 확실한 전등의 번호(1..N)가 여러 개 있다. -1이 끝을 나타낸다. 그리고 마지막 줄에는 꺼져 있는 게 확실한 
+전등의 번호가 여러 개 있으며, 역시 -1이 끝을 의미한다. 여러 숫자는 한 칸의 공백으로 구분한다. 예를 들어 아래와 같은 자료는 10개의 
+전등이 있으며, 어떤 버튼을 한 번 눌렀고 버튼을 모두(여기서는 한 번) 누른 뒤 7번 전등이 꺼져 있었다는 뜻이다.</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>10</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>-1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>7 
+-1</FONT></P>
+<P><B><FONT size=4>출력 자료</FONT></B></P>
+<P>PARTY.OUT파일에는 이렇게 될 수 있는 전등의 마지막 상황이 중복 없이 모두 기록되어야 한다. 상황들은 모두 다른 줄에 기록되어야 
+하며, 순서 없이 답만 모두 출력하면 된다.</P>
+<P>각 줄에는 N개의 문자가 있으며, 1번 전등부터 차례대로 상태를 출력한다. 1은 켜진 것이고, 0은 꺼진 것을 의미한다. 위의 입력 파일에 
+대한 출력 결과는 아래와 같다.</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>0000000000</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>0101010101</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>0110110110</FONT></P>
+<P>10개의 전등에서 버튼을 한 번만 눌러 7번 전등이 꺼졌다면 세 가지 경우를 생각할 수 있다. 1번 버튼을 눌러 모든 전등을 껐거나(처음엔 
+모든 전등이 켜져 있었으므로), 2번 버튼을 눌러 홀수만 모두 껐거나, 4번 버튼을 눌러 1, 4, 7번 전등을 끈 것이다.</P>
+<P><FONT size=4><B>제한</B></FONT></P>
+<P>10&lt;=N&lt;=100이고, 1&lt;=C&lt;=10000이다.</P>
+<P>파티가 끝난 후 켜져 있다고 확인된 전등의 개수는 2개 이하이다. 꺼져 있다고 확인된 전등의 개수도 마찬가지이다. 또한 답은 어떤 경우에도 
+적어도 하나 이상 존재한다고 가정한다.</P>
+<HR>
+
+<H2><A name=4></A><B><FONT size=5>4. 벽에 붙은 그림</FONT></B></H2>
+<P>직사각형 모양의 포스터, 사진, 그리고 여러 그림들이 한 벽에 붙어 있다. 방향은 모두 가로 아니면 세로이다. 각각의 직사각형들은 다른 
+직사각형의 일부나 전부를 덮어 가릴 수 있다. 모든 직사각형들을 합했을 때의 실제 둘레를 최종 경계선이라고 부르겠다. 이때 최종 경계선 길이를 
+계산하는 프로그램을 작성하라.</P>
+<P><B><FONT size=4>문제</FONT></B></P>
+<P>최종 경계선 길이를 계산하는 프로그램을 작성하라. 예제로 7개의 임의의 직사각형을 아래 왼쪽 그림에 도시하였다.</P>
+<P><IMG height=161 src="IOI98.files/ioi10-4-1.gif" width=533 border=0></P>
+<P>이 직사각형의 최종 경계선은 위쪽 오른쪽에 그려진 다각형의 둘레와 같다. 모든 직사각형의 좌표는 정수형이다.</P>
+<P><B><FONT size=4>입력 자료</FONT></B></P>
+<P>PICTURE.IN 파일의 첫 줄에는 벽에 붙어 있는 직사각형 그림의 개수가 적혀 있다. 그리고 다음 줄부터는 사각형의 좌표가 들어 있다. 
+(x1 y1 x2 y2식으로) 값들은 모두 왼쪽, 위쪽에 있는 점 좌표가 먼저 나온다.</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>7</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>-15 0 5 10</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>-5 8 20 25</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>15 -4 24 14</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>0 
+-6 16 4</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>2 
+15 10 22</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>30 10 36 20</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>34 0 40 16</FONT></P>
+<P>이 좌표는 앞에서 제시한 예제 사각형들의 좌표와 일치한다.</P>
+<H3><FONT size=4><B>출력 자료</B></FONT></H3>
+<P>PICTURE.OUT파일에는 입력 자료를 읽어 계산한 경계선의 길이가 자연수로 적혀야 한다. 아래 출력은 앞 예제 PICTURE.IN을 
+읽었을 때의 정답이다.</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>228</FONT></P>
+<H3><B><FONT size=4>제한</FONT></B></H3>
+<P>직사각형의 개수는 0개 이상 5000개 이하이다. 좌표의 범위는 -10000에서 10000이나, 넓이는 모두 양수가 나온다. 결과의 값은 
+32767을 넘을 수도 있으므로 긴정수형으로 처리해야 할 것이다.</P>
+<HR>
+
+<H2><A name=5></A>5. 카멜롯 게임</H2>
+<P>수 세기 전, 아더왕과 원탁의 기사들은 새해 첫날엔 친목을 도모하기 위해 서로 만나곤 했다. 우리는 그 당시, 그들이 친목을 도모하기 위해 
+왕과 기사의 말이 서로 다른 칸에 아무렇게나 놓이는 한 1인용 보드 게임을 한 적이 있다고 생각한다.</P>
+<P>보드는 8×8크기의 정사각형 배열이다.</P>
+<P><IMG height=186 src="" width=180 border=0></P>
+<P>왕은 한 번에 가로 세로 대각선으로 한 칸씩, 아래 그림에서 ●가 ○로 가는 방향으로 움직일 수 있다.</P>
+<P><IMG height=77 src="IOI98.files/ioi10-5-2.gif" width=86 border=0></P>
+<P>기사는 아래 그림에서 보다시피 한 번에 움직이는 범위가 체스의 기사와 같다.</P>
+<P><IMG height=123 src="IOI98.files/ioi10-5-3.gif" width=126 border=0></P>
+<P>물론 보드 영역 안에서만 이동이 가능하다. 한편, 게이머는 한 칸에 여러 말을 같이 놓을 수 있다. 보드의 한 칸은 충분히 크기 때문에 한 
+칸에 아무리 많은 말을 동시에 놓아도 문제가 없다고 가정한다.</P>
+<P>이 게임의 목표는 가능한 한 적게 말을 움직여 모든 말을 한 자리에다가 두는 것이다. 물론 위의 규칙대로 말을 움직이면서 말이다. 또한, 
+왕과 하나 이상의 기사가 한 자리에 같이 있게 되면 플레이어는 왕만 한 칸씩 움직이거나, 기사 중 움직일 것 하나를 골라 왕과 함께 기사가 
+움직이는 범위로 같이 움직일 수 있다. 기사와 왕을 한꺼번에 움직이는 것은 말을 한 번만 움직인 것으로 친다.</P>
+<H3>문제</H3>
+<P>말들의 처음 상태를 읽어들여, 모든 말을 한 위치로 모으는 데 최소 몇 번 말을 움직여야 하는지를 계산하는 프로그램을 작성하라.</P>
+<H3>입력 자료</H3>
+<P>CAMELOT.IN에는 처음에 보드에 놓여 있는 말들의 위치가 기호화되어 들어 있다. 처음 알파벳은 가로 위치, 숫자는 세로 위치이다. 
+이것이 한 말의 좌표이다. 맨 처음 나온 위치는 왕의 좌표이며, 다음에 나오는 위치는 기사 말의 좌표이다. 좌표는 최대 64개까지 있을 수 
+있으며, 처음에는 모든 말의 위치가 서로 다르다. 예를 들어,</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>D4A3A8H1H8</FONT></P>
+<P>이라고 하면 왕의 말은 D4의 위치에 있다. 기사 말은 네 개이며, 각각 A3, A8, H1, H8위치에 있는 것이다.</P>
+<H3>출력 자료</H3>
+<P>답안 파일 CAMELOT.OUT은 반드시 한 줄에 최소한의 움직임 횟수를 정수로 담고 있어야 한다. 위의 입력 자료에 대한 출력 자료는 
+다음과 같이 된다.</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>10</FONT></P>
+<H3>제한</H3>
+<P>0&lt;=기사의 수&lt;=63 </P>
+<HR>
+
+<H2><A name=6></A>6. 폴리곤 게임</H2>
+<P>폴리곤 게임은 다각형의 꼭지점과 선분을 이용하여 하는 1인용 게임이다. 플레이어는 한 다각형의 N개의 꼭지점에서 시작한다. 아래 그림은 
+N=4일 때의 예이다. 각각의 꼭지점은 임의의 정수를 갖고 있으며, 선분은 각각 +(덧셈)과 *(곱셈)이라는 정보를 가지고 있다. 모서리는 
+1부터 N까지 번호가 새겨져 있다.</P>
+<P><IMG height=98 src="IOI98.files/ioi10-6-5.gif" width=97 border=0></P>
+<P>게임을 시작하려면 가장 먼저 꼭지점을 연결하는 선분 중 아무 거나 하나를 없애야 한다. 그 다음부터 게임은 아래와 같이 진행된다.</P>
+<P>한 선분 E와 그것이 연결하고 있는 두 꼭지점 V_1과 V_2를 선택한다. 다음, 이것들을 하나의 꼭지점으로 대체한다. 거기에 들어가는 
+숫자는 V_1과 V_2꼭지점이 가진 수를 선분에 들어있던 연산자로 연산을 수행한 결과이다.</P>
+<P>게임은 선분이 하나도 남지 않으면 끝난다. 그리고 점수는 마지막 남은 꼭지점에 든 수이다.</P>
+<P>그럼 예제로 이 게임을 하나 해 보자. 위의 다각형을 예로 들어보겠다. 3번 선분을 지우는 것으로 게임을 시작하자. 그러면 다각형은 아래 
+그림처럼 된다.</P>
+<P><IMG height=96 src="IOI98.files/ioi10-6-1.gif" width=92 border=0></P>
+<P>그리고 선분 1을 잡는다.</P>
+<P><IMG height=83 src="IOI98.files/ioi10-6-2.gif" width=84 border=0></P>
+<P>다음은 선분 4,</P>
+<P><IMG height=57 src="IOI98.files/ioi10-6-3.gif" width=82 border=0></P>
+<P>마지막으로 선분 2를 선택하여 게임이 끝났다. 점수는 0점이다.</P>
+<P><IMG height=38 src="IOI98.files/ioi10-6-4.gif" width=43 border=0></P>
+<H3>문제</H3>
+<P>폴리곤의 정보를 입력받아 이걸로 게임을 했을 때 낼 수 있는 가장 높은 점수를 계산하며, 그 점수를 내기 위해서 처음에 제거해야 하는 
+선분의 번호로 알맞은 것을 모두 출력하는 프로그램을 작성하라.</P>
+<H3>입력 자료</H3>
+<P>POLYGON.IN 파일은 두 줄이다. 첫 줄은 꼭지점 N의 개수이며, 다음 줄부터는 선분의 연산자 정보와 선분 사이에 연결된 꼭지점이 
+가진 숫자가 번갈아 가며 나온다. 선분은 번호가 낮은 순이다. t는 더하기를, x는 곱하기를 의미한다. 앞의 폴리곤을 의미하는 입력 자료는 
+아래와 같다. 선분 1부터 시작하여 t, t, x, x사이에 그 사이에 연결된 꼭지점이 갖고 있는 수가 나옴을 알 수 있다.</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>4</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>t 
+-7 t 4 x 2 x 5</FONT></P>
+<H3>출력 자료</H3>
+<P>POLYGON.OUT의 첫 줄에는 반드시 이 폴리곤에서 낼 수 있는 최고 점수가 들어가야 한다.</P>
+<P>두 번째 줄에는 최고 점수를 얻기 위해 첫 번째 수에서 제거해야 하는 선분을 오름차순으로 공백 한 칸을 구분하여 기록해야 한다. 앞에서 
+예를 든 폴리곤의 경우 출력 자료는 아래와 같아야 한다.</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>33</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+2</FONT></P>
+<H3>제한</H3>
+<P>3&lt;=N&lt;=50</P>
+<P>어떤 연산을 수행하더라도 꼭지점에 있는 수는 -32768에서 32767 사이에 있다.</P>
+<P>&nbsp;</P></BODY></HTML>

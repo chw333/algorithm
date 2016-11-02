@@ -1,0 +1,131 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=EUC-KR">
+<TITLE>Jsboard 1.2.2 - 알고리즘 게시판  [ 게시물 수정 ]</TITLE>
+<STYLE TYPE="text/css">
+<!--
+A:link, A:visited, A:active { TEXT-DECORATION: none; }
+A:hover { TEXT-DECORATION: underline; }
+TD { FONT: 9pt 굴림체; }
+INPUT {font: 9pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:2x solid #b5b5c5}
+SELECT {font: 9pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:1x solid #b5b5c5}
+TEXTAREA {font: 10pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:2x solid #b5b5c5}
+ #radio {font: 9pt 굴림체; BACKGROUND-COLOR:#ffffff; COLOR:#656565; BORDER:2x solid #ffffff}
+ #title {font:20pt 굴림체; color:#ffe4c4}
+ #eng {font:11px tahoma,Verdana,arial; line-height:120%}
+-->
+</STYLE>
+
+<script LANGUAGE=JavaScript>
+<!-- Begin
+  var child = null;
+  var count = 0;
+  function new_windows(addr,tag,scroll,resize,wid,hei) {
+    var childname = 'JSBoard' + count++;
+    // child window가 떠 있을 경우 child window를 닫는다.
+    if(child != null) {
+      if(!child.closed) { child.close(); }
+    }
+    child = window.open(addr,tag,'left=0, top=0, toolbar=0,scrollbars=' + scroll + ',status=0,menubar=0,resizable=' + resize + ',width=' + wid + ',height=' + hei +'');
+    // child window가 로드 될때 가장 앞으로 올린다.
+    child.focus();
+    return;
+  }
+//-->
+</script>
+</HEAD>
+
+<BODY BACKGROUND="" BGCOLOR="#ffffff" TEXT="#656565" LINK="#80320d" VLINK="#80320d" ALINK="#80320d">
+<!-- ========================= A foreword  ========================= -->
+<center>
+<img src=../algorithm/images/cyber_alg2.jpg BORDER="0" USEMAP="#ImageMap1">
+<p>
+<!-- ========================= A foreword  ========================= -->
+
+<DIV ALIGN="center">
+<TABLE WIDTH="600" BORDER="0" CELLPADDING="0" CELLSPACING="0" BGCOLOR="#7e7e9a"><TR><TD>
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="1" CELLPADDING="3">
+<FORM METHOD="post" ACTION="act.php">
+<TR>
+  <TD BGCOLOR="#b5b5c5" width=13%><FONT COLOR="#555555" style="line-height=120%">이름</FONT></TD>
+  <TD BGCOLOR="#dcdcdc"><INPUT TYPE="text" NAME="atc[name]" SIZE="14" MAXLENGTH="50" VALUE="PL Lab"></TD>
+  <TD BGCOLOR="#dcdcdc" width=35%><FONT SIZE="-1" COLOR="#000000" style="line-height=120%">이름을 기입</FONT></TD></TR><TR>
+<TD BGCOLOR="#b5b5c5"><FONT COLOR="#555555" style="line-height=120%">이메일</FONT></TD>
+<TD BGCOLOR="#dcdcdc"><INPUT TYPE="text" NAME="atc[email]" SIZE="14" MAXLENGTH="255" VALUE="pl@pl.changwon.ac.kr"></TD>
+<TD BGCOLOR="#dcdcdc"><FONT SIZE="-1" COLOR="#000000" style="line-height=120%">이메일 주소를 기입</FONT></TD>
+
+</TR><TR>
+  <TD BGCOLOR="#b5b5c5"><FONT COLOR="#555555" style="line-height=120%">HTML</FONT></TD>
+  <TD BGCOLOR="#dcdcdc">
+    <FONT COLOR="#000000" style="line-height=120%">
+    <INPUT TYPE="radio" NAME="atc[html]" VALUE="1" CHECKED>사용함
+    <INPUT TYPE="radio" NAME="atc[html]" VALUE="0">사용안함
+    </FONT>
+  </TD>
+  <TD BGCOLOR="#dcdcdc"><FONT SIZE="-1" COLOR="#000000" style="line-height=120%">HTML 코드 사용여부</FONT></TD>
+</TR><TR>
+  <TD BGCOLOR="#b5b5c5"><FONT COLOR="#555555" style="line-height=120%">제목</FONT></TD>
+  <TD COLSPAN="2" BGCOLOR="#dcdcdc"><INPUT TYPE="text" NAME="atc[title]" SIZE="25" MAXLENGTH="100" VALUE="백트랙킹I OPEN"></TD>
+</TR><TR>
+  <TD COLSPAN="3" ALIGN="center" BGCOLOR="#dcdcdc">
+<!-- ---------- 글 내용 ---------- -->
+    <TEXTAREA NAME="atc[text]" WRAP=off ROWS="10" COLS="34"><ul>
+<li>백트랙킹I 은 11월 2일 09:00 에 OPEN 하며 11월 3일에는 정상수업 
+합니다.<br>
+
+<li>네트웍 및 서버의 부하를 측정하기 위하여 11월 2일 09:00 부터 24시
+간 동안 <font color=red><b>모든 접속 상황은 기록</b></font>됩니다.
+</ul>
+
+</TEXTAREA>
+<!-- ---------- 글 내용 ---------- -->
+  </TD>
+</TR><TR>
+  <TD COLSPAN="3" ALIGN="right" BGCOLOR="#b5b5c5">
+    <FONT COLOR="#555555" SIZE="-1" style="line-height=120%">
+    <FONT COLOR="" SIZE="-1" style="line-height=120%"> 띄워쓰기 없이 쓰거나 HTML 미사용 시 한줄을 너무 길게 쓰지 마십시오.  </FONT>
+    </FONT>
+  </TD>
+</TR>
+</TABLE>
+
+</TD></TR>
+<TR><TD>
+
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="6" CELLSPACING="0">
+<TR>
+  <TD ALIGN="center">
+    <FONT SIZE="-1" COLOR="#ffffff" style="line-height=120%">
+    <INPUT TYPE="hidden" NAME="o[at]" value="e">
+    <INPUT TYPE="hidden" NAME="table" VALUE="algorithm">
+    <INPUT TYPE="hidden" NAME="atc[no]" VALUE="14">
+    [관리자] 패스워드: <INPUT TYPE="password" NAME="passwd" SIZE="4" MAXLENGTH="8">&nbsp;
+    <INPUT TYPE="submit" VALUE="고치기">&nbsp;
+    <INPUT TYPE="reset" VALUE="다시">&nbsp;
+    <INPUT TYPE="button" onClick="history.back();" VALUE="취소">
+    </FONT>
+  </TD>
+</TR>
+</TABLE>
+
+</TD></TR></FORM></TABLE>
+
+
+<TABLE WIDTH="600" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+<TR><TD>
+<TABLE ALIGN="center" WIDTH="1%" BORDER="0" CELLSPACING="4" CELLPADDING="0">
+<TR>
+
+  <TD WIDTH="1%" BGCOLOR="#800000"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wcc84cf51a50d1.htm"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>목록보기</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#800000"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="javascript:history.back()"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>이전페이지</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#800000"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+</TR>
+</TABLE>
+</TD></TR>
+</TABLE>
+</DIV><!-- ========================= Tail ========================= -->
+<p><center>
+<!--Copyleft 1999-2000 by <a href=http://jsboard.kldp.org target=_blank JSBoard Open Project</a--> 
+<!-- ========================= Tail ========================= -->

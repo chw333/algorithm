@@ -1,0 +1,424 @@
+#include <fstream.h>
+#include <math.h>
+#include <iomanip.h>
+#include <stdio.h>
+
+#define MAX   50000
+#define PI    3.141592653589793238
+#define BOUND 1000000
+
+ifstream in("lava.in");
+ofstream out("lava.out");
+
+typedef struct {
+   double x,y;
+} TPoint;
+typedef struct {
+   TPoint s,e;
+   int TSum;
+   int triangle[5];
+} TEdge;
+
+TPoint P1[MAX+1], P2[MAX+1], P3[MAX+1]; // 1--MAX
+TEdge Edge[MAX+1];
+int ESum;
+int Sum;
+TPoint pp1,pp2,pp3,pp4;
+TPoint a,b,c,temp,min;
+double k,k1,y,x;
+TPoint points[MAX+1], mpoints[MAX+1]; // 0--MAX
+int Psum, M, BX, BY;
+TPoint mpoint;
+double MDist, D;
+
+double Distance(TPoint P1, TPoint P2)
+{
+   return sqrt((P1.x-P2.x)*(P1.x-P2.x) + (P1.y-P2.y)*(P1.y-P2.y));
+}
+
+int FindEdge(TPoint s, TPoint e)
+{
+   int i;
+   TPoint temp;
+   int ret;
+   
+   if(e.y<s.y){
+      temp=s; s=e; e=temp;
+   }
+   if(s.y==e.y){
+      temp=s; s=e; e=temp;
+   }
+   ret = -1;
+   for(i=0;i<ESum;i++){
+      if((Edge[i].s.x==s.x) && (Edge[i].e.x==e.x)){
+         if((Edge[i].s.y==s.y) && (Edge[i].e.y==e.y)){
+            ret=i;
+            return ret;
+         }
+      }
+   }
+   return ret;
+}
+
+void AddEdge( TPoint s,  TPoint e, int TriIndex)
+{
+   int i,j;
+   TPoint temp;
+   
+   i=FindEdge(s,e);
+   if(i!=-1){
+      Edge[i].triangle[Edge[i].TSum]=TriIndex;
+      Edge[i].TSum=Edge[i].TSum+1;
+   } else {
+      if(e.y<s.y){
+         temp=s; s=e; e=temp;
+      }
+      if(s.y==e.y){
+         if(s.x>e.x){
+            temp=s; s=e; e=temp;
+         }
+      }
+      Edge[ESum].s.x=s.x;
+      Edge[ESum].s.y=s.y;
+      Edge[ESum].e.x=e.x;
+      Edge[ESum].e.y=e.y;
+      Edge[ESum].TSum=1;
+      Edge[ESum].triangle[0]=TriIndex;
+      ESum=ESum+1;
+   }
+}
+
+void DeleteEdge( TPoint s,  TPoint e, int TriIndex)
+{
+   int i,j;
+   
+   i=FindEdge(s,e);
+   if(i!=-1){
+      for(j=0;j<Edge[i].TSum;j++){
+         if(Edge[i].triangle[j]==TriIndex){
+            Edge[i].TSum=Edge[i].TSum-1;
+            Edge[i].triangle[j]=Edge[i].triangle[Edge[i].TSum];
+            if(Edge[i].TSum==0){
+               ESum=ESum-1;
+               Edge[i]=Edge[ESum];
+            }
+         }
+      }
+   }
+}
+
+void AddTriangle(int Index)
+{
+   AddEdge(P1[Index], P2[Index], Index);
+   AddEdge(P1[Index], P3[Index], Index);
+   AddEdge(P2[Index], P3[Index], Index);
+}
+
+void DeleteTriangle(int Index)
+{
+   DeleteEdge(P1[Index],P2[Index],Index);
+   DeleteEdge(P1[Index],P3[Index],Index);
+   DeleteEdge(P2[Index],P3[Index],Index);
+}
+
+int Cross(double x1, double y1, double x2, double y2)
+{
+   double v;
+   int ret;
+   
+   v=x1*y2-x2*y1;
+   ret=1;
+   if(fabs(v)<0.0001){
+      ret=0;
+      return ret;
+   }
+   if(v<0){
+      ret=-1;
+      return ret;
+   }
+   return ret;
+}
+
+double Theta(double x, double y)
+{
+	double Angle;
+	double ret;
+
+	if(y==0){
+		ret=0;
+	} else {
+		Angle=atan(x/y);
+		while(Angle<0){
+			Angle=Angle+PI*2;
+		}
+		while(Angle>=PI*2){
+			Angle=Angle-PI*2;
+		}
+		ret=Angle;
+	}
+	return ret;
+}
+
+void Add1(int Index,  TPoint pp1,  TPoint pp2,  TPoint pp3)
+{
+    TPoint tp1, tp2, tp3, temp;
+	
+	tp1=pp1; tp2=pp2; tp3=pp3;
+	
+	if(tp2.y>=tp1.y){
+		if(((tp2.y==tp1.y) && (tp2.x<tp1.x)) || (tp2.y>tp1.y)){
+			temp=tp2; tp2=tp1; tp1=temp;
+		}
+	}	
+	if(tp3.y>=tp1.y){
+		if(((tp3.y==tp1.y) && (tp3.x<tp1.x)) || (tp3.y>tp1.y)){
+			temp=tp3; tp3=tp1; tp1=temp;
+		}
+	}	
+	if(Theta(tp2.x-tp1.x, tp2.y-tp1.y) > Theta(tp3.x-tp1.x, tp3.y-tp1.y)){
+		temp=tp3; tp3=tp2; tp2=temp;
+	}
+	if(Index<Sum) DeleteTriangle(Index);
+	P1[Index]=tp1;
+ 	P2[Index]=tp2;
+ 	P3[Index]=tp3;
+ 	AddTriangle(Index);
+}
+
+void Add2( TPoint pp1, TPoint pp2, TPoint pp3)
+{ 
+    TPoint tp1, tp2, tp3, temp;
+	tp1=pp1; tp2=pp2; tp3=pp3;
+	if(tp2.y>=tp1.y){
+		if(((tp2.y==tp1.y) && (tp2.x < tp1.x)) || (tp2.y > tp1.y)){
+			temp=tp2; tp2=tp1; tp1=temp;
+		}
+    }
+    if(tp3.y>=tp1.y){
+   		if(((tp3.y==tp1.y) && (tp3.x < tp1.x)) || (tp3.y > tp1.y)) {
+   			temp=tp3; tp3=tp1; tp1=temp;
+   		}
+    }
+    if(Theta(tp2.x-tp1.x,tp2.y-tp1.y) > Theta(tp3.x-tp1.x,tp3.y-tp1.y)){
+   		temp=tp3; tp3=tp2; tp2=temp;
+   	}
+ 	P1[Sum]=tp1;
+ 	P2[Sum]=tp2;
+ 	P3[Sum]=tp3;
+ 	AddTriangle(Sum);
+ 	Sum = Sum+1;
+}
+
+int Inside( TPoint p)
+{
+	int i;
+	int ret;
+	
+	ret=-1;
+	for(i=0;i<Sum;i++){
+   		if (Cross(P2[i].x-P1[i].x,P2[i].y-P1[i].y, p.x-P2[i].x, p.y-P2[i].y)<=0){
+   			if (Cross(P3[i].x-P2[i].x,P3[i].y-P2[i].y, p.x-P3[i].x, p.y-P3[i].y)<=0){
+   				if (Cross(P1[i].x-P3[i].x,P1[i].y-P3[i].y, p.x-P1[i].x, p.y-P1[i].y)<=0){
+   					ret=i;
+   					break;
+   				}
+   			}	
+		}
+    }
+	return ret;
+}
+
+void FindCenter( TPoint d,  TPoint e,  TPoint f,  TPoint &ret)
+{
+	double dx1,dx2,dy1,dy2;
+    double a,b,c,p,q,r;
+		
+ 	dx1=e.x-d.x;
+ 	dy1=e.y-d.y;
+ 	if((dx1!=0) && (dy1!=0)){
+   		a=dx1; b=dy1;
+   		c=-a*((e.x+d.x)/2)-b*((e.y+d.y)/2);
+	} else {
+	   if(dx1!=0){
+    	b=0; a=1; c=-(e.x+d.x)/2;
+	   } else {
+ 		a=0; b=1; c=-(e.y+d.y)/2;
+	   }
+	}
+    dx2=f.x-e.x;   dy2=f.y-e.y;
+ 	if((dx2!=0) && (dy2!=0)) {
+     	p=dx2; q=dy2;
+     	r=-p*((e.x+f.x)/2)-q*((e.y+f.y)/2);
+    } else {
+   		if(dx2!=0){
+   			q=0; p=1; r= -(e.x+f.x)/2;
+   		} else {
+       		p=0; q=1; r= -(e.y+f.y)/2;
+       	}
+    }
+    if(fabs(a*q-b*p)<0.0001){ 
+  		ret.x=0;
+   		ret.y=0;
+   	} else { 
+        ret.x=(b*r-c*q)/(a*q-b*p);
+        ret.y=(c*p-a*r)/(a*q-b*p);
+    }
+}
+
+void Balance( TPoint s,  TPoint e)
+{
+   	int Index;
+   	TPoint temp,center,p[3],q[3];
+   	int i,j,id1,id2;
+   
+   	Index=FindEdge(s,e);
+ 	if(Index!=-1){
+  	   if(Edge[Index].TSum==2) {
+     		id1=Edge[Index].triangle[0];
+     		id2=Edge[Index].triangle[1];
+ 
+    		p[0]=P1[id1]; p[1]=P2[id1]; p[2]=P3[id1];
+    		q[0]=P1[id2]; q[1]=P2[id2]; q[2]=P3[id2];
+    		for(i=1;i<=2;i++){
+    			if((p[i].x==s.x) && (p[i].y==s.y)) {
+        			temp=p[0]; p[0]=p[i]; p[i]=temp;
+        		}
+        		if((q[i].x==s.x) && (q[i].y==s.y)) {
+        			temp=q[0]; q[0]=q[i]; q[i]=temp;
+        		}
+    		}
+
+    		for(i=2;i<=2;i++){
+     			if((p[i].x==e.x) && (p[i].y==e.y)){   
+        			temp=p[1]; p[1]=p[i]; p[i]=temp;
+        		}
+       			if((q[i].x==e.x) && (q[i].y==e.y)){
+            		temp=q[1];q[1]=q[i];q[i]=temp;
+        		}
+    		}
+    		FindCenter(p[0],p[1],p[2],center);
+    		if(Distance(center,p[0])>Distance(center,q[2])){
+       			Add1(id1,p[0],p[2],q[2]);
+				Add1(id2,p[1],p[2],q[2]);
+
+				Balance(p[0],p[2]);
+				Balance(p[1],p[2]);
+				Balance(q[0],q[2]);
+				Balance(q[1],q[2]);
+			}
+		}
+	}
+}
+
+void Put(double X, double Y)
+{
+	int i;
+
+ 	if((X<0) || (X>BX) || (Y<0) || (Y>BY)) return ;
+ 	for(i=0;i<Psum;i++){
+ 		if((points[i].x==X) && (points[i].y==Y)) return;
+ 	}
+   	points[Psum].x=X;
+ 	points[Psum].y=Y;
+ 	Psum=Psum+1;
+}
+
+
+double MinDistance( TPoint P)
+{
+	int ii;
+    double D,MD;
+	double ret;
+	
+	MD=1000000000;
+ 	for(ii=0;ii<M;ii++){
+  		D=Distance(P,mpoints[ii]);
+   		if(D<MD) MD=D;
+   	}
+ 	ret=MD;
+ 	return ret;
+}
+
+void main()
+{
+	int id, i;
+    int I1, I2;   
+	char xy[100];
+	in >> BX >> BY >> M;
+    ESum=0;
+    Sum=0;
+    Psum=0;
+  	pp1.x=BOUND;    pp1.y=-1*BOUND;
+  	pp2.x=-1*BOUND;  pp2.y= BOUND;
+  	pp3.x=BOUND;    pp3.y= BOUND;
+
+  	Add2(pp1,pp2,pp3);
+
+  	i=0;
+  	for(I2=1;I2<=M;I2++){
+    	in >> pp1.x >> pp1.y;
+    	pp4=pp1;
+
+    	mpoints[i]=pp1;
+    	id=Inside(pp1);
+
+    	a=P1[id];
+    	b=P2[id];
+    	c=P3[id];
+
+    	Add1(id,a,b,pp1);
+
+    	Add2(b,c,pp4);
+    	Add2(a,c,pp4);
+
+    	Balance(a,b);
+    	Balance(b,c);
+    	Balance(a,c);
+    	i=i+1;
+   	}
+  	for(i=0;i<ESum;i++){
+   		if(Edge[i].TSum==2){
+     		id=Edge[i].triangle[0];
+      		FindCenter(P1[id],P2[id],P3[id],pp2);
+      		id=Edge[i].triangle[1];
+      		FindCenter(P1[id],P2[id],P3[id],pp3);
+       		if((pp2.x<=0) ||(pp2.x>=BX) || (pp3.x<=0) ||
+       		  (pp3.x>=BX) || (pp2.y<=0) ||(pp2.y>=BY) ||
+       		  (pp3.y<=0) || (pp3.y>=BY)){
+          		k1=(pp2.x - pp3.x);
+           		if(k1!=0){
+            		k=(pp2.y-pp3.y)/k1;
+		           	Put(0,k*BX-k*pp2.x+pp2.y); 
+             		Put(BX,k*BX-k*pp2.x+pp2.y);
+            	} else {
+              		Put(pp2.x,BY);
+               		Put(pp2.x,0);
+              	}
+           		if(pp2.y-pp3.y==0){
+             		Put(BX,pp2.y);
+              		Put(0,pp3.y);
+             	} 
+          	}
+          	if((pp2.x>=0) && (pp2.x<=BX) && (pp2.y>=0) && (pp2.y<=BY)) Put(pp2.x,pp2.y);
+       		if((pp3.x>=0) && (pp3.x<=BX) && (pp3.y>=0) && (pp3.y<=BY)) Put(pp3.x,pp3.y);
+       	}
+   	}
+  	Put(0,0);
+  	Put(BX,0);
+  	Put(BX,BY);
+  	Put(0,BY);
+
+  	MDist=0;
+  	mpoint.x=0;
+  	mpoint.y=0;
+  	for(i=0;i<Psum;i++){
+   		D=MinDistance(points[i]);
+		if(D>=MDist){
+     		mpoint=points[i];
+      		MDist=D;
+     	}
+   	}
+	sprintf(xy,"%.1f %.1f",mpoint.x,mpoint.y);
+	out << xy;
+   //out    << (float)mpoint.x << " " << (float)mpoint.y; 
+}

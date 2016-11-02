@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0057)http://ace.delos.com/usacoprob/s=1.2.2.3/a=nQhiqAX3lZP/57 -->
+<HTML><HEAD><TITLE>Problem 57: Runaround Numbers</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2716.2200" name=GENERATOR></HEAD>
+<BODY background="Problem 57 Runaround Numbers.files/bg3.jpg"><IMG height=118 
+src="Problem 57 Runaround Numbers.files/cow1.jpg" width=742> 
+<CENTER><B><FONT size=7>Runaround Numbers</FONT></B><BR></CENTER>
+<P>Runaround numbers are integers with unique digits, none of which is zero 
+(e.g., 81362) that also have an interesting property, exemplified by this 
+demonstration: 
+<UL>
+  <LI>If you start at the left digit (8 in our number) and count that number of 
+  digits to the right (wrapping back to the first digit when no digits on the 
+  right are available), you'll end up at a new digit (a number which does not 
+  end up at a new digit is not a Runaround Number). Consider: 8 1 3 6 2 which 
+  cycles through eight digits: 1 3 6 2 8 1 3 6 so the next digit is 6. 
+  <LI>Repeat this cycle (this time for the six counts designed by the `6') and 
+  you should end on a new digit: 2 8 1 3 6 2, namely 2. 
+  <LI>Repeat again (two digits this time): 8 1 
+  <LI>Continue again (one digit this time): 3 
+  <LI>One more time: 6 2 8 and you have ended up back where you started, after 
+  touching each digit once. If you don't end up back where you started after 
+  touching each digit once, your number is not a Runaround number. </LI></UL>
+<P>Given a number M (that has anywhere from 1 through 9 digits), find and print 
+the next runaround number higher than M, which will always fit into an unsigned 
+long integer for the given test data. 
+<H3>PROGRAM NAME: runround</H3>
+<H3>INPUT FORMAT</H3>A single line with a single integer, M 
+<H3>SAMPLE INPUT (file runround.in) </H3><PRE>81361
+</PRE>
+<H3>OUTPUT FORMAT</H3>A single line containing the next runaround number higher 
+than the input value, M. 
+<H3>SAMPLE OUTPUT (file runround.out)</H3><PRE>81362
+</PRE><BR><BR>
+<HR>
+
+<FORM action=/upload method=post encType=multipart/form-data><B>Submission file 
+Name:</B> <INPUT type=file name=filename> <INPUT type=submit value="Send it in!"> <INPUT type=hidden 
+value=/usacogate?a=nQhiqAX3lZP name=id> <INPUT type=hidden value=1.2.2.3 
+name=sid> <INPUT type=hidden value=57 name=nid> </FORM>
+<CENTER><A href="mailto:grader@ace.delos.com">Submit Solution via Email</A> 
+&nbsp;|&nbsp; <A href="http://ace.delos.com/usacogate?a=nQhiqAX3lZP">USACO 
+Gateway </A>&nbsp;| &nbsp; <A href="mailto:usaco@lumeta.com">Comment or Question 
+</A></CENTER></BODY></HTML>

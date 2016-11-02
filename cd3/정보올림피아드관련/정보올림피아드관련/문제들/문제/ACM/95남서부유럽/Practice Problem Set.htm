@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0082)http://www.acm.inf.ethz.ch/ProblemSetArchive/B_EU_SWERC/1995/PracticeProblems.html -->
+<HTML><HEAD><TITLE>Practice Problem Set</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<H2 align=center>ACM International Collegiate Programming 
+Contest<BR>Southwestern European Regional Contest<BR>ETH Zurich, Switzerland, 
+December 8, 1995</H2>
+<P align=center>
+<HR>
+
+<P></P>
+<H1 align=center>Practice Problem Set</H1>
+<H2>Contents</H2>
+<P><A 
+href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_EU_SWERC/1995/PracticeProblems.html#advice">Rules 
+and Advice</A> <BR><BR><A 
+href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_EU_SWERC/1995/PracticeProblems.html#tangens">Problem 
+A: Inverse Tangens</A> <BR><BR><A 
+href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_EU_SWERC/1995/PracticeProblems.html#counting">Problem 
+B: Word Counting</A> <BR><BR><A 
+href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_EU_SWERC/1995/PracticeProblems.html#sorting">Problem 
+C: Sorting</A> <BR></P>
+<P align=center><B>Sponsored by Microsoft<BR>Supported by Union Bank of 
+Switzerland</B></P>
+<P>
+<HR>
+
+<P></P>
+<H2><A name=advice></A>Some Rules and Advice </H2>
+<P>All questions require you to read the test data from a single input file and 
+to write the results to a single output file. The names of both files are given 
+in the header of the problem. Your are not allowed to read or write any other 
+files than the specified ones. Standard input and output are also considered 
+files. <BR><BR>Output must correspond exactly to the provided sample output, 
+including spelling and spacing. <BR><BR>All lines (including the last one) 
+should be terminated with a new-line character, and no whitespace should appear 
+at the end of a line unless explicitly specified. Tabs should never be used. 
+<BR><BR>All programs will be re-compiled prior to testing with the judges' data. 
+Non-standard libraries may not be used in your solutions. C programs may not 
+include any files except: <TT>ctype.h</TT>, <TT>math.h</TT>, <TT>stdio.h</TT>, 
+<TT>stdlib.h</TT>, <TT>string.h</TT>, and <TT>strings.h</TT>. Pascal programs 
+may use the extended <TT>Reset</TT>, <TT>Rewrite</TT> and the <TT>Close</TT> 
+statement, which are not part of the ISO Pascal standard.<BR><BR>After analyzing 
+a program, the judges will send one of the following messages: </P>
+<UL>
+  <LI><I>Program accepted</I>. Your program passed all tests and is accepted as 
+  correct. 
+  <LI><I>Compile-time error</I>. The judges were not able to successfully 
+  compile your program. The compiler returned an error (not just a warning). 
+  <LI><I>Run-time error</I>. Your program "crashed", i. e. it exited prematurely 
+  due to a run-time error. 
+  <LI><I>Wrong answer</I>. The program run through one or more test cases 
+  without a run-time error but the output did not match the expected output. 
+  <LI><I>Presentation error</I>. The output seems to be correct but it is not 
+  presented in the required format. Since it is not always easy to distinguish 
+  this message from the <I>wrong answer</I> message, it is only sent in obvious 
+  cases. 
+  <LI><I>Time-limit exceeded</I>. Your program did not finish within the given 
+  amount of time. 
+  <LI><I>Contest rule violation</I>. Your program violates a contest rule like 
+  calling non-standard libraries. </LI></UL>
+<P>Programming style is not considered in this contest. You are free to code in 
+whatever style you prefer. <BR><BR>The CPU time limit for all problems is 3 
+minutes except when specified otherwise. <BR><BR>All questions regarding the 
+contest material should be submitted to the judges by filling in a 
+<I>clarification request</I> form. You can ask the <I>runners</I> in the room 
+for any non-contest related matters or for getting your printer output. The 
+helpers will not answer any questions regarding the contest material. 
+<BR><BR>Judges' decisions are to be considered final. No cheating will be 
+tolerated. <BR><BR>Success! <BR><BR>
+<HR>
+
+<P></P>
+<H2><A name=tangens></A>Practice Problem A: Inverse Tangens </H2>
+<P>Source file: tangens.c / tangens.p <BR>Input file: tangens.in <BR>Output 
+file: tangens.out <BR><BR>In 2-dimensional geometry, we often need to calculate 
+the angle of a vector of order 2 (see figure 1). <BR><BR><IMG align=bottom 
+height=128 src="Practice Problem Set.files/Tangens1.gif" width=173 
+NATURALSIZEFLAG="0"><BR><BR><I>Figure 1: The angle alpha of vector (x, y)</I> 
+<BR><BR>The usual way to calculate the angle is to use the <I>arctan</I> 
+function: <BR></P>
+<P align=center><IMG align=bottom height=28 
+src="Practice Problem Set.files/Tangens2.gif" width=63 NATURALSIZEFLAG="0"></P>
+<P>Unfortunately, this does not work as expected. The <I>arctan</I> function 
+always returns a value in the range (-pi/2, pi/2). In particular, it returns the 
+same value for the vectors (<I>x</I>, <I>y</I>) and (-<I>x</I>, -<I>y</I>). We 
+would prefer an <I>improved inverse tangens</I> function that returns an angle 
+in the range [0, 2 pi) and properly distinguishes between (<I>x</I>, <I>y</I>) 
+and (-<I>x</I>, -<I>y</I>).<BR><BR>You are to write a program that implements 
+the <I>improved inverse tangens</I> function. It should read several vectors of 
+order 2 from the input file, compute the angle of the vector using the 
+<I>improved inverse tangens</I> function and write it to the output file. </P>
+<H3>Input</H3>
+<P>The first line of the input file contains the number of vectors to follow. 
+Each following line contains one vector given as the <I>x</I> and <I>y</I> 
+coordinate, separated by a blank. </P>
+<H3>Output</H3>
+<P>For each vector in the input file, your program should output the angle 
+<I>alpha</I> of the vector as shown in figure 1. The floating-point numbers 
+should include at least eight significant digits. For the vector (0, 0) you may 
+output 0. </P>
+<H3>Example</H3>
+<H4>Input</H4><PRE>3
+3.03 4.45
+-4.99 3.39
+-3.02 -4.43</PRE>
+<H4>Output</H4><PRE>0.97300527
+2.54485464
+4.11404013</PRE>
+<P>
+<HR>
+
+<P></P>
+<H2><A name=counting></A>Practice Problem B: Word Count </H2>
+<P>Source file: count.c / count.p <BR>Input file: count.in <BR>Output file: 
+count.out <BR><BR>You are to write a program that counts the words in the input 
+file. If the same word appears more than once, it should only be counted once. 
+</P>
+<H3>Input</H3>
+<P>The input file contains several words. A word consists of lowercase and/or 
+uppercase letters from A to Z. Words are delimited by one or more whitespace 
+character (spaces, new-lines, tabs etc.). Other characters do not appear. When 
+comparing words, your program should be insensitive to case, i.e. "abc" is the 
+same as "ABC" and "aBc". </P>
+<H3>Output</H3>
+<P>Your output file should contain one integer number, giving the number of 
+distinct words in the input file. </P>
+<H3>Example</H3>
+<H4>Input</H4><PRE>Sally sells sea shells
+at   the   sea   shore</PRE>
+<H4>Output</H4><PRE>7</PRE>
+<P>
+<HR>
+
+<P></P>
+<H2><A name=sorting></A>Practice Problem C: Sorting </H2>
+<P>Source file: sorting.c / sorting.p <BR>Input file: sorting.in <BR>Output 
+file: sorting.out <BR><BR>You are to write a program that sorts several lists of 
+integer numbers. Each list is to be sorted in descending order. </P>
+<H3>Input</H3>
+<P>The first line of the input file gives the number of lists to follow. Each 
+list starts with a line giving the number <I>n</I> of elements in the list. The 
+following <I>n</I> lines each contain one integer number. </P>
+<H3>Output</H3>
+<P>For each list found in the input file, your program should output the sorted 
+list. The number<I> n</I> of elements should not be output. The numbers within a 
+list should be in descending order. </P>
+<H3>Example</H3>
+<H4>Input</H4><PRE>2
+3
+1
+2
+3
+4
+4
+6
+8
+10</PRE>
+<H4>Output</H4><PRE>3
+2
+1
+10
+8
+6
+4</PRE></BODY></HTML>

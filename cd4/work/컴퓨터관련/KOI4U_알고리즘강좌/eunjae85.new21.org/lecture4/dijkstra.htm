@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>그래프에서 두 정점 u, v사이의 최단 거리를 찾는 알고리즘 중의 하나가 dijkstra입니다.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p style="line-height:120%;">그래프에서 두 정점 u, v사이의 최단 거리를 찾는 
+알고리즘 중의 하나가 dijkstra입니다. 아래의 예제는 그래프가 인접 행렬로 표현된 
+graph.txt 파일을 로드 해 모든 노드의 쌍의 최단 거리를 구하는 프로그램입니다.</p>
+<p style="line-height:120%;">다이크스라 알고리즘은 경로를 얻으면 역순이기 때문에 
+원래의 순서로 뒤집어 줘야 합니다. 아래의 프로그램에서는 애초에 끝점에서 시작점으로 
+가는 방법을 이용해서 경로를 뒤집을 필요가 없습니다.</p>
+<p style="line-height:120%;">graph.txt의 예는 다음과 같습니다.</p>
+<p style="line-height:120%;"><img src="graph.bmp" width="243" height="136" border="0"></p>
+<p style="line-height:120%;"><font face="Fixed01">6<br>
+0 6 0 3 0 0<br>
+0 0 1 1 0 0<br>
+0 3 0 0 2 5<br>
+0 0 5 0 4 0<br>
+0 0 0 0 0 2<br>
+0 0 0 0 4 0</font></p>
+<p style="line-height:120%;">실행 결과는 다음과 같습니다.</p>
+<p style="line-height:120%;"><font face="Fixed01">1 -&gt; 1 : 1 &nbsp;( 0)<br>
+1 -&gt; 2 : 1 2 &nbsp;( 6)<br>
+1 -&gt; 3 : 1 2 3 &nbsp;( 7)<br>
+1 -&gt; 4 : 1 4 &nbsp;( 3)<br>
+1 -&gt; 5 : 1 4 5 &nbsp;( 7)<br>
+1 -&gt; 6 : 1 4 5 6 &nbsp;( 9)<br>
+2 -&gt; 1 : No path!<br>
+2 -&gt; 2 : 2 &nbsp;( 0)<br>
+2 -&gt; 3 : 2 3 &nbsp;( 1)<br>
+2 -&gt; 4 : 2 4 &nbsp;( 1)<br>
+2 -&gt; 5 : 2 3 5 &nbsp;( 3)<br>
+2 -&gt; 6 : 2 3 5 6 &nbsp;( 5)<br>
+3 -&gt; 1 : No path!<br>
+3 -&gt; 2 : 3 2 &nbsp;( 3)<br>
+3 -&gt; 3 : 3 &nbsp;( 0)<br>
+3 -&gt; 4 : 3 2 4 &nbsp;( 4)<br>
+3 -&gt; 5 : 3 5 &nbsp;( 2)<br>
+3 -&gt; 6 : 3 5 6 &nbsp;( 4)<br>
+4 -&gt; 1 : No path!<br>
+4 -&gt; 2 : 4 3 2 &nbsp;( 8)<br>
+4 -&gt; 3 : 4 3 &nbsp;( 5)<br>
+4 -&gt; 4 : 4 &nbsp;( 0)<br>
+4 -&gt; 5 : 4 5 &nbsp;( 4)<br>
+4 -&gt; 6 : 4 5 6 &nbsp;( 6)<br>
+5 -&gt; 1 : No path!<br>
+5 -&gt; 2 : No path!<br>
+5 -&gt; 3 : No path!<br>
+5 -&gt; 4 : No path!<br>
+5 -&gt; 5 : 5 &nbsp;( 0)<br>
+5 -&gt; 6 : 5 6 &nbsp;( 2)<br>
+6 -&gt; 1 : No path!<br>
+6 -&gt; 2 : No path!<br>
+6 -&gt; 3 : No path!<br>
+6 -&gt; 4 : No path!<br>
+6 -&gt; 5 : 6 5 &nbsp;( 4)<br>
+6 -&gt; 6 : 6 &nbsp;( 0)</font></p>
+<p style="line-height:120%;">다음은 소스입니다.</p>
+<p style="line-height:120%;"><font face="Fixed01">program DijkstraAlgortihm;</font></p>
+<p style="line-height:120%;"><font face="Fixed01">var<br>
+&nbsp;&nbsp;n : integer;<br>
+&nbsp;&nbsp;e : array[1..100, 1..100] of integer;</font></p>
+<p style="line-height:120%;"><font face="Fixed01">procedure input_file;<br>
+var<br>
+&nbsp;&nbsp;f : text;<br>
+&nbsp;&nbsp;i, j : integer;<br>
+begin<br>
+&nbsp;&nbsp;assign (f, 'graph.txt');<br>
+&nbsp;&nbsp;reset (f);</font></p>
+<p style="line-height:120%;"><font face="Fixed01">&nbsp;&nbsp;read (f, n);<br>
+&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read (f, e[i, j]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</font></p>
+<p style="line-height:120%;"><font face="Fixed01">&nbsp;&nbsp;close (f);<br>
+end;</font></p>
+<p style="line-height:120%;"><font face="Fixed01">procedure dijkstra (a, b : 
+integer);<br>
+var<br>
+&nbsp;&nbsp;distance, parent : array[1..100] of integer;<br>
+&nbsp;&nbsp;check : array[1..100] of boolean;<br>
+&nbsp;&nbsp;i, j, min, p : integer;<br>
+begin<br>
+&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;check[i] := false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;distance[i] := maxint;<br>
+&nbsp;&nbsp;end;</font></p>
+<p style="line-height:120%;"><font face="Fixed01">&nbsp;&nbsp;parent[b] := 0;<br>
+&nbsp;&nbsp;distance[b] := 0;</font></p>
+<p style="line-height:120%;"><font face="Fixed01">&nbsp;&nbsp;for i := 1 to 
+n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;min := maxint;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (min &gt; distance[j]) and (not check[j]) 
+then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min := distance[j];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p := j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;</font></p>
+<p style="line-height:120%;"><font face="Fixed01">&nbsp;&nbsp;&nbsp;&nbsp;if 
+min = maxint then break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;check[p] := true;</font></p>
+<p style="line-height:120%;"><font face="Fixed01">&nbsp;&nbsp;&nbsp;&nbsp;for 
+j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (e[j, p] &lt;&gt; 0) and (distance[j] 
+&gt; distance[p] + e[j, p]) then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;distance[j] := distance[p] + 
+e[j, p];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent[j] := p;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</font></p>
+<p style="line-height:120%;"><font face="Fixed01">&nbsp;&nbsp;write (a, ' -&gt; 
+', b, ' :');<br>
+&nbsp;&nbsp;if distance[a] = maxint then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;writeln (' No path!');<br>
+&nbsp;&nbsp;end else begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;i := a;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;while i &lt;&gt; 0 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write (i:2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i := parent[i];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;writeln (' &nbsp;(', distance[a]:2, ')');<br>
+&nbsp;&nbsp;end;<br>
+end;</font></p>
+<p style="line-height:120%;"><font face="Fixed01">var<br>
+&nbsp;&nbsp;i, j : integer;<br>
+begin<br>
+&nbsp;&nbsp;input_file;</font></p>
+<p style="line-height:120%;"><font face="Fixed01">&nbsp;&nbsp;writeln;<br>
+&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dijkstra (i, j);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;<br>
+end.</font></p>
+</body>
+
+</html></html>

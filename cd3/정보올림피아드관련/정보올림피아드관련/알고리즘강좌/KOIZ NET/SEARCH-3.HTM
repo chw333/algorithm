@@ -1,0 +1,176 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>해슁 (Hashing)</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><b><font size="5" color="#0066CC">해슁 (Hashing)</font></b></p>
+<table border="0" style="font-size:10pt;">
+    <tr>
+        <td width="974">
+            <p>가정</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;찾으려는 자료의 key값을 어떤 함수(일반적으로 
+            hash function)를 사용하여 변경한 후 이값을 이 자료가 저장되어 있는 
+            주소로하여 자료들이 저장되어 있다. 이때 사용되는 hash function로 
+            어떤 key 값에 대해서 유일한 값을 반환하는 함수이다. 예를 들어, hash 
+            fuction으로 h(x) = x % 10를 사용하다면 x = 11에 대해서는 항상 1을 
+            반환함을 쉽게 알 수 있다.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;참고 ) 해쉬 함수 (hash function)은 어떤 
+            key값에 대해서 항상 유일한 값을 반환해야 되는지 생각해보자.</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p>탐색 방법</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;해쉬 : 키 값을 해쉬 함수를 적용하여 얻은 
+            값을 주소로 하여 저장한다.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;주소 = 해쉬함수(n), n : 저장하고자 하는 
+            값 or 탐색하고자 하는 값</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p>문제점</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;서로 다른 키가 동일한 해쉬 값을 가질 
+            수 있으며, 동일한 주소 공간에 담을 수 있는 원소의 수는 제한되어있다. 
+            이 제한된 수를 초과하는 경우에 문제가 발생한다 - 오버플로우 (overflow)</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;-&gt; linear probing , chaining 등으로 
+            해결</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p>해쉬를 통한 탐색</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;원하는 키 값을 해쉬 함수에 적용하면 저장된 
+            주소를 바로 얻을 수 있다.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;키 값 &nbsp;11을 찾을 경우 h(11) = 4이므로, 
+            저장된 곳의 4번째 원소를 확인하면 바로 11을 찾을 수 있다.</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p>분석</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;해쉬를 통한 탐색은 앞에서 살펴본 탐색 
+            방법들과 달리 비교를 하지 않는다. 즉, 찾고자 하는 키 값을 해쉬 함수에 
+            적용하면 바로 저장된 위치를 알 수 있다. 따라서 탐색은 1번에 이루어진다.</p>
+            <p>* 동일한 주소 내에 몇 개의 원소가 있는 경우에는 그 수만을 비교를 
+            해야 한다.</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p>예제</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;해쉬함수가 다음과 같이 주어지고 입력이 
+            아래와 같을 때 해쉬 테이블을 채워보자</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;해쉬 함수의 예 h(key) = key mod 7</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;입력 : 1 34 65 12 7 45 11</p>
+            <table border="1" cellspacing="0" bordercolordark="white" bordercolorlight="black">
+                <tr>
+                    <td width="320">
+                        <p align="center">입력과 해쉬 함수 값</p>
+                    </td>
+                    <td width="320">
+                        <p align="center">저장 주소</p>
+                    </td>
+                    <td width="320">
+                        <p align="center">저장된 값</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="320">
+                        <p align="center">1 -&gt; h(1) = 1</p>
+                    </td>
+                    <td width="320">
+                        <p align="center">0</p>
+                    </td>
+                    <td width="320">
+                        <p align="center">7</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="320">
+                        <p align="center">34 -&gt; h(34) = 6</p>
+                    </td>
+                    <td width="320">
+                        <p align="center">1</p>
+                    </td>
+                    <td width="320">
+                        <p align="center">1</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="320">
+                        <p align="center">65 -&gt; h(65) = 2</p>
+                    </td>
+                    <td width="320">
+                        <p align="center">2</p>
+                    </td>
+                    <td width="320">
+                        <p align="center">65</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="320">
+                        <p align="center">12 -&gt; h(12) = 5</p>
+                    </td>
+                    <td width="320">
+                        <p align="center">3</p>
+                    </td>
+                    <td width="320">
+                        <p align="center">45</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="320">
+                        <p align="center">7 -&gt; h(7) = 0</p>
+                    </td>
+                    <td width="320">
+                        <p align="center">4</p>
+                    </td>
+                    <td width="320">
+                        <p align="center">11</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="320">
+                        <p align="center">45 -&gt; h(45) = 3</p>
+                    </td>
+                    <td width="320">
+                        <p align="center">5</p>
+                    </td>
+                    <td width="320">
+                        <p align="center">12</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="320">
+                        <p align="center">11 -&gt; h(11) = 4</p>
+                    </td>
+                    <td width="320">
+                        <p align="center">6</p>
+                    </td>
+                    <td width="320">
+                        <p align="center">34</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+   
+</table>
+</body>
+
+</html>

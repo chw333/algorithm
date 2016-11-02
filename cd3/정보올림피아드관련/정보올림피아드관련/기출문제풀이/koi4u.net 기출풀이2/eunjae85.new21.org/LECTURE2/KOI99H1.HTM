@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>동적 계획법으로 풀 수 있는 문제입니다.</title>
+<meta name="generator" content="Namo WebEditor v4.0(Trial)">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p>동적 계획법으로 풀 수 있는 문제입니다.</p>
+<p>일단 T[i, j]를 i번째 점부터 j번째 점까지의 부분을 연결했을 때의 최소값이라 
+정의합니다. 우리가 구하고자 하는 답은 T[1, n]이 됩니다. 점화식은..</p>
+<p>T[i, j] = (k - i) + 2 * L[i+1, k-1] + T[i+1, k-1] + T[k+1, j]<br>
+L[i, j] = max {L[i+1,k-1] + 1, L[k+1, j]}</p>
+<p>로 정의합니다. 여기서 L은 [i, j]구간의 최대 높이를 말합니다.</p>
+<p>[i, j]구간에서, i점은 i와 j사이의 다른 한 점과 연결될 것입니다.(이건 명백하죠?) 
+그 연결되는 점이 바로 k입니다. (k - i) 는 i와 k를 연결하는 가로 선분의 길이, 
+2 * L[i+1, k-1]은 i와 k를 연결하는 세로 선분의 길이입니다. i와 k를 연결하고 
+나면 [i, j]구간은 두 개로 쪼개지게 됩니다. 바로 [i+1, k-1]구간과 [k+1, j]구간 
+두 개로 말이죠. 이 두 구간 사이에는 서로 연결될 수 없으므로(k에서 가로막히니까) 
+각각 독립된 두 개의 구간으로 쪼개지게 되는 것을 의미합니다. 또 각각의 쪼개진 
+구간에 대해서도 답이 최소일 것이 구요.</p>
+<p>이것이 이 문제를 푸는 기본 아이디어가 됩니다. 아래 소스에서는 동적 계획법을 
+재귀호출로 구현하는 'memoization'이라는 테크닉을 사용하였습니다. 속도면에서는 
+약간(아주 약간)뒤쳐지지만 가독성이 높은 소스가 됩니다.</p>
+<p>혹시나 답을 못 찾는 반례가 발견되면 메일주시기 바랍니다.</p>
+<p><font face="Fixed01">program KOI99H1;</font></p>
+<p><font face="Fixed01">var<br>
+&nbsp;&nbsp;n : integer;<br>
+&nbsp;&nbsp;a, solution : array[1..100] of integer;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;table, level, trace : array[1..101, 1..100] 
+of integer;</font></p>
+<p><font face="Fixed01">procedure input_file;<br>
+var<br>
+&nbsp;&nbsp;f : text;<br>
+&nbsp;&nbsp;i : integer;<br>
+&nbsp;&nbsp;s : string;<br>
+begin<br>
+&nbsp;&nbsp;assign (f, 'input.txt');<br>
+&nbsp;&nbsp;reset (f);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;readln (f, n);<br>
+&nbsp;&nbsp;readln (f, s);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if s[i] = '1' then a[i] := 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else 
+a[i] := 0;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;close (f);<br>
+end;</font></p>
+<p><font face="Fixed01">function fmax (a, b : integer) : integer;<br>
+begin<br>
+&nbsp;&nbsp;if a &gt; b then fmax := a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else fmax 
+:= b;<br>
+end;</font></p>
+<p><font face="Fixed01">function memoization (i, j : integer) : integer;<br>
+var<br>
+&nbsp;&nbsp;k, t : integer;<br>
+begin<br>
+&nbsp;&nbsp;if i &gt; j then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;table[i, j] := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;level[i, j] := 0;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;if table[i, j] = -1 then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;table[i, j] := maxint;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;t := 0;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;&nbsp;&nbsp;for k := i + 1 to j do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (t * 2 = k - i - 1) and (a[i] &lt;&gt; 
+a[k]) then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if table[i, j] &gt; (k - i) 
++ 2 * (level[i + 1, k - 1] + 1) +<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;memoization 
+(i + 1, k - 1) + memoization (k + 1, j) then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table[i, j] := (k 
+- i) + 2 * (level[i + 1, k - 1] + 1) +<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;memoization 
+(i + 1, k - 1) + memoization (k + 1, j);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;level[i, j] := fmax 
+(level[i + 1, k - 1] + 1, level[k + 1, j]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace[i, j] := k;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc (t, a[k]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;memoization := table[i, j];<br>
+end;</font></p>
+<p><font face="Fixed01">procedure recur (i, j : integer);<br>
+begin<br>
+&nbsp;&nbsp;if i &lt; j then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;solution[i] := trace[i, j];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;recur (i + 1, trace[i, j] - 1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;recur (trace[i, j] + 1, j);<br>
+&nbsp;&nbsp;end;<br>
+end;</font></p>
+<p><font face="Fixed01">procedure solve;<br>
+var<br>
+&nbsp;&nbsp;i, j : integer;<br>
+&nbsp;&nbsp;f : text;<br>
+begin<br>
+&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table[i, j] := -1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;assign (f, 'output.txt');<br>
+&nbsp;&nbsp;rewrite (f);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;writeln (f, memoization(1, n));</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;solution[i] := 0;<br>
+&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;recur (1, n);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if solution[i] &lt;&gt; 0 then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln (f, i, ' ', solution[i]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;close (f);<br>
+end;</font></p>
+<p><font face="Fixed01">begin<br>
+&nbsp;&nbsp;input_file;<br>
+&nbsp;&nbsp;solve;<br>
+end.</font></p>
+<p>&nbsp;</p>
+</body>
+
+</html></html>

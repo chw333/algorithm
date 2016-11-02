@@ -1,0 +1,144 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=EUC-KR">
+<TITLE>Jsboard 1.2.2 - 알고리즘 게시판  [ 게시물 수정 ]</TITLE>
+<STYLE TYPE="text/css">
+<!--
+A:link, A:visited, A:active { TEXT-DECORATION: none; }
+A:hover { TEXT-DECORATION: underline; }
+TD { FONT: 9pt 굴림체; }
+INPUT {font: 9pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:2x solid #b5b5c5}
+SELECT {font: 9pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:1x solid #b5b5c5}
+TEXTAREA {font: 10pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:2x solid #b5b5c5}
+ #radio {font: 9pt 굴림체; BACKGROUND-COLOR:#ffffff; COLOR:#656565; BORDER:2x solid #ffffff}
+ #title {font:20pt 굴림체; color:#ffe4c4}
+ #eng {font:11px tahoma,Verdana,arial; line-height:120%}
+-->
+</STYLE>
+
+<script LANGUAGE=JavaScript>
+<!-- Begin
+  var child = null;
+  var count = 0;
+  function new_windows(addr,tag,scroll,resize,wid,hei) {
+    var childname = 'JSBoard' + count++;
+    // child window가 떠 있을 경우 child window를 닫는다.
+    if(child != null) {
+      if(!child.closed) { child.close(); }
+    }
+    child = window.open(addr,tag,'left=0, top=0, toolbar=0,scrollbars=' + scroll + ',status=0,menubar=0,resizable=' + resize + ',width=' + wid + ',height=' + hei +'');
+    // child window가 로드 될때 가장 앞으로 올린다.
+    child.focus();
+    return;
+  }
+//-->
+</script>
+</HEAD>
+
+<BODY BACKGROUND="" BGCOLOR="#ffffff" TEXT="#656565" LINK="#80320d" VLINK="#80320d" ALINK="#80320d">
+<!-- ========================= A foreword  ========================= -->
+<center>
+<img src=../algorithm/images/cyber_alg2.jpg BORDER="0" USEMAP="#ImageMap1">
+<p>
+<!-- ========================= A foreword  ========================= -->
+
+<DIV ALIGN="center">
+<TABLE WIDTH="600" BORDER="0" CELLPADDING="0" CELLSPACING="0" BGCOLOR="#7e7e9a"><TR><TD>
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="1" CELLPADDING="3">
+<FORM METHOD="post" ACTION="act.php">
+<TR>
+  <TD BGCOLOR="#b5b5c5" width=13%><FONT COLOR="#555555" style="line-height=120%">이름</FONT></TD>
+  <TD BGCOLOR="#dcdcdc"><INPUT TYPE="text" NAME="atc[name]" SIZE="14" MAXLENGTH="50" VALUE="이헌우"></TD>
+  <TD BGCOLOR="#dcdcdc" width=35%><FONT SIZE="-1" COLOR="#000000" style="line-height=120%">이름을 기입</FONT></TD></TR><TR>
+<TD BGCOLOR="#b5b5c5"><FONT COLOR="#555555" style="line-height=120%">이메일</FONT></TD>
+<TD BGCOLOR="#dcdcdc"><INPUT TYPE="text" NAME="atc[email]" SIZE="14" MAXLENGTH="255" VALUE="cresh@cdcs.changwon.ac.kr"></TD>
+<TD BGCOLOR="#dcdcdc"><FONT SIZE="-1" COLOR="#000000" style="line-height=120%">이메일 주소를 기입</FONT></TD>
+
+</TR><TR>
+  <TD BGCOLOR="#b5b5c5"><FONT COLOR="#555555" style="line-height=120%">HTML</FONT></TD>
+  <TD BGCOLOR="#dcdcdc">
+    <FONT COLOR="#000000" style="line-height=120%">
+    <INPUT TYPE="radio" NAME="atc[html]" VALUE="1">사용함
+    <INPUT TYPE="radio" NAME="atc[html]" VALUE="0" CHECKED>사용안함
+    </FONT>
+  </TD>
+  <TD BGCOLOR="#dcdcdc"><FONT SIZE="-1" COLOR="#000000" style="line-height=120%">HTML 코드 사용여부</FONT></TD>
+</TR><TR>
+  <TD BGCOLOR="#b5b5c5"><FONT COLOR="#555555" style="line-height=120%">제목</FONT></TD>
+  <TD COLSPAN="2" BGCOLOR="#dcdcdc"><INPUT TYPE="text" NAME="atc[title]" SIZE="25" MAXLENGTH="100" VALUE="예제1 탐색문제 질문 답.."></TD>
+</TR><TR>
+  <TD COLSPAN="3" ALIGN="center" BGCOLOR="#dcdcdc">
+<!-- ---------- 글 내용 ---------- -->
+    <TEXTAREA NAME="atc[text]" WRAP=off ROWS="10" COLS="34">만약 while 문의 조건식이 short-circuit evaluation 방식이 아니라면
+앞의 조건 location <= n 이 false , 즉 탐색하고자 하는 범위 s[]의 크기 n을 
+location이 넘어서게 되더라도, 뒤의 조건식 s[location]!=x를 한번 더 수행하게 
+됩니다. 즉, n의 범위를 하나 더 넘어서 까지 x를 찾게 됩니다.
+
+물론 밑에 if 문 때문에 location값은 0가 되겠지만 말입니다..^^
+
+맞는 답 인지 모르겠습니다..
+
+그리고 사이버 강의실 .. 정말 잘 만드셨네요... 
+저도 요즘 요런거에 관심이 많아서 .. 많이 주물럭거리는데..^^
+너무...너무.. 좋군요.. (아부를 약간~~)
+그럼 졸업여행 갖다오고 추석 지나서 다시 이 강의실에 오겠습니다.
+
+이수현 교수님 
+추석 잘 보내세요.. 
+귀향길 교통 조심하시구요..
+
+그럼..
+앞으로 열심히 할 것을 약속드리면서..
+
+</TEXTAREA>
+<!-- ---------- 글 내용 ---------- -->
+  </TD>
+</TR><TR>
+  <TD COLSPAN="3" ALIGN="right" BGCOLOR="#b5b5c5">
+    <FONT COLOR="#555555" SIZE="-1" style="line-height=120%">
+    <FONT COLOR="" SIZE="-1" style="line-height=120%"> 띄워쓰기 없이 쓰거나 HTML 미사용 시 한줄을 너무 길게 쓰지 마십시오.  </FONT>
+    </FONT>
+  </TD>
+</TR>
+</TABLE>
+
+</TD></TR>
+<TR><TD>
+
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="6" CELLSPACING="0">
+<TR>
+  <TD ALIGN="center">
+    <FONT SIZE="-1" COLOR="#ffffff" style="line-height=120%">
+    <INPUT TYPE="hidden" NAME="o[at]" value="e">
+    <INPUT TYPE="hidden" NAME="table" VALUE="algorithm">
+    <INPUT TYPE="hidden" NAME="atc[no]" VALUE="6">
+    [관리자] 패스워드: <INPUT TYPE="password" NAME="passwd" SIZE="4" MAXLENGTH="8">&nbsp;
+    <INPUT TYPE="submit" VALUE="고치기">&nbsp;
+    <INPUT TYPE="reset" VALUE="다시">&nbsp;
+    <INPUT TYPE="button" onClick="history.back();" VALUE="취소">
+    </FONT>
+  </TD>
+</TR>
+</TABLE>
+
+</TD></TR></FORM></TABLE>
+
+
+<TABLE WIDTH="600" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+<TR><TD>
+<TABLE ALIGN="center" WIDTH="1%" BORDER="0" CELLSPACING="4" CELLPADDING="0">
+<TR>
+
+  <TD WIDTH="1%" BGCOLOR="#800000"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wcc84cf51a50d1.htm"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>목록보기</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#800000"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="javascript:history.back()"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>이전페이지</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#800000"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+</TR>
+</TABLE>
+</TD></TR>
+</TABLE>
+</DIV><!-- ========================= Tail ========================= -->
+<p><center>
+<!--Copyleft 1999-2000 by <a href=http://jsboard.kldp.org target=_blank JSBoard Open Project</a--> 
+<!-- ========================= Tail ========================= -->

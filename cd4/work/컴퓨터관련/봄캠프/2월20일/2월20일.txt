@@ -1,0 +1,5 @@
+1. CARD    N<=100 입력 N
+2. MINE    N<=50 TIME 3sec 4방향
+3. TILE    30000 1초
+4. TETRIS  
+5. TREE

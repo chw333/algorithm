@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=EUC-KR">
+<TITLE>Jsboard 1.2.2 - [Form Mail]</TITLE>
+<STYLE TYPE="text/css">
+<!--
+A:link, A:visited, A:active { TEXT-DECORATION: none; }
+A:hover { TEXT-DECORATION: underline; }
+TD { FONT: 9pt 굴림체 }
+INPUT {font: 9pt 굴림체; BACKGROUND-COLOR: #ffffff; COLOR: #656565; BORDER:2x solid #b5b5c5}
+SELECT {font: 9pt 굴림체; BACKGROUND-COLOR: #ffffff; COLOR: #656565; BORDER:1x solid #b5b5c5 }
+TEXTAREA {font: 10pt 굴림체; BACKGROUND-COLOR: #ffffff; COLOR: #656565; BORDER:2x solid #b5b5c5 }
+ #radio {font: 9pt 굴림체; BACKGROUND-COLOR: #ffffff; COLOR: #656565; BORDER:2x solid #ffffff }
+ #title {font:20pt 굴림체; color: echo #ffe4c4 }
+-->
+</STYLE>
+</HEAD>
+
+<BODY BACKGROUND="" BGCOLOR="#ffffff" TEXT="#656565" LINK="#80320d" VLINK="#80320d" ALINK="#80320d">
+
+<font id=title><b><li type=disc>JSBoard FormMail Service</b></font>
+<p>
+<TABLE ALIGN="center" WIDTH="560" BORDER="0" CELLPADDING="0" CELLSPACING="0" BGCOLOR="#7e7e9a"><TR><TD>
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="1" CELLPADDING="3">
+<FORM METHOD="post" ACTION="act.php" ENCTYPE="multipart/form-data">
+<TR>
+  <TD BGCOLOR="#b5b5c5" width=13%><FONT COLOR="#555555" style="line-height=120%">To</FONT></TD>
+  <TD BGCOLOR="#dcdcdc">hotang99@hanmail.net</TD>
+</TR><TR>
+  <TD BGCOLOR="#b5b5c5"><FONT COLOR="#555555" style="line-height=120%">From</FONT></TD>
+  <TD BGCOLOR="#dcdcdc"><INPUT TYPE="text" NAME="atc[email]" SIZE="14" MAXLENGTH="255" VALUE=""></TD>
+</TR><TR>
+  <TD BGCOLOR="#b5b5c5"><FONT COLOR="#555555" style="line-height=120%">글쓴이</FONT></TD>
+  <TD BGCOLOR="#dcdcdc"><INPUT TYPE="text" NAME="atc[name]" SIZE="14" MAXLENGTH="255"></TD>
+</TR><TR>
+  <TD BGCOLOR="#b5b5c5"><FONT COLOR="#555555" style="line-height=120%">제목</FONT></TD>
+  <TD BGCOLOR="#dcdcdc"><INPUT TYPE="text" NAME="atc[title]" SIZE="25" MAXLENGTH="100"></TD>
+</TR><TR>
+  <TD COLSPAN="2" ALIGN="center" BGCOLOR="#dcdcdc">
+    <TEXTAREA NAME="atc[text]" Array ROWS="10" COLS="30"></TEXTAREA>
+  </TD>
+</TR><TR>
+  <TD COLSPAN="2" ALIGN="right" BGCOLOR="#b5b5c5">
+    <FONT COLOR="#555555" SIZE="-1" style="line-height=120%">Scripted by JoungKyun Kim</FONT>
+  </TD>
+</TR>
+</TABLE>
+
+</TD></TR>
+<TR><TD>
+
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="6" CELLSPACING="0">
+<TR>
+  <TD ALIGN="center">
+    <FONT SIZE="-1" COLOR="#ffffff" style="line-height=120%">
+    <INPUT TYPE="hidden" NAME="o[at]" VALUE="sm">
+    <INPUT TYPE="hidden" NAME="atc[to]" VALUE="hotang99@hanmail.net">
+    <INPUT TYPE="submit" VALUE="보내기">&nbsp;
+    <INPUT TYPE="reset" VALUE="다시">&nbsp;
+    <INPUT TYPE="button" onClick="window.close()" VALUE="취소">
+    </FONT>
+  </TD>
+</TR>
+</TABLE>
+
+</TD></TR>
+</FORM>
+</TABLE>
+
+</BODY>
+</HTML>

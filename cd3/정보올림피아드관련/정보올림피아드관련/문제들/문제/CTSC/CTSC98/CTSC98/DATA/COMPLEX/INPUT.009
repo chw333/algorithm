@@ -1,0 +1,118 @@
+begin
+loop 8
+end
+loop n
+op n
+loop n
+loop 8
+op n
+end
+op 15
+loop 3
+loop 4
+loop 9
+end
+loop 4
+loop 2
+loop 3
+loop 2
+op n
+op 24
+loop 0
+end
+op n
+op n
+loop 2
+loop n
+loop 1
+loop n
+op n
+end
+op 88
+loop n
+op 25
+loop n
+op n
+loop 5
+end
+loop n
+loop n
+loop 5
+op n
+end
+loop 9
+loop 1
+end
+end
+loop n
+loop n
+op n
+end
+op n
+loop 3
+loop 6
+op 34
+end
+loop 6
+loop n
+loop n
+op 90
+end
+op n
+op n
+loop n
+op 3
+op 21
+op n
+op n
+end
+loop n
+end
+op 98
+loop 6
+op n
+op n
+op 19
+op n
+op 68
+end
+op 58
+end
+op n
+loop 4
+op 33
+op 56
+end
+end
+loop n
+op n
+end
+op n
+op n
+loop 0
+loop n
+loop 4
+op 17
+op n
+op n
+op n
+op 37
+end
+op 78
+loop 5
+op 57
+end
+loop 9
+op n
+end
+op n
+loop n
+end
+end
+op 98
+loop 8
+loop n
+end
+loop n
+end
+end end end end end end end end end end end end end end end end end end end end

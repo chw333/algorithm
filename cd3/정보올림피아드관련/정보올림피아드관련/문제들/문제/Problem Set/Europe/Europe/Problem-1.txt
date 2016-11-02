@@ -1,0 +1,255 @@
+Run Away
+(file name: away.c, away.p, away.C) 
+
+One of the traps we will encounter in the Pyramid is located in the Large Room. A lot of small holes are drilled into the floor. They look completely harmless at the first sight. But when activated, they start to throw out very hot java, uh ... pardon, lava. Unfortunately, all known paths to the Center Room (where the Sarcophagus is) contain a trigger that activates the trap. The ACM were not able to avoid that. But they have carefully monitored the positions of all the holes. So it is important to find the place in the Large Room that has the maximal distance from all the holes. This place is the safest in the entire room and the archaeologist has to hide there. 
+
+Input Specification
+The input consists of T test cases. The number of them (T) is given on the first line of the input file. Each test case begins with a line containing three integers X, Y, M separated by space. The numbers satisfy conditions: 1 <= X,Y <=10000, 1 <= M <= 1000. The numbers X and Yindicate the dimensions of the Large Room which has a rectangular shape. The number M stands for the number of holes. Then exactly M lines follow, each containing two integer numbers Ui and Vi (0 <= Ui <= X, 0 <= Vi <= Y) indicating the coordinates of one hole. There may be several holes at the same position. 
+Output Specification
+Print exactly one line for each test case. The line should contain the sentence "The safest point is (P, Q)." where P and Qare the coordinates of the point in the room that has the maximum distance from the nearest hole, rounded to the nearest number with exactly one digit after the decimal point (0.05 rounds up to 0.1). 
+Sample Input
+3
+1000 50 1
+10 10
+100 100 4
+10 10
+10 90
+90 10
+90 90
+3000 3000 4
+1200 85
+63 2500
+2700 2650 
+2990 100
+
+Output for the Sample Input
+The safest point is (1000.0, 50.0).
+The safest point is (50.0, 50.0).
+The safest point is (1433.0, 1669.8).
+
+ 
+
+Equipment Box
+(file name: box.c, box.p, box.C) 
+
+There is a large room in the Pyramid called Room-of-No-Return. Its floor is covered by rectangular tiles of equal size. The name of the room was chosen because of the very high number of traps and mechanisms in it. The ACM group has spent several years studying the secret plan of this room. It has made a clever plan to avoid all the traps. A specially trained mechanic was sent to deactivate the most feared trap called Shattered Bones. After deactivating the trap the mechanic had to escape from the room. It is very important to step on the center of the tiles only; he must not touch the edges. One wrong step and a large rock falls from the ceiling squashing the mechanic like a pancake. After deactivating the trap, he realized a horrible thing: the ACM plan did not take his equipment box into consideration. The box must be laid onto the ground because the mechanic must have both hands free to prevent contact with other traps. But when the box is laid on the ground, it could touch the line separating the tiles. And this is the main problem you are to solve. 
+
+Input Specification
+The input consists of T test cases. The number of them (T) is given on the first line of the input file. Each test case consists of a single line. The line contains exactly four integer numbers separated by spaces: A, B, X and Y. A and Bindicate the dimensions of the tiles, X and Y are the dimensions of the equipment box (1 <= A,B,X,Y <= 50000). 
+Output Specification
+Your task is to determine whether it is possible to put the box on a single tile -- that is, if the whole box fits on a single tile without touching its border. If so, you are to print one line with the sentence "Escape is possible.". Otherwise print the sentence "Box cannot be dropped.". 
+Sample Input
+2
+10 10 8 8
+8 8 10 10
+
+Output for the Sample Input
+Escape is possible.
+Box cannot be dropped.
+
+ 
+
+Secret Code
+(file name: code.c, code.p, code.C) 
+
+The Sarcophagus itself is locked by a secret numerical code. When somebody wants to open it, he must know the code and set it exactly on the top of the Sarcophagus. A very intricate mechanism then opens the cover. If an incorrect code is entered, the tickets inside would catch fire immediately and they would have been lost forever. The code (consisting of up to 100 integers) was hidden in the Alexandrian Library but unfortunately, as you probably know, the library burned down completely. 
+
+But an almost unknown archaeologist has obtained a copy of the code something during the 18th century. He was afraid that the code could get to the ``wrong people'' so he has encoded the numbers in a very special way. He took a random complex number B that was greater (in absolute value) than any of the encoded numbers. Then he counted the numbers as the digits of the system with basis B. That means the sequence of numbers an, an-1, ..., a1, a0 was encoded as the number X = a0 + a1B + a2B2 + ...+ anBn. 
+
+Your goal is to decrypt the secret code, i.e. to express a given number X in the number system to the base B. In other words, given the numbers X and Byou are to determine the ``digit'' a0 through an. 
+
+Input Specification
+The input consists of T test cases. The number of them (T) is given on the first line of the input file. Each test case consists of one single line containing four integer numbers Xr, Xi, Br, Bi (|Xr|,|Xi| <= 1000000, |Br|,|Bi| <= 16). These numbers indicate the real and complex components of numbers X and B, i.e. X = Xr + i.Xi, B = Br + i.Bi. B is the basis of the system (|B| > 1), X is the number you have to express. 
+Output Specification
+Your program must output a single line for each test case. The line should contain the ``digits'' an, an-1, ..., a1, a0, separated by commas. The following conditions must be satisfied: 
+for all i in {0, 1, 2, ...n}: 0 <= ai < |B| 
+X = a0 + a1B + a2B2 + ...+ anBn 
+if n > 0 then an <> 0 
+n <= 100 
+If there are no numbers meeting these criteria, output the sentence "The code cannot be decrypted.". If there are more possibilities, print any of them. 
+
+Sample Input
+4
+-935 2475 -11 -15
+1 0 -3 -2
+93 16 3 2
+191 -192 11 -12
+
+Output for the Sample Input
+8,11,18
+1
+The code cannot be decrypted.
+16,15
+
+ 
+
+The Proper Key
+(file name: key.c, key.p, key.C) 
+
+Many people think that Tetris was invented by two Russian programmers. But that is not the whole truth. The idea of the game is very old -- even the Egyptians had something similar. But they did not use it as a game. Instead, it was used as a very complicated lock. The lock was made of wood and consisted of a large number of square fields, laid out in regular rows and columns. Each field was either completely filled with wood, or empty. The key for this lock was two-dimensional and it was made by joining square parts of the same size as the fields of the lock. So they had a 2D lock and 2D key that could be inserted into the lock from the top. The key was designed so that it was not possible to move it upwards. It could only fall down and it could slide sideways -- exactly like in a Tetris game. The only difference is that the key could not be rotated. Rotation in Tetris is really a Russian invention. 
+
+The entry gate into the Pyramid has such a lock. The ACM archaeologists have found several keys and one of them belongs to the lock with a very high probability. Now they need to try them out and find which one to use. Because it is too time-consuming to try all of them, it is better to begin with those keys that may be inserted deeper into the lock. Your program should be able to determine how deep a given key can be inserted into a given lock. 
+
+Input Specification
+The input consists of T test cases. The number of them (T) is given on the first line of the input file. Each test case begins with a line containing two integers R and C (1 <= R,C <= 100) indicating the key size. Then exactly R rows follow, each containing C characters. Each character is either a hash mark (#) or a period (.). A hash mark represents one square field made of wood; a period is an empty field. The wooden fields are always connected, i.e. the whole key is made of one piece. Moreover, the key remains connected even if we cut off arbitrary number of rows from its top. There is always at least one non-empty field in the top-most and bottom-most rows and the left-most and right-most columns. 
+After the key description, there is a line containing two integers D and W (1 <= D <= 10000, 1 <= W <= 1000). The number W is the lock width, and D is its depth. The next D lines contain W characters each. The character may be either a hash mark (representing the wood) or a period (the free space). 
+
+Output Specification
+Your program should print one line of output for each test case. The line should contain the statement "The key falls to depth X.". Replace X with the maximum depth to which the key can be inserted by moving it down and sliding it to the left or right only. The depth is measured as the distance between the bottom side of the key and the top side of the lock. If it is possible to move the key through the whole lock and take it away at the bottom side, output the sentence "The key can fall through.". 
+Sample Input
+4
+2 4
+#.##
+###.
+3 6
+#....#
+#....#
+#..###
+2 3
+##.
+.##
+2 7
+#.#.#.#
+.#.#.#.
+1 1
+#
+1 10
+###....###
+3 2
+##
+.#
+.#
+1 5
+#.#.#
+
+Output for the Sample Input
+The key falls to depth 2.
+The key falls to depth 0.
+The key can fall through.
+The key falls to depth 2.
+
+ 
+
+Labyrinth
+(file name: labyrinth.c, labyrinth.p, labyrinth.C) 
+
+The northern part of the Pyramid contains a very large and complicated labyrinth. The labyrinth is divided into square blocks, each of them either filled by rock, or free. There is also a little hook on the floor in the center of every free block. The ACM have found that two of the hooks must be connected by a rope that runs through the hooks in every block on the path between the connected ones. When the rope is fastened, a secret door opens. The problem is that we do not know which hooks to connect. That means also that the neccessary length of the rope is unknown. Your task is to determine the maximum length of the rope we could need for a given labyrinth. 
+
+Input Specification
+The input consists of T test cases. The number of them (T) is given on the first line of the input file. Each test case begins with a line containing two integers C and R (3 <= C,R <= 1000) indicating the number of columns and rows. Then exactly R lines follow, each containing C characters. These characters specify the labyrinth. Each of them is either a hash mark (#) or a period (.). Hash marks represent rocks, periods are free blocks. It is possible to walk between neighbouring blocks only, where neighbouring blocks are blocks sharing a common side. We cannot walk diagonally and we cannot step out of the labyrinth. 
+The labyrinth is designed in such a way that there is exactly one path between any two free blocks. Consequently, if we find the proper hooks to connect, it is easy to find the right path connecting them. 
+
+Output Specification
+Your program must print exactly one line of output for each test case. The line must contain the sentence "Maximum rope length is X." where Xis the length of the longest path between any two free blocks, measured in blocks. 
+Sample Input
+2
+3 3
+###
+#.#
+###
+7 6
+#######
+#.#.###
+#.#.###
+#.#.#.#
+#.....#
+#######
+
+Output for the Sample Input
+Maximum rope length is 0.
+Maximum rope length is 8.
+
+ 
+
+Piggy-Bank
+(file name: pig.c, pig.p, pig.C) 
+
+Before ACM can do anything, a budget must be prepared and the necessary financial support obtained. The main income for this action comes from Irreversibly Bound Money (IBM). The idea behind is simple. Whenever some ACM member has any small money, he takes all the coins and throws them into a piggy-bank. You know that this process is irreversible, the coins cannot be removed without breaking the pig. After a sufficiently long time, there should be enough cash in the piggy-bank to pay everything that needs to be paid. 
+
+But there is a big problem with piggy-banks. It is not possible to determine how much money is inside. So we might break the pig into pieces only to find out that there is not enough money. Clearly, we want to avoid this unpleasant situation. The only possibility is to weigh the piggy-bank and try to guess how many coins are inside. Assume that we are able to determine the weight of the pig exactly and that we know the weights of all coins of a given currency. Then there is some minimum amount of money in the piggy-bank that we can guarantee. Your task is to find out this worst case and determine the minimum amount of cash inside the piggy-bank. We need your help. No more prematurely broken pigs! 
+
+Input Specification
+The input consists of T test cases. The number of them (T) is given on the first line of the input file. Each test case begins with a line containing two integers E and F. They indicate the weight of an empty pig and of the pig filled with coins. Both weights are given in grams. No pig will weigh more than 10 kg, that means 1 <= E <= F <= 10000. On the second line of each test case, there is an integer number N (1 <= N <= 500) that gives the number of various coins used in the given currency. Following this are exactly N lines, each specifying one coin type. These lines contain two integers each, Pand W (1 <= P <= 50000, 1 <= W <=10000). P is the value of the coin in monetary units, W is it's weight in grams. 
+Output Specification
+Print exactly one line of output for each test case. The line must contain the sentence "The minimum amount of money in the piggy-bank is X." where X is the minimum amount of money that can be achieved using coins with the given total weight. If the weight cannot be reached exactly, print a line "This is impossible.". 
+Sample Input
+3
+10 110
+2
+1 1
+30 50
+10 110
+2
+1 1
+50 30
+1 6
+2
+10 3
+20 4
+
+Output for the Sample Input
+The minimum amount of money in the piggy-bank is 60.
+The minimum amount of money in the piggy-bank is 100.
+This is impossible.
+
+ 
+
+Lifting the Stone
+(file name: stone.c, stone.p, stone.C) 
+
+There are many secret openings in the floor which are covered by a big heavy stone. When the stone is lifted up, a special mechanism detects this and activates poisoned arrows that are shot near the opening. The only possibility is to lift the stone very slowly and carefully. The ACM team must connect a rope to the stone and then lift it using a pulley. Moreover, the stone must be lifted all at once; no side can rise before another. So it is very important to find the centre of gravity and connect the rope exactly to that point. The stone has a polygonal shape and its height is the same throughout the whole polygonal area. Your task is to find the centre of gravity for the given polygon. 
+
+Input Specification
+The input consists of T test cases. The number of them (T) is given on the first line of the input file. Each test case begins with a line containing a single integer N (3 <= N <= 1000000) indicating the number of points that form the polygon. This is followed by N lines, each containing two integers Xi and Yi (|Xi|, |Yi| <= 20000). These numbers are the coordinates of the i-th point. When we connect the points in the given order, we get a polygon. You may assume that the edges never touch each other (except the neighboring ones) and that they never cross. The area of the polygon is never zero, i.e. it cannot collapse into a single line. 
+Output Specification
+Print exactly one line for each test case. The line should contain exactly two numbers separated by one space. These numbers are the coordinates of the centre of gravity. Round the coordinates to the nearest number with exactly two digits after the decimal point (0.005 rounds up to 0.01). Note that the centre of gravity may be outside the polygon, if its shape is not convex. If there is such a case in the input data, print the centre anyway. 
+Sample Input
+2
+4
+5 0
+0 5
+-5 0
+0 -5
+4
+1 1
+11 1
+11 11
+1 11
+
+Output for the Sample Input
+0.00 0.00
+6.00 6.00
+
+ 
+
+Play on Words
+(file name: words.c, words.p, words.C) 
+
+Some of the secret doors contain a very interesting word puzzle. The team of archaeologists has to solve it to open that doors. Because there is no other way to open the doors, the puzzle is very important for us. 
+
+There is a large number of magnetic plates on every door. Every plate has one word written on it. The plates must be arranged into a sequence in such a way that every word begins with the same letter as the previous word ends. For example, the word ``acm'' can be followed by the word ``motorola''. Your task is to write a computer program that will read the list of words and determine whether it is possible to arrange all of the plates in a sequence (according to the given rule) and consequently to open the door. 
+
+Input Specification
+The input consists of T test cases. The number of them (T) is given on the first line of the input file. Each test case begins with a line containing a single integer number Nthat indicates the number of plates (1 <= N <= 100000). Then exactly Nlines follow, each containing a single word. Each word contains at least two and at most 1000 lowercase characters, that means only letters 'a' through 'z' will appear in the word. The same word may appear several times in the list. 
+Output Specification
+Your program has to determine whether it is possible to arrange all the plates in a sequence such that the first letter of each word is equal to the last letter of the previous word. All the plates from the list must be used, each exactly once. The words mentioned several times must be used that number of times. 
+If there exists such an ordering of plates, your program should print the sentence "Ordering is possible.". Otherwise, output the sentence "The door cannot be opened.". 
+
+Sample Input
+3
+2
+acm
+ibm
+3
+acm
+malform
+mouse
+2
+ok
+ok
+
+Output for the Sample Input
+The door cannot be opened.
+Ordering is possible.
+The door cannot be opened.
+

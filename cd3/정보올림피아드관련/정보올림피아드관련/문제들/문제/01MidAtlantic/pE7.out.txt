@@ -1,0 +1,8 @@
+:AC:
+:ABC:
+:ABC:
+:D:
+:ACEFGH:
+:ABCFGH:
+:ABCGH:
+:ABCFGH:

@@ -1,0 +1,12 @@
+	for(gap=1;gap<n/3;gap=3*gap+1);
+	while(gap>0){
+		for(i=gap;i<=n;i=i++)
+			for(j=i-gap;j>=0;j-=gap){
+				if(>){
+					swap(,);
+					swap(,);
+				}
+				else break;
+			}
+		gap/=3;
+	}

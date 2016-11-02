@@ -1,0 +1,37 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: 슈퍼컴나르기 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP82A0.TMP" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/슈퍼컴나르기.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\겨울캠프\슈퍼컴나르기\슈퍼컴나르기.cpp"
+]
+Creating command line "cl.exe @c:\windows\TEMP\RSP82A0.TMP" 
+Creating temporary file "c:\windows\TEMP\RSP82A1.TMP" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/슈퍼컴나르기.pdb" /debug /machine:I386 /out:"Debug/슈퍼컴나르기.exe" /pdbtype:sept 
+".\Debug\슈퍼컴나르기.obj"
+]
+Creating command line "link.exe @c:\windows\TEMP\RSP82A1.TMP"
+<h3>Output Window</h3>
+Compiling...
+슈퍼컴나르기.cpp
+D:\겨울캠프\슈퍼컴나르기\슈퍼컴나르기.cpp(32) : error C2143: syntax error : missing ';' before '}'
+D:\겨울캠프\슈퍼컴나르기\슈퍼컴나르기.cpp(36) : error C2065: 't' : undeclared identifier
+D:\겨울캠프\슈퍼컴나르기\슈퍼컴나르기.cpp(53) : error C2601: 'output' : local function definitions are illegal
+D:\겨울캠프\슈퍼컴나르기\슈퍼컴나르기.cpp(58) : error C2601: 'main' : local function definitions are illegal
+D:\겨울캠프\슈퍼컴나르기\슈퍼컴나르기.cpp(63) : fatal error C1004: unexpected end of file found
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+슈퍼컴나르기.exe - 5 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

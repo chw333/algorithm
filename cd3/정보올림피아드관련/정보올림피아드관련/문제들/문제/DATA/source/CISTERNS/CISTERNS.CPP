@@ -1,0 +1,154 @@
+#include <fstream.h>
+#include <stdlib.h>
+#include <stdio.h>
+#define MAX 100000
+
+ifstream in("cisterns.in");
+ofstream out("cisterns.out");
+
+struct hi{
+	int h;
+	int se;
+	int idx;
+} high[MAX*2];
+struct cs{
+	int b;
+	int h;
+	int w;
+	int d;
+} cisterns[MAX];
+int n, v;
+double ans;
+int head, tail;
+int q[MAX];
+int sum;
+int count=0;
+int countt=0;
+int counttt=0;
+
+int compare( const void *arg1, const void *arg2 )
+{
+	struct hi *p=(struct hi*)arg1, *q=(struct hi*)arg2;
+	if(p->h > q->h) return 1;
+	if(p->h < q->h) return -1;
+	return 0;
+}
+
+void pop(int idx)
+{
+	int i,j;
+	if(q[head]==idx) {
+		q[head]=-1;
+		head++;
+	} else {
+		for(i=head;i<tail;i++){
+			if(q[i]==idx) {
+				for(j=i;j>head;j--) {
+					q[j]=q[j-1];
+				}
+				break;
+			}
+		}
+		q[head]=-1;
+		head++;
+	}
+	countt++;
+}
+void push(int idx)
+{
+	q[tail]=idx;
+	tail++;
+	counttt++;
+}
+
+int input()
+{
+	int i;
+	int vsum=0;
+	in >> n;
+	for(i=0;i<n;i++) {
+		in >> cisterns[i].b >> cisterns[i].h >> cisterns[i].w >> cisterns[i].d;
+		vsum+=cisterns[i].h*cisterns[i].w*cisterns[i].d;
+	}
+	in >> v;
+	if(vsum<v) return 1;
+	for(i=0;i<n*2;i+=2) {
+		high[i].h=cisterns[i/2].b;
+		high[i+1].h=cisterns[i/2].b+cisterns[i/2].h;
+		high[i].se=0;
+		high[i+1].se=1;
+		high[i].idx=i/2;
+		high[i+1].idx=i/2;
+	}
+	qsort( high, n*2, sizeof(high[0]), compare );
+	
+	for(i=0;i<n;i++) q[i]=-1;
+	return 0;
+}
+
+double calc(int h)
+{
+	int i;
+	int wd=0;
+	int tempv;
+	double x;
+	if(head!=tail) {
+		for(i=head;i<tail;i++){
+			wd+=cisterns[q[i]].w*cisterns[q[i]].d;
+		}
+	} else {
+		wd+=cisterns[q[head]].w*cisterns[q[head]].d;
+	}
+	tempv=wd*h;
+	sum+=tempv;
+	if(sum>519000){
+		int a=3;
+	}
+	if(v<=sum) {
+		x=(double)(v-(sum-tempv))/wd;
+		return x;
+	}
+	count++;
+	return -1;
+}
+
+void proc()
+{
+	double ret;
+	int i;
+	push(high[0].idx);
+	for(i=1;i<n*2;i++){
+		if(high[i].h!=high[i-1].h) {
+			ret=calc(high[i].h-high[i-1].h);
+			if(ret!=-1) {
+				ans=high[i-1].h+ret;
+				return;
+			}
+		}
+		if(high[i].se==0){
+			push(high[i].idx);
+		} else {
+			pop(high[i].idx);
+		}
+	}
+}
+
+
+void output()
+{
+	char str[100];
+	sprintf(str,"%.2f",ans);
+	out << str;
+}
+
+int main(int argc, char **argv)
+{
+	int ret;
+	ret=input();
+	if(ret!=0) { 
+		out << "OVERFLOW"; 
+		return 0; 
+	}
+	proc();
+	output();
+}

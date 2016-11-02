@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>2001년 18회 한국정보올림피아드</title>
+<meta name="namo-theme" content="Mask; vert">
+<meta name="generator" content="Namo WebEditor v3.0">
+<style><!--
+h1 { font-family:굴림; font-size:12pt; color:rgb(255,0,0); }
+h2 { font-family:굴림; font-size:12pt; color:rgb(128,0,0); }
+p { font-family:굴림; color:rgb(0,0,0); }
+p.namo-bullet1 { font-family:굴림; font-size:12pt; color:rgb(128,0,0); }
+p.namo-bullet2 { font-family:굴림; font-size:10pt; color:rgb(0,0,0); }
+--></style>
+</head>
+
+<body bgcolor="white" text="black" link="red" vlink="#804000" alink="maroon">
+
+<table border="0">
+    <tr>
+        <td width="595"><table border="0" width="595">
+                <tr>
+                    <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+                        18회 중등부 1. 색종이 만들기</b></font></td>
+                    <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="skoi01m1.htm"><img src="button2.gif"
+                         width="72" height="22" border="0"></a></td>
+                    <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi01m1.htm"><img src="button3.gif"
+                         width="72" height="22" border="0"></a></td>
+                </tr>
+            </table>
+            <p><img src="bar1.gif" width="592" height="25" border="0"></p>
+            <ul>
+                <p align="left"><font face="굴림" size="2">&nbsp;&nbsp;아래 
+                &lt;그림 1&gt; 과 같이 여러개의 정사각형칸들로 이루어진 정사각형 
+                모양의 종이가 주어져 있고, 각 정사각형칸들은 하얀색으로 칠해져 
+                있거나 파란색으로 칠해져 있다. 주어진 종이를 일정한 규칙에 따라 
+                잘라서 다양한 크기를 가진 정사각형 모양의 하얀색 또는 파란색 
+                색종이를 만들려고 한다.<br> </font></p>
+                <p align="center"><font face="굴림" size="2"><img src="pkoi01m1_1.gif"
+                 width="194" height="194" border="0" alt="&lt;그림 1&gt; 8*8 종이"><br> 
+                &lt; 그림 1 &gt; 8*8 종이</font></p>
+                <p align="left"><font size="2">&nbsp;&nbsp;전체 종이의 크기가 
+                N*N(N = 2^k, k는 1이상 7이하의 자연수) 이라면 종이를 자르는 
+                규칙은 다음과 같다. <br> &nbsp;&nbsp;전체 종이가 모두 같은 색으로 
+                칠해져 있지 않으면 가로와 세로로 중간 부분을 잘라서 &lt;그림2&gt;의 
+                I, II, III, IV 와 같이 똑같은 크기의 네 개의 (N/2) * (N/2) 색종이로 
+                나눈다. 나누어진 종이 I, II, III, IV 각각에 대해서도 앞에서와 
+                마찬가지로 모두 같은 색으로 칠해져 있지 않으면 같은 방법으로 
+                똑같은 크기의 네 개의 색종이로 나눈다. 이와 같은 과정을 잘라진 
+                종이가 모두 하얀색 또는 모두 파란색으로 칠해져 있거나, 하나의 
+                정사각형 칸이 되어 더 이상 자를 수 없을 때까지 반복한다.<br> 
+                &nbsp;&nbsp;위와 같은 규칙에 따라 잘랐을 때 &lt;그림 3&gt; 은 
+                &lt;그림 1&gt;의 종이를 처음 나눈 후의 상태를, &lt;그림 5&gt;는 
+                최종적으로 만들어진 다양한 크기의 9장의 하얀색 색종이와 7장의 
+                파란색 색종이를 보여주고 있다.</font></p>
+                <p align="center"><font size="2"><img src="pkoi01m1_2.gif" width="200"
+                 height="197" border="0"><br> &lt; 그림 2 &gt;</font></p>
+                <p align="center"><font size="2"><img src="pkoi01m1_3.gif" width="200"
+                 height="197" border="0"> <br> &lt; 그림 3 &gt; 처음 나눈 후의 
+                상태</font></p>
+                <p align="center"><font size="2"><img src="pkoi01m1_4.gif" width="200"
+                 height="197" border="0"><br> &lt; 그림 4 &gt; 두 번째 나눈 
+                후의 상태</font></p>
+                <p align="center"><font size="2"><img src="pkoi01m1_5.gif" width="200"
+                 height="197" border="0"><br> &lt; 그림 5 &gt; 최종적으로 나누어진 
+                색종이들</font></p>
+                <p align="left"><font size="2">&nbsp;&nbsp;&nbsp;입력으로 주어진 
+                종이의 한 변의 길이 N 과 각 정사각형칸의 색 (하얀색 또는 파란색)이 
+                주어질 때 잘라진 하얀색 색종이와 파란색 색종이의 개수를 구하는 
+                프로그램을 작성하시오.</font></p>
+                <p align="left"><font size="2">&nbsp;&nbsp;실행 파일의 이름은 
+                COLOR.EXE 로 하고, 프로그램의 실행시간은 5초를 초과할 수 없다. 
+                부분 점수는 없다.</font></p>
+            </ul>
+            <p><img src="bar2.gif" width="591" height="26" border="0"></p>
+            <ul>
+                <p><font size="2">&nbsp;&nbsp;입력 파일명은 INPUT.TXT로 한다. 
+                입력 파일의 첫째 줄에는 전체 종이의 한 변의 길이 N이 주어져 
+                있다. N 은 2, 4, 8, 16, 32, 64, 128 중 하나이다. 색종이의 각 
+                가로줄의 정사각형칸들의 색이 윗줄부터 차례로 입력 파일의 둘째 
+                줄부터 마지막 줄까지 주어진다. 하얀색으로 칠해진 칸은 0, 파란색으로 
+                칠해진 칸은 1로 주어지며 각 숫자 사이에는 빈칸이 하나씩 있다.</font></p>
+            </ul>
+            <p><img src="bar3.gif" width="590" height="26" border="0"></p>
+            <ul>
+                <p><font size="2">&nbsp;&nbsp;출력 파일명은 OUTPUT.TXT 로 한다. 
+                첫째 줄에는 잘라진 하얀색 색종이의 개수를 출력하고 둘째 줄에는 
+                파란색 색종이의 개수를 출력한다.</font></p>
+            </ul>
+            <p><img src="bar4.gif" width="593" height="25" border="0">&nbsp;</p>
+            <ul>
+                <p><font face="굴림" size="2">입력(INPUT.TXT)</font> 
+                <div align="left"><table border cellpadding="2" cellspacing="0"
+                 width="180">
+                        <tr>
+                            <td><p><font face="굴림" size="2">8<br> 1 1 0 0 
+                            0 0 1 1<br> 1 1 0 0 0 0 1 1<br> 0 0 0 0 1 1 0 0<br> 
+                            0 0 0 0 1 1 0 0<br> 1 0 0 0 1 1 1 1<br> 0 1 0 0 
+                            1 1 1 1<br> 0 0 1 1 1 1 1 1 <br> 0 0 1 1 1 1 1 1</font></td>
+                    </tr>
+                </table></div>
+                <p align="left"><font face="굴림" size="2"><br> 출력(화면)&nbsp;<br></font> 
+                
+                <div align="left"><table border cellpadding="2" cellspacing="0"
+                 width="180">
+                        <tr>
+                            <td height="17"><p><font face="굴림" size="2">9<br> 
+                            7</font></td>
+                    </tr>
+                </table></div>
+
+                </ul><p><img src="bar5.gif" width="595" height="26" border="0"></p>
+            <ul>
+                <p>&nbsp;<font size="2">제한시간은 5초이다.</font> 
+            </ul></td>
+    </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+
+</html></html>

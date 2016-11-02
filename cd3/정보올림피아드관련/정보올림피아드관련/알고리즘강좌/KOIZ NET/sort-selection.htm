@@ -1,0 +1,60 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>가장 무식한 정렬 방법 중 하나지요?</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font color="#0066CC" size="5"><b>선택&nbsp;정렬(Selection Sorting</b></font><font size="5" color="#0066CC"><b>)</b></font>
+<table style="font-size:10pt;" border="0">
+    <tr>
+        <td width="974">
+            <p>가장 무식한 정렬 방법 중 하나지요?</p>
+            <p>(뭐, 때에 따라서는 O(n^2) 알고리즘이 좋을때도 있습니다.)</p>
+            <p>이 알고리즘은 배열에서 가장 
+적은 요소를 찾아서 첫번째 위치에 있는 요소와 교환하고</p>
+            <p>그후 두번째로 가장 적은 요소를 찾고, 두번 째 위치에 있는 요소와 교환을 하는겁니다. 
+보통 우리들이 실생활에서도 써먹는 방식이죠?</p>
+            <p>데이터를 예로들어 볼까요?</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p>&nbsp;</p>
+            <p align="center">9 3 2 5 7 &nbsp; &nbsp; &nbsp; &nbsp; &lt;-------- 
+처음데이터<BR>2 3 9 5 7 &nbsp; &nbsp; &nbsp; &nbsp; &lt;-------- 첫 교환 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>2 3 5 9 7 &nbsp; &nbsp; &nbsp; &nbsp; &lt;-------- 둘 
+교환 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>2 3 5 7 9 &nbsp; &nbsp; &nbsp; &nbsp; &lt;-------- Final 교환!!</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" height="52">
+            <p>어떻게 되시는지 아시겠죠?</p>
+            <p>간단한 
+C 코드입니다</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p><font color="#003366">void selection_sort()<BR>{</font><font color="#0066CC"><BR>&nbsp; &nbsp;int i, j, min;</font><BR>&nbsp; &nbsp;<font color="#009900"><BR>&nbsp; &nbsp;for 
+( i = 1 ; i &lt; N ; i++ ) {<BR>&nbsp; &nbsp; &nbsp; &nbsp;min = i;<BR>&nbsp; &nbsp; &nbsp; &nbsp;for ( j = i + 1 ; j 
+&lt;= N ; j++ )<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if ( data[j] &lt; data[min] )<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;min = j;<BR>&nbsp; &nbsp; &nbsp; &nbsp;swap( min, i );<BR>&nbsp; &nbsp;}</font><BR><font color="#003366">}</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p>&nbsp;</p>
+            <p>data배열은 값이 들어있는 
+배열이고 swap()함수는 두 값을 교환하는거...<BR>다아시죠?<BR>이상 Selection Sort 강좌였습니다. 궁금한것이 있으면 
+멜(<A href="mailto:hwayoujun@hanmail.net"><U><FONT 
+color=#208fff>hwayoujun@hanmail.net</FONT></U></A>)이나 Q&amp;A게시판을 애용해주세요~</p>
+        </td>
+    </tr>
+  
+</table>
+</body>
+
+</html>

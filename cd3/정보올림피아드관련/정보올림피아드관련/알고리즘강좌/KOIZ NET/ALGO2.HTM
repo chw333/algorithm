@@ -1,0 +1,63 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>시간복잡도와 공간복잡도</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font size="5" color="#0066CC"><b>시간복잡도와 공간복잡도</b></font></p>
+<p>&nbsp;</p>
+<table border="0" style="font-size:10pt;">
+    <tr>
+        <td width="974">
+            <p><font size="2">&nbsp; 1. 알고리즘의 평가와 성능측정 &nbsp;알고리즘의 
+            그 수행의 효율성에 따라서 평가 및 성능 측정을 하게 되는데, 무엇으로 
+            그 알고리즘의 효율을 측정할 것인가?</font></p>
+            <p><font size="2">&nbsp; &nbsp;성능 평가의 기준 : 1. 시간 복잡도 
+            &nbsp;2. 공간복잡도</font></p>
+            <p><font size="2">&nbsp; 복잡도란 실제로 얼마나 많은 양을 필요로 
+            하는가를 따지지 않고, 입력 instance에 어떻게 의존적인가를 따지는 
+            것이다. 예를 들어 입력이 n개의 원소를 이루어진 리스트일때, 어떤 
+            프로그램은 100*N번 비교를 하고, 다른 어떤 프로그램은 n*n번의 비교를 
+            한다고 할때, 우리는 후자가 휠씬 더 높은 복작도를 가진다고 이야기를 
+            한다. 이것은 전자가 입력 인스턴스에 선형 (1차)으로 의존적인데 반해 
+            후자는 2차로 의존적이기 때문이다. 일반적인 방법은 하나의 비교 내지는 
+            기본이 되는 statement를 하나의 단위로 생각해서 그 statement의 수행 
+            빈도로서 측정을 하고 있다. 기본적으로는 수학적 모델을 사용하고 있으며 
+            O와 Ω의 두가지가 많이 사용되고 있다.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p><font size="2">&nbsp;</font></p>
+            <p><font size="2">&nbsp;O-notation 정의 : O(g(n)) = {f(n) : there 
+            exist positive constants c and nｏ such that</font></p>
+            <p><font size="2">&nbsp;O&lt;= f(n) &lt;= cg(n) for all n&gt;=nｏ} 
+            O는 읽기는 big-O내지는 order라고 일고 그 의미는 위의 정의에서 알 
+            수 있듯이 asymptotic upper bound를 나타낸다.</font></p>
+            <p><font size="2">&nbsp;</font></p>
+            <p><font size="2">&nbsp;&nbsp;Ω-notation 정의 : Ω(g(n)) = { f(n) 
+            :there exist postitive constants c and nｏ such that</font></p>
+            <p><font size="2">&nbsp;O&lt;= cg(n) &lt;= f(n) for all n&gt;=nｏ} 
+            Ω는 읽기는 오메가라고 읽고 그 의미는 위의 정의에서처럼 asymptotic 
+            lower bound를 나타낸다.</font></p>
+            <p><font size="2">&nbsp;</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p><font size="2">&nbsp;&nbsp;알고리즘의 성능 평가는 입력되는 데이터의 
+            개수가 N이라고 하면 Ω(g(N)) 또는 O(g(N))과 같은 식으로 나타낸다. 
+            정렬 알고리즘에 대한 lower bound는 O(NlogN)이 이미 증명되어 있다. 
+            즉 아무리 성능이 뛰어나 정렬 알고리즘을 개발한다 할지라도 데이터의 
+            개수가 N이면 그 알고리즘은 O(NlogN)보다 더 좋을 수 없다는 것이다. 
+            정렬 알고리즘 중 하나인 bubble sorting은 그 성능이 O(N&sup2;)이고 
+            quick sorting은 평균 속력 O(NlogN)이다.</font></p>
+        </td>
+    </tr>
+</table>
+</body>
+
+</html>

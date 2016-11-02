@@ -1,0 +1,130 @@
+#include <iostream>
+#include <algorithm>
+#include <set>
+#include <string>
+
+/*
+ *  Sample solution to
+ *      "Algernon's Noxious Emissions"
+ *
+ */
+
+using namespace std;
+
+
+typedef set<char> ChemicalSet;
+
+
+struct Table {
+  ChemicalSet inflow;
+  ChemicalSet outflow;
+
+  ChemicalSet dumps;
+  ChemicalSet neutralizes;
+
+  set<int> downstreamTables;
+};
+
+
+Table* factory;  // array of all tables
+
+//
+// Compute the estimated outflow chemical set based upon the
+// known inflow to this table so far. If the outflow changes,
+// add the new outflow chemicals to the inflow of all downstream 
+// tables. Add any tables whose inflow changes to pending.
+//
+void estimateOutflow (Table& table, set<int>& pending)
+{
+  ChemicalSet oldOutflow = table.outflow;
+
+  // outflow = dumps U (inflow - neutralizes)
+  table.outflow.clear();
+  set_difference(table.inflow.begin(), table.inflow.end(),
+		 table.neutralizes.begin(), table.neutralizes.end(),
+		 inserter(table.outflow, table.outflow.end()));
+  copy (table.dumps.begin(), table.dumps.end(),
+	inserter(table.outflow, table.outflow.end()));
+
+  if (table.outflow != oldOutflow) {
+    // Outflow from table has changed. Propogate this change to all
+    // immediately downstream tables.
+    for (set<int>::iterator out = table.downstreamTables.begin();
+	 out != table.downstreamTables.end(); out++)
+      {
+	Table& downStream = factory[*out];
+	ChemicalSet oldInflow = downStream.inflow;
+	copy (table.outflow.begin(), table.outflow.end(),
+	      inserter(downStream.inflow, downStream.inflow.end()));
+	if (oldInflow != downStream.inflow) {
+	  pending.insert(*out);
+	}
+      }
+  }
+}
+
+
+
+
+int main() 
+{
+  int nTables;
+  cin >> nTables;
+
+  factory = new Table[nTables];
+
+  // Read the dumps and neutralizes lists
+  for (int t = 0; t < nTables; ++t) {
+    Table& tab = factory[t];
+    string dumpsList, neutralizesList;
+    cin >> dumpsList >> neutralizesList;
+    if (dumpsList != ".") {
+      copy (dumpsList.begin(), dumpsList.end(),
+	    inserter(tab.dumps, tab.dumps.end()));
+    }
+    if (neutralizesList != ".") {
+      copy (neutralizesList.begin(), neutralizesList.end(),
+	    inserter(tab.neutralizes, tab.neutralizes.end()));
+    }
+  }
+
+  // read the pipeline descriptions
+  int upstream, downstream;
+  cin >> upstream >> downstream;
+  while (upstream != 0 && downstream != 0)
+    {
+      factory[upstream-1].downstreamTables.insert(downstream-1);
+      cin >> upstream >> downstream;
+    }
+
+
+
+  // All input is now complete.  Propogate the chemicals around
+  // the network.
+  int propCounter = 0;
+
+  set<int> pending;
+  for (int i = 0; i < nTables; ++i) pending.insert(i);
+
+  while (!pending.empty()) {
+    int t = *(pending.begin());
+    pending.erase(t);
+
+    estimateOutflow(factory[t], pending);
+  }
+
+
+  // Print the results
+  for (int t = 0; t < nTables; ++t)
+    {
+      Table& table = factory[t];
+
+      cout << ':';
+      copy (table.outflow.begin(), table.outflow.end(),
+	    ostream_iterator<char>(cout,""));
+      cout << ":" << endl;
+    }
+  
+	
+  return 0;
+}

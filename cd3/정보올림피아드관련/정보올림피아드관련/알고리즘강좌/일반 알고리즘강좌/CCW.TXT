@@ -1,0 +1,7 @@
+                                       >> CCW <<
+
+ ccw는 방향을 알게해준다.
+ 
+ a, b, c 는 삼각형의 점.
+
+* T = a.x * b.y - b.x * a.y + b.x * c.y - c.x * b.y + c.x * a.y - a.x * c.y

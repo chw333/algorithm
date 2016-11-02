@@ -1,0 +1,74 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>퇴각검색 알고리즘의 구조</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font color="#0066CC" size="4"><b>퇴각검색 알고리즘의 구조</b></font></p>
+<p><font size="2">&nbsp;&nbsp;퇴각검색 알고리즘은 상태공간트리를 실제 만들어가면서 
+탐색하는 것이 아니라 상태공간트리를 개념적으로(또느 implicit하게) 탐색하도록 
+구성된다. 퇴각검색 알고리즘은 깊이우선탐색을 기본 구조로 하고 있으며, 깊이우선탐색 
+알고리즘은 다음과 같다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;void DFS(node v) {</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;node u;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;visit v; // 정점 v를 방문한다.</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;for (each child u of v)</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DFS(u);</font></p>
+<p><font size="2">&nbsp;}</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">깊이우선탐색 알고리즘을 기반으로 한 퇴각검색 알고리즘의 기본적인 
+구조는 다음과 같다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;void checknode(node v) {</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (promising(v)) { &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 
+v의 상태가 해를 찾을 가능성이 있으면</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (there 
+is a solution at v) // v가 답 노드에 해당하면</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write 
+the solution; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 해를 출력한다</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for 
+(each child u of v)</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checknode(u);</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font></p>
+<p><font size="2">&nbsp;}</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;&nbsp;위 알고리즘은 노드를 먼저 생선한 다음 한계 함수(유망 
+함수)에 대한 검사한다. 재귀함수의 경우 함수 호출에 따른 오버 헤드(overhead)가 
+있으므로, 노드를 먼저 생성한 다음 (즉, 호출한 다음), 유망한가 여부를 검사하는 
+것은 다소 비효율적인 요소가 있다. 따라서, 자식 노드에 대한 한계함수를 먼저 수행하고 
+나서 유망한 경우에만 호출하도록 한다면 이 비효율성을 제거할 수 있다. 아래 알고리즘은 
+비효율성을 제거한 알고리즘이다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;void expand(node v) {</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node u;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (each child u of v) { // 
+v의 자식 노드에 대해</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (promising(u) 
+{ // v의 상태가 해를 찾을 가능성이 있으면</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write 
+the solution; &nbsp;&nbsp;&nbsp;// 해를 출력한다.</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expand(u);</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font></p>
+<p><font size="2">&nbsp;}</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;&nbsp;퇴각검색 알고리즘은 시간 복잡도를 얘기할 수 없다. 
+퇴각검색 알고리즘은 대부분의 문제에 대해서 최악의 경우 시간분잡도는 지수 크기를 
+갖게 된다. 퇴각 검색 알고리즘의 목적은 앞에서도 언급했듯이 해공간을 효과적으로 
+탐색함으로써 무지막지한 방법보다는 효율적으로 수행해 보자는 데 있다. 하지만 
+지수시간이 소요되는 문제(주로 NP-hard 문제)의 경우 입력 크기가 어느 정도로 증가되면 
+퇴각 검색 알고리즘으로도 납득할 수 있는 시간안에 푼다는 것이 어렵다.</font></p>
+<p><font size="2">&nbsp;&nbsp;입력 크기가 그리 크지 않은 문제에 대해서는 잘 
+설계된 퇴각검색 알고리즘으로 효율적으로 풀 수 있다. 퇴각검색 알고리즘이 지수시간이 
+걸리는 동적계획법 알고리보다도 보통 더 빠르다는 실험 결과도 나와있다. 퇴각 검색법은 
+대부분 종류의 문제를 풀 수 있는 범용의 알고리즘 설계 방법이기 때문에 현실에 
+이용될 가능성이 높은 실용적인 설계 방법이 될 수 있다.</font></p>
+</body>
+
+</html>

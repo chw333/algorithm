@@ -1,0 +1,35 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: FAX - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Owner\LOCALS~1\Temp\RSP6E.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/FAX.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ  /c 
+"D:\PDS\º½Ä·ÇÁ\FAX\FAX.CPP"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Owner\LOCALS~1\Temp\RSP6E.tmp" 
+Creating temporary file "C:\DOCUME~1\Owner\LOCALS~1\Temp\RSP6F.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib  kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/FAX.pdb" /debug /machine:I386 /out:"Debug/FAX.exe" /pdbtype:sept 
+".\Debug\FAX.OBJ"
+]
+Creating command line "link.exe @C:\DOCUME~1\Owner\LOCALS~1\Temp\RSP6F.tmp"
+<h3>Output Window</h3>
+Compiling...
+FAX.CPP
+D:\PDS\º½Ä·ÇÁ\FAX\FAX.CPP(10) : error C2065: 'd' : undeclared identifier
+D:\PDS\º½Ä·ÇÁ\FAX\FAX.CPP(21) : error C2143: syntax error : missing ')' before '}'
+D:\PDS\º½Ä·ÇÁ\FAX\FAX.CPP(21) : error C2059: syntax error : ')'
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+FAX.exe - 3 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

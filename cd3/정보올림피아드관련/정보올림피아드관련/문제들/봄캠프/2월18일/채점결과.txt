@@ -1,0 +1,6 @@
+		제출     점수
+1. seq.exe       O        0
+2. read.exe      O        0
+3. race.exe      X        0 
+4. coin.exe      O        10  
+4. matrix.exe    X        0  

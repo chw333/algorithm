@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>가장 높은 탑 쌓기</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p>가장 높은 탑 쌓기</p>
+<p>99년 초등부 1번 문제와 유사한 문제입니다. 이 문제에 대해서 모르시는 분은 
+풀이를 먼저 보고 오세요.</p>
+<p>이 문제는 초등부 문제와 달리 조건이 세가지입니다. 높이, 넓이, 무게 이렇게 
+세가지인데요. 넓이와 무게는 초등부 문제에서의 가로, 세로 길이와 같은 역할을 
+합니다. (큰게 밑에 놓이는 점에서.)</p>
+<p>그럼 높이란 요소는 뭐냐, 하면 일종의 가중치라고도 할 수 있습니다.</p>
+<p>up-sequence문제 같은 경우는 풀 때 모든 수들이 가중치는 1이었습니다. 하지만 
+이 경우는 모든 벽돌마다 가중치(높이)가 다르죠. 우리는 이 가중치의 합을 최대로 
+하는 탑을 쌓아야 합니다.</p>
+<p>일단 넓이(무게라도 상관 없습니다)를 기준으로 소트를 합니다. <a href="http://www.icc.or.kr">http://www.icc.or.kr</a> 
+의 예제 데이터는 다음과 같이 되겠죠..</p>
+<p>1 5 2&nbsp;<br>
+4 4 6<br>
+9 2 3<br>
+16 2 5<br>
+25 3 4</p>
+<p>이제 무게순으로는 정렬이 되었기 때문에 더 이상 무게라는 개념을 생각할 필요는 
+없으므로 지워 버리도록 하죠.</p>
+<p>5 2<br>
+4 6<br>
+2 3<br>
+2 5<br>
+3 4</p>
+<p>이제 이 문제는 2 6 3 5 4에서 최대 up-sequence를 찾는 문제로 바뀌었는데... 
+이게 보통의 up-sequence문제가 아닙니다. 원래 up-sequence문제의 점화식은...</p>
+<p>C[i] = C[k] + 1 (단, i&nbsp;&lt;&gt; 1 이고, 0&lt;= &nbsp;k&nbsp;&lt; i&nbsp;이며, 
+A[i] &gt; A[k] 이다.)</p>
+<p>인데 이 문제에서는 1 대신 가중치(5, 4, 2, 2, 3)을 써주면 됩니다. 이러면 변형된 
+up-sequence문제는 풀리게 됩니다.</p>
+<p>up-sequence와 색종이 올려놓기 문제를 이해하셨다면 별 어려움이 없으리라 생각됩니다..</p>
+<p><font face="굴림체">program KOI98M3;</font></p>
+<p><font face="굴림체">type<br>
+&nbsp;&nbsp;block = record<br>
+&nbsp;&nbsp;&nbsp;&nbsp;area &nbsp;&nbsp;: integer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;weight : integer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;height : integer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pn &nbsp;&nbsp;&nbsp;&nbsp;: integer;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;n &nbsp;&nbsp;&nbsp;&nbsp;: integer;<br>
+&nbsp;&nbsp;a &nbsp;&nbsp;&nbsp;&nbsp;: array[1..100] of block;<br>
+&nbsp;&nbsp;table : array[1..100] of integer;<br>
+&nbsp;&nbsp;trace : array[1..100] of integer;</font></p>
+<p><font face="굴림체">procedure input_file;<br>
+var<br>
+&nbsp;&nbsp;f : text;<br>
+&nbsp;&nbsp;i : integer;<br>
+begin<br>
+&nbsp;&nbsp;assign (f, 'input.txt');<br>
+&nbsp;&nbsp;reset (f);</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;read (f, n);</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;read (f, a[i].area);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;read (f, a[i].height);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;read (f, a[i].weight);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a[i].pn := i;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;close (f);<br>
+end;</font></p>
+<p><font face="굴림체">procedure swap (var a, b : block);<br>
+var<br>
+&nbsp;&nbsp;t : block;<br>
+begin<br>
+&nbsp;&nbsp;t := a;<br>
+&nbsp;&nbsp;a := b;<br>
+&nbsp;&nbsp;b := t;<br>
+end;</font></p>
+<p><font face="굴림체">procedure sort;<br>
+var<br>
+&nbsp;&nbsp;i, j : integer;<br>
+begin<br>
+&nbsp;&nbsp;for i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := i + 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if a[i].area &gt; a[j].area then swap (a[i], 
+a[j]);<br>
+end;</font></p>
+<p><font face="굴림체">procedure solve;<br>
+var<br>
+&nbsp;&nbsp;i, j : integer;<br>
+begin<br>
+&nbsp;&nbsp;sort;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;table[i] := a[i].height;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;trace[i] := 0;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to i - 1 do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if a[i].weight &gt; a[j].weight then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if table[i] &lt; table[j] + 
+a[i].height then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table[i] := table[j] 
++ a[i].height;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace[i] := j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;<br>
+end;</font></p>
+<p><font face="굴림체">procedure output_file;<br>
+var<br>
+&nbsp;&nbsp;f &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+text;<br>
+&nbsp;&nbsp;i, k &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: integer;<br>
+&nbsp;&nbsp;max &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+integer;<br>
+&nbsp;&nbsp;solution &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: array[1..100] of integer;<br>
+begin<br>
+&nbsp;&nbsp;max := 1;<br>
+&nbsp;&nbsp;for i := 2 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if table[max] &lt; table[i] then max := i;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;assign (f, 'output.txt');<br>
+&nbsp;&nbsp;rewrite (f);</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;k := 0;<br>
+&nbsp;&nbsp;i := max;<br>
+&nbsp;&nbsp;while i &lt;&gt; 0 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;inc (k);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;solution[k] := i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;i := trace[i];<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;writeln (f, k);</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;for i := k downto 1 do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;writeln (f, a[solution[i]].pn);</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;close (f);<br>
+end;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;input_file;<br>
+&nbsp;&nbsp;solve;<br>
+&nbsp;&nbsp;output_file;<br>
+end.</font></p>
+</body>
+
+</html></html>

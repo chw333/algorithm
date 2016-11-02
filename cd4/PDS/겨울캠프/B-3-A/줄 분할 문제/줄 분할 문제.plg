@@ -1,0 +1,39 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: 줄 분할 문제 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP42E2.TMP" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/줄 분할 문제.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\겨울캠프\B-3-a\줄 분할 문제\줄 분할 문제.cpp"
+]
+Creating command line "cl.exe @c:\windows\TEMP\RSP42E2.TMP" 
+Creating temporary file "c:\windows\TEMP\RSP42E3.TMP" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/줄 분할 문제.pdb" /debug /machine:I386 /out:"Debug/줄 분할 문제.exe" /pdbtype:sept 
+".\Debug\줄 분할 문제.obj"
+]
+Creating command line "link.exe @c:\windows\TEMP\RSP42E3.TMP"
+<h3>Output Window</h3>
+Compiling...
+줄 분할 문제.cpp
+D:\겨울캠프\B-3-a\줄 분할 문제\줄 분할 문제.cpp(20) : warning C4018: '<' : signed/unsigned mismatch
+D:\겨울캠프\B-3-a\줄 분할 문제\줄 분할 문제.cpp(25) : warning C4018: '<' : signed/unsigned mismatch
+D:\겨울캠프\B-3-a\줄 분할 문제\줄 분할 문제.cpp(29) : error C2106: '=' : left operand must be l-value
+D:\겨울캠프\B-3-a\줄 분할 문제\줄 분할 문제.cpp(29) : error C2143: syntax error : missing ';' before '}'
+D:\겨울캠프\B-3-a\줄 분할 문제\줄 분할 문제.cpp(33) : error C2601: 'output' : local function definitions are illegal
+D:\겨울캠프\B-3-a\줄 분할 문제\줄 분할 문제.cpp(36) : error C2601: 'main' : local function definitions are illegal
+D:\겨울캠프\B-3-a\줄 분할 문제\줄 분할 문제.cpp(42) : fatal error C1004: unexpected end of file found
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+줄 분할 문제.exe - 5 error(s), 2 warning(s)
+</pre>
+</body>
+</html>

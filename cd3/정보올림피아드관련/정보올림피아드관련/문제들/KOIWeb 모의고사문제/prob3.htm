@@ -1,0 +1,63 @@
+<html>
+
+<head>
+<title>[문제 3] 이쑤시개 빼내기 (Taking Toothpick)</title>
+<meta name="generator" content="Namo WebEditor v4.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<P align="left" style="line-height:150%;"><FONT SIZE=5 face="굴림"><SPAN STYLE="font-size:18pt;"><B>[문제 3] 이쑤시개 빼내기 (Taking Toothpick)</B></SPAN></FONT><font face="굴림">
+</font><P align="left" style="line-height:150%;"><FONT FACE="굴림">( 출처 : 강남 월드 학원 유근문 원장선생님 )</FONT><font face="굴림">
+<BR>
+</font><P align="left" style="line-height:150%;">
+<font face="굴림"><IMG SRC="NOFZY001.GIF" BORDER=0 ALIGN=BOTTOM></font><FONT FACE="굴림">  </FONT><font face="굴림">
+</font><P style="line-height:150%;"><FONT FACE="굴림">  일규와 지훈이는 이쑤시개 빼내기 놀이를 즐겨한다.</FONT><font face="굴림">
+</font><P style="line-height:150%;"><FONT FACE="굴림">  이렇게 경기 판에 이쑤시개가 막 널려 있으면 이쑤시개를 들지 않고 바닥에 붙여 그대로 빼내는 놀이이다. 이쑤시개는 위의 빨간 화살표 방향으로만 뺄 수 있고 파란 화살표 방향으로는 뺄 수 없으며 초록 화살표와 같이 중간에 막히는 것이 있으면 밖에 막히는 것을 먼저 빼고 그 이쑤시개를 빼야 한다. 이쑤시개를 돌려서도 안된다. 오직 이쑤시개가 움직일 수 있는 방향은 이쑤시개의 수직 이등분선 방향이다.</FONT><font face="굴림">
+</font><P style="line-height:150%;"><FONT FACE="굴림">  심판인 영효가 이쑤시개를 막 던져서 일규와 지훈이가 이쑤시개를 제대로 빼낼 수 있는지를 시험해 보는 놀이이다. 단, 두 사람 다 성공한다면 누가 이기는지 승부를 가리기 힘드니까 빼낸 이쑤시개의 번호를 나열하였을 때 그 번호가 더 작은 사람이 이기는 것이다.</FONT><font face="굴림">
+</font><P style="line-height:150%;"><FONT FACE="굴림">  심판을 보다가 지루해진 영효는 어떻게 빼면 이길 것인가를 예측해 보기로 했다. 영효를 도와주는 프로그램을 작성하시오.</FONT><font face="굴림">
+<BR>
+</font><P style="line-height:150%;"><FONT FACE="굴림">▶ 입력 형식 (toothpick.out)</FONT><font face="굴림">
+<br>&nbsp;</font><TABLE BORDER=1 WIDTH=539 HEIGHT=166 style="line-height:150%;" cellspacing="0" bordercolordark="white" bordercolorlight="black">
+<TD VALIGN=MIDDLE ROWSPAN=2 WIDTH=22%>
+<P style="line-height:150%;"><FONT FACE="굴림">Line 1.</FONT></TD>
+<TD VALIGN=MIDDLE WIDTH=77%>
+<P style="line-height:150%;"><FONT FACE="굴림">N<br>1&lt;=N&lt;=1000</FONT></TD>
+<TR>
+<TD VALIGN=MIDDLE WIDTH=77%>
+<P style="line-height:150%;"><FONT FACE="굴림">이쑤시개의 갯수</FONT></TD>
+<TR>
+<TD VALIGN=MIDDLE ROWSPAN=2 WIDTH=22%>
+<P style="line-height:150%;"><FONT FACE="굴림">Line 2. ∼ <br>Line. n+1</FONT></TD>
+<TD VALIGN=MIDDLE WIDTH=77%>
+<P style="line-height:150%;"><FONT FACE="굴림">sxi, syi, exi, eyi<br>0 &lt;= sxi, syi, exi, eyi &lt;= 1000</FONT></TD>
+<TR>
+<TD VALIGN=MIDDLE WIDTH=77%>
+<P style="line-height:150%;"><FONT FACE="굴림">이쑤시개의 시작점 좌표와 끝점 좌표</FONT></TD>
+<CAPTION ALIGN=BOTTOM>
+</CAPTION>
+
+</TABLE>
+            <p style="line-height:150%;"><font face="굴림"><BR>
+            </font><P style="line-height:150%;"><FONT FACE="굴림">▶ 출력 형식 (toothpick.out)</FONT><font face="굴림">
+            <br>&nbsp;</font><TABLE BORDER=1 WIDTH=539 HEIGHT=117 style="line-height:150%;" cellspacing="0" bordercolordark="white" bordercolorlight="black">
+<TD VALIGN=MIDDLE ROWSPAN=2 WIDTH=22%>
+<P style="line-height:150%;"><FONT FACE="굴림">Line 1.</FONT></TD>
+<TD VALIGN=MIDDLE WIDTH=77%>
+<P style="line-height:150%;"><FONT FACE="굴림">a0, a1, .... , an-1, an</FONT></TD>
+<TR>
+<TD VALIGN=MIDDLE WIDTH=77%>
+<P style="line-height:150%;"><FONT FACE="굴림">이쑤시개를 빼내는 순서. 번호는 0번부터 이며 한줄에 차례대로 찍는다. 이쑤시개를 빼낼 수 없는 경우에는 &quot;impossible&quot;을 출력하시오.</FONT></TD>
+<CAPTION ALIGN=BOTTOM>
+</CAPTION>
+
+</TABLE>
+                <p style="line-height:150%;"><font face="굴림"><BR>
+                </font><P style="line-height:150%;"><FONT FACE="굴림">※ 죄송합니다. 3번 문제의 입출력 예와 시간제한은 17:00에 올라갑니다.</FONT><font face="굴림">
+<BR>
+</font>
+                <p align="center" style="line-height:150%;"><font face="굴림"><a href="Nw_1.htm">모의고사 
+                메인으로 가기</a>&nbsp;</font>
+                </p>
+</body>
+
+                </html>

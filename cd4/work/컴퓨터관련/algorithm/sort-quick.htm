@@ -1,0 +1,47 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>퀵 정렬 (Quick Sorting)</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font size="5" color="#0099CC"><b>퀵 정렬 (Quick Sorting)</b></font></p>
+<p><font size="2">정렬방법</font></p>
+<p><font size="2">1. 분할 : 리스트에서 피보트 키의 원소를 선택하여 리스트를 
+다음과 같이 분할한다.</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 
+피보트 키의 값보다 작은 키를 가진 원소들을 피보트 키 원소보다 앞에 둔다.</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 
+피보트 키의 값보다 큰&nbsp;키를 가진 원소들을 피보트 키 원소보다 뒤에 둔다.</font></p>
+<p><font size="2">2. 재귀적 퀵 정렬 : 피보트 키의 원소 앞뒤의 부리스트들에 각각 
+퀵 정렬을 수행한다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">입력 67, 33, 21, 84, 49, 50, 75</font></p>
+<p><font size="2">피보트 67</font></p>
+<p><font size="2">분할 33, 21, 49, 50 &nbsp;67 84,75</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;다시 퀵소트 적용 
+&nbsp;다시퀵소트 적용</font></p>
+<p><font size="2">분석 ( 최악의 경우 )</font></p>
+<p><font size="2">&nbsp;&nbsp;퀵 정렬의 최악의 경우는 리스트가 역순으로 정렬되어 
+있는 경우이다. 역순으로 정렬된 경우 분할을 n-1 번 수행해야 하고, i 번째 분할에서 
+비교 횟수는 n-i이다. 따라서 총 비교 횟수는 </font></p>
+<p align="center"><font size="2">( n - 1) + ( n - 2 ) + ...+ 2 + 1= ( n ( n 
+- 1 ) ) / 2</font></p>
+<p><b><font size="2">(1) C/C++</font></b></p>
+<font size="2" color="#0033CC">void Quick_Sort(int m, int n) <BR>{ </font><font size="2" color="#006666"><BR>&nbsp;&nbsp;&nbsp;&nbsp;int i, j, k, temp; </font><font size="2" color="#993366"><BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;if 
+(m&lt;n) <BR>&nbsp;&nbsp;&nbsp;&nbsp;{ <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i=m; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; j=n+1; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k=key[m]; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do { <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do { <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i=i+1; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } while (record[i]&lt;k); <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do { 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; j=j-1; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} while (record[j]&gt;k); 
+<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (i&lt;j) <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; { <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+temp=key[j]; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; key[j]=key[i]; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+key[i]=temp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } while (i&lt;j); <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+temp=key[j]; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; key[j]=key[m]; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; key[m]=temp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Quick_Sort(m, j-1); <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Quick_Sort(j+1, n); <BR>&nbsp;&nbsp;&nbsp;&nbsp; } </font><font size="2" color="#0033CC"><BR>} <BR></font>
+<p><b><font size="2">(2) Pascal</font></b></p>
+<p><b><font size="2">(3) Basic</font></b></p>
+</body>
+
+</html>

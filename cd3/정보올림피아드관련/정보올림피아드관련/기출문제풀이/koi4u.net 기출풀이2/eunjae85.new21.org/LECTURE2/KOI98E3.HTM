@@ -1,0 +1,282 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>블록 맞추기</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p><font face="굴림">블록 맞추기</font></p>
+<p><font face="굴림">초등부 문제 치고는 상당히 수준이 있는 문제인 것 같습니다. 
+(정확하게 말하자면 매우 귀찮은 문제입니다) 최대한 간단하게 풀 방법을 생각하지 
+않으면 코딩에 상당한 어려움을 겪게 될 것입니다. 보통은 'ㅗ'자 모양을 직접 데이터에 
+그려서 확인하는 방법을 생각하게 되는데 여기서는 색다른 방법으로 접근해 보기로 
+하겠습니다.</font></p>
+<p><font face="굴림">일단 'ㄷ'자 모양의 블록의 왼쪽 위 좌표와 오른쪽 아래 좌표를 
+구합니다. 그럼 하나의 사각형 구역이 생기게 되는데, 이 안에 비어있는 부분의 왼쪽 
+위 좌표와 오른쪽 아래 좌표를 구합니다. 예를 들어서 다음 그림처럼요...</font></p>
+<p align="center"><font face="굴림"><img src="koi98e3.gif" width="380" height="247"
+ border="0"></font></p>
+<p align="left"><font face="굴림">(저는 플래시를 그림판으로 씁니다. ^^;) 위와 
+같이 좌표 네 개를 구하면, 상당히 여러 가지 것들을 알 수 있습니다. ㄷ자 블럭이 
+사발 엎어진 모양으로 생겼는지, 오른쪽으로 터졌는지 하는 것들도 알 수 있고, 왼쪽 
+벽의 두께(ㅗ자 블록에서의 w), 오른쪽 벽의 두께(ㅗ자 블록에서의 u-y-w) 등등을 
+알 수 있지요.</font></p>
+<p align="left"><font face="굴림">위의 예에서는 may와 maxy가 같기 때문에 사발 
+엎어진 모양으로 생겼다는 것을 알 수 있습니다.<br>
+(max가 maxx와 같다면 오른쪽으로 터진 ㄷ자 블록이겠죠..)</font></p>
+<p align="left"><font face="굴림">이런 것들의 정보와 ㅗ자 블록의 정보를 비교하면 
+ㄷ자 블록에 ㅗ자 블록이 쏙 들어가는지를 판별할 수 있습니다. 이런 소스에는 중복된 
+코드들이 많이 들어가게 되는데, 그 코드들의 내용이 미묘하게 다르기 때문에 헷갈리게 
+되면 버그의 원인이 되므로 주의하는 것이 좋습니다.</font></p>
+<p align="left"><font face="굴림">아래의 소스는 학교 선배님이신 박준혁님께서 
+수고해 주셨습니다.</font></p>
+<p><font face="굴림체">program block;</font></p>
+<p><font face="굴림체">const<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;infile &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'input.txt';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outfile &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'output.txt';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gx &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 1..4 ] of integer = ( -1, 0, 0, 1 
+);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gy &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 1..4 ] of integer = ( 0, 1, -1, 0 
+);</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;n, now, count &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;tu, tv, tw, tx, ty &nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;fl &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 0..51, 0..51 ] of boolean;<br>
+&nbsp;&nbsp;&nbsp;number &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 0..51, 0..51 ] of integer;<br>
+&nbsp;&nbsp;&nbsp;out &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 1..300 ] of boolean;<br>
+&nbsp;&nbsp;&nbsp;out_data &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 1..300, 1..2 ] of integer;</font></p>
+<p><font face="굴림체">procedure input;</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;inf &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text;<br>
+&nbsp;&nbsp;&nbsp;i, j, a &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assign( inf, infile );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset( inf );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read( inf, n );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read( inf, tu, tv, tw, 
+tx, ty );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read( 
+inf, a );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+a = 0 then fl[ i, j ] := false<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else 
+fl[ i, j ] := true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;close( inf );<br>
+end;</font></p>
+<p><font face="굴림체">procedure flooding;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;procedure 
+recur( a, b : integer );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i, 
+mx, my &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for 
+i := 1 to 4 do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mx 
+:= a + gx[ i ];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my 
+:= b + gy[ i ];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+fl[ mx, my ] and ( number[ mx, my ] = 0 ) then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number[ 
+mx, my ] := now;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;recur( 
+mx, my );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;i, j &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;now := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+fl[ i, j ] and ( number[ i, j ] = 0 ) then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc( 
+now );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;recur( 
+i, j &nbsp;)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+end;</font></p>
+<p><font face="굴림체">procedure check( minx, miny, maxx, maxy : integer; var 
+u, v, w, x, y, mm : integer );</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;i, j, mix, miy, max, may &nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;function clear( a, b, c, d : integer 
+) : boolean;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;var<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i, j &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clear := true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := a to c do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for 
+j := b to d do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+fl[ i, j ] then clear := false;<br>
+&nbsp;&nbsp;&nbsp;end;<br>
+begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mix := n + 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;may := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;miy := n + 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := minx to maxx do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j := miny to maxy 
+do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+not fl[ i, j ] then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+i &gt; max then max := i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+i &lt; mix then mix := i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+j &gt; may then may := j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+j &lt; miy then miy := j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mm := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if max = maxx then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u := maxy - miny;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w := miy - miny;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x := max - mix;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y := may - miy;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while( clear( maxx 
++ mm + 1, miny, maxx + mm + 1, maxy ) ) do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc( 
+mm );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if mix = minx then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u := maxy - miny;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w := maxy - may;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x := max - mix;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y := may - miy;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while( clear( minx 
+- mm - 1, miny, minx - mm - 1, maxy ) ) do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc( 
+mm );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if may = maxy then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u := maxx - minx;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w := maxx - max;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x := may - miy;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y := max - mix;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while( clear( minx, 
+maxy + mm + 1, maxx, maxy + mm + 1 ) ) do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc( 
+mm );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if miy = miny then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u := maxx - minx;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w := mix - minx;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x := may - miy;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y := max - mix;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while( clear( minx, 
+miny - mm - 1, maxx, miny - mm - 1 ) ) do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc( 
+mm );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc( u );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc( x );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc( y );<br>
+end;</font></p>
+<p><font face="굴림체">procedure solve;</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;i, j, k, maxx, maxy, minx, miny, u, w, v, x, y, mm &nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flooding;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count := 0;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fl[ i, 0 ] := true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fl[ i, n + 1 ] := 
+true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fl[ 0, i ] := true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fl[ n + 1, i ] := 
+true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for k := 1 to now do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxx := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;minx := n + 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxy := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;miny := n + 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n 
+do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for 
+j := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+number[ i, j ] = k then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+i &gt; maxx then maxx := i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+i &lt; minx then minx := i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+j &gt; maxy then maxy := j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+j &lt; miny then miny := j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;check( minx, miny, 
+maxx, maxy, u, v, w, x, y, mm );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ( tu = u ) and 
+( tw = w ) and ( tx = x ) and ( ty = y ) and ( mm &gt;= tv ) then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc( 
+count );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out[ 
+k ] := true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out_data[ 
+k, 1 ] := minx;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out_data[ 
+k, 2 ] := miny;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+end;</font></p>
+<p><font face="굴림체">procedure output;</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;ouf &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text;<br>
+&nbsp;&nbsp;&nbsp;i &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assign( ouf, outfile );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rewrite( ouf );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln( ouf, count );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to now do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if out[ i ] then writeln( 
+ouf, out_data[ i, 1 ], ' ', out_data[ i, 2 ] );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;close( ouf );<br>
+end;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;solve;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output;<br>
+end.</font></p>
+</body>
+
+</html></html>

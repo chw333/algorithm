@@ -1,0 +1,17 @@
+
+
+ *** OPTIMAL SOLUTION *** 
+
+       SUPPLY      ----    DEMAND            FLOW
+
+      SUPPLY(1)    ----   DEMAND(3)        50.000000
+      SUPPLY(2)    ----   DEMAND(3)        20.000000
+      SUPPLY(2)    ----   DEMAND(5)        40.000000
+      SUPPLY(3)    ----   DEMAND(1)        30.000000
+      SUPPLY(3)    ----   DEMAND(2)        20.000000
+      SUPPLY(4)    ----   DEMAND(4)        30.000000
+      SUPPLY(4)    ----   DEMAND(5)        20.000000
+
+     TOTAL COST = 3030.000000
+
+     NUMBER OF ITERATION = 8

@@ -1,0 +1,1003 @@
+#include <fstream.h>
+
+int back(int nx, int ny);
+
+int map[26][26],mx,my,ch_w[700][3],cnt_w;
+
+void input()
+{
+	int i,j;
+
+	FILE *fp = fopen("tetris.inp","r");
+    
+	fscanf(fp,"%d %d",&mx,& my);
+	for(i=0;i<mx;i++){
+		for(j=0;j<my;j++)
+			fscanf(fp,"%d ", &map[i][j]);
+		fscanf(fp,"\n");
+	} 
+	
+}
+
+	
+	
+	void process()
+{
+	int i,j;
+	int che=0;
+
+	for(i=0;i<mx;i++)
+	{
+		for(j=0;j<my;j++)
+		{
+			if(map[i][j]==1)
+			{
+				back(i,j);
+				che=1;
+				break;
+			}
+		}
+		if(che==1)
+			break;
+	}
+
+	ofstream fout ("tetris.out");
+
+	fout << cnt_w << endl;
+
+	if(cnt_w!=0)
+	{	
+		for(i=0;i<cnt_w;i++)
+		{
+			fout << ch_w[i][0] << " ";
+			for(j=1;j<3;j++)
+				fout << ch_w[i][j]+1 << " ";
+			fout << endl;
+		}
+	}
+
+	fout.close();
+}
+
+/*void bfs(){
+	int lp1,lp2,lp3;
+	while(head!=tail){
+		if(map[q[0][head]+1][q[1][head]]==0){
+		    map[q[0][head]][q[1][head]]=1;
+		    q[0][++tail]=q[0][head]+1;
+		    q[1][++tail]=q[1][head];
+		}
+		if(map[q[0][head]][q[1][head]+1]==0){
+			map[q[0][head]][q[1][head]]=1;
+			q[0][++tail]=q[0][head];
+			q[1][++tail]=q[1][head]+1;
+		}
+		if(map[q[0][head]-1][q[1][head]]==0){
+		    map[q[0][head]][q[1][head]]=1;
+		    q[0][++tail]=q[0][head]-1;
+		    q[1][++tail]=q[1][head];
+		}
+		if(map[q[0][head]][q[1][head]-1]==0){
+			map[q[0][head]][q[1][head]]=1;
+			q[0][++tail]=q[0][head];
+			q[1][++tail]=q[1][head]-1;
+		}
+		head++;
+	}
+}*/
+
+int back(int nx, int ny)
+{
+	int i,j;
+	int che;
+	int sy;
+	int ret;
+
+	if(ny+3<my && map[nx][ny+1]==1 && map[nx][ny+2]==1 && map[nx][ny+3]==1) //1번 모양
+	{
+			map[nx][ny]=0;
+		map[nx][ny+1]=0;
+		map[nx][ny+2]=0;
+		map[nx][ny+3]=0;
+		ch_w[cnt_w][0]=1;
+		ch_w[cnt_w][1]=nx;
+		ch_w[cnt_w++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		cnt_w--;
+		map[nx][ny]=1;
+		map[nx][ny+1]=1;
+		map[nx][ny+2]=1;
+		map[nx][ny+3]=1;
+	}
+	if(nx+3<mx && map[nx+1][ny]==1 && map[nx+2][ny]==1 && map[nx+3][ny]==1) //2번 모양
+	{
+		map[nx][ny]=0;
+		map[nx+1][ny]=0;
+		map[nx+2][ny]=0;
+		map[nx+3][ny]=0;
+		ch_w[cnt_w][0]=2;
+		ch_w[cnt_w][1]=nx;
+		ch_w[cnt_w++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		cnt_w--;
+		map[nx][ny]=1;
+		map[nx+1][ny]=1;
+		map[nx+2][ny]=1;
+		map[nx+3][ny]=1;
+	}
+	if(nx+1<mx && ny-1>=0 && ny+1<my && map[nx+1][ny]==1 && map[nx+1][ny-1]==1 && map[nx+1][ny+1]==1) //3번 모양
+	{
+		map[nx][ny]=0;
+		map[nx+1][ny]=0;
+		map[nx+1][ny-1]=0;
+		map[nx+1][ny+1]=0;
+		ch_w[cnt_w][0]=3;
+		ch_w[cnt_w][1]=nx;
+		ch_w[cnt_w++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		cnt_w--;
+		map[nx][ny]=1;
+		map[nx+1][ny]=1;
+		map[nx+1][ny-1]=1;
+		map[nx+1][ny+1]=1;
+	}
+	if(nx+2<mx && ny+1<my && map[nx+1][ny]==1 && map[nx+1][ny+1]==1 && map[nx+2][ny]==1) //4번 모양
+	{
+		map[nx][ny]=0;
+		map[nx+1][ny]=0;
+		map[nx+1][ny+1]=0;
+		map[nx+2][ny]=0;
+		ch_w[cnt_w][0]=4;
+		ch_w[cnt_w][1]=nx;
+		ch_w[cnt_w++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		cnt_w--;
+		map[nx][ny]=1;
+		map[nx+1][ny]=1;
+		map[nx+1][ny+1]=1;
+		map[nx+2][ny]=1;
+	}
+	if(nx+1<mx && ny+2<my && map[nx][ny+1]==1 && map[nx][ny+2]==1 && map[nx+1][ny+1]==1) //5번 모양
+	{
+		map[nx][ny]=0;
+		map[nx][ny+1]=0;
+		map[nx][ny+2]=0;
+		map[nx+1][ny+1]=0;
+		ch_w[cnt_w][0]=5;
+		ch_w[cnt_w][1]=nx;
+		ch_w[cnt_w++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		count--;
+		map[nx][ny]=1;
+		map[nx][ny+1]=1;
+		map[nx][ny+2]=1;
+		map[nx+1][ny+1]=1;
+	}
+	if(nx+2<mx && ny-1>=0 && map[nx+1][ny]==1 && map[nx+1][ny-1]==1 && map[nx+2][ny]==1) //6번 모양
+	{
+		map[nx][ny]=0;
+		map[nx+1][ny]=0;
+		map[nx+1][ny-1]=0;
+		map[nx+2][ny]=0;
+		ch_w[count][0]=6;
+		ch_w[count][1]=nx;
+		ch_w[count++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		count--;
+		map[nx][ny]=1;
+		map[nx+1][ny]=1;
+		map[nx+1][ny-1]=1;
+		map[nx+2][ny]=1;
+	}
+	if(nx+1<mx && ny+2<my && map[nx][ny+1]==1 && map[nx+1][ny+1]==1 && map[nx+1][ny+2]==1) //7번 모양
+	{
+		map[nx][ny]=0;
+		map[nx][ny+1]=0;
+		map[nx+1][ny+1]=0;
+		map[nx+1][ny+2]=0;
+		check[count][0]=7;
+		check[count][1]=nx;
+		check[count++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		count--;
+		map[nx][ny]=1;
+		map[nx][ny+1]=1;
+		map[nx+1][ny+1]=1;
+		map[nx+1][ny+2]=1;
+	}
+	if(nx+2<mx && ny-1>=0 && map[nx+1][ny]==1 && map[nx+1][ny-1]==1 && map[nx+2][ny-1]==1) //8번 모양
+	{
+		map[nx][ny]=0;
+		map[nx+1][ny]=0;
+		map[nx+1][ny-1]=0;
+		map[nx+2][ny-1]=0;
+		check[count][0]=8;
+		check[count][1]=nx;
+		check[count++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		count--;
+		map[nx][ny]=1;
+		map[nx+1][ny]=1;
+		map[nx+1][ny-1]=1;
+		map[nx+2][ny-1]=1;
+	}
+	if(nx+1<mx && ny-1>=0 && ny+1<my && map[nx][ny+1]==1 && map[nx+1][ny]==1 && map[nx+1][ny-1]==1) //9번 모양
+	{
+		map[nx][ny]=0;
+		map[nx][ny+1]=0;
+		map[nx+1][ny]=0;
+		map[nx+1][ny-1]=0;
+		check[count][0]=9;
+		check[count][1]=nx;
+		check[count++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		count--;
+		map[nx][ny]=1;
+		map[nx][ny+1]=1;
+		map[nx+1][ny]=1;
+		map[nx+1][ny-1]=1;
+	}
+	if(nx+2<mx && ny+1<my && map[nx+1][ny]==1 && map[nx+1][ny+1]==1 && map[nx+2][ny+1]==1) //10번모양
+	{
+		map[nx][ny]=0;
+		map[nx+1][ny]=0;
+		map[nx+1][ny+1]=0;
+		map[nx+2][ny+1]=0;
+		check[count][0]=10;
+		check[count][1]=nx;
+		check[count++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		count--;
+		map[nx][ny]=1;
+		map[nx+1][ny]=1;
+		map[nx+1][ny+1]=1;
+		map[nx+2][ny+1]=1;
+	}
+	if(nx+1<mx && ny+2<my && map[nx+1][ny]==1 && map[nx][ny+1]==1 && map[nx][ny+2]==1) //11번모양
+	{
+		map[nx][ny]=0;
+		map[nx+1][ny]=0;
+		map[nx][ny+1]=0;
+		map[nx][ny+2]=0;
+		check[count][0]=11;
+		check[count][1]=nx;
+		check[count++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		count--;
+		map[nx][ny]=1;
+		map[nx+1][ny]=1;
+		map[nx][ny+1]=1;
+		map[nx][ny+2]=1;
+	}
+	if(nx+2<mx && ny+1<my && map[nx][ny+1]==1 && map[nx+1][ny+1]==1 && map[nx+2][ny+1]==1) //12번 모양
+	{
+		map[nx][ny]=0;
+		map[nx][ny+1]=0;
+		map[nx+1][ny+1]=0;
+		map[nx+2][ny+1]=0;
+		check[count][0]=12;
+		check[count][1]=nx;
+		check[count++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		count--;
+		map[nx][ny]=1;
+		map[nx][ny+1]=1;
+		map[nx+1][ny+1]=1;
+		map[nx+2][ny+1]=1;
+	}
+	if(nx+1<mx && ny-2>=0 && map[nx+1][ny]==1 && map[nx+1][ny-1]==1 && map[nx+1][ny-2]==1) //13번 모양
+	{
+		map[nx][ny]=0;
+		map[nx+1][ny]=0;
+		map[nx+1][ny-1]=0;
+		map[nx+1][ny-2]=0;
+		check[count][0]=13;
+		check[count][1]=nx;
+		check[count++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		count--;
+		map[nx][ny]=1;
+		map[nx+1][ny]=1;
+		map[nx+1][ny-1]=1;
+		map[nx+1][ny-2]=1;
+	}
+	if(nx+2<mx && ny+1<my && map[nx+1][ny]==1 && map[nx+2][ny]==1 && map[nx+2][ny+1]==1) //14번모양
+	{
+		map[nx][ny]=0;
+		map[nx+1][ny]=0;
+		map[nx+2][ny]=0;
+		map[nx+2][ny+1]=0;
+		check[count][0]=14;
+		check[count][1]=nx;
+		check[count++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		count--;
+		map[nx][ny]=1;
+		map[nx+1][ny]=1;
+		map[nx+2][ny]=1;
+		map[nx+2][ny+1]=1;
+	}
+	if(nx+1<mx && ny+2<my && map[nx][ny+1]==1 && map[nx][ny+2]==1 && map[nx+1][ny+2]==1) //15번모양
+	{
+		map[nx][ny]=0;
+		map[nx][ny+1]=0;
+		map[nx][ny+2]=0;
+		map[nx+1][ny+2]=0;
+		check[count][0]=15;
+		check[count][1]=nx;
+		check[count++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		count--;
+		map[nx][ny]=1;
+		map[nx][ny+1]=1;
+		map[nx][ny+2]=1;
+		map[nx+1][ny+2]=1;
+	}
+	if(nx+2<mx && ny-1>=0 && map[nx+1][ny]==1 && map[nx+2][ny]==1 && map[nx+2][ny-1]==1) //16모양
+	{
+		map[nx][ny]=0;
+		map[nx+1][ny]=0;
+		map[nx+2][ny]=0;
+		map[nx+2][ny-1]=0;
+		check[count][0]=16;
+		check[count][1]=nx;
+		check[count++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		count--;
+		map[nx][ny]=1;
+		map[nx+1][ny]=1;
+		map[nx+2][ny]=1;
+		map[nx+2][ny-1]=1;
+	}
+	if(nx+1<mx && ny+2<my && map[nx+1][ny]==1 && map[nx+1][ny+1]==1 && map[nx+1][ny+2]==1) //17모양
+	{
+		map[nx][ny]=0;
+		map[nx+1][ny]=0;
+		map[nx+1][ny+1]=0;
+		map[nx+1][ny+2]=0;
+		check[count][0]=17;
+		check[count][1]=nx;
+		check[count++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		count--;
+		map[nx][ny]=1;
+		map[nx+1][ny]=1;
+		map[nx+1][ny+1]=1;
+		map[nx+1][ny+2]=1;
+	}
+	if(nx+2<mx && ny+1<my && map[nx][ny+1]==1 && map[nx+1][ny]==1 && map[nx+2][ny]==1) //18번모양
+	{
+		map[nx][ny]=0;
+		map[nx][ny+1]=0;
+		map[nx+1][ny]=0;
+		map[nx+2][ny]=0;
+		check[count][0]=18;
+		check[count][1]=nx;
+		check[count++][2]=ny;
+		che=0;
+		for(i=0;i<mx;i++)
+		{
+			for(j=0;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+		}
+		if(che==0)
+			return 1;
+		che=0;
+		sy=ny;
+		for(i=nx;i<mx;i++)
+		{
+			for(j=sy;j<my;j++)
+			{
+				if(map[i][j]==1)
+				{
+					ret=back(i,j);
+					if(ret==1)
+						return 1;
+					che=1;
+					break;
+				}
+			}
+			if(che==1)
+				break;
+			sy=0;
+		}
+		count--;
+		map[nx][ny]=1;
+		map[nx][ny+1]=1;
+		map[nx+1][ny]=1;
+		map[nx+2][ny]=1;
+	}
+	return 0;
+}
+
+void main()
+{
+	input();
+	process();
+}

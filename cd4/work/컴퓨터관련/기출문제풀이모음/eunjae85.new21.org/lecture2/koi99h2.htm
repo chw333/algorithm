@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>약간은 노가다성이 짙은 문제입니다.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p>약간은 노가다성이 짙은 문제입니다. 소스만 깔끔하고 체계적으로 짠다면 별 문제될 
+것이 없습니다. (근데 제 소스는 안그렇죠? -_-;)</p>
+<p>좌표가 (100, 100)으로 제한되어 있기 때문에, 저는 지도 배열에 상, 하, 좌, 
+우로 길이 있는가를 기록한 다음 한바퀴를 도는 방법을 썼습니다. 간단한 방법이기 
+때문에 소스를 보시면 쉽게 이해가 되실 겁니다.</p>
+<p>이런 문제를 작성할 때 유의할 점은 답이 없을 때 문제에서 제시한 방법대로 답 
+없음을 처리해야 한다는 것입니다. (작년에 제가 그것 때문에 피봤습니다..)</p>
+<p>화면출력으로 되어 있는 걸 안고쳤네요. 뭐, 여기선 이게 중요한 게 아니니까.</p>
+<p><font face="Fixed01">program KOI99H2;</font></p>
+<p><font face="Fixed01">const<br>
+&nbsp;&nbsp;dx : array[1..4] of integer = (0, 0, 1, -1);<br>
+&nbsp;&nbsp;dy : array[1..4] of integer = (1, -1, 0, 0);<br>
+&nbsp;&nbsp;side : array[1..4] of integer = (2, 1, 4, 3);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;up = 1;<br>
+&nbsp;&nbsp;down = 2;<br>
+&nbsp;&nbsp;right = 3;<br>
+&nbsp;&nbsp;left = 4;</font></p>
+<p><font face="Fixed01">var<br>
+&nbsp;&nbsp;map : array[1..100, 1..100, 1..4] of boolean;</font></p>
+<p><font face="Fixed01">procedure input_file;<br>
+var<br>
+&nbsp;&nbsp;f : text;<br>
+&nbsp;&nbsp;i, j : integer;<br>
+&nbsp;&nbsp;d, k : integer;<br>
+&nbsp;&nbsp;l, t, c : integer;<br>
+&nbsp;&nbsp;ch : char;<br>
+begin<br>
+&nbsp;&nbsp;for i := 1 to 100 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to 100 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for k := 1 to 4 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map[i, j, k] := false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;assign (f, 'input.txt');<br>
+&nbsp;&nbsp;reset (f);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;readln (f, j, i);<br>
+&nbsp;&nbsp;readln (f, t);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;for l := 1 to t do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;readln (f, ch, k);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if ch = 'U' then d := 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if ch = 'D' then d := 2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if ch = 'R' then d := 3;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if ch = 'L' then d := 4;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;&nbsp;&nbsp;for c := 1 to k do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map[i, j, d] := true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i := i + dy[d];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j := j + dx[d];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map[i, j, side[d]] := true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;close (f);<br>
+end;</font></p>
+<p><font face="Fixed01">procedure solve;<br>
+var<br>
+&nbsp;&nbsp;isize, jsize : integer;<br>
+&nbsp;&nbsp;nisize, njsize : integer;<br>
+&nbsp;&nbsp;si, sj : integer;<br>
+&nbsp;&nbsp;i, j, k : integer;<br>
+&nbsp;&nbsp;ni, nj : integer;<br>
+&nbsp;&nbsp;flag : boolean;<br>
+begin<br>
+&nbsp;&nbsp;isize := 101;<br>
+&nbsp;&nbsp;jsize := 101;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;for i := 1 to 100 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to 100 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if map[i, j, right] and map[i, j, up] then 
+begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;njsize := 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nisize := 1;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ni := 
+i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nj := j + 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while map[ni, nj, right] and 
+(not map[ni, nj, up]) do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc (njsize);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nj := nj + 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if map[ni, 
+nj, up] then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ni := ni + 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while map[ni, nj, 
+up] and (not map[ni, nj, left]) do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc 
+(nisize);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ni := 
+ni + 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flag 
+:= false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nj := nj - 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for k := 1 to njsize 
+- 1 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if not 
+(map[ni, nj, left] and (not map[ni, nj, down])) then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flag 
+:= true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nj := 
+nj - 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ni 
+:= ni - 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for k := 1 to nisize 
+- 1 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if not 
+(map[ni, nj, down] and (not map[ni, nj, right])) then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flag 
+:= true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ni := 
+ni - 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+not flag then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if isize 
+* jsize &gt; nisize * njsize then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isize 
+:= nisize;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jsize 
+:= njsize;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;si 
+:= i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sj 
+:= j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;if isize = 101 then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;writeln ('No!!');<br>
+&nbsp;&nbsp;end else begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;writeln (sj, ' ', si);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;writeln (sj + jsize, ' ', si + isize);<br>
+&nbsp;&nbsp;end;<br>
+end;</font></p>
+<p><font face="Fixed01">begin<br>
+&nbsp;&nbsp;writeln;<br>
+&nbsp;&nbsp;input_file;<br>
+&nbsp;&nbsp;solve;<br>
+end.</font></p>
+</body>
+
+</html></html>

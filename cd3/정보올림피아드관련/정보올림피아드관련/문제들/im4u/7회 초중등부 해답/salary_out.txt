@@ -1,0 +1,33 @@
+OK
+Bibo 2 19
+Fido 2 19
+Fred 1 18
+
+OK
+
+No solution
+
+OK
+A 2 2
+B 3 3
+C 4 4
+D 5 5
+
+OK
+A 1 6
+B 2 7
+C 3 8
+D 3 99999
+E 3 9
+F 4 9
+
+OK
+A 1 99999
+B 1 99999
+C 1 99999
+D 1 99999
+E 1 99999
+F 1 99999
+
+No solution
+

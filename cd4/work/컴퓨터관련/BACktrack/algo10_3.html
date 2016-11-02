@@ -1,0 +1,172 @@
+
+		
+
+<html>
+<head>
+<!--meta http-equiv="Content-Type" content="text/html; charset=EUC-KR" -->
+<title>알고리즘</title>
+
+<!-- 만지지 마시요 !!!! 시작-->
+
+<LINK rel="stylesheet" type="text/css" href="d:/work/BACktrack/../include/Note.css">
+<script language="JavaScript1.2" src="d:/work/BACktrack/../include/menu.js"></script>
+<script language="JavaScript1.2" src="d:/work/BACktrack/../include/eClass.js"></script>
+
+</head>
+
+<!-- 만지지 마시요 !!!! 끝-->
+<script language="JavaScript">   
+<!--
+function OnStart()
+{
+//        ActiveText(null, "03/avi/a3-1-00m.rm", "stop");
+}
+ 
+function SetPageEnv()
+{
+       top.vod.pl_video.DoStop();
+
+      setDataBase(1, "playText01", "10/avi/a10-3-1v.rm", "stop", 73000);
+      setDataBase(2, "playText02", "10/avi/a10-3-2v.rm", "stop", 180000);
+      setDataBase(3, "playText03", "10/avi/a10-3-3v.rm", "stop", 255000);
+      setDataBase(4, "playText04", "10/avi/a10-3-4m.rm", "stop", 192000);
+        curStatus = 0;
+        pagePos = 3;
+        n = top.nav;
+        n.prevpage = "algo10_2.html";
+        n.nextpage = "algo10_4.html";
+        faq(pagePos);
+}                         
+-->
+</script>
+ 
+<body bgcolor=ffffff onLoad="SetPageEnv(); vin('',0); vout(0); OnStart()">
+<div id="overDiv" style="position:absolute; left:50px; top:50px; width:300px; height:200px; z-index:5;visibility:hide;"><p>&nbsp;</p></div>
+<script language="JavaScript" src="d:/work/BACktrack/../include/help.js"></script>
+
+<table WIDTH="100%" height="100%" border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td valign=top bgcolor=eeeeee width=20 height=100% >&nbsp</td>
+<td valign=top height=100%>
+<!-- 전체 표 시작 -->
+<table WIDTH="100%" height="100%" border=0 cellpadding=0 cellspacing=0>
+<tr>
+    
+
+	<!-- 소제목 입력 폼--> 
+	<td bgcolor="eeeeee"><div class="title">◈ 백트랙킹 기법</div></td>
+	<!-- 소제목 입력 폼 끝--> 
+<tr>
+	<td background="./images/line.gif">
+	<div class=cls1></div>
+	<!-- 내용 입력 -->
+	<ul>
+
+	<div id="playText01" style="background: white;">
+        <li><div class="title1">문제 해결의 방법</div>
+	<ul>
+	<div class="cls1">
+	(1) 상태 트리를 구성
+	</div>
+	<div class="cls1">
+	(2) 상태 트리를 루트부터 순회하면서 최종 상태를 탐색
+	</div>
+	</ul>
+	</div>
+	<br><br>
+
+	<div id="playText02" style="background: white;">
+        <li><div class="title1">이러한 방법의 복잡도</div>
+	<ul>
+	<div class="cls2">
+	<li>복잡도는 문제 공간의 크기에 달려져 있다. 하지만 문제 공간의 크기는 무지무지하게 큰 경우가 보통이다. (
+<a href=#help onMouseOver='vin("문제 공간의 크기는 입력된 숫자의 퍼뮤테이션의 갯수와 같으므로, <i>n</i>개의 숫자에 대한 문제 공간의 크기는 <i>n</i>!.",0);' onMouseOut='vout(0);'>
+<font color=#74207e size=2>정렬 문제</font></a>
+	, 
+<a href=#help onMouseOver='vin("문제 공간의 크기는 물건의 부분집합의 갯수와 같으므로, 물건이 <i>n</i>개 있으면 문제 공간의 크기는 2<sup><i>n</i></sup>.",0);' onMouseOut='vout(0);'>
+<font color=#74207e size=2>배낭 문제</font></a>
+	)
+	</div>
+	<div class="cls2">
+	<li>따라서 트리의 노드의 갯수가 무지하게 많고, 이를 탐색하는 것 역시 많은 시간이 걸린다.
+	</div>
+	<div class="cls2">
+	<li>따라서 보통의 경우에 이러한 방법으로 문제를 해결하고자 시도하지는 않는다.
+	</div>
+	<div class="cls2">
+	<li>하지만 문제의 특성상 이러한 방법 외에 다른 방법이 존재하지 않는 문제도 존재한다.
+	</div>
+	<div class="cls2">
+	<li>이러한 종류의 문제를 위해서는 트리를 효과적으로 탐색할 수 있는 방법이 마련되어야 한다.
+	</div>
+	</ul>
+	</div>
+	<br><br>
+
+	<div id="playText03" style="background: white;">
+        <li><div class="title1">백트랙킹 기법</div>
+	<ul>
+	<div class="cls1">
+	－ 문제의 특성상 모든 가능성을 조사하지 않고는 해를 얻을 수가 없는 경우
+	</div>
+	<div class="cls1">
+	－ 모든 가능성을 조직적이고도 효율적으로 조사할 수 있는 기법
+	</div>
+	<div class="cls1">
+	－ 트리를 탐색할 때, 실현 불가능한 노드는 방문하지 않는다.
+	</div>
+	<div class="cls1">
+	－ 예를 들어, 배낭 문제에서 배낭의 크기가 10이고 물건1의 무게가 15라고 했을 때, 물건 1을 배낭에 넣는 것도 불가능이지만, 물건 1을 넣고 또 물건 2를 더 넣는 것 역시 불가능이다. 따라서 상태 트리 순회시에 물건 1을 넣은 노드의 아래쪽의 모든 노드는 방문할 필요가 없다.
+	</div>
+	<div class="cls1">
+	－ 트리 순회시 실현 불가능한 노드에 도달하면 그 노드의 부모 노드로 되돌아가므로 "백트랙킹"이 일어난다.
+	</div>
+	</ul>
+	</div>
+	<br><br>
+
+	<div id="playText04" style="background: white;">
+
+        <li><div class="title1">알고리즘으로 본 백트랙킹 기법</div>
+        <ul>
+        <div class="cls1">
+        <b>void</b> <i>checknode</i> (<b>node</b> <i>v</i> )<br>
+        {<br>
+        <ul>
+            <b>node</b> <i>u</i> ;<br>
+            <b>if</b> (
+<a href=#help onMouseOver='vin("실현 가능한지를 검사하는 부분.",0);' onMouseOut='vout(0);'>
+<font color=#74207e size=2><i>promising</i> (<i>v</i> )</font></a>
+	)<br>
+                <ul>
+                <b>if</b> (there is a solution at <i>v</i> )<br>
+                <dd>    write the solution;<br>
+                <b>else</b><br>
+                <ul>
+                    <b>for</b> (each child <i>u</i> of <i>v</i> )<br>
+                       <dd><i>checknode</i>(<i>u</i> );<br>
+                </ul>
+                </ul>
+        </ul>
+        }
+        </div>
+        <div class="cls1">
+        － 순환 호출(recursive call)은 트리에서 아래쪽으로 따라 내려가는 것을 나타내고,
+        </div>
+        <div class="cls1">
+        － 순환 호출되었다가 돌아가는 것이 백트랙킹이다.
+        </div>
+        </ul>
+
+	</div>
+
+	</ul>
+	<!-- 내용 입력 끝-->	
+	</div>
+	</td>
+</table>
+</td>
+</table>
+
+</body>
+</html>

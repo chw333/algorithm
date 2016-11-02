@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>KOI 18회 고등부 2. 로봇</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0" width="595">
+    <tr>
+        <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+            18회 고등부 2. 로봇</b></font></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="pkoi01h2.htm"><img
+             src="button1.gif" width="72" height="22" border="0"></a></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi01h2.htm"><img
+             src="button3.gif" width="72" height="22" border="0"></a></td>
+    </tr>
+</table>
+<ul>
+    <p>&nbsp; 
+    <table border="0">
+            <tr>
+                <td width="550"><p style="line-height:150%;"><font size="2">&nbsp;&nbsp;BFS 
+                로 풀리는 문제이다. 시작점에서 시작해서 4방향으로 퍼져 나가다가 
+                장애물을 만나면 멈추는 식으로 BFS를 돌리면 된다. 물론 지금까지 
+                가던 방향이 아니고 다른 방향으로 간다면 꺽이는 횟수를 하나 증가시켜서 
+                돌려야 한다. </font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;기본적인 
+                이 문제에 대한 알고리즘에 대한 설명은 더는 필요 없을 듯 하고, 
+                그러면 어렵지는 않으나 반례 투성인 방법으로 처리할 수 있는 &quot;장애물 
+                체크&quot; 에 대해 설명하겠다.(사실 허접한 운영자도 이를 잘못 
+                생각해서 잘못된 것을 올린적 있고, 이것은 수정본이다-_-+)</font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;장애물에 
+                대한 정보를 저장하는 100*100 배열을 hurdle[y][x] 라 정의 하자. 
+                그리고 각 경우에 따라 적절히 정보를 저장해야 하는데 </font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;</font><font
+                 size="2"><b>i) 장애물의 가로 선이 좌표 (x, y)를 지난다면</b></font><font
+                 size="2"> hurdle[y][x] = 1<br> &nbsp;&nbsp;</font><font size="2"><b>ii) 
+                세로 선이 지난다면</b></font><font size="2"> hurdle[y][x] = 
+                2<br> &nbsp;</font><font size="2"><b>&nbsp;iii) 좌표 (x, y)에서 
+                장애물의 가로선과 세로선이 만난다면<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( 
+                좌표(x, y) 가 장애물의 꼭지점이라면 )</b></font><font size="2"> 
+                hurdle[y][x] = 3<br> &nbsp;&nbsp;</font><font size="2"><b>iv) 
+                좌표 (x, y) 가 입력 받은 장애물의 4번째 점(p4) 일 때</b></font><font
+                 size="2"> hurdle[y][x] = 4</font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;이렇게 
+                저장된 정보를 이용해서 장애물을 처리하는데, 다른 방법이 어떤 
+                것이 있는 지는 모르겠으나, 이 방법은 상당히 귀찮은 방법인 듯 
+                하다(좀 더 낳은 방법을 생각해 보길...-_-)</font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;저 
+                정보를 어떻게 사용하느냐 하면, 장애물을 이루는 선을 통과하는 
+                선이 그어지나 아닌가를 검사하면 되는 것이다. 그 외에도 잡스러운 
+                것들이 많이 있는데 이는 각자 생각해 보기 바란다. 반례를 자꾸 
+                만들면서 체크할 것을 추가시켜 주는 것도 좋을 듯 하다.</font></td>
+        </tr>
+    </table>
+</body>
+
+</html></html>

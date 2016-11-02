@@ -1,0 +1,266 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=EUC-KR">
+<TITLE>Jsboard 1.2.2 - 알고리즘 게시판  [ 게시판 보기 ]</TITLE>
+<STYLE TYPE="text/css">
+<!--
+A:link, A:visited, A:active { TEXT-DECORATION: none; }
+A:hover { TEXT-DECORATION: underline; }
+TD { FONT: 9pt 굴림체; }
+INPUT {font: 9pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:2x solid #b5b5c5}
+SELECT {font: 9pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:1x solid #b5b5c5}
+TEXTAREA {font: 10pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:2x solid #b5b5c5}
+ #radio {font: 9pt 굴림체; BACKGROUND-COLOR:#ffffff; COLOR:#656565; BORDER:2x solid #ffffff}
+ #title {font:20pt 굴림체; color:#ffe4c4}
+ #eng {font:11px tahoma,Verdana,arial; line-height:120%}
+-->
+</STYLE>
+
+<script LANGUAGE=JavaScript>
+<!-- Begin
+  var child = null;
+  var count = 0;
+  function new_windows(addr,tag,scroll,resize,wid,hei) {
+    var childname = 'JSBoard' + count++;
+    // child window가 떠 있을 경우 child window를 닫는다.
+    if(child != null) {
+      if(!child.closed) { child.close(); }
+    }
+    child = window.open(addr,tag,'left=0, top=0, toolbar=0,scrollbars=' + scroll + ',status=0,menubar=0,resizable=' + resize + ',width=' + wid + ',height=' + hei +'');
+    // child window가 로드 될때 가장 앞으로 올린다.
+    child.focus();
+    return;
+  }
+//-->
+</script>
+</HEAD>
+
+<BODY BACKGROUND="" BGCOLOR="#ffffff" TEXT="#656565" LINK="#80320d" VLINK="#80320d" ALINK="#80320d">
+<!-- ========================= A foreword  ========================= -->
+<center>
+<img src=../algorithm/images/cyber_alg2.jpg BORDER="0" USEMAP="#ImageMap1">
+<p>
+<!-- ========================= A foreword  ========================= -->
+
+<DIV ALIGN="center">
+<!------ 상단 메뉴 시작 --------->
+<TABLE WIDTH="600" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+<TR>
+  <TD VALIGN=bottom><nobr>[ <a href=./admin/user_admin/auth.php?table=algorithm title="JSBoard 1.2.2 관리자 페이지"><font color=#6d7bc9>admin</font></a> ]</nobr></TD>
+  <TD ALIGN=right VALIGN=bottom>
+<TABLE WIDTH="1%" BORDER="0" CELLSPACING="4" CELLPADDING="0" >
+<TR>
+ <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+ <TD WIDTH="1%"><FONT COLOR="#999999" style="line-height=120%"><NOBR>이전페이지</NOBR></FONT></TD>
+ <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+ <TD WIDTH="1%"><A HREF="Wcf8f34e71361b.htm"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>다음페이지</NOBR></FONT></A></TD>
+ <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+ <TD WIDTH="1%"><A HREF="Wc3740532edff1.htm" title="Admin만 :-)"><FONT COLOR="#999999" style="line-height=120%"><NOBR>글쓰기</NOBR></FONT></A></TD>
+ <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+<TD WIDTH="1%"><A HREF="Wce5f4e5b4ee28.htm"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>최근12시간</NOBR></FONT></A></TD>
+<TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+</TR>
+</TABLE></TD>
+</TR>
+</TABLE>
+<!------ 상단 메뉴 끝 --------->
+<TABLE WIDTH="600" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+<TR><TD valign=top BGCOLOR="#7e7e9a">
+<TABLE WIDTH="100%" border="0" CELLSPACING="1" CELLPADDING="3">
+<TR>
+  <TD WIDTH="5%" ALIGN="center" BGCOLOR="#b5b5c5"><FONT COLOR="#555555" style="line-height=120%"><NOBR>번호</NOBR></FONT></TD>
+  <TD WIDTH="54%" ALIGN="center" BGCOLOR="#b5b5c5"><FONT COLOR="#555555" style="line-height=120%">제목</FONT></TD>
+  <TD WIDTH="14%" ALIGN="center" BGCOLOR="#b5b5c5"><FONT COLOR="#555555" style="line-height=120%">글쓴이</FONT></TD>
+
+  <TD WIDTH="13%" ALIGN="center" BGCOLOR="#b5b5c5"><FONT COLOR="#555555" style="line-height=120%">등록</FONT></TD>
+  <TD COLSPAN="2" WIDTH="5%" ALIGN="center" BGCOLOR="#b5b5c5"><FONT COLOR="#555555" style="line-height=120%"><NOBR>조회</NOBR></FONT></TD>
+</TR>
+
+<TR>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><FONT COLOR="#555555" style="line-height=120%">17</FONT></TD>
+  <TD BGCOLOR="#ffffff">
+<A HREF="Wc2eba836bd9f6.htm"><FONT COLOR="#555555" style="line-height=120%">암호화/압축 알고리즘 자료좀 부탁합니다.</FONT></A>
+</TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><A HREF=javascript:new_windows('Wc1728df580502.htm','form',0,0,600,420)><FONT COLOR="#555555">권정운</FONT></A>&nbsp;</TD>  <TD BGCOLOR="#ffffff" align=right><FONT SIZE="-1" COLOR="#555555" style="line-height=120%"><NOBR>2001.08.17</NOBR></FONT></TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff" COLSPAN="2"><FONT COLOR="#555555" style="line-height=120%"><FONT COLOR="#ffffff" style="line-height=120%">...</FONT>62</FONT></TD>
+</TR>
+
+<TR>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><FONT COLOR="#555555" style="line-height=120%">16</FONT></TD>
+  <TD BGCOLOR="#ffffff">
+<A HREF="Wcee7bf46ce960.htm"><FONT COLOR="#555555" style="line-height=120%">C 프로그램을 구해요...</FONT></A>
+</TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><A HREF=javascript:new_windows('Wcd7e9a85f3594.htm','form',0,0,600,420)><FONT COLOR="#555555">오경란</FONT></A>&nbsp;</TD>  <TD BGCOLOR="#ffffff" align=right><FONT SIZE="-1" COLOR="#555555" style="line-height=120%"><NOBR>2001.06.04</NOBR></FONT></TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff" COLSPAN="2"><FONT COLOR="#555555" style="line-height=120%"><FONT COLOR="#ffffff" style="line-height=120%">..</FONT>107</FONT></TD>
+</TR>
+
+<TR>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><FONT COLOR="#555555" style="line-height=120%">15</FONT></TD>
+  <TD BGCOLOR="#ffffff">
+<A HREF="Wcea3b64d3f4f1.htm"><FONT COLOR="#555555" style="line-height=120%">알고리즘 강의실에 관하여.....</FONT></A>
+</TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><A HREF=javascript:new_windows('Wcd3a938e02805.htm','form',0,0,600,420)><FONT COLOR="#555555">신용호</FONT></A>&nbsp;</TD>  <TD BGCOLOR="#ffffff" align=right><FONT SIZE="-1" COLOR="#555555" style="line-height=120%"><NOBR>2000.12.08</NOBR></FONT></TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff" COLSPAN="2"><FONT COLOR="#555555" style="line-height=120%"><FONT COLOR="#ffffff" style="line-height=120%">..</FONT>177</FONT></TD>
+</TR>
+
+<TR>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><FONT COLOR="#555555" style="line-height=120%">13</FONT></TD>
+  <TD BGCOLOR="#ffffff">
+<A HREF="Wc2bba8add95dd.htm"><FONT COLOR="#555555" style="line-height=120%">자료구조- 최단경로 문제에 대하여...</FONT></A>
+</TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><A HREF=javascript:new_windows('Wc1228d6ee4929.htm','form',0,0,600,420)><FONT COLOR="#555555">최지웅</FONT></A>&nbsp;</TD>  <TD BGCOLOR="#ffffff" align=right><FONT SIZE="-1" COLOR="#555555" style="line-height=120%"><NOBR>2000.11.30</NOBR></FONT></TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff" COLSPAN="2"><FONT COLOR="#555555" style="line-height=120%"><FONT COLOR="#ffffff" style="line-height=120%">..</FONT>203</FONT></TD>
+</TR>
+
+<TR>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><FONT COLOR="#555555" style="line-height=120%">12</FONT></TD>
+  <TD BGCOLOR="#ffffff">
+<A HREF="Wceb7bfddaa54b.htm"><FONT COLOR="#555555" style="line-height=120%">백트랙킹I OPEN</FONT></A>
+</TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><A HREF=javascript:new_windows('Wcd2e9a1e979bf.htm','form',0,0,600,420)><FONT COLOR="#555555">PL Lab</FONT></A>&nbsp;</TD>  <TD BGCOLOR="#ffffff" align=right><FONT SIZE="-1" COLOR="#555555" style="line-height=120%"><NOBR>2000.11.02</NOBR></FONT></TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff" COLSPAN="2"><FONT COLOR="#555555" style="line-height=120%"><FONT COLOR="#ffffff" style="line-height=120%">..</FONT>215</FONT></TD>
+</TR>
+
+<TR>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><FONT COLOR="#555555" style="line-height=120%">11</FONT></TD>
+  <TD BGCOLOR="#ffffff">
+<A HREF="Wce9fb14b9007e.htm"><FONT COLOR="#555555" style="line-height=120%">[질문] 삽입정렬의 최악비교횟수..</FONT></A>
+</TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><A HREF=javascript:new_windows('Wcd069488adc8a.htm','form',0,0,600,420)><FONT COLOR="#555555">이헌우</FONT></A>&nbsp;</TD>  <TD BGCOLOR="#ffffff" align=right><FONT SIZE="-1" COLOR="#555555" style="line-height=120%"><NOBR>2000.09.15</NOBR></FONT></TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff" COLSPAN="2"><FONT COLOR="#555555" style="line-height=120%"><FONT COLOR="#ffffff" style="line-height=120%">..</FONT>203</FONT></TD>
+</TR>
+
+<TR>
+  <TD ALIGN="right" BGCOLOR="#ebeaff"><FONT COLOR="#555555" style="line-height=120%">&nbsp;</FONT></TD>
+  <TD BGCOLOR="#ebeaff">
+<A HREF="Wc293a63be30e8.htm"><FONT COLOR="#555555" style="line-height=120%"><IMG SRC="images/n.gif" BORDER="0" ALT="" WIDTH="10" HEIGHT="1"><IMG SRC="images/rep.gif" WIDTH="12" BORDER="0" HEIGHT="12" ALT="답장"> Re: [질문] 삽입정렬의 최악비교횟수..</FONT></A>
+</TD>
+  <TD ALIGN="right" BGCOLOR="#ebeaff"><A HREF=javascript:new_windows('Wc10a83f8dec1c.htm','form',0,0,600,420)><FONT COLOR="#555555">PL Lab</FONT></A>&nbsp;</TD>  <TD BGCOLOR="#ebeaff" align=right><FONT SIZE="-1" COLOR="#555555" style="line-height=120%"><NOBR>2000.09.16</NOBR></FONT></TD>
+  <TD ALIGN="right" BGCOLOR="#ebeaff" COLSPAN="2"><FONT COLOR="#555555" style="line-height=120%"><FONT COLOR="#ebeaff" style="line-height=120%">..</FONT>211</FONT></TD>
+</TR>
+
+<TR>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><FONT COLOR="#555555" style="line-height=120%">10</FONT></TD>
+  <TD BGCOLOR="#ffffff">
+<A HREF="Wce8bb8db051c4.htm"><FONT COLOR="#555555" style="line-height=120%">도움말 안에서 링크 접속하기.</FONT></A>
+</TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><A HREF=javascript:new_windows('Wcd129d1838d30.htm','form',0,0,600,420)><FONT COLOR="#555555">PL Lab</FONT></A>&nbsp;</TD>  <TD BGCOLOR="#ffffff" align=right><FONT SIZE="-1" COLOR="#555555" style="line-height=120%"><NOBR>2000.09.10</NOBR></FONT></TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff" COLSPAN="2"><FONT COLOR="#555555" style="line-height=120%"><FONT COLOR="#ffffff" style="line-height=120%">..</FONT>101</FONT></TD>
+</TR>
+
+<TR>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><FONT COLOR="#555555" style="line-height=120%">9</FONT></TD>
+  <TD BGCOLOR="#ffffff">
+<A HREF="Wc287afab76152.htm"><FONT COLOR="#555555" style="line-height=120%">교수님 목소리가 넘 작습니다...ㅠ.ㅠ</FONT></A>
+</TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><A HREF=javascript:new_windows('Wc11e8a684bda6.htm','form',0,0,600,420)><FONT COLOR="#555555">박진영</FONT></A>&nbsp;</TD>  <TD BGCOLOR="#ffffff" align=right><FONT SIZE="-1" COLOR="#555555" style="line-height=120%"><NOBR>2000.09.08</NOBR></FONT></TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff" COLSPAN="2"><FONT COLOR="#555555" style="line-height=120%"><FONT COLOR="#ffffff" style="line-height=120%">..</FONT>146</FONT></TD>
+</TR>
+
+<TR>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><FONT COLOR="#555555" style="line-height=120%">8</FONT></TD>
+  <TD BGCOLOR="#ffffff">
+<A HREF="Wcbc51b9edc93a.htm"><FONT COLOR="#555555" style="line-height=120%">예제 답</FONT></A>
+</TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff"><A HREF=javascript:new_windows('Wc2e0d395b3981.htm','form',0,0,600,420)><FONT COLOR="#555555">신용호</FONT></A>&nbsp;</TD>  <TD BGCOLOR="#ffffff" align=right><FONT SIZE="-1" COLOR="#555555" style="line-height=120%"><NOBR>2000.09.08</NOBR></FONT></TD>
+  <TD ALIGN="right" BGCOLOR="#ffffff" COLSPAN="2"><FONT COLOR="#555555" style="line-height=120%"><FONT COLOR="#ffffff" style="line-height=120%">..</FONT>177</FONT></TD>
+</TR>
+
+<TR>
+  <TD COLSPAN="6" ALIGN="right" BGCOLOR="#b5b5c5">
+    <FONT COLOR="#555555" SIZE="-1" style="line-height=120%">총 2페이지, 17개의 글이  등록.  [ 0.02 sec ]</FONT>
+  </TD>
+</TR>
+</TABLE>
+
+</TD>
+</TR>
+<TR><TD BGCOLOR="#7e7e9a">
+
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="6" ALIGN="center">
+<TR>
+  <TD VALIGN="top" ROWSPAN="2">
+<!-- =============================== 검색폼 =============================== -->
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="1">
+<FORM METHOD="post" ACTION="list.php?table=algorithm">
+<TR>
+  <TD>
+    <FONT SIZE="-1" COLOR="#ffffff">
+    <INPUT TYPE="hidden" NAME="o[at]" VALUE="s">
+    <SELECT NAME="o[sc]">
+      <OPTION VALUE="t">제목
+      <OPTION VALUE="c">내용
+      <OPTION VALUE="n">글쓴이
+      <OPTION VALUE="a">전체
+    </SELECT>
+    <INPUT TYPE="text" NAME="o[ss]" SIZE="9" MAXLENGTH="255" VALUE="">
+    <INPUT TYPE="submit" VALUE="검색">
+    </FONT>
+  </TD>
+</TR><TR>
+  <TD>
+    <FONT SIZE="-1" COLOR="#ffffff">
+    <SELECT NAME="o[st]">
+      <OPTION VALUE="m">최근 한달
+      <OPTION VALUE="w">최근 한주
+      <OPTION VALUE="a">전체
+    </SELECT>
+    <INPUT TYPE="checkbox" NAME="o[er]" VALUE="y"> 정규표현식
+    </FONT>
+  </TD>
+</TR></FORM>
+</TABLE>
+<!-- =============================== 검색폼 =============================== -->
+</TD>
+  <TD VALIGN="top" ALIGN="right">
+<!-- ============================ 페이지 목록 폼 ========================== -->
+<FONT COLOR="#b5b5c5" SIZE="-1">&lt;&lt;</FONT>
+<FONT COLOR="#ffd700" SIZE="-1"><B>1</B></FONT>
+<A HREF="Wcf8f34e71361b.htm"><FONT COLOR="#ffffff" SIZE="-1">2</FONT></A>
+<A HREF="Wcf8f34e71361b.htm" title="Last Page"><FONT COLOR="#ffffff" SIZE="-1">&gt;&gt;</FONT></A>
+<!-- ============================ 페이지 목록 폼 ========================== -->
+</TD>
+</TR><TR>
+  <TD ALIGN="right" VALIGN="bottom">
+<!-- ============================== 페이지폼 ============================== -->
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="1">
+<FORM METHOD="post" ACTION="locate.php?table=algorithm">
+<TR>
+  <TD ALIGN="right">
+    <FONT SIZE="-1" COLOR="#ffffff">
+    <SELECT NAME="o[go]">
+      <OPTION VALUE="p" SELECTED>페이지
+      <OPTION VALUE="n">글번호
+    </SELECT>
+    <INPUT TYPE="text" NAME="o[no]" SIZE="2" MAXLENGTH="6" VALUE="1">
+    <INPUT TYPE="submit" VALUE="이동">
+  </TD>
+</TR></FORM>
+</TABLE>
+<!-- ============================== 페이지폼 ============================== -->
+</TD>
+</TR>
+</TABLE>
+</TD></TR></TABLE>
+<TABLE WIDTH="600" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+<TR><td>
+
+<TABLE WIDTH="1%" BORDER="0" CELLSPACING="4" CELLPADDING="0" ALIGN="center">
+<TR>
+ <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+ <TD WIDTH="1%"><FONT COLOR="#999999" style="line-height=120%"><NOBR>이전페이지</NOBR></FONT></TD>
+ <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+ <TD WIDTH="1%"><A HREF="Wcf8f34e71361b.htm"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>다음페이지</NOBR></FONT></A></TD>
+ <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+ <TD WIDTH="1%"><A HREF="Wc3740532edff1.htm" title="Admin만 :-)"><FONT COLOR="#999999" style="line-height=120%"><NOBR>글쓰기</NOBR></FONT></A></TD>
+ <TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+<TD WIDTH="1%"><A HREF="Wce5f4e5b4ee28.htm"><FONT COLOR="#6d7bc9" style="line-height=120%"><NOBR>최근12시간</NOBR></FONT></A></TD>
+<TD WIDTH="1%" BGCOLOR="#6d7bc9"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+</TR>
+</TABLE></TD></TR>
+</TABLE>
+</DIV>
+<!-- ========================= Tail ========================= -->
+<p><center>
+<!--Copyleft 1999-2000 by <a href=http://jsboard.kldp.org target=_blank JSBoard Open Project</a--> 
+<!-- ========================= Tail ========================= -->

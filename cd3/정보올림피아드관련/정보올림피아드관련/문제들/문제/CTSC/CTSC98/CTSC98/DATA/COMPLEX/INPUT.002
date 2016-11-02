@@ -1,0 +1,18 @@
+begin
+ loop n loop 4 loop n op 2 end break end end
+ loop n
+  loop n
+   loop n
+    loop n
+     op n
+    end
+    continue
+    op 4
+   end
+   break
+   loop 4
+    op n
+   end
+  end
+ end
+end

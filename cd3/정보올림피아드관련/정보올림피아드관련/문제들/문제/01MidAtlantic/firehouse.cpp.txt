@@ -1,0 +1,218 @@
+
+#include <vector>
+#include <fstream>
+#include <string>
+#include <algorithm>
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+
+typedef vector <int> intVec;
+typedef vector <intVec> colVec;
+
+#define min(x,y)(x < y)? x :y
+
+struct s_path	// Shortest path
+{
+	int origin;
+	int dest;
+	string path;
+	int distance;
+};
+
+
+typedef vector <s_path> sortableVec;
+
+void copyVec(colVec& inVec, colVec& outVec);
+void getShortestPath(string& str, colVec& vec, int src, int dest);
+void printList(ostream& outFile, sortableVec& myList);
+void replaceNegative(colVec& inVec);
+bool comparePath(const s_path& path1, const s_path& path2);
+
+const int INFINITE = 10000;
+
+int main()
+{	
+
+	int size, value;
+	int oneDest;	
+	
+	//if(cin.is_open() && cout.is_open()){
+	if(cin && cout){
+
+		// Test input to vectors
+		cin >> size;	// Read the N value
+		// Four containers one pair each for result as well as trace
+		// matrix - we need to keep a predecessor matrix hence a pair
+		colVec inPre(size);
+		colVec inCur(size);
+		colVec trPre(size);
+		colVec trCur(size);
+
+		// Storage for fire station locations
+		intVec origins(size);
+		
+		// Read input values
+		for (int i = 0; i < size; i++){
+			// Create inner vectors of integers for the 4 containers
+			inPre[i] = *(new intVec(size));
+			inCur[i] = *(new intVec(size));
+			
+			trPre[i] = *(new intVec(size));
+			trCur[i] = *(new intVec(size));
+            for(int j =0; j < size; j++){
+				cin >> value;
+				inPre[i][j] = value;
+            }
+			
+		}
+		// Read the single destination
+		cin >> oneDest;
+		// Read the multiple origins and keep the count of origins
+		int value;
+		cin >> value;
+		int orignCount =1;
+		for (int i = 0;!cin.eof(); i++,orignCount++){
+			origins[i] = value;
+			cin >> value;
+		}
+		orignCount--; // Account for eof
+
+		replaceNegative(inPre);
+		copyVec(inPre,inCur);
+
+		//cin.close();
+				
+		// Initialize the TraceMatrix
+		for(int i = 0; i < size; i++){
+			for(int j = 0; j < size; j++){
+				if(i == j || inPre[i][j] == INFINITE){
+					trPre[i][j] = INFINITE;
+				}
+				else{
+					trPre[i][j] = i;
+				}
+			} 
+		}
+				
+		// Use floyd's for all pairs shortest path
+		// Make a result array as well as trace array
+		int trace = 0;
+		for(int k = 0; k < size; k++){
+			for(int i = 0; i < size; i++){
+				for(int j =0; j < size; j++){
+					inCur[i][j] = (min(inCur[i][j], inCur[i][k] + inCur[k][j]));
+					trCur[i][j] = (inPre[i][j] <= inPre[i][k]  + inPre[k][j])?
+						trPre[i][j] : trPre[k][j];
+					
+				}
+			}
+			// Swap input matrix keeping as predecessor matrix
+			copyVec(inCur, inPre);
+			// Swap trace matrix for keeping as predecessor matrix
+			copyVec(trCur, trPre);
+		}
+		// Find the path and insert the result into a sortableVector
+		// before printing
+		sortableVec myList;
+		for(int i = 0; i < orignCount; i++){
+			s_path* fs_path		= new s_path;
+			fs_path->origin		= origins[i];
+			fs_path->dest		= oneDest;
+			fs_path->distance	= inCur[origins[i] -1][oneDest-1];
+
+			getShortestPath(fs_path->path, trCur, fs_path->origin -1,
+				oneDest-1);
+			
+			// Insert this path to the list for sorting
+			myList.push_back(*fs_path);
+
+		}
+		// Sort the list
+		sort(myList.begin(), myList.end(), comparePath);
+		// Print the List
+		printList(cout,myList);
+		//cout.close();
+	}
+	return 0;
+}
+
+// Copy the inVec elements to the outVec 
+void copyVec(colVec& inVec, colVec& outVec)
+{
+	int size = inVec.size();
+	for(int i = 0; i < size; i++){
+		for(int j =0; j < size; j++){
+			outVec[i][j] = inVec[i][j];
+		}
+	}
+}
+
+// Replace -1 with a large +ve value
+void replaceNegative(colVec& inVec)
+{
+	int size = inVec.size();
+	for(int i = 0; i < size; i++){
+		for(int j =0; j < size; j++){
+			if(inVec[i][j] == -1){
+				inVec[i][j] = INFINITE;
+			}
+		}
+	}
+}
+
+
+// Get the shortest path from the trace matrix
+void getShortestPath(string& str, colVec& traceMat, int src, int dest)
+{
+	char* buff = new char[80];
+	if (src == dest){
+	        //_itoa(src + 1, buff, 10);
+ 	        sprintf(buff, "%i", src + 1);
+		str += buff;
+	}
+	else if(traceMat[src][dest] == INFINITE){
+		//str << "No path from " << src <<" to " << dest;
+	}
+	else{
+		getShortestPath(str, traceMat, src, traceMat[src][dest]);
+		str += '\t';
+		//_itoa(dest + 1, buff, 10);
+ 	        sprintf(buff, "%i", dest + 1);
+		str += buff;
+	}
+}
+
+// Print the sorted paths from the map
+void printList(ostream& outFile, sortableVec& myList)
+{
+	// Print the map
+	sortableVec::iterator it; 
+	outFile << "Org\tDest\tTime\tPath\n";
+	for (it = myList.begin(); it != myList.end(); it++){
+		s_path* myPath = &(*it);
+
+		outFile  << myPath->origin<<'\t'
+				 << myPath->dest<<"\t"
+				 << myPath->distance<<"\t"
+				 << myPath->path<<'\n';
+	}
+}
+
+	
+//Compare Function
+bool comparePath(const s_path& path1, const s_path& path2)
+{	
+	if(path1.distance < path2.distance){		
+		return true;	
+	}
+	else{
+		return false;
+	}
+}
+
+
+
+

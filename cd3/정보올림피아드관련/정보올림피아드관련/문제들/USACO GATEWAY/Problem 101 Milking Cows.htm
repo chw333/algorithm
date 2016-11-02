@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0058)http://ace.delos.com/usacoprob/s=1.2.2.9/a=F6F0YNgA822/101 -->
+<HTML><HEAD><TITLE>Problem 101: Milking Cows</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2719.2200" name=GENERATOR></HEAD>
+<BODY background="Problem 101 Milking Cows.files/bg3.jpg"><IMG height=118 
+src="Problem 101 Milking Cows.files/cow1.jpg" width=742> 
+<CENTER><B><FONT size=7>Milking Cows</FONT></B><BR></CENTER>
+<P>Three farmers rise at 5 am each morning and head for the barn to milk three 
+cows. The first farmer begins milking his cow at time 300 (measured in seconds 
+after 5 am) and ends at time 1000. The second farmer begins at time 700 and ends 
+at time 1200. The third farmer begins at time 1500 and ends at time 2100. The 
+longest continuous time during which at least one farmer was milking a cow was 
+900 seconds (from 300 to 1200). The longest time no milking was done, between 
+the beginning and the ending of all milking, was 300 seconds (1500 minus 1200). 
+<P>Your job is to write a program that will examine a list of beginning and 
+ending times for N (1 &lt;= N &lt;= 5000) farmers milking N cows and compute (in 
+seconds): 
+<UL>
+  <LI>The longest time interval at least one cow was milked. 
+  <LI>The longest time interval no cows were being milked. </LI></UL>
+<H3>PROGRAM NAME: milk2</H3>
+<H3>INPUT FORMAT</H3>
+<TABLE border=1>
+  <TBODY>
+  <TR>
+    <TD>Line 1: </TD>
+    <TD>The single integer </TD>
+  <TR>
+    <TD>Lines 2..N+1: </TD>
+    <TD>Two non-negative integers less than 1000000, the starting and ending 
+      time in seconds after 0500</TD></TR></TBODY></TABLE>
+<H3>SAMPLE INPUT (file milk2.in) </H3><PRE>3
+300 1000
+700 1200
+1500 2100
+
+</PRE>
+<H3>OUTPUT FORMAT</H3>A single line with two integers that represent the longest 
+continuous time of milking and the longest idle time. 
+<H3>SAMPLE OUTPUT (file milk2.out)</H3><PRE>900 300
+</PRE><BR><BR>
+<HR>
+
+<FORM action=/upload method=post encType=multipart/form-data><B>Submission file 
+Name:</B> <INPUT type=file name=filename> <INPUT type=submit value="Send it in!"> <INPUT type=hidden 
+value=/usacogate?a=F6F0YNgA822 name=id> <INPUT type=hidden value=1.2.2.9 
+name=sid> <INPUT type=hidden value=101 name=nid> </FORM>
+<CENTER><A href="mailto:grader@ace.delos.com">Submit Solution via Email</A> 
+&nbsp;|&nbsp; <A href="http://ace.delos.com/usacogate?a=F6F0YNgA822">USACO 
+Gateway </A>&nbsp;| &nbsp; <A href="mailto:usaco@lumeta.com">Comment or Question 
+</A></CENTER></BODY></HTML>

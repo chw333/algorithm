@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>KOI 13회 중등부 1.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0" width="595">
+    <tr>
+        <td width="589" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;휴리스틱을 
+            알려주마 (6) - 시뮬레이티드 어닐링 1</b></font></td>
+    </tr>
+</table>
+<ul>
+    <p>&nbsp; 
+    <table border="0">
+            <tr>
+                <td width="550"><p style="line-height:150%;"><font size="2">&nbsp;&nbsp;안녕하세요.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;이제 
+                휴리스틱 시리즈 마지막으로, 메타휴리스틱의 왕자 '시뮬레이티드 
+                어닐링'에 대해서 알아보도록 하겠습니다. 이 시뮬레이티드 어닐링(Simulated 
+                Annealing; 이하 SA라고 부르겠음)은, 기본적으로 앞서의 국소탐색 
+                방법을 개선한 방법입니다. 일반적으로 조합최적화 문제에 많이 
+                쓰이지만, 유전자 알고리즘이나 신경망 학습 등 다른 분야에도 폭넓게 
+                쓰이는 방법이니 반드시 배워 두시는 것이 좋습니다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;앞서 
+                국소탐색 방법을 간략히 요약하면 다음과 같습니다.</font></p>
+                <ul>
+                    <p style="line-height:150%;"><font size="2">1) 초기해를 
+                    만든다.<br>
+                    2) 현재의 해를 랜덤하게 변화시킨다.<br>
+                    3) 새로운 해가 원래의 해보다 더 좋다면 바꾸고, 그렇지 않으면 
+                    무시한다.<br>
+                    4) 2~3의 과정을 적당히 반복한다.</font></p>
+                </ul>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;SA는 
+                기본적으로 위의 과정과 거의 유사합니다. 다만,</font></p>
+                <ul>
+                    <p style="line-height:150%;"><font size="2">1) 초기해를 
+                    만든다.<br>
+                    2) 현재의 해를 랜덤하게 변화시킨다.<br>
+                    3) </font><font size="2">새로운 해가 원래의 해보다 더 좋다면 
+                    바꾸고, 그렇지 않으면 일정한 확률로 바꾼다.</font><font size="2"><br>
+                    4) 2~3의 과정을 적당히 반복한다.</font></p>
+                </ul>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;SA는 
+                국소탐색과 3번의 과정이 다릅니다. </font><font size="2" color="red">좋지 
+                못한 해로의 수락도 어느 정도의 확률로 허락한다</font><font size="2">는 
+                것입니다. 앞서 보았던 그림을 다시 보자면,</font></p>
+                <p align="center" style="line-height:150%;"><font size="2"><img src="approx5-1.gif"
+                 width="256" height="209" border="0"></font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;현재의 
+                해가 B라고 합시다. 최적해에 도달하기 위해서는 C라는 상태를 거쳐 
+                E점으로 올라가야 합니다. 하지만 국소탐색에서는 더 나쁜 해로의 
+                이동을 허락하지 않습니다. 무조건 좋은 해로의 이동만을 허락하기 
+                때문에 결국 A점으로밖에 갈 수 없는 것입니다. 하지만 SA의 경우, 
+                어느 정도의 확률로 C점으로의 이동도 허락합니다. 따라서 최적해인 
+                E점에 도달할 확률도 그만큼 높아지게 됩니다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;'그럼 
+                시뮬레이티드 어닐링이란 이게 다인가? 그럼 그 확률은 어떻게 계산하는가?' 
+                라고 생각하시기엔 아직 이릅니다. 바로 SA에는 &quot;</font><font
+                 size="2" color="red">온도</font><font size="2">&quot;라고 부르는 
+                개념이 있기 때문입니다. 사실 이 온도라는 개념이 없다면 SA는 
+                최적해를 찾지 못하고 그냥 갈팡질팡 돌아다닐게 뻔합니다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;먼저 
+                SA란 용어의 뜻을 뜯어보기로 하죠. Simulated Annealing입니다. 
+                simulated 는 '가상의, 흉내낸, 모의의' 이런 뜻입니다. annealing 
+                은 풀림이란 뜻입니다(담금질이라고 하시는 분도 있는데, 풀림이 
+                더 정확할 것 같습니다). 자세한 것은,</font></p>
+                <p align="center" style="line-height:150%;"><a href="http://kr.encycl.yahoo.com/result.html?id=183007"><font
+                 size="2">http://kr.encycl.yahoo.com/result.html?id=183007</font></a></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;여기서 
+                보시기 바랍니다. 야후 백과사전입니다 -_-;</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;풀림에 
+                대해서 간단히 설명하면 이렇습니다. 금속을 달군 뒤에, 냉각을 
+                하게 됩니다. 그런데 어떤 조건하에서 금속을 냉각시키는지에 따라서 
+                그 금속의 성질은 크게 달라지게 됩니다. 온도나 기압 등에 따라서 
+                금속이 갖는 성질이 크게 달라진다는 것이죠(기술 시간에 배운거.. 
+                ;). 따라서 자기가 원하는 스타일의 금속을 얻기 위해서는, 냉각 
+                스케쥴이란 것이 중요해 집니다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;온도가 
+                높을 때에는 원소들이 활발하게 움직이기 때문에 원소들이 제자리를 
+                찾기 쉬워집니다. 온도가 낮을 때에는 원소들의 움직임이 안정되기 
+                때문에 금속의 결정 상태도 고르게 되는 것이지요. SA란, 이러한 
+                것들을 컴퓨터를 통해 흉내내어, 조합최적화 문제의 최적해를 얻고자 
+                하는 방법입니다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;제가 
+                옛날에, 어떤 분에게 SA에 대한 간단한 예를 소개해 드립니다. 1.5리터들이 
+                패트병에, 자갈과 콩과 모래를 넣습니다. 그리고 이 패트병 안에 
+                든 것들의 부피를 최소로 하고 싶습니다. 어떻게 해야 할까요?</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;물론 
+                흔들어야 할 겁니다. 그런데 어느 정도의 힘으로 흔들 것인가 하는 
+                문제가 중요합니다. 만약 처음부터 살짝 살짝 흔든다고 생각해 보세요. 
+                작은 입자들이 큰 입자들 속으로 잘 안들어 갈 겁니다. 따라서 처음에는 
+                세게 흔들어서, 입자들이 제자리를 찾을 수 있도록 해야 하겠죠.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;하지만 
+                계속 그렇게 흔든다고 해서, 금속의 부피가 최소가 될까요? 그렇지 
+                않습니다. 점점 힘을 줄이면서, 모래들이 자갈과 콩 사이사이로 
+                잘 들어갈 수 있도록 해야 할 겁니다. 즉,</font></p>
+                <p align="center" style="line-height:150%;"><font size="2">처음에는 
+                힘을 많이 주고, 점점 힘을 조금 준다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;자, 
+                그럼 이걸 다시 SA로 넘어 와서, </font></p>
+                <p align="center" style="line-height:150%;"><font size="2" color="red">처음에는 
+                나쁜 해로의 이동을 큰 확률로 주고, 점점 그 확률을 줄인다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;이것이 
+                SA의 기본 아이디어가 됩니다. 여기서 바로 온도의 개념이 쓰이는 
+                것이지요. 맨 처음에 온도가 적절히 주어 집니다. 이 온도를 조금씩 
+                줄여 나가서, 0이 되도록 합니다. 이렇게 온도가 0이 되면 SA가 
+                끝나는 거지요. 온도가 높을 때에는 나쁜 해로의 허락 확률이 크고, 
+                온도가 낮을 때에는 허락 확률이 낮지요.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;흠... 
+                이번 회에서는 너무 이론적인 면에 치중한 것 같네요. 2회로 나눠서 
+                써야겠습니다. 하지만 원래 새로운 개념이란 것은 낯설기 마련이기 
+                때문에, 이렇게 부담 없는 이야기로 먼저 SA에 대해 친숙해 지는 
+                것이 좋다고 생각해서 이렇게 했습니다. 다음 회에서는 이 SA를 
+                실제로 어떻게 사용하는가에 대해서 살펴보기로 하죠. 아직 타블렛 
+                설치가 안되서, 그림은 못그렸습니다 ^^;</font></td>
+        </tr>
+    </table>
+
+    </ul><p>&nbsp;</p>
+</body>
+
+</html></html>

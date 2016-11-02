@@ -1,0 +1,22 @@
+7 7
+20
+house1 LOCATION A 0
+house2 DISTANCE 1 house1
+house3 DISTANCE 1 house2
+house4 DISTANCE 1 house3
+house5 DISTANCE 1 house4
+house6 DISTANCE 1 house5
+house7 DISTANCE 1 house6
+house8 DISTANCE 1 house7
+house9 DISTANCE 1 house8
+house10 DISTANCE 1 house9
+house11 DISTANCE 1 house10
+bldg11 DISTANCE 1 house11
+bldg12 DISTANCE 1 bldg11
+bldg13 DISTANCE 1 bldg12
+bldg14 DISTANCE 1 bldg13
+bldg15 DISTANCE 1 bldg14
+bldg16 DISTANCE 1 bldg15
+bldg17 DISTANCE 1 bldg16
+bldg18 DISTANCE 1 bldg17
+bldg19 DISTANCE 1 bldg18

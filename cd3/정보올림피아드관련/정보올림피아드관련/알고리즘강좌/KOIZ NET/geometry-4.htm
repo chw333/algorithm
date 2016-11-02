@@ -1,0 +1,29 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>단순 닫힌 경로 (Simple Closed Path) 찾기</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font size="4" color="#0066CC"><b>단순 닫힌 경로 (Simple Closed Path) 찾기</b></font></p>
+<p align="center"><font size="4" color="#0066CC">&nbsp;</font></p>
+<p><font size="2">&nbsp;&nbsp;N개의 점이 주어졌을 때, 이 점들을 모두 지나는 경로를 찾고 싶다. 
+그런데, 문제는 경로가 자신을 교차해서는 안된다는 것이다. 모든 점을 방문하고 
+다시 원래의 위치로 돌아오되 교차가 없는 경로를 단순 닫힌 경로라고 한다. 이때 
+이 경로가 최적이 되도록 하는 것을 &quot;여행하는 세일즈맨 문제&quot;라고 하는 
+데, 이 것은 매우 풀기 어려운 문제라는 것이 알려져 있다. 우리는 경로가 최적이 
+되는 것은 신경 쓸 필요 없이, 다만 교차가 없는 경로만 생성하면 된다고 하자. 이를 
+어떻게 찾을 수 있을지 생각해보라. 다음 그림을 보면, 단순 닫힌 경로를 찾는 방법을 
+알 수 있다.</font></p>
+<p align="center"><font size="2">&nbsp;<img src="images/geometry-03.jpg" width="346" height="306" border="0"></font></p>
+<p><font size="2">&nbsp;&nbsp;주어진 점들 가운데서 우선 하나의 점을 선택한다. 그리고, 나머지 
+모든 점들과 이 점들을 잇는 선분을 그려 각도를 계산할 수 있다. 이렇게 계산된 
+각도를 기준으로 점들을 정렬하는 것이 가능하다. 이 때, 동일한 각도를 이루는 점이 
+중복해서 나타나지 않는다고 가정하자. 그리고 나면 이 정렬의 결과로 점들의 연속열을 
+만들 수 있다. 마지막으로 시작 점과 끝점을 처음에 선택한 점과 연결함으로써 단순 
+닫힌 경로를 생성할 수 있다.</font></p>
+</body>
+
+</html>

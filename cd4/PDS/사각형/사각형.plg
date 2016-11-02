@@ -1,0 +1,78 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: 사각형 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP72D4.TMP" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/사각형.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\PDS\사각형\사각형.cpp"
+"D:\Pds\사각형\사각형2.cpp"
+]
+Creating command line "cl.exe @c:\windows\TEMP\RSP72D4.TMP" 
+Creating temporary file "c:\windows\TEMP\RSP72D5.TMP" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/사각형.pdb" /debug /machine:I386 /out:"Debug/사각형.exe" /pdbtype:sept 
+".\Debug\사각형.obj"
+".\Debug\사각형2.obj"
+]
+Creating command line "link.exe @c:\windows\TEMP\RSP72D5.TMP"
+<h3>Output Window</h3>
+Compiling...
+사각형.cpp
+사각형2.cpp
+D:\Pds\사각형\사각형2.cpp(14) : error C2065: 'dt' : undeclared identifier
+D:\Pds\사각형\사각형2.cpp(14) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(14) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(14) : error C2102: '&' requires l-value
+D:\Pds\사각형\사각형2.cpp(14) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(14) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(14) : error C2102: '&' requires l-value
+D:\Pds\사각형\사각형2.cpp(15) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(15) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(15) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(15) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(17) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(17) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(17) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(17) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(17) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(17) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(17) : error C2106: '=' : left operand must be l-value
+D:\Pds\사각형\사각형2.cpp(17) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(17) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(17) : error C2106: '=' : left operand must be l-value
+D:\Pds\사각형\사각형2.cpp(19) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(19) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(19) : error C2065: 'max1' : undeclared identifier
+D:\Pds\사각형\사각형2.cpp(19) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(19) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(20) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(20) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(20) : error C2065: 'max2' : undeclared identifier
+D:\Pds\사각형\사각형2.cpp(20) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(20) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(21) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(21) : error C2109: subscript requires array or pointer type
+D:\Pds\사각형\사각형2.cpp(27) : error C2065: 'itemtype' : undeclared identifier
+D:\Pds\사각형\사각형2.cpp(27) : error C2146: syntax error : missing ';' before identifier 'v'
+D:\Pds\사각형\사각형2.cpp(27) : error C2065: 'v' : undeclared identifier
+D:\Pds\사각형\사각형2.cpp(28) : error C2065: 'i' : undeclared identifier
+D:\Pds\사각형\사각형2.cpp(28) : error C2065: 'n' : undeclared identifier
+D:\Pds\사각형\사각형2.cpp(34) : error C2065: 'chlg' : undeclared identifier
+D:\Pds\사각형\사각형2.cpp(34) : error C2143: syntax error : missing ';' before '}'
+D:\Pds\사각형\사각형2.cpp(36) : error C2601: 'output' : local function definitions are illegal
+D:\Pds\사각형\사각형2.cpp(39) : error C2601: 'main' : local function definitions are illegal
+D:\Pds\사각형\사각형2.cpp(44) : fatal error C1004: unexpected end of file found
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+사각형.exe - 43 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

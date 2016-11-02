@@ -1,0 +1,36 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ROBOT - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Owner\LOCALS~1\Temp\RSP30.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/ROBOT.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\PDS\º½Ä·ÇÁ\2¿ù19ÀÏ\robot\ROBOT.CPP"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Owner\LOCALS~1\Temp\RSP30.tmp" 
+Creating temporary file "C:\DOCUME~1\Owner\LOCALS~1\Temp\RSP31.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/ROBOT.pdb" /debug /machine:I386 /out:"Debug/ROBOT.exe" /pdbtype:sept 
+".\Debug\ROBOT.OBJ"
+]
+Creating command line "link.exe @C:\DOCUME~1\Owner\LOCALS~1\Temp\RSP31.tmp"
+<h3>Output Window</h3>
+Compiling...
+ROBOT.CPP
+d:\pds\º½Ä·ÇÁ\2¿ù19ÀÏ\robot\robot.cpp(27) : warning C4101: 'f' : unreferenced local variable
+d:\pds\º½Ä·ÇÁ\2¿ù19ÀÏ\robot\robot.cpp(59) : warning C4101: 'i' : unreferenced local variable
+d:\pds\º½Ä·ÇÁ\2¿ù19ÀÏ\robot\robot.cpp(59) : warning C4101: 'j' : unreferenced local variable
+Linking...
+Debug/ROBOT.exe : warning LNK4084: total image size -1045983232 exceeds max (268435456); image may not run
+
+
+
+<h3>Results</h3>
+ROBOT.exe - 0 error(s), 4 warning(s)
+</pre>
+</body>
+</html>

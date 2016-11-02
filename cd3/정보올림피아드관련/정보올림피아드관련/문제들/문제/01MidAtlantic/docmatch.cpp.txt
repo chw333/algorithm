@@ -1,0 +1,174 @@
+// Sample solution to Document Matching problem
+//
+#include <algorithm>
+#include <iomanip>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <set>
+#include <string>
+#include <strstream>
+#include <vector>
+#include <math.h>
+
+#include <cstdio>
+
+using namespace std;
+
+const string DOCUMENT_TERMINATOR (10, '-');
+
+/*
+  Documents in this solution will be represented as multisets of
+  strings.  Thus the term score for any term t will be
+    sqrt(searchString.count(t) * document.count(t))
+*/
+typedef multiset<string> Document;
+typedef set<string> TermSet;
+
+
+
+// Replace uppercase character by their lowercase equivalents
+char lowerChar (char c)
+{
+  if (c >= 'A' && c <= 'Z')
+    return c - 'A' + 'a';
+  else
+    return c;
+}
+
+
+bool notAlphaNumeric (char c)
+{
+  return !((c >= '0' && c <= '9')
+	   || (c >= 'a' && c <= 'z'));
+}
+
+
+string filterTerm (string term)
+  // Given a "raw" term from the input, convert any uppercase chars
+  // to lowercase and strip out all non-alphanumeric characters,
+  // returning the resulting string.
+{
+  // Convert to lowercase
+  transform (term.begin(), term.end(),
+	     term.begin(), lowerChar);
+
+  // Copy only the alphanumeric characters into alphaNum
+  vector<char> alphaNum;
+  remove_copy_if (term.begin(), term.end(),
+		  back_inserter(alphaNum),
+		  notAlphaNumeric);
+
+  // Return the resulting string.
+  return string(alphaNum.begin(), alphaNum.end());
+}
+
+
+
+bool readDocument (Document& doc)
+  // Read a "document" from the standard input.
+  // Return true if at least one line of a document
+  // was found.
+{
+
+  // Build a string representing the entire document (a bit crude, I know)
+  string line;
+  string docString;
+  getline(cin, line);
+  while (line != DOCUMENT_TERMINATOR) {
+    docString += ' ';
+    docString.append(line);
+    getline(cin, line);
+  }
+
+  // If any lines were actually read, process the whole thing,
+  // one word at a time. Each word is filtered (see filterTerm)
+  // and the resulting lowercase alphanumeric term placed in a
+  // multiset.
+  if (docString != "")
+    {
+      doc.clear();
+      istrstream docIn (docString.c_str());
+      transform (istream_iterator<string>(docIn),
+		 istream_iterator<string>(),
+		 inserter(doc, doc.end()),
+		 filterTerm);
+      return true;
+    }
+  else
+    {
+      return false;
+    }
+}
+
+
+
+class TermScore {
+  // Functor to compute term scores for any two given
+  // documents.
+  const Document& doc1;
+  const Document& doc2;
+public:
+
+  TermScore (const Document& d1,
+	     const Document& d2)
+    // Constructor records the documents we 
+    //   want to work with
+    : doc1(d1), doc2(d2)  {}
+
+  double operator() (string term)
+  { // Compute a term score
+    return sqrt(double(doc1.count(term)
+			* doc2.count(term)));
+  }
+};
+
+
+
+double computeScore (const Document& searchString,
+		     const Document& doc,
+		     const TermSet& searchTerms)
+  // Compute the total score for a search string and
+  // a document, given the set of unique terms from
+  // the search string.
+{
+  // Compute the term score for each term in searchTerms,
+  //  collecting the individual term scores in termScores
+  vector<double> termScores;
+  transform (searchTerms.begin(),
+	     searchTerms.end(),
+	     back_inserter(termScores),
+	     TermScore(searchString, doc));
+
+  // Add them up to get the total score.
+  return accumulate(termScores.begin(),
+		    termScores.end(),
+		    0.0);
+}
+
+
+int main()
+{
+  // Read the search string
+  Document searchString;
+  readDocument(searchString);
+
+  // Copy the searchString terms into a set (thereby ignoring any
+  //  duplicate terms)
+  TermSet uniqueSearchTerms (searchString.begin(), searchString.end());
+  //   (Minor detail: terms consisting entirely of punctuation will 
+  //    be reduced to "" by the filter process. We don't want to 
+  //    count those in the score, so remove "" from the search term set.)
+  uniqueSearchTerms.erase ("");
+
+
+  // For each document, compute and print the score
+  Document doc;
+  while (readDocument(doc)) {
+    double score = computeScore (searchString, doc,
+				 uniqueSearchTerms);
+    printf ("%4.2f\n", score);
+  }
+
+  return 0;
+}

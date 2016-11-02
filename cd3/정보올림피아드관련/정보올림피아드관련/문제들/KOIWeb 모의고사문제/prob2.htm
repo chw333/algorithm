@@ -1,0 +1,83 @@
+<html>
+
+<head>
+<title>[문제 2] Upperway (지상철 계획하기)</title>
+<meta name="generator" content="Namo WebEditor v4.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<P style="line-height:150%;"><FONT SIZE=5 face="굴림"><SPAN STYLE="font-size:18pt;"><B>[문제 2] Upperway (지상철 계획하기) </B></SPAN></FONT><font face="굴림">
+<BR>
+</font><P style="line-height:150%;"><FONT FACE="굴림">  미래도시에 사는 철이의 아버지 철수씨는 미래도시의 열차사업부 수석 프로그래머이다. 그런데 미래도시는 실로 오랜만에 커다란 계획을 하나 세웠다. 바로 지상철이 도시에 다니게 하는 계획이다. 지상철역과 다음 역과의 사이는 모두 같다.</FONT><font face="굴림">
+<br></font><FONT FACE="굴림">  미래도시는 여러 가지 기술을 종합해 본 결과, 열차가 직선으로 뻗어갈 수는 없다는 연구가 나왔다. 따라서, 어떤 
+구간에서는 지상철이 경사가 지게 하여 달려야 한다.</FONT><font face="굴림">
+<br></font><FONT FACE="굴림">  그런데 지상철은 경사가 많이 지면 속도가 느려지기 때문에, 최대한 속도를 끌어 올려야 한다. 이때 한 역 사이의 지상철의 속도는 다음과 같이 정의된다.</FONT><font face="굴림">
+<br>&nbsp;</font><TABLE BORDER=1 WIDTH=392 HEIGHT=88 style="line-height:150%;" cellspacing="0" bordercolordark="white" bordercolorlight="black">
+<TD VALIGN=MIDDLE WIDTH=100%>
+<P style="line-height:150%;"><FONT FACE="굴림">높이를  </FONT><font face="굴림">
+n0, n1</font><FONT FACE="굴림">로 표시할 때<br>I) </FONT><font face="굴림">
+n0 &gt; n1 : 61-(n0-n1)<sup>2<br></sup></font><FONT FACE="굴림">II)n0 &lt;= 
+        n1 : 61-(n1-n0)</FONT>
+</TD>
+<CAPTION ALIGN=BOTTOM>
+</CAPTION>
+
+</TABLE>
+<P style="line-height:150%;"><FONT FACE="굴림">철수씨는 상사의 명령을 따라 지상철의 속도가 가장 빠른 경우를 구해야 한다. 철수씨를 도와주시오.</FONT><font face="굴림">
+<BR>
+</font><P style="line-height:150%;"><FONT FACE="굴림">▶ 입력 형식 (upperway.in)</FONT><font face="굴림">
+<br>&nbsp;</font><TABLE BORDER=1 WIDTH=539 HEIGHT=215 style="line-height:150%;" cellspacing="0" bordercolordark="white" bordercolorlight="black">
+<TD VALIGN=MIDDLE ROWSPAN=2 WIDTH=22%>
+<P style="line-height:150%;"><FONT FACE="굴림">Line 1.</FONT></TD>
+<TD VALIGN=MIDDLE WIDTH=77%>
+<P style="line-height:150%;"><FONT FACE="굴림">N<br>1&lt;=N&lt;=10000</FONT></TD>
+<TR>
+<TD VALIGN=MIDDLE WIDTH=77%>
+<P style="line-height:150%;"><FONT FACE="굴림">N : 역의 갯수</FONT></TD>
+<TR>
+<TD VALIGN=MIDDLE ROWSPAN=2 WIDTH=22%>
+<P style="line-height:150%;"><FONT FACE="굴림">Line 2. ∼ <br>Line. n+1</FONT></TD>
+<TD VALIGN=MIDDLE WIDTH=77%>
+<P style="line-height:150%;"><FONT FACE="굴림">Si, Ei<br>-30 &lt;= Si, Ei &lt;= 30<br>Si &lt;= 0 &lt;= Ei<br>Si &lt;= Ei</FONT></TD>
+<TR>
+<TD VALIGN=MIDDLE WIDTH=77%>
+<P style="line-height:150%;"><FONT FACE="굴림">Si ∼ Ei 높이 까지 역을 세울 수 있다.</FONT></TD>
+<CAPTION ALIGN=BOTTOM>
+</CAPTION>
+
+</TABLE>
+            <p style="line-height:150%;"><font face="굴림"><BR>
+            </font><P style="line-height:150%;"><FONT FACE="굴림">▶ 출력 형식 (upperway.out)</FONT><font face="굴림">
+            <br>&nbsp;</font><TABLE BORDER=1 WIDTH=539 HEIGHT=117 style="line-height:150%;" cellspacing="0" bordercolordark="white" bordercolorlight="black">
+<TD VALIGN=MIDDLE ROWSPAN=2 WIDTH=22%>
+<P style="line-height:150%;"><FONT FACE="굴림">Line 1.</FONT></TD>
+<TD VALIGN=MIDDLE WIDTH=77%>
+<P style="line-height:150%;"><FONT FACE="굴림">f</FONT></TD>
+<TR>
+<TD VALIGN=MIDDLE WIDTH=77%>
+<P style="line-height:150%;"><FONT FACE="굴림">나올 수 있는 가장 큰 각 역과 역 사이의 속도 평균을 소수점 세 번째 자리에서 반올림하여 소수점 두 번째 자리까지 출력한다.</FONT></TD>
+<CAPTION ALIGN=BOTTOM>
+</CAPTION>
+
+</TABLE>
+                <p style="line-height:150%;"><font face="굴림"><BR>
+                </font><P style="line-height:150%;"><FONT FACE="굴림">▶ 입력 예</FONT><font face="굴림">
+                <br></font><FONT FACE="굴림">3</FONT><font face="굴림">
+                <br></font><FONT FACE="굴림">0 30</FONT><font face="굴림">
+                <br></font><FONT FACE="굴림">-30 30</FONT><font face="굴림">
+                <br></font><FONT FACE="굴림">-30 -30</FONT><font face="굴림">
+<BR>
+                </font><P style="line-height:150%;"><FONT FACE="굴림">▶ 출력 예</FONT><font face="굴림">
+                <br></font><FONT FACE="굴림">1815.50</FONT><font face="굴림">
+<BR>
+                </font><P style="line-height:150%;"><FONT FACE="굴림">▶ 입출력 해설</FONT><font face="굴림">
+: </font><FONT FACE="굴림">역 0은 높이 0에 건설 / 역 1은 높이 30에 건설 / 역 2는 높이 -30에 건설</FONT><font face="굴림">
+<BR>
+                </font><P style="line-height:150%;"><FONT FACE="굴림">▶ 시간제한 : 2초</FONT><font face="굴림">
+                </font>
+                <p style="line-height:150%;" align="center">&nbsp;<font face="굴림"><a href="Nw_1.htm">모의고사 
+                메인으로 가기</a>&nbsp;</font>
+                </p>
+                </body>
+
+                </html>

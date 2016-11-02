@@ -1,0 +1,10 @@
+begin
+ loop n loop n loop n loop n
+ loop n loop n loop n loop n
+ continue
+ op 1 break end end end end end end end end
+ loop 2
+  break
+  op n
+   end
+end

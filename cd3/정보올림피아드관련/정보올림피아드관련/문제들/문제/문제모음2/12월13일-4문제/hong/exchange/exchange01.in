@@ -1,0 +1,12 @@
+! 22 dangmu = 99 ABCD
+! 63 mango = 14 papaya
+? papaya = mango
+! 5 passionfruit = 31 guava
+? guava = mango
+? papaya = passionfruit
+! 1 thermonuclearwarhead = 3 secretrockethovercar
+! 1 fork = 1 spoon
+! 2 thermonuclearwarhead = 4 armoredcommandotruck
+! 52 mango = 10 fork
+? armoredcommandotruck = secretrockethovercar
+.

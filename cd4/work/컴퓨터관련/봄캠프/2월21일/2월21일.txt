@@ -1,0 +1,8 @@
+1. boxes   1초     
+2. patch
+3. lock1   해가 없거나 많을 경우 -1 출력
+4. gene    
+5. path
+
+5 <- n
+0 1

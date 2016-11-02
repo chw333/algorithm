@@ -1,0 +1,87 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: EXÂ¦Áş±â - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSPA174.TMP" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/EXÂ¦Áş±â.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ  /c 
+"D:\°Ü¿ïÄ·ÇÁ\ExÂ¦Áş±â\EXÂ¦Áş±â.cpp"
+]
+Creating command line "cl.exe @c:\windows\TEMP\RSPA174.TMP" 
+Creating temporary file "c:\windows\TEMP\RSPA175.TMP" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib  kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/EXÂ¦Áş±â.pdb" /debug /machine:I386 /out:"Debug/EXÂ¦Áş±â.exe" /pdbtype:sept 
+".\Debug\EXÂ¦Áş±â.obj"
+]
+Creating command line "link.exe @c:\windows\TEMP\RSPA175.TMP"
+<h3>Output Window</h3>
+Compiling...
+EXÂ¦Áş±â.cpp
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(9) : error C2065: 'MAX_VERTEX' : undeclared identifier
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(9) : error C2057: expected constant expression
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(9) : error C2466: cannot allocate an array of constant size 0
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(9) : error C2057: expected constant expression
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(9) : error C2466: cannot allocate an array of constant size 0
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(9) : error C2087: '<Unknown>' : missing subscript
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(10) : error C2057: expected constant expression
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(10) : error C2466: cannot allocate an array of constant size 0
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(10) : error C2057: expected constant expression
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(10) : error C2466: cannot allocate an array of constant size 0
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(10) : error C2087: '<Unknown>' : missing subscript
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(11) : error C2057: expected constant expression
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(11) : error C2466: cannot allocate an array of constant size 0
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(11) : error C2057: expected constant expression
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(11) : error C2466: cannot allocate an array of constant size 0
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(11) : error C2087: '<Unknown>' : missing subscript
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(12) : error C2057: expected constant expression
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(12) : error C2466: cannot allocate an array of constant size 0
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(13) : error C2057: expected constant expression
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(13) : error C2466: cannot allocate an array of constant size 0
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(14) : error C2057: expected constant expression
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(14) : error C2466: cannot allocate an array of constant size 0
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(29) : error C2057: expected constant expression
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(29) : error C2466: cannot allocate an array of constant size 0
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(29) : error C2087: '<Unknown>' : missing subscript
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(32) : error C2065: 'init_queue' : undeclared identifier
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(41) : error C2065: 'put' : undeclared identifier
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(43) : error C2065: 'queue_empty' : undeclared identifier
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(45) : error C2065: 'get' : undeclared identifier
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(58) : error C2065: 'set_path' : undeclared identifier
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(59) : error C2065: 't' : undeclared identifier
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(59) : error C2065: 'return1' : undeclared identifier
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(64) : error C2373: 'set_path' : redefinition; different type modifiers
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(67) : error C2440: '=' : cannot convert from 'void *' to 'int *'
+        Conversion from 'void*' to pointer to non-'void' requires an explicit cast
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(82) : error C2057: expected constant expression
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(82) : error C2466: cannot allocate an array of constant size 0
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(82) : error C2087: '<Unknown>' : missing subscript
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(82) : error C2057: expected constant expression
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(82) : error C2466: cannot allocate an array of constant size 0
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(82) : error C2087: '<Unknown>' : missing subscript
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(82) : error C2057: expected constant expression
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(82) : error C2466: cannot allocate an array of constant size 0
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(82) : error C2087: '<Unknown>' : missing subscript
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(90) : error C2057: expected constant expression
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(90) : error C2466: cannot allocate an array of constant size 0
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(90) : error C2087: '<Unknown>' : missing subscript
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(90) : error C2057: expected constant expression
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(90) : error C2466: cannot allocate an array of constant size 0
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(90) : error C2087: '<Unknown>' : missing subscript
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(90) : error C2057: expected constant expression
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(90) : error C2466: cannot allocate an array of constant size 0
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(90) : error C2087: '<Unknown>' : missing subscript
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(93) : error C2065: 'clear_matrix' : undeclared identifier
+d:\°Ü¿ïÄ·ÇÁ\exÂ¦Áş±â\exÂ¦Áş±â.cpp(98) : error C2065: 'MAXINT' : undeclared identifier
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+EXÂ¦Áş±â.exe - 54 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

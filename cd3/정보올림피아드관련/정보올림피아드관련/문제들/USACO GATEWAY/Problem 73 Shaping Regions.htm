@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0057)http://ace.delos.com/usacoprob/s=1.2.1.1/a=n8UCMGSrVkI/73 -->
+<HTML><HEAD><TITLE>Problem 73: Shaping Regions</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2716.2200" name=GENERATOR></HEAD>
+<BODY background="Problem 73 Shaping Regions.files/bg3.jpg"><IMG height=118 
+src="Problem 73 Shaping Regions.files/cow1.jpg" width=742> 
+<CENTER>
+<H1>Shaping Regions</H1></CENTER>
+<P>N opaque rectangles (1 &lt;= N &lt;= 1000) of various colors are placed on a 
+white sheet of paper whose size is A wide by B long. The rectangles are put with 
+their sides parallel to the sheet's borders. All rectangles fall within the 
+borders of the sheet so that different figures of different colors will be seen. 
+
+<P>The coordinate system has its origin (0,0) at the sheet's lower left corner 
+with axes parallel to the sheet's borders. 
+<H3>PROGRAM NAME: rect1</H3>
+<H3>INPUT FORMAT</H3>
+<P>The order of the input lines dictates the order of laying down the 
+rectangles. The first input line is a rectangle "on the bottom". 
+<TABLE border=1>
+  <TBODY>
+  <TR>
+    <TD>Line 1: </TD>
+    <TD>A, B, and N, space separated (1 &lt;= A,B &lt;= 10,000)</TD></TR>
+  <TR>
+    <TD>Lines 2-N+1: </TD>
+    <TD>Five integers: llx, lly, urx, ury, color: the lower left coordinates 
+      and upper right coordinates of the rectangle whose color is `color' (1 
+      &lt;= color &lt;= 2500) to be placed on the white sheet. The color 1 is 
+      the same color of white as the sheet upon which the rectangles are 
+    placed.</TD></TR></TBODY></TABLE>
+<H3>SAMPLE INPUT (file rect1.in) </H3><PRE>20 20 3
+2 2 18 18 2
+0 8 19 19 3
+8 0 10 19 4
+</PRE>
+<H3>OUTPUT FORMAT</H3>The output file should contain a list of all the colors 
+that can be seen along with the total area of each color that can be seen (even 
+if the regions of color are disjoint), ordered by increasing color. Do not 
+display colors with no area. 
+<H3>SAMPLE OUTPUT (file rect1.out)</H3><PRE>1 91
+2 84
+3 187
+4 38
+</PRE><BR><BR>
+<HR>
+
+<FORM action=/upload method=post encType=multipart/form-data><B>Submission file 
+Name:</B> <INPUT type=file name=filename> <INPUT type=submit value="Send it in!"> <INPUT type=hidden 
+value=/usacogate?a=n8UCMGSrVkI name=id> <INPUT type=hidden value=1.2.1.1 
+name=sid> <INPUT type=hidden value=73 name=nid> </FORM>
+<CENTER><A href="mailto:grader@ace.delos.com">Submit Solution via Email</A> 
+&nbsp;|&nbsp; <A href="http://ace.delos.com/usacogate?a=n8UCMGSrVkI">USACO 
+Gateway </A>&nbsp;| &nbsp; <A href="mailto:usaco@lumeta.com">Comment or Question 
+</A></CENTER></BODY></HTML>

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>백트래킹을 이용하여 풀 수 있는 문제입니다.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p>백트래킹을 이용하여 풀 수 있는 문제입니다.</p>
+<p>백트래킹을 하기 전에 막대기들을 길이가 큰 순서대로 정렬하는 것은 프로그램의 
+효율성을 위해서입니다. 긴 막대기들의 위치를 먼저 정해주어야 좀 더 빠르게 백트래킹을 
+할 수 있습니다.</p>
+<p>백트래킹은 이런 유형의 문제뿐만이 아니라 별다른 풀이 방법이 없을 때 광범위하게 
+사용할 수 있는 알고리즘 설계기법입니다. 필히 숙지해 두시는 것이 좋습니다.</p>
+<p>아래 소스는 당연히 재귀호출을 사용하고 있습니다. 소스는 매우 간단하므로 백트래킹에 
+대한 지식을 가지고 계신다면 쉽게 이해하실 수 있으실 것입니다.</p>
+<p>중등부에 출전했던 분들이 단순한 백트래킹만으로도 좋은 결과가 나왔다길래 별다른 
+것은 추가시키지 않았습니다. 백트래킹 대신 다른 여러 그리디한 방법도 존재합니다(항상 
+정답이 나오는 것은 아니지만)</p>
+<p><font face="Fixed01">program KOI99M3;</font></p>
+<p><font face="Fixed01">var<br>
+&nbsp;&nbsp;n, sum : integer;<br>
+&nbsp;&nbsp;a, stick, solution : array[1..100] of integer;</font></p>
+<p><font face="Fixed01">procedure input_file;<br>
+var<br>
+&nbsp;&nbsp;f : text;<br>
+&nbsp;&nbsp;i : integer;<br>
+begin<br>
+&nbsp;&nbsp;assign (f, 'input.txt');<br>
+&nbsp;&nbsp;reset (f);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;read (f, n);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;sum := 0;<br>
+&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;read (f, a[i]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;inc (sum, a[i]);<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;close (f);<br>
+end;</font></p>
+<p><font face="Fixed01">procedure swap (var a, b : integer);<br>
+var<br>
+&nbsp;&nbsp;t : integer;<br>
+begin<br>
+&nbsp;&nbsp;t := a;<br>
+&nbsp;&nbsp;a := b;<br>
+&nbsp;&nbsp;b := t;<br>
+end;</font></p>
+<p><font face="Fixed01">procedure sort;<br>
+var<br>
+&nbsp;&nbsp;i, j : integer;<br>
+begin<br>
+&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := i + 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if a[i] &lt; a[j] then swap (a[i], a[j]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;<br>
+end;</font></p>
+<p><font face="Fixed01">procedure recur (depth, len : integer);<br>
+var<br>
+&nbsp;&nbsp;i, j : integer;<br>
+begin<br>
+&nbsp;&nbsp;if depth &gt; n then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;writeln;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;writeln (len);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to sum div len do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if solution[j] = i then write 
+(a[j], ' ');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;halt;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;end else begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to sum div len do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if stick[i] + a[depth] &lt;= len then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;solution[depth] := i;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stick[i] 
+:= stick[i] + a[depth];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;recur (depth + 1, len);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stick[i] := stick[i] - a[depth];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if stick[i] = 0 
+then break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;<br>
+end;</font></p>
+<p><font face="Fixed01">procedure solve;<br>
+var<br>
+&nbsp;&nbsp;i : integer;<br>
+begin<br>
+&nbsp;&nbsp;sort;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stick[i] := 0;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;for i := 1 to sum do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if sum mod i = 0 then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;recur (1, i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;<br>
+end;</font></p>
+<p><font face="Fixed01">begin<br>
+&nbsp;&nbsp;input_file;<br>
+&nbsp;&nbsp;solve;<br>
+end.</font></p>
+</body>
+
+</html></html>

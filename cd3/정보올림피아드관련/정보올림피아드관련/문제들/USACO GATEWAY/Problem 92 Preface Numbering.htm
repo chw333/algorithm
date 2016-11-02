@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0057)http://ace.delos.com/usacoprob/s=1.2.2.1/a=n8UCMGSrVkI/92 -->
+<HTML><HEAD><TITLE>Problem 92: Preface Numbering</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2716.2200" name=GENERATOR></HEAD>
+<BODY background="Problem 92 Preface Numbering.files/bg3.jpg"><IMG height=118 
+src="Problem 92 Preface Numbering.files/cow1.jpg" width=742> 
+<CENTER><B><FONT size=7>Preface Numbering</FONT></B><BR></CENTER>
+<P>A certain book's prefaces are numbered in upper case Roman numerals. 
+Traditional Roman numeral values use a single letter to represent a certain 
+subset of decimal numbers. Here is the standard set: <PRE>        I   1     L   50    M  1000
+        V   5     C  100
+        X  10     D  500
+</PRE>
+<P>As many as three of the same marks that represent 10<SUP>n</SUP> may be 
+placed consecutively to form other numbers: 
+<UL>
+  <LI>III is 3 
+  <LI>CCC is 300 </LI></UL>
+<P>Marks that have the value 5x10<SUP>n</SUP> are never used consecutively. 
+<P>Generally (with the exception of the next rule), marks are connected together 
+and written in descending order to form even more numbers: 
+<UL></UL>
+<LI>CCLXVIII = 100+100+50+10+5+1+1+1 = 268 
+<UL></UL>
+<P>Sometimes, a mark that represents 10^n is placed before a mark of one of the 
+two next higher values (I before V or X; X before L or C; etc.). In this case, 
+the value of the smaller mark is SUBTRACTED from the mark it precedes: 
+<UL>
+  <LI>IV = 4 
+  <LI>IX = 9 
+  <LI>XL = 40 </LI></UL>
+<P>Compound marks like XD, IC, and XM are not legal, since the smaller mark is 
+too much smaller than the larger one. For XD (wrong for 490), one would use 
+CDXC; for IC (wrong for 99), one would use XCIX; for XM (wrong for 990), one 
+would use CMXC. 
+<P>Given N (1 &lt;= N &lt; 3,500), the number of pages in the preface of a book, 
+calculate and print the number of I's, V's, etc. (in order from lowest to 
+highest) required to typeset all the page numbers (in Roman numerals) from 1 
+through N. Do not print letters that do not appear in the page numbers 
+specified. 
+<P>If N = 5, then the page numbers are: I, II, III, IV, V. The total number of 
+I's is 7 and the total number of V's is 2. 
+<H3>PROGRAM NAME: preface</H3>
+<H3>INPUT FORMAT</H3>A single line containing the integer N. 
+<H3>SAMPLE INPUT (file preface.in) </H3><PRE>5
+</PRE>
+<H3>OUTPUT FORMAT</H3>The output lines specify, in ascending order of Roman 
+numeral letters, the letter, a single space, and the number of times that letter 
+appears on preface page numbers. Stop printing letter totals after printing the 
+highest value letter used to form preface numbers in the specified set. 
+<H3>SAMPLE OUTPUT (file preface.out)</H3><PRE>I 7
+V 2
+</PRE><BR><BR>
+<HR>
+
+<FORM action=/upload method=post encType=multipart/form-data><B>Submission file 
+Name:</B> <INPUT type=file name=filename> <INPUT type=submit value="Send it in!"> <INPUT type=hidden 
+value=/usacogate?a=n8UCMGSrVkI name=id> <INPUT type=hidden value=1.2.2.1 
+name=sid> <INPUT type=hidden value=92 name=nid> </FORM>
+<CENTER><A href="mailto:grader@ace.delos.com">Submit Solution via Email</A> 
+&nbsp;|&nbsp; <A href="http://ace.delos.com/usacogate?a=n8UCMGSrVkI">USACO 
+Gateway </A>&nbsp;| &nbsp; <A href="mailto:usaco@lumeta.com">Comment or Question 
+</A></CENTER></LI></BODY></HTML>

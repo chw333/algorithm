@@ -1,0 +1,136 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=EUC-KR">
+<TITLE>Jsboard 1.2.2 - 알고리즘 게시판  [ 게시물 삭제 ]</TITLE>
+<STYLE TYPE="text/css">
+<!--
+A:link, A:visited, A:active { TEXT-DECORATION: none; }
+A:hover { TEXT-DECORATION: underline; }
+TD { FONT: 9pt 굴림체; }
+INPUT {font: 9pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:2x solid #b5b5c5}
+SELECT {font: 9pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:1x solid #b5b5c5}
+TEXTAREA {font: 10pt 굴림체; BACKGROUND-COLOR:#FFFFFF; COLOR:#555555; BORDER:2x solid #b5b5c5}
+ #radio {font: 9pt 굴림체; BACKGROUND-COLOR:#ffffff; COLOR:#656565; BORDER:2x solid #ffffff}
+ #title {font:20pt 굴림체; color:#ffe4c4}
+ #eng {font:11px tahoma,Verdana,arial; line-height:120%}
+-->
+</STYLE>
+
+<script LANGUAGE=JavaScript>
+<!-- Begin
+  var child = null;
+  var count = 0;
+  function new_windows(addr,tag,scroll,resize,wid,hei) {
+    var childname = 'JSBoard' + count++;
+    // child window가 떠 있을 경우 child window를 닫는다.
+    if(child != null) {
+      if(!child.closed) { child.close(); }
+    }
+    child = window.open(addr,tag,'left=0, top=0, toolbar=0,scrollbars=' + scroll + ',status=0,menubar=0,resizable=' + resize + ',width=' + wid + ',height=' + hei +'');
+    // child window가 로드 될때 가장 앞으로 올린다.
+    child.focus();
+    return;
+  }
+//-->
+</script>
+</HEAD>
+
+<BODY BACKGROUND="" BGCOLOR="#ffffff" TEXT="#656565" LINK="#80320d" VLINK="#80320d" ALINK="#80320d">
+<!-- ========================= A foreword  ========================= -->
+<center>
+<img src=../algorithm/images/cyber_alg2.jpg BORDER="0" USEMAP="#ImageMap1">
+<p>
+<!-- ========================= A foreword  ========================= -->
+
+<DIV ALIGN="center">
+<TABLE WIDTH="600" BORDER="0" CELLPADDING="0" CELLSPACING="0" BGCOLOR="#7e7e9a"><TR><TD>
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="1" CELLPADDING="3">
+<FORM METHOD="post" ACTION="act.php">
+<TR>
+  <TD WIDTH="1%" BGCOLOR="#b5b5c5"><FONT COLOR="#555555"><NOBR>글번호</NOBR></FONT></TD>
+  <TD WIDTH="64%" BGCOLOR="#dcdcdc"><FONT COLOR="#000000">7번 </FONT></TD>
+  <TD WIDTH="1%" BGCOLOR="#b5b5c5"><FONT COLOR="#555555"><NOBR>등록</NOBR></FONT></TD>
+  <TD WIDTH="34%" BGCOLOR="#dcdcdc"><FONT COLOR="#000000">2000-09-07 13:22:38</FONT></TD>
+</TR><TR>
+  <TD WIDTH="1%" BGCOLOR="#b5b5c5"><FONT COLOR="#555555"><NOBR>글쓴이</NOBR></FONT></TD>
+  <TD WIDTH="64%" BGCOLOR="#dcdcdc"><FONT COLOR="#000000">신용호</FONT></TD>
+  <TD WIDTH="1%" BGCOLOR="#b5b5c5"><FONT COLOR="#555555"><NOBR>글쓴곳</NOBR></FONT></TD>
+  <TD WIDTH="34%" BGCOLOR="#dcdcdc"><a href=./whois.php?table=algorithm&host=203.246.10.114&window=1><FONT COLOR="#000000">203.246.10.114</FONT></a></TD>
+</TR><TR>
+  <TD WIDTH="1%" BGCOLOR="#b5b5c5"><FONT COLOR="#555555"><NOBR>이메일</NOBR></FONT></TD>
+  <TD BGCOLOR="#dcdcdc" COLSPAN="3"><FONT COLOR="#000000">hotang99@hanmail.net</FONT></TD>
+
+</TR><TR>
+  <TD WIDTH="1%" BGCOLOR="#b5b5c5"><FONT COLOR="#555555"><NOBR>제목</NOBR></FONT></TD>
+  <TD BGCOLOR="#dcdcdc" COLSPAN="3"><FONT COLOR="#000000">질문에 자바접속에 관해</FONT></TD>
+</TR><TR>
+  <TD BGCOLOR="#ffffff" COLSPAN="4">
+
+<TABLE ALIGN="center" WIDTH="100%" BORDER="0" CELLSPACING="4" CELLPADDING="0">
+<TR>
+  <TD>
+    <FONT COLOR="#555555">
+<!-- ---------- 글 내용 ---------- -->
+<PRE>
+질문을 클릭하니까 자바플러그인을 다운 받으라기에 받았습니다.
+그다음 보니까 이상하게 되 있고 어떻게 하는지도 모르겠습니다.
+깨져서 나오는 것 같은데 어떻게 할까요?
+</PRE>
+<!-- ---------- 글 내용 ---------- -->
+    </FONT>
+  </TD>
+</TR>
+</TABLE>
+
+  </TD>
+</TR><TR>
+  <TD COLSPAN="4" ALIGN="right" BGCOLOR="#b5b5c5">
+    <FONT COLOR="#555555" SIZE="-1">
+    [관리자] 패스워드를 입력해 주십시오. 답장글이 존재하면 함께 삭제됩니다.
+    </FONT>
+  </TD>
+</TR>
+</TABLE>
+
+</TD></TR>
+<TR><TD>
+
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="6" CELLSPACING="0">
+<TR>
+  <TD ALIGN="center">
+    <FONT SIZE="-1" COLOR="#ffffff">
+    <INPUT TYPE="hidden" NAME="o[at]" value="d">
+    <INPUT TYPE="hidden" NAME="o[am]" value="admin">
+    <INPUT TYPE="hidden" NAME="no" VALUE="8">
+    <INPUT TYPE="hidden" NAME="table" VALUE="algorithm">
+    <INPUT TYPE="hidden" NAME="delete_dir" VALUE="">
+    <INPUT TYPE="hidden" NAME="delete_filename" VALUE="">    
+    패스워드: <INPUT TYPE="password" NAME="passwd" SIZE="4" MAXLENGTH="8">&nbsp;
+    <INPUT TYPE="submit" VALUE="지우기">&nbsp;
+    <INPUT TYPE="button" onClick="history.back()" VALUE="취소">
+    </FONT>
+  </TD>
+</TR>
+</TABLE>
+
+</TD></TR></FORM></TABLE>
+
+
+<TABLE WIDTH="600" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+<TR><TD>
+<TABLE ALIGN="center" WIDTH="1%" BORDER="0" CELLSPACING="4" CELLPADDING="0">
+<TR>
+
+  <TD WIDTH="1%" BGCOLOR="#800000"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="Wcc84cf51a50d1.htm"><FONT COLOR="#6d7bc9"><NOBR>목록보기</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#800000"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+  <TD WIDTH="1%"><A HREF="javascript:history.back()"><FONT COLOR="#6d7bc9"><NOBR>이전페이지</NOBR></FONT></A></TD>
+  <TD WIDTH="1%" BGCOLOR="#800000"><IMG SRC="images/n.gif" WIDTH="1" HEIGHT="1" ALT="|"></TD>
+</TR>
+</TABLE>
+</TD></TR>
+</TABLE>
+</DIV><!-- ========================= Tail ========================= -->
+<p><center>
+<!--Copyleft 1999-2000 by <a href=http://jsboard.kldp.org target=_blank JSBoard Open Project</a--> 
+<!-- ========================= Tail ========================= -->

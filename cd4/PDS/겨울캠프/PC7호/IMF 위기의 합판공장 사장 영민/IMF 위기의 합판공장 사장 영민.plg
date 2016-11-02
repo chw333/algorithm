@@ -1,0 +1,34 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: IMF 위기의 합판공장 사장 영민 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP60B2.TMP" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/IMF 위기의 합판공장 사장 영민.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\겨울캠프\IMF 위기의 합판공장 사장 영민\Imf 위기의 합판공장 사장 영민.cpp"
+]
+Creating command line "cl.exe @c:\windows\TEMP\RSP60B2.TMP" 
+Creating temporary file "c:\windows\TEMP\RSP60B3.TMP" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/IMF 위기의 합판공장 사장 영민.pdb" /debug /machine:I386 /out:"Debug/IMF 위기의 합판공장 사장 영민.exe" /pdbtype:sept 
+".\Debug\Imf 위기의 합판공장 사장 영민.obj"
+]
+Creating command line "link.exe @c:\windows\TEMP\RSP60B3.TMP"
+<h3>Output Window</h3>
+Compiling...
+Imf 위기의 합판공장 사장 영민.cpp
+d:\겨울캠프\imf 위기의 합판공장 사장 영민\imf 위기의 합판공장 사장 영민.cpp(8) : error C2143: syntax error : missing ')' before '}'
+d:\겨울캠프\imf 위기의 합판공장 사장 영민\imf 위기의 합판공장 사장 영민.cpp(8) : error C2059: syntax error : ')'
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+IMF 위기의 합판공장 사장 영민.exe - 2 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

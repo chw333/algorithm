@@ -1,0 +1,22 @@
+2 10
+20
+housestart LOCATION B 4
+housbldg1 DISTANCE 1 housestart
+housesecnd DISTANCE 1 housbldg1
+housbldg3 DISTANCE 1 housesecnd
+housefour DISTANCE 1 housbldg3
+housbldg5 DISTANCE 1 housefour
+housesixth DISTANCE 1 housbldg5
+housbldg7 DISTANCE 1 housesixth
+houseeight DISTANCE 1 housbldg7
+housbldg9 DISTANCE 1 houseeight
+housetenth DISTANCE 1 housbldg9
+housbldg11 DISTANCE 1 housetenth
+housetwelv DISTANCE 1 housbldg11
+housbldg13 DISTANCE 1 housetwelv
+house14 DISTANCE 1 housbldg13
+housbldg15 DISTANCE 1 house14
+house16 DISTANCE 1 housbldg15
+housbldg17 DISTANCE 1 house16
+house18 DISTANCE 1 housbldg17
+housbldg19 DISTANCE 1 house18
