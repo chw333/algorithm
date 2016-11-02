@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>1999년 16회 한국정보올림피아드</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0">
+    <tr>
+        <td width="595"><table border="0" width="595">
+                <tr>
+                    <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+                        16회 고등부 1. 검은점과 하얀점 연결</b></font></td>
+                    <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="skoi99h1.htm"><img src="button2.gif"
+                         width="72" height="22" border="0"></a></td>
+                    <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi99h1.htm"><img src="button3.gif"
+                         width="72" height="22" border="0"></a></td>
+                </tr>
+            </table>
+            <p><img src="bar1.gif" width="592" height="25" border="0"></p>
+            <ul>
+                <p><font face="굴림체" size="2">2n개의 점이 x축의 좌표 에 놓여 
+                있다.1,2,3,...,2n에 놓여있다. 그 중 n개는 검은 점이고 나머지 
+                n개는 하얀 점이다. 하나의 검은 점과 하나의 하얀 점을 연결하여 
+                한 쌍을 만들면, 모두 n개의 쌍이 만들어진다. 한 쌍의 점을 연결할 
+                때는, 왼쪽 점에서 출발하여 수직으로 올라가고, 거기서 수평으로 
+                오른쪽으로 간 후, 다시 수직으로 내려가서 연결하면 하나의 길이 
+                생긴다. 이렇게 생긴 n개의 길들은 서로 겹쳐서는 안되고, 서로 
+                교차해서도 안 된다. 모든 길의 거리의 합을 가장 작게 하도록 n개의 
+                길을 만드는 프로그램을 작성하시오. 단, 거리의 단위는 수직, 수평 
+                모두 1이다.</font></p>
+                <p><font face="굴림체" size="2"><img src="pkoi99h1-1.jpg" width="271"
+                 height="223" border="0"></font></p>
+                <p><font face="굴림체" size="2">그림 1의 경우 다른 방법으로 
+                연결할 수도 있지만, 위 방법이 최소 연결 방법이고 거리의 합이 
+                31이다. 그림 2의 경우도 다른 방법이 있지만, 위 방법이 최소 연결이며 
+                거리의 합은 40이다.<br></font></p>
+                <p><font face="굴림체" size="2">실행 파일의 이름은 POINT.EXE로 
+                한다. 정답이 아닌 경우라도 조건을 만족하면 부분 점수를 줄 수 
+                있다.</font></p>
+            </ul>
+            <p><img src="bar2.gif" width="591" height="26" border="0"></p>
+            <ul>
+                <p><font size="2">입력 파일명은 INPUT.TXT이다. 첫째 줄에는 점의 
+                개수를 나타내는 정수 2n이 주어진다. 2n은 100이하의 정수이다. 
+                그 다음 줄에는 n개의 0과 n개의 1로 이루어진 문자열이 주어진다. 
+                0은 하얀 점이고, 1은 검은 점이다. 왼쪽부터 차례로 좌표 1,2,....2n에 
+                해당한다.</font></p>
+            </ul>
+            <p><img src="bar3.gif" width="590" height="26" border="0"></p>
+            <ul>
+                <p><font size="2">출력 파일의 이름은 OUTPUT.TXT이다. 첫째 줄에는 
+                길의 거리의 합을 출력한다. 다음 n개의 줄의 각 줄에는 연결되는 
+                한 쌍의 점들의 좌표를 나타내는 두 정수를 출력한다. 두 정수 사이에는 
+                빈칸이 하나 있다. 앞의 정수가 뒤 정수보다 작아야 하고, n개의 
+                줄은 앞 정수가 커지는 순서로 출력한다.</font></p>
+            </ul>
+            <p><img src="bar4.gif" width="593" height="25" border="0"></p>
+            <ul>
+                <p><font face="굴림체" size="2">입력(INPUT.TXT)</font> 
+                <table border cellspacing="0">
+                        <tr>
+                            <td width="97"><p><font face="굴림체" size="2">10<br> 
+                            1110100010</font></td>
+                    </tr>
+                </table>
+                <p><font face="굴림체" size="2">출력(OUTPUT.TXT)</font> 
+                <table border cellspacing="0">
+                        <tr>
+                            <td width="97"><p><font face="굴림체" size="2">31<br> 
+                            1 8<br> 2 7<br> 3 4<br> 5 6<br> 9 10</font></td>
+                    </tr>
+                </table>
+                <p><font face="굴림체" size="2"><br> 입력(INPUT.TXT)</font> 
+                
+                <table border cellspacing="0">
+                        <tr>
+                            <td width="95"><p><font face="굴림체" size="2">12<br> 
+                            111000111000</font></td>
+                    </tr>
+                </table>
+                <p><font face="굴림체" size="2">출력(OUTPUT.TXT)</font> 
+                <table border cellspacing="0">
+                        <tr>
+                            <td width="95"><p><font face="굴림체" size="2">40<br> 
+                            1 12<br> 2 5<br> 3 4<br> 6 7<br> 8 11<br> 9 10</font></td>
+                    </tr>
+                </table>
+
+                </ul><p><img src="bar5.gif" width="595" height="26" border="0"></p>
+            <ul>
+                <p>&nbsp;<font size="2">제한시간은 10초이다.</font> 
+            </ul></td>
+    </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+
+</html></html>

@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>약간은 어려워 보이지만 그리디(Greedy)한 방법으로 4000점 만점에 3978점을 받을 수 있는 묘수가 있습니</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p>약간은 어려워 보이지만 그리디(Greedy)한 방법으로 4000점 만점에 3978점을 받을 
+수 있는 묘수가 있습니다. 항상 최적해를 보장하지는 않지만 굉장히 쓸 만한 방법입니다.</p>
+<p>최적해 구하는 방법은 한번쯤 생각해 볼 만 하군요.</p>
+<p>일단 그리디 접근 방법을 알려드리겠습니다.</p>
+<p>사람 j가 반장으로부터 연락을 받는 경로 중에 i가 있다면 j는 i의 자식이라고 
+정의합시다. 말은 어려운데 실상 별로 어려운 뜻은 아닙니다.</p>
+<p>맨처음 반장은 자기가 연락할 수 있는 사람들 중에 가장 자식이 많은 사람에게 
+연락을 합니다. 왜냐하면 자식이 많은 사람일수록 바쁠테니까 미리 처리해 주는 것이 
+좋겠다는 뜻에서죠. 마찬가지로 2분째에도 자식이 많은 사람에게 연결하고...를 반복하면 
+됩니다.</p>
+<p>예제를 중심으로 직접 손으로 써보면서 생각하시면 쉽게 이해가 되실 겁니다.</p>
+<p>참고로 1의 자식 수는 8, 2는 0, 3은 4, 4는 3, 5는 3, 6은 2, 7과 8과 9는 0입니다.</p>
+<p>1의 입장에서는 3이 가장 자식이 많으므로 3에게 가장 먼저 연락하겠죠.</p>
+<p>program KOI99H3;</p>
+<p>var<br>
+&nbsp;&nbsp;n : integer;<br>
+&nbsp;&nbsp;e : array[1..100, 1..100] of boolean;<br>
+&nbsp;&nbsp;solution : array[1..100, 1..100] of integer;<br>
+&nbsp;&nbsp;child : array[1..100] of integer;</p>
+<p>function strtoint (s : string) : integer;<br>
+var<br>
+&nbsp;&nbsp;a, b : integer;<br>
+begin<br>
+&nbsp;&nbsp;val (s, a, b);<br>
+&nbsp;&nbsp;strtoint := a;<br>
+end;</p>
+<p>procedure input_file;<br>
+var<br>
+&nbsp;&nbsp;f : text;<br>
+&nbsp;&nbsp;i, j, k : integer;<br>
+&nbsp;&nbsp;s, temp : string;<br>
+&nbsp;&nbsp;ch : char;<br>
+begin<br>
+&nbsp;&nbsp;assign (f, 'input.txt');<br>
+&nbsp;&nbsp;reset (f);</p>
+<p>&nbsp;&nbsp;readln (f, n);</p>
+<p>&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e[i, j] := false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</p>
+<p>&nbsp;&nbsp;for j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;temp := '';</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;while true do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read (f, ch);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if not ((ch &gt;= '0') and (ch &lt;= '9')) 
+then break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp := temp + ch;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;i := strtoint (temp);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;if ch = chr (13) then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read (f, ch);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end else begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp := '';</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while true do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read (f, ch);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ch = ' ' then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k := strtoint (temp);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e[i, k] := true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp := '';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end else if ch = chr (13) then 
+begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k := strtoint (temp);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if k &lt;&gt; 0 
+then e[i, k] := true;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read (f, ch);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end else begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp := temp + ch;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</p>
+<p>&nbsp;&nbsp;close (f);<br>
+end;</p>
+<p>procedure dfs (node : integer);<br>
+var<br>
+&nbsp;&nbsp;i : integer;<br>
+&nbsp;&nbsp;sum : integer;<br>
+begin<br>
+&nbsp;&nbsp;sum := 0;<br>
+&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if e[node, i] then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if child[i] = -1 then dfs (i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc (sum, child[i]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</p>
+<p>&nbsp;&nbsp;child[node] := 1 + sum;<br>
+end;</p>
+<p>procedure solve;<br>
+var<br>
+&nbsp;&nbsp;i, j, k, max, maxj, count : integer;<br>
+&nbsp;&nbsp;check : array[1..100] of integer;<br>
+&nbsp;&nbsp;flag : boolean;<br>
+&nbsp;&nbsp;f : text;<br>
+begin<br>
+&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;child[i] := -1;<br>
+&nbsp;&nbsp;end;</p>
+<p>&nbsp;&nbsp;dfs (1);</p>
+<p>&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;solution[i, j] := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</p>
+<p>&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;check[i] := 0;<br>
+&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;check[1] := 2;</p>
+<p>&nbsp;&nbsp;count := 0;<br>
+&nbsp;&nbsp;repeat<br>
+&nbsp;&nbsp;&nbsp;&nbsp;flag := false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;inc (count);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if check[i] = 2 then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if e[i, j] and (check[j] 
+= 0) and ((max = 0) or (max &lt; child[j])) then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max 
+:= child[j];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxj 
+:= j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if max &lt;&gt; 0 then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;check[maxj] := 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;solution[i, maxj] 
+:= count;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flag := true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if check[i] = 1 then check[i] := 2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;until not flag;</p>
+<p>&nbsp;&nbsp;assign (f, 'output.txt');<br>
+&nbsp;&nbsp;rewrite (f);</p>
+<p>&nbsp;&nbsp;writeln (f, count - 1);</p>
+<p>&nbsp;&nbsp;for k := 1 to count do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if solution[i, j] = k then write 
+(f, i, ' ', j, ' ');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;writeln (f);<br>
+&nbsp;&nbsp;end;</p>
+<p>&nbsp;&nbsp;close (f);<br>
+end;</p>
+<p>begin<br>
+&nbsp;&nbsp;input_file;<br>
+&nbsp;&nbsp;solve;<br>
+end.</p>
+</body>
+
+</html></html>

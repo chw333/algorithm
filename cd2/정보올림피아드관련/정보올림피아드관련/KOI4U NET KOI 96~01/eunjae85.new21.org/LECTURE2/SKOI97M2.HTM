@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>KOI 13회 중등부 1.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0" width="595">
+    <tr>
+        <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+            14회 중등부 2. 기업 투자</b></font></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="pkoi97m2.htm"><img src="button1.gif"
+             width="72" height="22" border="0"></a></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi97m2.htm"><img src="button3.gif"
+             width="72" height="22" border="0"></a></td>
+    </tr>
+</table>
+<ul>
+    <p>&nbsp; 
+    <table border="0">
+            <tr>
+                <td width="550"><p style="line-height:150%;"><font size="2">&nbsp;&nbsp;전형적이면서도 
+                유명하기도 한 동적 계획법 문제이다. 동적 계획법의 기본기를 다질 
+                수 있는 좋은 문제이므로 꼭 공부해 두는 것이 좋다. 동적 계획법 
+                문제를 풀기 위해서는 점화식을 세워야 한다. 일단 점화식을 만들기 
+                위해 문제를 단순화 시켜보자.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;현재 
+                돈이 m원 있고, 기업이 하나 있다고 가정해 보자. 그렇다면 최대의 
+                이익을 얻기 위해서는 그 기업에 가진 돈을 전부 투자해야 할 것이다. 
+                이 것이야 쉬우니까 별 문제 없다. 그럼 사고를 확장시켜서, 기업이 
+                둘 있다고 가정해 보자. 이 경우도 그리 어렵진 않다. 기업 A에 
+                3원, 기업 B에 4원을 투자하는 것을 (3, 4)라고 표현하자. 현재 
+                돈이 5원이 있다면,</font></p>
+                <p style="line-height:150%;"><font size="2">(0, 5)<br> (1, 4)<br> 
+                (2, 3)<br> (3, 2)<br> (4, 1)<br> (5, 0)</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;이 다섯 
+                가지의 경우 중 가장 이익금이 많은 방법을 선택하면 될 것이다. 
+                그럼 이제 모든 문제 해결은 끝났다. 아니, 기업이 한두개일 때만 
+                방법을 찾아 놓고 끝났다고? 하지만 사실이다. 동적 계획법을 이해하게 
+                된다면 고개를 끄덕이게 될 것이다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;기업이 
+                세 개 이상이라면, 우리는 그 기업들을 2개인 것으로 축소해서 생각하면 
+                된다. 어떻게? 기업이 4개가 있고, 5원을 가지고 있다고 가정하자. 
+                기업 a, b, c를 묶어서 A, 기업 d를 B라고 하자. 그럼 순서쌍은,</font></p>
+                <p style="line-height:150%;"><font size="2">(0, 5)<br> (1, 4)<br> 
+                (2, 3)<br> (3, 2)<br> (4, 1)<br> (5, 0)<br> 로, 위에서 본 것과 
+                동일한 형태이다. (3, 2)의 경우는 기업 d에 2원을 투자하고 a, 
+                b, c에 3원을 투자한다는 말인데, 그럼 a, b, c에는 돈을 어떻게 
+                투자해야 최적이 될까? 그건 알 바 아니다.&nbsp;이미 a, b, c에 
+                3원을 투자했을 때 얻을 수 있는 최대 이익이 계산되어 있다고 가정한 
+                것이기 때문이다. 눈치 빠른 사람은 기업 a, b, c, d에 5원을 투자하는 
+                문제가 a, b, c에 3원을 투자하는 문제로 축소되었다는 것을 알 
+                것이다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;위에서 
+                이야기한 것을 정리해 보자. C[i, j]가 1~i의 기업들에 j원을 투자했을 
+                때의 최대 이익이라고 하자. 이 때 다음과 같은 경우들이 있다(a[i, 
+                j]는 입력 데이터로 주어진 i번째 기업에 j원을 투자했을 때의 이익)</font></p>
+                <p style="line-height:150%;"><font size="2">i기업에 0원을 투자하는 
+                경우 : C[i, j] = C[i-1, j] + a[i, 0]<br> i기업에 1원을 투자하는 
+                경우 : C[i, j] = C[i-1, j-1] + a[i, 1]<br> i기업에 2원을 투자하는 
+                경우 : C[i, j] = C[i-1, j-2] + a[i, 2]<br> ...<br> i기업에 j원을 
+                투자하는 경우 : C[i, j] = C[i-1, 0] + a[i, j]</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;이 j+1가지 
+                경우 중에 가장 최대의 이익을 계산하면 된다. 위의 경우들을 일반화 
+                시켜보면,</font></p>
+                <p style="line-height:150%;"><font size="2">C[i, j] = max {C[i-1, 
+                j-k] + a[i, k]} (단, k는 0≤k≤j인 정수) </font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;가 된다. 
+                i가 1인 경우는 기업이 하나인 경우이므로 C[1, j] = a[1, j]가 
+                된다.</font></td>
+        </tr>
+    </table>
+    <p>&nbsp;</p>
+</ul>
+</body>
+
+</html></html>

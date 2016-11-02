@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>자동차 경주 대회</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p style="line-height:130%;">자동차 경주 대회</p>
+<p style="line-height:130%;">부분점수를 인정하는 문제입니다. 하지만 KOI에서는 
+특별히 최적해를 구하는 방법이 없는 문제를 제외하고는 근사해를 구했을 경우 점수를 
+매우 짜게 주는 편입니다. 거의 절반도 주지 않는 셈이죠. 그러므로 최적해를 구하는 
+방법이 존재할 것 같다면 확실히 생각을 해 봐야 합니다.</p>
+<p style="line-height:130%;">여러 가지 그리디한 방법으로도 풀 수 있겠습니다만 
+최적해는 기대하기 힘듭니다. 여기서는 동적 계획법(dynamic programming)을 이용해 
+문제에 접근해 보기로 하겠습니다. (초등부에 동적 계획법이라니... 무서운 세상이군 
+-,.-)</p>
+<p style="line-height:130%;">일단 입력 데이터를 정의부터 하겠습니다. </p>
+<p style="line-height:130%;">L 은 정비하지 않고 달릴 수 있는 최대 거리</p>
+<p style="line-height:130%;">E[i] 는 i번째 정비소에서 정비하는 데 소요되는 시간</p>
+<p style="line-height:130%;">D[i] 는 i-1번째 정비소에서 i번째 정비소까지의 거리</p>
+<p style="line-height:130%;">0번째 정비소는 출발점, n+1번째 정비소는 도착점이라고 
+생각하겠습니다. 그럼 D[1]은 출발점에서 첫번째 정비소까지의 거리가 되죠? E[n+1]=0 
+이라고 정의하겠습니다. 도착점에서는 정비같은 거 안하니깐.. ^_^</p>
+<p style="line-height:130%;">이제 부분문제 함수 C를 정의해 보도록 하겠습니다. 
+동적 계획법을 많이 접해보신 분들은 짐작하고 계시겠지만 다음과 같이 정의하겠습니다.</p>
+<p style="line-height:130%;">C[i] = i가 도착점이라고 가정할 때 (단, 도착점에서도 
+정비는 한다) 걸리는 최소의 시간</p>
+<p style="line-height:130%;">우리가 구하고자 하는 답은 '진짜' 도착점까지 오는데 
+걸리는 시간이므로 C[n+1]이 됩니다. 이제 부분문제 함수는 정의를 했는데 어떻게 
+구해야 할까요? 점화식을 생각해 보면,</p>
+<p style="line-height:130%;">C[0] = 0 (출발점에서 출발점까지 걸리는 시간은 당연히 
+0이다)</p>
+<p style="line-height:130%;">C[i] = Max {C[k] + E[i]} (단 0 &lt;= k &lt; i 이며 
+D[k+1] + D[k+2] + ... D[i-1] + D[i] &lt;= L)</p>
+<p style="line-height:130%;">위의 식은 당연한 정의입니다. 아래의 식은 차가 정비소i에 
+도착하기 전에 들르는 정비소가 k라는 뜻입니다. 조건이 두 가지가 있는데 당연히 
+k는 i보다 앞 쪽에 있어야 하고 k과 i사이의 거리는 L보다 크면 안되겠죠. </p>
+<p style="line-height:130%;">i라는 정비소에 들르기 전에 k라는 정비소에 들른다는 
+것은, 출발점부터 정비소k까지 가는데 걸리는 시간도 최소여야 한다는 것을 나타냅니다(동적 
+강좌에서 principal of optimality를 떠올려 보세요..)</p>
+<p style="line-height:130%;">C[k] + E[i]에서 C[k]는 출발점부터 정비소k까지 가는데 
+걸리는 최소 시간이고 E[i]는 정비소i에서 정비하는 데 걸리는 시간이 되겠습니다.</p>
+<p style="line-height:130%;"><font face="굴림체">program KOI98E2;</font></p>
+<p style="line-height:130%;"><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;n, l &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: integer;<br>
+&nbsp;&nbsp;&nbsp;e, d &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: array[0..101] 
+of integer;<br>
+&nbsp;&nbsp;&nbsp;table, trace : array[0..101] of integer;</font></p>
+<p style="line-height:130%;"><font face="굴림체">procedure input_file;<br>
+var<br>
+&nbsp;&nbsp;f : text;<br>
+&nbsp;&nbsp;i : integer;<br>
+begin<br>
+&nbsp;&nbsp;assign (f, 'input.txt');<br>
+&nbsp;&nbsp;reset (f);</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;read (f, l);<br>
+&nbsp;&nbsp;read (f, n);</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;for i := 1 to n 
++ 1 do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;read (f, d[i - 1]);</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;for i := 1 to n 
+do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;read (f, e[i]);</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;n := n + 1;<br>
+&nbsp;&nbsp;e[n] := 0;</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;close (f);<br>
+end;</font></p>
+<p style="line-height:130%;"><font face="굴림체">procedure solve;<br>
+var<br>
+&nbsp;&nbsp;i, j, sum : integer;<br>
+begin<br>
+&nbsp;&nbsp;table[0] := 0;</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;for i := 1 to n 
+do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;table[i] := maxint;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sum := 0;</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;for 
+j := i - 1 downto 0 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc (sum, d[j]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if sum &lt;= l then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if table[j] + e[i] &lt; table[i] 
+then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table[i] := table[j] 
++ e[i];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace[i] := j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;<br>
+end;</font></p>
+<p style="line-height:130%;"><font face="굴림체">procedure output_file;<br>
+var<br>
+&nbsp;&nbsp;f &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+text;<br>
+&nbsp;&nbsp;i, j &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: integer;<br>
+&nbsp;&nbsp;solution &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: array[1..101] of integer;<br>
+begin<br>
+&nbsp;&nbsp;assign (f, 'output.txt');<br>
+&nbsp;&nbsp;rewrite (f);</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;writeln (f, table[n]);</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;j := 0;<br>
+&nbsp;&nbsp;i := n;<br>
+&nbsp;&nbsp;while i &lt;&gt; 0 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;inc (j);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;solution[j] := i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;i := trace[i];<br>
+&nbsp;&nbsp;end;</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;writeln (f, j - 
+1);<br>
+&nbsp;&nbsp;for i := j downto 2 do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;write (f, solution[i], ' ');<br>
+&nbsp;&nbsp;writeln (f);</font></p>
+<p style="line-height:130%;"><font face="굴림체">&nbsp;&nbsp;close (f);<br>
+end;</font></p>
+<p style="line-height:130%;"><font face="굴림체">begin<br>
+&nbsp;&nbsp;input_file;<br>
+&nbsp;&nbsp;solve;<br>
+&nbsp;&nbsp;output_file;<br>
+end.</font></p>
+</body>
+
+</html></html>

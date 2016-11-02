@@ -1,0 +1,48 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ks_c_5601-1987">
+<title>최단경로 구하기</title>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font size="4" color="#0066CC"><b>최단경로 구하기</b></font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">최단경로 구하기 (Shortest Path) 어떤 그래프 G의 정점 A에서 
+다른 어떤 정점 B로의 최단경로는 A에서 B로가는 경로를 가운데 가장 작은 가중치 
+합을 가지는 경로를 말한다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">1. 최단경로를 구하는 방법최단 경로는 앞에서 살펴본 최소 비용 
+신장트리와 같이 그리디 알고리즘으로 구할 수 없다. 그리디 알고리즘을 사용하면 
+왜 구할 수 없는지를 생각해보자. 그리디 알고리즘은 현재 상태에서 가장 최적의 
+것을 선택해 나가는 방법이다. 그러나, 특정한 두 점사이를 연결하는 여러개의 경로들이 
+있을때, 가장 작은 가중치 합을 가지는 경로를 찾는 것은 이 경로들의 공통되는 끝점에서 
+가장 짧은 에지만을 선택해서는 찾을 수 없다. 즉, 최단경로는 자기 자신의 가중치는 
+높아도 전체적인 경로가중치를 줄여주는 간선이 있을 수 있기 때문에 그리디 알고리즘으로 
+해결 할 수 없다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">Dijkstra의 알고리즘</font></p>
+<p><font size="2">void shortestpath(int v,int cost[][maxVertices],int distance[],int 
+n,int found[]){</font></p>
+<p><font size="2">&nbsp;/* distance[i]는 정점 v에서 i까지 가는 최단경로의 가중치 
+합 found[i]는 초기치는 0이고, 정점 v에서 i 까지 가는 최단경로를 찾으면 1로 설정 
+cost는 그래프의 연결행렬이다. */ int i,w;</font></p>
+<p><font size="2">&nbsp;for (i=0;i&lt;n;i++) &nbsp;found[i]=0,distance[i]=cost[v][i];</font></p>
+<p><font size="2">&nbsp;found[v]=1; distance[v]=0;</font></p>
+<p><font size="2">&nbsp;for (i=0;i&lt;n-2;i++) {</font></p>
+<p><font size="2">&nbsp; u=choose(distance,n,found); &nbsp;found[u]=1; &nbsp;for 
+(w=0;w&lt;n;w++) &nbsp;{</font></p>
+<p><font size="2">&nbsp; &nbsp;if (!found[w]) { &nbsp; &nbsp;if (distance[u]+cost[u][w] 
+&lt; distance[w]) &nbsp; &nbsp;{</font></p>
+<p><font size="2">&nbsp; &nbsp; &nbsp;distance[w]= distance[u]+cost[u][w]; &nbsp; 
+&nbsp;}</font></p>
+<p><font size="2">&nbsp; &nbsp;}</font></p>
+<p><font size="2">&nbsp; } </font></p>
+<p><font size="2">}</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">2. 최장 경로는 어떻게 구할 수 있을지 생각해보자.</font></p>
+<p><font size="2">최장 경로를 구하기 위해서는 1. 싸이클이 없어야 한다.</font></p>
+<p><font size="2">&nbsp;2. 유향 그래프여야만 한다.</font></p>
+</body>
+
+</html>

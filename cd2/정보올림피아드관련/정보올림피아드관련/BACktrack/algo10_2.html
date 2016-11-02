@@ -1,0 +1,155 @@
+
+		
+
+<html>
+<head>
+<!--meta http-equiv="Content-Type" content="text/html; charset=EUC-KR" -->
+<title>알고리즘</title>
+
+<!-- 만지지 마시요 !!!! 시작-->
+
+<LINK rel="stylesheet" type="text/css" href="d:/work/BACktrack/../include/Note.css">
+<script language="JavaScript1.2" src="d:/work/BACktrack/../include/menu.js"></script>
+<script language="JavaScript1.2" src="d:/work/BACktrack/../include/eClass.js"></script>
+
+</head>
+
+<!-- 만지지 마시요 !!!! 끝-->
+<script language="JavaScript">   
+<!--
+function OnStart()
+{
+//        ActiveText(null, "03/avi/a3-1-00m.rm", "stop");
+}
+ 
+function SetPageEnv()
+{
+       top.vod.pl_video.DoStop();
+
+      setDataBase(1, "playText01", "10/avi/a10-2-1v.rm", "stop", 2250000);
+      setDataBase(2, "playText02", "10/avi/a10-2-2v.rm", "stop", 120000);
+      setDataBase(3, "playText03", "10/avi/a10-2-3v.rm", "stop", 500000);
+        curStatus = 0;
+        pagePos = 2;
+        n = top.nav;
+        n.prevpage = "algo10_1.html";
+        n.nextpage = "algo10_3.html";
+        faq(pagePos);
+}                         
+-->
+</script>
+ 
+<body bgcolor=ffffff onLoad="SetPageEnv(); vin('',0); vout(0); OnStart()">
+<div id="overDiv" style="position:absolute; left:50px; top:50px; width:300px; height:200px; z-index:5;visibility:hide;"><p>&nbsp;</p></div>
+<script language="JavaScript" src="d:/work/BACktrack/../include/help.js"></script>
+
+<table WIDTH="100%" height="100%" border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td valign=top bgcolor=eeeeee width=20 height=100% >&nbsp</td>
+<td valign=top height=100%>
+<!-- 전체 표 시작 -->
+<table WIDTH="100%" height="100%" border=0 cellpadding=0 cellspacing=0>
+<tr>
+    
+
+	<!-- 소제목 입력 폼--> 
+	<td bgcolor="eeeeee"><div class="title">◈ 백트랙킹 기법</div></td>
+	<!-- 소제목 입력 폼 끝--> 
+<tr>
+	<td background="./images/line.gif">
+	<div class=cls1></div>
+	<!-- 내용 입력 -->
+	<ul>
+	
+	<div id="playText01" style="background: white;">
+        <li><div class="title1">문제 공간과 상태 트리</div>
+	<ul>
+	<div class="cls1">
+	－ 상태(state): 문제의 해결과정에서 어떤 순간을 포착하여 찍은 사진(snapshot)
+	</div>
+	<div class="cls1">
+	－ 상태의 예1: 숫자의 배열을 정렬(sorting)할 때를 고려해 보자. 내부적으로 알고리즘이 어떻게 돌든지 간에 배열의 내용만을 주시하고 있는 관찰자가 있다고 생각하자. 이 관찰자에게는 배열의 내용이 이리저리 바뀌는 것을 볼 수 있을 것이다. 이 관찰자가 사진기를 들고 배열이 변화되는 과정 중의 하나를 사진으로 찍었다고 할 때, 이 사진이 바로 정렬 문제의 상태이다.
+	</div>
+	<div class="cls1">
+	－ 상태의 예2: 배낭 문제에서 배낭에 물건을 차례로 집어 넣을 때, 어느 순간에 이 배낭에는 몇 개의 물건이 들어 있고 그 총 무게는 얼마이며 이득은 총 얼마인가를 알 수 있다. 어느 순간의 배낭의 상태가 바로 "상태(state)"이다.
+	</div>
+	</div>
+
+	<div id="playText02" style="background: white;">
+	<div class="cls1">
+	－ 상태의 변화: 문제를 해결해 나가는 과정에서 상태가 계속적으로 변하게 된다.
+	</div>
+	<div class="cls1">
+	－ 상태의 변화로 본 문제 해결
+	</div>
+		<ul>
+		<div class="cls1">
+		(1) 처음에 주어진 문제는 "
+<a href=#help onMouseOver='vin("정렬 문제의 경우는 입력된 순서로 저장되어 있는 배열, 배낭 문제의 경우는 빈 배낭.",0);' onMouseOut='vout(0);'>
+<font color=#74207e size=2>초기 상태</font></a>
+	"에 있다.
+		</div>
+		<div class="cls1">
+		(2) 주어진 규칙에 따라 상태를 계속적으로 변화시킨다.
+		</div>
+		<div class="cls1">
+		(3) "
+<a href=#help onMouseOver='vin("정렬 문제의 경우는 크기 순으로 정렬된 배열, 배낭 문제의 경우는 최고의 이득으로 물건이 담겨져 있는 배낭.",0);' onMouseOut='vout(0);'>
+<font color=#74207e size=2>최종 상태</font></a>
+	"에 도달하면 문제가 해결된 것이다.
+		</div>
+		</ul>
+	</div>
+	
+	<div id="playText03" style="background: white;">
+	<div class="cls1">
+	－ 문제 공간(problem space): 어떤 문제가 가질 수 있는 모든 상태들의 집합 (
+<a href=#help onMouseOver='vin("배열에 들어 있는 숫자들의 퍼뮤테이션(permutation). 예를 들어 보면, 숫자가 10,20,15일 때의 퍼뮤테이션은 다음의 6가지 이다.<br><img src=images/10_11.gif>",0);' onMouseOut='vout(0);'>
+<font color=#74207e size=2>정렬의 예</font></a>
+	, 
+<a href=#help onMouseOver='vin("물건들의 모든 부분집합. 배낭에 담을 수 있는지 없는지는 고려하지 않는다. 단지 가능한 모든 방법들을 나열하면 된다.",0);' onMouseOut='vout(0);'>
+<font color=#74207e size=2>배낭의 예</font></a>
+	)
+	</div>
+	<div class="cls1">
+	－ 상태 트리(state space tree): 문제 공간을 트리로 나타낸 것
+	</div>
+	<div class="cls1">
+	－ 상태 트리의 구성
+	</div>
+		<ul>
+		<div class="cls2">
+		<li>자식 노드는 부모 노드의 상태에서 변화할 수 있는 모든 상태들이다. (
+<a href=#help onMouseOver='vin("예를 들어, 두 개의 숫자를 맞바꾸는 연산에 의한 상태 변화를 고려 할 때, <table border=0><td><table border=1><td>10</td></table></td><td><table border=1><td>20</td></table></td><td><table border=1><td>15</td></table></td><td>의 다음 상태는 다음과 같다.</td></table><br><img src=images/10_12.gif>",0);' onMouseOut='vout(0);'>
+<font color=#74207e size=2>정렬의 예</font></a>
+	)
+		</div>
+		<div class="cls2">
+		<li>상태 트리의 루트는 초기 상태이다.
+		</div>
+		<div class="cls2">
+		<li>
+<a href=#help onMouseOver='vin("예를 들면, 배낭의 용량을 넘도록 선택한 물건들의 집합.",0);' onMouseOut='vout(0);'>
+<font color=#74207e size=2>실행 불가능한 상태</font></a>
+	가 있을 수 있다.
+		</div>
+		<div class="cls2">
+		<li>상태 트리 중 어디엔가에 최종 상태가 존재한다.
+		</div>
+		</ul>
+	</ul>
+	</div>
+	<br><br>
+
+	</ul>
+
+	</ul>
+	<!-- 내용 입력 끝-->	
+	</div>
+	</td>
+</table>
+</td>
+</table>
+
+</body>
+</html>

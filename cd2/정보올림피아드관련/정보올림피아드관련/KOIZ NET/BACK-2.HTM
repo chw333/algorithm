@@ -1,0 +1,49 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>상태공간트리(State Space Tree)</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font size="4" color="#0066CC"><b>상태공간트리(State Space 
+Tree)</b></font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;&nbsp;앞에서 해의 후보들이 개수는 해의 표현 방식에 따라 
+달라질 수 있다는 사실을 설명했다. 해의 후보들의 모임을 해 공간 (Solution Space)라고 
+말한다. 해공간은 트리(Tree) 형식으로 표현할 수 있으며, 이 트리를 상태공간트리(State 
+Space Tree)라고 부른다. 다음은 4-여왕 문제에 대한 상태공간트리의 예이다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;&nbsp;이 상태공간트리의 잎(leaf)은 해의 후보들을 나타낸다. 
+잎들중 가장 왼쪽에 있는 노드가 표현하는 해는 루트(root)에서부터 해당 노드까지의 
+경로(path)상에 있는 값들의 순서 (1,1), (2,1), (3,1), (4,1)로 구성되는 해로서, 
+앞에서 정의한 해의 표현으로는 (1,1,1,1)에 해당된다. 이 상태공간트리의 잎의 개수는 
+모두 n^n이므로 해공간 크기가 n^n임을 의미한다.</font></p>
+<p align="center"><font size="2">&nbsp;<img src="images/back-02.gif" width="330" height="329" border="0"></font></p>
+<p><font size="2">&nbsp;&nbsp;상태공간트리에서 각 노드는 문제 상태(problem state)라고 
+부르고, 해의 후보에 해당하는 노드를 해 상태(Solution State)라고 부른다. 해 상태중에서 
+문제의 해에 해당되는 노드를 답 상태(Answer State) or 답 노드(Answer Node)라고 
+부른다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;&nbsp;이제, 상태공간트리를 탐색하여 문제의 해를 찾는 
+과정을 고려해보자. 효율적인 탐색을 수행하기 위해서는 상태공간트리를 체계적으로 
+탐색하는 것이 필요하다. 트리도 일종의 그래프(graph)이기 때문에, 그래프를 체계적으로 
+탐색하는 방법을 사용할 수 있다. 깊이우선탐색(DFS)과 너비우선탐색(BFS)이 고려대상이 
+된다. 퇴각검색인 바로 깊이 우선 탐색을 이용하여 상태공간트리를 탐색해 나가는 
+방법이다. 그렇지만, DFS방식으로 상태공간트리의 모든 노드를 다 방문한다면 효율적인 
+탐색이라고 말할 수 없다. 탐색을 효율적으로 수행하기 위해서는 트리에 탐색이 불필요한 
+부분을 찾아내어 탐색 대상에서 제외시키는 것이 필용하다. 이것은 가지치기(pruning)이라고 
+부르는 작업이며, 가지치기 작업은 다음과 같이 수행된다. 상태공간트리의 탐색중에 
+방문하는 각 노드에서 어떤 특정한 검사를 하여 그 노드의 상태가 해가 될 가능성이 
+있는가를 결정한다. 해가 될 가능성이 없다고 판단되면 이 노드의 후손은 탐색대상에서 
+제외시킨다. 이 검사에서 사용하는 함수를 한계 함수(Bounding Function) or (Promising 
+Fuction)이라고 부른다. 퇴각검색의 정의는 '퇴각 검색은 한계 함수를 사용한 DFS방식으로 
+상태공간트리를 탐색하는 방법이다'라고 정리할 수 있다.</font></p>
+<p><font size="2">&nbsp;&nbsp;4-여왕 문제의 상태공간트리에서 한계 함수로 '어떤 
+두 여왕말도 같은 행, 같은 열, 같은 대각선상에 놓일 수 없다'라는 것을 사용하여 
+탐색하게 되면 다음 그림에서 나타난 노드들만 방문하게 된다. 전체 341개의 노드들 
+중에 단지 27개만 방문하게 되므로 약 8%만이 탐색된다.</font></p>
+</body>
+
+</html>

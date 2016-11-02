@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>KOI 13회 중등부 1.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0" width="595">
+    <tr>
+        <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+            14회 고등부 3. 벽장문의 이동</b></font></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="pkoi97h3.htm"><img src="button1.gif"
+             width="72" height="22" border="0"></a></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi97h3.htm"><img src="button3.gif"
+             width="72" height="22" border="0"></a></td>
+    </tr>
+</table>
+<ul>
+    <p>&nbsp; 
+    <table border="0">
+            <tr>
+                <td width="550"><p style="line-height:150%;"><font size="2">&nbsp;&nbsp;한국정보올림피아드 
+                연습/기출 문제집이라는 책에는 백트래킹 문제라고 되어 있지만 
+                이는 잘못된 것으로, 실제로는 동적 계획법으로 풀 수 있는 문제이다. 
+                벽장문이 여러 개라면 백트래킹 밖에는 방법이 없겠지만 벽장문이 
+                두 개라서 동적 계획법을 이용해 빠르게 답을 구할 수 있다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;보통 
+                대부분의 동적 계획법 문제는 테이블을 1차원 내지는 2차원 배열로 
+                사용하지만 이 문제는 3차원 테이블을 필요로 한다. 이를 3차원 
+                동적 계획법이라고 부른다. 일단 동적계획법은 부분문제를 정하는 
+                것에서 시작한다. N은 벽장의 수, M은 사용할 벽장의 수, W[i]는 
+                i번째로 사용할 벽장의 번호라고 하자.</font></p>
+                <p style="line-height:150%;"><font size="2">C[i, j, k] = j와 
+                k번째 벽장이 열려 있을 때 (단, j가 k보다 왼쪽에 있는 것으로 
+                함) <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i~M의 
+                벽장을 사용하기 위해 필요한 벽장의 최소 이동 회수</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;위의 
+                정의에 따르면, 우리가 구하고자 하는 답은 C[1, a, b]가 될 것이다(a와 
+                b는 초기에 열려있는 벽장의 번호). C[N+1, j, k]는 모든 일을 다 
+                한 경우이므로 0으로 초기화하면 된다. 부분문제를 정의하였으니 
+                이제 이를 바탕으로 점화식을 구해보자. C[i, j, k]를 구할 때, 
+                W[i]는 다음의 세 가지의 경우 중 하나이다.</font></p>
+                <ul>
+                    <p style="line-height:150%;"><font size="2">a. W[i]≤j 일 
+                    때 (사용할 벽장이 j보다 왼쪽에 있는 경우)<br> b. k≤W[i] 
+                    일 때 (사용할 벽장이 k보다 오른쪽에 있는 경우)<br> c. j&lt;W[i]&lt;k 
+                    일 때 (사용할 벽장이 j와 k 사이에 있는 경우)</font></p>
+                </ul>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;a의 
+                경우에는 무조건 j을 왼쪽으로 이동해 W[i] 벽장을 사용해야 한다. 
+                <br> &nbsp;&nbsp;b의 경우에는 무조건 k를 오른쪽으로 이동해 W[i] 
+                벽장을 사용해야 한다.<br> &nbsp;&nbsp;c의 경우에는 j을 오른쪽으로 
+                움직이거나 k를 왼쪽으로 움직이는 두 가지 방법이 있을 수 있다. 
+                이 중 어떤 방법이 좋다라고 확실히 정의할 수 없기 때문에 두 방법 
+                모두 검사를 해 보아야 한다. 이를 정리하면,</font></p>
+                <p style="line-height:150%;"><font size="2">C[i, j, k] = C[i+1, 
+                W[i], k] + (j - W[i]) (W[i]≤j 인 경우)<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C[i+1, 
+                j, W[i]] + (W[i] - k) (k≤W[i] 인 경우)<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Min 
+                {C[i+1, W[i], k] + (W[i] - j), C[i+1, j, W[i]] + (k - W[i])} 
+                (j&lt;W[i]&lt;k인 경우)</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;C[i+1, 
+                W[i], k] + (j - W[i])를 간단히 설명하자면, C[i+1, W[i], k]는 
+                j를 왼쪽으로 이동한 후의 부분문제이고 (j - W[i])는 벽장문을 
+                이동하는 회수가 된다. </font></td>
+        </tr>
+    </table>
+    <p>&nbsp;</p>
+</ul>
+</body>
+
+</html></html>

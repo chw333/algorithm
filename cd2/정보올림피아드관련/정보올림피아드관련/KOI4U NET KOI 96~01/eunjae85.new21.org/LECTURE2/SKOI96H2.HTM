@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>KOI 13회 중등부 1.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0" width="595">
+    <tr>
+        <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+            13회 고등부 <br> &nbsp;&nbsp;2. 교차하지 않는 원의 현들의 최대 집합</b></font></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="pkoi96h2.htm"><img src="button1.gif"
+             width="72" height="22" border="0"></a></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi96h2.htm"><img src="button3.gif"
+             width="72" height="22" border="0"></a></td>
+    </tr>
+</table>
+<ul>
+    <p>&nbsp; 
+    <table border="0">
+            <tr>
+                <td width="550"><p style="line-height:150%;"><font size="2">&nbsp;&nbsp;이 
+                문제는 동적 계획법을 이용해 풀 수 있는 문제이다. 물론 입력 데이터가 
+                원의 꼴로 주어지기 때문에 당황스러울 수도 있지만, 사실 수직선 
+                상의 문제로 변환할 수 있는 문제이다. 원에서 100과 1 사이를 자르면,</font></p>
+                <p align="center" style="line-height:150%;"><font size="2"><img src="skoi96h2-1.gif"
+                 width="286" height="268" border="0"></font></p>
+                <p align="center" style="line-height:150%;"><font size="2">원래의 
+                입력 데이터<br> &nbsp;</font></p>
+                <p align="center" style="line-height:150%;"><font size="2"><img src="skoi96h2-2.gif"
+                 width="411" height="157" border="0"></font></p>
+                <p align="center" style="line-height:150%;"><font size="2">1과 
+                100사이를 뚝 잘라 수직선상에 펼쳐 놓은 데이터</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;선분들이 
+                서로 겹치지 않게 하면서 최대한 많이 그리는 문제로 바뀌었음을 
+                알 수 있다. 물론 이렇게 문제를 바꾸더라도 궁극적으로 문제는 
+                같으며 답이 달라지지는 않는다. 어떤 문제건 간에 그 문제가 접근하기 
+                어려운 형태라면 변형을 통해 더 접근이 쉬운 문제로 바꾸는 것이 
+                중요하다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;일단 
+                동적 계획법으로 문제를 해결하기 위해 일단 부분문제 C[i, j]를 
+                정의해 보자.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;C[i, 
+                j] = i점부터 j점까지의 구간에서 최대로 그을 수 있는 현의 개수</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;이 때, 
+                j점의 입장에서 생각해 본다면, j점은 구간 [i, j]사이의 한 점 
+                k와 현으로 연결되어 있을 것이다. (연결되어 있지 않은 경우도 
+                있을 수 있는 데, 이 것은 k=j인 특별한 경우로 생각하면 되니까 
+                별 문제는 없다) j와 k가 현으로 연결된다면, 두 개의 고립된 구간이 
+                생기게 된다. 이것은 현을 하나 그음으로써 원래의 문제가 작은 
+                두 개의 문제로 쪼개짐을 나타낸다.</font></p>
+                <p align="center" style="line-height:150%;"><font size="2"><img src="skoi96h2-3.gif"
+                 width="455" height="140" border="0"></font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;위의 
+                그림에서 보듯 j와 k를 연결하는 현(빨간색)을 그음으로써 두 개의 
+                고립된 구간(파란색) [i, k-1]과 [k+1, j-1]이 만들어졌다. 고립된 
+                구간이라는 말은 그 구간 안의 현들이 구간 밖으로 나갈 수 없다는 
+                말인데, 만약 현들이 구간 밖으로 나가게 된다면 다른 현들과 서로 
+                겹치게 되기 때문이다. 이상에서 정리한 것들을 점화식으로 표현하면,</font></p>
+                <p style="line-height:150%;"><font size="2">C[i, j] = Max {C[i, 
+                k-1] + C[k + 1, j - 1] + q[k, j]} 단, (i &lt;= k &lt;= j)<br> 
+                q[i, j] = 입력 데이터에 i와 j를 잇는 현이 있다면 1, 없으면 0</font></p>
+                <p style="line-height:150%;"><font size="2">위의 식에서 Max란 
+                k의 값에 따라서 생길 수 있는 집합의 원소들의 최대값을 뜻한다.</font></td>
+        </tr>
+    </table>
+    <p>&nbsp;</p>
+</ul>
+</body>
+
+</html></html>

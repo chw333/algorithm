@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>평면상에 세 점이 있을 때 그 점들이 어떤 방향을 이루고 있는지를 검사하는 것은 기하 알고리즘의 기초가</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p style="line-height:120%;">평면상에 세 점이 있을 때 그 점들이 어떤 방향을 
+이루고 있는지를 검사하는 것은 기하 알고리즘의 기초가 되기 때문에 매우 중요한 
+내용입니다. a, b, c 세 점이 시계방향으로 존재하는지, 반시계방향으로 존재하는지, 
+그것도 아니면 일직선 상에 존재하는 지를 검사하는 방법에 대해서 알아보도록 하겠습니다.</p>
+<p style="line-height:120%;">이것은 벡터의 외적을 이용해서 구해야 합니다. 수학적인 
+내용에 대해서는 저도 잘 모르므로 그냥 방법에 대해서만 살펴 보겠습니다.</p>
+<p style="line-height:120%;">a.x * b.y + b.x * c.y + c.x * a.y - a.x * c.y - 
+b.x * a.y - c.x * b.y의 값을 구하면 세 점 a, b, c가 이루는 삼각형의 넓이*2가 
+구해집니다. 이 삼각형의 넓이가 양수라면 a, b, c는 반시계방향이며(즉 선분 a-b를 
+중심으로 점 c가 선분의 왼쪽에 있다는 것을 의미) 넓이가 음수라면 a, b, c는 시계방향이 
+됩니다. 만약 넓이가 0이라면 세 점이 삼각형을 이루지 않고 한 직선상에 존재한다는 
+뜻이 되겠죠.</p>
+<p style="line-height:120%;">밑의 left함수를 삼각형의 넓이를 구하는 함수로 고치기 
+위해서는 abs(t)/2.0을 넓이로 되돌리시면 됩니다.</p>
+<p style="line-height:120%;"><font face="굴림체">type<br>
+&nbsp;&nbsp;Tpoint = record<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x, y : longint;<br>
+&nbsp;&nbsp;end;</font></p>
+<p style="line-height:120%;"><font face="굴림체">function left (a, b, c : Tpoint) 
+: boolean;<br>
+var<br>
+&nbsp;&nbsp;t : longint;<br>
+begin<br>
+&nbsp;&nbsp;t := a.x * b.y + b.x * c.y + c.x * a.y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- a.x * c.y - b.x * a.y - c.x * b.y;</font></p>
+<p style="line-height:120%;"><font face="굴림체">&nbsp;&nbsp;if t &gt; 0 then 
+left := true<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else left 
+:= false;<br>
+end;</font></p>
+<p style="line-height:120%;"><font face="굴림체">var<br>
+&nbsp;&nbsp;a, b, c : Tpoint;<br>
+begin<br>
+&nbsp;&nbsp;a.x := 0;<br>
+&nbsp;&nbsp;a.y := 0;<br>
+&nbsp;&nbsp;b.x := 2;<br>
+&nbsp;&nbsp;b.y := 5;<br>
+&nbsp;&nbsp;c.x := 4;<br>
+&nbsp;&nbsp;c.y := 3;</font></p>
+<p style="line-height:120%;"><font face="굴림체">&nbsp;&nbsp;writeln (left (a, 
+b, c));<br>
+end.</font></p>
+</body>
+
+</html></html>

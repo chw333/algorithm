@@ -1,0 +1,92 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>선형 탐색 (Sequential Search , Linear Search)</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font size="5" color="#0066CC"><b>선형 탐색 (Sequential Search 
+, Linear Search)</b></font></p>
+<table border="0" style="font-size:10pt;">
+    <tr>
+        <td width="974">
+            <p>&nbsp;첫 원소부터 시작하여 키가 k인 원소를 발견하거나 리스트의 
+            끝에 도달할 때까지 순차적으로 찾아가는 방법(주어진 엔트라는 정렬되어 
+            있지 않다).</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p>&nbsp;</p>
+            <p>탐색 방법</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;원소들이 배열에 저장되어 있는 경우</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p><b>(1) C/C++</b></p>
+            <p><font color="#0099CC">int LinearSearch ( int List[], int k, int end)</font></p>
+            <p><font color="#0099CC">{</font></p>
+            <p><font color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;int location=1;</font></p>
+            <p><font color="#999966">&nbsp;&nbsp;&nbsp;&nbsp;while ( location &lt;= end )&nbsp;&nbsp;&nbsp;&nbsp;{ 
+            // 찾을 때까지</font></p>
+            <p><font color="#999966">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (List[location] 
+            == k) { // 주어진 값(k)가 찾았으면</font></p>
+            <p><font color="#999966">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 
+            location;</font></p>
+            <p><font color="#999966">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else</font></p>
+            <p><font color="#999966">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location ++;</font></p>
+            <p><font color="#999966">&nbsp;&nbsp;&nbsp;&nbsp;}</font></p>
+            <p><font color="#999966">&nbsp;&nbsp;&nbsp;&nbsp;return 0;</font></p>
+            <p><font color="#0099CC">}</font></p>
+            <p><b>(2) Pascal</b></p>
+            <p><font color="#999966">Function LinearSearch( List : array ; K,END : integer) : integer;</font></p>
+            <p><font color="#999966">begin</font></p>
+            <p><font color="#006699">&nbsp;&nbsp;&nbsp;&nbsp;Location : integer;</font></p>
+            <p><font color="#006699">&nbsp;&nbsp;&nbsp;&nbsp;Location := 1;</font></p>
+            <p><font color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;while Location &lt;= END</font></p>
+            <p><font color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;begin</font></p>
+            <p><font color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (List(Location) 
+            = K)</font> </p>
+            <p><font color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin</font></p>
+            <p><font color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LinearSearch 
+            := Location;</font></p>
+            <p><font color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else</font></p>
+            <p><font color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location 
+            := Location + 1;</font></p>
+            <p><font color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End;</font></p>
+            <p><font color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;End;</font></p>
+            <p><font color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;LinearSearch := 0;</font></p>
+            <p><font color="#999966">End;</font></p>
+            <p><b>(3) Basic</b></p>
+            <p><font color="#009933">function linearsearch(list(),k,end)</font><BR><font color="#993300">&nbsp; location=1<BR>&nbsp; while 
+location&lt;=end<BR>&nbsp; &nbsp; &nbsp;if list(location)=k then<BR>&nbsp; &nbsp; &nbsp; &nbsp; 
+linearsearch=location<BR>&nbsp; &nbsp; &nbsp; &nbsp; exit function<BR>&nbsp; &nbsp; &nbsp;else<BR>&nbsp; &nbsp; &nbsp; &nbsp; 
+location=location+1<BR>&nbsp; &nbsp; &nbsp;end if<BR>&nbsp; wend<BR></font><font color="#009933">end function</font><BR><BR></p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974">
+            <p>&nbsp; </p>
+            <p>분석</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;최악의 경우는 하나의 키를 찾기 위해 리스트의 
+            끝까지 비교를 해야 한다. 따라서 최악의 경우 비교 횟수는 n</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" height="118">
+            <p>예제1</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;다음과 같은 수열이 있다. 임의 수 K가 
+            주어졌을 때, 탐색하는 과정을 설명하시오.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;24 31 5 19 74 28 9 100 48 64 81 95 37 
+            75</p>
+        </td>
+    </tr>
+        
+</table></body>
+
+</html>

@@ -1,0 +1,8 @@
+	   제출   결과
+1.robot     O
+2.number    O
+3.comb      O
+4.tile      X
+5.angle     X
+6.reversal  X
+7.race      O

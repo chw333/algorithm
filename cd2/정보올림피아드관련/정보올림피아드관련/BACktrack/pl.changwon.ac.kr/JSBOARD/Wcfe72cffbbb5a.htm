@@ -1,0 +1,16 @@
+<SCRIPT LANGUAGE = "Javascript">
+<!--
+var farwindow = null;
+function remoteWindow() {
+  farwindow = window.open("","Whois","width=600,height=480,scrollbars=1,resizable=1");
+  if (farwindow != null) {
+    if (farwindow.opener == null) {
+      farwindow.opener = self;
+    }
+  farwindow.location.href = "whois.php?table=test&host=huni.changwon.ac.kr";
+  }
+}
+//-->
+remoteWindow();
+history.back();
+</SCRIPT>

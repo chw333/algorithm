@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>up sequence 문제 풀이</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p>up sequence 문제 풀이</p>
+<p>이 문제는 주어진 수열에서 만들 수 있는 up-sequence(증가수열) 중에 가장 긴 
+것의 길이를 찾는 문제입니다. 예를 들어 2 4 3 2 5 6 3라는 수열이 있으면 가장 
+긴 증가수열은 2 4 5 6입니다(혹은 2 3 5 6도 맞음)</p>
+<p>Up-sequence문제는 동적 계획법을 사용하여 풀 수 있는 문제입니다. 동적 계획법을 
+적용하기 위해서는 먼저 부분 문제를 정의하여야 합니다.</p>
+<p>부분 문제 함수 C[i]를 다음과 같이 정의하겠습니다. (A는 배열 데이터)</p>
+<p>C[i] = A[i]를 끝으로 하는 증가수열의 최대 길이 </p>
+<p>일단 위의 정의가 이해가 안되시더라도 넘어가도록 하죠. 그럼 우리가 구하고자 
+하는 답은,</p>
+<p>Max {C[i]} (단, 1 &lt;= i&nbsp;&lt; = n)</p>
+<p>이 됩니다. Max가 붙은 이유는 n개의 숫자 중 어느 것이 최대 증가수열의 끝항이 
+될 지 모르기 때문입니다. 이제 점화식을 생각해 보기로 하겠습니다.</p>
+<p>C[0] = 0이라고 가정.</p>
+<p>C[i] = C[k] + 1 (단, i&nbsp;&lt;&gt; 1 이고, 0&lt;= &nbsp;k&nbsp;&lt; i&nbsp;이며, 
+A[i] &gt; A[k] 이다.)</p>
+<p>C[k]는 최대 증가수열의 끝에서 두번째 항을 뜻합니다. 예를 들어 A[i] = 7이고 
+A[k] = 4라고 합시다. A[k]를 끝항으로 하는 증가수열이 .. .. 4라면 A[i]를 끝항으로 
+하는 증가수열은 .. .. 4 7이 됩니다. 언더스탠?</p>
+<p>2 4 3 2 5 6 2라는 데이터가 있을 때 테이블을 만들면 다음과 같습니다. 
+<table border cellspacing="0" bordercolordark="white" bordercolorlight="black">
+    <tr>
+        <td width="50" bgcolor="#CBFFDF"><p align="center"><font size="2">번호</font></td>
+        <td width="50" bgcolor="#FDFFE9"><p align="center"><font size="2">1</font></td>
+        <td width="50" bgcolor="#FDFFE9"><p align="center"><font size="2">2</font></td>
+        <td width="50" bgcolor="#FDFFE9"><p align="center"><font size="2">3</font></td>
+        <td width="50" bgcolor="#FDFFE9"><p align="center"><font size="2">4</font></td>
+        <td width="50" bgcolor="#FDFFE9"><p align="center"><font size="2">5</font></td>
+        <td width="50" bgcolor="#FDFFE9"><p align="center"><font size="2">6</font></td>
+        <td width="50" bgcolor="#FDFFE9"><p align="center"><font size="2">7</font></td>
+    </tr>
+    <tr>
+        <td width="50" bgcolor="#EBEFFF"><p align="center"><font size="2">A[i]</font></td>
+        <td width="50"><p align="center"><font size="2">2</font></td>
+        <td width="50"><p align="center"><font size="2">4</font></td>
+        <td width="50"><p align="center"><font size="2">3</font></td>
+        <td width="50"><p align="center"><font size="2">2</font></td>
+        <td width="50"><p align="center"><font size="2">5</font></td>
+        <td width="50"><p align="center"><font size="2">6</font></td>
+        <td width="50"><p align="center"><font size="2">3</font></td>
+    </tr>
+    <tr>
+        <td width="50" bgcolor="#EBEFFF"><p align="center"><font size="2">C[i]</font></td>
+        <td width="50"><p align="center"><font size="2">1</font></td>
+        <td width="50"><p align="center"><font size="2">2</font></td>
+        <td width="50"><p align="center"><font size="2">2</font></td>
+        <td width="50"><p align="center"><font size="2">1</font></td>
+        <td width="50"><p align="center"><font size="2">3</font></td>
+        <td width="50"><p align="center"><font size="2">4</font></td>
+        <td width="50"><p align="center"><font size="2">2</font></td>
+    </tr>
+</table>
+<p><font face="굴림체">다음은 실제 소스입니다. 저희 학교 선배이신 박준혁님께서 
+수고해주셨습니다.</font></p>
+<p><font face="굴림체"><b>program up_sequence;</b></font></p>
+<p><font face="굴림체"><b>const<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;infile &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'input.inp';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outfile &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'output.out';</b></font></p>
+<p><font face="굴림체"><b>var<br>
+&nbsp;&nbsp;&nbsp;n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;outn &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;depth &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 
+0..100 ] of integer;<br>
+&nbsp;&nbsp;&nbsp;from &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 
+0..100 ] of integer;<br>
+&nbsp;&nbsp;&nbsp;data &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 
+0..100 ] of integer;<br>
+&nbsp;&nbsp;&nbsp;out &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 
+1..100 ] of integer;</b></font></p>
+<p><font face="굴림체"><b>procedure input;</b></font></p>
+<p><font face="굴림체"><b>var<br>
+&nbsp;&nbsp;&nbsp;inf &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text;<br>
+&nbsp;&nbsp;&nbsp;i &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</b></font></p>
+<p><font face="굴림체"><b>begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assign( inf, infile );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset( inf );</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read( inf, n );</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read( inf, data[ i ] );</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;close( inf );<br>
+end;</b></font></p>
+<p><font face="굴림체"><b>procedure solve;</b></font></p>
+<p><font face="굴림체"><b>var<br>
+&nbsp;&nbsp;&nbsp;i, j &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;max &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;maxi, maxj &nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;trace &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</b></font></p>
+<p><font face="굴림체"><b>begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data[ 0 ] := -maxint;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;depth[ 0 ] := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxj := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j := 0 to i 
+- 1 do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+( data[ j ] &lt; data[ i ] ) and ( max &lt; depth[ j ] ) then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max 
+:= depth[ j ];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxj 
+:= j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;depth[ i ] := max 
++ 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from[ i ] := maxj;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxi := 1;</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 2 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if depth[ i ] &gt; depth[ 
+maxi ] then maxi := i;</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace := maxi;</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while( not( trace = 
+0 ) ) do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out[ depth[ trace 
+] ] := data[ trace ];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace := from[ trace 
+];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outn := depth[ maxi 
+];<br>
+end;</b></font></p>
+<p><font face="굴림체"><b>procedure output;</b></font></p>
+<p><font face="굴림체"><b>var<br>
+&nbsp;&nbsp;&nbsp;ouf &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text;<br>
+&nbsp;&nbsp;&nbsp;i &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</b></font></p>
+<p><font face="굴림체"><b>begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assign( ouf, outfile );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rewrite( ouf );</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln( ouf, outn );</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to outn do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write( ouf, out[ i ], 
+' ' );</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln( ouf );</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;close( ouf );<br>
+end;</b></font></p>
+<p><font face="굴림체"><b>begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;solve;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output;<br>
+end.</b></font></p>
+</body>
+
+</html></html>

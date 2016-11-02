@@ -1,0 +1,10 @@
+1. seq.exe    
+2. read.exe
+3. race.exe
+4. coin.exe
+4. matrix.exe
+행렬 2초 부분점수
+
+자동차경주 5초
+
+동전 3초

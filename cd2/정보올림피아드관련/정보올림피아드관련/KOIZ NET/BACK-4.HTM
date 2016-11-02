@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="HTML document by Hwpw 97">
+<TITLE>Problem : N-Queen</TITLE>
+</HEAD>
+
+<BODY>
+
+<P align="center">
+ <FONT FACE="바탕" size="5" color="#0066FF"><b>N-Queen</b></FONT><font size="5" color="#0066FF"><b>
+<BR>
+</b></font><P>  <FONT FACE="굴림" size="2">주어진 문제를 퇴각검색법으로 풀기 위해서는 다음의 세가지 단계를 거쳐야 한다.</FONT><font size="2" face="굴림">
+</font><P>  <FONT FACE="굴림" size="2">1. 해의 표현 방식 결정</FONT><font size="2" face="굴림">
+</font><P>    <FONT FACE="굴림" size="2">: 이것은 상태공간트리를 어떻게 구성할 것이냐를 결정하게 된다.</FONT><font size="2" face="굴림">
+</font><P>  <FONT FACE="굴림" size="2">2. 한계 함수의 결정</FONT><font size="2" face="굴림">
+</font><P>    <FONT FACE="굴림" size="2">: 문제에 알맞은 한계 함수를 만드는 것은 퇴각검색 알고리즘의 핵심요소이다.</FONT><font size="2" face="굴림">
+</font><P>  <FONT FACE="굴림" size="2">3. 알고리즘의 설계 및 구현</FONT><font size="2" face="굴림">
+</font><P>    <FONT FACE="굴림" size="2">: 알고리즘의 구조는 문제마다 거의 비슷하므로 이 단계는 쉽게 처리할 수 있다.</FONT><font size="2" face="굴림">
+<BR>
+</font><P>  <FONT FACE="굴림" size="2">n-여왕문제의 경우, 해의 표현은 순서리스트 (x1,x2,...,xn)를 사용한다. 여기서, xi는 I-번째 행에 놓일 여왕의 위치(열 번호)를 의미한다. n-여왕문제의 한계 함수는 어떻게 결정하면 될까? n-여왕문제처럼 어떤 제한조건을 만족하는 해를 찾는 문제는 제한조건 그 자체가 한계 함수가 사용된다. 따라서, 한계 함수로 &quot;어떤 두 여왕말도 같은 행, 같은 열, 같은 대각성 상에 놓일 수 없다.&quot;라는 조건을 검사하면 됩니다. 체스판 위의 두 위치, Q1= (a,b)과 Q2(c,d)가 있을 때,</FONT><font size="2" face="굴림">
+</font><P> <FONT FACE="굴림" size="2">1. 같은 행 검사는 &quot;a=c&quot;를 검사</FONT><font size="2" face="굴림">
+</font><P> <FONT FACE="굴림" size="2">2. 같은 열 검사는 &quot;b=d&quot;를 검사</FONT><font size="2" face="굴림">
+</font><P> <FONT FACE="굴림" size="2">3. 같은 대각선 검사는 &quot;|a-c|=|b-d|&quot;를 검사하는 것과 같다.</FONT><font size="2" face="굴림">
+<BR>
+</font><P><FONT FACE="굴림" size="2">알고리즘의 입력으로 양의 정수 n이 주어진다고 하고, 출력은 순서리스트를 표현한 배열 col[1..n]이라고 하자. 배열 col[1..n]은 알고리즘에서 전역 변수로 설정한다. 알고리즘은 nQueen()와 Promising()으로 구성되어 있으며, nQueens()의 구조는 앞에서 설명한 퇴각검색 알고리즘 checknode()의 구조와 같다.</FONT><font size="2" face="굴림">
+<BR>
+</font><P><FONT FACE="굴림" size="2">void nQueens(int i) {</FONT><font size="2" face="굴림">
+</font><P>	<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;int j;</FONT><font size="2" face="굴림">
+</font><P>	<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;if (!promising(i)) // i번째 행에 놓인 현재 여왕말의 위치가 유망하지 않으면</FONT><font size="2" face="굴림">
+</font><P>		<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;</FONT><font size="2" face="굴림">	</font><FONT FACE="굴림" size="2">// 퇴각함</FONT><font size="2" face="굴림">
+</font><P>	<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;if (i==n)</FONT><font size="2" face="굴림">				</font><FONT FACE="굴림" size="2">// 마지막 행까지 여왕말의 위치가 결정되면</FONT><font size="2" face="굴림">
+</font><P>		<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count &lt;&lt; col[1..n];</FONT><font size="2" face="굴림">	</font><FONT FACE="굴림" size="2">// 해의 출력</FONT><font size="2" face="굴림">
+</font><P>	<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;else</FONT><font size="2" face="굴림">
+</font><P>		<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;for (j=1;j&lt;=n;j++) {</FONT><font size="2" face="굴림">	</font><FONT FACE="굴림" size="2">// i+1번째 행에서 선택할 열번호를</FONT><font size="2" face="굴림">
+</font><P>			<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col[i+1]=j;</FONT><font size="2" face="굴림">	</font><FONT FACE="굴림" size="2">// 차례로 검사함</FONT><font size="2" face="굴림">
+</font><P>			<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nQueens(i+1);</FONT><font size="2" face="굴림">
+</font><P>		<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;}</FONT><font size="2" face="굴림">
+</font><P><FONT FACE="굴림" size="2">}</FONT><font size="2" face="굴림">
+<BR>
+</font><P><FONT FACE="굴림" size="2">bool promising(int i)</FONT><font size="2" face="굴림">
+</font><P><FONT FACE="굴림" size="2">{</FONT><font size="2" face="굴림">
+</font><P>	<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;int k;</FONT><font size="2" face="굴림">
+</font><P>	<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;for (k=1;k&lt;i;k++)</FONT><font size="2" face="굴림">	</font><FONT FACE="굴림" size="2">// 이전에 위치한 모든 여왕말에 대해서</FONT><font size="2" face="굴림">
+</font><P>		<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (col[i]==col[k] || abs(col[i]-col[k]) == i-k)</FONT><font size="2" face="굴림">	</font><FONT FACE="굴림" size="2">// 검사</FONT><font size="2" face="굴림">
+</font><P>			<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;</FONT><font size="2" face="굴림">
+</font><P>	<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;</FONT><font size="2" face="굴림">
+</font><P><FONT FACE="굴림" size="2">}</FONT><font size="2" face="굴림">
+<BR>
+</font><P><FONT FACE="굴림" size="2">알고리즘의 수행은 초기에 nQueen(0)을 호출함으로써 시작한다. 알고리즘은 하나의 해만 찾는 것이 아니라 모든 해를 찾아주도록 되어 있다. 해를 하나만 찾고 알고리즘을 멈추도록 수정하는 것은 어려운 일이 아니다. nQueens()을 앞에서 설명한 퇴각검색 알고리즘 expand() 형식으로 바꾸면 다음과 같이 작성할 수 있다. 이렇게 하면 함수 호출 횟수가 줄어들어 수행시간이 줄어든다.</FONT><font size="2" face="굴림">
+<BR>
+</font><P><FONT FACE="굴림" size="2">void nQueens(int i)</FONT><font size="2" face="굴림">
+</font><P><FONT FACE="굴림" size="2">{</FONT><font size="2" face="굴림">
+</font><P>	<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;int j;</FONT><font size="2" face="굴림">
+</font><P>	<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;for (j=1;j&lt;=n;j++) {</FONT><font size="2" face="굴림">	</font><FONT FACE="굴림" size="2">// i번째 행에서 선택할 열 번호를 차례로 검사함</FONT><font size="2" face="굴림">
+</font><P>		<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col[i]=j;</FONT><font size="2" face="굴림">
+</font><P>		<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (promising(i)) {</FONT><font size="2" face="굴림">	</font><FONT FACE="굴림" size="2">// i번째 행에 놓인 현재 여왕 말의 위치가 유망하면</FONT><font size="2" face="굴림">
+</font><P>			<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (i==n)</FONT><font size="2" face="굴림">
+</font><P>			<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</FONT><font size="2" face="굴림">
+</font><P>				<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; col[1..n]; // 해출력</FONT><font size="2" face="굴림">
+</font><P>				<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return</FONT><font size="2" face="굴림">
+;</font><P>			<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</FONT><font size="2" face="굴림">
+</font><P>			<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nQueen(i+1);</FONT><font size="2" face="굴림">
+</font><P>		<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</FONT><font size="2" face="굴림">
+</font><P>	<FONT FACE="굴림" size="2">&nbsp;&nbsp;&nbsp;&nbsp;}</FONT><font size="2" face="굴림">
+</font><P><FONT FACE="굴림" size="2">}</FONT><font size="2" face="굴림">
+<BR>
+</font><P><FONT FACE="굴림" size="2">알고리즘 분석</FONT><font size="2" face="굴림">
+</font><P>  <FONT FACE="굴림" size="2">n-여왕문제를 위한 퇴각검색 알고리즘의 수행 시간을 분석하기 위해서 상태공간트리에서 검사하는 노드의 개수를 계산해보자. 전체 노드의 수는 다음과 같이 계산된다.</FONT><font size="2" face="굴림">
+</font><P ALIGN=CENTER><FONT FACE="굴림" size="2">1+n+n^2+...+n^n=(n^n+1-1)/(n-1)</FONT><font size="2" face="굴림">
+</font><P>  <FONT FACE="굴림" size="2">따라서, n=8이면 상태공간트리의 노드의 총개수는 19,173,961개가 된다. 무지막지한 방법으로 해의 후보가 되는 모든 순열을 검사하는 방법을 사용한다고 하면 8!=40,320개의 순열을 검사해야 한다. 퇴각검색 알고리즘은 상태공간트리의 모든 노드를 다 검사하는 것이 아니다. 알고리즘을 수행시켜 계산해보면, 15,721개의 노드를 검사하는 것으로 나타난다. 그래서, 퇴각검색 알고리즘으로 검사되는 노드의 수는 상태공간트리의 총 노드 수에 비해 0.08%밖에 불과하고, 모든 순열의 개수에 비해서 40%정도가 된다. 더군다나 상태공간트리와 노드에 대한 유망 여부의 검사비용은 해의 후보가 되는 순열에 대한 검사비용 보다 적다. 다음표는 퇴각검색법 알고리즘을 사용하여 절약한 검사 회수를 n-여왕문제의 입력 크기에 EK라 비교하여 정리한 것이다.</FONT><font size="2" face="굴림">
+<BR>
+</font><P><FONT FACE="굴림" size="2">n-여왕문제를 효율적으로 해결하는 방법중의 하나는 몬테칼로 알고리즘(Monte Carlo Algorithm)을 사용하는 것이다. 몬테칼로 알고리즘은 확률적 알고리즘(Probability Algorithm)으로서 초기의 여러행에 대해서 무작위(random)로 여왕말을 배치하고 남아 있는 행에 대해서만 퇴각검색법을 적용하는 것인데, 실험 결과가 퇴각검색법만 사용하는 것에 비해 효과적이라는 것을 보여준다.</FONT><font size="2" face="굴림">
+</font></HTML>

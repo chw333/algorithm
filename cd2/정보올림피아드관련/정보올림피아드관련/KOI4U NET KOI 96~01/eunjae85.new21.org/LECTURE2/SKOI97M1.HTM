@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>KOI 13회 중등부 1.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0" width="595">
+    <tr>
+        <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+            14회 중등부 1. 좋은 수열</b></font></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="pkoi97m1.htm"><img src="button1.gif"
+             width="72" height="22" border="0"></a></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi97m1.htm"><img src="button3.gif"
+             width="72" height="22" border="0"></a></td>
+    </tr>
+</table>
+<ul>
+    <p>&nbsp; 
+    <table border="0">
+            <tr>
+                <td width="550"><p style="line-height:150%;"><font size="2">&nbsp;&nbsp;N=7인 
+                경우를 생각해 보자. 가장 간단하게 생각할 수 있는 해법은 1111111부터 
+                3333333까지의 모든 수를 검사해서 좋은 수열을 찾는 것이다. 하지만 
+                이런 경우 프로그램이 너무 비효율적이다. N=80인 경우 정확히 3^80 
+                = 147808829414345923316083210206383297601가지의 수열들을 검사해야 
+                한다. 아무리 성능 좋은 컴퓨터라도 이 모든 경우를 계산할 수는 
+                없을 것이다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;일단 
+                원래 문제를 떠나서, 다른 문제를 하나 생각해 보도록 하자. 어떤 
+                한 수열이 있다고 할 때, 그 수열이 좋은 수열인지 나쁜 수열인지 
+                검사할 수 있는 함수를 작성할 수 있을까? 조금 까다로울 수 있지만 
+                원래 문제보다는 훨씬 쉬우므로 쉽게 만들 수 있을 것이다. 이 함수를 
+                가지고 원래 문제에 접근하면 쉽게 해법을 찾을 수 있다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;만약 
+                N=8이라고 할 때, 고정관념을 가지고 8자리 수를 가지고 검사하지 
+                말고 1자리 수를 가지고 검사를 시작해 보자. 일단 접근 전략을 
+                살펴보면,</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;a. 최초의 
+                수열은 1이다.<br> &nbsp;&nbsp;b. 현재 수열이 좋은 수열이 될 
+                때까지 1을 더한다.<br> &nbsp;&nbsp;c. 원하는 길이의 수열이 될 
+                때까지 맨 끝자리에 1을 덧붙이고 b를 반복한다.<br> &nbsp;<br> 
+                &nbsp;&nbsp;위의 전략을 통해 8자리의 좋은 수열을 만들어 보자.</font></p>
+                <p style="line-height:150%;"><font size="2">1 &lt;- a<br> 11 
+                &lt;- c<br> 12 &lt;- b<br> 121 &lt;- c<br> 1211 &lt;- c<br> 
+                1212 &lt;- b<br> 1213 &lt;- b<br> 12131 &lt;- c<br> 121311 &lt;- 
+                c<br> 121312 &lt;- b<br> 1213121 &lt;- c<br> 12131211 &lt;- 
+                c<br> 12131212 &lt;- b<br> 12131213 &lt;- b<br> 12131221 &lt;- 
+                b (끝자리에 4가 올 수 없으니까 그 앞자리가 2가 된다)<br> 12131222 
+                &lt;- b<br> 12131223 &lt;- b (끝자리에 4가 올 수 없으니까 그 
+                앞자리가 2가 된다)<br> 12131231 &lt;- b 답을 찾았음! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;이런 
+                식으로 하면 N=80인 경우에도 쉽고 빠르게 답을 찾을 수 있다. 위의 
+                접근 전략은 <br> 백트래킹을 이용한 풀이를 단순화시킨 것이다. 
+                실제로 백트래킹을 이용해 문제를 풀어도 위<br> 와 동일한 과정을 
+                거쳐 답을 차게 됨을 확인할 수 있을 것이다.</font></td>
+        </tr>
+    </table>
+    <p>&nbsp;</p>
+</ul>
+</body>
+
+</html></html>

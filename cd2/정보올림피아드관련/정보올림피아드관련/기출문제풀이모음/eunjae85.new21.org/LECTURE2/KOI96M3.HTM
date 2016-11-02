@@ -1,0 +1,225 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>이 문제를 푸는 방법으로는 여러 가지가 있겠지만, 여기서는 비교적 간단하고 버그 없는 플레인 스위핑</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p style="line-height:130%;">이 문제를 푸는 방법으로는 여러 가지가 있겠지만, 
+여기서는 비교적 간단하고 버그 없는 플레인 스위핑(plane sweeping... 철자 맞나? 
+-_-;)을 이용한 풀이를 살펴보도록 하겠습니다. 이 플레인 스위핑은 수많은 기하 
+문제에 사용할 수 있으니 꼭 알아두시는 것이 좋을 것입니다.</p>
+<p style="line-height:130%;">일단 사각형들을 입력 받으면, 모든 사각형들의 y좌표를 
+뽑아 냅니다. 그렇게 해서 얻은 y좌표를 이용해 사각형들을 쪼개 볼 수 있습니다(실제로 
+쪼개는 것은 아님)</p>
+<p style="line-height:130%;"><img src="koi96m31.gif" width="473" height="257"
+ border="0"> <font color="navy">그림 1</font></p>
+<p style="line-height:130%;">세 개의 사각형을 y좌표를 이용해 5개의 구간으로 
+나눴습니다. 이렇게 나눈 다음에 레이저(?)를 이용해서 왼쪽부터 사각형들을 훑어냅니다. 
+위의 그림에서는 빨간색 선분이 레이저입니다.</p>
+<p style="line-height:130%;">각각의 구간에는 배열을 이용해 숫자를 써 넣게 됩니다. 
+어떤 구간에 들어가는 숫자는 레이져가 가르키고 있는 부분까지 sweeping(쓸어내기?!)을 
+했을 때 그 구간에 겹친 사각형의 개수를 나타냅니다. 그 배열에는 다음과 같은 방법으로 
+값을 넣습니다.</p>
+<p style="line-height:130%;"><img src="koi96m32.gif" width="366" height="270"
+ border="0"> <font color="navy">그림 2</font></p>
+<p style="line-height:130%;">레이저가 오른쪽으로 훑으면서 한 사각형을 두 번 
+만나게 됩니다. 한번은 사각형의 왼쪽 변, 한번은 사각형의 오른쪽 변을 만나게 됩니다. 
+왼쪽 변을 만났을 때는 그 변에 포함되는 구간들에 1씩 더해주고 오른쪽 변을 만났을 
+때는 반대로 1을 빼줍니다.</p>
+<p style="line-height:130%;">그림 1에서 레이저의 위치와 배열에 씌여진 값에 주목해 
+주세요.</p>
+<p style="line-height:130%;">레이저는 사각형들의 모든 x좌표를 뽑아 정렬한 다음 
+왼쪽부터 훑어 나가게 됩니다. 만약 5개의 구간에 씌여진 값이,</p>
+<p style="line-height:130%;">0 1 2 0 1 이고 레이저가 x좌표로 10만큼 이동했다면 
+레이저가 이동한 구간의 넓이는</p>
+<p style="line-height:130%;">(2번 구간이 길이 + 3번 구간의 길이 + 5번 구간의 
+길이) * 10 이 됩니다.</p>
+<p style="line-height:130%;">배열에 2가 씌여져 있다는 것은 그 구간에 사각형이 
+두 번 겹친다는 말인데 어짜피 넓이를 계산할 때에는 한번 겹치는 것과 상관없기 
+때문에 위의 식에서는 한번만 더해줍니다.</p>
+<p style="line-height:130%;">이렇게 하여 레이저가 이동한 모든 구간의 넓이를 
+구하면 됩니다. 이것이 플레인 스위핑을 이용한 이 문제의 간단한 풀이었습니다. 
+플레인 스위핑은 이렇듯, 2차원의 문제를 1차원의 문제(구간)로 줄여줘서 문제를 
+한결 편하게 풀 수 있도록 해 줍니다.</p>
+<p style="line-height:130%;">사각형들은 전부 쪼갠 다음 더하는 무식한(?) 방법보다 
+훨씬 세련미 있죠.</p>
+<p style="line-height:130%;">아래는 저희 학교 선배이신 박준혁님이 수고해 주신 
+소스입니다.</p>
+<p style="line-height:130%;"><font face="굴림체"><b>program area;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>const<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;infile &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'input.txt';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outfile &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'output.txt';</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>var<br>
+&nbsp;&nbsp;&nbsp;n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;nn &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;yb, yt &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 1..100 ] of real;<br>
+&nbsp;&nbsp;&nbsp;x &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 1..200 ] of real;<br>
+&nbsp;&nbsp;&nbsp;y &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 1..200 ] of integer;<br>
+&nbsp;&nbsp;&nbsp;mode &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 1..200 ] of boolean;<br>
+&nbsp;&nbsp;&nbsp;laser &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 1..200 ] of integer;<br>
+&nbsp;&nbsp;&nbsp;lxy &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 1..200 ] of real;<br>
+&nbsp;&nbsp;&nbsp;sum &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;real;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>procedure input;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>var<br>
+&nbsp;&nbsp;&nbsp;inf &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text;<br>
+&nbsp;&nbsp;&nbsp;i &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;x1, y1, ww, hh &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;real;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assign( inf, infile );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset( inf );</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read( 
+inf, n );</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nn 
+:= n * 2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read( inf, x1, y1, 
+ww, hh );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x[ i * 2 - 1 ] := 
+x1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x[ i * 2 ] := x1 
++ ww;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y[ i * 2 - 1 ] := 
+i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y[ i * 2 ] := i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mode[ i * 2 - 1 
+] := true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mode[ i * 2 ] := 
+false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yb[ i ] := y1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yt[ i ] := y1 + 
+hh;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lxy[ i * 2 - 1 ] 
+:= y1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lxy[ i * 2 ] := 
+y1 + hh;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;close( 
+inf );<br>
+end;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>procedure swapr( var a, 
+b : real );</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>var<br>
+&nbsp;&nbsp;&nbsp;p &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;real;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p := a;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a := b;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b := p;<br>
+end;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>procedure swap( var a, b 
+: integer );</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>var<br>
+&nbsp;&nbsp;&nbsp;p &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p := a;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a := b;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b := p;<br>
+end;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>procedure swapm( var a, 
+b : boolean );</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>var<br>
+&nbsp;&nbsp;&nbsp;p &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p := a;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a := b;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b := p;<br>
+end;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>function fy( a : real ) 
+: integer;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>var<br>
+&nbsp;&nbsp;&nbsp;i &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to nn do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if a = lxy[ i ] then fy 
+:= i;<br>
+end;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>procedure solve;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>var<br>
+&nbsp;&nbsp;&nbsp;i, j &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;before &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;real;<br>
+&nbsp;&nbsp;&nbsp;count &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;real;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to nn do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j := i + 1 to nn do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+lxy[ i ] &gt; lxy[ j ] then swapr( lxy[ i ], lxy[ j ] );</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for 
+i := 1 to nn do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j := i + 1 to nn do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+( x[ i ] &gt; x[ j ] ) then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swapr( 
+x[ i ], x[ j ] );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap( 
+y[ i ], y[ j ] );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swapm( 
+mode[ i ], mode[ j ] );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;before 
+:= x[ 1 ];</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for 
+i := 1 to nn do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;laser[ i ] := 0;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum 
+:= 0;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for 
+i := 1 to nn do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to nn 
+do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+laser[ j ] &gt; 0 then count := count + lxy[ j + 1 ] - lxy[ j ];</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum 
+:= sum + count * ( x[ i ] - before );</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for 
+j := fy( yb[ y[ i ] ] ) to fy( yt[ y[ i ] ] ) - 1 do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+mode[ i ] then inc( laser[ j ] )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else 
+deC( laser[ j ] );</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;before 
+:= x[ i ];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+end;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>procedure output;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>var<br>
+&nbsp;&nbsp;&nbsp;ouf &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assign( ouf, outfile );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rewrite( ouf );</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln( 
+ouf, sum : 2 : 2 );</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;close( 
+ouf );<br>
+end;</b></font></p>
+<p style="line-height:130%;"><font face="굴림체"><b>begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;solve;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output;<br>
+end.</b></font></p>
+</body>
+
+</html></html>

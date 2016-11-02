@@ -1,0 +1,41 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>다각형 내부 외부</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font color="#0066CC" size="4"><b>다각형 내부 외부</b></font></p>
+<p>&nbsp;&nbsp;<font size="2">어떤 다각형이 있고, 어떤 점이 주어졌을 때, 이 점이 다각형의 내부에 
+있는지 외부에 있는지를 검사해야 한다고 하자.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">1. 다각형이 볼록 다각형이고, 이 다각형을 이루는 점들이 p0,p1,...,pn이며, 
+이들이 반시계 방향으로 정렬되어 입력될 때</font></p>
+<p><font size="2">&nbsp;&nbsp;이때는 다각형을 이루는 점을 가지고, 순차적으로 선분을 구성할 
+수 있고, 어떤 점이 다각형의 내부에 있다면, 이 선분들의 왼쪽에 있어야 한다는 
+것을 의미한다. 이 것은 left함수를 사용하여 구현하면, 항상 left함수의 값이 0이상인 
+값이 나와야 한다는 것을 의미한다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">2. 다각형이 볼록다각형이 아니고, 임의의 순서로 선분이 입력될 때</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;볼록 다각형이 아니면서, 그 다각형을 구성하는 선분이 
+임의의 순서로 입력될 때에는 다음과 같은 알고리즘으로 선분의 내부 외부를 검사할 
+수 있다.</font></p>
+<p><font size="2">int inside(Point p, Point t)</font></p>
+<p><font size="2">{ &nbsp;&nbsp;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;int count =0, j=0;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;Point lp[2];</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;Point lt[2];</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;lt[0][0]=t[0]; lt[0][1]=t[1]; lt[1][0] = 32728;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;for (i=0;i&lt;N;i++)</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;{</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lp[0][0]=p[i][0]; lp[0][1]=p[i][1];</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lp[1][0]=p[i+1][0]; lp[1][1]=p[i+1][1];</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (intersect(lp,lt)) count++;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;}</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;return (count % 2 == 0 ) ? 0 : 1;</font></p>
+<p><font size="2">}</font></p>
+</body>
+
+</html>

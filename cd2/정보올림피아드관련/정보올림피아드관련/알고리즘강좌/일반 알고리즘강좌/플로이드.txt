@@ -1,0 +1,32 @@
+
+                                Floyd Algorithm
+
+* Floyd Algorithm
+
+for(i=1; i<=N; i++){
+	for(j=1; j<=N; j++){
+		Array[i][j] = 9999;
+	}
+}
+
+for(i=1; i<=N; i++){
+	for(j=1; j<=N; j++){
+		for(k=1; k<=N; k++){
+                	if(Array[i][k] > Array[i][j] + Array[j][k]){
+				Array[i][k] = Array[i][j] + Array[i][k];
+			}
+		}
+	}
+}
+
+
+* Backtracking
+
+void Backtracking(int i, int j)
+{
+	if(i와 j가 바로연결) 출력;
+        else {
+		Backtracking(i,k);
+		Backtracking(k,j);
+	}
+}

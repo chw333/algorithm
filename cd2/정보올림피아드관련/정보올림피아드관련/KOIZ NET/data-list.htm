@@ -1,0 +1,228 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>동적 메모리 (Dynamic Memory)</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font size="5" color="#0066CC"><b>동적 메모리 (Dynamic Memory) 
+와 링크드 리스트 (Linked List)</b></font></p>
+<p>&nbsp;</p>
+<p><font size="2"><b>1. 정적 메모리의 단점</b></font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;언어에서 지역 변수는 스택에 저장되므로 큰 크기의 배열을 
+사용 할 수 없다. 또한 배열을 생성할 때 배열의 크기를 상수로 정해야 한다. 즉 
+실행시 구해진 개수로 배열을 생성할 수 없다. 이런 문제를 해결 할 수 있는 것이 
+동적 메모리이다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2"><b>2. 동적 메모리</b></font></p>
+<p><font size="2">&nbsp;&nbsp;동적 메모리는 힙이라는 곳에 저장되므로 비교적 큰 배열을 생성할 
+수 있고, 동적으로 배열의 크기를 지정할 수 있는 장점이 있다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">(1) C 언어 : &nbsp;malloc / free</font></p>
+<p><font size="2">&nbsp;&nbsp;어떤 동적 메모리를 지원하기 위해 C언어에서는 &nbsp;malloc() 함수를 
+지원한다. 이 함수를 사용하기 위해서는 stdio.h를 인클루드해야 한다. 이 함수의 
+파라미터는 할당한 메모리의 크기이다. 메모리의 단위는 byte으므로 자신이 사용할 
+데이터형에 맞게 지정해주어야 한다. 이 함수의 리턴형은 void 포인터이므로 자신이 
+사용할 데이터 형으로 캐스팅을 해야 된다. 다음은 정수 10개를 저장 하기 위한 배열을 
+동적으로 할당하는 예이다.</font></p>
+<p><font size="2">#include &lt;stdio.h&gt;</font></p>
+<p><font size="2">#include &lt;stdlib.h&gt;</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">void main() {</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;int *p;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;p = (int *) malloc(10*sizeof(int));</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;if (p == NULL)</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;Error : Out 
+of Memory\n&quot;);</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;for (i=0; i&lt; 10;i i++)</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;{</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p[i]=i;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;}</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;free(p);</font></p>
+<p><font size="2">}</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;&nbsp;위의 예에서 메모리 할당이 실패하면 malloc() 함수는 NULL 포인터를 
+리턴 하므로 항상 리턴 값을 체크하여 성공 여부를 파악해야 한다. 할당된 메모리의 
+사용이 끝나면 메모리를 제거해 주어야 한다. 메모리 제거를 위해서는 free(p)를 
+사용한다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;&nbsp;다른 함수로 calloc()이 있는데, 이 함수는 malloc()과 같이 메모리를 
+할당한다. 다른 점은 할당한 메모리를 0으로 초기화하고, 파라미터가 2개이다. malloc() 
+함수의 파라미터는 각 원소의 크기 * 개수인데, 반해 calloc()에서는 각각을 따로 
+지정한다.</font></p>
+<p><font size="2">#include &lt;stdolib.h&gt;</font></p>
+<p><font size="2">#include &lt;stdio.h&gt;</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">void main()</font></p>
+<p><font size="2">{</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;int *p;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;p = (int *) calloc(10, sizeof(int));</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;if(p ==NULL)</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;Error : Out 
+of Memory\n&quot;);</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;....</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;free(p);</font></p>
+<p><font size="2">}</font></p>
+<p><font size="2">(2) C++ 언어 : new / delete</font></p>
+<p><font size="2">&nbsp;&nbsp;C++언어세는 malloc() 함수보다 더 사용하기 편한 new 연산자를 지원한다. 
+이 연산자는 클래스 생성과 비슷하다. 생성하고자 하는 데이터형의 배열 선언과 비슷하다. 
+여기서 지정하는 크기는 byte가 아니라 데이터형의 개수이다. 다음은 정수 10개를 
+저장하기 위한 배열을 동적을 할당하는 예이다.</font></p>
+<p><font size="2">void &nbsp;main() </font></p>
+<p><font size="2">{</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;int *p;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;p = new int[10];</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;if (p==NULL)</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;Error : Out 
+of Memory\n&quot;);</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;delete p;</font></p>
+<p><font size="2">}</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;&nbsp;new 연산자도 메모리 할당이 실패하면 NULL 포인터를 리턴하므로 
+항상 체크해야 한다. 메모리의 제거를 위한 연산자로 delete가 있다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2"><b>3. 배열의 단점</b></font></p>
+<p><font size="2">&nbsp;&nbsp;많은 자료를 편리하게 관리 할 수 있도록 C언어에서 배열을 지원한다. 
+그러나 배열에 특정 순서로 자료를 저장 할 때 삽입과 삭제를 효율적으로 지원하지 
+못한다. 예로 정렬된 배열이 아래와 같을 때 새로운 수 20을 추가 하려고 하면 24, 
+34, 49를 오른쪽으로 이동해야 한다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p align="center"><font size="2">1 3 4 6 13 19 24 34 49</font></p>
+<p align="center"><font size="2">1 3 4 6 13 19 20 24 34&nbsp;49</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">마찬가지로 위의 배열에서 6을 삭제할려고 하면 13, 19, 20, 24, 34를 왼쪽으로 
+이동해야 된다.</font></p>
+<p align="center"><font size="2">1 3 4 13 19 20 24 34&nbsp;49</font></p>
+<p><font size="2">윈소의 삽입과 삭제를 효율적으로 지원하기 위한 것이 링크드 리스트(Linked List)이다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2"><b>4. 노드(Node)</b></font></p>
+<p><font size="2">&nbsp;&nbsp;링크드 리스트에서 하나의 원소를 저장하는 공간으로 노드(Node)라 
+한다. 이 노드에서는 원소뿐만 아니라 링크드 리스트를 유지하는 여분의 정보가 필요하다. 
+아래 그림에서 value는 원소의 값을 저장하는 것이고, next는 다음 노드를 가리키는 
+포인터이다.</font></p>
+<table align="center" border="1" width="100" cellspacing="0" bordercolordark="white" bordercolorlight="black">
+    <tr>
+        <td width="37" height="27">
+            <p>value</p>
+        </td>
+        <td width="35" height="27">
+            <p>next</p>
+        </td>
+    </tr>
+</table>
+<p><font size="2">이런 구조를 구현하기 위해서는 C의 구조체나 C++의 클래스를 사용하여야 한다.</font></p>
+<p><font size="2">struct Node</font></p>
+<p><font size="2">{</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;int data // 데이터</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;struct Node* next; //다음 노드</font></p>
+<p><font size="2">}</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2"><b>5. 링크드 리스트 (Linked List)</b></font></p>
+<p><font size="2">앞에서 사용하였던 배열을 링크드 리스트로 구현하면 다음과 같다.</font></p>
+<p align="center"><font size="2">&nbsp;<img src="images/list1.jpg" width="483" height="72" border="0"></font></p>
+<p><font size="2">시작 노드를 가리키며 head가 있고 그 head를 따라 가면 시작 노드가 나온다. 
+시작 노드의 value는 1이고 다음 노드를 가리키는 next를 따라 가면 2번째 노드가 
+나온다. 2번째 노드의 value는 3이고 다음 노드를 가리키는 next를 따라가면 3번째 
+노드가 나온다. 3번째의 노드의 value는 4이고 다음 노드를 가리키는 next를 따라가면 
+4번째 노드가 나온다. 4번째 노드의 value는 6이고 다음 노드를 가리키는 next를 
+따라가면 5번 째 노드가 나온다. value는 13이고 다음 노드를 가리키는 노드 next를 
+따라가면 6번째 노드가 나온다. &nbsp;6번째 노드의 value는 19이고 다음 노드를 
+가리키는 next가 NULL이므로 더 이상 노드가 없다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;struct Node* head; // head는 node를 가리키는 포인터 변수이다.</font></p>
+<p><font size="2">&nbsp;head = NULL; // 링크드 리스트가 비어 있다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2"><b>6. 노드 삽입</b></font></p>
+<p><font size="2">&nbsp;&nbsp;비어 있는 링크드 리스트에 새로운 원소를 삽입하려면 새 노드를 
+생성하고 head에 연결 한다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">if (head == NULL)</font></p>
+<p><font size="2">{</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;head = (struct Node *) malloc(sizeof(struct Node));</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;head-&gt;value = value;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;head-&gt;next = NULL;<br>}</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">비어있지 않은 링크드 리스트에 새로운 원소를 삽입할 경우에는 새로운 원소가 
+삽입될 위치를 찾아야 한다. 새로운 원소가 삽입될 위치는 노드를 순회하면 값이 
+입력보다 큰노드를 찾는 것이다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">struct Node* node = head;</font></p>
+<p><font size="2">struct Node* prev&nbsp;= head;</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">while (node!= NULL)</font></p>
+<p><font size="2">{</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;if (node-&gt;value &gt; value)</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;prev= node;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;node = node-&gt;next;<br>}</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">위치를 찾았으면 새 노드를 삽입한다. 먼저 새 노드 temp를 생성하고 그것의 value를 
+설정한다. 다음은 next들을 수정해야 한다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">(1) 다음의 그림처럼 삽입할 위치가 노드의 중간일 때 앞 노드를 
+prev, 뒤 노드를 node라 하자.</font></p>
+<p align="center"><font size="2"><img src="images/list2.jpg" width="483" height="72" border="0"></font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">이때 next의 갱신은 다음의 그림처럼 되어야 한다.</font></p>
+<p align="center"><font size="2"><img src="images/list3.jpg" width="483" height="72" border="0"></font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">(2) 다음 그림처럼 링크드 리스트의 마지막에 추가될 때는 prev의 
+next를 수정해야 한다.</font></p>
+<p align="center"><font size="2"><img src="images/list4.jpg" width="483" height="72" border="0"></font></p>
+<p align="center"><font size="2"><img src="images/list5.jpg" width="483" height="72" border="0"></font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">(3) 다음의 그림처럼 링크드 리스트의 시작에 추가된다면 head의 
+값을 갱신해야 한다.</font></p>
+<p align="center"><font size="2"><img src="images/list6.jpg" width="483" height="72" border="0"></font></p>
+<p align="center"><font size="2"><img src="images/list7.jpg" width="483" height="72" border="0"></font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">최종적으로 삽입하는 코드는 다음과 같다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">temp = (struct node *) malloc(sizeof(struct node));</font></p>
+<p><font size="2">temp -&gt; value = value;</font></p>
+<p><font size="2">temp -&gt; next = node;</font></p>
+<p><font size="2">if (prev == node) head = temp;</font></p>
+<p><font size="2">else prev-&gt;next = temp;</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2"><b>7.&nbsp;노드 삭제</b></font></p>
+<p><font size="2">링크드 리스트에 원소를 삭제하려면 원소의 위치를 찾아야 한다. 
+&nbsp;노드를 순회하면서 입력한 값을 갖는 노드를 찾는다.</font></p>
+<p><font size="2">struct node * node = head;</font></p>
+<p><font size="2">struct node * prev = head;</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">while (node!= NULL)</font></p>
+<p><font size="2">{</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;if ( node-&gt;value == value)</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;prev = node;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;node = node -&gt; next;</font></p>
+<p><font size="2">}</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">(1) 다음의 그림처럼 삭제될 원소가 링크드 리스트의 중간일 때는 
+(원소의 값이 3) 앞 노드를 prev, 뒤 노드를 node라 하면 prev의 next를 node-&gt;next로 
+설정하여야 한다.</font></p>
+<p align="center"><font size="2"><img src="images/list8.jpg" width="483" height="72" border="0"></font></p>
+<p><font size="2">(2) 다음의 그림처럼 삭제될 원소가 링크드 리스트의 마지막이면 
+prev의 next를 NULL로 설정한다.</font></p>
+<p align="center"><font size="2"><img src="images/list9.jpg" width="483" height="72" border="0"></font></p>
+<p><font size="2">(3) 다음의 그림처럼 삭제될 원소가 링크드 리스트의 시작일 때는 
+head를 수정하여야 한다.</font></p>
+<p align="center"><font size="2"><img src="images/list10.jpg" width="483" height="72" border="0"></font></p>
+<p><font size="2">최종적으로 삭제하는 코드는 다음과 같다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">if (prev == node) head= head-&gt;next;</font></p>
+<p><font size="2">else prev-&gt;next=node-&gt;next;</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2"><b>8. 링크드 리스트의 확장</b></font></p>
+<p><font size="2">(1) 이중 연결 리스트(double linked list)</font></p>
+<p><font size="2">노드에 앞의 노드를 가리키는 prev를 저장한다. head와 마찬가지로 
+tail이라는 마지막 노드를 가리키는 포인터 변수를 둔다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">(2) 원형 연결 리스트(ciccular linked list)</font></p>
+<p><font size="2">마지막 노드에 시작 노드를 연결한다.</font></p>
+</body>
+
+</html>

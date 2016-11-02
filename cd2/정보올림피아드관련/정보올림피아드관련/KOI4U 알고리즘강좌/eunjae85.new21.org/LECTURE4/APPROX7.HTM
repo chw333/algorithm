@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>SA</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0" width="595">
+    <tr>
+        <td width="589" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;휴리스틱을 
+            알려주마 (7) - 시뮬레이티드 어닐링 2</b></font></td>
+    </tr>
+</table>
+<ul>
+    <p>&nbsp; 
+    <table border="0">
+            <tr>
+                <td width="550"><p align="right" style="line-height:150%;"><font
+                 size="2">글쓴이 - 부운영자 이모씨<br>
+                운영자가 귀찮아서 부운영자 시키다</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;안녕하세요?</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;이번에는 
+                SA를 실제로 문제에서 어떻게 적용하여 사용하는지에 대해서 설명하겠습니다. 
+                저번 회에서는 너무 원론적인 이야기만 하며 시시했을지도 모르지만, 
+                이번 회에서는 그리 만만치 만은 않을 겁니다. SA에는 여러 가지 
+                변형된 형태들이 여러 있으나 그런 것 다 젖혀두고서 가장 일반적으로 
+                쓰는 형태를 설명해 드리겠습니다. 우선 SA 알고리즘의 기본 형태는 
+                다음과 같습니다.</font></p>
+                <ul>
+                    <p style="line-height:150%;"><font size="2">begin<br> &nbsp;&nbsp;Initialize(X, 
+                    L);<br> &nbsp;&nbsp;repeat<br> &nbsp;&nbsp;&nbsp;&nbsp;T 
+                    := 1.0;<br> &nbsp;&nbsp;&nbsp;&nbsp;while T &gt; 0.0001 
+                    do begin<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i:= 
+                    1 to L do begin<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y 
+                    := Perturb(X);<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+                    exp(&nbsp;(C(X) - C(Y)) / kT&nbsp;&gt; &nbsp;random(0, 1) 
+                    then X := Y;<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br> 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update(T);<br> &nbsp;&nbsp;&nbsp;&nbsp;end;<br> 
+                    &nbsp;&nbsp;until 종료조건;<br> end.</font></p>
+                </ul>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;이런 
+                식입니다. 약간 복잡해 보이나요? 처음부터 차근차근 설명해 드리겠습니다. 
+                우선 변수부터 설명해 드리겠습니다.</font></p>
+                <p style="line-height:150%;"><font size="2">· X - 초기 해를 
+                의미합니다. 그리고 처리하면서 새로운 값들을 여기에 덮어쓰게 
+                되죠.<br> · Y - 변형된 해를 의미합니다. Y 값이 X 보다 좋거나, 
+                일정한 확률로 이 변형된 해를<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;원래 
+                해인 X 에 덮어쓰게 되죠.<br> · T - SA에서 가장 중요하다고 할 
+                수 있는 온도입니다. 이 온도는 실수로 선언되야 하죠.<br> · L 
+                - for 문에서 루프를 도는 횟수를 말합니다. 이 루프는 그냥 사용하지 
+                않고 온도를<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;천천히 높여도 
+                상관 없습니다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;&nbsp;자, 
+                이 정도면 변수는 뭔지 대강 아시겠죠? 이제 함수 및 기타 설명입니다.</font></p>
+                <p style="line-height:150%;"><font size="2">· Initialize(X, 
+                L) - * 단어 그대로 초기화를 시켜주는 함수입니다.<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 
+                초기해를 생성하여 X 에 집어 넣습니다. 그냥 랜덤으로 초기해를<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;생성하는 
+                것 보다는 그리디를 쓰는 것이 좋겠죠.<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 
+                루프 횟수 L 의 값을 지정해 주는데 이것이 SA 성능에 영향을 미치는<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;요인 
+                중 하나죠. 여러 번 돌려서 경험적으로 수치를 얻을 수도 있지만,<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;데이터 
+                크기인 N을 포함한 식으로 하는 것도 좋습니다.<br>
+                <br> · Perturb(X) - 초기해 X를 변형 시키는 함수입니다. 변형된 
+                해는 Y 에 저장이 되죠.<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;주로 
+                랜덤을 이용하여 해를 변형시킵니다. local search에서도 같은게<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;있었죠.<br>
+                <br> · C(X), C(Y) - 해 X 와 Y 의 값을 의미합니다. <br>
+                <br> · random(0, 1) - 0 과 1 사이의 난수를 구합니다.<br>
+                <br> · Update(T) - 온도 T 의 값을 일정하게 감소 시켜줍니다. 
+                정올에서는 <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;보통 
+                T = T * z(0.95 &lt;= z &lt;= 0.999) 이렇게 합니다. 온도를 감소 
+                시킬 때는<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;여러 
+                번 돌려 보면서 감소 시킬 때 곱해주는 상수 값을 적절히 손으로 
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;고쳐 
+                주어야 합니다.<br>
+                <br> · 종료 조건 - 종료 조건은 매우 다양합니다. 값이 좋아지는 
+                그 차이가 거의 없다던가<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;등등 
+                여러 가지로 하지만, KOI에서는 주로 제한 시간을 종료조건으로<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;하는 
+                경우가 많습니다. 그렇기에 보통 종료조건을 저기가 아닌 for 안에 
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;써줍니다. 
+                제한 시간 넘으면 종료시키도록...</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;이제 
+                알 만한 것은 다 알았으니 어떻게 돌아가는지, 어떻게 일정한 확률도 
+                허락하는지에 대해 알아봅시다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;SA에서 
+                일정한 확률도 허락을 할 때 가장 중요한 것은 온도 T입니다. 1편에서 
+                설명 드린 페트병 기억나시죠? 처음에는 세게 흔들다가 점점 살살 
+                흔들게 됩니다. 위에서 온도 T를 감소시킨다고 했죠? 자.. 여기서 
+                짐작할 수 있는게 한가지 있죠?</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;* 맨 
+                처음 : 세게 흔든다, 온도 T 는 높다.<br> &nbsp;&nbsp;* 나중 : 
+                살살 흔든다, 온도 T 는 낮다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;자, 
+                이것을 바탕으로 봅시다. 다른 부분은 제가 함수 및 변수 설명을 
+                적었으니 이해가 가실 테고, 가장 중요하면서도 어려운 부분, 딱 
+                한 문장만 가르쳐 드리겠습니다.</font></p>
+                <p align="center" style="line-height:150%;"><font size="2">&nbsp;</font><font
+                 size="2" color="blue">if exp(&nbsp;(C(X) - C(Y)) / kT ) &nbsp;&gt; 
+                &nbsp;random(0, 1) then X := Y;</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;저 위에서 
+                exp( (C(X) - C(Y)) / kT) 부분이 바로 새로운 해로 갱신을 할 것인가 
+                하지 않을 것인가를 나타내는 확률입니다(아래에서도 설명을 하겠지만, 
+                C(X) - C(Y)는 문제에 따라서 C(Y)&nbsp;- C(X)로 써야 할 수도 
+                있습니다) 수식으로 한번 써보죠.</font></p>
+                <p align="center" style="line-height:150%;"><font size="2"><img src="approx7-1.gif"
+                 width="144" height="144" border="0"></font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;e는 
+                약 2.718의 값을 가지고 있는 상수로, 고교 수학 II에서 배우게 
+                됩니다. exp(x)는 e의 x제곱을 돌려주는 함수이지요(C, 파스칼, 
+                베이직 다 됩니다). k는 볼쯔만 상수라고 불리는 것인데, SA에서는 
+                여러분이 직접 정해 주셔야 합니다. T는 온도이구요. dE는 에너지의 
+                변화량, 즉 위의 식에서 C(X) - C(Y)를 나타냅니다. (물리에 뿌리를 
+                두고 있어서 에너지란 표현을 많이 쓰죠)</font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;고등학생이시라면 
+                아시겠지만, e는 1보다 큰 값이므로 위의 식의 그래프는 다음과 
+                같은 모양입니다.</font></p>
+                <p align="center" style="line-height:150%;"><font size="2"><img src="approx7-2.gif"
+                 width="425" height="321" border="0"></font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;위의 
+                그래프에서 보듯, (C(X) - C(Y)) / (kT)가 0보다 크면 확률은 항상 
+                1보다 큽니다. 이 때에는 항상 random(0, 1) 보다 값이 크게 되므로 
+                해가 갱신됩니다. 0보다 작다면(위에서 빗금친 경우) 확률이 0과 
+                1사이에 있게 되고 따라서 해가 갱신되는 것은 확률에 따라 달라지겠죠.</font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;식을 
+                자세히 뜯어 봅시다. T는 온도이고 항상 0보다 큽니다. k역시 항상 
+                0보다 큰 상수이구요. 그렇다면 dE/kt 가 0보다 크다 작다를 결정하는 
+                것은 바로 dE입니다. 그런데 해가 좋아지면 항상 갱신을 하는 것이 
+                SA이므로, 문제에 따라서</font></p>
+                <p align="center" style="line-height:150%;"><font size="2">최소해를 
+                구하는 경우 : C(X) - C(Y)<br>
+                최대해를 구하는 경우 : C(Y) - C(X)</font></p>
+                <p align="left" style="line-height:150%;"><font size="2">의 
+                순서로 사용하셔야 합니다. 이것은 굉장히 중요한 것이니 반드시 
+                알고 넘어 가셔야 합니다.</font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;dE가 
+                0보다 큰 경우는 항상 해를 새롭게 갱신을 하므로 별로 어렵지 않습니다. 
+                그럼 dE가 0보다 작은 경우를 보죠. 온도가 높다는 것은 분모의 
+                값이 커진다는 말입니다. 분자가 음수인데 분모가 커진다는 것은 
+                dE/kT가 0에 가까워진다는 뜻입니다. 이럴 경우 확률이 커지겠죠. 
+                확률이 커진다는 말은 나쁜 해로의 수락 확률이 커진다는 말입니다. 
+                &nbsp;즉 온도가 높으면 세게 흔드는 것이고, 온도가 낮으면 약하게 
+                흔드는 것이죠. 온도가 조금씩 줄어들기 때문에, 나쁜 해로의 수락 
+                확률도 조금씩 줄어듭니다.</font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;상수 
+                k도 마찬가지로 크면 클수록 나쁜 해로의 수락 확률이 커집니다. 
+                문제나 입력 데이터마다 dE의 크기가 다르기 때문에, k값을 적절히 
+                정해줘야 SA가 제성능을 발휘할 수 있습니다.</font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;온도 
+                감소에 대해서도 이야기 드리죠. 여러 가지 방법이 있지만, 보통 
+                T := z * T' 형태의 식이 많이 쓰입니다. z는 역시 상수로, 0.95~0.999 
+                등 적절한 범위내에서 정해주는 것이 좋습니다. 너무 작으면 어닐링이 
+                너무 빨리 끝나 해가 좋질 못하고, 너무 크면 들인 시간에 비해 
+                그 효율이 별로 좋지 못하죠.</font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;온도 
+                T가 계속 감소되다가 일정 수준 이하(위에서는 0.0001로 썼습니다만)가 
+                되면, 나쁜 해로의 수락 확률이 거의 없어지기 때문에, 어닐링을 
+                종료하게 됩니다. </font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;너무 
+                길어지는 것 같아서 장황한 설명은 여기서 끝내기로 하지요. 마지막으로 
+                꼭 짚고 넘어가야 할 것 두 가지만 알려드리겠습니다.</font></p>
+                <p align="left" style="line-height:150%;"><font size="2">&nbsp;&nbsp;먼저 
+                시뮬레이티드 어닐링은 언제 사용할 수 있으며, 언제 사용하는 것이 
+                좋을까요? 일반적으로, 다음과 같은 조건들을 만족하면 좋습니다.</font></p>
+                <ul>
+                    <p align="left" style="line-height:150%;"><font size="2">1) 
+                    좋은 알고리즘이 생각나지 않을 때.<br>
+                    2) 초기해의 생성이 쉬울 때.<br>
+                    3) 해를 랜덤하게 변형시키는 것이 가능할 때<br>
+                    4) 해의 값(에너지)를 쉽게 알 수 있을 때<br>
+                    5) 해의 값을 구할 때, 변형시킬 때 등에 걸리는 시간복잡도가 
+                    낮을 때</font></p>
+                </ul>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;그럼 
+                이제, 시뮬 어닐링을 사용하면서 주의할 점. </font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;가장 
+                큰 문제는 조절해야 할 요소들이 너무 많다는 것입니다. 온도 변화량, 
+                볼쯔만 상수, 내부 루프 반복 회수, 해의 변형 방법 등이죠. 또, 
+                이런 것들은 보통 문제마다 다른 양상을 보여주기 때문에, 상수 
+                조절에 많은 시간을 할애하셔야 할 것입니다. 그렇지 않으면 local 
+                search보다 못한 성능을 보여줄 수도 있죠 :)</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;또 문제점은 
+                여러 가지가 있을 수 있겠으나, 너무 이 방법에 맛을 들인 결과 
+                더 좋은 해법 연구(?)에 게을리 하는 일이 있어서는 안되겠습니다. 
+                이 방법은, 제발 실전에서만 쓰세요 ;</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;그럼 
+                여기서 시뮬레이티드 어닐링의 강좌를 마치도록 하겠습니다.</font></td>
+        </tr>
+    </table>
+
+    </ul><p><font size="2">&nbsp;</font></p>
+</body>
+
+</html></html>
