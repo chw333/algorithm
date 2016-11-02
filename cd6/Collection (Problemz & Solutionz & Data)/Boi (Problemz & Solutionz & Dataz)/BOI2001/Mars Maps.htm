@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0047)http://www.ii.uni.wroc.pl/boi/task/marzad.phtml -->
+<HTML><HEAD><TITLE>Mars Maps</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type><LINK 
+href="Mars Maps.files/oi.css" rel=stylesheet>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY background="Mars Maps.files/tlo.jpg" bgColor=#ff7f00>
+<TABLE bgColor=#ff7f00 border=0 cellPadding=0 cellSpacing=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD><IMG border=0 src="Mars Maps.files/rlg.gif" width=12></TD>
+    <TD><IMG border=0 height=12 src="Mars Maps.files/dl.gif" width="100%"></TD>
+    <TD><IMG border=0 height=12 src="Mars Maps.files/dl.gif" width="100%"></TD>
+    <TD><IMG border=0 src="Mars Maps.files/rpg.gif" width=12></TD></TR>
+  <TR>
+    <TD><IMG border=0 height=80 src="Mars Maps.files/dpion.gif" width=12></TD>
+    <TD id=Htop width="100%">Mars Maps</TD>
+    <TD><IMG align=middle src="Mars Maps.files/LOGO.gif"></TD>
+    <TD><IMG border=0 height=80 src="Mars Maps.files/dpion.gif" 
+width=12></TD></TR>
+  <TR>
+    <TD><IMG border=0 src="Mars Maps.files/rld.gif" width=12></TD>
+    <TD><IMG border=0 height=12 src="Mars Maps.files/dl.gif" width="100%"></TD>
+    <TD><IMG border=0 height=12 src="Mars Maps.files/dl.gif" width="100%"></TD>
+    <TD><IMG border=0 src="Mars Maps.files/rpd.gif" 
+width=12></TD></TR></TBODY></TABLE>
+<P>In the year 2051, several Mars expeditions have explored different areas of 
+the red planet and produced maps of these areas. Now, the BaSA (Baltic Space 
+Agency) has an ambitious plan: they would like to produce a map of the whole 
+planet. In order to calculate the necessary effort, they need to know the total 
+size of the area for which maps already exist. It is your task to write a 
+program that calculates this area. 
+<H2>Task</H2>
+<P>Write a program that: 
+<UL>
+  <LI>reads the description of map shapes from the input file <TT>mar.in</TT>, 
+  <LI>computes the total area covered by the maps, 
+  <LI>writes the result to the output file <TT>mar.out</TT>. </LI></UL>
+<P>
+<H2></H2>Input
+<H2></H2>
+<P>The input file <TT>mar.in</TT> starts with a line containing a single integer 
+<I>N</I> (<I>1&lt;=N&lt;=10&nbsp;000</I>), the number of available maps. Each of 
+the following <I>N</I> lines describes a map. Each of these lines contains four 
+integers <I>x<SUB>1</SUB></I>, <I>y<SUB>1</SUB></I>, <I>x<SUB>2</SUB></I> and 
+<I>y<SUB>2</SUB></I> 
+(<I>0&lt;=x<SUB>1</SUB>&lt;x<SUB>2</SUB>&lt;=30&nbsp;000</I>, 
+<I>0&lt;=y<SUB>1</SUB>&lt;y<SUB>2</SUB>&lt;=30&nbsp;000</I>). The values 
+<I>(x<SUB>1</SUB>,y<SUB>1</SUB>)</I> and <I>(x<SUB>2</SUB>,y<SUB>2</SUB>)</I> 
+are the coordinates of, respectively, the bottom-left and the top-right corner 
+of the mapped area. Each map has rectangular shape, and its sides are parallel 
+to the <I>x</I>- and <I>y</I>-axis of the coordinate system. 
+<H2>Output</H2>
+<P>The output file <TT>mar.out</TT> should contain one integer <I>A</I>, the 
+total explored area (i.e. the area of the union of all rectangles). <PRE>2
+10 10 20 20
+15 15 25 30</PRE>
+<H2>Example</H2>
+<P>
+<P>Input file <TT>mar.in</TT>: <PRE>2
+10 10 20 20
+15 15 25 30</PRE><IMG src="Mars Maps.files/mar0.gif"> 
+<P>Correct output file <TT>mar.out</TT> <PRE>225
+</PRE><A href="javascript:window.history.go(-1)">Back</A> </BODY></HTML>

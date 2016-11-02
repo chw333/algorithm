@@ -1,0 +1,5 @@
+bio.1-16.dat: 125 random cases each
+bio.17-20.dat: let p and d vary, hold e and i at 0 (about 150 cases each)
+bio.21-24.dat: hold p and i at 0 (about 150 cases each)
+bio.25-28.dat: hold p and e at 0 (about 150 cases each)
+bio.29.dat: sample input/output

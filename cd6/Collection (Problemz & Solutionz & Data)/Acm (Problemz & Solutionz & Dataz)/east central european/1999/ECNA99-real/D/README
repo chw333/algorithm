@@ -1,0 +1,8 @@
+1: sample input
+2-5: just horizontal walls of various separation
+6-10: just vertical walls of various separation
+11-15: grids of various separation
+16-24: random with various number of walls
+25-30: random with 30 walls
+31: a case with 0 walls
+

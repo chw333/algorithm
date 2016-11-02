@@ -1,0 +1,34 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: item - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Owner\LOCALS~1\Temp\RSP5.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/item.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\work\컴퓨터관련\봄캠프\2월25일\source\item.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Owner\LOCALS~1\Temp\RSP5.tmp" 
+Creating temporary file "C:\DOCUME~1\Owner\LOCALS~1\Temp\RSP6.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/item.pdb" /debug /machine:I386 /out:"Debug/item.exe" /pdbtype:sept 
+".\Debug\item.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\Owner\LOCALS~1\Temp\RSP6.tmp"
+<h3>Output Window</h3>
+Compiling...
+item.cpp
+d:\work\컴퓨터관련\봄캠프\2월25일\source\item.cpp(19) : warning C4101: 'e' : unreferenced local variable
+d:\work\컴퓨터관련\봄캠프\2월25일\source\item.cpp(98) : warning C4244: '*=' : conversion from 'const double' to 'int', possible loss of data
+Linking...
+
+
+
+<h3>Results</h3>
+item.exe - 0 error(s), 2 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0041)http://www.buet.ac.bd/acm/problems/a.html -->
+<HTML><HEAD><TITLE>Problem A</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 5.50.4134.100" name=GENERATOR></HEAD>
+<BODY><B><FONT size=5>
+<P align=center>Problem A</P></FONT><FONT size=2>
+<P align=center></P></FONT><FONT size=6>
+<P align=center>A Benevolent Josephus</P></FONT><FONT size=2>
+<P align=center></P></FONT>
+<P align=center>Input: </B>a.in</P><B>
+<P align=center>Output: </B>standard output</P>
+<P align=justify></P>
+<P align=justify>You must have heard of the Josephus problem in connection with 
+link lists. It dealt with finding the only survivor among <I>n</I> persons. Here 
+you have a game with a rather happy outcome. Suppose <I>n</I> players stand in a 
+circle. Counting from player number 1 every alternate player is temporarily 
+removed (for example, at first 2 is removed) to finally end up with the single 
+survivor. After the survivor has been determined each player with number higher 
+than the survivor is paid Tk. 1 and permanently removed from the circle. The 
+same operation is repeated with the remaining players, and players with number 
+higher than the survivor are paid Tk. 1 each and removed from the circle again. 
+Once such an operation fails to decrease the number of players in the circle, 
+each of them is paid Tk. 2 and the game ends. Your problem is to determine total 
+amount of money Josephus will have to pay to all players. </P><IMG 
+src="Problem A.files/A01.gif"> 
+<P align=justify>For example, with 5 players in the first round survivor is 3, 
+so players number 4 and 5 are paid Taka 1 each and removed from the game. In the 
+next round survivor is player number 3 again. Consequently no one could be 
+removed, therefore each of them is paid Taka 2, so in total (2 + 2 x 3 =) 8 will 
+be paid for this game.</P>
+<P align=justify></P><B><FONT size=4>
+<P align=justify>Input</P></B></FONT><FONT size=2>
+<P align=justify></P></FONT>
+<P align=justify>Input for every problem instance is an integer not exceeding 
+32,767 in a separate line. Input terminates with end of file.</P>
+<P align=justify></P><B><FONT size=4>
+<P align=justify>Output</P></B></FONT><FONT size=1>
+<P align=justify></P></FONT>
+<P align=justify>Output for each problem instance is an integer not exceeding 
+65,535 which represents the amount of Taka to be paid in total to all the 
+players.</P><FONT size=1>
+<P align=justify></P></FONT><B><FONT size=4>
+<P align=justify>Sample Input</P></B></FONT><FONT face="Courier New" 
+size=3>5<BR>10<BR>7<BR></FONT><FONT size=1>
+<P align=justify></P></FONT><B><FONT size=4>
+<P align=justify>Sample Output</P></B></FONT><FONT face="Courier New" 
+size=3>8<BR>13<BR>14<BR></FONT></BODY></HTML>

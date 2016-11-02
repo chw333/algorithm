@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>버블(거품) 정렬</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p style="line-height:130%;">버블(거품) 정렬</p>
+<p style="line-height:130%;">하이텔 베이직 동호회에서 김문수(새파람)님의 자료를 
+허락을 맡고 갈무리 해 온 소스입니다. 원작자의 동의 없이는 다른 곳으로 옮길 수 
+없습니다.</p>
+<p style="line-height:130%;"><hr>&nbsp;<br>
+&nbsp;&nbsp;버블 소트 프로그램입니다.<br>
+&nbsp;<br>
+&nbsp;&nbsp;인접한 두 요소의 대소관계를 비교해서 순서가 어긋날 경우<br>
+값을 서로 교환합니다. 교환한 그 상태에서 계속해서 다음 요소와<br>
+비교가 이루어집니다.<br>
+&nbsp;<br>
+&nbsp;&nbsp;위 과정을 (n - 1) 회 반복하면 정렬이 끝납니다.<br>
+정렬 속도는 느리지만 간편하다는 장점이 있습니다.<br></p>
+<p style="line-height:130%;"><font face="System">DEFINT A-Z<br>
+DECLARE SUB bubble (arr(), n)<br>
+DECLARE SUB show (arr(), n)<br>
+&nbsp;<br>
+n = 10<br>
+DIM a(n)<br>
+&nbsp;<br>
+RANDOMIZE TIMER<br>
+FOR i = 1 TO n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a(i) = INT(RND * 100) + 1<br>
+NEXT i<br>
+&nbsp;<br>
+CLS<br>
+PRINT : PRINT &quot;Before sorting:&quot;<br>
+show a(), n<br>
+&nbsp;<br>
+bubble a(), n<br>
+&nbsp;<br>
+PRINT : PRINT &quot;After sorting:&quot;<br>
+show a(), n<br>
+&nbsp;<br>
+END<br>
+&nbsp;<br>
+SUB bubble (arr(), n)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FOR i = 1 TO n - 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOR j = 1 TO n - i<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF (arr(j) 
+&gt; arr(j + 1)) THEN SWAP arr(j), arr(j + 1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NEXT j<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NEXT i<br>
+END SUB<br>
+&nbsp;<br>
+SUB show (arr(), n)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FOR i = 1 TO n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT arr(i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NEXT i<br>
+&nbsp;&nbsp;&nbsp;&nbsp;PRINT<br>
+END SUB</font></p>
+</body>
+
+</html></html>

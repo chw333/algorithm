@@ -1,0 +1,151 @@
+<html>
+
+<head>
+<title>SER 2001: Archiving Files to CD-ROM</title>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+
+<h1>Archiving Files to CD-ROM</h1>
+
+<h3>input file: <code>cdrom.in</code></h3>
+
+<p>Your
+company regularly needs to distribute lots of files to other companies on
+CD-ROMs.   You've been given the job of
+writing the program that takes a set of data files (file-set) to distribute,
+and produces instructions specifying how many discs are needed, and lists which
+files should be stored on which disc.   </p>
+
+<p>A
+brute-force algorithm that gives the &quot;best&quot; solution could be very expensive.
+However, an algorithm that gives a &quot;pretty good&quot; solution, known as
+&quot;first-fit descending-size&quot;, is described below.
+(FYI: if the &quot;best&quot; method would
+require <i>n</i> discs to store all the files, this &quot;pretty good&quot;
+method will require at most 11/9 +4 discs.)</p>
+
+<p>The
+&quot;first-fit descending-size&quot; algorithm, which you must use in your
+solution to this problem, is used to distribute the files in the file-set on a
+set of discs (disc-set) numbered from 1 to <i>m</i>, where <i>m</i> will be
+determined by the program.   The files,
+in descending order of size, are placed on the lowest numbered disc that has
+enough room to hold the file.   If the
+file doesn't fit on any of the discs you've already started using, you will
+need to add another disc to your disc-set. </p>
+
+<p>In
+processing the input, you should assume the following:</p>
+
+<ol>
+<li>Each
+disc has a capacity of 675,840,000 bytes.  </li>
+
+
+<li>The
+amount of space required by a file is an integral multiple of 2048 bytes.
+That is, any file with a size in the range
+of 1 to 2048 bytes will use exactly 2048 bytes on the disc.
+Any file within the range of 2049 to 4096
+bytes will use exactly 4096 bytes on disc, and so on.</li>
+
+<li>A
+file of size 0 will not require any space on the disc.</li>
+
+<li>There will
+be no single file larger than 675,840,000 bytes.</li>
+</ol>
+
+<h2>Input</h2>
+
+<p>Each
+non-signaling line will each describe one file in a file-set.
+The first 9 characters will contain the size
+(in bytes) of the file as a right-aligned decimal number.
+Character 10 will always be blank.
+Characters 11 through the end of the line will contain the filename.
+You
+may assume that no file name is longer than 64 characters.
+A line having both a file size of zero, and a
+filename of &quot;<code>END</code>&quot; will signal the
+last file in the file-set. (This line is not
+to be processed.) After this, other file-sets may follow. The end of file-sets
+is signaled by an empty file-set. </p>
+
+<h2>Output</h2>
+
+<p>For each disc-set:  </p>
+
+<p>The first 2 lines of output should
+begin in column 1, and should have the following format:</p>
+
+<code>
+---------------------------------------- <br>
+DISC-SET<i>n</i> requires <i>m</i> discs for archival.
+</code>
+
+<p>Where <i>n</i>
+is the number of the disc-set (starting at 1) and <i>m</i> is the number of
+discs required. This is followed by a blank line.   </p>
+
+<p>For each
+disc there is a line summarizing the disc contents, as shown below. </p>
+
+<code>
+Disc <i>x</i>
+contains <i>y</i> files totaling <i>z</i> bytes:
+</code>
+
+<p>Where <i>x</i>
+is the number of the disc (starting at 1), <i>y</i> is the number of files to be
+stored on this disc, and <i>z</i> is the total number of bytes in those files. </p>
+
+<p>For each
+file on this disc, there should be a line containing the right-justified file
+size in positions 1-9, a blank in position 10, and the file name beginning in
+position 11.   The files must be listed
+in descending order by size. A blank line should follow the last file on the
+disc.</p>
+
+<h3>Sample Input</h3>
+
+<pre>
+  47500000 a.dat
+ 123456789 Very long (but legitimate!) file name: don't reject weird chars.
+         0 real file with length zero.text
+         1 END
+ 555555555    A big file with leading blanks in its name.c
+         0 END
+         1 b.dat
+         2 c.dat 
+         0 END
+         0 END
+</pre>
+
+<h3>Output corresponding to the Sample Input</h3>
+
+<pre>
+----------------------------------------
+DISC-SET 1 requires 2 discs for archival.
+
+Disc 1 contains 4 files totaling 603055556 bytes:
+555555555    A big file with leading blanks in its name.c
+ 47500000 a.dat
+        1 END
+        0 real file with length zero.text
+
+Disc 2 contains 1 file totaling 123456789 bytes:
+123456789 Very long (but legitimate!) file name: don't reject weird chars.
+
+----------------------------------------
+DISC-SET 2 requires 1 disc for archival.
+
+Disc 1 contains 2 files totaling 3 bytes:
+        2 c.dat
+        1 b.dat
+</pre>
+</body>
+
+</html>

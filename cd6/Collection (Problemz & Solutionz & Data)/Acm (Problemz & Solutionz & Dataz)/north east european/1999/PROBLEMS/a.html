@@ -1,0 +1,80 @@
+<title>Divisibility</title>
+
+<style type="text/css">
+   h1 { text-align: center; font-size: large; text-decoration: underline }
+   h2 { text-align: center; font-size: large; margin-bottom: 0 }
+</style>
+
+<h1>1999-2000 ACM Northeastern European Regional Programming Contest</h1>
+<h2>Problem A<br>"Divisibility"</h2><br>
+
+<table>
+<col style="font-weight: bold"><col>
+<tr><td>Input file<td><tt>DIV.IN</tt>
+<tr><td>Output file<td><tt>DIV.OUT</tt>
+<tr><td>Time limit<td>15 seconds per test
+</table>
+
+<p>
+Consider an arbitrary sequence of integers. One can place + or - operators between
+integers in the sequence, thus deriving different arithmetical expressions
+that evaluate to different values. Let us, for example, take the sequence:
+17, 5, -21, 15. There are eight possible expressions:
+
+<table>
+<col><col align=center>
+<col><col align=center>
+<col><col align=center>
+<col><col align=center>
+<col>
+<tr><td>17<td>+<td>5<td>+<td>-21<td>+<td>15<td>=<td>16
+<tr><td>17<td>+<td>5<td>+<td>-21<td>-<td>15<td>=<td>-14
+<tr><td>17<td>+<td>5<td>-<td>-21<td>+<td>15<td>=<td>58
+<tr><td>17<td>+<td>5<td>-<td>-21<td>-<td>15<td>=<td>28
+<tr><td>17<td>-<td>5<td>+<td>-21<td>+<td>15<td>=<td>6
+<tr><td>17<td>-<td>5<td>+<td>-21<td>-<td>15<td>=<td>-24
+<tr><td>17<td>-<td>5<td>-<td>-21<td>+<td>15<td>=<td>48
+<tr><td>17<td>-<td>5<td>-<td>-21<td>-<td>15<td>=<td>18
+</table>
+
+We call the sequence of integers <b>divisible</b> by <em>K</em> if
++ or - operators can be placed between integers in the sequence in such
+way that resulting value is divisible by <em>K</em>. In the above example,
+the sequence is divisible by 7 (17+5+-21-15=-14) but is not divisible by 5.
+
+<p>
+You are to write a program that will determine divisibility of 
+sequence of integers.
+
+<h3>Input</h3>
+
+The first line of the input file contains two integers, <em>N</em>
+and <em>K</em> (1&nbsp;&le;&nbsp;<em>N</em>&nbsp;&le;&nbsp;10000, 2&nbsp;&le;&nbsp;<em>K</em>&nbsp;&le;&nbsp;100)
+separated by a space.
+
+<p>
+The second line contains a sequence of <em>N</em> integers separated 
+by spaces. Each integer is not greater than 10000 by it's absolute 
+value.
+
+<h3>Output</h3>
+
+<p>
+Write to the output file the word "Divisible" if given sequence of integers is
+divisible by <em>K</em> or "Not divisible" if it's not.
+
+<h3>Sample input #1</h3>
+<tt><pre>4 7
+17 5 -21 15</pre></tt>
+
+<h3>Output for the sample input #1</h3>
+
+<tt>Divisible</tt>
+
+<h3>Sample input #2</h3>
+<tt><pre>4 5
+17 5 -21 15</pre></tt>
+
+<h3>Output for the sample input #2</h3>
+
+<tt>Not divisible</tt>

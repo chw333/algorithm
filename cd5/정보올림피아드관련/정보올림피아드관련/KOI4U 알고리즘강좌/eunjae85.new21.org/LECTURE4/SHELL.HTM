@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>쉘 정렬</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p style="line-height:130%;">쉘 정렬</p>
+<p style="line-height:130%;">하이텔 베이직 동호회에서 김문수(새파람)님의 자료를 
+허락을 맡고 갈무리 해 온 소스입니다. 원작자의 동의 없이는 다른 곳으로 옮길 수 
+없습니다.</p>
+<p style="line-height:130%;"><font face="System">DEFINT A-Z<br>
+DECLARE SUB ShellSort (arr(), n)<br>
+DECLARE SUB show (arr(), n)<br>
+&nbsp;<br>
+n = 10<br>
+DIM a(n)<br>
+&nbsp;<br>
+RANDOMIZE TIMER<br>
+FOR i = 1 TO n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a(i) = INT(RND * 100) + 1<br>
+NEXT i<br>
+&nbsp;<br>
+CLS<br>
+PRINT : PRINT &quot;Before sorting:&quot;<br>
+show a(), n<br>
+&nbsp;<br>
+ShellSort a(), n<br>
+&nbsp;<br>
+PRINT : PRINT &quot;After sorting:&quot;<br>
+show a(), n<br>
+&nbsp;<br>
+END<br>
+&nbsp;<br>
+&nbsp;<br>
+SUB ShellSort (arr(), n)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gap = n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;WHILE gap &lt;&gt; 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gap = INT(gap / 2)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DO<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done 
+= 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOR 
+i = 1 TO n - gap<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF 
+arr(i) &gt; arr(i + gap) THEN SWAP arr(i), arr(i + gap): done = 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NEXT 
+i<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LOOP WHILE done = 0<br></font></p>
+<p style="line-height:130%;"><font face="System">&nbsp;&nbsp;&nbsp;&nbsp;WEND<br>
+END SUB<br>
+&nbsp;<br>
+&nbsp;<br>
+SUB show (arr(), n)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FOR i = 1 TO n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT arr(i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NEXT i<br>
+&nbsp;&nbsp;&nbsp;&nbsp;PRINT<br>
+END SUB &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></p>
+</body>
+
+</html></html>

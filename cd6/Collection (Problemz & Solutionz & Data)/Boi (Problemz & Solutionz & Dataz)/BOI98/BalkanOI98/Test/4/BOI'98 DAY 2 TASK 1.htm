@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0040)http://www.ioi99.org.tr/BOI/21/soru.html -->
+<HTML><HEAD><TITLE>BOI'98 DAY 2 TASK 1</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<H1>BOI'98 DAY 2 TASK 1</H1>
+<H1>CONFERENCE CALL </H1>
+<H2>PROBLEM</H2>
+<P>A telecom company would like to offer a three-party conference call service. 
+This service enables three customers to participate in a telephone conversation 
+simultaneously. A customer accesses the interconnection network of the telephone 
+system via a switch. The network consists of switches linked by bidirectional 
+lines. Over the existing network, the three participants accessing the network 
+via three different switches, must be connected with the minimum cost. Note that 
+it is possible to connect any two switches. You will be given all the links 
+between the switches of the network along with their associated costs. You are 
+requested to find the connections which will minimize the total cost of 
+interconnecting the three switches to which the participants in a conference 
+call are connected. 
+<H2>INPUT</H2>
+<P>The input is a text file named conf.inp. The first line contains two numbers 
+: The number of switches, designated by ( N &lt;= 100) and the number of 
+switch-to-switch links in the network, designated by E, separated by a blank. 
+Each of the following E input lines contains three integers, designated by i, j 
+and c<SUB>i,j</SUB> where i and j are the numbers of two different switches and 
+c<SUB>i,j</SUB>is the cost of using the link between i and j in a conference 
+call (1 &lt;= c<SUB>i,j</SUB>&lt;= 100), each separated by one blank. The last 
+line of input contains three integers, which designate the three switches that 
+participate in the conference call, each separated by one blank. The switches 
+are identified with integers 1 through N consecutively. 
+<H2>OUTPUT</H2>
+<P>The output must be a text file named conf.out. The first line must contain 
+the total (minimal) cost of establishing a conference call among the given three 
+switches and the number R of switch-to-switch connections needed to establish 
+this conference call, separated by a blank. Each of the following R lines must 
+contain two integers, which denote that the link between the switch numbered by 
+the first integer and the switch numbered by the second integer is included in 
+the solution -ordering of between the two switches is not important. The 
+ordering among the last R lines of the output is also not important. 
+<H2>EXAMPLE</H2><IMG src="BOI'98 DAY 2 TASK 1.files/conf.gif"></IMG> <PRE>conf.inp:
+8 12
+1 2 20
+2 3 8
+2 4 3
+2 5 3
+2 6 6
+3 5 2
+3 6 9
+4 7 5
+5 6 1
+5 7 7
+6 8 4
+7 8 6
+1 4 6
+
+conf.out:
+27 4
+1 2
+2 4
+2 5
+5 6
+
+</PRE>
+<P>CREDITS<BR>Idea: Hakk?Toroslu<BR>Programming: Erek G?t?k<BR>Writing: Halit 
+O?zt??<BR><BR><A href="http://www.ioi99.org.tr/BOI/13/index.html">previous 
+question</A> <A href="http://www.ioi99.org.tr/BOI/22/index.html">next 
+question</A> <A href="http://www.ioi99.org.tr/BOI/21/index.html">Main Page</A> 
+</P></BODY></HTML>

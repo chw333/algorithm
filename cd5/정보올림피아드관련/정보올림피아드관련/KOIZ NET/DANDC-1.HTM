@@ -1,0 +1,37 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>재귀호출</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><b><font color="#0066CC" size="5">재귀호출</font></b></p>
+<p>&nbsp;</p>
+<p><font size="2">&nbsp;&nbsp;일반적으로 초보 프로그래머들은 함수라는 것이 반드시 
+다른 어떤 함수에게서만 불리는 것으로 생각한다. 하지만 함수가 자기 자신을 부름으로 
+써 매우 효과적으로 프로그램을 작성할 수 있다. 여기서 효과적이라는 것은 프로그램을 
+작성하는 일이 효과적이라는 것을 의미한다.</font></p>
+<p><font size="2">&nbsp;&nbsp;재귀 호출 프로그램은 자기자신을 부르는 프로그램이다. 
+그러나, 재귀 호출이 항상 자신을 부른다면, 이 프로그램은 영원히 수행이 끝나지 
+않으므로 반드시 호출 종료조건이 있어야 한다. 즉 재귀 호출 프로그램은 종료 조건을 
+가지고 자신을 호출하는 프로그램이다.</font></p>
+<p><font size="2">&nbsp;&nbsp;재귀 호출은 답이 재귀적으로 정의되는 문제를 푸는데 
+매우 유용하다. 예를 들어 factoral 계산을 살펴보도록 하자. N의 factorial를 구하는 
+프로그램 fact는 다음과 같이 작성할 수 있다.</font></p>
+<p><b><font size="2">(1) C/C++</font></b></p>
+<p><font size="2" color="blue">int fact (int N) {</font></p>
+<p><font size="2" color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;if (N&gt;1) &nbsp;&nbsp;&nbsp;{ 
+// 종료조건</font></p>
+<p><font size="2" color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 
+N * fact(N-1);</font></p>
+<p><font size="2" color="#006666">&nbsp;&nbsp;&nbsp;&nbsp;}</font></p>
+<p><font size="2" color="blue">}</font></p>
+<p><font size="2" color="#0066CC"><b>재귀 호출은 종료 조건이 반드시 설정되어야한다. 
+</b></font></p>
+<p><font size="2" color="black"><b>대표적인 재귀호출의 예로는 이진탐색이있다. 
+( 탐색 -&gt; 이진탐색 ) 참고하세요</b></font></p>
+</body>
+
+</html>

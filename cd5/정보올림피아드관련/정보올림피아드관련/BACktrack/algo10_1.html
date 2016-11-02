@@ -1,0 +1,145 @@
+
+		
+
+<html>
+<head>
+<!--meta http-equiv="Content-Type" content="text/html; charset=EUC-KR" -->
+<title>알고리즘</title>
+
+<!-- 만지지 마시요 !!!! 시작-->
+
+<LINK rel="stylesheet" type="text/css" href="d:/work/BACktrack/../include/Note.css">
+<script language="JavaScript1.2" src="d:/work/BACktrack/../include/menu.js"></script>
+<script language="JavaScript1.2" src="d:/work/BACktrack/../include/eClass.js"></script>
+
+</head>
+
+<!-- 만지지 마시요 !!!! 끝-->
+<script language="JavaScript">   
+<!--
+function OnStart()
+{
+        ActiveText(null, "10/avi/a10-1-0v.rm", "stop");
+}
+ 
+function SetPageEnv()
+{
+       top.vod.pl_video.DoStop();
+
+      setDataBase(1, "playText01", "10/avi/a10-1-1-1v.rm", "stop", 32000);
+      setDataBase(2, "playText01", "10/avi/a10-1-1-2m.mpg", "stop", 27000);
+      setDataBase(3, "playText01", "10/avi/a10-1-1-3v.rm", "stop", 447000);
+      setDataBase(4, "playText02", "10/avi/a10-1-2m.rm", "stop", 154000);
+      setDataBase(5, "playText03", "10/avi/a10-1-3m.rm", "stop", 230000);
+        curStatus = 0;
+        pagePos = 1;
+        n = top.nav;
+        n.prevpage = null;
+        n.nextpage = "algo10_2.html";
+        faq(pagePos);
+}                         
+-->
+</script>
+ 
+<body bgcolor=ffffff onLoad="SetPageEnv(); vin('',0); vout(0); OnStart()">
+<div id="overDiv" style="position:absolute; left:50px; top:50px; width:300px; height:200px; z-index:5;visibility:hide;"><p>&nbsp;</p></div>
+<script language="JavaScript" src="d:/work/BACktrack/../include/help.js"></script>
+
+<table WIDTH="100%" height="100%" border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td valign=top bgcolor=eeeeee width=20 height=100% >&nbsp</td>
+<td valign=top height=100%>
+<!-- 전체 표 시작 -->
+<table WIDTH="100%" height="100%" border=0 cellpadding=0 cellspacing=0>
+<tr>
+    
+
+	<!-- 소제목 입력 폼--> 
+	<td bgcolor="eeeeee"><div class="title">◈ 백트랙킹 기법</div></td>
+	<!-- 소제목 입력 폼 끝--> 
+<tr>
+	<td background="./images/line.gif">
+	<div class=cls1></div>
+	<!-- 내용 입력 -->
+	<ul>
+	<div id="playText01" style="background: white;">
+        <li><div class="title1">백트랙킹이란?</div>
+	<ul>
+	<div class="cls1">
+	－ 가게에서 물건을 하나 사 왔는데, 집에 와서 보니 마음에 들지 않아서 다시 가게로 바꾸러 가는 상황을 고려해 보자.
+	</div>
+	<div class="cls1">
+	－ 이렇게 어떤 동작을 한 이후에 그 동작을 되물리는 것을 백트랙킹이라고 한다.
+	</div>
+	<div class="cls1">
+	－ <a href="applet/maze.html" target=_new><font color=0000aa><u>미로 찾기(maze)</u></font></a> 문제를 고려해 보자.
+	</div>
+	<div class="cls1">
+	－ 길을 따라 가다가 막혀 있으면 되돌아 온다.
+	</div>
+	</ul>
+        </div>
+	<br><br>
+
+	<div id="playText02" style="background: white;">
+        <li><div class="title1">깊이-우선 탐색(depth-first search; DFS)을 통하여 본 백트랙킹</div>
+	<ul>
+	<div class="cls1">
+	－ DFS: 그래프에서 각 정점을 방문해 가는 방법 중의 하나
+	</div>
+	<div class="cls1">
+	－ 방법: 한 정점 A를 방문하였을 때, A와 연결된 정점 중에서 
+<a href=#help onMouseOver='vin("선택하는 방법은 어떠한 것이든 상관없다. 보통은 그림 상에서 왼쪽부터 선택하거나, 인덱스가 작은 것부터 선택한다.",0);' onMouseOut='vout(0);'>
+<font color=#74207e size=2>하나를 선택</font></a>
+	(B라 하자)하여 B로부터 방문할 수 있는 모든 정점을 방문한다. B로부터 방문할 수 있는 모든 정점을 방문하였다면, 다시 
+<a href=#help onMouseOver='vin("다시 돌아온다는 의미에서 &#39;backtracking.&#39;",0);' onMouseOut='vout(0);'>
+<font color=#74207e size=2>A로 돌아와서</font></a>
+	 A와 연결된 정점 중에서 B가 아닌 정점들을 방문한다.
+	</div>
+	<div class="cls1">
+	－ 애플릿으로 보기 (<a href="applet/DFS.html" target=_new><font color=0000aa><u>클릭</u></font></a>)
+	</div>
+	<div class="cls1">
+	－ 애플릿에서 파란색으로 움직이는 것이 백트랙킹의 과정이다.
+	</div>
+	</ul>
+	</div>
+	<br><br>
+
+	<div id="playText03" style="background: white;">
+        <li><div class="title1">트리 순회에서의 백트랙킹</div>
+	<ul>
+	<div class="cls1">
+	－ 트리 순회(tree traversal): 트리의 각 노드를 방문하는 방법
+	</div>
+	<div class="cls1">
+	－ 순회의 방법: 전위(preorder), 중위(inorder), 후위(postorder)
+	</div>
+	<div class="cls1">
+	－ 전위 순회: 루트(root)를 방문한 후 왼쪽의 서브-트리를 방문하고, 오른쪽의 서브-트리를 방문
+	</div>
+	<div class="cls1">
+	－ 백트랙킹의 관점에서 본 전위 순회: (1) 루트를 방문 (2) 
+<a href=#help onMouseOver='vin("트리에서 아래쪽에 연결된 노드를 자식(child)이라고 한다. 거꾸로 위쪽에 연결된 노드는 부모(parent)라고 한다.",0);' onMouseOut='vout(0);'>
+<font color=#74207e size=2>왼쪽 자식</font></a>
+	을 따라서 방문 (3) 루트로 다시 돌아와서 (4) 오른쪽의 자식을 따라서 방문
+	</div>
+	<div class="cls1">
+	－ 애플릿으로 보기 (<a href="applet/traversal.html" target=_new><font color=0000aa><u>클릭</u></font></a>)
+	</div>
+	</ul>
+	</div>
+	<br><br>
+
+	</ul>
+
+	</ul>
+	<!-- 내용 입력 끝-->	
+	</div>
+	</td>
+</table>
+</td>
+</table>
+
+</body>
+</html>

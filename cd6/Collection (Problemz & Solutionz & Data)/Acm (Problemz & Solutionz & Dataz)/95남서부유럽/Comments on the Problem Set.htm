@@ -1,0 +1,411 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0079)http://www.acm.inf.ethz.ch/ProblemSetArchive/B_EU_SWERC/1995/JudgeComments.html -->
+<HTML><HEAD><TITLE>Comments on the Problem Set</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<P>
+<CENTER><IMG align=bottom 
+alt="ACM International Collegiate Programming Contest 1996-97" height=101 
+src="Comments on the Problem Set.files/Logo.gif" width=440 
+NATURALSIZEFLAG="3"><BR></CENTER>
+<H1>
+<CENTER>Comments on the Problem Set 1995</CENTER></H1>
+<P>
+<CENTER>
+<HR>
+</CENTER>
+<P>I spent many hours on compiling the problem set including writing sample 
+solutions, analyzing other sample solutions, writing test data, writing programs 
+to analyze the output of submitted programs and refining the descriptions of the 
+problems. But many important details hidden in the problem set where revealed at 
+the contest itself when 28 teams submitted 230 programs, often in vain. 
+<BR><BR>I would like to share with you the insight into the problems I gained 
+from the work as head judge in the Southwestern European Contest. You might be 
+interested in my thoughts if you have participated at this contest or if you are 
+have solved the problem set in preparation for another contest. <BR><BR>Any 
+questions or comments to the problem set, the test data or the sample solutions 
+are welcome. Just write an email message to <A 
+href="mailto:bleichen@ubilab.ubs.ch">bleichen@ubilab.ubs.ch</A>. 
+<DL>
+  <DD>Manuel Bleichenbacher, Head Judge </DD></DL>
+<HR>
+
+<H2>Statistics</H2>It is very interesting to have a look at the submission 
+statistics (cf. figure 1) and to see how many teams tried to solve a certain 
+problem and how successful they were. There are huge differences among the nine 
+problems. The acceptance rate covers the full range from 0% to 100%. <BR><BR>I 
+was astonished that the overall acceptance rate was as low as 19%. More than one 
+team submitted the same problem ten and more times, without success. 
+<BR><BR><B>Figure 1</B> &nbsp;<I>Submission Statistics</I> <BR><BR>
+<TABLE border=1 cellPadding=2>
+  <TBODY>
+  <TR align=right vAlign=bottom>
+    <TH align=left>Problem</TH>
+    <TH>Submit</TH>
+    <TH>Accept</TH>
+    <TH>CTE</TH>
+    <TH>CRV</TH>
+    <TH>PE</TH>
+    <TH>RTE</TH>
+    <TH>TLE</TH>
+    <TH>WA</TH>
+    <TH>Teams</TH></TR>
+  <TR align=right vAlign=bottom>
+    <TD align=left>Anagram</TD>
+    <TD>47</TD>
+    <TD>15 (32%)</TD>
+    <TD>0%</TD>
+    <TD>6%</TD>
+    <TD>0%</TD>
+    <TD>36%</TD>
+    <TD>21%</TD>
+    <TD>4%</TD>
+    <TD>21</TD></TR>
+  <TR align=right vAlign=bottom>
+    <TD align=left>Calculator</TD>
+    <TD>1</TD>
+    <TD>0 (0%)</TD>
+    <TD>0%</TD>
+    <TD>0%</TD>
+    <TD>0%</TD>
+    <TD>100%</TD>
+    <TD>0%</TD>
+    <TD>0%</TD>
+    <TD>1</TD></TR>
+  <TR align=right vAlign=bottom>
+    <TD align=left>Coloring</TD>
+    <TD>28</TD>
+    <TD>6 (21%)</TD>
+    <TD>0%</TD>
+    <TD>0%</TD>
+    <TD>0%</TD>
+    <TD>0%</TD>
+    <TD>25%</TD>
+    <TD>54%</TD>
+    <TD>12</TD></TR>
+  <TR align=right vAlign=bottom>
+    <TD align=left>Cube</TD>
+    <TD>0</TD>
+    <TD>-</TD>
+    <TD>-</TD>
+    <TD>-</TD>
+    <TD>-</TD>
+    <TD>-</TD>
+    <TD>-</TD>
+    <TD>-</TD>
+    <TD>0</TD></TR>
+  <TR align=right vAlign=bottom>
+    <TD align=left>Equation</TD>
+    <TD>1</TD>
+    <TD>1 (100%)</TD>
+    <TD>0%</TD>
+    <TD>0%</TD>
+    <TD>0%</TD>
+    <TD>0%</TD>
+    <TD>0%</TD>
+    <TD>0%</TD>
+    <TD>1</TD></TR>
+  <TR align=right vAlign=bottom>
+    <TD align=left>Intersection</TD>
+    <TD>107</TD>
+    <TD>14 (13%)</TD>
+    <TD>1%</TD>
+    <TD>2%</TD>
+    <TD>0%</TD>
+    <TD>2%</TD>
+    <TD>0%</TD>
+    <TD>82%</TD>
+    <TD>28</TD></TR>
+  <TR align=right vAlign=bottom>
+    <TD align=left>Spreadsheet</TD>
+    <TD>29</TD>
+    <TD>3 (10%)</TD>
+    <TD>0%</TD>
+    <TD>0%</TD>
+    <TD>0%</TD>
+    <TD>48%</TD>
+    <TD>14%</TD>
+    <TD>28%</TD>
+    <TD>9</TD></TR>
+  <TR align=right vAlign=bottom>
+    <TD align=left>Synchronous</TD>
+    <TD>11</TD>
+    <TD>5 (45%)</TD>
+    <TD>0%</TD>
+    <TD>0%</TD>
+    <TD>27%</TD>
+    <TD>9%</TD>
+    <TD>0%</TD>
+    <TD>18%</TD>
+    <TD>6</TD></TR>
+  <TR align=right vAlign=bottom>
+    <TD align=left>Triangle</TD>
+    <TD>6</TD>
+    <TD>0 (0%)</TD>
+    <TD>17%</TD>
+    <TD>0%</TD>
+    <TD>0%</TD>
+    <TD>17%</TD>
+    <TD>0%</TD>
+    <TD>67%</TD>
+    <TD>2</TD></TR>
+  <TR align=right vAlign=bottom>
+    <TD align=left>Total/Average</TD>
+    <TD>230</TD>
+    <TD>44 (19%)</TD>
+    <TD>1%</TD>
+    <TD>2%</TD>
+    <TD>1%</TD>
+    <TD>16%</TD>
+    <TD>9%</TD>
+    <TD>52%</TD>
+    <TD>8.9</TD></TR></TBODY></TABLE><BR><BR>
+<TABLE cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD><B>Submit</B></TD>
+    <TD>Number of times the problem was submitted</TD></TR>
+  <TR>
+    <TD><B>Accept</B></TD>
+    <TD>Number of times (and percentage) a submission was accepted</TD></TR>
+  <TR>
+    <TD><B>CTE</B></TD>
+    <TD>Percentage of submissions rejected due to a <I>Compile-time 
+    Error</I></TD></TR>
+  <TR>
+    <TD><B>CRV</B></TD>
+    <TD>Percentage of submissions rejected due to a <I>Contest Rule 
+      Violation</I></TD></TR>
+  <TR>
+    <TD><B>PE</B></TD>
+    <TD>Percentage of submissions rejected due to a <I>Presentation 
+    Error</I></TD></TR>
+  <TR>
+    <TD><B>RTE</B></TD>
+    <TD>Percentage of submissions rejected due to a <I>Run-time 
+Error</I></TD></TR>
+  <TR>
+    <TD><B>TLE</B></TD>
+    <TD>Percentage of submissions rejected due to a <I>Time Limit Exceeded</I> 
+      error</TD></TR>
+  <TR>
+    <TD><B>WA</B></TD>
+    <TD>Percentage of submissions rejected due to a <I>Wrong Answer</I> 
+    error</TD></TR>
+  <TR>
+    <TD><B>Teams</B></TD>
+    <TD>Number of teams that submitted the problem at least 
+once</TD></TR></TBODY></TABLE><BR><BR>
+<HR>
+
+<H2>Problem Set</H2>The problem set consists of nine problems. This is a rather 
+large number and no team was expected to solve all of them. Due to the large 
+number it was very important to carefully read all the problems and pick the 
+right ones to solve. According to Bill Poucher, the problem set at the next 
+finals will also consist of a large number of problems. <BR><BR>The problems 
+have a very different degree of difficulty. It was no surprise to me that no 
+team submitted problem "Cube" although I believe another problem is the most 
+difficult one. <BR><BR>Some test input was scaled so as to rule out brute force 
+algorithms and extremely inefficient solutions. I believe that my sample 
+solutions are quite efficient and every one take less than twenty seconds for 
+the test input used at the contest. That way a submitted solution can be ten 
+times slower than the sample solution and will still be accepted. For a big 
+enough problem size, however, programs using inferior algorithms will still take 
+more than three minutes, even if they are written in hand-tuned assembler. The 
+purpose is to only rule out inferior algorithms and not inefficient details in 
+coding. <BR><BR>I guess that half of the <I>time-limit exceeded</I> errors were 
+due to endless loops and not inefficient algorithms. <BR><BR>
+<HR>
+
+<H2>Anagram</H2><B>Idea</B>: Manuel Bleichenbacher <BR><BR>"Anagram" is probably 
+the easiest problem in the set. More than half of the teams managed to solve it. 
+Still, there are different strategies to solve this problem; some worked with 
+our test data and some did not. <BR><BR>To most efficient programs first sort 
+the letters in the input word and then directly produce all possible anagrams 
+without duplicates. The sample program <CODE>AnagramManuel.c</CODE> does that. 
+<CODE>AnagramRolf.c</CODE> is cleverer and does not even have to sort the input 
+word. <BR><BR>A less efficient way is to first sort the letters in the input 
+word, then produce all possible permutations (correctly sorted) and eliminate 
+all duplicates on the fly without storing more than one word. Such an approach 
+probably worked with our test data. <BR><BR>A completely inefficient way is to 
+first produce all permutations and store them in memory, then sort them and 
+eliminate duplicates as the last step. One input word was something like 
+"<CODE>aaaaaaabbbbbbb</CODE>", i.e. it consisted of many letters but only a few 
+different letters. So there was a huge number of permutations and the result was 
+rather small. This word probably ruled out the most inefficient approaches (36% 
+submissions had to be returned due to a <I>run-time exceeded</I> error). 
+<BR><BR>
+<HR>
+
+<H2>Peter's Calculator</H2><B>Idea</B>: Hans Domjan <BR><BR>To solve "Peter's 
+Calculator" you needed some experience in writing a scanner and parser. Even if 
+you had that experience, it could still take you three hours. <BR><BR>A 
+difficulty I would like to highlight is the minus sign in the always valid input 
+(no error handling needed). Although the description suggests that there is a 
+strict distinction between the scanning and parsing part of the program, this is 
+not the case. The following partial expressions are all valid: <PRE>a - 10
+a -10
+a + -10
+a - -10
+a --10</PRE>So the scanner cannot decide whether a minus sign is part of the 
+number or part of an operation. <BR><BR>The rest of the problem is not very easy 
+but has no traps as far as I know. One team submitted this problem, without 
+success. <BR><BR>
+<HR>
+
+<H2>Coloring</H2><B>Idea</B>: Andreas Wolf (He submitted this problem to last 
+year's contest but it was not used for the final problem set.) 
+<BR><BR>"Coloring" is a typical problem where all possible solutions have to be 
+generated to find the best one. The maximal number of nodes is given as 100; 
+this fact is irrelevant. For more than ten nodes, the search space becomes 
+extremely large because it raises exponentially with the number of nodes. 
+<BR><BR>Interestingly, once you implement the usual short-cuts for problems like 
+this, computing time seems to only depend on the number of black nodes in the 
+final coloring. <BR><BR>The basic algorithm generates all possible colorings of 
+the graph. The first short-cut is to eliminate invalid colorings as early as 
+possible. A coloring is invalid if two black nodes are directly connected. 
+Adding further black nodes will only worsen that fact and can therefore be 
+skipped. <BR><BR>The second short-cut is to limit the search space by not 
+exploring a subspace if it is already obvious that it will not yield a better 
+solution. The exact condition to break from further investigating a certain 
+partial coloring is if the number of black nodes plus the number of yet 
+unassigned nodes is less or equal to the number of black nodes in the best 
+coloring so far. <BR><BR>The short-cuts were probably important for the 
+acceptance of the program but less important than I had thought. But from the 
+seven teams that unsuccessfully tried to submit this problem, four teams ended 
+up with <I>wrong answer</I> errors and only three were stuck with a 
+<I>time-limit exceeded</I> message. <BR><BR>
+<HR>
+
+<H2>Cube</H2><B>Idea</B>: Erwin Achermann (based on a wooden toy) <BR><BR>No 
+team submitted a solution for "Cube". It is probably the second most difficult 
+problem. Still, I was a bit disappointed. <BR><BR>The search space for putting 
+together the seven pieces is quite big. That is why we have risen the time-limit 
+to 15 minutes. Our sample solutions need about 30 seconds. Because testing for 
+the correctness of a solution can possibly be implemented quite inefficient and 
+we only wanted to rule out inferior algorithms, we set a generous time-limit. 
+<BR><BR>At first, we wanted to enforce that the problem be solved 
+algorithmically. We did not want to accept precomputed data but were unsure how 
+to define "precomputed data" and how to test for it. Furthermore, the problem 
+should not be how to hide precomputed data. Then we realized that there were no 
+brute force algorithms. Every program needed to implement searching, rotation, 
+translation, and it was specified in the problem set how to eliminate mere 
+rotations. <BR><BR>The sample solution <CODE>CubeManuel.c</CODE> first generates 
+all possible rotations and translations of each of the seven pieces (except for 
+part <I>a</I>). It then tries to construct the cube by putting together all 
+combinations of the seven pieces. To speed up things, each piece is represented 
+by a bit pattern that fits into an integer variable. This technique makes 
+"collision detection" easy but the name of the piece has to be stored somewhere 
+else. <BR><BR>As far as I know <CODE>CubeRolf.c</CODE> works very similar but 
+creates rotations and translations in a very different way. <BR><BR>
+<HR>
+
+<H2>Partial Differential Equations</H2><B>Idea</B>: Frank M&ouml;hle <BR><BR>I 
+believe "Partial Differential Equations" is an easy problem. All you had to do 
+was to read in some vectors and matrices, add some numbers in the right cell of 
+the resulting matrix and then output the result. And once you had the problem 
+working on the input data found in the description, it was very likely to also 
+work with our test data. A single team submitted this problem and got it right 
+on their first submission. <BR><BR>The real difficulty of this problem was to 
+carefully read the description and to realize that it was very easy. Some people 
+obviously are easily frightened by Greek letters and mathematical notations. 
+<BR><BR>
+<HR>
+
+<H2>Intersection</H2><B>Idea</B>: Andrea Kennel <BR><BR>Every team tried to 
+solve the problem "Intersection" but only half of them succeeded. There were 107 
+submissions for that problem. I agree that the problem seems to be easy. But 
+geometry is tricky and so is this problem. <BR><BR>I would never try to write 
+some geometry algorithms during a contest myself. The best way to solve the 
+intersection problem was to copy the needed algorithms for a book like 
+Sedgewick's book on algorithms. That's how the sample solution works. Geometric 
+problems always have many special or even pathetic cases that you have to test 
+for. Our test data included many of those. <BR><BR>Many people thought there 
+were test cases with rectangles collapsing to a line or a point. This is not the 
+case. After analyzing more than a hundred submissions for that problem we got a 
+good feeling for the difficult test cases. There were two unintentional traps in 
+the description. First, the figure and the term "rectangle" could lead to the 
+impression that you had to intersect the given line with the four bounding lines 
+of the rectangle. A better term would have been "rectangular area" because 
+intersection was defined on the whole area of the rectangle. The textual 
+description stated that fact clearly. Second, the terms "top left" and "bottom 
+right" mislead some teams to believe that the top left corner was always higher 
+and more to the left than the bottom right corner. But the textual description 
+again clearly stated that this was not necessarily the case. So always carefully 
+read the description. <BR><BR><B>Figure 2</B> &nbsp;<I>Difficult Test Cases</I> 
+<BR><BR><IMG align=bottom height=190 
+src="Comments on the Problem Set.files/Intersection.gif" width=217 
+NATURALSIZEFLAG="3"><BR><BR>Some of our test cases seemed to be difficult to 
+handle. Figure 2 shows two typical cases where submissions often failed. 
+Furthermore, some programs did not work correctly if the rectangle and/or the 
+line had negative coordinates. It is not easy to get a geometric algorithm 
+correctly working for every possible case. <BR><BR>Interestingly, the problem 
+can be solved by only using integer numbers even though the intersection points 
+can lay between the integer grid. Some teams thought that their solution failed 
+because they were using floating point numbers. If you do stick to some basic 
+rules about floating point numbers like using a small epsilon value to compare 
+floating point numbers, your solution will hardly fail because of floating point 
+numbers. <BR><BR>
+<HR>
+
+<H2>Spreadsheet</H2><B>Idea</B>: Manuel Bleichenbacher <BR><BR>I developed the 
+idea for the problem "Spreadsheet" when I was working on a spreadsheet view for 
+the application framework ET++ and realized that the column headings were rather 
+irregular. This irregularity was the main cause of failure for most submissions. 
+<BR><BR>Many people thought that the name of the columns could be treated like a 
+number with base 26. Unfortunately, that does not work because their is no 
+equivalent for the number zero. Blanks are some sort of zero but they only 
+appear as leading zeros and are therefore omitted. They do not appear within the 
+column name. <BR><BR>There were two ways for evaluating the spreadsheet. You 
+could evaluate it cell by cell and, if the value of a yet unevaluated cell was 
+needed, recursively evaluate that cell. The other way was to find a cell that 
+did not depend on unevaluated cells, evaluate that cell and repeat these steps 
+until the spreadsheet did not change anymore. The two sample implementations 
+<CODE>SpreadSheetManuel.c</CODE> and <CODE>SpreadSheetRolf.c</CODE> use these 
+two different methods. <BR><BR>If the decoding of the cell name did not work 
+correctly, this could manifest itself in very different ways. The program could 
+crash because it accessed out of range array elements, it could end up in an 
+endless loop because there seemed to be cyclic cell references or it could 
+output an only partially evaluated spreadsheet, again because of cyclic 
+references. <BR><BR>
+<HR>
+
+<H2>Synchronous Design</H2><B>Idea</B>: Manuel Bleichenbacher <BR><BR>Only six 
+teams tried to submit problem "Synchronous". I think it was moderately 
+difficult. The success rate of 45% was rather high. The description probably 
+seemed to be rather long because of three large figures, which took up a lot of 
+space. <BR><BR>The problem is straightforward to solve. First you have to try to 
+topologically sort the network. If that succeeds you have to add up the delays 
+along all paths between two synchronous nodes and take the maximum delay. That 
+is all. No magic is needed. <BR><BR>If I remember it correctly, one submission 
+failed for the test case where the maximum delay was equal to the clock period. 
+The description and the message "Clock period exceeded." made it clear that this 
+was still an acceptable delay but obviously one comparison in the submitted 
+program was slightly wrong. <BR><BR>
+<HR>
+
+<H2>Triangle</H2><B>Idea</B>: Berni Seybold <BR><BR>How many times have you 
+calculated or geometrically constructed a triangle at school? The program 
+"Triangle" could have sped up your homework many times but it would also have 
+taken you many hours to get the program working correctly. In my opinion, 
+"Triangle" was the most difficult problem. There are no sophisticated algorithms 
+needed and the final solution is not very long either. But this problem is again 
+about geometry and a lot of geometrically tricky test cases. <BR><BR>I did not 
+expect any team to correctly solve this problem. Two teams submitted programs 
+and these programs failed for at least 50 of the nearly 900 test cases we had. 
+<BR><BR>To get an impression of how to solve the problem, have a look at the 
+sample implementation. From the different cases your program has to solve 
+correctly, I only want to mention the most difficult one. Three parameters are 
+given: the angle <I>beta</I> and the sides <I>a</I> and <I>b</I>. Now if 
+<I>b</I> is short enough there is not solution at all. If <I>b</I> is equal or 
+longer than <I>a</I>, there is a single solution. If <I>a</I> is somewhere 
+in-between, then there are two solutions except if <I>alpha</I> is a right angle 
+where we again have a single solution. That is the tricky nature of geometry. 
+<BR>
+<P>
+<CENTER>
+<HR>
+<I><A href="http://www.acm.inf.ethz.ch/">Home Page</A>. <A 
+href="mailto:acm@iet.ethz.ch">Comments</A>. Last update: March 1, 1996 
+(mb).</I></CENTER></BODY></HTML>

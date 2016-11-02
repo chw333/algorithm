@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0048)http://www.karrels.org/Ed/ACM/weur95/prob_h.html -->
+<HTML><HEAD><TITLE>Problem H - Syntrax</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type><LINK 
+href="mailto:Ed@Tool.com" rev=made>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY><EM>Not an official ACM page</EM> <BR>[<A 
+href="http://www.karrels.org/Ed/ACM/weur95/index.html">1995 Western Europe 
+problem set</A> | <A href="http://www.karrels.org/Ed/ACM/index.html">Ed's 
+programming contest problem archive</A> | <A 
+href="http://www.karrels.org/Ed/index.html">my home page</A>] 
+<HR>
+
+<CENTER>
+<H3>1995-1996 ACM International Collegiate Programming Contest<BR>Western 
+European Regional</H3>
+<H1>Problem H </H1>
+<H2>Syntrax </H2></CENTER>Given a simple syntax for describing regular 
+expressions, one can find a graphical representation for a given regular 
+expression using ASCII characters like '-', ' ', '+', and '/'. The syntax we use 
+can be drawn by using four different patterns: 
+<OL>
+  <LI>"abc" is the terminal string abc, represented as
+  <P>
+  <CENTER><IMG src="Problem H - Syntrax.files/syntrax1.gif"></CENTER>
+  <P>Note that the graphical representation of every expression has a bounding 
+  box. This is the smallest rectangle that surrounds the graphic. 
+  <P></P>
+  <LI>(<EM>re1 re2</EM>) is a sequence of first expression <EM>re1</EM>, then 
+  expression <EM>re2</EM>, represented as
+  <P>
+  <CENTER><IMG src="Problem H - Syntrax.files/syntrax2.gif"></CENTER>
+  <P>The two expressions <EM>re1</EM> and <EM>re2</EM> have to be concatenated 
+  such that the bounding boxes of the two expressions touch and such that the 
+  '-' on the right of <EM>re1</EM> matches the '-' on the left of <EM>re2</EM>. 
+  <P></P>
+  <LI>{<EM>re1 re2</EM>} represents alternatives, either <EM>re1</EM> or 
+  <EM>re2</EM>, represented as 
+  <P>
+  <CENTER><IMG src="Problem H - Syntrax.files/syntrax3.gif"></CENTER>
+  <P>the number of '|' characters that has to be added depends on the shapes of 
+  <EM>re1</EM> and <EM>re2</EM>. There has to be exactly one straight blank line 
+  between the bounding box of the graphical representation of <EM>re1</EM> and 
+  the bounding box of <EM>re2</EM>. If necessary, also a number of '-' 
+  characters has to be added on the right side of <EM>re1</EM> or <EM>re2</EM>, 
+  to make the drawing possible. Note that the '-' on the left of <EM>re1</EM> 
+  and <EM>re2</EM> matches the '\' character and that the '-' on the right of 
+  <EM>re1</EM> and <EM>re2</EM> matches the '\' character in the drawing. 
+  <P></P>
+  <LI>[<EM>re1</EM>] is a 1-or-more repetition of <EM>re1</EM>, represented as 
+  <P>
+  <CENTER><IMG src="Problem H - Syntrax.files/syntrax4.gif"></CENTER>
+  <P>Note that the '-' on the left of <EM>re1</EM> matches the '\' character and 
+  that the '-' on the right of <EM>re1</EM> matches the '/' character in the 
+  drawing. 
+  <P>For example the graphical representation for the regular expression 
+  <CODE>{("f" "bar") ["c"]}</CODE> looks like: 
+  <BLOCKQUOTE><PRE>      +===+    +=====+
+---\-&gt;+ f +---&gt;+ bar +--/--&gt;
+   |  +===+    +=====+  |
+   |                    |
+   | /---------\        |
+   | |  +===+  |        |
+   \-\-&gt;+ c +--/--------/
+        +===+
+</PRE></BLOCKQUOTE>Write a program that reads syntax rules and prints the size 
+  of the graphical representation. For esthetic reasons, the entire graphic has 
+  a '--' on the left and a '-&gt;' on the right. 
+  <UL></UL>
+  <H3>Input Specification</H3>The input consists of a line holding the number of 
+  test cases, followed by the input expressions (one per line). The expressions 
+  are formatted according to the following grammar: 
+  <BLOCKQUOTE>expression :: sequence | alternatives | repetition | 
+    terminal<BR>sequence :: ( ws expression expression ) ws<BR>alternatives :: { 
+    ws expression expression } ws<BR>repetition :: [ ws expression ] 
+    ws<BR>terminal :: " character* " ws<BR>ws :: (&lt; <EM>space</EM> &gt; | 
+    &lt; <EM>tab</EM> &gt;)*<BR>character :: &lt;<EM>any character except " and 
+    control-characters (ASCII 0..31)</EM>&gt; </BLOCKQUOTE>
+  <P>Note that the grammar is specified according to the following notational 
+  conventions: 
+  <BLOCKQUOTE>
+    <DL compact>
+      <DT><EM>x y</EM> 
+      <DD>sequence: <EM>x</EM> followed by <EM>y</EM> 
+      <DT><EM>x</EM> | <EM>y</EM> 
+      <DD>choice: <EM>x</EM> or <EM>y</EM> 
+      <DT><EM>x</EM>* 
+      <DD>repetition: zero or more occurrences of <EM>x</EM> 
+      <DT>&lt; &gt; 
+      <DD>used for describing a character </DD></DL></BLOCKQUOTE>
+  <P>
+  <H3>Output Specification</H3>For each expression, output a line of the form 
+  <EM>X</EM>x<EM>Y</EM> with <EM>X</EM> and <EM>Y</EM> the width and height of 
+  the graphical representation of that expression. 
+  <P>
+  <H3>Example Input</H3><PRE>1
+{("f" "bar") ["c"]}
+</PRE>
+  <H3>Example Output</H3><PRE>28x8
+</PRE>
+  <HR>
+  This page maintained by <A href="mailto:Ed@Tool.com">Ed Karrels</A>.<BR>Last 
+  updated January 3, 1998 </LI></OL></BODY></HTML>

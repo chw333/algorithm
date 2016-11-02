@@ -1,0 +1,219 @@
+program Jezek(input,output);
+
+(*
+  The Proper Key
+  CERC 1999, Jan Cada
+*)
+
+const MAXJR = 1000;
+      MAXJC = 1000; 
+      MAXBC = 1000;
+
+type debilnipolejedno = array[1..MAXJR,1..2] of integer;
+
+var   uloh     : integer;
+      bludiste : array[1..MAXJR,1..MAXBC,1..2] of integer;      
+      subrow, subrowh   : debilnipolejedno;
+      row,work : debilnipolejedno;
+      browlen  : array[1..MAXJR] of integer;
+      jezek    : array[1..MAXJR,1..2] of integer;
+      RJ,CJ    : integer;
+      RB,CB    : integer;
+      r,c      : integer;
+      x,xold   : char;
+      i,j,k    : integer;
+      RACTi    : integer;
+      rowlen   : integer;
+      subrowlen: integer;
+      subrowhlen: integer;
+      worklen  : integer;
+      donerow  : integer;
+begin
+ readln(uloh);
+ while(uloh>0) do
+ begin
+  readln(RJ,CJ);
+  for r:=1 to RJ do
+  begin
+   xold:='.'; i:=0; 
+   for c:=1 to CJ do 
+   begin
+    read(x);
+    if x<>xold then
+    begin
+     if x='#' then
+     begin
+      if i=0 then begin jezek[r,1] := c; i := 1; end
+     end 
+     else jezek[r,2] := c;
+     xold:=x;
+    end; 
+   end;
+    if x='#' then
+     jezek[r,2] := CJ+1;
+   readln;
+  end;
+{  
+  writeln('Jezek: ');
+  for r:=1 to RJ do
+   writeln(jezek[r,1],' ',jezek[r,2]);
+ }
+  readln(RB,CB);
+
+  rowlen:=1;
+  row[1,1]:=0;
+  row[1,2]:=CB; 
+
+  for r:=1 to RJ do
+  begin
+   browlen[r]:=1;
+   bludiste[r,1,1] := 1;
+   bludiste[r,1,2] := CB+1;
+  end;
+  RACTi := RJ;
+  
+  for r:=1 to (RB + RJ) do
+  begin
+   if r>RB then
+   begin
+    browlen[RACTi] := 1;
+    bludiste[RACTi,1,1] := 1;
+    bludiste[RACTi,1,2] := CB+1;    
+   end
+   else
+   begin
+   xold:='#';
+   browlen[RACTi] := 0; 
+   for c:=1 to CB do
+   begin
+    read(x);
+    if x<>xold then
+    begin
+     if x='.' then
+     begin
+      browlen[RACTi]:=browlen[RACTi] + 1;
+      bludiste[RACTi,browlen[RACTi],1] := c;
+     end
+     else
+      bludiste[RACTi,browlen[RACTi],2] := c;
+     xold:=x;
+    end;   
+   end;
+   if x='.' then 
+    bludiste[RACTi,browlen[RACTi],2] := CB+1;
+   readln; 
+   end; 
+{    
+   write('Radek : ',r,'|'); 
+   for j:=1 to browlen[RACTi] do
+    write('[',bludiste[RACTi,j,1],',',bludiste[RACTi,j,2],'] '); 
+   writeln; 
+ }  
+   { pruniky jezka s bludistem }
+   if rowlen > 0 then { pokud je predchozi radek pro jezka pruchozi }
+   begin 
+   
+    subrowlen := 1;
+    subrow[1,1] := 0; 
+    subrow[1,2] := CB;
+    
+    for i:=1 to RJ do { pro vsechny radky jezka }  
+    begin
+     worklen := 0;   
+     RACTi := (RACTi mod RJ) + 1; 
+     
+     for j := 1 to browlen[RACTi] do {pro vsechny pruchozi useky radku bludiste}
+     begin
+      work[worklen+1,2] := bludiste[RACTi,j,2] - jezek[i,2];
+      work[worklen+1,1] := bludiste[RACTi,j,1] - jezek[i,1];
+
+      if work[worklen+1,2] >= work[worklen+1,1] then
+       worklen := worklen + 1;       
+     end;
+   {  
+     write('Work:');
+     for j:=1 to worklen do write('[',work[j,1],'..',work[j,2],']');
+     writeln;
+     
+     write('Subrow:');
+     for j:=1 to subrowlen do write('[',subrow[j,1],'..',subrow[j,2],']');
+     writeln;
+}
+     { promitnuti radku do subrow resp. subrow:= subrow sjednoceno s work }
+     { subrow obsahuje vysledek minuleho radku }
+     subrowhlen := 0;
+     j:=1; k:=1;
+     while (j<=subrowlen) and (k<=worklen) do 
+     begin
+      if subrow[j,1] > work[k,2] then k := k + 1
+      else if work[k,1] > subrow[j,2] then j := j + 1
+      else begin { intervaly se protinaji }
+       subrowhlen := subrowhlen + 1;
+       if(subrow[j,1] > work[k,1]) then
+        subrowh[subrowhlen,1] := subrow[j,1]
+       else
+        subrowh[subrowhlen,1] := work[k,1];
+       if(subrow[j,2] < work[k,2]) then
+       begin
+        subrowh[subrowhlen,2] := subrow[j,2];
+        j:=j+1;
+       end 
+       else begin
+        subrowh[subrowhlen,2] := work[k,2];
+        k:=k+1;
+       end;
+      end;         
+     end; 
+     subrow := subrowh; subrowlen:=subrowhlen;
+ {    
+     write('Subrow after:');
+     for j:=1 to subrowlen do write('[',subrow[j,1],'..',subrow[j,2],']');
+     writeln;
+}
+     
+    end; { subrow obsahuje mozne posunuti jezka v ramci daneho radku }
+ 
+    { row je interval kam mohl jezek na minulem radku }
+    {  v nasledujicim kroku se provede row = intervaly ze subrow, ktere se prekryvaji s row }
+ {   
+    write('Subrow:');
+    for j:=1 to subrowlen do write('[',subrow[j,1],'..',subrow[j,2],']');
+    writeln;
+    
+    write('Row:');
+    for j:=1 to rowlen do write('[',row[j,1],'..',row[j,2],']');
+    writeln;
+  }  
+    subrowhlen := 0;
+    j:=1; k:=1;
+    while (j<=rowlen) and (k<=subrowlen) do 
+    begin
+     if row[j,1] > subrow[k,2] then k := k + 1
+      else if subrow[k,1] > row[j,2] then j := j + 1
+      else begin { intervaly se protinaji }
+       subrowhlen := subrowhlen + 1;
+       subrowh[subrowhlen,1] := subrow[k,1];
+       subrowh[subrowhlen,2] := subrow[k,2];
+       if subrow[k,2] > row[j,2] then j:=j+1;
+       k:=k+1;
+      end;         
+     end; 
+     row := subrowh;
+     rowlen:=subrowhlen;
+{
+    write('Row after:');
+    for j:=1 to rowlen do write('[',row[j,1],'..',row[j,2],']');
+    writeln;
+}
+     donerow := r;
+    end;       
+   RACTi := (RACTi mod RJ) + 1;    
+  end;
+  if rowlen>0 then
+   writeln('The key can fall through.')
+  else 
+   writeln('The key falls to depth ',donerow-1,'.');
+  uloh := uloh - 1;
+ end;
+end.
+      

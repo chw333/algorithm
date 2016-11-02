@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0072)http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_EastCen/1991/morse.htm -->
+<HTML><HEAD><TITLE>Problem 3 - Morse Code Generation</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY>
+<CENTER>
+<H2>1991 ACM East Central Regional Programming Contest</H2>
+<H3>Problem 3: Morse Code Generation</H3></CENTER>
+<CENTER>
+<TABLE>
+  <TBODY>
+  <TR align=BOTTOM>
+    <TD>Source file:</TD>
+    <TD>morse.pas or <A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_EastCen/1991/morse.c">morse.c</A></TD></TR>
+  <TR align=BOTTOM>
+    <TD>Input file:</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_EastCen/1991/morse.in">morse.in</A></TD></TR>
+  <TR align=BOTTOM>
+    <TD>Output file:</TD>
+    <TD>morse.out</TD></TR></TBODY></TABLE></CENTER>
+<H4>Input</H4>
+<P>A text file consisting of a character followed by its Morse code 
+representation as a series of '-' and '.', one character to a line. This data is 
+terminated by a '@' in column 1. The code table is followed by an integer on a 
+line by itself indicating the transmission speed in words-per-minute. This is 
+followed by the message to be sent. For the purpose of transmission, end-of-line 
+characters are _not_ to be sent. 
+<H4>Output</H4>
+<P>A copy of the message to be sent, one character per line followed by a 
+listing, as integers of the number of milliseconds the transmitter will be on 
+and the number of milliseconds the transmitter will be off to result in the 
+desired speed. Each time is to be preceeded by at least one character of white 
+space (space, tab or cr-lf) and followed by one character of white space. Sound 
+times will be followed by a single character 'S' and no sound times will be 
+followed by a single character 'N". The required inter character spacing will be 
+the last entry in a line. Each line will be terminated by a new line character. 
+<P>In determining the speed of transmission of messages in Morse code, the 
+controlling element is the dot, '.'. The dash, '-', is three dots in length. 
+Within a character the space between sounds is considered to be a dot in length. 
+The inter-character space is at least a dash in length and the interword space 
+in three dashes in length. It is assumed that each word is five characters in 
+length. 
+<P>For transmission speeds below thirteen (13) words-per-minute, the individual 
+characters are formed using the dot length of thirteen words per minute, with 
+the extra time placed between each character. Thus at 6.5 words per minute, the 
+inter character space is twice (?) that of a 13 wpm transmission. 
+<P>Above 13 wpm, both the character time and the inter character spacing are 
+controlled by the speed. 
+<P>For the purpose of this problem assume that the average character is eight 
+(8) dots in length. Thus for a standard of 13 wpm transmission there would be 
+65+13=78 characters per minute or 78*8=626 dot spaces per minute. You are to use 
+this value for the basis of your program. 
+<P>Below is a table of the characters which will be used for testing and their 
+Morse Code representation. <PRE>A  .-		J  .---		S  ...		1  .----
+B  -...		K  -.-		T  -		2  ..---
+C  -.-.		L  .-..		U  ..-		3  ...--
+D  -..		M  --		V  ...-		4  ....-
+E  .		N  -.		W  .--		5  .....
+F  ..-.		O  ---		X  -..-		6  -....
+G  --.		P  .--.		Y  -.--		7  --...
+H  ....		Q  --.-		Z  --..		8  ---..
+I  ..		R  .-.		0  -----	9  ----.
+</PRE>
+<H4>Sample output</H4>5 words per minute <PRE>A   15 S 15 N 45 S 450 N
+    585 N
+B   45 S 15 N 15 S 15 N 15 S 15 N 15 S 450 N
+A   15 S 15 N 45 S 450 N
+D   45 S 15 N 15 S 15 N 15 S 450 N
+    585 N
+B   45 S 15 N 15 S 15 N 15 S 15 N 15 S 450 N
+O   45 S 15 N 45 S 15 N 45 S 450 N
+Y   45 S 15 N 15 S 15 N 45 S 15 N 45 S 450 N
+</PRE></BODY></HTML>

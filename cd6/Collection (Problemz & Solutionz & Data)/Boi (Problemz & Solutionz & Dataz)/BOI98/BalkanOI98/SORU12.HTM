@@ -1,0 +1,127 @@
+<head><title> BOI'98 DAY 1 TASK 2</title></head>
+<body bgcolor="#FFFFFF">
+<h1> BOI'98 DAY 1 TASK 2</h1><h1>
+TOUGH NUT TO CRACK
+
+
+
+</h1><h2> PROBLEM</h2><p>
+
+You serve your guest a bowl of nuts.. In the bowl there are K varieties of nuts (1 <= K <= 100) --pistachios, wallnuts,chestnuts, etc. Your guest picks a nut from the bowl at random without letting you see it, and wants you to find out which kind of nut it is. You ask questions of the type "Is it of the kind k<sub>1</sub> or k<sub>2</sub> or ... k<sub>N</sub>" (where N <= K); the answer of your guest to each question will be either "yes" or "no". Your guest does not eat the nut until you correctly identify what kind of nut it is, then, he picks another nut, and so on until the bowl becomes empty. You are the one who put the nuts into the bowl so you know exactly how many nuts of each kind there are in the bowl. Your objective in this task is to minimize the total number of questions you ask until the bowl gets emptied (so that your guest can enjoy the serving with minimum amount of interruption).
+
+The kinds of nuts are numbered with integers 1 through K, consecutively. There are at most 100 nuts of each kind.
+
+Interaction of your program with your guest will be through the functions called ask and tell (and finish for Pascal programmers). The ask function allows your program to query whether the nut just picked is of the kind k1 or k2 or ... kN. The tell function allows your program to assert that the nut just picked is of the kind k. In a typical run, for each nut picked your program will perform a sequence of calls to ask, followed by one call to tell. The call to tell must never fail, that is your program must always be asserting the correct kind for the nut.
+
+
+
+<h2>INSTRUCTIONS FOR C/C++ PROGRAMMERS</h2>
+<p>
+In your directory you will find a project file named nuts.prj. This project file will contain the object file for the functions you need, namely ask and tell. Further, the object file contains the main function. Note that these have been compiled with the large memory model. In the IDE you need to open this project file using the file menu. With nuts.prj open, your object file will be linked to ours automatically. Since the function main is already included in our object file, you must not have a function called main; instead you must have a function called play with the prototype (declaration):
+</p>
+
+<pre>
+void play (void);
+
+/* Interface Functions:  */
+
+int ask (int size, int* kind);
+</pre>
+<p> /*Is the nut picked of the kind kind[0] or ... or kind[size-1]? If yes return 1, otherwise return 0  */
+</p>
+
+<pre>
+int tell (int k);
+</pre>
+<p>
+/* Assert that the nut picked is of the kind k. Returns 1 if
+assertion is correct,0 otherwise. (The return value is provided to help you with debugging. Recall that a return value of 0 causes your program immediately fail the test case.) */
+</p>
+
+
+<h2>INSTRUCTIONS FOR PASCAL PROGRAMMERS</h2>
+
+<p>
+Your program should have the directive
+</p>
+
+<pre>
+use nutslib;
+
+
+(* Interface procedures:  *)
+
+function ask (size: integer; kind: array of integer): boolean;
+</pre>
+<p>
+(* Is the nut picked of the kind kind[0] or ... or kind[size-1]? If yes return TRUE, otherwise return FALSE  *)
+</p>
+
+<pre>
+function tell (k: integer) : boolean;
+</pre>
+<p>
+(* Assert that the nut picked is of the kind k. Returns TRUE if assertion is correct,FALSE otherwise. (The return value is provided to help you with debugging. Recall that a return value of FALSE causes your program immediately fail the test case.) *)
+</p>
+
+<pre>
+procedure finish;
+</pre>
+<p>
+(* Call this procedure when the game is over(i.e. all nuts are picked). Called exactly once in a run. *)
+</p>
+
+
+
+
+<h2> INPUT</h2><p>
+
+The first line of the input file contains the number K of the kinds of nuts (1  <= K <= 100). Each of the following K lines contains the number of nuts of the respective kind such that the (k+1)'th line of the input file contains the number of nuts of kind k (1 <= k <= K).
+
+The input file is named nuts.inp.
+
+<h2> EXAMPLE</h2><pre>
+nuts.inp:
+5
+72
+28
+6
+100
+8
+</pre>
+
+
+<h2> OUTPUT</h2><p>
+
+<p>
+No output file is to be produced.
+
+
+<h2>GRADING</h2>
+
+<p>
+The grader will simply count the number of times your program calls
+ ask until there are no nuts in the bowl. In case a call to tell 
+fails to identify the kind of the nut picked your program gets zero 
+points for that test case. If the total number of ask operations 
+performed, denoted by x, is above our minimum, denoted by M, but 
+less than 3/2 M, you still can get partial credit for that test case. 
+The points you get for a test case is given by rounding to 
+the nearest integer the value obtained by the following formula:
+<p>
+
+A				if x < M</br>
+(4A/M2 ) ( 3/2 M - x)2		if M < x < 3/2 M</br>
+0				if 3/2 M < x </br>
+where A denotes the maximum possible points for this test case.
+
+<p>
+CREDITS</br>
+Idea: Halit Oðuztüzün, Hakký Toroslu</br>
+Programming: Alp Atýcý, Sertan Girgin</br>
+Writing: Halit Oðuztüzün</br>
+</br>
+<a href="../11/index.html">previous question</a>
+<a href="../13/index.html">next question</a> <a href="index.html">Main Page</a>
+</body>
+

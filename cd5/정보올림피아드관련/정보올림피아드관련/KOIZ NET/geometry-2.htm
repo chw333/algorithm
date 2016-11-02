@@ -1,0 +1,86 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>두 선분의 교차 검사</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font color="#0066CC" size="5"><b>두 선분의 교차 검사</b></font></p>
+<p align="center"><font size="2">&nbsp;우리가 가장 먼저 살펴 볼&nbsp;기하 문제를 두 개의 선분이 서로 
+교차하는지 그렇지 않은지를 검사하는 것이다. 평면 위에 두 선분이 있을 때 이 두 
+선분이 어떤 관계로 놓여 있는지를 검사하는 것이다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">단순한 방법</font></p>
+<p><font size="2">&nbsp;&nbsp;가장 단순한 방법은 두 선분을 포함하는 직선의 방정식을 구해 이 
+두 직선의 교차점을 계산하는 것이다. 그리고 나서 이 교차점이 두 선분의 범위 안에 
+포함되는지를 다시 검사하는 것이다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">많이 사용되는 방법 - 여러 응용 분야가 존재</font></p>
+<p><font size="2">&nbsp;&nbsp;실제로 두 선분의 교차를 검사 할 때 많이 사용되는 방법은 signed 
+area를 이용하는 것이다. signed area란 세 점으로 만들어지는 면적을 구하는 것이다. 
+세점의 방향에 따라 양이나 음의 값을 갖는다.</font></p>
+<p align="center"><font size="2">&nbsp;<img src="images/geometry-02.jpg" width="426" height="144" border="0"></font></p>
+<p><font size="2">a, b, c가 이루는 면적 = &nbsp;( a[0] * b[1] - a[1] * b[0]</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ 
+b[0] * c[1] - b[1] * c[0]</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ 
+c[0] * a[1] - c[1] * a[0] ) / 2</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">int area2(Point a,Point b,Point c)</font></p>
+<p><font size="2">{</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;return (a[0] * b[1] - a[1] * b[0]</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ 
+b[0] * c[1] - b[1] * c[0]</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ 
+c[0] * a[1] - c[1] * a[0] ) / 2;</font></p>
+<p><font size="2">}</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">&nbsp;&nbsp;이제 한 선분에 대해 어떤 점이 왼쪽에 있는지 (반시계 방향인지)를 
+검사하는 것은 signed area를 구하면 된다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">int left(Point a, Point b, Point c)</font></p>
+<p><font size="2">{</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;return area2(a,b,c) &gt; 0;</font></p>
+<p><font size="2">}</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">int colinear(Point a,Point b,Point c)</font></p>
+<p><font size="2">{</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;if (area2(a,b,c)==0)</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;</font></p>
+<p><font size="2">}</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">평면 위의 두 선분이 교차하기 위한 조건</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;평면 위의 두 선분 line1과 line2가 이 서로 교차하기 
+위해서는 다음 조건을 만족해야한다.</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;(1) line2의 두 끝점은 line1을 기준으로 오른쪽과 왼쪽에 
+하나씩 놓여야 한다.</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;(2) line1의 두 끝점은 line2을 기준으로 오른쪽과 왼쪽에 
+하나씩 놓여야 한다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">조건 1과 2는 서로 대칭적인 관계이다. 그리고, 이 조건은 앞에서 우리가 학습한 
+area2 함수를 사용함으로 써 쉽게 검사할 수 있다. 즉, line2의 두 끝점이 line1을 
+기준으로 오른쪽과 왼쪽에 하나씩 놓여야 한다는 것은 area2 함수를 사용하여</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;area2(line1[0],line1[1],line2[0]);</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;area2(line1[0],line1[1],line2[1]);</font></p>
+<p><font size="2">를 조사하면, 두 값이 서로 다른 부호를 가져야 한다는 것을 의미한다.</font></p>
+<p><font size="2">따라서, 이를 바탕으로 우리는 다음과 같이 교차 검사 프로그램을 작성할 수 있다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">두 선분의 교차를 검사하는 프로그램</font></p>
+<p><font size="2">int intersect(Point liner1, Point liner2)</font></p>
+<p><font size="2">{</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;return ( area2(line1[0],line1[1],line2[0]) *</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;area2(line1[0],line1[1],line2[1]) 
+&lt;= 0)</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( 
+area2(line2[0],line2[1],line1[0] *</font></p>
+<p><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;area2(line2[0],line2[1],line1[1] 
+&lt;= 0);</font></p>
+<p>}</p>
+</body>
+
+</html>

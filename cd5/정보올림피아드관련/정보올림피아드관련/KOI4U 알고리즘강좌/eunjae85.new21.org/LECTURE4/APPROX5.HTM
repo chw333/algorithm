@@ -1,0 +1,292 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>KOI 13회 중등부 1.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0" width="595">
+    <tr>
+        <td width="589" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;휴리스틱을 
+            알려주마 (5) - 국소탐색</b></font></td>
+    </tr>
+</table>
+<ul>
+    <p>&nbsp; 
+    <table border="0">
+            <tr>
+                <td width="550"><p style="line-height:150%;"><font size="2" color="red">&nbsp;&nbsp;※ 
+                이은재님이 써주신 강좌를 제가 일정부분(얼마나? -.-) 편집하였습니다. 
+                </font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;안녕하세요? 
+                부운영자 이은재입니다. TSP 문제를 예로 국소탐색(Local Search)을 
+                강의하겠습니다. TSP 가 많이 알려져 있으면서도 문제 자체가 간단한 
+                문제니 괜찮다고 생각해서 TSP 문제를 선택하였습니다. 그냥 알고리즘 
+                설명만 해도 되겠지만(사실 그러면 저는 매우 편해집니다), 문제를 
+                예로 들면 훨씬 더 이해가 빠르고 효율적이라 생각되어 예를 들기로 
+                하였습니다. 자, 이제 강의 시작합니다~~~</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;국소탐색을 
+                간단히 말하자면, </font><font size="2" color="blue">&quot;해를 
+                변형 시켜 얻은 새로운 해가 변형 시키기 전의 해보다 더 좋다면 
+                수용, 그렇지 않으면 버림.&quot;</font><font size="2"> 이라고 
+                생각해도 됩니다. 자, 무언가 떠오르지 않나요? 그리디라고는 할 
+                수 없지만, 그리디와 비슷한 성격이죠? 국소탐색은 결국 좋은 것만 
+                수용하고 아니면 버린&nbsp;다음에 더 좋은 해가 나올 때까지 계속 
+                해를 변형, 버리는 작업을 계속하는 것입니다. TSP 문제 다 아시죠? 
+                혹시 모르시는 분들을 위해 설명해 드리겠습니다.</font></p>
+                <p style="line-height:150%;"><font size="2"><b>TSP (Traveling 
+                Salesman Problem)</b></font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;그래프가 
+                있습니다. 여기서 그래프는 각 노드 사이에는 각각 가중치가 있고, 
+                여기서는 무방향 그래프, 즉 방향이 없는 그래프(다시말해 i-&gt;j 
+                비용과 j-&gt;i 의 비용이 같은 그래프)이고 모든 정점들 간에 노드가 
+                존재한다고 가정합시다. TSP 는 여기서 임의의 정점i에서 시작해서 
+                다른 모든 정점을 한번씩만 거쳐서 다시 정점i로 되돌아오는 경로의 
+                길이를 최소로 하는 경로를 출력하는 문제입니다. 하지만 최적해는 
+                구할 수 없습니다. 물론 정점의 갯수가 작으면 가능하지만... 모든 
+                경우를 다 조사하는 것은 매우 위험한 행동입니다.^^;; 노드가 100 
+                개만 된다고 쳐도, 계산이 맞는지는 모르겠지만 CPU 1GHz 짜리로 
+                돌리면 약 2.9*(10^141)년이 걸립니다. 저렇게 긴 시간이 흐르기 
+                전에 이미 지구는 멸망할지도 모르겠군요..허허...^^;; (물론 요즘은 
+                기술이 발달해서, 펜티엄 3정도면 10초 안에 최적해 - 휴리스틱으로 
+                얻은 해가 아니라 - 를 구할 수 있다고 합니다. 흥미롭죠?)</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;어쨋든 
+                국소탐색으로 이 문제의 근사해라도 구합시다. 어느 세월에 프로그램 
+                돌리고 앉아 있습니까.. 비슷한 근사해라도 구해야죠. 일단 국소탐색으로 
+                풀 때 간단한 절차는 다음과 같습니다.</font></p>
+                <p style="line-height:150%;"><font size="2" color="blue">&nbsp;&nbsp;</font><font
+                 size="2">1. </font><font size="2" color="red"><b>초기해</b></font><font
+                 size="2">를 적당히 구합니다.</font><font size="2" color="blue"><br> 
+                </font><font size="2">&nbsp;&nbsp;2.</font><font size="2" color="blue"> 
+                </font><font size="2">해를 적절히 </font><font size="2" color="red"><b>변형</b></font><font
+                 size="2" color="blue"> </font><font size="2">시킵니다.</font><font
+                 size="2" color="blue"><br> &nbsp;&nbsp;</font><font size="2">3. 
+                변형된 해가 변형 이전의 해보다</font><font size="2" color="blue"> 
+                </font><font size="2" color="red"><b>더 좋다면</b></font><font
+                 size="2" color="blue"> </font><font size="2">변형된 해를</font><font
+                 size="2" color="blue"> </font><font size="2" color="red"><b>저장</b></font><font
+                 size="2">하며,</font><font size="2" color="blue"><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font
+                 size="2">변형된 해가 변형 이전의 해보다 </font><font size="2"
+                 color="red"><b>나쁜 해면 저장하지 않습니다</b></font><font size="2">.</font><font
+                 size="2" color="blue"><br> &nbsp;&nbsp;</font><font size="2">4. 
+                2, 3번 과정을 반복하면서 </font><font size="2" color="red"><b>종료조건을 
+                만족하면</b></font><font size="2"> 프로그램을 끝냅니다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;국소탐색은 
+                대부분 위와 같은 과정을 거칩니다. 간단히 설명하자면...</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;초기해란 
+                국소탐색의 출발점이라고 할 수 있습니다. 이 초기해를 적절히 변형시켜 
+                나가면서 해의 개선을 꾀하게 되는 겁니다. 이 초기해는 보통 랜덤, 
+                그리디, 기타 등등의 방법으로 만듭니다. 예를 들어 TSP의 경우는 
+                (1, 2, 3, 4, 5, ..., N) 이렇게 단순하게 할 수도 있죠. 초기해는 
+                국소탐색의 결과와 밀접한 관련이 있습니다. 보통 초기해가 좋을수록 
+                국소탐색의 결과물도 좋은 편입니다. (박명수 쌍꺼풀 수술하면 원빈되나?) 
+                하지만 항상 그런 것만은 아니라는 것을 알아두세요.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;해를 
+                적절히 변형시킨다는 것은 별 것 아닙니다. 말 그대로 &quot;적절히&quot; 
+                해만 바꿔 주면 됩니다. 물론 이렇게 변형한 해가 문제의 조건을 
+                벗어난다던가 해서는 안되겠죠 (그렇지 않은 경우도 있습니다만.. 
+                대부분의 경우에.) 랜덤을 사용할 수도 있고, 해를 변형할 수 있는 
+                모든 가능성을 다 체크해 볼 수도 있습니다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;TSP의 
+                경우 해를 변형시키는 것은 여러 가지 방법이 있겠지만, 가장 간단한 
+                것은 다음 두 가지 방법입니다. 하나는 아래에서도 설명할 노드 
+                바꿔치기. (5, 4, 2, 1, 3, 6) 이렇게 있고 랜덤으로 2와 6을선택한다면 
+                변행된 해는 (5, </font><font size="2"><b>6</b></font><font size="2">, 
+                2, 1, 3, </font><font size="2"><b>4</b></font><font size="2">)가 
+                되겠지요. 또 한가지 방법은 2-opt(혹은 inverse라고도 함)입니다. 
+                2와 6을 선택했다면 (5, </font><font size="2"><b>6, 3, 1, 2, 
+                4</b></font><font size="2">) 이렇게 뒤집는 방법이지요(그려보시면 
+                아시겠지만 한번에 에지 두 개가 뒤바뀐다는 뜻에서 2-opt입니다. 
+                비슷하게 3-opt 4-opt도 있습니다) 아무튼 어떤 방법을 쓰던 간에 
+                빠른 방법이어야 하고, 해의 변형 정도가 &quot;적절&quot;해야 
+                합니다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;국소탐색은 
+                항상 해를 좋은 쪽으로 변형시킵니다. 하지만, 그런다고 해서 항상 
+                최적해에 도달하는 것은 아닙니다. 다음 그림을 보시면...</font></p>
+                <p style="line-height:150%;"><font size="2"><img src="approx5-1.gif"
+                 width="256" height="209" border="0"></font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;어떤 
+                문제의 해를 X라고 하고 그 해의 값을 X의 함수 f(X)라고 합시다. 
+                위의 그림은 X와 f(X)와의 관계를 도식적으로 나타낸 그림입니다(물론 
+                저렇게 2차원 함수로 나타나는 건 아닙니다만, 여러분의 수학적 
+                상상력을 동원해 보세요). 최대의 f(X)값을 갖는 X를 찾는 것이 
+                문제입니다.&nbsp;예를 들어 초기해가 B점이라고 하죠. 국소탐색은 
+                항상 좋은 쪽으로 해를 변형시켜 나가니까, 결국은 A점으로 올라가겠죠. 
+                그래서 국소탐색을 hill climbing(언덕 오르기..) 라고도 부릅니다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;하지만 
+                최적해는 A점이 아니라 E점입니다. 이 최적해에 도달하기 위해서는, 
+                먼저 C점으로 내려간 뒤에 E점으로 올라가야 하겠죠. 물론 운이 
+                좋아서, 초기해가 D나 F에서 시작한다면 최적해를 찾을 수 있겠지요. 
+                혹은 B점에서 해의 변형 정도가 크다면 역시 운이 좋아서 D점으로 
+                점프할 수도 있는 겁니다(물론 해가 무지하게 나빠지는 확률이 훨씬 
+                높지만). 초기해나 해의 적절한 변형 방법이 중요한 이유는 바로 
+                이것입니다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;흔히 
+                A와 E처럼 해의 변형을 통해 더 이상 개선이 불가능한 지점을 지역 
+                극소(local minimum), 그중에서도 E처럼 전체 해중의 최적의 지점을 
+                광역 극소(global minimum)라고 합니다(대부분의 최적화 문제는 
+                답을 최소화하는 것이 대부분이라 minimum이 붙었죠). 즉, 여러 
+                지역 극소 중에서 하나의(답이 같은 여러 가지의 해일수도 있지요) 
+                해가 광역 극소가 됩니다. 이 용어들은 신경망이나 유전자 프로그래밍 
+                등 전산학에서 자주 쓰이는 용어들이니, 마음속에 새겨 두시기 바랍니다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;인간이란, 
+                밤하늘에서 global minimum이라는 하나의 별을 찾는 어린 소년과도 
+                같다고 생각합니다. (오옷~ 이런 시적 표현이 &gt;_&lt;)</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;국소탐색에서 
+                종료조건이란 이런 겁니다. 해가 안정 상태(stable state ; 해의 
+                개선 여지가 없는 경우. 즉 local minimum에 빠졌을 때를 말합니다)이거나 
+                적당한 시간이 지났을 때(KOI에서는 제한시간이 되겠지요), 혹은 
+                만족할 만한 답에 도달했을 때입니다. </font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;무슨 
+                말인지 이해가 안가신다구요? 음.. 그러면 손으로 컴퓨터가 연산하는 
+                과정을 흉내 내봅시다. 일단 예시 그래프를 보시죠.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;데이터는 
+                아래와 같이 주어집니다. 자기 자신 노드이면 0, 그렇지 않으면 
+                가중치를 n*n 행렬에 담아 입력 받습니다. 그런데 우리가 손으로 
+                돌릴 그래프는 데이터만 나타내고 그래프는 그리지 않겠습니다. 
+                그리기도 힘들뿐더러 그려도 복잡해서 보기가 힘들기 때문이죠. 
+                차라리 데이터 보는게 훨씬 빠릅니다. 또 매번 그림만 보고 이해하는 
+                것은 사고력 신장에도 도움이 안됩니다.&nbsp; </font>
+                <div align="center"><table border cellspacing="0" bordercolordark="white"
+                 bordercolorlight="black">
+                    <tr>
+                        <td width="115" height="32"><p align="center" style="line-height:150%;"><font
+                             size="2">input.txt</font></td>
+                    </tr>
+                    <tr>
+                        <td width="115" height="161"><p style="line-height:150%;"><font
+                             size="2">&nbsp;&nbsp;7<br> &nbsp;&nbsp;0 &nbsp;3 
+                            &nbsp;1 &nbsp;3 &nbsp;4 &nbsp;1 &nbsp;5<br> &nbsp;&nbsp;3 
+                            &nbsp;0 &nbsp;6 &nbsp;2 &nbsp;1 &nbsp;5 &nbsp;4<br> 
+                            &nbsp;&nbsp;1 &nbsp;6 &nbsp;0 &nbsp;1 &nbsp;3 &nbsp;2 
+                            &nbsp;5<br> &nbsp;&nbsp;3 &nbsp;2 &nbsp;1 &nbsp;0 
+                            &nbsp;3 &nbsp;2 &nbsp;3<br> &nbsp;&nbsp;4 &nbsp;1 
+                            &nbsp;3 &nbsp;3 &nbsp;0 &nbsp;2 &nbsp;2<br> &nbsp;&nbsp;1 
+                            &nbsp;5 &nbsp;2 &nbsp;2 &nbsp;2 &nbsp;0 &nbsp;4<br> 
+                            &nbsp;&nbsp;5 &nbsp;4 &nbsp;5 &nbsp;3 &nbsp;2 &nbsp;4 
+                            &nbsp;0<br> </font></td>
+                    </tr>
+                </table></div>
+                <p style="line-height:150%;"><font size="2"><br> &nbsp;&nbsp;자 
+                이제 위의 데이터를 가지고 시작해 봅시다. 우선 초기해를 구합니다. 
+                초기해를 (1, 3, 4, 2, 5, 6, 7)이라 하고, 가중치의 합은 1+1+2+1+2+4+5=16&nbsp;입니다. 
+                이제 본격적으로 국소탐색에 들어가볼까요?</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;해를 
+                이제 변형시킵시다. 랜덤 함수를 돌려서 1~N 범위의 난수 두 개를 
+                발생시킵니다. 물론 두 수가 다르도록. 여기서는 위에서 설명한 
+                것 중 첫번째 방법을 사용할 것입니다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;두 수가 
+                3 과 5가 나왔다고 하지요. (1, 3, 4, 2, 5, 6, 7) 이 순열에서 
+                세 번째와 다섯 번째 노드를 교환하는 변형을 시킵시다. 두 수를 
+                바꾸면 순열은 (1, 3, </font><font size="2"><b>5</b></font><font
+                 size="2">, 2, </font><font size="2"><b>4</b></font><font size="2">, 
+                6, 7) 이 되고, 가중치의 합은 1+3+1+2+2+4+5=18 이 됩니다. 아까 
+                말했죠? 국소탐색은 더 좋은 해가 나오면 수락하고, 그렇지 않으면 
+                무조건 버린다고. 지금 해가 더 나빠졌으므로 이를 버리고 다시 
+                새로운 난수를 발생합니다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;이번에 
+                두 수 2 와 4 가 나왔습니다. 이번에도 바꾸고 나면 (1, </font><font
+                 size="2"><b>2</b></font><font size="2">, 4, </font><font size="2"><b>3</b></font><font
+                 size="2">, 5, 6, 7) 이고, 가중치의 합은 3+2+1+3+2+4+5=20으로 
+                또 나빠졌군요.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;새로 
+                난수를 발생합시다. 1 과 3이 발생되었습니다. 변형된 순열을 보시죠. 
+                (</font><font size="2"><b>4</b></font><font size="2">, 3, </font><font
+                 size="2"><b>1</b></font><font size="2">, 2, 5, 6, 7) 가 되고, 
+                가중치의 합은 1+1+3+1+2+4+3=15 가 됩니다. 자, 이제 해가 좋아졌죠? 
+                이제 이 변형을 허락하고 배열에 새로 만들어진 순열을 저장하게 
+                됩니다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;또 새로운 
+                난수를 발생합니다. 4 와 6이 발생되었습니다. 바꿔 보면 (4, 3, 
+                1, </font><font size="2"><b>6</b></font><font size="2">, 5, 
+                </font><font size="2"><b>2</b></font><font size="2">, 7)이 되고 
+                합은 1+1+1+2+1+4+3=13 이 됩니다. 또 해가 좋아졌죠? 이를 또 수락해서 
+                계속합니다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;이런 
+                상태를 반복하다 보면 안정 상태에 도달하게 될 것입니다. 우리는 
+                이 해가 global minimum이길 바래야죠. 좀 더 좋은 해를 얻기 위해서는 
+                여러 가지 개선 방법을 생각해 보아야 합니다. 가장 간단한 것은 
+                조금이라도 더 좋은 초기해에서 출발하는 것(물론 근본적인 해결책은 
+                아닙니다만)입니다. 또 다른 방법으로는 국소 탐색을 여러 번 반복하면서 
+                각기 다른 초기해에서 시작한다던지요.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;하지만 
+                이것들이 근본적인 해결책은 아닙니다. 그래서 IBM의 어떤 인간이 
+                개발해서 특허낸(물론 KOI에서 쓴다고 해서 돈내란 법은 없어요 
+                -_-), &quot;위 그림의 B상태에서 C를 거쳐 E로 신통한 방법&quot;인 
+                시뮬레이티드 어닐링(Simulated Annealing)에 대해서 다음 회에 
+                알아보겠습니다. 기본적으로 국소탐색을 개선한 방법인데, 간단하고 
+                성능이 좋아서 KOI에서 근사해를 요구하는 많은 문제의 최적해를 
+                턱턱 뱉어내는 신통한 방법입니다. 기대해 주시길..</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;다음은 
+                TSP를 국소탐색을 이용하여 짠 소스입니다. 혹시 버그가 있다면 
+                알려 주시기 바랍니다. 아래 소스에만 만족하지 마시고 다른 문제에도 
+                한번 적용시켜 보시기 바랍니다. 휴리스틱 짜다보면 정말 재밌어요... 
+                최적해 문제와는 색다른 재미가 있죠.</font></p>
+                <p style="line-height:150%;"><font size="2">소스</font></p>
+                <p style="line-height:150%;"><font size="2">Program TSPhc;</font></p>
+                <p style="line-height:150%;"><font size="2">Const MaxN=100;<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TimeCut=18.2*8;</font></p>
+                <p style="line-height:150%;"><font size="2">Var I,J,K,N,Answer:Integer;<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;Data:Array[0..MaxN+1,0..MaxN+1] Of Integer;<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;AnswerArray:Array[0..MaxN+2] Of Integer;<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;Timer:Longint Absolute $0040:$006c;<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;Start:Longint;</font></p>
+                <p style="line-height:150%;"><font size="2">Procedure Input;<br> 
+                Var T:Text;<br> Begin<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assign(T,'input.txt');<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reset(T);<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Readln(T,N);<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For I:=1 to N Do For J:=1 to N 
+                Do Read(T,Data[I,J]);<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Close(T);<br> 
+                End;</font></p>
+                <p style="line-height:150%;"><font size="2">Procedure InitSolution;<br> 
+                Var Flag:Array[0..MaxN+1] Of Boolean;<br> Begin<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Randomize;<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For I:=1 to N Do Flag[I]:=False;<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For I:=1 to N Do Begin<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Repeat 
+                J:=Random(N)+1; Until Not Flag[J];<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AnswerArray[I]:=J;<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Flag[J]:=True;<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End;<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AnswerArray[N+1]:=AnswerArray[1];<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For I:=2 to N+1 Do Begin<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inc(Answer,Data[AnswerArray[I-1],AnswerArray[I]]);<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End;<br> End;</font></p>
+                <p style="line-height:150%;"><font size="2">Procedure Swap(P1,P2:Integer);<br> 
+                Var I,J,K:Integer;<br> Begin<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If 
+                (P1&lt;&gt;1) And (P2&lt;&gt;1) Then Begin<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K:=AnswerArray[P1]; 
+                AnswerArray[P1]:=AnswerArray[P2]; AnswerArray[P2]:=K;<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End 
+                Else Begin<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If 
+                P2=1 Then Begin<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K:=P1; 
+                P1:=P2; P2:=K;<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End;<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K:=AnswerArray[1]; 
+                AnswerArray[1]:=AnswerArray[P2]; AnswerArray[P2]:=K;<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AnswerArray[N+1]:=AnswerArray[1];<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End;<br> End;</font></p>
+                <p style="line-height:150%;"><font size="2">Function Change(P1,P2:Integer):Integer;<br> 
+                Var I,J,K:Integer;<br> Begin<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Swap(P1,P2);<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K:=0;<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For 
+                I:=2 to N+1 Do Begin<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inc(K,Data[AnswerArray[I-1],AnswerArray[I]]);<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End;<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Swap(P1,P2);<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change:=K;<br> End;</font></p>
+                <p style="line-height:150%;"><font size="2">Procedure Local_Search;<br> 
+                Var P1,P2,Temp:Integer;<br> Begin<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitSolution;</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;While 
+                True Do Begin<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If 
+                Timer-Start&gt;TimeCut Then Exit;<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P1:=Random(N)+1; 
+                Repeat P2:=Random(N)+1; Until P1&lt;&gt;P2;<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Temp:=Change(P1,P2);<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If 
+                Temp&lt;Answer Then Begin<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Answer:=Temp;<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Swap(P1,P2);<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End;<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End;<br> End;</font></p>
+                <p style="line-height:150%;"><font size="2">Procedure Output;<br> 
+                Var T:Text;<br> Begin<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assign(T,'output.txt');<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rewrite(T);<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writeln(T,Answer);<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For I:=1 to N+1 Do Write(T,AnswerArray[I],' 
+                ');<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Close(T);<br> End;</font></p>
+                <p style="line-height:150%;"><font size="2">Begin<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start:=Timer;<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Input;<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Local_Search;<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output;<br> End.</font></td>
+        </tr>
+    </table>
+    <p style="line-height:150%;"><font size="2">&nbsp;</font></p>
+</ul>
+</body>
+
+</html></html>

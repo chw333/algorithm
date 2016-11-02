@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0037)http://www.cylog.gr/boi97/prob22.html -->
+<HTML><HEAD><TITLE>BOI 97 - Problems 2.2</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type>
+<META content="5th Balkan Olympiad in Informatics 1997 unofficial site" 
+name=Description>
+<META 
+content="boi, informatics, international, olympiad, balkan, 5th, greece, drama, kostas, symeonidis, participant, result, problem, photo, picture" 
+name=Keywords>
+<META content="Microsoft FrontPage 5.0" name=GENERATOR></HEAD>
+<BODY background="BOI 97 - Problems 2_2.files/back.gif" bgColor=black 
+link=#8080ff text=white topMargin=10 vLink=#6a6ab5>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD vAlign=top><FONT size=8>5th BOI '97</FONT><FONT 
+      color=#ff0000>UNOFFICIAL SITE</FONT><BR>September 30th - October 5th, 1997 
+      Drama - Greece 
+      <P><FONT color=yellow size=5>Day 2. Problem 2. Cycle 
+    Detection</FONT></P></TD></TR>
+  <TR>
+    <TD></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD vAlign=top>
+      <P>Assume we have a network of computers, where each computer is connected 
+      with others by means of cables. Each cable connects exactly two computers, 
+      and two computers can be connected to each other by only one cable. Given 
+      a network of computers you are requested to determine all the cables that 
+      participate in a cycle. Also, for each cable you must determine the number 
+      of cycles in which this cable participates. A cycle is a sequence of 
+      cables, starting from computer A and leading to itself. However, each 
+      computer, other than A, in the cycle, should participate only once.</P>
+      <P><B><FONT color=yellow>INPUT</FONT></B><BR>Your program should read the 
+      input from the file INPUT.TXT as follows. The first line contains a 
+      positive integer number N (N&lt;=20) denoting the number of computers in 
+      the network. The next N lines describe the computer connections in a 
+      matrix form. Thus, each line has N elements, separated by a space 
+      character. If an entry in line L and column C is 0, this means that there 
+      is no direct connection between computers L and C. Otherwise there is a 
+      direct connection between them.</P>
+      <P><B><FONT color=yellow>OUTPUT</FONT></B><BR>Your program should write 
+      the output into the file OUTPUT.TXT as follows. The first line contains a 
+      positive integer denoting the number M of cables that participate in at 
+      least one cycle. Then, one line follows, containing a sequence of M 
+      positive integer numbers (separated by a space character) representing the 
+      number of cycles that each cable participates in. This sequence must be 
+      sorted in increasing order. If there is no cable that participates in 
+      cycle(s), the output file should contain a single line with the string "NO 
+      CYCLE".</P><B><FONT color=yellow>EXAMPLE 1</FONT></B> 
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD><B>INPUT.TXT</B></TD>
+          <TD><IMG border=0 height=1 
+            src="BOI 97 - Problems 2_2.files/white.gif" width=10></TD>
+          <TD><B>OUTPUT.TXT</B></TD></TR>
+        <TR>
+          <TD vAlign=top><PRE>6
+0 1 1 0 0 0
+1 0 1 1 0 0
+1 1 0 0 0 1
+0 1 0 0 1 0
+0 0 0 1 0 1
+0 0 1 0 1 0
+</PRE></TD>
+          <TD></TD>
+          <TD vAlign=top><PRE>7
+2 2 2 2 2 2 2 
+</PRE></TD></TR></TBODY></TABLE><B><FONT color=yellow>EXAMPLE 1</FONT></B> 
+
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD><B>INPUT.TXT</B></TD>
+          <TD><IMG border=0 height=1 
+            src="BOI 97 - Problems 2_2.files/white.gif" width=10></TD>
+          <TD><B>OUTPUT.TXT</B></TD></TR>
+        <TR>
+          <TD vAlign=top><PRE>4
+0 1 0 0
+1 0 1 0
+0 1 0 1
+0 0 1 0
+</PRE></TD>
+          <TD></TD>
+          <TD vAlign=top><PRE>NO CYCLE
+</PRE></TD></TR></TBODY></TABLE><B><FONT color=red>TIME LIMIT PER TEST: 2 
+      seconds</FONT></B> </TD></TR></TBODY></TABLE></BODY></HTML>

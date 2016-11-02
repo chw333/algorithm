@@ -1,0 +1,113 @@
+
+		
+
+<html>
+<head>
+<!--meta http-equiv="Content-Type" content="text/html; charset=EUC-KR" -->
+<title>알고리즘</title>
+
+<!-- 만지지 마시요 !!!! 시작-->
+
+<LINK rel="stylesheet" type="text/css" href="d:/work/BACktrack/../include/Note.css">
+<script language="JavaScript1.2" src="d:/work/BACktrack/../include/menu.js"></script>
+<script language="JavaScript1.2" src="d:/work/BACktrack/../include/eClass.js"></script>
+
+</head>
+
+<!-- 만지지 마시요 !!!! 끝-->
+<script language="JavaScript">
+<!--
+function OnStart()
+{
+//        ActiveText(null, "03/avi/a3-1-00m.rm", "stop");
+}
+function SetPageEnv()
+{
+        top.vod.pl_video.DoStop();
+        setDataBase(1, "playText01", "10/avi/a10-7-1v.rm", "stop", 210000);
+        setDataBase(2, "playText02", "10/avi/a10-7-2v.rm", "stop", 100000);
+        curStatus = 0;
+        pagePos = 7;
+        n = top.nav;
+        n.prevpage = "algo10_6.html";
+        n.nextpage = "algo10_8.html";
+        faq(pagePos);
+}
+-->
+</script>
+<body bgcolor=ffffff onLoad="SetPageEnv(); vin('',0); vout(0); OnStart()">
+<div id="overDiv" style="position:absolute; left:50px; top:50px; width:300px; height:200px; z-index:5;visibility:hide;"><p>&nbsp;</p></div>
+<script language="JavaScript" src="d:/work/BACktrack/../include/help.js"></script>
+
+<table WIDTH="100%" height="100%" border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td valign=top bgcolor=eeeeee width=20 height=100% >&nbsp</td>
+<td valign=top height=100%>
+<!-- 전체 표 시작 -->
+<table WIDTH="100%" height="100%" border=0 cellpadding=0 cellspacing=0>
+<tr>
+	<!-- 소제목 입력 폼--> 
+	<td bgcolor="eeeeee"><div class="title">◈ 덩어리 배낭 문제</div></td>
+	<!-- 소제목 입력 폼 끝--> 
+<tr>
+	<td background="./images/line.gif">
+	<div class=cls1></div>
+	<!-- 내용 입력 -->
+	<ul>
+
+	<div id="playText01" style="background: white;">
+        <li><div class="title1">최적화 문제를 위한 백트랙킹 기법</div>
+	<ul>
+	<div class="cls1">
+	－ 앞의 queen 배치 문제는 답을 하나 구한 다음에 더 이상의 답을 원하지 않으면 실행을 중단할 수 있다.
+	</div>
+	<div class="cls1">
+	－ 최적화 문제는 여러 개의 답 중에서 최적의 답을 구하는 종류의 문제이므로, 
+	</div>
+	<div class="cls1">
+	－ 하나의 답이 발견되었다고 해서 탐색을 중단할 수는 없다.
+	</div>
+	<div class="cls1">
+	－ 그렇다고 상태 트리의 모든 노드를 탐색하는 것은 부담이 너무 크다.
+	</div>
+	<div class="cls1">
+	－ 탐색하는 노드의 수를 줄이기 위하여 백트랙킹 전략을 사용한다.
+	</div>
+	<div class="cls1">
+	－ 백트랙킹 전략: 각 노드는 어떤 값을 가지고 있다고 가정하고, 현재까지 알려진 최소의 값(또는 최대의 값)보다 더 작은 값(또는 더 큰 값)을 만들어 낼 가능성이 없는 노드는 탐색하지 않는다.
+	</div>
+	</ul>
+	</div>
+	<br><br>
+
+	<div id="playText02" style="background: white;">
+        <li><div class="title1">최적화 문제를 위한 백트랙킹 알고리즘</div>
+	<ul>
+	<div class="cls1">
+	<b>void</b> <i>checknode</i> (<b>node</b> <i>v</i> )<br>
+	{
+		<ul>
+		<b>node</b> <i>u</i> ;<br>
+		<b>if</b> (<i>value</i> (<i>v</i> ) is better than <i>best</i> )<br>
+		<dd><i>best</i> = <i>value</i> (<i>v</i> ) ;<br>
+		<b>if</b> (<i>promising</i> (<i>v</i> ))<br>
+		<dd><b>for</b> (each child <i>u</i> of <i>v</i> )<br>
+		<dd>　　　<i>checknode</i> (<i>u</i> ) ;<br>
+		</ul>
+	}
+	</div>
+	</ul>
+	</div>
+	<br><br>
+
+	</ul>
+	</ul>
+	<!-- 내용 입력 끝-->	
+	</div>
+	</td>
+</table>
+</td>
+</table>
+
+</body>
+</html>

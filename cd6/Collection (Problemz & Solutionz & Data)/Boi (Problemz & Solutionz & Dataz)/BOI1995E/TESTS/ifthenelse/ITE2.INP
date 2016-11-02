@@ -1,0 +1,4 @@
+1 IF n=d THEN 3 ELSE 4
+2 IF a=b THEN 2 ELSE 3
+3 IF n=b THEN 2 ELSE 4
+4 IF b=c THEN 3 ELSE 2

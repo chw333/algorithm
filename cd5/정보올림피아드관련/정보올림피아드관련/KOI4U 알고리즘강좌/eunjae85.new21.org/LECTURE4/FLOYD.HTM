@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>플로이드 알고리즘은 그래프 상의 모든 노드와 모든 노드 사이의 최단거리를 구하는 알고리즘입니다.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p>플로이드 알고리즘은 그래프 상의 모든 노드와 모든 노드 사이의 최단거리를 구하는 
+알고리즘입니다. 시간복잡도가 O(N^2)인 dijkstra알고리즘을 모든 쌍에 대해서 구하는 
+방법 (O(N^3)이 되겠죠..)과 같은 O(N^3)의 시간복잡도를 가진 알고리즘입니다. 하지만 
+대부분의 경우 플로이드 알고리즘이 그 과정이 단순하기 때문에 훨씬 빠른 속도로 
+동작 합니다.</p>
+<p>더욱이 이 알고리즘이 더 매력적인 것은 알고리즘의 구현이 매우 간단하다는 것입니다.</p>
+<p><font face="돋움체"><b>&nbsp;&nbsp;for k := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if e[i, j] &gt; e[i, k] + e[k, 
+j] then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e[i, j] := e[i, 
+k] + e[k, j];</b></font></p>
+<p>실제로 모든 쌍의 최단거리를 찾는 부분은 위의 5줄에 불과합니다. 아래 소스의 
+나머지 부분은 최단거리의 '경로'를 찾는 과정입니다.</p>
+<p>알고리즘에 대해서 약간 설명을 하자면 i, j간에 기존에 알려진 최단거리 e[i, 
+j]와 노드 k를 거치는 최단거리 e[i, k] + e[k, j]를 먼저 비교합니다. 노드 k를 
+경유하는 것이 원래의 최단거리보다 짧다면 최단거리를 갱신해 줍니다. 원래 이렇게 
+간단하지만은 않지만 자세한 것은 참고 서적을 찾아보시면 됩니다. 아, 그리고 for문의 
+순서가 틀리면 제대로 동작하지 않을 수 있으니 유의하시기 바랍니다.</p>
+<p>보통의 경우 가중그래프는 노드 u와 v간에 에지가 없음을 표현할 때 e[u,v]에 
+0을 기록해 주는 것에 반해 이 Floyd알고리즘은 약간 다른 표기법을 필요로 합니다.</p>
+<p><font face="굴림체">u, v간에 에지가 없으면 : u = v일 때 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+u &lt;&gt; v일 때 무한대(∞)<br>
+u, v간에 에지가 있으면 : 에지의 가중치</font></p>
+<p><font face="굴림체">문제는 컴퓨터로는 무한대를 표현할 수 있는 방법이 없다는 
+것입니다. 이럴 때에는 적당히 큰 값을 써주면 됩니다. 하지만 너무 큰 값을 넣을 
+경우 e[i, k] + e[k, j]를 계산하는 과정에서 overflow 에러가 발생할 수 있습니다. 
+또한 너무 작으면 최단거리를 구하는 과정이 제대로 동작하지 않게 되겠죠.</font></p>
+<p>하드에 쳐박혀 있는 소스를 올려 보겠습니다. 제대로 테스트 해 본 것은 아니지만 
+아마 잘 돌아 갈겁니다. (-_- 지금 학교라서..) 최단거리의 &quot;경로&quot;(어느 
+어느 노드를 거치는지)를 찾는 것은 잘 연구해 보시기 바랍니다.</p>
+<p><font face="굴림체"><b>program FloydAlgorithm;</b></font></p>
+<p><font face="굴림체"><b>const<br>
+&nbsp;&nbsp;noedge = 10000;</b></font></p>
+<p><font face="굴림체"><b>var<br>
+&nbsp;&nbsp;n : integer;<br>
+&nbsp;&nbsp;e, p : array[1..100, 1..100] of integer;</b></font></p>
+<p><font face="굴림체"><b>procedure input_file;<br>
+var<br>
+&nbsp;&nbsp;f : text;<br>
+&nbsp;&nbsp;i, j : integer;<br>
+begin<br>
+&nbsp;&nbsp;assign (f, 'graph.txt');<br>
+&nbsp;&nbsp;reset (f);</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;readln (f, n);</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read (f, e[i, j]);</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if i = j then 
+begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e[i, j] := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p[i, j] := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end else begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if e[i, j] = 0 then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e[i, j] := noedge;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end else begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p[i, j] := i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;close (f);<br>
+end;</b></font></p>
+<p><font face="굴림체"><b>procedure floyd;<br>
+var<br>
+&nbsp;&nbsp;i, j, k, l : integer;<br>
+&nbsp;&nbsp;path : array[1..100] of integer;<br>
+begin<br>
+&nbsp;&nbsp;for k := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if e[i, j] &gt; e[i, k] + e[k, 
+j] then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e[i, j] := e[i, 
+k] + e[k, j];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p[i, j] := p[k, 
+j];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write (i, ' -&gt; ', j, ' :');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if e[i, j] = noedge then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln (' No path!');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end else begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k := j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while k &lt;&gt; 0 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc (l);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path[l] := k;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k := p[i, k];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for 
+k := l downto 1 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write (path[k]:2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln 
+(' &nbsp;&nbsp;(', e[i, j]:2, ')');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readln;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;<br>
+end;</b></font></p>
+<p><font face="굴림체"><b>begin<br>
+&nbsp;&nbsp;input_file;<br>
+&nbsp;&nbsp;floyd;<br>
+end.</b></font></p>
+</body>
+
+</html></html>

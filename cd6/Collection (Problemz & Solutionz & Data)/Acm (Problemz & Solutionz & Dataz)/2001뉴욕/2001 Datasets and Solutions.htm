@@ -1,0 +1,434 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0072)http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/index.html -->
+<HTML><HEAD><TITLE>2001 Datasets and Solutions</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<H1>MidAtlantic 2001 <A 
+href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/contest-2001.pdf">Problem 
+Set</A>, Data and Solutions</H1>
+<P>Here are the datasets and judges' solutions for the 2001 problem set. Each 
+problem had at least three independent judges' solutions written for it, in 
+addition to hand-checking test data and solutions. Submitted solutions were 
+graded with diff, with the -w option used when the problem specification was not 
+specific about the amount of whitespace. The judging was not fully automatic, 
+and the output of each program is seen by the judge before the output of 
+diff.</P>
+<H2>Comments</H2>
+<P>Some common observations made by the judges:</P>
+<UL>
+  <LI>For problem A, the sample solution uses integer arithmetic. However, the 
+  data was chosen so that the most obvious floating point solution would work, 
+  as well. The most common mistake on this problem was failing to properly round 
+  or format the result. Some solutions failed to initialize their accumulator 
+  variable to zero. 
+  <LI>For problem C, for solutions that had most of the problem correct, one of 
+  the common mistakes was failing to ignore terms consisting entirely of 
+  punctuation. 
+  <LI>For problem D, the key realization was that you need to have two arrays, 
+  holding both the values of the current time step and of the next time step. 
+  <LI>There are multiple valid solutions to the problem F dataset. These 
+  solutions were checked for manually (not using diff). Most incorrect solutions 
+  failed to discover the shortest path properly. </LI></UL>
+<H2>Clarifications</H2>
+<P>The following clarifications were issued during the contest. The problem set 
+distributed is what was actually used during the contest. It was not edited to 
+fully reflect these clarifications.</P>
+<UL>
+  <LI><PRE>   Problem  : FDNY to the Rescue
+   Question : How many fire stations can there be?  Can there be more
+   than one fire station per intersection?
+   Answer   : There can be no more than one fire station per intersection.
+</PRE>
+  <LI><PRE>   Problem  : For the Porsche
+   Question : is the min cost and max cost range inclusive, or exclusive?
+   Answer   : inclusive
+</PRE>
+  <LI><PRE>   Problem  : For the Porsche
+   Question : The output format instructions refer to "Feature Set N." 
+   Is this the number of the first customer who requested exactly that
+   set of features? This phrase appears nowhere else in the spec.
+   Answer : Replace the first paragraph of Output Format with the
+   following:
+
+The first line of output for each data set should indicate which data
+set is being considered.  These should print "Feature Set N", where N
+is the data set these results are for, counting from 1.
+</PRE>
+  <LI><PRE>   Problem  : A New Growth Industry
+   Question : if after we add the d[k] to the density of the point we
+   get something outside the 0 3 interval, do we just make it 0 for
+   negatives and 3 for positives or there will be no such case
+   Answer : if the density drops below zero, it should be set to zero.
+   if it rises above 3, it should be set to three.
+
+</PRE>
+  <LI><PRE>   Question : if after we add the d[k] to the density of the point we
+   get something outside the 0 3 interval, do we just make it 0 for
+   negatives and 3 for positives or there will be no such case
+   Answer : if the density drops below zero, it should be set to zero.
+   if it rises above 3, it should be set to three.
+
+</PRE>
+  <LI><PRE>   Problem  : Start Up The Startup
+   Question : Should we round up our final answer to two decimal places?
+   Answer   : The problem statement was ambiguous.
+
+Please round your answers.  However, we have accepted truncated
+results, as well.
+</PRE>
+  <LI><PRE>   Problem  : Financial Management
+   Question : what's the correct formatting for 0.00???
+
+eg. $.00 or $0.00
+   Answer   : $0.00
+
+</PRE>
+  <LI><PRE>   Problem  : I Think I Need a Houseboat
+   Question : Should an end of line be outputted after the "END OF
+   OUTPUT." string?
+   Answer   : yes
+
+</PRE></LI></UL>
+<H2>Data and solutions</H2>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TH>Problem</TH>
+    <TH>Problem Name</TH>
+    <TH>Difficulty</TH>
+    <TH>Test Input</TH>
+    <TH>Test Output</TH>
+    <TH>Judge's Solution</TH></TR>
+  <TR>
+    <TH>A</TH>
+    <TD>Financial Management</TD>
+    <TD align=middle>Easy</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pA1.in">pA1.in</A></TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pA1.out">pA1.out</A></TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/checking.C">checking.C</A></TD></TR>
+  <TR>
+    <TH>B</TH>
+    <TD>I Think I Need a Houseboat</TD>
+    <TD align=middle>Easy</TD>
+    <TD><A href="http://www.acm.inf.ethz.ch/pB1.in">pB1.in</A></TD>
+    <TD><A href="http://www.acm.inf.ethz.ch/pB1.out">pB1.out</A></TD>
+    <TD><A href="http://www.acm.inf.ethz.ch/erode.c">erode.c</A></TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+    href="http://www.acm.inf.ethz.ch/houseboat.java">houseboat.java</A></TD></TR>
+  <TR>
+    <TH>C</TH>
+    <TD>Start Up the Startup</TD>
+    <TD align=middle>Easy-Medium</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pC1.in">pC1.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pC1.out">pC1.out</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/docmatch.cpp">docmatch.cpp</A>,</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pC2.in">pC2.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pC2.out">pC2.out</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/Search.java">Search.java</A></TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pC3.in">pC3.in</A></TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pC3.out">pC3.out</A></TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TH>D</TH>
+    <TD>A New Growth Industry</TD>
+    <TD align=middle>Easy-Medium</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pD1.in">pD1.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pD1.out">pD1.out</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/newGrowth.cpp">newGrowth.cpp</A>,</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pD2.in">pD2.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pD2.out">pD2.out</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/newgrowth.java">newgrowth.java</A></TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pD3.in">pD3.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pD3.out">pD3.out</A>,</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pD4.in">pD4.in</A></TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pD4.out">pD4.out</A></TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TH>E</TH>
+    <TD>Algernon's Noxious Emissions</TD>
+    <TD align=middle>Medium</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE1.in">pE1.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE1.out">pE1.out</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/emissions.cpp">emissions.cpp</A>,</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE2.in">pE2.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE2.out">pE2.out</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/algernon.java">algernon.java</A></TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE3.in">pE3.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE3.out">pE3.out</A>,</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE4.in">pE4.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE4.out">pE4.out</A>,</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE5.in">pE5.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE5.out">pE5.out</A>,</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE6.in">pE6.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE6.out">pE6.out</A>,</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE7.in">pE7.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE7.out">pE7.out</A>,</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE8.in">pE8.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE8.out">pE8.out</A>,</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE9.in">pE9.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE9.out">pE9.out</A>,</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE10.in">pE10.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE10.out">pE10.out</A>,</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE11.in">pE11.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE11.out">pE11.out</A>,</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE12.in">pE12.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE12.out">pE12.out</A>,</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE13.in">pE13.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE13.out">pE13.out</A>,</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE14.in">pE14.in</A></TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pE14.out">pE14.out</A></TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TH>F</TH>
+    <TD>FDNY to the Rescue</TD>
+    <TD align=middle>Medium</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pF1.in">pF1.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pF1.out">pF1.out</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/firehouse.cpp">firehouse.cpp</A></TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pF2.in">pF2.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pF2.out">pF2.out</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/firehouse.java">firehouse.java</A></TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pF3.in">pF3.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pF3.out">pF3.out</A>,</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pF4.in">pF4.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pF4.out">pF4.out</A>,</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pF5.in">pF5.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pF5.out">pF5.out</A>,</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pF6.in">pF6.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pF6.out">pF6.out</A>,</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pF7.in">pF7.in</A>,</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pF7.out">pF7.out</A>,</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pF8.in">pF8.in</A></TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pF8.out">pF8.out</A></TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TH>G</TH>
+    <TD>For the Porsche</TD>
+    <TD align=middle>Hard</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pG1.in">pG1.in</A></TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pG1.out">pG1.out</A></TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/porsche.C">porsche.C</A>,</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/features.c">features.c</A></TD></TR>
+  <TR>
+    <TH>H</TH>
+    <TD>Oh, Those Achin' Feet</TD>
+    <TD align=middle>Hard</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pH1.in">pH1.in</A></TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/pH1.out">pH1.out</A></TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/city_map.c">city_map.c</A>,</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidAtl/2001/city.java">city.java</A></TD></TR></TBODY></TABLE>
+<HR>
+</BODY></HTML>

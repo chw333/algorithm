@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)http://skyblue.csd.auth.gr/boi/boi_problems/221.html -->
+<HTML><HEAD><TITLE>BOI 2-Day 2-Problem 1</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY>
+<H2 align=center>2nd Balkan Olympiad in Informatics <BR>Thessaloniki, Greece, 
+1-6 October 1994 </H2>
+<HR>
+
+<H2 align=center>Day 2 - Problem 1 </H2>
+<P align=center><BR><BR>Assume an nxn table (where n&lt;=10) containing positive 
+integer numbers 1 &lt; x &lt;="40." <BR></P>
+<OL type=i>
+  <LI>
+  <P align=center>(30 points) Replace each number x with a number y, where y is 
+  the maximum number of prime numbers which sum to x, so that any prime number 
+  appears once in the sum with at most one and only one exception of a prime 
+  number which may appear twice. Have, also, in mind that 1 is not prime. For 
+  example: </P>
+  <DIV align=center>
+  <CENTER>
+  <TABLE border=0 width="50%">
+    <TBODY>
+    <TR>
+      <TD>2=2 </TD>
+      <TD>f(2)=1 </TD></TR>
+    <TR>
+      <TD>3=4 </TD>
+      <TD>f(3)=1 </TD></TR>
+    <TR>
+      <TD>4=2+2 </TD>
+      <TD>f(4)=2 </TD></TR>
+    <TR>
+      <TD>5=3+2 </TD>
+      <TD>f(5)=2 </TD></TR>
+    <TR>
+      <TD>6=3+3 </TD>
+      <TD>f(6)=2 </TD></TR>
+    <TR>
+      <TD>7=3+2+2 </TD>
+      <TD>f(7)=3 </TD></TR></TBODY></TABLE></CENTER></DIV>
+  <P>Give the resulting table in the output. <BR><BR></P>
+  <LI>(10 points) After each element x has been replaced with y, determine the 
+  maximal number of y elements which are connected horizontally, vertically or 
+  diagonally forming a concrete area, and give this y value. Also, determine, 
+  the smallest enclosing rectangle which can be defined by giving the 
+  coordinates (i.e. row and column) of the upper leftmost and lower rightmost 
+  corners of the enclosing rectangle. <BR><BR>
+  <LI>(25 points) In general, the area found in (ii) is not a square or even a 
+  rectangle. Determine the minimum number of non-overlapping squares of any size 
+  (e.g. 1x1, 2x2, 3x3, etc.) it consists of. <BR><BR>
+  <LI>(20 points) Try to maximize the area determined in (ii) with the minimum 
+  number of element swappings of the table produce in question (i). Give, also, 
+  the coordinates of the elements which are swapped. Show in the output the new 
+  form of the table obtained. <BR><BR>
+  <LI>(15 points) Determine the y element that appears most often in the table 
+  produced in question (i). In case of a tie (e.g. two or more y elements with 
+  the same value) choose the y element with the smallest value. Try to collect 
+  all its instances nearby (i.e. so that the are connected horizontally, 
+  vertically or diagonally) and give the minimum number of swappings performed. 
+  Give, also, the coordinates of the elements which are swapped. Illustrate the 
+  new form of the table obtained. Beware that the swappings should be applied on 
+  the table produced in question (i). </LI></OL>
+<P><BR><BR></P>
+<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%" msimagelist>
+  <TBODY>
+  <TR msimagelist>
+    <TD vAlign=baseline width=42 msimagelist><IMG height=14 hspace=13 
+      src="BOI 2-Day 2-Problem 1.files/blueball.gif" width=16></TD>
+    <TD vAlign=top width="100%"><B>Example:</B> <BR>
+      <UL>
+        <LI><B>Input </B><BR>The first line consists of a single integer number 
+        denoting n, the length of the table side. Then, is successive lines the 
+        rows are given containing the integer numbers separated by one space, 
+        e.g. <BR><BR>6 <BR>19 19 12 12 12 19 <BR>19 12 7 12 12 7 <BR>2 4 7 7 12 
+        19 <BR>19 12 12 12 12 19 <BR>19 19 19 19 5 19 <BR>30 6 30 5 12 19 
+        <BR><BR>
+        <LI><B>Output:</B> <BR>
+        <OL type=i>
+          <LI>After replacing x with y, the output should be as follows: <BR>5 5 
+          4 4 4 5 <BR>5 4 3 4 4 3 <BR>1 2 3 3 4 5 <BR>5 4 4 4 4 5 <BR>5 5 5 5 2 
+          5 <BR>6 2 6 2 4 5 <BR>
+          <LI>The output should be given in three separate lines as follows: 
+          <BR>11 <BR>4 <BR>(1,2),(4,5) <BR>where the first line gives the 
+          maximal number of y connected elements, the second line contains the y 
+          value, and the third line contains the coordinates of the enclosing 
+          rectangle. <BR><B>HINT:</B>you may avoid the parentheses and give the 
+          coordinates separated by commas. The same hint holds for the output of 
+          question (iv) and (v). 
+          <LI>The output consists of a single number: <BR>8 <BR>which stands for 
+          the minimum number of non-overlapping square in the area of (ii). 
+          <LI>The output should be as follows: <BR>1 <BR>(5,5),(6,5) <BR>5 5 4 4 
+          4 5 <BR>5 4 3 4 4 3 <BR>1 2 3 3 4 5 <BR>5 4 4 4 4 5 <BR>5 5 5 5 4 5 
+          <BR>6 2 6 2 2 5 <BR>where the first line gives the minimum number of 
+          swappings, and the second line gives the coordinates of the swapped 
+          element(s). The next n lines contain the new form of the table. <BR>
+          <LI>The output should be as follows: <BR>5 <BR>2 <BR>(1,2),(3,1) 
+          <BR>(1,6),(5,5) <BR>5 1 4 4 4 2 <BR>5 4 3 4 4 3 <BR>5 2 3 3 4 5 <BR>5 
+          4 4 4 4 5 <BR>5 5 5 5 5 5 <BR>6 2 6 2 4 5 <BR>where the first line 
+          stands for the most often appearing element, the second line for the 
+          minimum number of swappings, the next lines give the coordinates of 
+          the two swappings. Finally, the last n lines illustrate the new form 
+          of the table . </LI></OL></LI></UL></TD></TR>
+  <TR msimagelist>
+    <TD vAlign=baseline width=42 msimagelist><IMG height=14 hspace=13 
+      src="BOI 2-Day 2-Problem 1.files/blueball.gif" width=16></TD>
+    <TD vAlign=top width="100%"><B>Attention:</B> <BR>Your program will begin 
+      with a question: "Do you wish to solve part (i) ?" <BR>If the answer is 
+      YES the the program will start assuming an input file with the name 
+      INPUT1.TXT. Otherwise, part (ii) will start assuming an input file under 
+      the name INPUT2.TXT. <BR><BR></TD></TR></TBODY></TABLE>
+<HR>
+</BODY></HTML>

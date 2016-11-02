@@ -1,0 +1,653 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0041)http://user.chollian.net/~pjykym/ioi9.htm -->
+<HTML><HEAD><TITLE>제 9회</TITLE>
+<META content="MSHTML 5.50.4134.100" name=GENERATOR>
+<META http-equiv=Content-Type 
+content="text/html; charset=ks_c_5601-1987"></HEAD>
+<BODY text=black vLink=purple aLink=red link=blue bgColor=white>
+<P align=center><B><FONT size=6>제 9회</FONT></B></P>
+<P>제 9회는 1997년 12월 1일부터 7일까지 남아프리카공화국 케이프타운에서 열렸다. 당시로서는 역대 IOI사상 문제 난이도가 가장 
+높았다. 이 때 문제의 경향이 크게 바뀌었다. 다이나믹, 백트래킹과 같은 방법으로 최적해를 구하는 전형적인 올림피아드 문제 경향을 탈피하여, 
+모든 경우를 고려할 수 없어 근사해을 구해야 하는 문제가 나오고, 컨테이너 시뮬레이션, 헥스 게임 같은 획기적인 소재의 문제가 출제됐다. 점수도 
+절대적인 수치가 아닌 알려진 최적 정답과의 비율로 계산되었다. 라이브러리를 이용하는 인터렉티브 문제가 두 개 나왔다. (라이브러리는 주최측에서 
+마련하며, 경시 기간 동안에는 이 라이브러리의 소스를 볼 수 없다.)</P>
+<P><A href="http://user.chollian.net/~pjykym/ioi9.htm#1">1. 화성 탐사</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi9.htm#2">2. 헥스 게임</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi9.htm#3">3. 독충 이숑고로로</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi9.htm#4">4. 지도 라벨 배치</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi9.htm#5">5. 글자 인식</A></P>
+<P><A href="http://user.chollian.net/~pjykym/ioi9.htm#6">6. 컨테이너 쌓기</A></P>
+<HR>
+
+<H2><A name=1></A>1. 화성 탐사</H2>
+<P>앞으로 화성을 탐사할 목적으로 화성 탐사차를 여러 대 실은 우주선이 화성 표면에 착륙할 예정이다. 모든 탐사차는 우주선이 착륙하는 대로 
+밖으로 나와, 거기서 얼마 안 떨어진 또다른 곳에 착륙한 송신기로 움직인다. 탐사차는 거기로 가는 동안 화성의 암석들을 견본으로 채집하게 된다. 
+하나의 암석은 한 번 주워 가면 끝이기 때문에 그 위치에 최초로 도착하는 탐사차가 한 번만 채집할 수 있다. 그러나 암석이 없어진 위치에 다른 
+탐사차가 다시 지나갈 수는 있다. 단 길이 험한 곳은 지나가지 못한다. 또한 탐사차는 송신기가 있는 동남쪽을 향해 동쪽 또는 남쪽으로 격자 
+모양대로만 움직일 수 있다. 한 위치에 여러 탐사차가 같이 있을 수도 있다.</P>
+<H4>주의: 어떤 탐사차가 험한 길에 둘러싸여 동쪽, 남쪽만으로는 도저히 더 나아갈 수 없게 되면, 그 차와 이제까지 그 차가 채집했던 암석 
+표본은 모두 잃게 되며, 그 암석은 다른 차가 다시 채집할 수 없다.</H4>
+<H3>문제</H3>
+<P>탐사차들이 가장 많은 암석을 모으고 최대한 송신기에 무사히 도착하려면 이들이 어떻게 움직여야 하는지 탐사차 각각의 동작을 계산하는 
+프로그램을 작성하라.</P>
+<H3>입력 자료</H3>
+<P>우주선과 송신기 사이의 화성 표면은 P×Q 크기의 배열로 구현된다. 우주선의 좌표는 언제나 (1, 1)이고 송신기의 좌표는 (P, 
+Q)이다. 화성의 지형은 다음과 같이 정의된다.</P>
+<UL type=disc>
+  <LI>평탄한 곳: &nbsp;0 
+  <LI>험한 곳: 1 
+  <LI>암석 견본: 2 </LI></UL>
+<P>입력 파일은 다음과 같이 구성된다.</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>탐사차의 대수</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>P</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>Q</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>(X<SUB>1</SUB>Y<SUB>1</SUB>) (X<SUB>2</SUB>Y<SUB>1</SUB>) 
+(X<SUB>3</SUB>Y<SUB>1</SUB>)...(X<SUB>P-1</SUB>Y<SUB>1</SUB>) 
+(X<SUB>P</SUB>Y<SUB>1</SUB>)</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>(X<SUB>1</SUB>Y<SUB>2</SUB>) (X<SUB>2</SUB>Y<SUB>2</SUB>) 
+(X<SUB>3</SUB>Y<SUB>2</SUB>)...(X<SUB>P-1</SUB>Y<SUB>2</SUB>) 
+(X<SUB>P</SUB>Y<SUB>2</SUB>)</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>(X<SUB>1</SUB>Y<SUB>3</SUB>) (X<SUB>2</SUB>Y<SUB>3</SUB>) 
+(X<SUB>3</SUB>Y<SUB>3</SUB>)...(X<SUB>P-1</SUB>Y<SUB>3</SUB>) 
+(X<SUB>P</SUB>Y<SUB>3</SUB>)</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>...</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>(X<SUB>1</SUB>Y<SUB>Q-1</SUB>) (X<SUB>2</SUB>Y<SUB>Q-1</SUB>) 
+(X<SUB>3</SUB>Y<SUB>Q-1</SUB>)...(X<SUB>P-1</SUB>Y<SUB>Q-1</SUB>) 
+(X<SUB>P</SUB>Y<SUB>Q-1</SUB>)</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>(X<SUB>1</SUB>Y<SUB>Q</SUB>) (X<SUB>2</SUB>Y<SUB>Q</SUB>) 
+(X<SUB>3</SUB>Y<SUB>Q</SUB>)...(X<SUB>P-1</SUB>Y<SUB>Q</SUB>) 
+(X<SUB>P</SUB>Y<SUB>Q</SUB>)</FONT></P>
+<P>P와Q 는 지도의 크기이며, 탐사차 대수는 1000 이하의 정수이다. Q개의 줄에 화성 표면 정보가 들어간다. P와 Q는 255를 넘지 
+않는다.</P>
+<P>입력 파일의 예 (MARS.DAT)</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 탐사차 수</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← P 크기</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Q 크기</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>0 
+0 0 0 0 0 0 0 0 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 1번째 줄</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>0 
+0 0 0 0 1 1 0 0 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 2번째 줄</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>0 
+0 0 1 0 2 0 0 0 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 3번째 줄</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+1 0 1 2 0 0 0 0 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 4번째 줄</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>0 
+1 0 0 2 0 1 1 0 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 5번째 줄</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>0 
+1 0 1 0 0 1 1 0 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 6번째 줄</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>0 
+1 2 0 0 0 0 1 0 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 7번째 줄</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>0 
+0 0 0 0 0 0 0 0 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 8번째 줄</FONT></P>
+<H3>출력 자료</H3>
+<P>어떤 탐사차가 송신기를 향해 어떻게 움직일지를 연속해서 출력하면 된다. 각 줄에는 탐사차 번호와 0 또는 1의 숫자가 들어간다. 0은 
+남쪽으로, 1은 동쪽으로 움직여라는 뜻이다.</P>
+<P>출력의 예 (MARS.OUT)</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 1번 차가 동쪽으로 이동</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 1번 차가 남쪽으로 이동</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>2 
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 2번 차가 동쪽으로 이동</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>2 
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 2번 차가 남쪽으로 이동</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>2 
+0</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>2 
+0</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+0</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+0</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>2 
+1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>2 
+1 </FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>2 
+1 </FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>2 
+0</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>2 
+0</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+0</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+0</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>2 
+1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>2 
+1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>2 
+1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>2 
+0</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+0</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+0</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>2 
+0</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>2 
+1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>2</FONT> 1</P>
+<H3>배점</H3>
+<OL type=1>
+  <LI>점수는 기본적으로 &nbsp;채집한 암석 견본 수와 채집할 수 있는 최대한의 암석 견본 수와의 비율로 계산하나, 송신기로 무사히 간 
+  탐사차의 대수로도 점수 조정을 한다. 
+  <LI>탐사차가 험한 길을 &nbsp;통과하거나 지도 밖으로 나가는 등 할 수 없는 동작을 취하면 정답 전체가 무효로 된다. 
+  <LI>점수 = (채집한 암석 &nbsp;견본 수 + 송신기로 도착한 탐사차의 대수 - 도착하지 못한 탐사차의 대수)와, 이 상황에서 나올 
+  수 있는 최대 점수와의 %비율 
+  <LI>최대 100%, 최소 0%로 배점된다. </LI></OL>
+<HR>
+
+<H2><A name=2></A>2. 헥스 게임</H2>
+<P>헥스 게임의 목표는 첫 번째 플레이어가 게임판에 자기가 둔 말을 1열부터 N열까지 늘어놓아 연결시키는 것이다.</P>
+<H3>헥스 게임의 규칙</H3>
+<P>헥스는 육각형이 N×N 크기의 마름모꼴 모양으로 구성된 게임판에서 두 명이 하는 전략 게임이다. N=6일 때 게임판 모양은 아래와 같다. 
+</P>
+<P><IMG height=250 src="IOI97.files/ioi9-2-1.gif" width=349 border=0></P>
+<OL type=1>
+  <LI>이 문제에서는 응시자의 답안 프로그램과 평가 라이브러리가 게임을 한다. 
+  <LI>답안 프로그램(우리)이 언제나 먼저 한다. 
+  <LI>두 플레이어는 번갈아 가며 자기 말을 게임판 육각형 안에 둔다. 
+  <LI>말은 다른 말이 놓이지 않은 곳이라면 게임판 어디에든 둘 수 있다. 
+  <LI>두 개의 말이 한 모서리를 공유하면 이들은 서로 접해 있다고 규정한다. 
+  <LI>같은 플레이어가 놓은 말들이 서로 접해 있으면(응시자의 말 다음에 또 응시자의 것이 있거나 평가 라이브러리가 놓은 것 다음에 또 
+  라이브러리가 놓은 것이 있는 것) 이들은 연결돼 있다고 규정한다. 
+  <LI>연결된 것은 상호 연속성이 있다. 1번 말이 2번 말과 연결돼 있고, 2번 말이 3번 말과 연결되어 있으면 3번 말은 1과 연결돼 
+  있으며, 1번 말 역시 3과 연결되어 있다. </LI></OL>
+<H3>문제</H3>
+<P>헥스 게임을 하는 프로그램을 작성하라.</P>
+<OL type=1>
+  <LI>여러분의 프로그램의 목표는 여러분의 말을 게임판에 1열에서 N열까지 먼저 연결시키는 것이다. 
+  <LI>한편, 평가 라이브러리는 자기 말을 게임판에 1행에서 N행까지 먼저 연결시키 차지하려고 한다. 
+  <LI>최적의 수만 찾아 두면 여러분의 프로그램이 게임에서 반드시 이길 수 있게 되어 있다. </LI></OL>
+<H3>입출력</H3>
+<P>응시자의 답안 프로그램은 파일을 읽거나 써서는 안 된다. 키보드에서 입력을 받거나 화면에 글자를 출력해서도 안 된다. 답안 프로그램은 모든 
+입력을 라이브러리에 있는 함수에서 받는다. 상대방과 게임을 하는 것이므로 이는 필연적인 처사이다. 처리가 끝나면 라이브러리가 자동으로 
+HEX.OUT파일을 생성하기 때문에 여러분은 이 부분 처리를 하지 않아도 된다.</P>
+<P>답안 프로그램은 먼저 하는 쪽(자신)이 언제나 이길 수 있게 말 몇 개가 이미 놓여 있는 게임판에서 게임을 시작하게 된다. 그러므로 답안 
+프로그램은 게임판 상황을 파악하기 위해 GetMax와 LookAtBoard함수를 써야 한다. 게임을 시작할 때 게임판에 이미 놓여 있는 말의 
+개수는 여러분의 프로그램의 것이나 평가 라이브러리의 것이나 같다.</P>
+<H3>제한</H3>
+<P>게임판의 크기는 언제나 1 이상 20 이하이다.</P>
+<P>답안 프로그램은 게임을 최대 200수 안에, 시간상으로는 40초 안에 끝내야 한다. 평가 라이브러리는 모든 처리를 반드시 20초 안에 
+끝낸다고 보증한다.</P>
+<H3>라이브러리</H3>
+<P>수험자에게는 코드와 함께 같이 링크해야 하는 HexLib이 제공된다. 이 라이브러리를 사용한 프로그램의 예를 보이기 위해 언어별로 예제 
+프로그램 파일이 준비되어 있다. 이름은 TESTHEX.CPP, TESTHEX.C, TESTHEX.PAS, TESTHEX.BAS이다. 
+QuickBasic을 쓴다면 다음과 같이 HEXLIB 퀵라이브러리를 읽어들여야 한다.</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>QB /L HEXLIB</FONT></P>
+<P>HexLib에 있는 함수는 다음과 같다. (함수 선언은 파스칼, C/C++, 베이직 순이다.)</P>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">function LookAtBoard (row, 
+column: integer): integer;</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">int LookAtBoard (int row, int 
+column);</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">declare function LookAtBoard 
+cdecl (byval x as integer, byval y as integer) </H4>
+<P>지정한 위치와 관련된 다음 값을 되돌린다.</P>
+<UL type=disc>
+  <LI>&nbsp;-1 &nbsp;위치가 게임판 범위를 벗어난다. (row&lt;1, row&gt;N, column&lt;1, 
+  column&gt;N 중 하나에 해당한다) 
+  <LI>&nbsp;&nbsp;0 &nbsp;이 위치에 놓인 말이 없다. (여기 수를 둘 수 있다.) 
+  <LI>&nbsp;&nbsp;1 &nbsp;여러분 프로그램의 말이 놓여 있다. 
+  <LI>&nbsp;&nbsp;2 &nbsp;평가 라이브러리의 말이 놓여 있다. </LI></UL>
+<H4 style="MARGIN-TOP: 2%; MARGIN-BOTTOM: 0px">procedure PutHex (row, column: 
+integer);</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">void PutHex (int row, int 
+column);</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">declare sub PutHex cdecl (byval 
+x as integer, byval y as integer)</H4>
+<P>여러분의 답안 프로그램이 자기 말을 지정한 위치에 둔다. 다른 헥스 카운터가 거기 놓여 있지 않아야 함수가 동작한다.</P>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">function GameIsOver: 
+integer;</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">int GameIsOver (void);</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">declare function GameIsOver 
+cdecl ()</H4>
+<P>다음을 뜻하는 정수 중 하나를 되돌린다.</P>
+<UL type=disc>
+  <LI>0 &nbsp;아직 게임이 끝나지 않았다. 
+  <LI>1 &nbsp;게임판이 다 차서 말을 더 놓을 수 없다. 
+  <LI>2 &nbsp;답안 프로그램이 이겼다. 
+  <LI>3 &nbsp;평가 라이브러리가 이겼다. </LI></UL>
+<H4 style="MARGIN-TOP: 2%; MARGIN-BOTTOM: 0px">procedure MakeLibMove;</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">void MakeLibMove(void);</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">declare sub MakeLibMove cdecl 
+()</H4>
+<P>평가 라이브러리에게 다음 수를 두게 한다. 게임판에 생긴 변화는 LookAtBoard나 다른 함수로 알아내도록 한다.</P>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">function GetRow: integer;</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">int GetRow (void);</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">declare function GetRow cdecl 
+()</H4>
+<P>평가 라이브러리가 최근에 둔 수의 열 위치를 되돌린다. 라이브러리가 수를 둔 적이 없으면 -1을 되돌린다. 답안 프로그램이 
+MakeLibMove를 다시 호출하지 않으면 이 함수는 계속 같은 값을 되돌린다.</P>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">function GetColumn: 
+integer;</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">int GetColumn (void);</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">declare function GetColumn cdecl 
+()</H4>
+<P>평가 라이브러리가 최근에 둔 수의 행 위치를 되돌린다. 라이브러리가 수를 둔 적이 없으면 -1을 되돌린다. 답안 프로그램이 
+MakeLibMove를 다시 호출하지 않으면 이 함수는 계속 같은 값을 되돌린다.</P>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">function GetMax: integer;</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">int GetMax (void);</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">declare function GetMax cdecl 
+()</H4>
+<P>게임판의 크기 N을 되돌린다.</P>
+<H3>배점</H3>
+<P>답안 프로그램이 게임에서 이기면 그 데이터에 대해서는 최대점을 받는다. 그러나 지면 그 데이터에 대해서는 20%의 점수를 받는다. 시간이 
+경과되어 게임이 끝나기 전에 프로그램이 종료되면 그 데이터에 대한 점수는 0점이다.</P>
+<HR>
+
+<H2><A name=3></A>3. 독충 이숑고로로</H2>
+<P>"이숑고로로"는 남아프리카 공화국에 사는 줄루 족의 말로 노래기라는 뜻이다. 이숑고로로는 길쭉하고 광택이 있으며 검고 다리가 많은 
+절지동물이다.</P>
+<P><IMG height=109 src="IOI97.files/ioi9-3-1.gif" width=267 border=0></P>
+<P>이숑고로로는 먹을 수 있는 "과일" 속을 파먹으면서 지나간다. 과일은 직육면체의 방이 입체적으로 차곡차곡 쌓인 모양이라고 가정한다.</P>
+<H3>문제</H3>
+<P>이숑고로로가 아래의 제한 조건을 만족하면서 과일 속의 방을 최대한 많이 파먹으며 과일을 통과할 수 있는 움직임을 계산하는 프로그램을 
+작성하라. 프로그램은 이숑고로로가 과일을 파먹으면서 취할 행동을 출력해야 한다.</P>
+<P>이숑고로로는 처음엔 과일 밖에 있기 때문에 처음에는 반드시 (1, 1, 1) 위치의 방을 먹고 여기에 있어야 한다. 그리고 더 이상 먹을 
+수 있는 방이 없거나 움직일 곳이 없으면 동작이 끝난다.</P>
+<H3>제한</H3>
+<OL type=1>
+  <LI>이숑고로로는 정확히 과일 속 빈방 한 칸을 차지한다.. 
+  <LI>이숑고로로는 한 번에 방 한 칸만 먹을 수 있다. 
+  <LI>이숑고로로는 자기가 이제까지 움직여 왔던 곳으로는 돌아갈 수 없다. (즉 후진이나 왔던 길을 가로질러 다른 곳으로 갈 수 없다.) 
+  <LI>이숑고로로는 아직 먹히지 않아 속이 찬 방으로 가거나 과일 밖으로 나갈 수 없다. 
+  <LI>이숑고로로는 한 번에 자기 몸이 있는 위치에서 상하 좌우 전후 여섯 방향 중 한 쪽으로만 움직이거나 그쪽의 칸을 먹을 수 있다. 또한 
+  전에 먹혀서 비게 된 방과 면을 공유하지 않는 방만 먹을 수 있다. </LI></OL>
+<H3>입력 자료</H3>
+<P>입력 파일에는 과일의 길이(L), 너비(W), 높이(H)를 나타내는 세 정수가 들어있다. 세 수 모두 1 이상 32 이하이다.</P>
+<P>입력 파일의 예 (TOXIC.DAT)</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 과일 길이(L)가 2</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 과일 너비(W)가 3</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← 과일 높이(H)가 2</FONT></P>
+<H3>출력 자료</H3>
+<P>출력 파일의 각 줄은 E(먹는다)와 M(이동한다)으로 시작하여 다음에 그 동작을 취할 블록 위치를 나타내는 3개의 정수가 온다. 위치는 
+L, W, H 순서로 적는다. 앞의 입력 파일에 대한 올바른 해답을 예로 들어 보겠다.</P>
+<P>출력 파일의 예 (TOXIC.OUT) (아래는 최적해가 아닐 수도 있다.)</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>E 
+1 1 1&nbsp;← 블록 1 1 1 위치를 먹음</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>M 
+1 1 1&nbsp;← 블록 1 1 1 위치로 이동</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>E 
+2 1 1&nbsp;...</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>E 
+1 1 2</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>E 
+1 2 1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>M 
+1 2 1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>E 
+1 3 1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>M 
+1 3 1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>E 
+2 3 1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>E 
+1 3 2</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>M 
+1 3 2</FONT></P>
+<H3>배점</H3>
+<P>이숑고로로가 제한 사항을 어기게 움직이면 그 프로그램을 0점을 받는다. 총 점수는 먹은 칸의 개수와 우리가 알고 있는 최적의 정답에 있는 
+수와의 비율이다. 해답의 점수는 100%를 넘지 않는다.</P>
+<HR>
+
+<H2><A name=4></A>4. 지도 라벨 배치</H2>
+<P>지도 제작자의 조수인 당신은 새로 나온 지도에 도시 이름을 적어 넣는 어려운 일을 맡아 왔다.</P>
+<P>지도는 가로, 세로 모두 1000개의 칸으로 구성돼 있다. 각각의 도시는 지도에서 한 칸을 차지한다. 도시의 이름은 여러 칸으로 이루어진 
+직사각형 상자 모양으로 지도 위에 표시된다. 이 상자를 라벨이라 하겠다.</P>
+<P><IMG height=108 src="IOI97.files/ioi9-4-1.gif" width=187 border=0>도시를 나타내는 한 
+점에서 라벨이 있을 수 있는 위치 네 곳</P>
+<P>라벨은 아래의 제한을 만족하는 위치에 있어야 한다.</P>
+<OL type=1>
+  <LI>도시의 라벨은 위 그림과 같은 네 곳 중 한 곳에 있어야 한다. 
+  <LI>라벨은 다른 라벨과 겹치지 말아야 한다. 
+  <LI>라벨은 다른 도시와 겹쳐서도 안 된다. 
+  <LI>라벨은 지도 안에 완전히 들어가야 한다. </LI></OL>
+<P>각 라벨에는 도시 이름을 나타내는 문자열과 공백 한 칸이 들어가 있다. 각 도시(■)마다 그것의 이름과, 라벨을 적는 한 글자의 가로, 
+세로 크기가 다르게 부여된다. 단어 끝의 공백(□) 한 칸의 크기는 글자 한 자의 크기와 같다.</P>
+<P><IMG height=165 src="IOI97.files/ioi9-4-2.gif" width=425 border=0></P>
+<P>지도 가장 왼편의 가로 좌표는 0이며 맨 아랫줄의 세로 좌표도 0이다. 위 그림은 Langa를 (0, 3)에, Ceres를 (6, 1)에, 
+Paarl을 (7, 3)위치에 배치한 예를 보여준다. 라벨은 모두 올바르게 들어갔다. 하지만 올바르게 배치하는 방법이 이것만 있는 것은 
+아니다.</P>
+<H3>문제</H3>
+<P>여러분의 프로그램은 지도에 있는 도시의 위치와 도시 이름, 이름의 글자 크기를 읽은 다음 위의 제한 사항을 어기지 않으면서 가능한 한 
+이름을 지도에 많이 표시하여, 배치한 라벨 위치를 출력해야 한다.</P>
+<H3>입력 자료</H3>
+<P>입력 파일은 도시의 개수를 나타내는 N이 먼저 들어있다. 다음 줄부터는 도시에 대한 정보가 다음 순서대로 들어있다. 도시 이름은 모두 한 
+단어로 200자를 넘지 않는다. 도시의 개수는 최대 1,000개이다.</P>
+<UL type=disc>
+  <LI>한 줄에 도시의 가로. 세로 위치 
+  <LI>도시 이름을 나타내는 글자의 가로. 세로 크기 
+  <LI>도시 이름 </LI></UL>
+<P>입력 파일의 예 (MAPS.DAT)</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← N=3</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>0 
+3 1 1 Langa&nbsp;&nbsp;&nbsp;← X=0, Y=3, W=1, H=1</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>6 
+1 1 1 Ceres&nbsp;&nbsp;&nbsp;...</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>7 
+3 1 2 Paarl&nbsp;&nbsp;&nbsp;</FONT></P>
+<H3>출력 자료</H3>
+<P>답안 프로그램은 N줄을 출력해야 한다. 각 줄에는 배치한 라벨의 좌측 상단 위치가 가로부터 들어간다. 규칙을 어기지 않고는 배치할 수 없는 
+라벨이 있으면 -1 -1을 출력한다. 출력하는 라벨의 순서는 입력 파일에서 읽은 도시의 순서와 일치해야 한다. 두 수치 사이에는 빈 칸 하나를 
+넣는다.</P>
+<P>출력 파일의 예 (MAPS.OUT)</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>1 
+4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Langa의 라벨은 (1,4)에 둔다.</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>0 
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Ceres의 라벨은 (0, 0)에 둔다.</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT face=굴림체>8 
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Paarl의 라벨은 (8, 2)에 둔다.</FONT></P>
+<H3>배점</H3>
+<P>각 테스트 데이터마다 점수는 답안 프로그램이 배치한 도시 이름의 위치와 주최측에서 준비한 최적해와의 비율로 산출된다. 최소 점수는 0%이며 
+최대 점수는 100%이다.</P>
+<P>라벨이 하나라도 제한 사항을 어기면 그 테스트 데이터에 대한 점수는 0점이 된다. 라벨이 그에 해당하는 도시와 맞지 않으면 그 테스트 
+데이터에 대한 점수는 0점이 된다.</P>
+<HR>
+
+<H2><A name=5></A>5. 글자 인식</H2>
+<P>이번 문제는 글자를 인식하는 프로그램을 작성하는 것이다.</P>
+<H3>세부사항</H3>
+<P>가장 올바른 글자의 형상은 한 줄에 20개의 숫자가 있는 문자열 스무 줄로 표현된다. 각각의 숫자는 0 또는 1이다. 예제 파일에 글자 
+이미지 파일이 구성된 모양이 나와 있다.</P>
+<P>FONT.DAT는 공백부터 시작하여 a~z까지 27글자의 올바른 모양을 담고 있다. 한편, IMAGE.DAT에는 원본이 약간 왜곡된 글자의 
+형상이 들어 있다. 글자 모양은 다음과 같이 왜곡될 수 있다.</P>
+<OL type=1>
+  <LI>어떤 줄 뒤에 똑같은 내용이 덧붙여진 곳이 최대 한 군데 있을 수 있다. 
+  <LI>최대 한 줄이 빠졌을 수 있다. 
+  <LI>원본에 있는 0의 일부가 1로 바뀌었다. 
+  <LI>원본에 있는 1의 일부가 0으로 바뀌었다. </LI></OL>
+<P>다만 한 글자의 그림에 내용이 덧붙여진 줄도 있고 빠진 줄도 있는 경우는 없다. 또한 1과 0이 뒤바뀐 것은 전체의 30% 이내이다. 줄이 
+덧붙여져 있는 경우도, 두 줄 중 하나 또는 모두에 0과 1이 바뀐 것 같은 왜곡이 있을 수 있고, 왜곡된 모양은 모두 다를 수 있다.</P>
+<H3>문제</H3>
+<P>글자 한 자 이상의 그림을 담고 있는 IMAGE.DAT를 읽어, FONT.DAT에 있는 바른 글꼴 모양을 바탕으로 글자를 인식하는 
+프로그램을 작성하라.</P>
+<P>인식 작업은 글꼴 그림과 들어온 그림를 비교해서 1과 0이 가장 적게 바뀐 글꼴의 글자를 고르는 것이다. 물론 덧붙여지거나 빠진 줄도 가장 
+가능성이 높은 쪽으로 예상을 해 가며 인식해야 할 것이다. 내용이 중복된 줄이 있다고 판단되는 경우 둘 중 왜곡이 더 적은 곳의 왜곡 정도만 
+계산하면 된다.</P>
+<P>예제 파일에 있는 것과 심사 테스트용으로 쓰이는 글자 이미지는 원칙적으로 모두 글자를 인식할 수 있게 되어 있다. 또한 한 글자 이미지에 
+대해 가장 유력한 답은 하나만 존재한다. 답을 올바르게 구했다면 IMAGE.DAT에는 끝에 18줄 이하가 되어 남는 줄이 없이 모든 자료가 
+글자를 인식하는데 정확하게 쓰였을 것이다.</P>
+<H3>입력</H3>
+<P>입력 파일은 모두 줄 수를 나타내는 정수 N (19&lt;=N&lt;=1200)으로 시작한다,</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>N</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>(digit1)(digit2)(digit3) . (digit20)</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>(digit1)(digit2)(digit3) . (digit20)</FONT></P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>.</FONT></P>
+<P>각 줄에는 20개의 숫자가 있다. 0과 1 사이에 공백은 없다.</P>
+<P>FONT.DAT에는 글꼴 이미지가 들어있다. FONT.DAT는 언제나 541줄이며 데이터를 평가할 때마다 다른 글꼴로 할 수 있다.</P>
+<H3>출력</H3>
+<P>여러분의 프로그램은 인식해 낸 글자들을 담고 있는 IMAGE.OUT라는 한 줄 짜리 파일을 출력해야 한다. 글자들 사이에 공백과 같은 
+구분자가 있어서는 안 된다. 또한 어떤 글자인지 인식하지 못한 이미지에 대해서는 해당하는 위치에 ?를 출력해야 한다.</P>
+<H4>주의: 위에서 제시한 출력 형식은 일반적으로 모든 항목마다 공백이 있어야 한다는 IOI 표준 출력 규정을 따르지 않은 것이다. 이번 
+문제에서는 인식한 글자들을 붙여서 출력해야 한다. 공백도 인식될 수 있는 문자이기 때문이다.</H4>
+<H3>배점</H3>
+<P>점수는 전체 글자 수와 제대로 인식한 글자수의 비율로 계산한다.</P>
+<H3>예제 파일</H3>
+<P>입력 파일을 예로 들면,</P>
+<TABLE border=1>
+  <TBODY>
+  <TR>
+    <TD width=479>
+      <P>FONT.DAT의 처음 일부분</P></TD>
+    <TD width=479>
+      <P>IMAGE.DAT (일부가 변형한 a글자)</P></TD></TR>
+  <TR>
+    <TD width=479>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>540</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000000000000000000 &lt;-23번 나옴. 공백에 해당하는 그림</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000011100000000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000111111011000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00001111111001100000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00001110001100100000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00001100001100010000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00001100000100010000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000100000100010000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000010000000110000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000001000001110000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00001111111111110000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00001111111111110000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00001111111111000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00001000000000000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000000000000000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000000000000000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000000000000000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000000000000000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>...</FONT></P></TD>
+    <TD width=479>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>19</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000000000000000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000000000000000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000000000000000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000011100000000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00100111011011000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00001111111001100000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00001110001100100000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00001100001100010000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00001100000100010000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000100000100010000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000010000000110000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00001111011111110000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00001111111111110000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00001111111111000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00001000010000000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000000000000000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000000000001000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000000000000000000</FONT></P>
+      <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+      face=굴림체>00000000000000000000</FONT></P></TD></TR></TBODY></TABLE>
+<P>이에 따른 출력 파일 IMAGE.OUT는 다음과 갈다.</P>
+<P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 3%"><FONT 
+face=굴림체>a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← (a 한 글자를 인식)</FONT></P>
+<HR>
+
+<H2><A name=6></A>6. 컨테이너 쌓기</H2>
+<P>넵튠 화물 회사는 창고에 컨테이너를 쌓는 일을 운영한다. 창고는 컨테이너를 저장하고 이어서 꺼내는 요구를 받아들여 일을 처리한다.</P>
+<P>컨테이너는 창고에 한 시간 간격으로 매시 정각에 도착한다. 그리고 양의 정수 시간만큼 창고에 보관되어 있는다. 컨테이너의 문서 정보에는 이 
+컨테이너가 창고에서 나가는 시각이 들어간다. 첫 번째 컨테이너가 제 1시각에 도착한다. 창고에 들어간 컨테이너는 예정된 시각보다 이르거나 늦게 
+창고에서 꺼내질 수도 있다. 그러나 시간차는 ±5시간을 넘지 않는다.</P>
+<P>이 문제에서는 단위 시간을 한 시간이 지날 때마다 1씩 늘어나는 양의 정수로 표현한다. 이 수는 150을 넘지 않는다.</P>
+<P>기중기(컨테이너를 들어 옮기는 장비)는 공중에서 창고 안팎을 드나들며 컨테이너를 창고 안이나 바깥으로 옮기고, 어떨 때는 창고에 든 
+컨테이너를 재배치하기도 한다. 기중기는 지정된 창고 영역보다 높은 곳에서도 동작할 수 있다. 그래야 가장 위층에 쌓인 컨테이너보다 더 높은 곳에 
+있을 수 있기 때문이다.</P>
+<H3>문제</H3>
+<P>이번 문제는 컨테이너를 받아들여 저장하고, 꺼내는 좋은 전략을 세우는 프로그램을 작성하는 것이다. 좋은 전략이란 컨테이너를 기중기로 옮기는 
+횟수를 최소로 하여 요구를 수행하는 것을 말한다.</P>
+<P>창고는 직육면체 모양의 공간이다. 프로그램은 일정한 길이(X), 폭(Y), 높이(Z)를 가진 공간을 컨테이너를 저장하는 데 쓸 수 
+있다.</P>
+<P>컨테이너는 1×1×1 크기의 정육면체이다. 컨테이너는 다른 컨테이너 위나 바닥 위에 쌓인다. 기중기는 꼭대기에 있는 컨테이너만 꺼내거나 
+창고의 다른 곳으로 옮길 수 있다.</P>
+<P><IMG height=164 src="IOI97.files/ioi9-6-1.gif" width=199 border=0></P>
+<P>컨테이너 하나를 다른 곳으로 옮기는 것은 위치에 상관없이 기중기의 한 동작이라 부른다. 기중기 동작은 컨테이너가 도착할 때와 나갈 때 모든 
+경우에 행해진다. 기중기의 동작은 명령을 내린 즉시 단번에 이루어진다.</P>
+<P>창고가 가득 차면 답안 프로그램은 컨테이너를 더 받아들여라는 요청이 왔을 때 이를 거절해야 한다. 또한 창고가 거의 만원이 되면 창고 
+운영의 효율성이 떨어지거나 심한 경우 요청을 받아들이지 못하게 될 수도 있다. 이런 경우란 모든 창고의 칸이 꽉 차서 단 한 칸에만 컨테이너를 
+두 개 더 쌓을 수 있는데, 꼭대기에서 세 층 이상 아래에 있는 컨테이너를 꺼내 달라는 요청이 들어온 경우를 들 수 있다. 단, 답안 프로그램은 
+전략상 필요하다면 컨테이너를 창고에 저장해 달라는 요청을 언제든지 거절할 수 있다.</P>
+<H3>입력</H3>
+<P>답안 프로그램은 시뮬레이션 모듈(라이브러리)과 상호 작용하여 동작하도록 설계되어야 한다. 시뮬레이션 모듈은 데이터를 제공하고 답안 
+프로그램이 어떤 동작을 취하도록 지시하고 메시지를 전달한다. 창고가 완전히 비어있는 상태에서 프로그램 동작이 시작된다.</P>
+<P>프로그램을 테스트하는 동안 라이브러리는 내장된 테스트 데이터를 읽어 그것에 대한 의미 있는 값을 되돌린다. 각각의 컨테이너는 서로 다른 
+양수로 구분한다.</P>
+<P>답안 프로그램은 다음 함수들을 언제든지 호출하여 값을 얻을 수 있다.</P>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">int GetX();</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">function GetX: integer;</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">DECLARE FUNCTION GetX CDECL 
+()</H4>
+<P>창고의 길이를 되돌린다. (정수)</P>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">int GetY();</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">function GetY: integer;</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">DECLARE FUNCTION GetY CDECL 
+()</H4>
+<P>창고의 너비를 되돌린다. (정수)</P>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">int GetZ();</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">function GetZ: integer;</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">DECLARE FUNCTION GetZ CDECL 
+()</H4>
+<P>창고의 높이를 되돌린다. (정수)</P>
+<P>X, Y, Z는 32를 넘지 않는다.</P>
+<P>다음 함수들은 컨테이너를 저장하거나 빼내는 등 일련의 동작과 관련된 정보를 제공한다. 컨테이너는 매시 정각에 도착한다. 한편, 컨테이너를 
+꺼내는 동작은 그 시간 사이에 처리된다. 즉, 컨테이너를 안에 넣으라는 요청을 받고 나면 단위 시간이 1 증가하지만, 컨테이너를 꺼내라는 요청은 
+시간 흐름과 관계가 없다.</P>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">int GetNextContainer();</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">function GetNextContainer: 
+integer;</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">DECLARE FUNCTION 
+GetNextContainer CDECL ()</H4>
+<P>쌓아 두거나 빼낼 컨테이너의 번호를 나타내는 양수를 되돌린다. 그런 동작을 취할 컨테이너가 더 이상 없다면 이 함수는 0을 되돌리며, 이는 
+모든 처리가 끝났으니 창고에 컨테이너가 남아 있더라도 답안 프로그램을 종료하라는 신호가 된다. (여러분은 번호가 어느 번인 컨테이너가 창고 
+어디에 있는지 파악해 두어야 한다.)</P>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">int GetNextAction();</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">function GetNextAction: 
+integer;</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">DECLARE FUNCTION GetNextAction 
+CDECL ()</H4>
+<P>다음에 할 동작을 의미하는 수치를 되돌린다.</P>
+<P>1: 새 컨테이너를 저장한다.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2: 창고에 있는 한 컨테이너를 
+꺼낸다.</P>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">int GetNextStorageTime();</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">function GetNextStorageTime: 
+integer;</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">DECLARE FUNCTION 
+GetNextStorageTime CDECL ()</H4>
+<P>창고에 들어간 뒤부터 몇 시간 뒤 이 컨테이너가 창고에서 나가게 되는지를 되돌린다. 이 시간은 당신의 프로그램이 컨테이너를 저장해 두는 
+계획을 짜는데 쓰일 것이다. 하지만 실제로 이 컨테이너를 꺼내라는 요청은 예상했던 것보다 약간 이르거나 늦은 시간에 올지도 모른다. 이 시간차는 
+앞에서 말했다시피 ±5시간을 넘지는 않는다. 이 함수가 되돌리는 값은 GetNextAction이 1을 되돌렸을 때만 유효하다.</P>
+<P>위의 세 함수들은 어떤 순서로 호출되어도 괜찮다.</P>
+<P>GetNextContainer, GetNextAction, GetNextStorageTime 함수는 이것이 가리키는 컨테이너가 거절되거나 
+저장되거나 빠져나가기 전엔 계속 호출해도 이것에 대한 정보만 되풀이하여 되돌린다. 즉 어떤 지시에 대한 처리를 하지 않은 채 다음 지시를 받을 
+수는 없다는 뜻이다. 이는 또한 답안 프로그램이 다음 요구를 미리 알고서 최적화된 계획을 세워놓을 수 없게 하려는 의도이기도 하다.</P>
+<H3>출력</H3>
+<P>다음에 오는 컨테이너에 대한 정보를 얻었으면 답안 프로그램은 아래 함수들을 써서 창고를 운영하도록 한다.</P>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">int MoveContainer(int x1, int 
+y1, int x2, int y2);</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">function MoveContainer(x1, y1, 
+x2, y2: integer): integer;</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">DECLARE FUNCTION MoveContainer 
+CDECL (BYVAL x1 AS INTEGER, BYVAL y1 AS INTEGER, BYVAL x2 AS INTEGER, BYVAL y2 
+AS INTEGER)</H4>
+<P>x1, y1 위치의 꼭대기에 있는 컨테이너를 x2, y2 위치의 꼭대기로 옮긴다. 올바른 동작이어서 성공적으로 수행되면 1을 되돌리고, 
+올바르지 않아 불가능한 경우 0을 되돌린다.</P>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">void RefuseContainer();</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">procedure RefuseContainer;</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">DECLARE SUB RefuseContainer 
+CDECL ()</H4>
+<P>들어오는 컨테이너를 거절하고, 받아들이지 않는다.</P>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">void StoreArrivingContainer(int 
+x, int y);</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">procedure 
+StoreArrivingContainer(x, y: integer);</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">DECLARE SUB 
+StoreArrivingContainer CDECL (BYVAL x AS INTEGER, BYVAL y AS INTEGER)</H4>
+<P>들어온 컨테이너를 창고의 x, y 위치의 꼭대기에 쌓는다.</P>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">void RemoveContainer(int x, int 
+y);</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">procedure RemoveContainer(x, y: 
+integer);</H4>
+<H4 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">DECLARE SUB RemoveContainer 
+CDECL (BYVAL x AS INTEGER, BYVAL y AS INTEGER)</H4>
+<P>창고의 x, y위치의 가장 꼭대기에 있는 컨테이너를 창고에서 밖으로 내보낸다.</P>
+<P>프로그램이 라이브러리의 요구를 수행할 수 없는 상태가 되면 종료해야 한다.</P>
+<P>할 수 없거나 옳지 않은 동작을 시도하면 라이브러리는 이를 무시하여 실행하지 않는다. 그래서 그 동작은 시뮬레이션 상태나 배점에 영향을 
+주지 않는다.</P>
+<P>답안 프로그램은 어떤 결과를 파일에다 기록할 필요가 없다. 라이브러리가 답안 프로그램이 했던 동작을 알아서 기록한다. 이 파일이 심사하는데 
+쓰인다.</P>
+<H3>진행</H3>
+<P>여러분의 답안 프로그램은 다음 컨테이너 요구에 대한 정보를 얻은 다음 요구에 따라 컨테이너를 기중기를 써 창고에 저장하거나 밖으로 꺼내고, 
+때에 따라서는 저장하라는 요구를 거절도 해야 한다. 이렇게 더 처리할 컨테이너가 없을 때까지 되풀이한다.</P>
+<H3>라이브러리</H3>
+<P>답안 프로그램을 만들 때 같이 링크해야 하는 StackLib라는 라이브러리가 준비되어 있다. 표준 C/C++ 라이브러리에 StackLib가 
+포함돼 있기 때문에 헤더 파일만 인클루드하면 자동으로 이것이 링크된다. QuickBasic 통합 환경에서 라이브러리를 쓰려면 프로그램을 아래와 
+같이 실행해야 한다.</P>
+<P>&nbsp;&nbsp;QB /L STACKLIB</P>
+<P>이 라이브러리를 쓴 예제 프로그램의 소스 코드가 언어별로 TESTSTK.BAS, TESTSTK.PAS, TESTSTK.CPP, 
+TESTSTK.C란 이름으로 준비되어 있다.</P>
+<H3>배점</H3>
+<P>답안 프로그램은 다양한 컨테이너 조작 지시를 담은 여러 데이터로 심사를 받으며, 답안 프로그램이 한 동작은 심사 위원이 알고 있는 최적의 
+해답과 비교하여 점수가 매겨진다.</P>
+<P>단, 컨테이너를 한 번 거절할 때마다 실제로 요청을 받아들이기 위해 움직인 기중기 횟수에 다섯 회가 더 부과된다. 그리고 저장되지 못하거나 
+창고에서 나가지 못한 컨테이너에 대해서도 한 개마다 다섯 동작이 더 더해진다. (이는 모든 컨테이너 처리가 끝나기 전에 프로그램이 끝났을 때에 
+대한 벌칙이다.)</P>
+<P>최종 점수는 기중기를 움직인 횟수에 벌점으로 더해진 횟수의 합과, 알려진 최고의 해답(가장 적게 기중기를 움직여 요구를 수행한 동작 
+횟수)에 대한 비율로 계산된다. 프로그램이 필요한 횟수보다 두 배 이상 많은 기중기 동작을 시도하면 0점 처리된다.</P>
+<P>최소 점수는 0%, 최대 점수는 100%이다.</P>
+<P>&nbsp;</P></BODY></HTML>

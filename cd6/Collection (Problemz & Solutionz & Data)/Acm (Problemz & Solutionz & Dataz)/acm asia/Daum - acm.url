@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://cafe.daum.net/acmicpc
+
+[DOC_set_down_user]
+BASEURL=http://211.233.78.86/_c21_/home_intro?grpid=Lq20&grpcode=acmicpc
+
+[DOC_set_down_leftmenu]
+BASEURL=http://cafe77.daum.net/_c21_/bbs_menu?grpid=Lq20&type=8&log=
+
+[InternetShortcut]
+URL=http://cafe.daum.net/acmicpc
+Modified=A0CA45B9FA86C201AB

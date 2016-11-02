@@ -1,0 +1,67 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=windows-1257">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (Win98; I) [Netscape]">
+   <title>Excursion</title>
+<link rel='stylesheet' href='/boi/oi.css'>
+</head>
+<body bgcolor="#FF7F00" background="tlo.jpg">
+
+<h2>
+Excursion</h2>
+
+(Running time - 1s.)
+<p><br>The group of travelers has an opportunity to visit several cities.
+Each traveler states two wishes on what city he/she does want or does not
+want to visit. One wish expresses will to visit or not to visit exactly
+one city. It is allowed that both wishes of the one traveler are the same
+or that they are opposite--i.e. I want to visit city A, and I do not want
+to visit city A.
+<br>&nbsp;
+<br>&nbsp;
+<h2>
+Task</h2>
+Your task is to write a program that:
+<ul>
+<li>
+reads the travelers' wishes from the input file ,</li>
+
+<li>
+determines whether it is possible to form such a list of cities to be visited
+(the list can be empty), that at least one wish of every traveler is satisfied,</li>
+
+<li>
+writes the list of cities to be visited to the output file.</li>
+</ul>
+If there are several possible solutions, your program should output anyone
+of them.
+<br>&nbsp;
+<br>&nbsp;
+<h2>
+Input</h2>
+The first line of the input file contains two positive integers <i>n</i>
+and <i>m</i> ( <i>1&lt;=n&lt;=20 000</i>, <i>1&lt;=m&lt;=8 000</i> ); <i>n</i>
+is the number of travelers, and <i>m</i> is the number of cities. The travelers
+are numbered form 1 to <i>n</i>, and the cities are numbered from 1 to
+<i>m</i>. Each of the following <i>n</i> lines contains two nonzero integers,
+separated by single space. The <i>i+1</i>-th line contains numbers <i>w<sub>i</sub></i>
+and <i>v<sub>i</sub></i> representing wishes of the <i>i</i>-th traveler,
+<i>-m&lt;= w<sub>i</sub> , v<sub>i</sub> &lt;=m</i>; <i>w<sub>i</sub> ,
+v<sub>i</sub>&lt;>0 </i>Positive number means that the traveler wishes
+to visit that city, and negative number means that the traveler does not
+wish to visit the city specified by the absolute value of the number.
+<br>&nbsp;
+<br>&nbsp;
+<h2>
+Output</h2>
+Your program should write one nonnegative integer <i>l</i>, the number
+of cities to be visited, in the first line of the output file . In the
+second line of the file, there should be written exactly <i>l</i> positive
+integers in the ascending order, representing cities to be visited.
+<p>In case it is not possible to form such a list of cities, your program
+should write in the first and only line the word <tt>NO</tt>.
+<br>&nbsp;
+<br><a href="javascript:window.history.go(-1)"></a>&nbsp;
+</body>
+</html>

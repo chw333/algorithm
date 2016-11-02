@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>KOI 13회 중등부 1.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0" width="595">
+    <tr>
+        <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+            14회 고등부 2. 미로 만들기</b></font></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="pkoi97h2.htm"><img src="button1.gif"
+             width="72" height="22" border="0"></a></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi97h2.htm"><img src="button3.gif"
+             width="72" height="22" border="0"></a></td>
+    </tr>
+</table>
+<ul>
+    <p>&nbsp; 
+    <table border="0">
+            <tr>
+                <td width="550"><p style="line-height:150%;"><font size="2">&nbsp;&nbsp;문제를 
+                약간 바꿔서 생각해 보면, &quot;시작점에서 출발하여 끝점까지 
+                가는 도중에 최소 몇 개의 검은방을 만나게 되는가?&quot;라는 문제로 
+                생각할 수 있다. 이 문제는 그래프 상의 최단거리를 찾는 문제로 
+                볼 수 있다('평면상에서 최소의 ...를 구하여라' 하는 문제는 이런 
+                유형인 경우가 많다)</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;최단거리를 
+                구하기 위한 방법에는 여러 가지가 있지만, 이 문제의 경우에는 
+                BFS가 가장 편하다. 기본 아이디어는 검은 방을 0번 지나서 갈 수 
+                있는 방을 구하고, 이것을 토대로 검은 방을 1번 지나서 갈 수 있는 
+                방을 구하고, 다시 검은 방을 2번 지나서 갈 수 있는 방을 구하고, 
+                이런 식으로 끝점까지 도달하는데 거쳐야 하는 검은방의 수를 찾으면 
+                된다. 아래 그림을 보면,</font></p>
+                <p style="line-height:150%;"><font size="2"><img src="skoi97h2-1.gif"
+                 width="177" height="176" border="0"><br> 이 것이 원래 지도이다.</font></p>
+                <p align="left" style="line-height:150%;"><font size="2"><img src="skoi97h2-2.gif"
+                 width="178" height="175" border="0"><br> 이 지도에 검은 방을 
+                0번 거쳐서 갈 수 있는 방들을 0으로 표시한다(이것은 BFS를 이용하면 
+                된다) 그리고 0번 방들의 주위를 #로 표시한다.</font></p>
+                <p style="line-height:150%;"><font size="2"><img src="skoi97h2-3.gif"
+                 width="179" height="176" border="0">&nbsp;<br> #를 표시한 방에서 
+                BFS를 돌려서 검은 방을 1번 거쳐서 갈 수 있는 방들을 1로 표시한다. 
+                1번 방들의 주위를 다시 #로 표시한다.</font></p>
+                <p style="line-height:150%;"><font size="2"><img src="skoi97h2-4.gif"
+                 width="180" height="176" border="0"><br> #를 표시한 방에서 
+                다시 BFS를 돌려서 검은 방을 2번 거쳐서 갈 수 있는 방들을 2로 
+                표시한다. 2번 방들의 주위를 다시 #로 표시한다. 그런데 여기서 
+                도착점이 2로 표시되어 알고리즘은 끝이 난다. 즉, 도착점까지 가기 
+                위해서는 최소 2개의 검은 방을 거쳐야 하는 것이다(문제에서 요구하는 
+                대로 말하자면 최소 2개의 검은 방을 흰 방으로 바꿔야 한다는 뜻).</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;본인은 
+                잘 모르겠지만 이러한 방법을 더블 BFS라고 부르는 듯 하다.&nbsp;</font></td>
+        </tr>
+    </table>
+    <p>&nbsp;</p>
+</ul>
+</body>
+
+</html></html>

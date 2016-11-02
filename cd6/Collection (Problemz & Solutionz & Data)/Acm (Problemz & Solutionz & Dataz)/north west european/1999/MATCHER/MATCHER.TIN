@@ -1,0 +1,6 @@
+abcde abcde
+abcde +a*b+de
+abcde +b*cde
+abcde *
+ab ***
+einLaengererStringDerAberKeineBlanksEnthaeltDaherAberMitGrossUndKleinschreibungArbeitet *e*

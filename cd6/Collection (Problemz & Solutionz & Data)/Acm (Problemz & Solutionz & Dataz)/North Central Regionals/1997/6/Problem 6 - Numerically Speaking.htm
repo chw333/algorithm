@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0047)http://www.karrels.org/Ed/ACM/reg97/prob_6.html -->
+<HTML><HEAD><TITLE>Problem 6 - Numerically Speaking</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type><LINK 
+href="mailto:Ed@Tool.com" rev=made>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY><EM>Not an official ACM page</EM> <BR>[<A 
+href="http://www.karrels.org/Ed/ACM/reg97/index.html">1997 ACM North-Central 
+Regionals problem set</A> | <A 
+href="http://www.karrels.org/Ed/ACM/index.html">Ed's Programming Contest Problem 
+Archive</A> | <A href="http://www.karrels.org/Ed/index.html">my home page</A>] 
+<HR>
+
+<CENTER>
+<H2>1997-98 North Central Regionals</H2><STRONG><FONT 
+face=Arial,Helvetica>Numerically Speaking -- Problem 6</FONT></STRONG> </CENTER>
+<P>A developer of crossword puzzles (and other similar word games) has decided 
+to develop a mapping between every possible word with from one to twenty 
+characters and unique integers. The mapping is very simple, with the ordering 
+being done first by the length of the word, and then alphabetically. Part of the 
+list is shown below. 
+<P><PRE>    a          1
+    b          2
+    ...
+    z          26
+    aa         27
+    ab         28
+    ...
+    snowfall   157,118,051,752
+    ...
+</PRE>
+<P>Your job in this problem is to develop a program which can translate, 
+bidirectionally, between the unique word numbers and the corresponding words. 
+<P>
+<H3>Input</H3>Input to the program is a list of words and numbers, one per line 
+starting in column one, followed by a line containing a single asterisk in 
+column one. A number will consist only of decimal digits (0 through 9) followed 
+immediately by the end of line (that is, there will be no commas in input 
+numbers). A word will consist of between one and twenty lowercase alphabetic 
+characters (a through z). 
+<H3>Output</H3>The output is to contain a single line for each word or number in 
+the input data. This line is to contain the word starting in column one, 
+followed by an appropriate number of blanks, and the corresponding word number 
+starting in column 23. Word numbers that have more than three digits must be 
+separated by commas at thousands, millions, and so forth. 
+<P>
+<H3>Sample Input</H3><PRE>29697684282993
+transcendental
+28011622636823854456520
+computationally
+zzzzzzzzzzzzzzzzzzzz
+*
+</PRE>
+<H3>Expected Output</H3><PRE>elementary            29,697,684,282,993
+transcendental        51,346,529,199,396,181,750
+prestidigitation      28,011,622,636,823,854,456,520
+computationally       232,049,592,627,851,629,097
+zzzzzzzzzzzzzzzzzzzz  20,725,274,851,017,785,518,433,805,270
+</PRE>
+<P>
+<H3>Judge's <A href="http://www.karrels.org/Ed/ACM/reg97/prob_6.in">Input 
+Data</A> and <A href="http://www.karrels.org/Ed/ACM/reg97/prob_6.out">Expected 
+Output</A></H3>
+<H3><A href="http://www.karrels.org/Ed/ACM/reg97/prob_6.cpp">Sample 
+Solution</A></H3>
+<HR>
+This page maintained by <A href="mailto:Ed@Tool.com">Ed Karrels</A>.<BR>Last 
+updated November 14, 1997 </BODY></HTML>

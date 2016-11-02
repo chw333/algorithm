@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>색종이 올려놓기</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p><font face="굴림체">색종이 올려놓기</font></p>
+<p><font face="굴림체">초등부에서 동적 계획법 문제가 나왔군요. 방법만 간단히 
+설명해 드리도록 하겠습니다.</font></p>
+<p><font face="굴림체">일단 색종이들을 x좌표 크기순으로 소트를 합니다. 그러면 
+색종이의 y좌표들도 재배열이 되는데, 앞서 살펴본 적이 있던 up sequence문제와 
+똑같은 문제가 됩니다. y좌표들에 대한 최대 up sequence를 찾아서 출력해 주면 됩니다.</font></p>
+<p><font face="굴림체">아래 소스는 박준혁님이 수고해 주셨습니다.</font></p>
+<p><font face="굴림체">program paper_problem;</font></p>
+<p><font face="굴림체">const<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;infile &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'input.txt';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outfile &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'output.txt';</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;paper_x, paper_y &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 0..100 ] of integer;<br>
+&nbsp;&nbsp;&nbsp;dyn &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 0..100 ] of integer;</font></p>
+<p><font face="굴림체">procedure input;</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;inf &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text;<br>
+&nbsp;&nbsp;&nbsp;i &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assign( inf, infile );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset( inf );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read( inf, n );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read( inf, paper_x[ i 
+], paper_y[ i ] );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;close( inf );<br>
+end;</font></p>
+<p><font face="굴림체">procedure swap( var a, b : integer );</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;p &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p := a;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a := b;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b := p;<br>
+end;</font></p>
+<p><font face="굴림체">procedure solve;</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;i, j &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;max, maxi &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if paper_x[ i ] &lt; paper_y[ 
+i ] then swap( paper_x[ i ], paper_y[ i ] );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j := i + 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+paper_x[ i ] &gt; paper_x[ j ] then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap( 
+paper_x[ i ], paper_x[ j ] );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap( 
+paper_y[ i ], paper_y[ j ] );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+( paper_x[ i ] = paper_x[ j ] ) and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( 
+paper_y[ i ] &gt; paper_y[ j ] ) then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap( 
+paper_x[ i ], paper_x[ j ] );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap( 
+paper_y[ i ], paper_y[ j ] );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dyn[ 0 ] := 0;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;paper_x[ 0 ] := 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;paper_y[ 0 ] := 0;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max := - maxint;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for 
+j := 0 to i - 1 do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+( paper_x[ i ] &gt;= paper_x[ j ] ) and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( 
+paper_y[ i ] &gt;= paper_y[ j ] ) and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( 
+max &lt; dyn[ j ] ) then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max 
+:= dyn[ j ];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxi 
+:= j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dyn[ i ] := max 
++ 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+end;</font></p>
+<p><font face="굴림체">procedure output;</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;ouf &nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text;<br>
+&nbsp;&nbsp;&nbsp;i &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;max &nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max := dyn[ 1 ];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if dyn[ i ] &gt; max then 
+max := dyn[ i ];</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assign( ouf, outfile );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rewrite( ouf );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln( ouf, max );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;close( ouf );<br>
+end;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;solve;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output;<br>
+end.</font></p>
+</body>
+
+</html></html>

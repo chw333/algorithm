@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>A 와 B라는 사람이 있다고 합시다.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p>A 와 B라는 사람이 있다고 합시다. 이 때, 이 두 사람이 친척이라면 그들은 공통의 
+조상을 가지고 있을 것입니다. 예를 들어서 나와 삼촌은, 할아버지라는 공통의 조상을 
+가지고 있습니다.</p>
+<p>나와 삼촌간의 촌수 = 나와 할아버지간의 촌수 + 삼촌과 할아버지간의 촌수</p>
+<p>부모와 자식간에는 1촌이므로, 나와 삼촌간의 촌수는 2+1=3 말 그대로 삼촌은 
+3촌입니다. (-_-)</p>
+<p>아래의 소스는, 각자의 공통의 조상을 찾아서 A와 조상간의 촌수, B와 조상간의 
+촌수를 더해서 출력하는 매우 간단한 알고리즘을 가지고 있습니다. 만약 공통의 조상이 
+없으면 친척간이 아니지요...</p>
+<p>이 외에도 가계도를 하나의 그래프로 만들어 최단거리를 찾는 등의 방법이 있을 
+수 있습니다. 하지만 제가 생각하기로는 공통의 조상을 찾는 알고리즘이 가장 간단할 
+것 같군요.</p>
+<p><font face="Fixed01">program KOI99M1;</font></p>
+<p><font face="Fixed01">var<br>
+&nbsp;&nbsp;n : integer;<br>
+&nbsp;&nbsp;parent, check : array[1..100] of integer;<br>
+&nbsp;&nbsp;a, b : integer;</font></p>
+<p><font face="Fixed01">procedure input_file;<br>
+var<br>
+&nbsp;&nbsp;f : text;<br>
+&nbsp;&nbsp;i, t, q, w : integer;<br>
+begin<br>
+&nbsp;&nbsp;assign (f, 'input.txt');<br>
+&nbsp;&nbsp;reset (f);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;read (f, n);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;parent[i] := 0;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;read (f, a, b);<br>
+&nbsp;&nbsp;read (f, t);</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;for i := 1 to t do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;read (f, q, w);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;parent[w] := q;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;close (f);<br>
+end;</font></p>
+<p><font face="Fixed01">procedure solve;<br>
+var<br>
+&nbsp;&nbsp;i, j : integer;<br>
+begin<br>
+&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;check[i] := 0;<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;i := a;<br>
+&nbsp;&nbsp;j := 0;<br>
+&nbsp;&nbsp;while i &lt;&gt; 0 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;check [i] := j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;i := parent[i];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;inc (j);<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;i := b;<br>
+&nbsp;&nbsp;j := 0;<br>
+&nbsp;&nbsp;while i &lt;&gt; 0 do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if check[i] &lt;&gt; 0 then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln (check[i] + j);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;halt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;i := parent[i];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;inc (j);<br>
+&nbsp;&nbsp;end;</font></p>
+<p><font face="Fixed01">&nbsp;&nbsp;writeln (-1);<br>
+end;</font></p>
+<p><font face="Fixed01">begin<br>
+&nbsp;&nbsp;input_file;<br>
+&nbsp;&nbsp;solve;<br>
+end.</font></p>
+</body>
+
+</html></html>

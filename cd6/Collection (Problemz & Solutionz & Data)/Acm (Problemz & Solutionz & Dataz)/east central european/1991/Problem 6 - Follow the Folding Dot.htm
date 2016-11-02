@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0071)http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_EastCen/1991/fold.htm -->
+<HTML><HEAD><TITLE>Problem 6 - Follow the Folding Dot</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY>
+<CENTER>
+<H2>1991 ACM East Central Regional Programming Contest</H2>
+<H3>Problem 6: Follow the Folding Dot</H3></CENTER>
+<CENTER>
+<TABLE>
+  <TBODY>
+  <TR align=BOTTOM>
+    <TD>Source file:</TD>
+    <TD>fold.pas or fold.c</TD></TR>
+  <TR align=BOTTOM>
+    <TD>Input file:</TD>
+    <TD><A 
+      href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_EastCen/1991/fold.in">fold.in</A></TD></TR>
+  <TR align=BOTTOM>
+    <TD>Output file:</TD>
+    <TD>fold.out</TD></TR></TBODY></TABLE></CENTER>
+<P>Write a program that will keep track of the location of a dot on a piece of 
+paper as it is being folded. 
+<H4>Input</H4>
+<P>The input file will contain 4 different types of records. 
+<P><B>Type 1</B> will contain two real numbers separated by one space. These 
+are, respectively, the width and height of the paper. 
+<P><B>Type 2</B> will contain two real numbers and a character, all separated by 
+one space. These numbers represent the coordinates of the dot on the paper. The 
+first number is the distance horizontally from the upper left hand corner. The 
+second is the distance down from the upper left hand corner. The character will 
+tell you which side of the paper the dot is on (T for top, B for bottom). 
+<P><B>Type 3</B> will contain two unseparated uppercase characters. The first 
+character will tell you which of the four sides of the paper you are about to 
+use (T for top, B for bottom, L for left, R for right). The second character 
+will tell you whether to fold the paper over the top or under the bottom (O for 
+over, U for under) e.g., TO, would mean you take the top of the paper and fold 
+it over. Remember that the upper left hand corner is always 0, 0. 
+<P><B>Type 4</B> will contain one uppercase 'S'. This will tell you to stop 
+folding the paper. 
+<H4>Output</H4>
+<P>The output will consist of which piece of paper you are working on, the 
+beginning size of the paper, the beginning location of the dot, the size of the 
+paper and the location of the dot when you have finished folding the paper. 
+<H4>Process</H4>This is best explained by an example. 
+<P>Place a 8.5x11 paper on the desk in front of you. Place a dot on the top 
+surface at 1.00 unit right of the top left corner and 2.00 units down from the 
+top. Now, take the top edge of the paper and fold it over the top. The paper is 
+now 8.5x5.5 and the dot is on the bottom of page 1. The location of the new 
+position of the dot is 3.5 units from the top and 1.00 units to the right. Use 
+these new 'coordinates' as the starting positions for the next set of folding 
+instructions. 
+<H4>Sample Input</H4><PRE>5.0 8.25
+3.25 8.00 T
+TO
+LU
+S
+1.0 2.0
+.55 1.3 B
+LO
+S
+</PRE>
+<H4>Sample Output</H4><PRE>Paper number 1
+Beginning paper dimensions 5.000000 X 8.250000
+Dot is on TOP of page 1. Position: 3.250000 X 8.000000
+
+After folding paper. Paper dimensions: 2.500000 X 4.125000
+Dot is on TOP of page 2. Position 0.750000 X 3.875000
+
+Paper number 2
+Beginning paper dimensions 1.000000 X 2.000000
+Dot is on TOP of page 1. Position: 0.550000 X 1.300000
+
+After folding paper. Paper dimensions: 0.500000 X 2.000000
+Dot is on TOP of page 2. Position 0.050000 X 3.300000
+</PRE>
+<P>Other Notes: 
+<OL>
+  <LI>The dot will never be on the edge of the paper or a fold line. 
+  <LI>When folding the paper, pretend you are cutting the paper. In other words, 
+  don't be concerned about the thickness of the fold. 
+  <LI>All input characters will be in uppercase. </LI></OL><PRE></PRE></BODY></HTML>

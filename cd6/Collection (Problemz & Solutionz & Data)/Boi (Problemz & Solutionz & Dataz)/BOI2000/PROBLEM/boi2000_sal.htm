@@ -1,0 +1,398 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=windows-1257">
+   <meta http-equiv="Content-Language" content="LT">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (Win98; U) [Netscape]">
+   <meta name="Author" content="Jūratė Skūpienė">
+   <title>BOI'2000 sąlygos</title>
+</head>
+<body text="#000000" bgcolor="#FFFFCC" link="#3333FF" vlink="#009900" alink="#993366">
+&nbsp;
+<table WIDTH="100%" >
+<tr>
+<td><a href="../index.html"><img SRC="../pv/left.gif" NOSAVE BORDER=0 height=35 width=40 align=TEXTTOP></a></td>
+
+<td>
+<center>
+<h3>
+<b>Šeštoji Baltijos šalių informatikos olimpiada</b></h3></center>
+
+<center>
+<h3>
+<b><i>Uždavinių sąlygos</i></b></h3></center>
+&nbsp;</td>
+</tr>
+</table>
+
+<p><a NAME="Korys"></a><b><font size=+1>1.</font></b> <b>KORYS</b>. (Suomija).
+(Vykdymo laikas – 5 sec., Pentium 450 Mhz).&nbsp; Pirmame paveiksle matote
+skaičių korį (kraštinių ilgiai lygūs 3). Kelias prasideda kurioje nors
+viršutinės eilutės korio akutėje ir baigiasi kurioje nors apatinės eilutės
+korio akutėje. Iš akutės kelias gali eiti tik įstrižai žemyn į kairę arba
+įstrižai žemyn į dešinę. Sudarant kelią, leidžiama vienoje horizontalioje
+korio eilutėje vieną kartą sukeisti du skaičius vietomis. (Šis sukeitimas
+iš esmės reiškia, kad galite paimti didžiausią kurios nors eilutės skaičių
+ir padėti jį į bet kurią tos pačios eilutės akutę.)
+<p><img SRC="pv/boi2000_1.gif" NOSAVE height=230 width=222>
+<p><i>Užduotis</i>. Parašykite programą, kuri suskaičiuotų, kokia gali
+būti didžiausia kelią sudarančių akučių skaičių suma, kai leidžiamas minėtas
+dviejų skaičių sukeitimas vienoje pasirinktoje eilutėje.
+<p><i>Ribojimai</i>:
+<blockquote>
+<li>
+akutėse įrašyti sveikieji skaičiai iš intervalo [0; 99];</li>
+
+<li>
+korio kraštinės ilgis yra sveikasis skaičius iš intervalo [1; 99].</li>
+</blockquote>
+
+<hr SIZE=3 WIDTH="100%">
+<br><i>&nbsp;Pradiniai duomenys</i>. Pirmoje pradinių duomenų bylos HON.IN
+eilutėje pateiktas korio kraštinės ilgis <i>n</i>. Tai reiškia, kad korį
+sudaro 2<i>n</i>–1 eilutė. Taigi tolesnėse 2<i>n</i>–1 eilutėse pateikiami
+korio akutėse įrašyti skaičiai. 1 paveikslo duomenys turi būti pateikti
+šitaip:
+<br>&nbsp;<tt>3</tt>
+<br><tt>&nbsp;1 2 3</tt>
+<br><tt>&nbsp;3 2 2 1</tt>
+<br><tt>&nbsp;4 2 8 0 3</tt>
+<br><tt>&nbsp;5 3 1 2</tt>
+<br><tt>&nbsp;3 1 4</tt>
+<br>
+<hr SIZE=3 WIDTH="100%">
+<br><i>Rezultatas</i>. Tekstinėje byloje HON.OUT pateikiamas vienas sveikasis
+skaičius – didžiausia kelio suma. Paveiksle pateikto pavyzdžio atveju tai
+būtų:
+<br>&nbsp;<tt>22</tt>
+<p>Paveiksle teisingas sprendinys (3+2+8+5+4=22) nuspalvintas pilkai. Atkreipiame
+dėmesį, kad ketvirtoje nuo viršaus eilutėje esantis skaičius 5 yra sukeistas:
+t.y. jis pakeičia toje pačioje eilutėje trečioje iš kairės akutėje esantį
+skaičių 1.
+<center>
+<hr SIZE=8 NOSHADE WIDTH="100%"></center>
+
+<p><a NAME="Laiko juostos"></a><font size=+1><b>2</b>. LAIKO JUOSTOS</font>.
+(Švedija) (Vykdymo laikas – 30 sec., Pentium 450 Mhz). Jūs esate verslininkas
+ir visame pasaulyje turite savo klientų. Kiekvieną parą gaunate lygiai
+vieną pranešimą iš kiekvienos laiko juostos, tarp jų ir iš tos juostos
+kurioje esate. Tuose pranešimuose įrašytas jų išsiuntimo laikas. Deja,
+dėl 2000–ųjų metų klaidos pranešimuose įrašytas vietinis siuntėjo laikas
+nenurodant, kokiai laiko juostai jis priklauso.
+<p><i>Užduotis</i>. Kiekvienam pranešimui nustatykite laiko juostą, iš
+kurios jis buvo išsiųstas.
+<p>Šiame uždavinyje para turi <i>n</i> (5 &lt;= <i>n</i> &lt;= 60). Laiko
+juostų yra tiek, kiek valandų paroje. Gretimose laiko juostose laikas skiriasi
+viena valanda.
+<p>Laiko juostos sunumeruotos nuo 0 iki <i>n</i>–1. Jūs esate nulinėje
+laiko juostoje (t.y. jūsų laikas sutampa su GMT laiku).
+<p>Visos laiko juostos (suprantama išskyrus jūsiškę) yra į vakarus nuo
+jūsų. Tai reiškia, kad prie vietinio laiko (juostoje <i>z</i>) pridėję
+<i>z</i>
+valandų, gausite savo juostos laiką. Atkreipiame dėmesį, kad tai nėra įprastas
+laiko juostų žymėjimo būdas. Įprastai, pavyzdžiui, antra juosta būtų žymima
+„-2:00".
+<p>Pavyzdžiui, jei antroje (2) laiko juostoje yra 03:15, tai jūsų laiko
+juostoje (GMT) yra 05:15.
+<p>Pranešimai gali ateiti visą parą nuo 0:00val iki (<i>n</i>–1):59 val..
+Tą pačią minutę gali ateiti tik vienas pranešimas. Pranešimų datą ignoruokite:
+laikykite, kad pranešimai išsiunčiami ir gaunami tą pačią parą.
+<br>
+<hr WIDTH="100%"><i>Pradiniai duomenys</i>. Pirmoje pradinių duomenų bylos
+ZON.IN eilutėje įrašytas valandų skaičius paroje <i>n</i> (5 &lt;= <i>n</i>
+&lt;= 60).
+<br>Tas pats skaičius <i>n</i> lygus laiko juostų bei gautų pranešimų skaičiui.
+<p>Tolesnėse <i>n</i> eilučių įrašyti vietiniai pranešimų išsiuntimo laikai.
+Laikas nurodomas formatu <i>hhmm</i> (du skaitmenys valandoms ir du skaitmenys
+minutėms). Čia 0 &lt;= <i>hh</i> &lt;= (<i>n</i>–1), 0 &lt;= <i>mm</i>
+&lt;= 59. Eilutės surikiuotos pranešimų gavimo tvarka, t.y. anksčiausiai
+atėjęs pranešimas įrašytas pirmoje iš n eilučių. Pradiniai duomenys tokie,
+kad sprendinys yra vienintelis.
+<br>
+<hr WIDTH="100%">
+<br><i>Rezultatus</i>&nbsp; įrašykite į vienintelę tekstinės bylos ZON.OUT
+eilutę. Joje turi būti <i>n</i> skaičių nuo 0 iki <i>n</i> – 1, nurodančių
+laiko juostas iš kurios atėjo atitinkami pranešimai. Pirmasis skaičius
+turi rodyti pirmojo pranešimo laiko juostą, antrasis – antrojo, ir t.t.
+<br>
+<hr WIDTH="100%"><i>Pavyzdys</i>
+<br>Pradiniai duomenys (byla ZON.IN)
+<br><tt>5</tt>
+<br><tt>0017</tt>
+<br><tt>0250</tt>
+<br><tt>0400</tt>
+<br><tt>0201</tt>
+<br><tt>0002</tt>
+<p>Rezultatai (byla ZON.OUT)
+<br><tt>3 1 0 2 4</tt>
+<p>Pastaba. Atkreipkite dėmesį, kad trečiasis pranešimas privalėjo ateiti
+iš nulinės laiko zonos. Priešingu atveju jis būtų atėjęs vėliau nei 4val.
+59 min. O tai yra paskutinioji paros minutė.
+<center>
+<hr SIZE=8 NOSHADE WIDTH="100%"></center>
+
+<p><a NAME="Elektroninė plokštelė"></a><font size=+1><b>3</b>. ELEKTRONINĖ
+PLOKŠTELĖ.</font>&nbsp; (Lietuva) (Vykdymo laikas – 10 sek., Pentium 450
+Mhz).&nbsp; Kvadrato formos plokštelės paviršiuje išskaptuotas kvadratinis
+tinklelis. Vieta, kur susikerta dvi tinklelį sudarančios linijos, vadinama
+mazgu. Tinklelyje yra <i>nxn</i> mazgų.
+<p><img SRC="pv/boi2000_2.gif" NOSAVE height=216 width=603>
+<br>&nbsp;2 PAVEIKSLAS: Tinklelio su kontaktais pavyzdys(centre) ir to
+pavyzdžio sprendimas (dešinėje)
+<p>&nbsp;Kai kuriuose mazguose išdėstyti kontaktai. Juos reikia elektrinėmis
+grandinėmis sujungti su plokštelės krašte esančiais mazgais. Grandines
+galima tiesti tik tinklelio linijomis (pavyzdžiui, įstrižai tiesti negalima).
+Grandinės negali liestis, todėl dvi grandinės negali eiti nei ta pačia
+tinklelio linija, nei tuo pačiu mazgu. Taip pat grandinė negali eiti nei
+tinklelio kraštine linija (būtina nutraukti tiesimą pasiekus kraštą) nei
+mazgu kuriame yra kontaktas.
+<p>&nbsp;Elektroninės plokštelės su kontaktais pavyzdys pateiktas 2 paveikslo
+centre. Jame kontaktai pavaizduoti juodais skrituliukais.
+<p>&nbsp;<i>Užduotis</i>. Parašykite algoritmą, kuris kiek galima daugiau
+ne kraštuose esančių kontaktų sujungtų su plokštelės kraštuose esančiais
+mazgais. Jei kontaktas yra krašte, jis jau tenkina reikalavimą ir jam nebereikia
+tiesti grandinės.
+<br>&nbsp;Jei sprendinių gali būti keletas, užtenka rasti bet kurį vieną.
+<br>
+<hr WIDTH="100%"><i>&nbsp;Pradiniai duomenys</i> pateikiami byloje ELE.IN.
+Pirmoje eilutėje įrašytas sveikasis skaičius <i>n</i> (3 &lt;= <i>n</i>
+&lt;= 15), reiškiantis tinklelio dydį.
+<p>&nbsp;Kitos <i>n</i> eilučių sudarytos iš <i>n</i> vienu tarpu atskirtų
+skaitmenų. Tie skaitmenys gali būti 1 arba 0. Vienetas (1) reiškia, kad
+atitinkamoje tinklelio vietoje yra mazgas su kontaktu, o nulis (0) reiškia,
+kad atitinkamame mazge kontakto nėra.
+<br>&nbsp;Laikysime, kad mazgai numeruojami nuo 1 iki <i>nxn</i> iš kairės
+į dešinę ir iš viršaus į apačią. Kontakto identifikatoriumi laikysime jį
+atitinkančio mazgo numerį.
+<br>
+<hr WIDTH="100%"><i>Rezultatai</i> rašomi į bylą ELE.OUT. Pirmoje eilutėje
+įrašykite rastąjį maksimalų kontaktų, kuriuos pavyko grandine sujungti
+su kraštuose esančiais mazgais, skaičių <i>k</i>.
+<br>Kiekvienoje tolesnių <i>k</i> eilučių turi būti aprašyta grandinė,
+jungianti kontaktą su plokštelės kraštu. Pirma rašomas kontakto identifikatorius,
+po to – raidžių, nusakančių grandinės tiesimo kryptis, seka: „E“ – į rytus,
+„W“ – į vakarus, „N“ – į šiaurę, „S“ – į pietus.
+<p>Tarp kontakto numerio ir raidžių sekos paliekamas vienas tarpas. Tarp
+pačių raidžių tarpai nepaliekami.
+<p>&nbsp;Eilutės pateikiamos kontakto identifikatoriaus didėjimo tvarka.
+<br>
+<hr WIDTH="100%"><i>Pavyzdys</i>
+<p>&nbsp;ELE.IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ELE.OUT
+<br>&nbsp;Pradiniai duomenys&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Rezultatai
+<br>&nbsp;<tt>6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+6</tt>
+<br><tt>&nbsp;0 0 0 1 1 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+11 E</tt>
+<br><tt>&nbsp;0 0 0 0 1 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+16 NWN</tt>
+<br><tt>&nbsp;0 0 0 1 1 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+17 SE</tt>
+<br><tt>&nbsp;0 0 0 0 0 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+27 S</tt>
+<br><tt>&nbsp;0 0 1 1 1 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+28 NWWSS</tt>
+<br><tt>&nbsp;0 0 0 1 0 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+29 S</tt>
+<center>
+<hr SIZE=8 NOSHADE WIDTH="100%"></center>
+
+<p><a NAME="Lipdukai"></a><font size=+1><b>4</b>. LIPDUKAI</font>. (Latvija)
+(Vykdymo laikas – 20 sek., Pentium 450 Mhz). Karlas labai domisi automobilių
+lenktynėmis. Jis panoro pasidaryti modelių kolekciją. Parduotuvėje modeliai
+parduodami įpakuoti dėžutėse. Kiekvienoje dėžutėje yra vieno modelio dalys
+ir lipdukų su skaitmenimis rinkinys. Visose dėžutėse lipdukų rinkiniai
+vienodi. Karlas sumanė modelius žymėti iš eilės einančiai natūraliaisiais
+skaičiais pradedant 1. Pavyzdžiui, norint ant 2070–ojo modelio užklijuoti
+to modelio numerį, reikia keturių lipdukų: vieno lipduko su skaitmeniu
+2, dviejų su 0 ir vieno su 7. Skaičiaus, reiškiančio modelio numerį, priekyje
+nuliai nerašomi.
+<p>Kiekvieną modelį Karlas sumontuoja šitaip: atidaro dėžutę, suklijuoja
+modelį ir sunumeruoja jį panaudodamas lipdukus. Lipdukus jis gali naudoti
+iš dabar atplėštos dėžutės, o taip pat iš visų anksčiau atidarytų dėžučių,
+tačiau jis jokiu būdu negali papildomai atplėšti naujos dėžutės.
+<p><i>Užduotis.</i> Parašykite programą, kuri suskaičiuotų, kiek modelių
+sunumeruos Karlas pagal pateiktas taisykles, kai žinomas lipdukų rinkinys
+dėžutėje.
+<br>
+<hr WIDTH="100%">
+<br><i>Pradiniai duomenys</i>. Vienintelėje tekstinės bylos STI.IN eilutėje
+pateikta dešimt vienaženklių skaičių (skaitmenų).
+<center><i>i</i><sub>0</sub> <i>i</i><sub>1</sub> <i>i</i><sub>2</sub><i>i</i><sub>3</sub><i>i</i><sub>4</sub>
+<i>i</i><sub>5</sub> <i>i</i><sub>6</sub><i>i</i><sub>7</sub><i>i</i><sub>8</sub>
+<i>i</i><sub>9</sub></center>
+čia <i>i</i><sub>j</sub> yra lipdukų su skaitmeniu <i>j</i> (0 &lt;= j
+&lt;= 9) skaičius kiekvienos dėžutės lipdukų rinkinyje. Skaitmenys vienas
+nuo kito skiriami vienu tarpu.
+<br>
+<hr WIDTH="100%">
+<br><i>Rezultatas</i>. Vienintelėje tekstinės bylos STI.OUT eilutėje turi
+būti pateiktas vienas sveikasis skaičius – jis rodo, kiek modelių pavyko
+sunumeruoti.
+<br>
+<hr WIDTH="100%">
+<br><i>Pavyzdžiai</i>
+<p>Pradiniai duomenys (byla STI.IN)
+<br><tt>1 1 1 1 1 1 1 1 1 1</tt>
+<p>Rezultatai (byla STI.OUT)
+<br><tt>199990</tt>
+<p>Pradiniai duomenys (byla STI.IN)
+<br><tt>3 4 5 4 3 4 5 4 3 4</tt>
+<p>Rezultatai (byla STI.OUT)
+<br><tt>49999999499999999949999999973</tt>
+<br>
+<hr SIZE=8 NOSHADE WIDTH="100%">
+<p><a NAME="Reiškiniai su dalyba"></a><font size=+1><b>5</b>. REIŠKINIAI
+SU DALYBA</font>.&nbsp; (Lenkija) (Vykdymo laikas – 2 sek., Pentium 450
+Mhz).&nbsp; Reiškiniai su dalyba yra tokio pavidalo aritmetiniai reiškiniai:
+<center>&nbsp;<i>x</i><sub>1</sub>/<i>x</i><sub>2</sub>/<i>x</i><sub>3</sub>/.../<i>x</i><sub>k</sub></center>
+čia <i>x</i><sub>i</sub> yra teigiamas sveikasis skaičius kiekvienam <i>i</i>
+(1 &lt;= <i>i</i> &lt;= <i>k</i>). Reiškinio reikšmė skaičiuojama iš kairės
+į dešinę. Pavyzdžiui, reiškinio
+<center>&nbsp;1/2/1/2</center>
+reikšmė lygi ¼. Pavartojus reiškinyje skliaustus galima pakeisti jo reikšmę.
+Pavyzdžiui, reiškinio
+<center>(1/2)/(1/2)</center>
+reikšmė šiuo atveju būtų lygi 1.
+<p>Duotas reiškinys E. Ar įmanoma reiškinyje E taip sudėti skliaustus,
+kad gautume reiškinį E’, kurio reikšmė būtų sveikasis skaičius?
+<p><i>Užduotis</i>. Parašykite programą, kuri su kiekvienu reiškiniu iš
+duoto reiškinių rinkinio, esančio vienoje pradinių duomenų byloje, atliktų
+šiuos veiksmus:
+<ul>
+<li>
+iš bylos DIV.IN perskaitytų reiškinį E</li>
+
+<li>
+nustatytų, ar įmanoma reiškinyje E taip sudėti skliaustus, kad gautume
+reiškinį E’, kurio reikšmė būtų sveikasis skaičius</li>
+
+<li>
+rezultatą įrašytų į bylą DIV.OUT</li>
+</ul>
+
+<hr WIDTH="100%"><i>Pradiniai duomenys.</i> Pirmoje bylos DIV.IN eilutėje
+įrašytas vienas sveikasis skaičius <i>d</i> (<i>d</i> &lt;= 5). Tai duotų
+reiškinių skaičius. Likusiose eilutėse įrašyti patys reiškiniai. Pirmoje
+kiekvieną reiškinį nusakančioje eilutėje yra sveikasis skaičius <i>n</i>
+(2 &lt;= <i>n</i> &lt;= 10000). Tai reiškinį sudarančių skaičių kiekis.
+Kiekvienoje iš likusių n eilučių įrašyta po vieną teigiamą sveikąjį skaičių
+ne didesnį už 1 000 000 000. <i>i</i>–asis skaičius atitinka <i>i</i>–ąjį
+reiškinio skaičių.
+<br>
+<hr WIDTH="100%"><i>Rezultatai</i>. Jūsų programa rezultatus turi rašyti
+į bylą DIV.OUT. Byloje turi būti <i>d</i> eilučių. <i>i</i>–oje (1 &lt;=
+<i>i</i>
+&lt;= <i>d</i>) eilutėje reikia įrašyti žodį YES, jei <i>i</i>–asis reiškinys
+gali būti transformuotas į reiškinį, kurio reikšmė yra sveikasis skaičius,
+arba žodį NO – priešingu atveju.
+<br>
+<hr WIDTH="100%"><i>Pavyzdys</i>: Pradiniai duomenys (byla DIV.IN)
+<br><tt>2</tt>
+<br><tt>4</tt>
+<br><tt>1</tt>
+<br><tt>2</tt>
+<br><tt>1</tt>
+<br><tt>2</tt>
+<br><tt>3</tt>
+<br><tt>1</tt>
+<br><tt>2</tt>
+<br><tt>3</tt>
+<p>Teisingas rezultatas įrašytas rezultatų byloje DIV.OUT būtų
+<br><tt>YES</tt>
+<br><tt>NO</tt>
+<hr SIZE=8 NOSHADE WIDTH="100%">
+<p><a NAME="Muteksai"></a><font size=+1><b>6</b>. MUTEKSAI</font>. (Švedija)
+(Vykdymo laikas – 5 sec., Pentium 450 Mhz).&nbsp; Šiuolaikinės programavimo
+kalbos leidžia rašyti programas, kuriose yra keletas konvejerių. Tai primena
+situaciją, kai kelios programos vykdomos lygiagrečiai, jos naudoja tą pačią
+atmintį, tuos pačius kintamuosius. Šiuo atveju yra viena programa, tačiau
+ją sudarantys konvejeriai vykdomi lygiagrečiai. Dažnai reikia sinchronizuoti
+konvejerius. Pavyzdžiui, vienam konvejeriui gali tekti palaukti kol kitas
+konvejeris pabaigs skaičiavimus ir rezultat¹ priskirs atitinkamam kintamajam.
+<p>Paprasčiausias konvejerių sinchronizavimo būdas yra <i>muteksų</i> naudojimas.
+Muteksas yra specialus objektas, galintis būti dvejose būsenose: <i>atrakintas</i>
+arba <i>užrakintas</i>. Užrakintą muteksą visuomet valdo lygiai vienas
+konvejeris. Konvejeris muteksui gali duoti dvi komandas: užrakinti (LOCK)
+ir atrakinti (UNLOCK).
+<p>Kai konvejeris atrakintam muteksui duoda komandą užrakinti (LOCK), tai
+muteksas užrakinamas ir jo valdymas atitenka tam konvejeriui. Jei šią komandą
+konvejeris duoda muteksui, kurį valdo kitas konvejeris (t.y. užrakintam),
+tai davęs komandą konvejeris užblokuojamas, kol muteksas atrakinamas.
+<p>Kai konvejeris duoda komandą atrakinti (UNLOCK) muteksui, kurį pats
+valdo, tai muteksas atrakinamas. Jei buvo užblokuotų konvejerių, norinčių
+užrakinti šį muteksą, tai mutekso valdymas atitenka vienam iš jų. Konvejeris,
+kuriam atiduodamas mutekso valdymas (tuo atveju jei buvo daugiau nei vienas
+užblokuotas konvejeris), parenkamas atsitiktiniu būdu. Likę kiti konvejeriai
+toliau lieka užblokuoti ir toliau laukia to mutekso.
+<p>&nbsp;Daugiakonvejerinėse programose dažnai sutinkama <i>amžino užrakinimo</i>
+situacija.
+<p><i>Amžino užrakinimo</i> situacija įvyksta tada, kai keli konvejeriai
+laukia vienas kito valdomų muteksų. Pavyzdžiui, pirmasis konvejeris yra
+užrakinęs pirmąjį muteksą ir užblokuotas, nes nori perimti antrojo mutekso
+valdymą, o antrasis konvejeris valdo antrąjį muteksą ir yra užblokuotas,
+nes nori perimti pirmojo mutekso valdymą. Amžino užrakinimo situacija įvyksta
+ir tada, kai konvejeris užblokuotas, nes nori perimti mutekso valdymą,
+o tą muteksą valdęs konvejeris užbaigė darbą mutekso neatrakinęs.
+<p><i>Užduotis</i>. Duoti konvejerių aprašymai. Jums reikia nuspręsti ar
+gali įvykti <i>pilna amžino užrakinimo situacija</i>. Ši situacija įvyksta,
+kai nė vienas konvejeris nebegali toliau dirbti: visi konvejeriai yra arba
+užblokuoti, arba pabaigę darbą. Aišku, jei visi kovejeriai pabaigė darbą,
+tai nėra amžino užrakinimo situacija.
+<p>&nbsp;Kiekvieną konvejerį sudaro komandų seka. Komandos gali būti tokio
+pavidalo:
+<br>&nbsp;LOCK &lt;muteksas>
+<br>&nbsp;UNLOCK &lt;muteksas>
+<p><i>Ribojimai.</i>
+<ul>
+<li>
+Kiekvieno mutekso vardą sudaro viena didžioji lotyniška raidė: A..Z;</li>
+
+<li>
+Konvejeris niekada nebando užrakinti mutekso, kurį pats valdo.</li>
+
+<li>
+Konvejeris niekada nebando atrakinti mutekso, jei jo nevaldo;</li>
+</ul>
+
+<hr WIDTH="100%"><i>Pradiniai duomenys</i>. Pimoje pradinių duomenų bylos
+MUT.IN eilutėje įrašytas konvejerių skaičius M (1 &lt;= M &lt;= 5). Toliau
+eina M blokų, apibūdinančių kiekvieną konvejerį. Pirmoje <i>i</i>–ąjį konvejerį
+aprašančio bloko eilutėje įrašytas tą konvejerį sudarančių komandų skaičius
+N<sub>i</sub> (1 &lt;= N<sub>i</sub> &lt;= 10). Tolesnėse N<sub>i</sub>
+eilučių – pačios komandos. Komandose nėra nereikalingų tarpų.
+<br>
+<hr WIDTH="100%"><i>Rezultatai.</i> Pirmoje rezultatų bylos MUT.OUT eilutėje
+turi būti įrašytas vienas skaičius: D. D turi būti lygus vienam (1), jei
+įmanoma pilna amžino užrakinimo situacija, arba nuliui (0), jei tokia situacija
+neįmanoma.
+<p>Jei pilna amžinojo užrakinimo situacija įmanoma, tai antroji eilutė
+turi nusakyti programos būseną, kurioje ši situacija įvyks. Jei įmanomos
+kelios skirtingos būsenos, išspausdinkite bet kurią iš jų.
+<p>Programos būseną nusako konvejerių atliekamos komandos, kurių metu ta
+būsena įvyko. Į rezultatų bylą reikia įrašyti tų komandų numerius. Laikoma,
+kad komandos numeruojamos pradedant nuliu. Komandų numeriai turi būti surašyti
+tokia tvarka, kokia buvo pateikti konvejerių aprašymai pradinių duomenų
+byloje. Jei konvejeris baigė darbą, laikykite, kad komandos numeris lygus
+minus vienam (-1). Numeriai turi būti surašyti vienoje eilutėje ir atskirti
+tarpais.
+<br>
+<hr WIDTH="100%"><i>Pavyzdžiai</i>
+<br>&nbsp;Pradiniai duomenys (byla MUT.IN)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Rezultatai (byla MUT.OUT)
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-1 1</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LOCK X</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LOCK Y</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LOCK X</tt>
+<p>Jei jūsų programa neįveiks nė vieno testo, kuriame galima pilna amžinojo
+užrakinimo situacija, nebus skiriama balų ir už testus, kuriuose ši situacija
+negalima.
+<center><a href="../index.html"><img SRC="../pv/left.gif" NOSAVE BORDER=0 height=35 width=40></a><a href="boi2000_sal.htm"><img SRC="../pv/up.gif" NOSAVE BORDER=0 height=40 width=35></a></center>
+
+</body>
+</html>

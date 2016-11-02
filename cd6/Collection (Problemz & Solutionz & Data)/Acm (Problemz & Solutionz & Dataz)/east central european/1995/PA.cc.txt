@@ -1,0 +1,58 @@
+/* pi.cc */
+
+#include <iostream.h>
+#include <math.h>
+
+#define MAXNUMBER 1000
+
+int kase = 0;
+
+int numberOfValues;
+int value[MAXNUMBER];
+
+int totalPairs;
+int pairsWithNoCommonFactor;
+
+float pi;
+
+int gcd ( int m, int n )
+{
+ if ( n <= m && m % n == 0 ) return n;
+ else if ( m < n ) return gcd ( n, m );
+ else return gcd ( n, m % n );
+}
+
+int main ( int argc, char ** argv )
+{
+ int i, j;
+
+ while(1)
+ {
+  cin >> numberOfValues;
+  
+  if ( numberOfValues == 0 ) break;
+
+  for(i=0;i<numberOfValues;i++)
+    cin >> value[i];
+
+  totalPairs = 0;
+  pairsWithNoCommonFactor = 0;
+
+  for(i=0;i<numberOfValues-1;i++)
+   for(j=i+1;j<numberOfValues;j++)
+   {
+    totalPairs++;
+    if ( gcd ( value[i], value[j] ) == 1 )
+      pairsWithNoCommonFactor++;
+   }
+
+  if ( pairsWithNoCommonFactor == 0 )
+    cout << "No estimate for this data set.\n";
+  else
+  {
+   pi = sqrt ( (6.0/(float)pairsWithNoCommonFactor)*(float)totalPairs );
+   cout << pi << endl;
+  }
+ }
+}
+

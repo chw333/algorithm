@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0047)http://www.karrels.org/Ed/ACM/reg97/prob_4.html -->
+<HTML><HEAD><TITLE>Problem 4 - Nonstop Travel</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type><LINK 
+href="mailto:Ed@Tool.com" rev=made>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY><EM>Not an official ACM page</EM> <BR>[<A 
+href="http://www.karrels.org/Ed/ACM/reg97/prob_5.html">Problem 5 </A>| <A 
+href="http://www.karrels.org/Ed/ACM/reg97/index.html">1997 ACM North-Central 
+Regionals problem set</A> | <A 
+href="http://www.karrels.org/Ed/ACM/index.html">Ed's Programming Contest Problem 
+Archive</A> | <A href="http://www.karrels.org/Ed/index.html">my home page</A>] 
+<HR>
+
+<CENTER>
+<H2>1997-98 North Central Regionals</H2><STRONG><FONT 
+face=Arial,Helvetica>Nonstop Travel -- Problem 4</FONT></STRONG> </CENTER>
+<P>Fast Phil works the late shift and leaves his company's parking lot at 
+precisely 2:00 AM every morning. His route home is by a straight road which has 
+one or more traffic signals. Phil has always wondered if, given the locations 
+and cycles of each of the traffic signals, are there velocities he can travel 
+home without ever having to speed up or slow down on account of a red light. You 
+are to write a program to satisfy his curiosity. 
+<P>Your program should find all integer speeds (in miles per hour) which can be 
+used for Phil's trip home. Each speed is a rate (in miles per hour) he can 
+maintain the moment he leaves the parking lot at 2:00 AM until he arrives home 
+(we assume Phil has a long driveway in which to decelerate) such that he never 
+passes through a red signal. He is allowed to pass throgh a signal at the exact 
+moment it turns from yellow to red, or at the exact moment a red signal turns 
+green. Since Phil is a relatively law-abiding citizen, you need only consider 
+speeds less than or equal to 60 mph. Likewise, Phil isn't interested in 
+travelling too slowly, so you should not consider speeds lower than 30 mph. 
+<P>
+<H3>Input</H3>Input will consist of one or more sets of data describing a set of 
+traffic signals, followed by the integer -1. The first integer in each set will 
+contain the value <EM>N</EM> (specifying the number of traffic signals). 
+<EM>N</EM> will be no larger than 6. This value will be followed by <EM>N</EM> 
+sets of numbers, each containing values (in order) for <EM>L</EM>, <EM>G</EM>, 
+<EM>Y</EM> and <EM>R</EM>. <EM>L</EM> is a positive real number indicating the 
+location of a traffic signal, in miles, from the parking lot. <EM>G</EM>, 
+<EM>Y</EM> and <EM>R</EM> are the lengths of time (in seconds) of the green, 
+yellow, and red periods of the corresponding traffic signal's cycle. Phil has 
+learned from an informant in the Highway Department that all <EM>N</EM> traffic 
+signals start their green period precisely at 2:00 AM. 
+<P>
+<H3>Output</H3>Output should consist of the input case number (starting with 1) 
+followed by a list of all valid integer speeds Phil may drive to avoid the red 
+signals. Consecutive integer speeds should be specified in interval notation of 
+the form <EM><CODE>L-H</CODE></EM>, where <EM><CODE>L</CODE></EM> and 
+<EM><CODE>H</CODE></EM> are the lowest and highest speeds for the interval. 
+Intervals of the form <EM><CODE>L-L</CODE></EM> (that is, an interval of length 
+1) shold just be written as <EM><CODE>L</CODE></EM>. Intervals should be 
+separated by commas. If there are no valid speeds, you program should display 
+the phrase <EM><CODE>No acceptable speeds.</CODE></EM> The Expected Output below 
+illustrates this format. 
+<P>
+<TABLE>
+  <TBODY>
+  <TR vAlign=top>
+    <TD>
+      <H3>Sample Input</H3><PRE>1
+5.5  40 8 25
+
+3
+10.7  10 2 75
+12.5  12 5 57
+17.93 15 4 67
+
+-1
+</PRE>
+    <TD width=50>
+    <TD>
+      <H3>Expected Output</H3><PRE>Case 1: 30, 32-33, 36-38, 41-45, 48-54, 59-60
+Case 2: No acceptable speeds.
+</PRE></TR></TBODY></TABLE>
+<H3>Judge's <A href="http://www.karrels.org/Ed/ACM/reg97/prob_4.in">Input 
+Data</A> and <A href="http://www.karrels.org/Ed/ACM/reg97/prob_4.out">Expected 
+Output</A></H3>
+<H3><A href="http://www.karrels.org/Ed/ACM/reg97/prob_4.c">Sample 
+Solution</A></H3>
+<HR>
+This page maintained by <A href="mailto:Ed@Tool.com">Ed Karrels</A>.<BR>Last 
+updated November 14, 1997 </BODY></HTML>

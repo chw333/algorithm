@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>KOI 13회 중등부 1.</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<table border="0" width="595">
+    <tr>
+        <td width="383" height="27" bgcolor="#CFD3FF"><p><font size="4"><b>&nbsp;&nbsp;KOI 
+            13회 중등부 2. 잠수함 식별</b></font></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="pkoi96m2.htm"><img src="button1.gif"
+             width="72" height="22" border="0"></a></td>
+        <td width="100" height="27" bgcolor="#CFD3FF"><p align="center"><a href="ckoi96m2.htm"><img src="button3.gif"
+             width="72" height="22" border="0"></a></td>
+    </tr>
+</table>
+<ul>
+    <p>&nbsp; 
+    <table border="0">
+            <tr>
+                <td width="550"><p style="line-height:150%;"><font size="2">&nbsp;&nbsp;여러 
+                가지 풀이 방법이 있을 수 있는 문제이다. 크게 Nogada programming 
+                또는 오토마타를 이용한 풀이법을 생각해 볼 수 있다. 여기서는 
+                &quot;결정적 유한상태 오토마타&quot;를 이용해 문제를 풀어보자. 
+                일단 아래의 그림을 보면 누구나 첫눈에 아~ 하고 이마를 칠 것이다.</font></p>
+                <p align="center" style="line-height:150%;"><font size="2"><img src="skoi96m2-1.gif"
+                 width="404" height="356" border="0"></font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;일단 
+                시작 상태에서 시작해 이어진 선을 따라 이동해 보자. 잠수함코드의 
+                숫자를 하나씩 가져와 1이면 파란색 선으로, 0이면 빨간색 선으로 
+                이동한다. 만약 도중에 해골 그림으로 가게 된다면 이미 그 코드는 
+                노이즈로 판명되었다는 뜻이다. 잠수함코드라면 최종적으로 (1, 
+                100~1~)이나 (01) 또는 (100~1)의 상태에서 끝나야 한다. 1001110101의 
+                경우, 끝까지 이동하면 상태 (01)에서 끝나게 되므로 잠수함 코드임을 
+                알 수 있다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;위의 
+                그림에서 한 상태에 두 가지 숫자가 쓰여진 경우는 현재 어떤 상황인지 
+                정확히 파악할 수 없다는 뜻이다. 예를 들어서 (1, 100~1~)은 현재 
+                상태가100~1~에서 1~의 1이 반복되고 있는 것일 수도 있고, 맨 처음의 
+                1로 되돌아온 것일 수도 있다는 뜻이다.</font></p>
+                <p style="line-height:150%;"><font size="2">&nbsp;&nbsp;컴퓨터에게 
+                그림을 그려주고 선을 따라 가라고 할 수는 없는 노릇이니, 이 것을 
+                프로그램으로 구현하기 위해서는 각각의 상태들을 숫자로 표현해야 
+                한다. 아래 표를 보면 더욱 확실히 알 수 있을 것이다.<br>
+                &nbsp;</font>
+                <table border cellspacing="0" bordercolordark="white" bordercolorlight="black">
+                    <tr>
+                        <td width="82" height="26" bgcolor="#FFF3BC"><p align="center"><font
+                             face="굴림" size="2">상태 번호</font></td>
+                        <td width="33" height="26" bgcolor="#FFF3BC"><p align="center"><font
+                             face="굴림" size="2">0 </font></td>
+                        <td width="31" height="26" bgcolor="#FFF3BC"><p align="center"><font
+                             face="굴림" size="2">1</font></td>
+                        <td width="32" height="26" bgcolor="#FFF3BC"><p align="center"><font
+                             face="굴림" size="2">2</font></td>
+                        <td width="38" height="26" bgcolor="#FFF3BC"><p align="center"><font
+                             face="굴림" size="2">3</font></td>
+                        <td width="46" height="26" bgcolor="#FFF3BC"><p align="center"><font
+                             face="굴림" size="2">4</font></td>
+                        <td width="83" height="26" bgcolor="#FFF3BC"><p align="center"><font
+                             face="굴림" size="2">5</font></td>
+                        <td width="39" height="26" bgcolor="#FFF3BC"><p align="center"><font
+                             face="굴림" size="2">6</font></td>
+                        <td width="32" height="26" bgcolor="#FFF3BC"><p align="center"><font
+                             face="굴림" size="2">7</font></td>
+                        <td width="31" height="26" bgcolor="#FFF3BC"><p align="center"><font
+                             face="굴림" size="2">8</font></td>
+                        <td width="33" height="26" bgcolor="#FFF3BC"><p align="center"><font
+                             face="굴림" size="2">9 </font></td>
+                    </tr>
+                    <tr>
+                        <td width="82" height="26"><p align="center"><font face="굴림"
+                             size="2">상태</font></td>
+                        <td width="33" height="26"><p align="center"><font face="굴림"
+                             size="2">시작</font></td>
+                        <td width="31" height="26"><p align="center"><font face="굴림"
+                             size="2">1</font></td>
+                        <td width="32" height="26"><p align="center"><font face="굴림"
+                             size="2">10</font></td>
+                        <td width="38" height="26"><p align="center"><font face="굴림"
+                             size="2">100~</font></td>
+                        <td width="46" height="26"><p align="center"><font face="굴림"
+                             size="2">100~1</font></td>
+                        <td width="83" height="26"><p align="center"><font face="굴림"
+                             size="2">1, 100~1~</font></td>
+                        <td width="39" height="26"><p align="center"><font face="굴림"
+                             size="2">10, 0</font></td>
+                        <td width="32" height="26"><p align="center"><font face="굴림"
+                             size="2">0</font></td>
+                        <td width="31" height="26"><p align="center"><font face="굴림"
+                             size="2">01</font></td>
+                        <td width="33" height="26"><p align="center"><font face="굴림"
+                             size="2">해골</font></td>
+                    </tr>
+                    <tr>
+                        <td width="82" height="26"><p align="center"><font face="굴림"
+                             size="2">0일 때 갈 곳</font></td>
+                        <td width="33" height="26"><p align="center"><font face="굴림"
+                             size="2">7</font></td>
+                        <td width="31" height="26"><p align="center"><font face="굴림"
+                             size="2">2</font></td>
+                        <td width="32" height="26"><p align="center"><font face="굴림"
+                             size="2">3</font></td>
+                        <td width="38" height="26"><p align="center"><font face="굴림"
+                             size="2">3</font></td>
+                        <td width="46" height="26"><p align="center"><font face="굴림"
+                             size="2">7</font></td>
+                        <td width="83" height="26"><p align="center"><font face="굴림"
+                             size="2">6</font></td>
+                        <td width="39" height="26"><p align="center"><font face="굴림"
+                             size="2">3</font></td>
+                        <td width="32" height="26"><p align="center"><font face="굴림"
+                             size="2">9</font></td>
+                        <td width="31" height="26"><p align="center"><font face="굴림"
+                             size="2">7</font></td>
+                        <td width="33" height="26"><p align="center"><font face="굴림"
+                             size="2">9</font></td>
+                    </tr>
+                    <tr>
+                        <td width="82" height="26"><p align="center"><font face="굴림"
+                             size="2">1일 때 갈 곳</font></td>
+                        <td width="33" height="26"><p align="center"><font face="굴림"
+                             size="2">1</font></td>
+                        <td width="31" height="26"><p align="center"><font face="굴림"
+                             size="2">9</font></td>
+                        <td width="32" height="26"><p align="center"><font face="굴림"
+                             size="2">9</font></td>
+                        <td width="38" height="26"><p align="center"><font face="굴림"
+                             size="2">4</font></td>
+                        <td width="46" height="26"><p align="center"><font face="굴림"
+                             size="2">5</font></td>
+                        <td width="83" height="26"><p align="center"><font face="굴림"
+                             size="2">5</font></td>
+                        <td width="39" height="26"><p align="center"><font face="굴림"
+                             size="2">8</font></td>
+                        <td width="32" height="26"><p align="center"><font face="굴림"
+                             size="2">8</font></td>
+                        <td width="31" height="26"><p align="center"><font face="굴림"
+                             size="2">1</font></td>
+                        <td width="33" height="26"><p align="center"><font face="굴림"
+                             size="2">9</font></td>
+                    </tr>
+                </table></td>
+        </tr>
+    </table>
+    <p>&nbsp;</p>
+</ul>
+</body>
+
+</html></html>

@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>다각형 그리기</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p><font face="굴림체">다각형 그리기</font></p>
+<p><font face="굴림체">단순한 문제입니다. '그리기 수열'을 회전시켜 주어서 일치하는지를 
+검사하면 됩니다. 반대방향으로도 같은 다각형이 그려질 수 있기 때문에 원래의 수열의 
+방향을 뒤집어서도 처리해 줍니다.</font></p>
+<p><font face="굴림체">아래 소스는 박준혁님이 수고해 주셨습니다.</font></p>
+<p><font face="굴림체">program koi_99_elementary_1;</font></p>
+<p><font face="굴림체">const<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;infile &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'input.txt';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outfile &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'output.txt';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reverse &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 
+1..4 ] of integer = ( 3, 4, 1, 2 );</font></p>
+<p><font face="굴림체">type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 1..100 ] of integer;</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;m, n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;standard &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size;<br>
+&nbsp;&nbsp;&nbsp;process &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 1..100 ] of size;<br>
+&nbsp;&nbsp;&nbsp;outn &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;out &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[ 1..100 ] of boolean;</font></p>
+<p><font face="굴림체">procedure input;</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;inf &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text;<br>
+&nbsp;&nbsp;&nbsp;i, j &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assign( inf, infile );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset( inf );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read( inf, n );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read( inf, standard[ i 
+] );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read( inf, m );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to m do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n 
+do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read( 
+inf, process[ i ][ j ] );</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;close( inf );<br>
+end;</font></p>
+<p><font face="굴림체">procedure swap( var a, b : integer );</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;p &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p := a;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a := b;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b := p;<br>
+end;</font></p>
+<p><font face="굴림체">function ok( a : size ) : boolean;</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;k, i, j &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;<br>
+&nbsp;&nbsp;&nbsp;check &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean;</font></p>
+<p><font face="굴림체">begin</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ok := false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for k := 1 to 2 do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for 
+i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+a[ i ] = standard[ 1 ] then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;check 
+:= true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for 
+j := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+a[ ( i + j - 2 ) mod n + 1 ] &lt;&gt; standard[ j ] then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;check 
+:= false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+check then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ok 
+:= true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for 
+i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a[ 
+i ] := reverse[ a[ i ] ];</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for 
+i := 1 to n div 2 do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap( 
+a[ i ], a[ n - i + 1 ] );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+end;</font></p>
+<p><font face="굴림체">procedure solve;</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;i &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outn := 0;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to m do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out[ i ] := false;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to m do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ok( process[ 
+i ] ) then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out[ 
+i ] := true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc( 
+outn );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+end;</font></p>
+<p><font face="굴림체">procedure output;</font></p>
+<p><font face="굴림체">var<br>
+&nbsp;&nbsp;&nbsp;ouf &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text;<br>
+&nbsp;&nbsp;&nbsp;i, j &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assign( ouf, outfile );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rewrite( ouf );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln( ouf, outn );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if out[ i ] then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for 
+j := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write( 
+ouf, process[ i ][ j ], ' ' );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln( 
+ouf );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;</font></p>
+<p><font face="굴림체">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;close( ouf );<br>
+end;</font></p>
+<p><font face="굴림체">begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;solve;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output;<br>
+end.</font></p>
+</body>
+
+</html></html>

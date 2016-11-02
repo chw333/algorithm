@@ -1,0 +1,87 @@
+<HTML><HEAD>
+<TITLE>1997-98 ACM North-Eastern European Regional Programming Contest</TITLE>
+</HEAD><BODY BACKGROUND=acm_logo.jpg>
+
+<TABLE WIDTH=100%><TR VALIGN=TOP>
+<TD WIDTH=12%><B>Problem&nbsp;A</B><BR><A HREF="a.htm">References<A></TD>
+<TD WIDTH=0.5%><IMG SRC=vline.gif></TD>
+<TD WIDTH=12%><B>Problem&nbsp;B</B><BR><A HREF="b.htm">Sum of powers<A></TD>
+<TD WIDTH=0.5%><IMG SRC=vline.gif></TD>
+<TD WIDTH=12%><B>Problem&nbsp;C</B><BR><A HREF="c.htm">Game<A></TD>
+<TD WIDTH=0.5%><IMG SRC=vline.gif></TD>
+<TD WIDTH=12%><B>Problem&nbsp;D</B><BR><A HREF="d.htm">Crossword<A></TD>
+<TD WIDTH=0.5%><IMG SRC=vline.gif></TD>
+<TD WIDTH=12%><B>Problem&nbsp;E</B><BR><A HREF="e.htm">Magic of David Copperfield<A></TD>
+<TD WIDTH=0.5%><IMG SRC=vline.gif></TD>
+<TD WIDTH=12%><B>Problem&nbsp;F</B><BR><A HREF="f.htm">Puncher<A></TD>
+<TD WIDTH=0.5%><IMG SRC=vline.gif></TD>
+<TD WIDTH=12%><B>Problem&nbsp;G</B><BR><A HREF="g.htm">Flying Stars<A></TD>
+<TD WIDTH=0.5%><IMG SRC=vline.gif></TD>
+<TD WIDTH=12.5%><B>Problem&nbsp;H</B><BR><A HREF="h.htm">Divide et unita<A></TD>
+</TR></TABLE>
+<HR>
+<FONT SIZE=+2><CENTER><I><A HREF=problems.htm>
+1997-98 ACM North-Eastern European Regional Programming Contest
+</A></I></CENTER></FONT>
+<FONT SIZE=+3 FACE=Arial><CENTER>
+Problem H<BR>Divide et unita
+</CENTER></FONT>
+<TABLE>
+<TR><TD><B>Input file</B></TD><TD>INPUT.TXT</TD></TR>
+<TR><TD><B>Output file</B></TD><TD>OUTPUT.TXT</TD></TR>
+<TR><TD><B>Time-limit/Test</B></TD><TD>20 seconds</TD></TR></TABLE> 	
+<P>A  polyomino  is a two-dimensional figure formed from several  squares
+with  adjacent  sides  so that all the squares  of  polyomino  can  be
+visited by the rook moving each turn from one square belonging to  the
+figure to its vertical or horizontal neighbour, also belonging to  the
+figure.
+
+<P>On  an  infinite squared paper sheet N<SUP>2</SUP> squares are marked 
+(2&lt;=N&lt;=5)  that forms  a  polyomino  P. You should write a program 
+that  divides  this polyomino  into  two  other  polyominos,  A  and  B,  
+wherefrom  using rotations  and  parallel  translations  (mirror  
+reflection is not allowed),  it  is possible to assemble a square N*N. Only  
+one  of  the possible solutions should be found.
+
+<P><FONT FACE=Arial SIZE=+1><B>Input</B></FONT>
+<P>The  input  file  will contain an image of a part of  the  sheet  that
+contains  the  polyomino P, represented by the  characters  '.'  (dot)
+denoting empty spaces and '*' (asterisk) denoting squares that  belong
+to  the figure (because it is impossible to put infinite squared sheet
+in  a  file, the input file describes only part of it; all the omitted
+squares  are  considered empty). There will be no other characters  in
+the  lines  of  the input file. The input file will not contain  lines
+that are longer than 100 characters and there will be no more than 100
+lines. There will be always at least one solution for the given  input
+file.
+
+<P><FONT FACE=Arial SIZE=+1><B>Output</B></FONT>
+<P>Echo  the  image  of the given part of sheet with polyomino  into  the
+output  file  replacing each asterisk with characters 'A'  or  'B'  in
+accordance  with  which of polyominos (parts), A  or  B,  this  square
+belongs  to.  The output file should contain the same lines  with  the
+same order except for the above described changes.
+
+<P><FONT FACE=Arial SIZE=+1><B>Sample input</B></FONT>
+<PRE><TT>..
+......
+....*.
+..*.*
+..***
+..****
+..*..*
+..****
+.......
+</TT></PRE>
+<P><FONT FACE=Arial SIZE=+1><B>Example of the output for the sample input</B></FONT>
+<PRE><TT>..
+......
+....B.
+..B.B
+..BBB
+..AABA
+..A..A
+..AAAA
+.......
+</TT></PRE>
+</BODY></HTML>

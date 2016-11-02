@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0073)http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidCen/2001/double.html -->
+<HTML><HEAD><TITLE>Problem F: Double Vision</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY bgColor=white>
+<H1 align=center>Problem F: Double Vision</H1>
+<CENTER>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD>Source file:</TD>
+    <TD><TT>double.</TT>{<TT>c</TT>, <TT>cpp</TT>, <TT>java</TT>, 
+    <TT>pas</TT>}</TD></TR>
+  <TR>
+    <TD>Input file:</TD>
+    <TD><TT>double.in</TT></TD></TR>
+  <TR>
+    <TD>Output file:</TD>
+    <TD><TT>double.out</TT></TD></TR></TBODY></TABLE></CENTER>
+<P>The DoubleVision company designs inks and fonts that can be easily read by 
+both humans and machines. They design their fonts on a rectangular grid. Shown 
+below is a very simple 5x3 design for the first five digits.</P>
+<BLOCKQUOTE><PRE>.o. .o. oo. oo. o.o
+o.o .o. ..o ..o o.o
+o.o .o. .o. oo. ooo
+o.o .o. o.. ..o ..o
+.o. .o. ooo oo. ..o
+</PRE></BLOCKQUOTE>
+<P>The ink appears to be normal black ink, but just underneath the surface 
+DoubleVision adds a special polymer that can be detected by an infrared scanner. 
+A human sees the black ink but not the polymer, and a machine sees the polymer 
+but not the black ink. The only problem is that the polymer is much more 
+expensive than the ink, so DoubleVision wants to use as little of it as 
+possible. They have discovered that with many fonts, each symbol can be uniquely 
+identified by at most two pixels. By only adding the polymer to one or two 
+pixels per symbol, they drastically lower costs while still ensuring 100% 
+accuracy in their scanners. The font shown above has this property; pixels that 
+uniquely identify each letter are highlighted with '<TT>#</TT>'. (There are 
+other choices that would work as well.)</P>
+<BLOCKQUOTE><PRE>.#. .o. #o. oo. o.#
+#.o .#. ..o ..o o.o
+o.o .o. .o. #o. ooo
+o.o .o. #.. ..o ..o
+.o. .o. ooo #o. ..o
+</PRE></BLOCKQUOTE>
+<P>Your job is to write a program to determine if a given font has this 
+property, and if so highlight the pixels.</P>
+<P>The input consists of one or more test cases, followed by a line containing 
+'<TT>0</TT> <TT>0</TT> <TT>0</TT>' (three zeros) that signals the end of the 
+input. Each test case begins with a line containing three positive integers 
+<I>n</I>, <I>r</I>, and <I>c</I>, separated by a space: <I>n</I> is the number 
+of symbols in the font, <I>r</I> is the number of rows in each grid, and 
+<I>c</I> is the number of columns in each grid. The next <I>r</I> lines contain 
+the image of each symbol, using the exact format shown in the examples: a dot 
+'<TT>.</TT>' represents an empty part of the grid, a lowercase '<TT>o</TT>' 
+represents a pixel, and adjacent grids are separated by a space. The total width 
+of each line will be at most 79 characters (not counting end-of-line 
+characters), and <I>r</I> will be at most 10. The test cases are implicitly 
+numbered starting with 1.</P>
+<P>For test case <I>i</I>, first output a line that says '<TT>Test</TT> 
+<I>i</I>'. Then determine if each symbol can be uniquely identified with one or 
+two pixels. If not, output a line with the word '<TT>impossible</TT>'. 
+Otherwise, output the font in the same format except that the identifying pixels 
+for each symbol are replaced with '<TT>#</TT>'. 
+<P>In general there may be several different pixels or pixel pairs that uniquely 
+identify a symbol. To ensure that the output is unique, we add the following 
+definition and rules. When comparing two pixels, the <EM>topmost-leftmost</EM> 
+pixel is the one closest to the top of the grid. If both pixels are on the same 
+row, then the topmost-leftmost is the one closest to the left of the grid.</P>
+<P>If one pixel will work, highlight the topmost-leftmost pixel that works. 
+Never highlight a two-pixel solution if a one-pixel solution is possible. If two 
+pixels are needed, highlight the pair with the topmost-leftmost pixel. If two or 
+more pairs have the same topmost-leftmost pixel, highlight the one with the 
+topmost-leftmost <EM>other</EM> pixel.</P>
+<P><B>Example input:</B></P>
+<BLOCKQUOTE><PRE>3 2 2
+oo oo .o
+o. .o o.
+3 2 2
+oo oo .o
+o. .o oo
+5 5 3
+.o. .o. oo. oo. o.o
+o.o .o. ..o ..o o.o
+o.o .o. .o. oo. ooo
+o.o .o. o.. ..o ..o
+.o. .o. ooo oo. ..o
+1 2 4
+.o..
+...o
+0 0 0
+</PRE></BLOCKQUOTE>
+<P><B>Example output:</B></P>
+<BLOCKQUOTE><PRE>Test 1
+impossible
+Test 2
+#o #o .o
+#. .# ##
+Test 3
+.#. .o. #o. oo. o.#
+#.o .#. ..o ..o o.o
+o.o .o. .o. #o. ooo
+o.o .o. #.. ..o ..o
+.o. .o. ooo #o. ..o
+Test 4
+.#..
+...o
+</PRE></BLOCKQUOTE>
+<P><SMALL><I>Last modified on October 26, 2001 at 09:05 
+AM.</I></SMALL></P></BODY></HTML>

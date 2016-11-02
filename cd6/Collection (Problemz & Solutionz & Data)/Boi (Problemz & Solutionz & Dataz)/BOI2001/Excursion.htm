@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0047)http://www.ii.uni.wroc.pl/boi/task/exczad.phtml -->
+<HTML><HEAD><TITLE>Excursion</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type><LINK 
+href="Excursion.files/oi.css" rel=stylesheet>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY background=Excursion.files/tlo.jpg bgColor=#ff7f00>
+<TABLE bgColor=#ff7f00 border=0 cellPadding=0 cellSpacing=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD><IMG border=0 src="Excursion.files/rlg.gif" width=12></TD>
+    <TD><IMG border=0 height=12 src="Excursion.files/dl.gif" width="100%"></TD>
+    <TD><IMG border=0 height=12 src="Excursion.files/dl.gif" width="100%"></TD>
+    <TD><IMG border=0 src="Excursion.files/rpg.gif" width=12></TD></TR>
+  <TR>
+    <TD><IMG border=0 height=80 src="Excursion.files/dpion.gif" width=12></TD>
+    <TD id=Htop width="100%">Excursion</TD>
+    <TD><IMG align=middle src="Excursion.files/LOGO.gif"></TD>
+    <TD><IMG border=0 height=80 src="Excursion.files/dpion.gif" 
+width=12></TD></TR>
+  <TR>
+    <TD><IMG border=0 src="Excursion.files/rld.gif" width=12></TD>
+    <TD><IMG border=0 height=12 src="Excursion.files/dl.gif" width="100%"></TD>
+    <TD><IMG border=0 height=12 src="Excursion.files/dl.gif" width="100%"></TD>
+    <TD><IMG border=0 src="Excursion.files/rpd.gif" 
+width=12></TD></TR></TBODY></TABLE>
+<P>The group of travelers has an opportunity to visit several cities. Each 
+traveler states two wishes on what city he/she does want or does not want to 
+visit. One wish expresses will to visit or not to visit exactly one city. It is 
+allowed that both wishes of the one traveler are the same or that they are 
+opposite--i.e. I want to visit city A, and I do not want to visit city A. 
+<P><BR>
+<H2>Task</H2>Your task is to write a program that: 
+<UL>
+  <LI>reads the travelers' wishes from the input file , 
+  <LI>determines whether it is possible to form such a list of cities to be 
+  visited (the list can be empty), that at least one wish of every traveler is 
+  satisfied, 
+  <LI>writes the list of cities to be visited to the output file. </LI></UL>If 
+there are several possible solutions, your program should output anyone of them. 
+
+<P><BR>
+<H2>Input</H2>
+<P>The first line of the input file contains two positive integers <I>n</I> and 
+<I>m</I> ( <I>1&lt;=n&lt;=20 000</I>, <I>1&lt;=m&lt;=8 000</I> ); <I>n</I> is 
+the number of travelers, and <I>m</I> is the number of cities. The travelers are 
+numbered form 1 to <I>n</I>, and the cities are numbered from 1 to <I>m</I>. 
+Each of the following <I>n</I> lines contains two nonzero integers, separated by 
+single space. The <I>i+1</I>-th line contains numbers <I>w<SUB>i</SUB></I> and 
+<I>v<SUB>i</SUB></I> representing wishes of the <I>i</I>-th traveler, <I>-m&lt;= 
+w<SUB>i</SUB> , v<SUB>i</SUB> &lt;=m</I>; <I>w<SUB>i</SUB> , 
+v<SUB>i</SUB>&lt;&gt;0 </I>Positive number means that the traveler wishes to 
+visit that city, and negative number means that the traveler does not wish to 
+visit the city specified by the absolute value of the number. 
+<P><BR>
+<H2>Output </H2>Your program should write one nonnegative integer <I>l</I>, the 
+number of cities to be visited, in the first line of the output file . In the 
+second line of the file, there should be written exactly <I>l</I> positive 
+integers in the ascending order, representing cities to be visited. 
+<P>In case it is not possible to form such a list of cities, your program should 
+write in the first and only line the word <TT>NO</TT>. 
+<P><A href="javascript:window.history.go(-1)">Back</A> </P></BODY></HTML>

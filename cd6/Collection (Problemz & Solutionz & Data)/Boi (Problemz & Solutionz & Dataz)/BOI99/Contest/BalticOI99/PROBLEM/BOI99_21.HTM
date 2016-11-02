@@ -1,0 +1,89 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 97">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (Win95; I) [Netscape]">
+   <title>boi'99 Day 2 Task 1</title>
+</head>
+<body background="backgrnd.gif">
+<img SRC="boi99bap.GIF" height=38 width=778>
+<p><b><font size=+1>&nbsp;"DELIVERY" (FINLAND)</font></b>
+<p>There is a large amount of packets that need to be delivered within
+a certain time limit if possible. There are two vehicles available for
+making the deliveries, a small van and a large lorry.
+<p>Each packet is either <i>small</i> or <i>large</i>. A small packet can
+be delivered either with the van or with the lorry, but a big one requires
+the lorry. For each packet we know the amount of time it would take to
+deliver it; we call this the <i>time requirement</i> of the packet. One
+vehicle can deliver only one packet at a time.
+<p>We are also given a <i>deadline</i>, which is the total amount of time
+within which we should deliver as many packets as possible. We do not care
+about what happens after the deadline.
+<p>Thus, from our point of view, the deliveries take place as follows:
+<ul>
+<li>
+a certain amount of small packets will be delivered by the van, and the
+total time requirement of these packets must not exceed the deadline, and</li>
+
+<li>
+a certain amount of small and large packets will be delivered by the lorry,
+and the total time requirement of these packets must also not exceed the
+deadline.</li>
+</ul>
+The task in this problem is to determine the largest total amount of packets
+that can be delivered in this manner.
+<h2>
+<i><font size=+1>Input data</font></i></h2>
+The input will be in the file DELIVERY.IN.
+<p>The first input line contains a single integer <i>T</i> (1 <font face="Symbol">&pound;
+T &pound;</font> 1000) - the deadline.
+<p>The second input line contains a single integer <i>N</i> (1<font face="Symbol">&pound;
+N&pound;</font>500) - the total number of small packets.
+<p>The input lines 3 through <i>N</i>+2 each contain a single integer between
+1 and 1000 (inclusive). These are the time requirements of the small packets.
+Time requirements are given in <i>ascending order</i>.
+<p>The input line number <i>N</i>+3 contains a single integer <i>M</i>
+(1<font face="Symbol">&pound;M&pound;</font>500) - the total number of
+large packets.
+<p>The input lines <i>N</i>+4 through <i>N</i>+<i>M</i>+3 each contain
+a single integer between 1 and 1000 (inclusive). These are the time requirements
+of the large packets. These time requirements are also given in ascending
+order.
+<h2>
+<i><font size=+1>Output data</font></i></h2>
+The only line of the output file DELIVERY.OUT should contain a single integer
+- the largest number of packets that can be delivered within the deadline.
+<h2>
+<i><font size=+1>Example</font></i></h2>
+Input data(file DELIVERY.IN)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Output data(file DELIVERY.OUT)
+<br><tt>10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+8</tt>
+<br><tt>8</tt>
+<br><tt>2</tt>
+<br><tt>2</tt>
+<br><tt>2</tt>
+<br><tt>2</tt>
+<br><tt>2</tt>
+<br><tt>4</tt>
+<br><tt>4</tt>
+<br><tt>4</tt>
+<br><tt>4</tt>
+<br><tt>3</tt>
+<br><tt>3</tt>
+<br><tt>6</tt>
+<br><tt>6</tt>
+<p>The deadline is 10 time units. There are 8 small packets: 5 with time
+requirement 2 and 3 with time requirement 4. There are 4 large packets:
+2 with time requirement 3 and 2 with time requirement 6.
+<br>The 8 packets can be delivered in 10 time units by delivering the small
+packets with time requirement 2 with the van, and using the lorry to deliver
+one small packet with time requirement 4 and 2 large packets with time
+requirement 3.
+<br>
+<hr WIDTH="100%"><b><i><font size=+1><a href="Task11.zip"></a></font></i></b>
+<p><b><i><font size=+1><a href="Task21.zip">TEST CASES</a></font></i></b><font size=+1></font>
+<p><b><i><font size=+1><a href="BOI99_22.htm">NEXT TASK</a></font></i></b>
+</body>
+</html>

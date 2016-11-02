@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0075)http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidCen/2001/indexgen.html -->
+<HTML><HEAD><TITLE>Problem D: Index Generation</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY bgColor=white>
+<H1 align=center>Problem D: Index Generation</H1>
+<CENTER>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD>Source file:</TD>
+    <TD><TT>indexgen.</TT>{<TT>c</TT>, <TT>cpp</TT>, <TT>java</TT>, 
+      <TT>pas</TT>}</TD></TR>
+  <TR>
+    <TD>Input file:</TD>
+    <TD><TT>indexgen.in</TT></TD></TR>
+  <TR>
+    <TD>Output file:</TD>
+    <TD><TT>indexgen.out</TT></TD></TR></TBODY></TABLE></CENTER>
+<P>Most nonfiction and reference books have an <EM>index</EM> to help readers 
+find references to specific terms or concepts in the text. Here is a sample 
+index.</P>
+<BLOCKQUOTE><PRE>larch, 4, 237, 238, 414
++ Monty Python and, 64, 65, 66
++ planting of, 17
+Lenny Kravitz, 50
++ going his way, 53
+lumbago, 107
+mango
++ Chris Kattan, 380
++ storage of, 87, 90
++ use in Nethack, 500, 501
++ Vitamin C content, 192
+</PRE></BLOCKQUOTE>
+<P>Each index entry contains a <B><I>primary entry</I></B> followed by zero or 
+more <B><I>secondary entries</I></B>, which begin with a '<TT>+</TT>'. Entries 
+will normally be followed by a list of page references, but a primary entry 
+might not be if at least one secondary entry is present (as is the case with 
+<I>mango</I>, above). Primary entries are sorted, and secondary entries 
+following a primary entry are also sorted. Sorting is case-insensitive. Page 
+references for an entry are in ascending order and do not include duplicates. (A 
+duplicate could occur if there are two or more identical entries on the same 
+page.)</P>
+<P>Your task is to read a document that has index information embedded within it 
+and produce the index. Documents consist of one or more lines of ASCII text. The 
+page number starts at 1, and the character '<TT>&amp;</TT>' indicates the start 
+of a new page (which adds 1 to the current page number). Index entries are 
+indicated by a <B><I>marker</I></B>, which in its most elaborate form has the 
+following syntax:</P>
+<BLOCKQUOTE>{<I>text</I><TT>%</TT><I>primary</I><TT>$</TT><I>secondary</I>} 
+</BLOCKQUOTE>
+<P>Here <I>text</I> is the text to be indexed, <I>primary</I> is an alternative 
+primary entry, and <I>secondary</I> is a secondary entry. Both 
+'<TT>%</TT><I>primary</I>' and '<TT>$</TT><I>secondary</I>' are optional, but if 
+both are present they must appear in the order given. If <I>primary</I> is 
+present then it is used as the primary entry, and if not then <I>text</I> is 
+used as the primary entry. If <I>secondary</I> is present then the marker adds a 
+page reference for that secondary entry; otherwise it adds a page reference for 
+the primary entry. A single marker cannot add a page reference for both a 
+primary and secondary entry. Here are examples of each of the four possible 
+types of marker, which correspond to four of the entries in the sample index 
+above.</P>
+<BLOCKQUOTE><PRE>... his {lumbago} was acting up, so ...
+... {Lenny%Lenny Kravitz} lit up the crowd with his version of ...
+... Monty Python often used the {larch$Monty Python and} in ...
+... when storing {mangos%mango$storage of}, be sure to ...
+</PRE></BLOCKQUOTE>
+<P>The input consists of one or more documents, followed by a line containing 
+only '<TT>**</TT>' that signals the end of the input. Documents are implictly 
+numbered starting with 1. Each document consists of one or more lines of text 
+followed by a line containing only '<TT>*</TT>'. Each line of text will be at 
+most 79 characters long, not counting end-of-line characters. For document 
+<I>i</I>, output the line '<TT>DOCUMENT</TT> <I>i</I>' followed by the sorted 
+index using the exact output format shown in the examples.</P>
+<P>Be sure to read <A 
+href="http://www.acm.inf.ethz.ch/ProblemSetArchive/B_US_MidCen/notes/teams.html"><I>Notes 
+to Teams</I></A>, which has general formatting guidelines that pertain to all 
+problem input files, including this one. Also note:</P>
+<UL>
+  <LI>A document will contain at most 100 markers, with at most 20 primary 
+  entries. 
+  <LI>A primary entry will have at most 5 secondary entries. 
+  <LI>An entry will have at most 10 unique page references (not including 
+  duplicates). 
+  <LI>The character '<TT>&amp;</TT>' will not appear anywhere within a marker, 
+  and will appear at most 500 times within a document. 
+  <LI>The character '<TT>*</TT>' is used only to signal the end of a document or 
+  the end of the input. 
+  <LI>The characters '<TT>{</TT>', '<TT>}</TT>', '<TT>%</TT>', and '<TT>$</TT>' 
+  will only be used to define markers, and will not appear in any text or 
+  entries. 
+  <LI>A marker may span one or more lines. Every end-of-line within a marker 
+  must be converted to a single space. 
+  <LI>A space within a marker (including a converted end-of-line) is normally 
+  included in the text/entry, just like any other character. However, any space 
+  that immediately follows '<TT>{</TT>', immediately precedes '<TT>}</TT>', or 
+  is immediately adjacent to '<TT>%</TT>' or '<TT>$</TT>' must be ignored. 
+  <LI>The total length of a marker, measured from the opening '<TT>{</TT>' to 
+  the closing '<TT>}</TT>', and in which all embedded end-of-lines are converted 
+  to spaces, will be at most 79 characters. </LI></UL>
+<P><B>Example input:</B></P>
+<BLOCKQUOTE><PRE>Call me Ishmael.
+*
+One {fish $unary}, two {fish$ binary},&amp;red {fish $ scarlet}, blue {fish$
+azure}. &amp; By { Dr. Seuss }.
+*
+This is a {simple } &amp; &amp; { document} that &amp;{
+simply %simple
+$adverb
+} &amp; {illustrates %vision} &amp;&amp;&amp;&amp;&amp; one {simple-minded% simple} {Judge}'s {vision} 
+for what a {document } might { look % vision} like.
+*
+**
+</PRE></BLOCKQUOTE>
+<P><B>Example output:</B></P>
+<BLOCKQUOTE><PRE>DOCUMENT 1
+DOCUMENT 2
+Dr. Seuss, 3
+fish
++ azure, 2
++ binary, 1
++ scarlet, 2
++ unary, 1
+DOCUMENT 3
+document, 3, 10
+Judge, 10
+simple, 1, 10
++ adverb, 4
+vision, 5, 10
+</PRE></BLOCKQUOTE>
+<P><SMALL><I>Last modified on October 26, 2001 at 08:27 
+AM.</I></SMALL></P></BODY></HTML>

@@ -1,0 +1,110 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=windows-1257">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (Win98; I) [Netscape]">
+   <title>Postman</title>
+</head>
+<body bgcolor="#FF7F00" background="tlo.jpg">
+
+<h2>
+Paštininkas</h2>
+
+(Vykdymo laikas - 1 sek.)
+<p><br>Kaimo paštininkas turi pristatyti paštą savo klientams, kurie gyvena
+kaimuose ir šalimais kaimus jungiančių kelių.
+<p>Jūsų užduotis – padėti paštininkui pasirinkti tokį maršrutą, kad jis
+aplankytų kiekvieną kaimą ir bent kartą pereitų kiekvienu keliu. Pradiniai
+duomenys tokie, kad šitaip padaryti visuomet galima. Už keliavimą reikia
+mokėti – kiekvienas kelias turi savo kainą. Klientai nori, kad paštininkas
+atvyktų į jų kaimą kiek galima anksčiau. Todėl kiekvienas kaimas sudarė
+su paštininku tokią sutartį: jeigu kaimas, kurio numeris <i>i</i>, yra
+<i>k</i>-tasis
+<b>skirtingas</b> paštininko aplankytas kaimas ir <i>k&lt;=w(i)</i>, kaimas
+sumoka paštui <i>w(i)-k</i> eurų. Tačiau jei <i>k>w(i)</i>,, tai paštas
+sutinka mokėti kaimui <i>k</i>-<i>w</i>(<i>i</i>) eurų. Žinoma, kad už
+kiekvieną maršruto kelią paštas moka paštininkui po vieną eurą.
+<p>Iš viso yra <i>n</i> kaimų, sunumeruotų nuo 1 iki <i>n</i>. Paštas yra
+kaime, kurio numeris 1, todėl maršrutas turi prasidėti ir baigtis šiame
+kaime. Kaimai išsidėstę taip, kad kiekvienas jų yra arba dviejų kelių sankryžoje,
+arba keturių kelių sankryžoje, arba egzistuoja kelias, einantis per šį
+kaimą (t.y. iš kiekvieno kaimo išeina 2, 4 arba 8 keliai). Gali būti keletas
+kelių, jungiančių tuos pačius kaimus, taip pat gali būti kelias-kilpa,
+t.y. kelias jungiantis kaimą su juo pačiu.
+<br>&nbsp;
+<h2>
+Užduotis</h2>
+Jums reikia parašyti programą, kuri:
+<ul>
+<li>
+perskaito duomenis apie kaimus ir juos jungiančius kelius iš pradinių duomenų
+bylos <tt>pos.in</tt>,</li>
+
+<li>
+suprojektuoja tokį maršrutą, einantį per kiekvieną kaimą ir bent kartą
+kiekvienu keliu, kad paštas gautų didžiausią pelną (arba turėtų mažiausiai
+nuostolių),</li>
+
+<li>
+įrašo rezultatą į rezultatų bylą <tt>pos.out</tt>.</li>
+</ul>
+Jeigu yra keletas galimų sprendimų, Jūsų programa turėtų pateikti vieną
+iš jų.
+<br>&nbsp;
+<br>&nbsp;
+<h2>
+Pradiniai duomenys</h2>
+Pradinių duomenų bylos <tt>pos.in</tt> pirmoje eilutėje įrašyti du sveikieji
+skaičiai <i>n</i> ir <i>m</i>, <i>1&lt;=n&lt;=200</i>, atskirti vienu tarpu;
+<i>n</i> yra kaimų skaičius, <i>m</i> – kelių skaičius. Kiekvienoje tolesnių
+<i>n</i> eilučių yra po vieną teigiamą sveikąjį skaičių. <i>i</i>+1-oje
+eilutėje įrašytas skaičius <i>w</i>(<i>i</i>), <i>1&lt;=w(i)&lt;=1 000</i>,
+kuris nurodo <i>i</i>-ojo kaimo mokestį. Kiekvienoje tolesnių <i>m</i>
+eilučių yra po du teigiamus sveikuosius skaičius, atskirtus vienu tarpu
+– jie rodo kaimus, sujungtus tiesioginiais keliais.
+<h2>
+Rezultatai</h2>
+Jūsų programa turi apskaičiuoti maršruto ilgį, t.y. rasti vieną teigiamą&nbsp;
+skaičių <i>k</i> ir įrašyti jį į rezultatų bylos <tt>pos.out</tt> pirmą
+eilutę. Tolesnėje eilutėje turi būti pateikta <i>k</i>+1 kaimų numerių,
+išdėstytų ta tvarka, kaip jie yra maršrute: <i>v<sub>1</sub>,v<sub>2</sub>,...,v<sub>k+1</sub>.
+</i>Numeriai&nbsp; atskiriami vienu tarpu, be to duota, kad <i>v<sub>1</sub>=v<sub>k+1</sub>=1</i>.&nbsp;
+<h2>
+Pavyzdys</h2>
+Pradinių duomenų bylai <tt>pos.in</tt>:
+<pre>6 7
+
+1
+
+7
+
+4
+
+10
+
+20
+
+5
+
+2 4
+
+1 5
+
+2 1
+
+4 5
+
+3 6
+
+1 6
+
+1 3</pre>
+
+<p><br><img SRC="pv/pos1.gif" NOSAVE height=173 width=175>
+<br>teisingas atsakymas yra rezultatų byla <tt>pos.out</tt>
+<pre>7
+
+1 5 4 2 1 6 3 1</pre>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Domino Puzzle</title>
+<style xml:space="preserve"> h1 { text-align: center; font-size: large; text-decoration: underline }  h2 { text-align: center; font-size: large; margin-bottom: 0 } </style></head>
+<body>
+
+<h1>2000-2001 ACM Northeastern European Regional Programming Contest</h1><h2>Problem D<br></br>&quot;Domino Puzzle&quot;</h2>
+
+  <table style="width:70%; float:right">
+  <tr><td colspan="1" rowspan="1"><em>
+  <strong>Dominoes</strong><br></br>
+  game played with small, rectangular blocks of wood or other material, 
+  each identified by a number of dots, or pips, on its face. The blocks 
+  usually are called bones, dominoes, or pieces and sometimes men, stones, 
+  or even cards.<br></br>
+  The face of each piece is divided, by a line or ridge, into two squares, 
+  each of which is marked as would be a pair of dice...<br></br>
+  The principle in nearly all modern dominoes games is to match one end 
+  of a piece to another that is identically or reciprocally numbered.</em>
+  </td></tr>
+  <tr><td colspan="1" rowspan="1" style="text-align:right">ENCYCLOP&AElig;DIA BRITANNICA</td></tr>
+  </table>
+
+<table>
+<tr><td colspan="1" rowspan="1"><strong>Input file</strong></td><td colspan="1" rowspan="1"><tt>DOMINO.IN</tt></td></tr>
+<tr><td colspan="1" rowspan="1"><strong>Output file</strong></td><td colspan="1" rowspan="1"><tt>DOMINO.OUT</tt></td></tr>
+<tr><td colspan="1" rowspan="1"><strong>Time limit</strong></td><td colspan="1" rowspan="1">15 seconds per test</td></tr>
+</table>
+
+<p style="clear:both">
+Consider an arbitrary set of domino pieces where each piece is marked 
+with two digits from 1 to 6. Some sets can be completely laid 
+out in a row matching one end of a piece to another that is identically 
+numbered, while others cannot. For example, the set consisting of 5 pieces:
+(1,&nbsp;5), (1,&nbsp;6), (5,&nbsp;5) and (2,&nbsp;4) twice, cannot
+be laid out in a row. However, if we add (2,&nbsp;5) piece to the above
+set we could lay out the resulting set in the following row:</p>
+
+<p style="text-align:center"><img alt="(6, 1)(1, 5)(5, 5)(5, 2)(2, 4)(4, 2)" src="domino1.gif"></img></p>
+
+<p>
+However, we are interested in a row having the smallest sum of digits on
+its pieces. In our example, instead of the piece (2,&nbsp;5) with a sum of 7, 
+we could add two pieces (1,&nbsp;2) with a total sum of 6 to
+lay out the following row:</p> 
+
+<p style="text-align:center"><img alt="(5, 5)(5, 1)(1, 2)(2, 4)(4, 2)(2, 1)(1, 6)" src="domino2.gif"></img></p>
+
+<p>Your task is to write a program that for a given domino set will find an additional 
+(possibly empty) set with the smallest possible sum of digits, so that a row could be 
+laid out with both sets combined.</p>
+
+<h3>Input</h3>
+
+<p>The first line of the input file contains a single integer <em>N</em> 
+(2&nbsp;&le;&nbsp;<em>N</em>&nbsp;&le;&nbsp;100) representing the total
+number of pieces in the domino set. The following <em>N</em> lines describe
+pieces. Each piece is represented on a separate line in a form of two digits
+from 1 to 6 separated by a space. The digits of a piece can be written in 
+any order.</p>
+
+<h3>Output</h3>
+
+<p>On the first line of the output file write the smallest
+sum of digits of the additional set or 0 if
+that set is empty.
+On the second line write the total number of
+pieces in the additional set or 0 if
+that set is empty.
+Then write the
+pieces of the additional set in the same format as in input.</p>
+
+<p>If there are a number of additional sets with the same smallest
+sum of digits exist then write any one of them.</p>
+
+<table style="width:100%">
+<tr><td colspan="1" rowspan="1" style="width:50%; vertical-align:top">
+
+<h3>Sample input #1</h3>
+
+<pre xml:space="preserve"><tt>6
+6 1
+1 5
+5 5
+5 2
+2 4
+4 2</tt></pre>
+
+<h3>Output for the sample input #1</h3>
+
+<pre xml:space="preserve"><tt>0
+0</tt></pre>
+
+</td><td colspan="1" rowspan="1" style="width:50%; vertical-align:top">
+
+<h3>Sample input #2</h3>
+
+<pre xml:space="preserve"><tt>5
+1 5
+6 1
+5 5
+2 4
+2 4</tt></pre>
+
+<h3>Output for the sample input #2</h3>
+
+<pre xml:space="preserve"><tt>6
+2
+1 2
+1 2</tt></pre>
+
+</td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<html>
+
+<head>
+<title>SER 2001: Duck!</title>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<h1>Duck!</h1>
+
+<h3>input file: <code>duck.in</code></h3>
+
+<p>The people of Bumpus (Bumpkins) are a fun, happy,
+peace-loving people who have a big problem.  
+They have very little depth perception and are constantly running into
+doors.   They've asked you to write a
+program to let them know when they should duck going through a doorway.
+Since Bumpkins love fun, some of their
+doorways have been made intentionally short to force other Bumpkins to either
+crawl or limbo through the door.  
+Unfortunately, the Bumpkins don't all use the same set of measurements,
+so some heights are measured in inches, others in feet, others in yards, others
+in centimeters, and others in meters.  
+To do the conversions, recall that:</p>
+
+<ul>
+<li>1 inch = 2.54
+centimeters</li>
+<li>1 foot =
+12 inches</li>
+<li>1 yard = 3 feet</li>
+<li>1 meter =
+100 centimeters</li>
+</ul>
+
+<h2>Input</h2>
+
+<p>The input file will begin with a single line, telling you
+how many Bumpkins want help.   Then, for
+each Bumpkin, there will be data about the Bumpkin and the doorways they
+reach.   The first line of each dataset
+will give you the Bumpkin's name (all Bumpkins have names of exactly 6
+characters), an integer <i>n</i>, the number of doors to process for this
+Bumpkin (<i>n</i> &gt; 0), and the Bumpkin's height, a floating point number
+followed by exactly one blank and then one of 'i',
+'f',
+'y',
+'c',
+or 'm'
+(representing inches, feet, yards, centimeters, and meters).
+The next <i>n</i> lines will have the height
+of the doorways in the bumpkin's life, one per line.
+Each height will be a floating point number followed by exactly
+one blank and one of
+'i',
+'f',
+'y',
+'c',
+or 'm'
+(representing inches, feet, yards, centimeters, and meters).</p>
+
+<h2>Output</h2>
+
+<p>For each Bumpkin, print the name of the Bumpkin on one line
+and then for each door, print the way the Bumpkin should travel through the
+door.   Decide on a mode of travel based
+on the table below, where <i>b</i> is the height of the Bumpkin, <i>d</i> is
+the height of the door (expressed in the same units):</p>
+
+<table border>
+ <tr>
+  <td>
+  Door height
+  </td>
+  <td>
+  Travel method
+  </td>
+ </tr>
+ <tr>
+  <td>
+  <i>d</i> &gt; <i>b</i> * 1.25
+  </td>
+  <td>
+  Stilts
+  </td>
+ </tr>
+ <tr>
+  <td><i>b</i> * 1.25 &gt;= <i>d</i>
+  &gt; <i>b</i> * 1.05
+  </td>
+  <td>
+  Walk
+  </td>
+ </tr>
+ <tr>
+  <td><i>b</i> * 1.05 &gt;= <i>d</i>
+  &gt; <i>b</i> * 0.65
+  </td>
+  <td>
+  Duck
+  </td>
+ </tr>
+ <tr>
+  <td><i>b</i> * 0.65 &gt;= <i>d</i>
+  &gt; <i>b</i> * 0.40
+  </td>
+  <td>
+  Crawl
+  </td>
+ </tr>
+ <tr>
+  <td>
+  <i>b</i> * 0.40 &gt;= <i>d</i>
+  &gt; <i>b</i> * 0.25
+  </td>
+  <td>
+  Limbo
+  </td>
+ </tr>
+ <tr>
+  <td>
+  <i>b</i> * 0.25 &gt;= <i>d</i>
+  </td>
+  <td>
+  Blocked
+  </td>
+ </tr>
+</table>
+
+<p>Have one blank line after each data
+set.</p>
+
+<h3>Sample Input</h3>
+
+<pre>
+2
+Mookin 3 150.4 c
+75 i
+2 f
+151 c
+Kimkin 1 67.3 i
+204.5 c
+</pre>
+
+<h3>Output corresponding to the Sample Input</h3>
+
+<pre>
+Mookin
+Doorway 1: Stilts
+Doorway 2: Crawl
+Doorway 3: Duck
+
+Kimkin
+Doorway 1: Walk
+</pre>
+
+</body>
+
+</html>

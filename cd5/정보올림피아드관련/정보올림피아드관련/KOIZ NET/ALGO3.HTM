@@ -1,0 +1,193 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>문제 풀이 기법</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font size="5" color="#0066FF"><b>문제 풀이 기법</b></font></p>
+<table border="0" style="font-size:10pt;">
+    <tr>
+        <td width="974" colspan="2">
+            <p>&nbsp;&nbsp;컴퓨터를 이용하여 문제를 풀 때는 다양한 기법들을 
+            사용해야 한다. 어떤 문제에 어떤 풀이방법을 적용해야 하는가는 매우 
+            많은 연습을 통해 익히는 수밖에 없다. &nbsp;어떤 문제를 풀어내는 
+            방법을 컴퓨터 과학에서는 알고리즘(Algorithm)이라고 하는데, 이 알고리즘들은 
+            동작하는 방식에 따라 분할정복, 다이나믹 프로그램밍, 그리디(Greedy), 
+            알고리즘 등으로 다양하게 구분된다. 가장 단순한 형태의 문제는 풀이법을 
+            그대로 적용시키면 되는 문제들이다. 예를 들어, 어떤 2차 방정식이 
+            있을 때, 이 이차 방정식의 근을 구하는 문제라면, 근을 구하는 공식을 
+            적용하면 간단히 구할 수 있다. 이러한 문제들이 가장 초보적인 형태의 
+            계산 문제라고 할 수 있다. 그러나, 컴퓨터를 이용하여 문제를 풀 때, 
+            이렇게 정해진 공식에 값들을 그대로 대입하여 문제를 푸는 일은 극히 
+            적고, 문제를 풀어내는 방법을 찾는 일은 마치 퍼즐문제를 푸는 것처럼 
+            힘든 경우가 대부분이다. 따라서, 지금까지 사람들이 고안해 놓은 다양한 
+            문제 풀이 기법들을 익히고, 실제 문제들을 보고 풀이 방법을 스스로 
+            고민해 보는 연습이 매우 중요하다.</p>
+            <p>&nbsp;&nbsp;다음의 각 문제들에 대해 어떤 풀이 방법이 올바른지 
+            생각해 보도록 하자.</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" colspan="2" style="border-width:1; border-style:dashed;">
+            <p>1. 임의의 수들이 섞여 있는 데이터가 있다. 우리는 이 데이터에서 
+            어떤 값과 가장 가까운 값을 찾고 싶다. 이를 찾는 방법과 이 때 걸리는 
+            시간은 어떻게 변하는지 생각해보라.</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" colspan="2">
+            <p>참고 : 어떤 값과 가장 가까운 값을 찾는 방법은 전체 데이터를 한 
+            번씩만 살펴보면 가능하다.</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" colspan="2" style="border-width:1; border-style:dashed;">
+            <p>2. 임의의 수들이 섞여 있는 데이터에서 가장 큰 값과 가장 작은 
+            값을 찾으려고 한다. 이 때, 사용할 수 있는 방법은 무엇인가?</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" colspan="2">
+            <p>참고 : 가장 큰 값이나 가장 작은 값을 찾는 방법 역시 모든 데이터를 
+            한 번씩만 살펴보면 찾을 수 있다. 이 때, 정렬을 이용하여 가장 큰 
+            값과 작은 값을 찾는 것은 바람직하지 못하다. 정렬은 O(nlogn)의 복잡도를 
+            가지기 때문에, 가장 빠른 방법과 비교할 때 효율이 떨어진다.</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" colspan="2" style="border-width:1; border-style:dashed;">
+            <p>3. 임의의 수들이 섞여 있는 데이터에서 서로의 차가 가장 작은 두 
+            수를 찾고 싶다. 이 때는 어떤 방법을 사용하여야 하는가?</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" colspan="2">
+            <p>참고 : 이 문제는 정렬을 통해서 풀어야 한다.</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" colspan="2" style="border-width:1; border-style:dashed;">
+            <p>4. 두 번째로 큰 수 찾기 문제<br> &nbsp;앞에서 살펴본 문제들과 
+            같은 데이터, 즉 임의의 수가 섞여 있는 데이터가 있다. 이 때, 이 수들 
+            가운데 두 번째로 큰 수를 찾는 방법을 생각해 보자. 가장 간단한 방법은 
+            가장 큰 수를 찾는 방법을 두 번 사용하는 것이다. 그러면, 2n 번 정도의 
+            비교가 필요할 것이다. 이 방법보다 더 좋은 방법은 없는지 생각해 보고, 
+            이를 설명하시오.</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" colspan="2">
+            <p>힌트 : 운동경기의 토너먼트 방식에서 어떤 두 선수가 경기를 할 
+            때, 실력이 뛰어난 사람이 반드시 이긴다고 가정하자. 그러면, 우승자가 
+            가장 잘하는 선수인 것은 분명하다. 하지만, 두 번째로 뛰어난 선수는 
+            1차전에서 이 우승자를 만나 떨어질 수도 있다. 이러한 방식을 곰곰히 
+            생각해보면, 최대값을 두 번 찾는 방법보다 더 좋은 방법을 찾을 수 
+            있다.&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" colspan="2">
+            <p>&nbsp;</p>
+            <p>간단한 연산으로 답을 구할 수 있는 문제들</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" colspan="2">
+            <p>문제의 예</p>
+            <p>&nbsp;&nbsp;직각 삼각형의 밑변과 높이가 주어졌을 때, 빗변을 계산하라</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" colspan="2">
+            <p>문제의 예</p>
+            <p>&nbsp;&nbsp;두 개의 블록 A와 B가 있다. 두 블록의 모양은 항상 
+            기억(ㄱ) 모양이며, 두 블록의 크기는 서로 다룰 수 있다. 풀어야 할 
+            문제는 블록 A가 블록 B에 들어가는지, B가 A에 들어가는지, 또는 두 
+            블록은 서로 끼워 넣을 수 없는지를 조사하여 큰 블록의 이름을 출력하는 
+            것이다. 이때 답이 없으면 X를 출력한다. 예를 들어, 아래 그림과 같이 
+            블록 A와 블록 B가 있을 때, 우리는 A를 90도 돌려서 B에 넣을 수가 
+            있다. 이 경우에 답은 B가 된다.</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" colspan="2">
+            <p align="center"><img src="images/algo3-1.jpg" width="206" height="131" border="0"></p>
+            <p align="center">[그림 1] 답이 B인 예</p>
+            <p align="center">&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" colspan="2">
+            <p>&nbsp;&nbsp;다음의 그림 2과 같은 예에서는 A를 어떻게 돌리더라도 
+            B에 넣을 수 없다. 따라서 이 경우는 답 X이다.</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" colspan="2">
+            <p align="center"><img src="images/algo3-2.jpg" width="137" height="143" border="0"></p>
+            <p align="center">[그림 2] 답이 X만 예</p>
+            <p align="center">&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" colspan="2">
+            <p>&nbsp;&nbsp;두 블록은 90도 씩 얼마든지 회전시킬 수 있으며 뒤집을 
+            수도 있다. 예를 들어 그림 1의 A블록은 다음과 같은 다양한 모양의 
+            블록과 동일한 것이다.</p>
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" colspan="2">
+            <p align="center"><img src="images/algo3-3.jpg" width="381" height="115" border="0"></p>
+            <p align="center">[그림 3]</p>
+            <p align="center">&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="974" colspan="2">
+            <p>블록 문제 풀이</p>
+            <p>블록 문제의 풀이는 매우 간단하다. 블록의 입력된 각 변 길이를 
+            a,b,c,d,e,f라고 하고, A블록의 각 변 길이는 A.a, A.b, A.c ........ 
+            B 블록의 각 변 길이를 B.a, B.b, B.c .............. 라고 할 때, A가 
+            B에 포함될 조건은 두 가지 중 하나를 만족해야 한다. 따라서 이 조건이 
+            만족되는지 그렇지 않은지만 검사하면 문제를 풀 수 있다.</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="485" style="border-width:1; border-style:dashed;">
+            <p>조건 1</p>
+            <p>A.a &lt;= B.a and A.b &lt;= B.b</p>
+            <p>and</p>
+            <p>( A.c &lt;= B.c or ( A.b &lt;= B.f and A.c &lt;= B.c + B.e ) 
+            )</p>
+            <p>and</p>
+            <p>( A.f &lt;= B.f or ( A. a &lt;= B.c and A.f &lt;= B.f + B.d ) 
+            )</p>
+        </td>
+        <td width="485" style="border-width:1; border-style:dashed;">
+            <p>조건 2</p>
+            <p>A.b &lt;= B.a and A.a &lt;= B.b</p>
+            <p>and</p>
+            <p>(A!&lt;= B or &nbsp;( A.a &lt;= B.1 and &lt;A.1&lt;= B.c +&nbsp;B.e 
+            ) )</p>
+            <p>and</p>
+            <p>( A.c &lt;= B.f or ( A.b &lt;= B.c and A.c &lt;= B.f + B.d )</p>
+        </td>
+    </tr>
+</table>
+</body>
+
+</html>

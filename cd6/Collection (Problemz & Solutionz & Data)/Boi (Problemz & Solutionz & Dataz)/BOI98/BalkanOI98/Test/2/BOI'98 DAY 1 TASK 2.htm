@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0040)http://www.ioi99.org.tr/BOI/12/soru.html -->
+<HTML><HEAD><TITLE>BOI'98 DAY 1 TASK 2</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<H1>BOI'98 DAY 1 TASK 2</H1>
+<H1>TOUGH NUT TO CRACK </H1>
+<H2>PROBLEM</H2>
+<P>You serve your guest a bowl of nuts.. In the bowl there are K varieties of 
+nuts (1 &lt;= K &lt;= 100) --pistachios, wallnuts,chestnuts, etc. Your guest 
+picks a nut from the bowl at random without letting you see it, and wants you to 
+find out which kind of nut it is. You ask questions of the type "Is it of the 
+kind k<SUB>1</SUB> or k<SUB>2</SUB> or ... k<SUB>N</SUB>" (where N &lt;= K); the 
+answer of your guest to each question will be either "yes" or "no". Your guest 
+does not eat the nut until you correctly identify what kind of nut it is, then, 
+he picks another nut, and so on until the bowl becomes empty. You are the one 
+who put the nuts into the bowl so you know exactly how many nuts of each kind 
+there are in the bowl. Your objective in this task is to minimize the total 
+number of questions you ask until the bowl gets emptied (so that your guest can 
+enjoy the serving with minimum amount of interruption). The kinds of nuts are 
+numbered with integers 1 through K, consecutively. There are at most 100 nuts of 
+each kind. Interaction of your program with your guest will be through the 
+functions called ask and tell (and finish for Pascal programmers). The ask 
+function allows your program to query whether the nut just picked is of the kind 
+k1 or k2 or ... kN. The tell function allows your program to assert that the nut 
+just picked is of the kind k. In a typical run, for each nut picked your program 
+will perform a sequence of calls to ask, followed by one call to tell. The call 
+to tell must never fail, that is your program must always be asserting the 
+correct kind for the nut. 
+<H2>INSTRUCTIONS FOR C/C++ PROGRAMMERS</H2>
+<P>In your directory you will find a project file named nuts.prj. This project 
+file will contain the object file for the functions you need, namely ask and 
+tell. Further, the object file contains the main function. Note that these have 
+been compiled with the large memory model. In the IDE you need to open this 
+project file using the file menu. With nuts.prj open, your object file will be 
+linked to ours automatically. Since the function main is already included in our 
+object file, you must not have a function called main; instead you must have a 
+function called play with the prototype (declaration): </P><PRE>void play (void);
+
+/* Interface Functions:  */
+
+int ask (int size, int* kind);
+</PRE>
+<P>/*Is the nut picked of the kind kind[0] or ... or kind[size-1]? If yes return 
+1, otherwise return 0 */ </P><PRE>int tell (int k);
+</PRE>
+<P>/* Assert that the nut picked is of the kind k. Returns 1 if assertion is 
+correct,0 otherwise. (The return value is provided to help you with debugging. 
+Recall that a return value of 0 causes your program immediately fail the test 
+case.) */ </P>
+<H2>INSTRUCTIONS FOR PASCAL PROGRAMMERS</H2>
+<P>Your program should have the directive </P><PRE>use nutslib;
+
+
+(* Interface procedures:  *)
+
+function ask (size: integer; kind: array of integer): boolean;
+</PRE>
+<P>(* Is the nut picked of the kind kind[0] or ... or kind[size-1]? If yes 
+return TRUE, otherwise return FALSE *) </P><PRE>function tell (k: integer) : boolean;
+</PRE>
+<P>(* Assert that the nut picked is of the kind k. Returns TRUE if assertion is 
+correct,FALSE otherwise. (The return value is provided to help you with 
+debugging. Recall that a return value of FALSE causes your program immediately 
+fail the test case.) *) </P><PRE>procedure finish;
+</PRE>
+<P>(* Call this procedure when the game is over(i.e. all nuts are picked). 
+Called exactly once in a run. *) </P>
+<H2>INPUT</H2>
+<P>The first line of the input file contains the number K of the kinds of nuts 
+(1 &lt;= K &lt;= 100). Each of the following K lines contains the number of nuts 
+of the respective kind such that the (k+1)'th line of the input file contains 
+the number of nuts of kind k (1 &lt;= k &lt;= K). The input file is named 
+nuts.inp. 
+<H2>EXAMPLE</H2><PRE>nuts.inp:
+5
+72
+28
+6
+100
+8
+</PRE>
+<H2>OUTPUT</H2>
+<P>
+<P>No output file is to be produced. 
+<H2>GRADING</H2>
+<P>The grader will simply count the number of times your program calls ask until 
+there are no nuts in the bowl. In case a call to tell fails to identify the kind 
+of the nut picked your program gets zero points for that test case. If the total 
+number of ask operations performed, denoted by x, is above our minimum, denoted 
+by M, but less than 3/2 M, you still can get partial credit for that test case. 
+The points you get for a test case is given by rounding to the nearest integer 
+the value obtained by the following formula: 
+<P>A if x &lt; M<BR>(4A/M2 ) ( 3/2 M - x)2 if M &lt; x &lt; 3/2 M<BR>0 if 3/2 M 
+&lt; x <BR>where A denotes the maximum possible points for this test case. 
+<P>CREDITS<BR>Idea: Halit O?zt??, Hakk?Toroslu<BR>Programming: Alp At?? Sertan 
+Girgin<BR>Writing: Halit O?zt??<BR><BR><A 
+href="http://www.ioi99.org.tr/BOI/11/index.html">previous question</A> <A 
+href="http://www.ioi99.org.tr/BOI/13/index.html">next question</A> <A 
+href="http://www.ioi99.org.tr/BOI/12/index.html">Main Page</A> 
+</P></BODY></HTML>

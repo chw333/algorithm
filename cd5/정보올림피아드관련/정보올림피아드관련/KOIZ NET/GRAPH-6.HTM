@@ -1,0 +1,28 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ks_c_5601-1987">
+<title>위상정렬 </title>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font size="5" color="#0066CC"><b>위상정렬 </b></font></p>
+<p><font size="2">&nbsp;&nbsp;큰 프로젝트는 많은 작은 프로젝트(Sub-Project) 
+또는 작업(Activity)으로 나누어서 수행하게 된다. 이러한 작업들은 그들 사이에 
+선행되거나 후행되는 순서 관계(Order Relation)를 가지게 된다. 프로젝트를 작업 
+노드와 선후행 관계 링크로 표현한 방향 그래프를 AOV(Activity On Vertex) 네트워크라 
+한다. 이러한 AOV 네트워크로 표현된 프로젝트가 실현 가능한(feasible) 프로젝트라면 
+사이클을 포함하지 않는 방향 그래프(DAG:Directed Acyclic Graph)로 표현된다. 이러한 
+방향 그래프에서 링크 가 있다면 노드 u는 노드 v를 선행한다. 방향 그래프에 존재하는 
+각 노드들의 선행 순서를 위배하지 않으면서 모든 노드를 나열하는 것을 방향 그래프의 
+위상정렬(Topological Sort)라고 한다. 방향 그래프를 대상으로 위상 정렬을 하기 
+위한 알고리즘은 먼저 내차수가 없는 노드를 선택하여 이 노드와 이에 부착된 모든 
+링크를 지운다. 이와 같은 내차수 0인 노드의 선택과 삭제 과정을 반복해서 모든 
+노드가 선택?삭제되면 알고리즘이 종료된다. 이 과정에서 선택되는 노드의 순서를 
+위상 순서(Topological Order)라 한다. 상기의 과정 중에 그래프에 남아 있는 노드 
+중에 내차수 0인 노드가 없다면, 이러한 그래프로 표현된 프로젝트는 실행 불가능한(infeasible) 
+프로젝트가 되고 위상정렬 알고리즘은 중단된다. 하나의 그래프에는 복수의 위상순서가 
+있을 수 있다. </font></p>
+</body>
+
+</html>

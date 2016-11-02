@@ -1,0 +1,77 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ks_c_5601-1987">
+<title>최소비용 신장 트리와 최단경로 찾기</title>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p align="center"><font size="4" color="#0066CC"><b>최소비용 신장 트리와 최단경로 
+찾기</b></font></p>
+<p><font size="2">이 절에서는 신장 트리의 개념과 최소 비용 신장트리를 찾는 방법. 
+그리고, 최단 경로를 찾는 방법등을 다루게 된다. 최단 경로를 찾는 것은 많은 그래프 
+문제를 해결하기 위해서 기본적으로 필요하기 때문에 잘 익혀둘 필요가 없다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">1. 최소비용 신장 트리 (minimum cost spanning tree)</font></p>
+<p><font size="2">신장트리 (spanning tree) 어떤 그래프 G의 스패닝 트리 ST(G)는 
+G의 부분 그래프로서 G의 모든 정점을 포함하여, 임의 두 정점 사이에 경로가 존재하는 
+트리이다.</font></p>
+<p><font size="2">최소비용 신장 트리(minimum cost spanning tree) 가중치 그래프에서 
+에지 가중치의합이 최소가 되는 스패닝 트리</font></p>
+<p><font size="2">2. 최소 비용 스패닝 트리를 구하는 방법 최소 비용 신장트리는 
+그리디(Greedy) 알고리즘을 통해 구할 수 있다. 최소 비용 신장트리를 구하는 문제가 
+그리디 알고리즘을 통해 최적해를 구할 수 있는 이유를 생각해보자.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">Kruskal의 알고리즘(1) 그래프 G의 에지들을 가중치에 따라 정렬한다.</font></p>
+<p><font size="2">(2) 빈 트리인 T를 생성한다.</font></p>
+<p><font size="2">(3) 가중치 값이 적은 순서대로 그래프 G의 에지를 하나씩 T에 
+추가한다. 싸이클이 생기면 추가를 취소한다.</font></p>
+<p><font size="2">(4) 3의 작업을 더이상 추가할 에지가 없을 때까지 (혹은 추가된 
+에지가 정점의 수보다 하나 적은 수가 될 때까지) 반복한다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">Prim의 알고리즘(1) 그래프 G의 정점들 가운데 임의의 하나를 
+T에 추가한다.</font></p>
+<p><font size="2">(2) T의 정점들과 연결된 에지들 가운데 가장 작은 가중치를 가진 
+간선을 T에 추가한다.</font></p>
+<p><font size="2">(3) 2의 작업을 추가된 간선의 수가 그래프 전체 정점의 수보다 
+하나 적은 수가 될 때까지 반복한다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">문제어떤 가중치 그래프에 대한 정보가 다음과 같이 주어 질 때, 
+이 그래프의 최소비용 스패닝트리를 구하는 프로그램을 작성하라.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">가중치 그래프 정보 &nbsp;가중치 그래프의 예Nv Ne &nbsp; &nbsp;3 
+3e1 w1 &nbsp; &nbsp;1 2 1e2 w2 &nbsp; &nbsp;2 3 2... &nbsp; &nbsp;...</font></p>
+<p><font size="2">eN wN &nbsp; &nbsp;3 4 3</font></p>
+<p><font size="2">* ei는 (vj , vk)로 표현한다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">[물음] Kruskal's algorithm과 Prim's algorithm은 모두 greedy 
+algorithm 이지만, 그래프의 크기 커지면 Prim's algoritm이 더 좋은 성능을 발휘한다. 
+그 이유가 무엇인지 생각해보자.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">Prim의 알고리즘의 효과적인 구현</font></p>
+<p><font size="2">그림 4와 같은 가중치 그래프가 있을 때, 최소비용 신장트리를 
+찾는다고 하자. Prim의 방법은 임의의 정점을 하나 선택하여 초기 트리 T에 넣고, 
+T의 정점들에 연결된 에지들 가운데 가장 작은 가중치를 가진 에지를 T에 계속 추가한다. 
+따라서 연결 행렬을 이용 할 때, 다음과 같이 쉽게 구현될 수 있다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">처음의 연결 행렬은 다음과 같다.</font></p>
+<p><font size="2">임의의 점을 선택하면 되기 때문에 임의로 E를 선택해서 최소비용 
+신장트리 T에 삽입했다고 하자. 그러면, 현재 T는 E하나의 정점으로 이루어진 트리가 
+된다. 다음으로는 연결 행렬에서 E에 해당하는 행을 삭제하는 것이다.(이는 T 내의 
+정점에 연결된 에지를 찾을 때, 자동으로 싸이클을 회피하기 위해서이다.) 그러면, 
+다음과 같은 연결행렬이 된다.</font></p>
+<p><font size="2">T : V(T)={ E } E(T) = &nbsp;{}</font></p>
+<p><font size="2">그리고, T에 포함된 정점은 E 하나이므로, E를 나타내는 열은 
+회색으로 표시했다. 다음으로 해야하는 일은 T에 포함된 정점에 연결된 간선들 가운데 
+가장작은 가중치를 가진 간선을 찾는 것이다. 이는 E의 해당열에서 가장 적은 값을 
+찾으면 된다. 이 때는 2의 가중치를 갖는 AE간선이 된다. 따러서 정점 A와 간선 AE를 
+T에 추가하고, A행을 삭제한다. 이런식으로 진행하면 다음과 같은 행렬들을 차례로 
+얻게 된다.</font></p>
+<p><font size="2">&nbsp;</font></p>
+<p><font size="2">T : V(T) { E,A } E(T) = {EA}</font></p>
+<p><font size="2">T : V(T) { E,A,B } E(T) = {EA,AB}</font></p>
+<p><font size="2">T : V(T) { E,A,B,C } E(T) = {EA,AB,AC}</font></p>
+<p><font size="2">T : V(T) { E,A,B,C,D } E(T) = {EA,AB,AC,CD}</font></p>
+</body>
+
+</html>

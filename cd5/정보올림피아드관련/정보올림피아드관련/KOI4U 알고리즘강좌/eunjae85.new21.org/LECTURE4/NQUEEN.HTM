@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>N-queen은 비교적 잘 알려진 문제로서 N x N 배열에 N마리의 퀸을 서로 공격하지 못하도록 배치하는 문</title>
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p>N-queen은 비교적 잘 알려진 문제로서 N x N 배열에 N마리의 퀸을 서로 공격하지 
+못하도록 배치하는 문제입니다. 퀸은 가로, 세로, 대각선으로 공격할 수 있으며 거리는 
+무제한입니다. 아래에서는 N-Queen을 백트래킹을 이용해 풀이해 보도록 하겠습니다.</p>
+<p>백트래킹을 할 때에 일단 한 행에 하나씩의 퀸을 놓는 방법을 결정합니다.(어짜피 
+한 줄에는 퀸이 하나밖에 올 수 없죠) 윗행부터 퀸을 하나씩 놓을 때 같은 열이나 
+대각선 상에 퀸이 있다면 그 위치에는 퀸을 새로이 놓지 못할 것입니다.</p>
+<p>아래의 소스에서는 chk1, chk2, chk3이란 배열을 사용합니다. 이미 그 열이나 
+대각선 상에 퀸이 있는지를 저장 하는 배열입니다. i를 행, j를 열이라 할 때, chk1[j], 
+chk2[i-j], chk3[i+j] 이렇게 세 개의 배열을 검사합니다.</p>
+<p>chk1은 j열에 퀸이 놓여있는지를 검사하고,</p>
+<p>chk2 '/' 방향의 대각선을 검사합니다. (1, 5)와 (3, 3)는 같은 '/'대각선 상에 
+있습니다. 이것을 일반화 시키면 i+j가 같은 칸 끼리는 같은 '/'대각선 상에 존재한다고 
+볼 수 있습니다.</p>
+<p>chk3는 chk2의 역방향의 대각선을 검사합니다. i+j가 같은 칸끼리는 같은 대각선을 
+공유하죠..</p>
+<p>아래 소스는 백트래킹의 기초로 재귀 호출을 이해하고 계신 분이라면 보시는 데에 
+별 무리가 없을 듯 합니다. 재귀호출에 별로 익숙하지 못하시다면 직접 trace하시면서 
+이해해 보시기 바랍니다.</p>
+<p><font face="굴림체"><b>program Nqueen;</b></font></p>
+<p><font face="굴림체"><b>const<br>
+&nbsp;&nbsp;maxn = 100;</b></font></p>
+<p><font face="굴림체"><b>var<br>
+&nbsp;&nbsp;chk1 : array[1..maxn] of boolean;<br>
+&nbsp;&nbsp;chk2 : array[2..maxn+maxn] of boolean;<br>
+&nbsp;&nbsp;chk3 : array[1-maxn..maxn-1] of boolean;</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;n, count : integer;</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;solution : array[1..maxn] of integer;</b></font></p>
+<p><font face="굴림체"><b>procedure found;<br>
+var<br>
+&nbsp;&nbsp;i, j : integer;<br>
+begin<br>
+&nbsp;&nbsp;inc (count);</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;for i := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for j := 1 to n do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if solution[i] = j then write ('Q ')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else 
+write ('. ');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;writeln;<br>
+&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;writeln;<br>
+end;</b></font></p>
+<p><font face="굴림체"><b>procedure recur (row : integer);<br>
+var<br>
+&nbsp;&nbsp;col : integer;<br>
+begin<br>
+&nbsp;&nbsp;if row &gt; n then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;found;<br>
+&nbsp;&nbsp;end else begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for col := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if not (chk1[col] or chk2[row + col] or 
+chk3[row - col]) then begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chk1[col] := true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chk2[row + col] := true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chk3[row - col] := true;</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;solution[row] 
+:= col;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;recur (row + 1);</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chk1[col] 
+:= false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chk2[row + col] := false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chk3[row - col] := false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;end;<br>
+end;</b></font></p>
+<p><font face="굴림체"><b>procedure init;<br>
+var<br>
+&nbsp;&nbsp;i : integer;<br>
+begin<br>
+&nbsp;&nbsp;for i := 1 to n do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;chk1[i] := false;</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;for i := 2 to maxn + maxn do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;chk2[i] := false;</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;for i := 1 - maxn to maxn - 1 do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;chk3[i] := false;</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;count := 0;<br>
+end;</b></font></p>
+<p><font face="굴림체"><b>begin<br>
+&nbsp;&nbsp;write ('N = ');<br>
+&nbsp;&nbsp;readln (n);</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;init;</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;writeln;<br>
+&nbsp;&nbsp;recur (1);</b></font></p>
+<p><font face="굴림체"><b>&nbsp;&nbsp;writeln ('total : ', count);<br>
+end.</b></font></p>
+</body>
+
+</html></html>

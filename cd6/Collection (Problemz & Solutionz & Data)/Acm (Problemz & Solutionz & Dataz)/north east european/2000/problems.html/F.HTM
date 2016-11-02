@@ -1,0 +1,113 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Frontier</title>
+<style xml:space="preserve"> h1 { text-align: center; font-size: large; text-decoration: underline }  h2 { text-align: center; font-size: large; margin-bottom: 0 } </style></head>
+<body>
+
+<h1>2000-2001 ACM Northeastern European Regional Programming Contest</h1><h2>Problem F<br></br>&quot;Frontier&quot;</h2>
+
+<table>
+<tr><td colspan="1" rowspan="1"><strong>Input file</strong></td><td colspan="1" rowspan="1"><tt>FRONTIER.IN</tt></td></tr>
+<tr><td colspan="1" rowspan="1"><strong>Output file</strong></td><td colspan="1" rowspan="1"><tt>FRONTIER.OUT</tt></td></tr>
+<tr><td colspan="1" rowspan="1"><strong>Time limit</strong></td><td colspan="1" rowspan="1">15 seconds per test</td></tr>
+</table>
+
+<p>Lilliputian frontier is a convex polygon with non-zero area.
+The vertices of this polygon are guard towers, which are
+connected by straight lines.
+This frontier is too long and expensive for Lilliputia to maintain;
+therefore the Lilliputian government has decided to revise it to make it shorter.
+However, they don't want to build new guard towers, but to use existing
+ones as a part of a new frontier.</p>
+
+<p><img alt="Sample frontier picture" src="frontier.gif" style="float:right"></img>
+Each day frontier guards inspect the frontier. They go
+from one guard tower to the next one, traversing the frontier
+clockwise. Guard towers are numbered from 1 to <em>N</em> according
+to this inspection order. Frontier revision should not change this
+way of inspection and the area of Lilliputia shall remain non-zero.</p>
+
+<p>
+For example, the frontier that is shown on the picture
+(axes are in kilometer scale) is traversed by 
+1&nbsp;-&nbsp;2&nbsp;-&nbsp;3&nbsp;-&nbsp;4&nbsp;-&nbsp;5&nbsp;-&nbsp;1
+route, which is 57.89 kilometers long.
+To make the frontier as short as possible 
+Lilliputia should revise it so that the frontier is traversed by
+2&nbsp;-&nbsp;3&nbsp;-&nbsp;4&nbsp;-&nbsp;2 route, thus reducing 
+its length to 27.31 kilometers.</p>
+
+<p>However, Lilliputia has a number of historical monuments which
+are its major pride. The historical monuments shall be kept 
+inside Lilliputia at any cost and they should not end up on the 
+frontier.  So, the task is to design the shortest frontier 
+that will preserve all historical monuments inside Lilliputia.</p>
+
+<p>On the sample picture two historical monuments marked &quot;A&quot; and &quot;B&quot;
+are shown. The desire to keep them inside Lilliputia will lead
+to the shortest frontier with a traverse path 
+1&nbsp;-&nbsp;2&nbsp;-&nbsp;3&nbsp;-&nbsp;4&nbsp;-&nbsp;1
+having 51.78 kilometers in length.</p>
+
+<h3>Input</h3>
+
+<p>The first line of the input file contains two integers <em>N</em>
+and <em>M</em>, separated by a space. <em>N</em> 
+(3&nbsp;&le;&nbsp;<em>N</em>&nbsp;&le;&nbsp;50) is a total number
+of guard towers on the Lilliputian frontier. <em>M</em>
+(0&nbsp;&le;&nbsp;<em>M</em>&nbsp;&le;&nbsp;1000) is a total number
+of historical monuments that are situated inside Lilliputia.</p>
+
+<p>Next <em>N</em> lines contain guard towers' coordinates
+in a clockwise order followed by <em>M</em> lines that 
+contain historical monuments' coordinates. All coordinates
+are represented as two integers (for <em>X</em> and <em>Y</em>
+correspondingly) separated by a space. Coordinates are
+given in a kilometer scale and each coordinate
+does not exceed 10000 by an absolute value. All guard towers
+are located at distinct points.</p>
+
+<h3>Output</h3>
+
+<p>Write to the output file a single real number &ndash; the minimal
+possible length of the Lilliputian frontier (in kilometers)
+accurate to two digits to the right of the decimal point.</p> 
+
+<table style="width:100%">
+<tr><td colspan="1" rowspan="1" style="width:50%; vertical-align:top">
+
+<h3>Sample input #1</h3>
+
+<pre xml:space="preserve"><tt>5 0
+8 9
+0 -7
+-8 -7
+-8 1
+-8 9</tt></pre>
+
+<h3>Output for the sample input #1</h3>
+
+<pre xml:space="preserve"><tt>27.31</tt></pre>
+
+</td><td colspan="1" rowspan="1" style="width:50%; vertical-align:top">
+
+<h3>Sample input #2</h3>
+
+<pre xml:space="preserve"><tt>5 2
+8 9
+0 -7
+-8 -7
+-8 1
+-8 9
+-4 -3
+-1 -5</tt></pre>
+
+<h3>Output for the sample input #2</h3>
+
+<pre xml:space="preserve"><tt>51.78</tt></pre>
+
+</td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+program box(input, output);
+var i, n	       : integer;
+    a, b, c, d, c2, d2 : real;
+
+(*
+  Equipment Box
+  CERC 1999, Pavel Kos
+*)
+
+procedure Yes;
+begin
+   writeln('Escape is possible.');
+end; { Yes }
+
+procedure No;
+begin
+   writeln('Box cannot be dropped.');
+end; { No }
+
+begin
+   read(n);
+   for i := 1 to n do
+   begin
+      read(a, b, c, d);
+      if b > a then
+      begin { normalize }
+	 c2 := a;
+	 a := b;
+	 b := c2
+      end;
+      if d > c then
+      begin { normalize }
+	 c2 := c;
+	 c := d;
+	 d := c2
+      end;
+      if a > c then { easy decision }
+	 if b > d then
+	    Yes
+	 else
+	    No
+      else if d >= b then
+         No
+      else { does not fit unrotated but might fit rotated }
+      begin
+         { Limit case (inner rect. touches outer rect. in 4 point):        }
+         { u     ... inner rect. diagonal: u = sqrt(c^2 + d^2)             }
+         { alpha ... angle between a and c                                 }
+         { beta  ... angle between u and c                                 }
+         { b1    ... projection of u onto b (a^2 + b1^2 = u^2)             }
+         { b2    ... projection of d onto b (b = b1 + 2*b2)                }
+         
+         { cos(alpha - beta) = a/u                                         }
+         { cos(alpha - beta) = cos(alpha)cos(beta) + sin(alpha)sin(beta)   }
+         { cos(alpha) = b2/d                                               }
+         { cos(beta) = c/u                                                 }
+         { sin(alpha) = (b1 + b2)/c                                        }
+         { sin(beta) = d/u                                                 }
+         
+         { all together:                                                   }
+         { a = u*cos(alpha - beta) = ...                                   }
+         { ... = (b*(c^2 + d^2) - (c^2 - d^2)*sqrt(c^2 + d^2 - a^2))/2*c*d }
+         
+	 c2 := c*c;
+	 d2 := d*d;
+	 if (b*(c2+d2)-(c2-d2)*sqrt(c2+d2-a*a))/(2*c*d) > a then
+	 begin
+	    Yes
+	 end
+	 else
+	    No
+      end;
+   end;
+end.

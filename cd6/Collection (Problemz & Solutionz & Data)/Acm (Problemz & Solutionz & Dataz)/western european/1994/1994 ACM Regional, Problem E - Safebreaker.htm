@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0048)http://www.karrels.org/Ed/ACM/weur94/prob_e.html -->
+<HTML><HEAD><TITLE>1994 ACM Regional, Problem E - Safebreaker</TITLE>
+<META content="text/html; charset=ks_c_5601-1987" http-equiv=Content-Type><LINK 
+href="mailto:Ed@Tool.com" rev=made>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY><EM>Not an official ACM page</EM> <BR>[<A 
+href="http://www.karrels.org/Ed/ACM/weur94/prob_f.html">Problem F</A> | <A 
+href="http://www.karrels.org/Ed/ACM/weur94/index.html">1994 Western European 
+Regional problem set</A> | <A href="http://www.karrels.org/Ed/ACM/index.html">My 
+ACM problem archive</A> | <A href="http://www.karrels.org/Ed/index.html">my home 
+page</A>] 
+<HR>
+
+<CENTER>
+<H4>1994-1995 ACM International Collegiate Programming Contest<BR>Western 
+European Regional</H4>
+<H1>Problem E </H1>
+<H2>Safebreaker </H2></CENTER>We are observing someone playing the game of 
+Mastermind. The object of this game is to find a secret code by intelligent 
+guess work, assisted by some clues. In this case the secret code is a 4-digit 
+number in the inclusive range from 0000 to 9999, say "3321". The player makes a 
+first random guess, say "1223" and then, as for each of the future guesses, gets 
+a clue telling him how good his guess is. A clue consists of two numbers: the 
+number of correct digits (in this case 1: the "2" at the third position) and the 
+additional number of digits guessed correctly but in the wrong place (in this 
+case 2: the "1" and the "3"). The clue would in this case be: "1/2". 
+<P>Write a program that given a set of guesses and corresponding clues, tries to 
+find the secret code. 
+<H3>Input</H3>The first line of input specifies the number of test cases 
+(<EM>N</EM>) your program has to process. Each test case consists of a first 
+line containing the number of guesses <EM>G</EM> (0 &lt;= <EM>G</EM> &lt;= 10), 
+and <EM>G</EM> subsequent lines consisting of exactly 8 characters: a code of 
+four digits, a blank, a digit indicating the number of correct digits, a '/' and 
+a digit indicating the number of correct but misplaced digits. 
+<H3>Output</H3>For each test case, the output contains a single line saying 
+either: 
+<BLOCKQUOTE>
+  <DL>
+    <DT><CODE>impossible</CODE> 
+    <DD>if there is no code consistent with all guesses. 
+    <DT><EM>the secret code</EM> 
+    <DD>if there is exactly one code consistent with all guesses. 
+    <DT><CODE>indeterminate</CODE> 
+    <DD>if there is more than one code which is consistent with all guesses. 
+    </DD></DL></BLOCKQUOTE>
+<H3>Sample Input</H3><PRE>4
+6
+9793 0/1
+2384 0/2
+6264 0/1
+3383 1/0
+2795 0/0
+0218 1/0
+1
+1234 4/0
+1
+1234 2/2
+2
+6428 3/0
+1357 3/0
+</PRE>
+<H3>Sample Output</H3><PRE>3411
+1234
+indeterminate
+impossible
+</PRE>
+<HR>
+This page maintained by <A href="mailto:Ed@Tool.com">Ed Karrels</A>.<BR>Last 
+updated September 20, 1999 </BODY></HTML>

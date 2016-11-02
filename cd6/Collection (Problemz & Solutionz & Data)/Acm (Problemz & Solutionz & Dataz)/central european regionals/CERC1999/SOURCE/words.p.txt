@@ -1,0 +1,93 @@
+Program Fotbal;
+
+(*
+  Play on Words
+  CERC 1999, Martin Kacer
+*)
+
+Var conn     : Array [' '..'z', ' '..'z'] of Boolean;   { connected? }
+   cout, cin : Array [' '..'z'] of Integer;   { how many edges? }
+   tasks, t  : Integer;
+
+
+Procedure OneTask;
+Var i, num      : Integer;   { number of words }
+   c, d         : Char;
+   visited      : Array ['a'..'z'] of Boolean;   { letter was used }
+   fvisit       : Char;   { one of the used letters }
+
+   { ***** checking graph connectivity ***** }
+   queue        : Array [1..32] of Char;   { queue of visited }
+   qend         : Integer;   { last index in the queue }
+
+   { ***** checking number of edges ***** }
+   countok      : Boolean;   { false if some condition fails }
+   lessc, morec : Integer;   { how many times `cout' exceeds `cin' }
+Begin
+   For c := 'a' to 'z' do Begin
+      For d := 'a' to 'z' do conn [c, d] := false;
+      cout[c] := 0;
+      cin[c] := 0;
+      visited[c] := false;
+   End;
+
+   ReadLn (num);
+   For i := 1 to num do Begin
+      Read (c);
+      d := c;
+      While not eoln do Read (d);
+      ReadLn;
+
+      { ***** edge from `c' to `d' ***** }
+      conn[c, d] := true;
+      conn[d, c] := true;
+      cout[c] := cout[c] + 1;
+      cin[d] := cin[d] + 1;
+      visited[c] := true;
+      visited[d] := true;
+      fvisit := c;
+   End;
+
+   { ***** check the number of edges ***** }
+   countok := true;
+   lessc := 0;
+   morec := 0;
+
+   For c := 'a' to 'z' do Begin
+      If cin[c] = (cout[c] - 1) then lessc := lessc + 1
+      else If cin[c] = (cout[c] + 1) then morec := morec + 1
+      else If cin[c] <> cout[c] then countok := false;
+   End;
+   If ( lessc > 1 ) or ( morec > 1 ) then countok := false;
+
+   { ***** check graph connectivity ***** }
+   If countok then Begin
+      queue[1] := fvisit;
+      visited[fvisit] := false;   { clearing the visit flag }
+      qend := 1;
+      i := 1;
+      While ( i <= qend ) do Begin
+         fvisit := queue [i];
+         i := i + 1;
+         For c := 'a' to 'z' do
+            If visited[c] then
+               If conn[fvisit, c] then Begin
+                  qend := qend + 1;
+                  queue[qend] := c;
+                  visited[c] := false;
+               End;
+      End;
+
+      For c := 'a' to 'z' do
+         If visited[c] then countok := false;
+   End;
+
+   If countok then WriteLn ('Ordering is possible.')
+   else WriteLn ('The door cannot be opened.');
+End; { OneTask }
+
+
+Begin
+   ReadLn (tasks);
+   For t := 1 to tasks do OneTask;
+End.
